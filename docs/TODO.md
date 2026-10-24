@@ -6,24 +6,16 @@ Last updated 2026-10-24. Read `AGENTS.md` (project memory) and `docs/PROVENANCE.
 
 - Index A: 187 rows, 186 resolved, 165 codes. Every row on printed pp. 73-74 was read against
   the page image (200 dpi; disputed lines at 300 dpi). Sears's `C-I-Addendum` stays unresolved.
-- Index B: 1285 edges. Flags: ok 966, ocr_corrected 210, manual_fix 99, junk_name 0 (resolved 2026-10-24),
+- Index B: 1285 edges. Flags: ok 965, ocr_corrected 210, manual_fix 100, junk_name 0 (resolved 2026-10-24),
   code_not_in_index_a 10. 2 unresolved tokens (`D-I` excluded as a duplicate; `F-I\` smudged;
-  see `data/kk-index-b-unresolved.csv`). Six tokens resolved 2026-10-24 (manual-fix file).
-- Crosswalk (`data/kk-boroch-crosswalk.csv`, 135 rows): 127 auto, 2 hand decisions (D3-1, D2-16),
-  4 ambiguous and 1 unmatched (open), 1 F4-6 slip (resolved in PROVENANCE section 5).
-- Committed: the 2026-10-24 reorganization (`1c026b5`: scripts in `scripts/`, PDFs and Archive text
-  in `documents/`, stale files deleted, `build-definition-texts.R` parse fix) and the Phase 0 notes
-  (`42ab463`).
-- 2026-10-24 (later): heading corrections applied in `build-index-b.R` (`apply_heading_corrections()`,
-  PROVENANCE 3.5). Crosswalk, networks, `analysis-index-b.R` and the audit files were rerun, so the data/
-  outputs changed (see the git diff). Nothing is committed.
-- 2026-10-24 (latest): junk names resolved (PROVENANCE 3.6); garbled labels fixed by `rename_sub` rows; OCR heading
-  variants renamed (`adjustive-adaptive`, `processes and means`); machine block check added
-  (`scripts/check-index-b-blocks.R`, PROVENANCE 3.7). Provisional verdicts are in the review sheet.
-- Uncommitted (check `git status`): `scripts/build-index-b.R` (sub-element rename support),
-  `data/kk-index-b-manual-fixes.csv` (six new resolutions, four renames, `new_sub_element` column),
-  the regenerated Index B outputs in `data/`, this file, and the new untracked
-  `data/kk-index-b-second-scan-check.csv`.
+  see `data/kk-index-b-unresolved.csv`). Six tokens resolved 2026-10-24 (manual-fix file); the B-11
+  misread under process was corrected to B-21 (PROVENANCE 3.7).
+- Crosswalk (`data/kk-boroch-crosswalk.csv`, 135 rows): 127 auto, 7 hand decisions (D3-1, D2-16,
+  A16, A17, A20, C1-11, B5), 0 ambiguous, 0 unmatched, 1 F4-6 slip (resolved in PROVENANCE section 5).
+- Committed (2026-10-24): the reorganization (`1c026b5`), Phase 0 notes (`42ab463`), the Index B
+  script work and audit files, the B-11→B-21 fix and regenerated outputs (`2997ec2`), the finalized
+  block-check verdicts (`347c431`), the ok-sample check and documentation updates (`203a743`). The
+  working tree is clean; check `git status` before building on this.
 - The untracked copy of a full book text, `documents/papersofpeabodymvol47no1peab_djvu.txt`, is
   now in `documents/` and gitignored. Do not commit or release it.
 
@@ -98,10 +90,10 @@ manual-fix keys: the build errors if a key matches no token.
 8. **Rights (user decision).** Whether K&K Index B element labels can ship is undecided.
    `data/kkcc-definition-texts.csv` holds verbatim Boroch quotations and must stay out of any
    release.
-9. **Git.** Commit the pending work in logical units: (a) `scripts/build-index-b.R` (rename support, heading
-   and junk rules); (b) the manual-fix file and the regenerated Index B outputs; (c) the second-scan check file;
-   (d) this TODO; (e) `scripts/check-index-b-blocks.R`, `data/kk-index-b-junk-decisions.csv` and the block-check
-   files, including the review sheet. The Archive text in `documents/` is gitignored and stays out. Earlier commits:
+9. **Git: done 2026-10-24.** The pending work is committed in logical units: the earlier script and
+   audit-file commits; the B-11→B-21 fix with regenerated outputs (`2997ec2`); the finalized
+   block-check review sheet (`347c431`); the ok-sample verdicts and README/PROVENANCE/TODO/AGENTS
+   updates (`203a743`). The Archive text in `documents/` is gitignored and stays out. Earlier commits:
    `1c026b5` (reorganization), `42ab463` (Phase 0 notes), `e007b5a`, `7533002`, `e866111`, `f78bece`.
 12. **Downstream rerun: done 2026-10-24.** `scripts/analysis-index-b.R` was rerun after the heading correction
     (network stats and the degree-comparison figure regenerated).
