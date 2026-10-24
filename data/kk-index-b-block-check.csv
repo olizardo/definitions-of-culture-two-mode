@@ -839,7 +839,7 @@
 "B-15","press of culture on its agents","influence","ok","code_in_block"
 "A-17","press of culture on its agents","force","ok","code_in_block"
 "C-I-6","press of culture on its agents","govern","ok","code_in_block"
-"B-11","processes and means","process","ok","code_in_other_block"
+"B-21","processes and means","process","manual_fix","code_in_other_block"
 "B-22","processes and means","process","ok","code_in_other_block"
 "D-I-6","processes and means","process","ocr_corrected","code_in_other_block"
 "F-I-16","processes and means","process","ok","code_in_block"
