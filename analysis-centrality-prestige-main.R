@@ -215,3 +215,19 @@ rownames(subgroup.means) <- NULL
 cat("\naverage scores by definition subgroup:\n")
 print(subgroup.means, row.names = FALSE)
 write.csv(subgroup.means, "data/kkcc-score-means-by-subgroup.csv", row.names = FALSE)
+
+# decade cut: definitions dated by the quoted edition year of their source
+years <- read.csv("data/kkcc-definition-years.csv")
+m$decade <- years$decade[match(m$code, years$code)]
+cat("definitions without a year (excluded):",
+    paste(m$code[is.na(m$decade)], collapse = ", "), "\n")
+dec.agg <- aggregate(m[!is.na(m$decade), cols],
+                     by = list(decade = m$decade[!is.na(m$decade)]), FUN = mean)
+decade.means <- cbind(decade = dec.agg$decade,
+                      n = as.integer(table(m$decade)[as.character(dec.agg$decade)]),
+                      round(dec.agg[, -1], 3))
+decade.means <- decade.means[order(decade.means$decade), ]
+rownames(decade.means) <- NULL
+cat("\naverage scores by definition decade:\n")
+print(decade.means, row.names = FALSE)
+write.csv(decade.means, "data/kkcc-score-means-by-decade.csv", row.names = FALSE)

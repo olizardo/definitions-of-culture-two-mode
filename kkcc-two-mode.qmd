@@ -26,6 +26,8 @@ d <- readRDS("data/kkcc_two_mode_main.rds")
 A <- d$biadjacency    # main categories (rows) x definitions (columns)
 g <- d$graph          # attributed bipartite graph
 def_attrs <- readRDS("data/kkcc_two_mode.rds")$def_attrs
+bb <- read.csv("data/kkcc-supplement-bibliography.csv")   # supplement bibliography
+db <- read.csv("data/kkcc-definition-biblio.csv")         # code -> bibliography entry
 ```
 
 # Two-mode structure
@@ -267,6 +269,42 @@ subgroup.means
 ```
 
 Within normative, C2 (definitions in terms of ideas and values) outperforms C1 (rules and ways) on every measure except BGRM — C2 definitions have both higher mean degree (2.60 vs 2.17) and higher HITS averages (0.609 vs 0.373). Within genetic, artefact-based (F1) and symbol-based (F3) definitions outrank idea-based (F2) and other (F4) ones. Within psychological, learning (D2) and habits (D3) score above adjustments (D1) on the prestige measures, while BGRM again favors D1 — the selective, rarely shared adjustments definitions.
+
+Finally, definitions dated by the decade of the quoted edition of their source text (extracted from the appendix definition tables; D3-1, the undated Tozzer lectures, is the only exclusion — F4-6 is dated by inference, see @sec-provenance):
+
+```{r}
+#| label: means-by-decade
+decade.means
+```
+
+The sample is thin at the margins — one definition each from the 1870s (Tylor) and 1910s (Small), two from the 1900s (Ward, Small), five from the 1950s, and the bulk (125 of 134) published between 1920 and 1949 — so decade means should be read as descriptive only. Within that constraint, the averages are strikingly flat across the 1920s–1940s on closeness and the HITS/PageRank/BiRank prestige measures: the KKCC definition sample does not concentrate central definitions in any one decade. BGRM is again the exception, peaking in the 1920s, when the most selective definitions (Hart and Pantzer 1925, Sapir 1921) were published.
+
+# Definition provenance {#sec-provenance}
+
+Each definition carries three levels of source information. The author, year, and decade attributes were transcribed from the appendix definition tables of Boroch's article (`build-definition-years.R`): the year is that of the edition quoted in the appendix (the one before the source-page number), with re-edition years (e.g. A5 "(1929)13, 1931") and year suffixes ("1945a") recorded separately. The full source reference and canonical author names come from the article's own Supplement Bibliography (pp. 94–99), parsed by `build-supplement-bibliography.R` into `r nrow(bb)` entries — each a work tagged with the group or subgroup code(s) whose definitions draw on it, e.g. "1945a Kluckhohn C., Kelly W.H., The Concept of Culture… (F4)". A definition is tied to its bibliography entry by group tag, surnames, and year, with the year suffix resolving same-year pairs (Linton 1945a/1945b, White 1949a/1949b, Kroeber 1948a) and the parenthesized re-edition year covering cases like A5 (Benedict, quoted from the 1931 reprint of a 1929 essay).
+
+```{r}
+#| label: biblio-match
+table(bb$tag)   # bibliography entries per definition group
+table(db$match_status)
+```
+
+Of the 135 definitions, `r sum(db$match_status == "auto")` matched a unique bibliography entry with no ambiguity; D3-1 (Tozzer's undated lectures, the bibliography's "(???)" entry) matched on surname and subgroup alone (`manual`); and F4-6 was assigned by inference (`inferred`), documented below. Canonical author names are the bibliography's surname forms, which normalize appendix variants ("A. Davis", "K. Davis" → Davis). Six works underlie two definitions each (e.g. Dixon 1928 for A3 and A4, Blumenthal 1937 for F2-4 and F2-5); the remaining 123 entries map one-to-one.
+
+::: {.callout-note}
+## F4-6 = Kluckhohn & Kelly 1945a: 87 (inferred)
+
+F4-6 is used in Table 2 (the ACTING row) but has no entry in the appendix Table 13. Four independent facts identify its source as Kluckhohn & Kelly's "The Concept of Culture" (1945a: 87) — i.e., Table 2's "F4-6" is an off-by-one slip for Boroch's own F4-5:
+
+1. Kroeber & Kluckhohn's Part II group F-IV ("Residual Category Definitions") contains exactly five definitions — Ostwald 1907, Ostwald 1915, Blumenthal 1941, Roheim 1943, and Kluckhohn & Kelly 1945a — so F-IV-6 does not exist in the monograph.
+2. The Supplement Bibliography tags exactly those five works with (F4); there is no sixth F4-tagged source that F4-6 could point to.
+3. K&K's index of conceptual elements maps "acting" to "A-8, C-I-3, C-I-17, F-IV-5", matching Boroch's ACTING row (A8, C1–3, C1–17, F4–6) cell-for-cell in its other three cells.
+4. F4-5 occurs nowhere in Table 2, so the slip displaces nothing else.
+
+The alternative reading — that Boroch counted a sixth residual definition that he never listed — would require a sixth (F4)-tagged source work, which the bibliography does not contain. F4-6 is therefore attributed to Kluckhohn & Kelly 1945a with `match_status = "inferred"`; the 1940s decade bin gains one definition (n = 71), and D3-1 remains the only definition without a year.
+:::
+
+
 
 
 

@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Basic network statistics for the KKCC two-mode network</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="kkcc-two-mode_files/libs/clipboard/clipboard.min.js"></script>
+<script src="kkcc-two-mode_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="kkcc-two-mode_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="kkcc-two-mode_files/libs/quarto-html/popper.min.js"></script>
+<script src="kkcc-two-mode_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="kkcc-two-mode_files/libs/quarto-html/anchor.min.js"></script>
+<link href="kkcc-two-mode_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="kkcc-two-mode_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="kkcc-two-mode_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="kkcc-two-mode_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="kkcc-two-mode_files/libs/bootstrap/bootstrap-215b371544c282197b31c8aa00ce3677.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Basic network statistics for the KKCC two-mode network</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This report was generated using AI under general human direction. At the time of generation, the contents have not been comprehensively reviewed by a human analyst.</p>
+<!--
+To indicate human review: Delete the line above about contents not being reviewed, and replace this comment with:
+The contents have been reviewed and validated by [Your Name], [Your Role] on [Date].
+-->
+</div>
+</div>
+<p>This report computes basic network statistics for the two-mode network of culture concepts and culture definitions extracted from Table 2 of Boroch’s classification of the Kroeber–Kluckhohn Culture Concepts (KKCC). The rows are the 16 main concept categories of the KKCC scheme — auxiliary notions have been collapsed into their parents (union of ties, binarized) — and the columns are 135 definition codes. Statistics follow the conventions of the two-mode basics tutorial.</p>
+<section id="setup" class="level1">
+<h1>Setup</h1>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'igraph'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    decompose, spectrum</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:base':
+
+    union</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"data/kkcc_two_mode_main.rds"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> d<span class="sc">$</span>biadjacency    <span class="co"># main categories (rows) x definitions (columns)</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> d<span class="sc">$</span>graph          <span class="co"># attributed bipartite graph</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>def_attrs <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"data/kkcc_two_mode.rds"</span>)<span class="sc">$</span>def_attrs</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>bb <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/kkcc-supplement-bibliography.csv"</span>)   <span class="co"># supplement bibliography</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>db <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/kkcc-definition-biblio.csv"</span>)         <span class="co"># code -&gt; bibliography entry</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="two-mode-structure" class="level1">
+<h1>Two-mode structure</h1>
+<p>A common mistake is to report <code>vcount(g)</code>, which pools both modes. Counting each mode separately from the bipartite mapping:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>n.concepts <span class="ot">&lt;-</span> <span class="fu">vcount</span>(<span class="fu">subgraph</span>(g, <span class="fu">V</span>(g)<span class="sc">$</span>type <span class="sc">==</span> <span class="cn">FALSE</span>))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>n.defs     <span class="ot">&lt;-</span> <span class="fu">vcount</span>(<span class="fu">subgraph</span>(g, <span class="fu">V</span>(g)<span class="sc">$</span>type <span class="sc">==</span> <span class="cn">TRUE</span>))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">concepts =</span> n.concepts, <span class="at">definitions =</span> n.defs)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   concepts definitions 
+         16         135 </code></pre>
+</div>
+</div>
+<p>The edge count matches the number of 1s in the biadjacency matrix:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(A)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 301</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ecount</span>(g)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 301</code></pre>
+</div>
+</div>
+<p>Density is the share of possible concept–definition ties that are present:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>dens <span class="ot">&lt;-</span> <span class="fu">sum</span>(A) <span class="sc">/</span> (<span class="fu">nrow</span>(A) <span class="sc">*</span> <span class="fu">ncol</span>(A))</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(dens, <span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1394</code></pre>
+</div>
+</div>
+</section>
+<section id="degree-distributions" class="level1">
+<h1>Degree distributions</h1>
+<p>Degrees in the two modes count different things: a concept’s degree is the number of definitions using it, and a definition’s degree is the number of concepts it expresses.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>deg.p <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(A)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>deg.g <span class="ot">&lt;-</span> <span class="fu">colSums</span>(A)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">mean.deg.p =</span> <span class="fu">round</span>(<span class="fu">mean</span>(deg.p), <span class="dv">2</span>), <span class="at">mean.deg.g =</span> <span class="fu">round</span>(<span class="fu">mean</span>(deg.g), <span class="dv">2</span>),</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">min.deg.p =</span> <span class="fu">min</span>(deg.p),    <span class="at">min.deg.g =</span> <span class="fu">min</span>(deg.g),</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">max.deg.p =</span> <span class="fu">max</span>(deg.p),    <span class="at">max.deg.g =</span> <span class="fu">max</span>(deg.g))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>mean.deg.p mean.deg.g  min.deg.p  min.deg.g  max.deg.p  max.deg.g 
+     18.81       2.23       3.00       1.00      58.00       6.00 </code></pre>
+</div>
+</div>
+<p>Both degree sums equal the edge count, as they must:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">rowSums =</span> <span class="fu">sum</span>(deg.p), <span class="at">colSums =</span> <span class="fu">sum</span>(deg.g), <span class="at">edges =</span> <span class="fu">sum</span>(A))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>rowSums colSums   edges 
+    301     301     301 </code></pre>
+</div>
+</div>
+<p>Degrees vary sharply by definition type and by concept status (main category vs auxiliary notion):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(deg.g, def_attrs<span class="sc">$</span>type[<span class="fu">match</span>(<span class="fu">names</span>(deg.g), def_attrs<span class="sc">$</span>code)],</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>       <span class="cf">function</span>(x) <span class="fu">round</span>(<span class="fu">mean</span>(x), <span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  descriptive       genetic    historical    incomplete     normative 
+         3.05          2.04          2.52          1.25          2.29 
+psychological    structural 
+         1.86          2.00 </code></pre>
+</div>
+</div>
+</section>
+<section id="degree-centrality" class="level1">
+<h1>Degree centrality</h1>
+<p>Raw degree centrality is <code>rowSums(A)</code> and <code>colSums(A)</code>. Normalized by the size of the opposite mode:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(deg.p <span class="sc">/</span> <span class="fu">ncol</span>(A), <span class="dv">3</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  SOCIAL BEHAVIOR PATTERNS   HABITS   ACTING HERITAGE  BELIEFS  CUSTOMS 
+   0.430    0.370    0.193    0.185    0.148    0.119    0.141    0.126 
+  SYMBOL   SYSTEM 
+   0.104    0.104 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(deg.g <span class="sc">/</span> <span class="fu">nrow</span>(A), <span class="dv">3</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   A1   A10  A10a   A11   A12   A13   A14   A15   A16   A17 
+0.250 0.188 0.188 0.062 0.125 0.188 0.188 0.250 0.125 0.188 </code></pre>
+</div>
+</div>
+<p>The most central nodes in each mode:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">concept =</span> <span class="fu">names</span>(deg.p), <span class="at">degree =</span> deg.p)[<span class="fu">order</span>(<span class="sc">-</span>deg.p), ], <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          concept degree
+SOCIAL     SOCIAL     58
+BEHAVIOR BEHAVIOR     50
+PATTERNS PATTERNS     26
+HABITS     HABITS     25
+ACTING     ACTING     20
+BELIEFS   BELIEFS     19
+CUSTOMS   CUSTOMS     17
+HERITAGE HERITAGE     16
+SYMBOL     SYMBOL     14
+SYSTEM     SYSTEM     14</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">data.frame</span>(<span class="at">code =</span> <span class="fu">names</span>(deg.g), <span class="at">degree =</span> deg.g,</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">type =</span> def_attrs<span class="sc">$</span>type[<span class="fu">match</span>(<span class="fu">names</span>(deg.g), def_attrs<span class="sc">$</span>code)])[<span class="fu">order</span>(<span class="sc">-</span>deg.g), ], <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       code degree          type
+A8       A8      6   descriptive
+C1-6   C1-6      6     normative
+D2-12 D2-12      6 psychological
+A2       A2      5   descriptive
+B13     B13      5    historical
+D1-6   D1-6      5 psychological
+F1-5   F1-5      5       genetic
+A1       A1      4   descriptive
+A15     A15      4   descriptive
+A3       A3      4   descriptive</code></pre>
+</div>
+</div>
+</section>
+<section id="average-nearest-neighbor-degree" class="level1">
+<h1>Average nearest-neighbor degree</h1>
+<p>For a concept, the average nearest-neighbor degree is the mean degree of the definitions that use it; for a definition, it is the mean degree of the concepts it expresses.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>knn.p <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(A <span class="sc">*</span> <span class="fu">rep</span>(<span class="fu">colSums</span>(A), <span class="at">each =</span> <span class="fu">nrow</span>(A))) <span class="sc">/</span> <span class="fu">rowSums</span>(A)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>knn.g <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">t</span>(A) <span class="sc">%*%</span> deg.p) <span class="sc">/</span> <span class="fu">colSums</span>(A)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">mean</span>(knn.p), <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.06</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">mean</span>(knn.g), <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 32.16</code></pre>
+</div>
+</div>
+</section>
+<section id="degree-correlation" class="level1">
+<h1>Degree correlation</h1>
+<p>The degree correlation relates each node’s degree to the average degree of its opposite-mode neighbors. Positive values indicate assortativity and negative values disassortativity across the two modes.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>tm.deg.corr <span class="ot">&lt;-</span> <span class="cf">function</span>(A) {</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  knn.p <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">rowSums</span>(A <span class="sc">*</span> <span class="fu">rep</span>(<span class="fu">colSums</span>(A), <span class="at">each =</span> <span class="fu">nrow</span>(A))) <span class="sc">/</span> <span class="fu">rowSums</span>(A))</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  knn.g <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">t</span>(A) <span class="sc">%*%</span> <span class="fu">rowSums</span>(A)) <span class="sc">/</span> <span class="fu">colSums</span>(A)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">r =</span> <span class="fu">cor</span>(<span class="fu">c</span>(<span class="fu">rowSums</span>(A), <span class="fu">colSums</span>(A)), <span class="fu">c</span>(knn.p, knn.g)))</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">tm.deg.corr</span>(A)<span class="sc">$</span>r, <span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.4206</code></pre>
+</div>
+</div>
+</section>
+<section id="bipartite-checks-and-modularity" class="level1">
+<h1>Bipartite checks and modularity</h1>
+<p>Structural checks confirm the bipartite structure captured in the graph object:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is_bipartite</span>(g)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is_directed</span>(g)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">bipartite_mapping</span>(g)<span class="sc">$</span>type <span class="sc">==</span> <span class="fu">V</span>(g)<span class="sc">$</span>type)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>Modularity with communities defined by node type attains the low value characteristic of a bipartite graph, since all edges run between the two types and none within:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">V</span>(g)<span class="sc">$</span>comm <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">V</span>(g)<span class="sc">$</span>type) <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">modularity</span>(g, <span class="fu">V</span>(g)<span class="sc">$</span>comm), <span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.5</code></pre>
+</div>
+</div>
+</section>
+<section id="component-structure" class="level1">
+<h1>Component structure</h1>
+<p>An addition beyond the basic tutorial, but important for interpretation: the KKCC two-mode network is not connected.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>comp <span class="ot">&lt;-</span> <span class="fu">components</span>(g)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(comp<span class="sc">$</span>csize)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+151 
+  1 </code></pre>
+</div>
+</div>
+<p>The collapsed network is connected: it has 1 component(s), with the largest containing 151 of the 151 nodes.</p>
+</section>
+<section id="correspondence-analysis" class="level1">
+<h1>Correspondence analysis</h1>
+<p>Correspondence analysis of the collapsed biadjacency matrix follows the two-mode CA tutorial: row and column profile operators are built from the biadjacency matrix, decomposed with <code>eigen()</code>, the trivial first dimension (eigenvalue 1) is dropped, and definition scores are sign-aligned to concept scores via the duality relation. Definition types enter as passive supplementary points, located at the mass-weighted barycenter of their member definitions.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># runs the full CA + MST pipeline; also writes CA score CSVs and figures</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"analysis-ca-mst-main.R"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>trivial eigen-dims: 1 
+duality check passed (r &gt; 0.999)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Use of `df.scree$lambda` is discouraged.
+ℹ Use `lambda` instead.
+Use of `df.scree$lambda` is discouraged.
+ℹ Use `lambda` instead.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2-core: 16 x 86 edges: 252 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>concept MST edges: 15 of 15 possible
+definition MST edges: 134 of 134 possible</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>figures written to figures/</code></pre>
+</div>
+</div>
+<p>The first non-trivial dimension accounts for 12% of the inertia and the first five for 49%:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/kkcc-ca-main-scree.png" class="img-fluid figure-img"></p>
+<figcaption>CA scree plot: non-trivial eigenvalues (bars) and cumulative share of inertia (line).</figcaption>
+</figure>
+</div>
+<p>In the dim 1–2 map, TRANSMISSION, ADJUSTMENTS, and INDUSTRIES sit far from the remaining categories, which cluster near the origin; the passive type barycenters separate most cleanly on dimensions 2–3 and 4–5.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/kkcc-ca-main.png" class="img-fluid figure-img"></p>
+<figcaption>CA map, dims 1 vs 2: main categories (active, filled circles) and definition types (passive barycenters, diamonds). Barycenters are stretched radially from the origin by a constant factor of 5 for legibility; this is a purely visual rescaling, not part of the CA geometry.</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/kkcc-ca-main-d23.png" class="img-fluid figure-img"></p>
+<figcaption>CA map, dims 2 vs 3.</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/kkcc-ca-main-d45.png" class="img-fluid figure-img"></p>
+<figcaption>CA map, dims 4 vs 5.</figcaption>
+</figure>
+</div>
+</section>
+<section id="maximum-spanning-trees" class="level1">
+<h1>Maximum spanning trees</h1>
+<p>Each mode’s one-mode projection is binarized (tie = at least one shared definition in the opposite mode) and reduced to its maximum spanning tree (Kruskal’s algorithm on tie multiplicity, implemented in <code>make.max.st()</code>), which keeps the strongest 15 ties per node set while dropping redundant weaker ones.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/kkcc-mst-main-concept.png" class="img-fluid figure-img"></p>
+<figcaption>Maximum spanning tree of the concept projection; node fill = main category.</figcaption>
+</figure>
+</div>
+<p>In the concept tree, SOCIAL is the root hub, linking to BEHAVIOR, HABITS, ACTING, HERITAGE, BELIEFS, CUSTOMS, SYSTEM, and ADJUSTMENTS; BELIEFS and BEHAVIOR act as secondary hubs for KNOWLEDGE/LANGUAGE/ATTITUDES and for PATTERNS/SYMBOL/TRANSMISSION respectively.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/kkcc-mst-main-definition.png" class="img-fluid figure-img"></p>
+<figcaption>Maximum spanning tree of the definition projection; node fill = definition type, node size = degree within the tree.</figcaption>
+</figure>
+</div>
+</section>
+<section id="projection-backbones" class="level1">
+<h1>Projection backbones</h1>
+<p>Instead of a hard multiplicity threshold, the weighted projections (tie weight = number of shared definitions) are binarized statistically: an edge is retained only if its weight is significantly stronger than expected under the Fixed Degree Sequence Model (FDSM), tested with 10,000 Fastball permutations at <code>alpha = 0.10</code> (one-tailed), via the <code>backbone</code> package (Neal 2022, <em>PLOS One</em>). FDSM was chosen over the default SDSM after model comparison: on this small, sparse network SDSM retains almost nothing (2 concept edges, 0 definition edges at <code>alpha = 0.05</code>).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">invisible</span>(<span class="fu">capture.output</span>(<span class="fu">source</span>(<span class="st">"analysis-backbone-main.R"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code> ____   backbone v3.0.4</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>|  _ \  Cite: Neal, Z. P. (2026). backbone: An R package to extract network backbones.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>|#|_) |       PLOS One, 21, e0349258. https://doi.org/10.1371/journal.pone.0349258</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>|# _ &lt; </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>|#|_) | Help: type vignette("backbone"); email zpneal@msu.edu; github zpneal/backbone</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>|____/  Beta: type devtools::install_github("zpneal/backbone", ref = "devel")</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Constructing edges' Monte Carlo p-values
+Constructing edges' Monte Carlo p-values</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(<span class="at">concept =</span> <span class="fu">sumry</span>(P.p, bb.p), <span class="at">definition =</span> <span class="fu">sumry</span>(P.g, bb.g))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           edges_projection density_projection edges_backbone density_backbone
+concept                  86          0.7166667             14       0.11666667
+definition             3740          0.4134881            199       0.02200111
+           max_weight
+concept            19
+definition          4</code></pre>
+</div>
+</div>
+<p>The backbone keeps 14 of the 86 concept-projection ties and 199 of the 3740 definition-projection ties. FDSM p-values are Monte Carlo estimates, so exact counts can vary slightly between runs.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/kkcc-backbone-main-concept.png" class="img-fluid figure-img"></p>
+<figcaption>FDSM backbone of the concept projection (alpha = 0.10); node fill = main category.</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/kkcc-backbone-main-def.png" class="img-fluid figure-img"></p>
+<figcaption>FDSM backbone of the definition projection (alpha = 0.10); node fill = definition type, node size = backbone degree, labels for the 30 most connected nodes.</figcaption>
+</figure>
+</div>
+</section>
+<section id="closeness-and-betweenness-centrality" class="level1">
+<h1>Closeness and betweenness centrality</h1>
+<p>Degree was covered above; here we add the other two of the big three, following the two-mode normalizations of Borgatti and Everett (1997) <span class="citation" data-cites="borgatti_everett97">[@borgatti_everett97]</span>. Geodesic distances in two-mode networks are always even within a set and odd across sets. For closeness, each node set is normalized by its own theoretical maximum: <code>N + 2(M−1)</code> for concepts and <code>M + 2(N−1)</code> for definitions (igraph’s one-mode <code>n−1</code> normalization would give non-sense here). For betweenness, the normalizations depend on which set is larger; since the definitions are the larger set here (135 vs 16), the formulas are swapped relative to the tutorial’s Southern Women example. Betweenness is reported as percentages.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">invisible</span>(<span class="fu">capture.output</span>(<span class="fu">source</span>(<span class="st">"analysis-centrality-prestige-main.R"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>cen.con[<span class="fu">order</span>(<span class="sc">-</span>cen.con<span class="sc">$</span>closeness), <span class="fu">c</span>(<span class="st">"node"</span>, <span class="st">"k"</span>, <span class="st">"closeness"</span>, <span class="st">"betweenness.pct"</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                     node  k closeness betweenness.pct
+SOCIAL             SOCIAL 58    0.5140          39.728
+BEHAVIOR         BEHAVIOR 50    0.4896          33.683
+PATTERNS         PATTERNS 26    0.4264           9.031
+HABITS             HABITS 25    0.4198          13.941
+CUSTOMS           CUSTOMS 17    0.4094           5.947
+SYMBOL             SYMBOL 14    0.4015           7.695
+SYSTEM             SYSTEM 14    0.4015           6.376
+ACTING             ACTING 20    0.3976          10.921
+BELIEFS           BELIEFS 19    0.3976           5.176
+ATTITUDES       ATTITUDES 11    0.3776           3.233
+HERITAGE         HERITAGE 16    0.3691           2.431
+ADJUSTMENTS   ADJUSTMENTS  9    0.3691           7.745
+LANGUAGE         LANGUAGE  7    0.3595           1.899
+KNOWLEDGE       KNOWLEDGE  8    0.3579           0.812
+INDUSTRIES     INDUSTRIES  3    0.3016           0.216
+TRANSMISSION TRANSMISSION  4    0.2900           0.436</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cen.def[<span class="fu">order</span>(<span class="sc">-</span>cen.def<span class="sc">$</span>closeness), <span class="fu">c</span>(<span class="st">"node"</span>, <span class="st">"k"</span>, <span class="st">"type"</span>, <span class="st">"closeness"</span>, <span class="st">"betweenness.pct"</span>)], <span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       node k          type closeness betweenness.pct
+A8       A8 6   descriptive    0.8208          11.906
+C1-6   C1-6 6     normative    0.8114          10.831
+F1-5   F1-5 5       genetic    0.8068          15.016
+C2-2   C2-2 4     normative    0.7594           4.477
+A17     A17 3   descriptive    0.7553           3.576
+B13     B13 5    historical    0.7396           4.364
+F1-13 F1-13 3       genetic    0.7396           4.214
+B14     B14 4    historical    0.7320           2.491
+F1-20 F1-20 3       genetic    0.7320           2.958
+D1-6   D1-6 5 psychological    0.7282          14.051
+C2-4   C2-4 3     normative    0.7282           1.782
+D1-16 D1-16 3 psychological    0.7282           1.782
+D1-5   D1-5 3 psychological    0.7282           1.782
+D2-2   D2-2 3 psychological    0.7282           1.782
+A16     A16 2   descriptive    0.7030           1.040</code></pre>
+</div>
+</div>
+<p>SOCIAL and BEHAVIOR dominate both measures, as they dominate degree; the betweenness percentages are far more concentrated than the closeness scores, and a few low-degree definitions (e.g., F1-5, D1-6) achieve comparatively high betweenness by bridging categories that share few definitions.</p>
+</section>
+<section id="status-and-prestige" class="level1">
+<h1>Status and prestige</h1>
+<p>Following the status/prestige tutorial, we score both modes with the two-mode HITS-style power iteration <code>tm.status(A, t(A))</code> (Bonacich 1991; biHITS in Liao et al.&nbsp;2014). The script verifies that the same scores emerge from the dual-projection approach (<code>status1</code> on the Breiger projections), from the leading singular vectors of <code>A</code>, from the leading eigenvectors of both projections, and from the Faust (1997) duality relation (each node’s score is the weighted sum of the other mode’s scores, weight <code>1/sqrt(λ)</code>). Three PageRank-family refinements follow, each changing who gets how many status points to distribute: two-mode PageRank (co-HITS, degree-normalized), double-normalized PageRank (BGRM, Rui et al.&nbsp;2007), and square-root normalized BiRank (He et al.&nbsp;2016). Scores are divided by their maximum for display, so the top node equals 1.000.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>con.tab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        concept  k  hits    pr  bgrm birank
+1        SOCIAL 58 1.000 1.000 0.006  1.000
+2      BEHAVIOR 50 0.799 0.862 0.020  0.928
+3      PATTERNS 26 0.446 0.448 0.004  0.670
+4        HABITS 25 0.281 0.431 0.007  0.657
+5        ACTING 20 0.183 0.345 0.002  0.587
+6       BELIEFS 19 0.254 0.328 0.001  0.572
+7       CUSTOMS 17 0.258 0.293 0.013  0.541
+8      HERITAGE 16 0.267 0.276 0.007  0.525
+9        SYMBOL 14 0.128 0.241 0.017  0.491
+10       SYSTEM 14 0.170 0.241 0.007  0.491
+11    ATTITUDES 11 0.121 0.190 0.001  0.435
+12  ADJUSTMENTS  9 0.062 0.155 1.000  0.394
+13    KNOWLEDGE  8 0.117 0.138 0.001  0.371
+14     LANGUAGE  7 0.082 0.121 0.002  0.347
+15 TRANSMISSION  4 0.032 0.069 0.370  0.263
+16   INDUSTRIES  3 0.021 0.052 0.009  0.227</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(def.tab, <span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    code k          type  hits    pr  bgrm birank
+1     A8 6   descriptive 0.968 1.000 0.003  1.000
+2   C1-6 6     normative 1.000 1.000 0.004  1.000
+3  D2-12 6 psychological 0.679 1.000 0.002  1.000
+4     A2 5   descriptive 0.529 0.833 0.007  0.913
+5    B13 5    historical 0.887 0.833 0.003  0.913
+6   D1-6 5 psychological 0.523 0.833 0.204  0.913
+7   F1-5 5       genetic 0.940 0.833 0.202  0.913
+8     A1 4   descriptive 0.331 0.667 0.003  0.816
+9    A15 4   descriptive 0.228 0.667 0.004  0.816
+10    A3 4   descriptive 0.616 0.667 0.002  0.816
+11    A6 4   descriptive 0.259 0.667 0.004  0.816
+12   B11 4    historical 0.595 0.667 0.002  0.816
+13   B14 4    historical 0.912 0.667 0.002  0.816
+14   B22 4    historical 0.528 0.667 0.001  0.816
+15  C2-2 4     normative 0.791 0.667 0.003  0.816</code></pre>
+</div>
+</div>
+<p>Under Bonacich prestige (hits) and PageRank (pr), rankings track degree almost mechanically: SOCIAL and BEHAVIOR lead the concepts, and the highest-degree definitions (A8, C1-6, D2-12) lead that mode. PageRank produces many exact ties at small integer degrees (all <code>k = 4</code> definitions score 0.667). The double-normalized BGRM scores invert this logic: ADJUSTMENTS and TRANSMISSION — the concepts with the fewest defining texts, each tied to a distinct set of rarely shared definitions — become the most prestigious, because BGRM rewards nodes that connect to selective (low-degree) partners rather than to many. BiRank’s square-root normalization lands between the two extremes. The choice between these models is therefore substantive, not technical: it turns on whether shared use of definitions by many categories should count as prestige (HITS/PageRank) or whether exclusivity should (BGRM).</p>
+</section>
+<section id="average-scores-by-node-attributes" class="level1">
+<h1>Average scores by node attributes</h1>
+<p>Averaging the centrality and prestige scores over node attributes: definitions carry a type attribute (the sevenfold Boroch classification), while the concepts in the collapsed network have no further attributes beyond degree, so the table below covers definitions only.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>type.means</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           type  n     k closeness betweenness.pct  hits    pr  bgrm birank
+1   descriptive 21 3.048     0.632           2.663 0.422 0.508 0.020  0.698
+3    historical 21 2.524     0.636           1.001 0.494 0.421 0.022  0.634
+5     normative 17 2.294     0.633           1.570 0.442 0.382 0.003  0.597
+2       genetic 28 2.036     0.589           1.500 0.300 0.339 0.105  0.556
+7    structural  8 2.000     0.601           0.701 0.357 0.333 0.003  0.562
+6 psychological 36 1.861     0.595           1.012 0.342 0.310 0.116  0.535
+4    incomplete  4 1.250     0.562           0.071 0.266 0.209 0.003  0.450</code></pre>
+</div>
+</div>
+<p>Descriptive, historical, and normative definitions have the highest mean degree and also lead on closeness and on the HITS and BiRank prestige averages. Incomplete definitions (G) rank last on every measure, as expected for fragmentary texts. BGRM again runs against the degree gradient, giving genetic and psychological definitions their highest relative averages — these types contain the selective, rarely shared definitions that double normalization rewards. Betweenness averages are small throughout and largest for descriptive definitions.</p>
+<p>The finer subgroup cut separates the numbered subgroups within types (C1 rules/ways vs C2 ideas/values; D1 adjustments, D2 learning, D3 habits, D4 psychology; F1 artefacts, F2 ideas, F3 symbols, F4 other). Because some subgroups have very few members (D4 has 1, F4 has 2), their averages should be read as illustrative only.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>subgroup.means</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   subgroup          type  n     k closeness betweenness.pct  hits    pr  bgrm
+1         A   descriptive 21 3.048     0.632           2.663 0.422 0.508 0.020
+2        F1       genetic 13 2.308     0.629           2.472 0.411 0.385 0.126
+3        F2       genetic  8 1.375     0.558           0.167 0.211 0.230 0.006
+4        F3       genetic  5 2.800     0.578           1.706 0.255 0.467 0.048
+5        F4       genetic  2 1.000     0.490           0.000 0.044 0.167 0.500
+6         B    historical 21 2.524     0.636           1.001 0.494 0.421 0.022
+7         G    incomplete  4 1.250     0.562           0.071 0.266 0.209 0.003
+8        C1     normative 12 2.167     0.609           1.372 0.373 0.361 0.003
+9        C2     normative  5 2.600     0.690           2.045 0.609 0.433 0.003
+10       D1 psychological 16 1.750     0.578           1.215 0.287 0.292 0.259
+11       D2 psychological 16 2.000     0.615           0.848 0.410 0.333 0.002
+12       D3 psychological  3 2.000     0.619           1.149 0.374 0.333 0.003
+13       D4 psychological  1 1.000     0.485           0.000 0.044 0.167 0.001
+14        E    structural  8 2.000     0.601           0.701 0.357 0.333 0.003
+   birank
+1   0.698
+2   0.596
+3   0.459
+4   0.665
+5   0.408
+6   0.634
+7   0.450
+8   0.578
+9   0.643
+10  0.519
+11  0.554
+12  0.564
+13  0.408
+14  0.562</code></pre>
+</div>
+</div>
+<p>Within normative, C2 (definitions in terms of ideas and values) outperforms C1 (rules and ways) on every measure except BGRM — C2 definitions have both higher mean degree (2.60 vs 2.17) and higher HITS averages (0.609 vs 0.373). Within genetic, artefact-based (F1) and symbol-based (F3) definitions outrank idea-based (F2) and other (F4) ones. Within psychological, learning (D2) and habits (D3) score above adjustments (D1) on the prestige measures, while BGRM again favors D1 — the selective, rarely shared adjustments definitions.</p>
+<p>Finally, definitions dated by the decade of the quoted edition of their source text (extracted from the appendix definition tables; D3-1, the undated Tozzer lectures, is the only exclusion — F4-6 is dated by inference, see <a href="#sec-provenance" class="quarto-xref">Section&nbsp;15</a>):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>decade.means</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  decade  n     k closeness betweenness.pct  hits    pr  bgrm birank
+1   1870  1 4.000     0.597           2.434 0.331 0.667 0.003  0.816
+2   1900  2 1.000     0.604           0.000 0.363 0.167 0.001  0.408
+3   1910  1 1.000     0.503           0.000 0.066 0.167 0.001  0.408
+4   1920 19 2.368     0.605           1.432 0.368 0.395 0.125  0.610
+5   1930 35 2.429     0.615           2.033 0.387 0.405 0.044  0.614
+6   1940 71 2.197     0.612           1.198 0.391 0.366 0.058  0.583
+7   1950  5 1.400     0.610           0.416 0.373 0.233 0.003  0.476</code></pre>
+</div>
+</div>
+<p>The sample is thin at the margins — one definition each from the 1870s (Tylor) and 1910s (Small), two from the 1900s (Ward, Small), five from the 1950s, and the bulk (125 of 134) published between 1920 and 1949 — so decade means should be read as descriptive only. Within that constraint, the averages are strikingly flat across the 1920s–1940s on closeness and the HITS/PageRank/BiRank prestige measures: the KKCC definition sample does not concentrate central definitions in any one decade. BGRM is again the exception, peaking in the 1920s, when the most selective definitions (Hart and Pantzer 1925, Sapir 1921) were published.</p>
+</section>
+<section id="sec-provenance" class="level1">
+<h1>Definition provenance</h1>
+<p>Each definition carries three levels of source information. The author, year, and decade attributes were transcribed from the appendix definition tables of Boroch’s article (<code>build-definition-years.R</code>): the year is that of the edition quoted in the appendix (the one before the source-page number), with re-edition years (e.g.&nbsp;A5 “(1929)13, 1931”) and year suffixes (“1945a”) recorded separately. The full source reference and canonical author names come from the article’s own Supplement Bibliography (pp.&nbsp;94–99), parsed by <code>build-supplement-bibliography.R</code> into 163 entries — each a work tagged with the group or subgroup code(s) whose definitions draw on it, e.g.&nbsp;“1945a Kluckhohn C., Kelly W.H., The Concept of Culture… (F4)”. A definition is tied to its bibliography entry by group tag, surnames, and year, with the year suffix resolving same-year pairs (Linton 1945a/1945b, White 1949a/1949b, Kroeber 1948a) and the parenthesized re-edition year covering cases like A5 (Benedict, quoted from the 1931 reprint of a 1929 essay).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(bb<span class="sc">$</span>tag)   <span class="co"># bibliography entries per definition group</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ A  B C1 C2 D1 D2 D3 D4  E F1 F2 F3 F4  G 
+19 23 20  6 17 16  3  2  9 21 10  5  5  7 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(db<span class="sc">$</span>match_status)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    auto inferred   manual 
+     133        1        1 </code></pre>
+</div>
+</div>
+<p>Of the 135 definitions, 133 matched a unique bibliography entry with no ambiguity; D3-1 (Tozzer’s undated lectures, the bibliography’s “(???)” entry) matched on surname and subgroup alone (<code>manual</code>); and F4-6 was assigned by inference (<code>inferred</code>), documented below. Canonical author names are the bibliography’s surname forms, which normalize appendix variants (“A. Davis”, “K. Davis” → Davis). Six works underlie two definitions each (e.g.&nbsp;Dixon 1928 for A3 and A4, Blumenthal 1937 for F2-4 and F2-5); the remaining 123 entries map one-to-one.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>F4-6 = Kluckhohn &amp; Kelly 1945a: 87 (inferred)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>F4-6 is used in Table 2 (the ACTING row) but has no entry in the appendix Table 13. Four independent facts identify its source as Kluckhohn &amp; Kelly’s “The Concept of Culture” (1945a: 87) — i.e., Table 2’s “F4-6” is an off-by-one slip for Boroch’s own F4-5:</p>
+<ol type="1">
+<li>Kroeber &amp; Kluckhohn’s Part II group F-IV (“Residual Category Definitions”) contains exactly five definitions — Ostwald 1907, Ostwald 1915, Blumenthal 1941, Roheim 1943, and Kluckhohn &amp; Kelly 1945a — so F-IV-6 does not exist in the monograph.</li>
+<li>The Supplement Bibliography tags exactly those five works with (F4); there is no sixth F4-tagged source that F4-6 could point to.</li>
+<li>K&amp;K’s index of conceptual elements maps “acting” to “A-8, C-I-3, C-I-17, F-IV-5”, matching Boroch’s ACTING row (A8, C1–3, C1–17, F4–6) cell-for-cell in its other three cells.</li>
+<li>F4-5 occurs nowhere in Table 2, so the slip displaces nothing else.</li>
+</ol>
+<p>The alternative reading — that Boroch counted a sixth residual definition that he never listed — would require a sixth (F4)-tagged source work, which the bibliography does not contain. F4-6 is therefore attributed to Kluckhohn &amp; Kelly 1945a with <code>match_status = "inferred"</code>; the 1940s decade bin gains one definition (n = 71), and D3-1 remains the only definition without a year.</p>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

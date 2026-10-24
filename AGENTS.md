@@ -14,11 +14,59 @@ from the PDF via pdftotext -layout.
   C2 ideas/values), D psychological (D1 adjustments, D2 learning, D3 habits, D4 psychology),
   E structural, F genetic (F1 artefact, F2 ideas, F3 symbols, F4 other), G incomplete.
 - Appendix definition tables give author/year/source-page per code. Code inventory:
+  author/year/decade now extracted from the PDF appendix by `build-definition-years.R`
+  into `data/kkcc-definition-years.csv` and attached as node attributes (author, year,
+  decade) on definition vertices of BOTH rds graphs and as def_attrs columns. Year = the
+  quoted edition year (the one before "source-page"); year_orig keeps re-edition years
+  like A5 "(1929)13, 1931"; year_suffix (the "a" in "1945a:") disambiguates same-year
+  works in the bibliography. One NA by design: D3-1 Tozzer (PDF says "data", footnote
+  "missing (before 1930)"). F4-6 is RESOLVED (inferred): Boroch's Table 2 "F4-6" is an
+  off-by-one slip for his own F4-5 = Kluckhohn & Kelly 1945a: 87 — evidence: K&K Part II
+  F-IV has exactly 5 definitions, all 5 (F4)-tagged works appear in the Supplement
+  Bibliography, K&K's concept index "acting, A-8, C-I-3, C-I-17, F-IV-5" matches
+  Boroch's ACTING row cell-for-cell, and F4-5 occurs nowhere in Table 2.
+  CAVEAT (2026-10-23, later same day — supersedes the "structural omissions" reading):
+  Boroch's Table 2 is almost certainly a transposition of K&K's own "Index B: Conceptual
+  elements in definitions" (monograph p. 74). Of the 39, only 27 texts contain NONE of
+  the 56 notion words lexically (verified for D1-10, F1-2); 12 do contain notion words
+  (A21, A22, B17, B23, C1-7, C1-9, C1-12, C1-19, C1-22, F1-17, F2-12, F4-5). Verified
+  split of mechanisms: (a) some are quotes K&K NEVER NUMBERED — A21 Herskovits 1948:625
+  (K&K index numbers only A-18/A-19 for 1948), A22 Thurnwald 1950 (K&K has only A-20,
+  1930), B17 Jacobs & Stern (only B-16), B23 Radcliffe-Brown (only B-22), C1-7 Gillin &
+  Gillin (only C-I-6) — hence no Index B entry at all; (b) D1-10 (Ford 1942) and
+  F-I-1a (Willey 1927b) ARE in Index B but only under element headings Boroch's
+  56-row vocabulary omits ("societal problems/problem-solutions/solving/success of
+  responses"; "adaptation to environment/man-made environment") — so in K&K's own terms
+  they DO have concept ties. So Table 2's 135 = definitions with ≥1 Index-B element
+  falling inside Boroch's reduced 56-notion vocabulary; the 39 are a mix of unnumbered
+  K&K quotes and vocabulary-reduction casualties. Rebuilding incidence directly from
+  K&K Index B (in K&K numbering) would be the complete dataset — a different provenance
+  than Boroch's Table 2.
+  Caveat: re-running analysis-collapse-main.R rebuilds kkcc_two_mode_main.rds and would
+  drop these attributes — re-run build-definition-years.R AND build-supplement-bibliography.R
+  after it (in that order).
+- Code inventory:
   A1–A22 + variant A10a; B1–B23; C1-1..C1-22 + C1-5a; C2-1..C2-6; D1-1..D1-17, D2-1..D2-16,
   D3-1..D3-3, D4-1..D4-2; E1–E10; F1-1..F1-21, F2-1..F2-12, F3-1..F3-5, F4-1..F4-6; G1–G7.
 - Table 2's "TOTAL USES" counts uses WITH multiplicity; binary matrices deduplicate.
 - Table 2 rows mix 16 main categories (caps) and 40 auxiliary notions; main-category row
   excludes its auxiliaries (e.g., SOCIAL 58 + Socially 10 = printed total 68).
+- Table 2 vs Boroch's own appendix (checked 2026-10-23 against ROBAFC-5.1 pdftotext):
+  39 codes appear in his appendix definition tables but NOWHERE in Table 2 — A21, A22,
+  B17, B23, C1-7, C1-9, C1-10, C1-12..C1-15, C1-19..C1-22, C2-1, D1-10 (Ford 1942),
+  D4-1, E4, E5, F1-2 (Willey 1927b), F1-6, F1-11, F1-12, F1-17..F1-19, F1-21, F2-2,
+  F2-3, F2-6, F2-12, F4-1, F4-2, F4-4, F4-5, G1, G3, G6. Count: appendix 171 − 132
+  shared = 39. Table 2 columns A10a, C1-5a, F4-6 have no appendix entry (171 − 135 = 36
+  was wrong). Mechanism (verified for D1-10 and
+  F1-2): their definition texts contain NONE of the 56 notion categories, so they can't
+  appear in any Table 2 cell; they are structural omissions, not transcription errors
+  (Table 2 extraction matches our 135 exactly, modulo F4-6 slip and A10a/C1-5a variants).
+  So the 135-code universe < Boroch's appendix (171 codes, no variants) < K&K's ~300.
+  Cross-check with Moore 1980 (ED229292.pdf in project root, Colleen A. Moore literature
+  review): of her 46 quoted citations, 43 match author+year in the 135; Small "1908" is
+  D1-1 cited to a 1908 printing; Ford 1942 = K&K D-I-10 / Boroch appendix D1-10; Willey
+  1927b = K&K F-I-1a / Boroch appendix F1-2 (both verbatim-quoted by Moore). K&K's
+  appendix prints Ford 1942 quote pages as 333, 337 while Boroch and Moore print 555, 557.
 
 ## Main reference network (as of 2026-10-23)
 
@@ -36,7 +84,12 @@ from the PDF via pdftotext -layout.
   Breiger projections + make.max.st Kruskal max spanning trees via ggraph).
   Legacy fine-grained script: `analysis-ca-mst.R`. Figures in `figures/`, CA score CSVs
   in `data/`. Convention: base pipe, ggplot2, labeled code cells in the Quarto report
-  `kkcc-two-mode.qmd` (renamed from kkcc-basic-stats.qmd).
+  `kkcc-two-mode.qmd` (renamed from kkcc-basic-stats.qmd). The report now contains the
+  basic-stats sections PLUS sections for CA, MSTs, backbones, centrality/prestige,
+  mean scores by node attributes, and definition provenance (Supplement Bibliography
+  matching + F4-6 resolution, anchor sec-provenance); analysis sections `source()` the
+  scripts above at
+  render time (backbone's Monte Carlo output is wrapped in capture.output).
   `analysis-backbone-main.R` (FDSM backbones of both weighted projections via
   backbone::backbone_from_projection, alpha=0.10, trials=10000; SDSM rejected as too
   conservative here; figures kkcc-backbone-main-{concept,definition}.png).
@@ -46,7 +99,36 @@ from the PDF via pdftotext -layout.
   (dual projection, SVD, eigen, Faust duality) + PageRank family
   (co-HITS, BGRM, BiRank); CSVs kkcc-centrality-main.csv,
   kkcc-prestige-{concepts,definitions}-main.csv,
-  kkcc-score-means-by-type.csv).
+  kkcc-score-means-by-{type,subgroup,decade}.csv).
+  `build-definition-texts.R` (full definition text per code from the PDF appendix into
+  data/kkcc-definition-texts.csv; handles wrapped citations, marginal cross-refs
+  ("or gr. B", "; or D1", "(N. sentence)"), roman-numeral/wrapped page numbers,
+  author continuations ("Moore," / "and Kelly, 1945a: 82"), merged running headers;
+  F4-6 is NA (no appendix entry); ligatures (ﬁ→fi) normalized).
+  `build-supplement-bibliography.R` (parses the article's Supplement Bibliography,
+  pp. 94-99, into data/kkcc-supplement-bibliography.csv — 163 entries with year,
+  year_suffix, year_quoted (parenthesized re-edition; NOTE: bibliography convention is
+  bare year = first publication, paren = edition quoted, MIRRORED vs the appendix's
+  "(1929)13, 1931" style), authors_raw (surnames), tag (group A-G), footnote,
+  reference; matches each of the 135 definition codes to its entry by group tag +
+  surnames + year/suffix into data/kkcc-definition-biblio.csv (match_status:
+  auto/manual D3-1/inferred F4-6=B103), fills F4-6's author/year/decade into the
+  years CSV, and attaches vertex attributes bib_entry, author_canonical, bib_ref to
+  definition vertices of BOTH graphs (plus def_attrs columns). Rerunning it re-writes
+  kkcc-definition-years.csv (F4-6 row) — run it AFTER build-definition-years.R).
+  Gotchas hit while parsing: R's TRE mis-parses "[?]"-style classes (use perl=TRUE);
+  gregexpr+sub(sub,"") erases the whole match — post-process the match text instead;
+  scan.authors needs (?![[:alpha:]]) after initials so title capitals don't match.
+
+## Environment
+
+- renv initialized (renv.lock, .Rprofile, project library, R 4.5.3, PPM bookworm
+  binaries). backbone 3.0.4 is locked and installed in the project library; after
+  installing anything new run `renv::snapshot()`. R session must be restarted to
+  activate renv.
+- Decade means (kkcc-score-means-by-decade.csv) use the quoted edition year; sample is
+  thin at the margins (1870s/1900s/1910s have 1-2 definitions each; 1940s n=71 since
+  F4-6 was assigned to Kluckhohn & Kelly 1945a).
 
 ## Gotchas learned here
 
@@ -63,6 +145,22 @@ from the PDF via pdftotext -layout.
   numeric names, breaking color/label lookups downstream).
 - Disconnected two-mode graphs give multiple lambda=1 eigen-dims in CA; drop ALL of them
   (pruning to 2-core or collapsing modes fixes connectivity).
+- R default regex is POSIX TRE: inside a bracket class, `\s` is a LITERAL backslash-s,
+  so `[,\s]` matches comma, backslash, or the letter "s" (it silently turned
+  "Burgess" into "Burge"). Use `[[:space:]]` in classes; `\s`/`\d` shorthands only
+  outside brackets (or use perl=TRUE).
+- PDF appendix parsing (pdftotext -layout): citation years can wrap to their own line
+  or attach to author continuation lines; entries also split mid-word ("Radcliffe– /
+  Brown"). Column gaps (2+ spaces) separate author from definition text; sub() with a
+  capture group drops the matched text, so extracting a leading token needs ".*$"
+  appended to the pattern.
+- More TRE regex traps (build-definition-texts.R): `\\.` does NOT match a literal
+  period in default TRE (use `[.]` or perl = TRUE); pdftotext running headers contain
+  the ﬁ ligature ("Classiﬁcation"), so normalize ligatures BEFORE matching header
+  text; wrapped table titles ("...deﬁni- / tions") and right-margin-merged banners
+  ("...text. Robert Boroch") need both line-level filters and final-substring cleanup.
+  When adding perl=TRUE programmatically, beware lines whose call is followed by a
+  trailing comment (regex-anchored injection misses them).
 
 ## Related fix upstream
 
@@ -70,3 +168,15 @@ from the PDF via pdftotext -layout.
   `/home/omarlizardo/projects/ACADEMICS/SOCIOL208/tm-basic.qmd` (knn.p now uses
   `rep(colSums(A), each = nrow(A))`; knn.g uses `t(A) %*% rowSums(A)`). Other SOCIOL208
   pages checked; only tm-basic had the bug.
+
+## K&K Index B dataset (2026-10-24)
+
+- Index A and Index B are parsed from `Kroeber-kluckhohn.pdf` by `build-index-b.R`
+  (outputs `data/kk-index-*.csv`, `data/kk_biadjacency_*`). `build-index-b-crosswalk.R`
+  maps Boroch's codes to K&K codes by author, year, group, and subgroup, never by
+  position. `analysis-index-b.R` describes the network.
+- Release-facing documentation: `README.md` (data dictionary, methods, limitations,
+  rights) and `docs/PROVENANCE.md` (evidence for F4-6, the appendix-only codes, Moore).
+- Rebuilding `kkcc_two_mode.rds` (analysis-collapse-main.R) drops the vertex attributes
+  that the biblio and years builders add. Re-run `build-definition-years.R` and
+  `build-supplement-bibliography.R` after it.
