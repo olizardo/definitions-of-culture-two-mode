@@ -31,8 +31,7 @@ from the PDF via pdftotext -layout.
   the 56 notion words lexically (verified for D1-10, F1-2); 12 do contain notion words
   (A21, A22, B17, B23, C1-7, C1-9, C1-12, C1-19, C1-22, F1-17, F2-12, F4-5). Verified
   split of mechanisms: (a) some are quotes K&K NEVER NUMBERED — A21 Herskovits 1948:625
-  (K&K index numbers only A-18/A-19 for 1948), A22 Thurnwald 1950 (K&K has only A-20,
-  1930), B17 Jacobs & Stern (only B-16), B23 Radcliffe-Brown (only B-22), C1-7 Gillin &
+  (K&K index numbers only A-18/A-19 for 1948), B17 Jacobs & Stern (only B-16), B23 Radcliffe-Brown (only B-22), C1-7 Gillin &
   Gillin (only C-I-6) — hence no Index B entry at all; (b) D1-10 (Ford 1942) and
   F-I-1a (Willey 1927b) ARE in Index B but only under element headings Boroch's
   56-row vocabulary omits ("societal problems/problem-solutions/solving/success of
@@ -161,6 +160,17 @@ from the PDF via pdftotext -layout.
   ("...text. Robert Boroch") need both line-level filters and final-substring cleanup.
   When adding perl=TRUE programmatically, beware lines whose call is followed by a
   trailing comment (regex-anchored injection misses them).
+- K&K scan OCR traps, verified against page images. Do NOT add general rules for these:
+  - `j` is printed as both 3 and 5 on the scan; it is unmapped and tokens with `j` stay
+    unresolved until checked (`D-III-j` = D-III-3, `B-ij` = B-13, `D-II-j` = D-II-5).
+  - A trailing variant `a` is read as `3` (`A-103` = A-10a, `C-I-53` = C-I-5a).
+  - A dropped roman `I` (`C-18` = C-I-8, `F-14` = F-I-4) and a truncated last digit
+    (`D-I-1` for D-I-12) are common. Check against the page image.
+- The parser keeps unparseable code tokens as rows with `kk_code` NA. Manual fixes are applied
+  before the edge deduplication, which keys on kk_code + heading + sub_element.
+- `norm_roman()` in `build-index-b.R` replaced H with I after the other substitutions, so
+  "IH" became "II" (D-IH-2 and F-IH-2 were wrong). Fixed 2026-10-24 by returning III for IH/lH
+  first. Check any new roman-slot token that contains H.
 
 ## Related fix upstream
 
@@ -169,14 +179,57 @@ from the PDF via pdftotext -layout.
   `rep(colSums(A), each = nrow(A))`; knn.g uses `t(A) %*% rowSums(A)`). Other SOCIOL208
   pages checked; only tm-basic had the bug.
 
-## K&K Index B dataset (2026-10-24)
+## K&K Index A/B dataset (updated 2026-10-24)
 
-- Index A and Index B are parsed from `Kroeber-kluckhohn.pdf` by `build-index-b.R`
-  (outputs `data/kk-index-*.csv`, `data/kk_biadjacency_*`). `build-index-b-crosswalk.R`
-  maps Boroch's codes to K&K codes by author, year, group, and subgroup, never by
-  position. `analysis-index-b.R` describes the network.
-- Release-facing documentation: `README.md` (data dictionary, methods, limitations,
-  rights) and `docs/PROVENANCE.md` (evidence for F4-6, the appendix-only codes, Moore).
+- Pipeline, in order: `build-index-b.R` → `build-index-b-crosswalk.R` → `analysis-index-b.R`.
+  It parses `Kroeber-kluckhohn.pdf` (ABBYY OCR of the 1952 scan). Outputs:
+  `data/kk-index-a-authors.csv`, `kk-index-b-edges.csv` (resolved codes only),
+  `kk-index-b-unresolved.csv`, `kk-index-b-definitions.csv`, `kk-index-b-ocr-corrections.csv`,
+  `kk_biadjacency_*`, `kk-boroch-crosswalk.csv`. The crosswalk matches Boroch's codes to K&K
+  by author, year, group, and subgroup, never by position.
+- Page-image corrections are NOT hand-edited into outputs. They are in
+  `data/kk-index-a-manual-fixes.csv` (author_raw, raw_code → kk_code) and
+  `data/kk-index-b-manual-fixes.csv` (heading, sub_element, ocr_raw → kk_code; `NA` means
+  unresolved). The build applies them and errors if a key matches no token. Add corrections
+  there, then rebuild. Copy key strings from the parsed edges file, not from the PDF.
+- `data/kk-index-b-flagged-audit.csv`: verdicts (OK / OKH / OKJ / FIX / CHECK) for the 138
+  flagged edges, keyed to the printed page evidence.
+- Current counts (rebuilt 2026-10-24, after the Index A page-image pass): Index A 187 rows
+  (186 resolved, 165 codes; `kk-index-a-missing-rows.csv` adds Angyal). Sears's `C-I-Addendum`
+  stays unresolved. Index B 1279 edges (10 code_not_in_index_a, 33 junk_name, 210 ocr_corrected,
+  60 manual_fix, 966 ok); 8 unresolved. Crosswalk 127 auto, 2 hand decisions (D3-1, D2-16),
+  4 ambiguous, 1 no match (B5), 1 F4-6. Open crosswalk rows are listed in
+  `kk-boroch-crosswalk-decisions.csv`.
+- Index A manual fixes now carry `author_new` and `qualifier_new` as well as `kk_code`. Blank means
+  unchanged. Keys are author_raw + raw_code; copy them from `kk-index-a-authors.csv`.
+- Gotcha: `build-index-b-crosswalk.R` used to pick up a stale `index_a` from the session when it
+  was run without the build. Scripts must read their inputs from files. Verify by rebuilding in
+  a fresh environment after any change.
+- Audit scope: the 138 flagged edges, all 198 OCR-corrected edges
+  (`data/kk-index-b-ocr-audit.csv`), the 32 recovered j/fragment tokens and the 8 unresolved
+  tokens (`data/kk-index-b-zoom-check.csv`) were checked against the printed pages of the scan
+  (Index B = PDF pp. 77-81). The 932 unflagged `ok` rows have NOT been audited. The OCR-corrected
+  audit was read at 200 dpi and the recoveries at 300-400 dpi, by one reader; there is no
+  double-keyed check. Do not describe the dataset as fully verified.
+- Heading attribution is wrong in several blocks: "carriers of culture" entries sit under
+  `capabilities`; "common or shared patterns" under `civilization`; "systems" under `symbols`;
+  "social" and "society" under `group reference`; "ideas and cognitive processes" entries
+  under `history`. Codes are right; heading-level analyses are not reliable until this is fixed.
+- Rights: `data/kkcc-definition-texts.csv` holds verbatim Boroch quotations and stays out of
+  any release. Whether the K&K Index B element labels can ship is still undecided. The page-image
+  checks used an unofficial scan copy that is not in the repo. Cite printed page numbers, not
+  that copy.
+- Open decisions: fix heading attribution (the block-level map is not built yet); resolve the
+  8 remaining unresolved tokens only if a better source appears (they are unreadable or have two
+  printed candidates); decide the rights questions above.
+- Index B recoveries (2026-10-24): `j` tokens were resolved only where the printed entry under
+  that sub-element had one candidate (e.g. "carriers" prints C-II-3 and no C-II-5). The printed
+  candidate check is per sub-element, not per printed page; treat as a page-image inference.
+- `F-19` in the "behavior" entry is printed without the roman I; read as F-I-19 (the adaptive
+  behavior entry under adjustive-adaptive confirms it).
+- Documentation: `README.md` (data dictionary, methods, limitations, rights) and
+  `docs/PROVENANCE.md` (evidence for F4-6, appendix-only codes, Moore, OCR rules). Both were
+  updated on 2026-10-24.
 - Rebuilding `kkcc_two_mode.rds` (analysis-collapse-main.R) drops the vertex attributes
   that the biblio and years builders add. Re-run `build-definition-years.R` and
   `build-supplement-bibliography.R` after it.

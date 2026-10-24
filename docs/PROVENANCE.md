@@ -53,19 +53,50 @@ logged in `kk-index-b-ocr-corrections.csv`:
 | `lV`, `IH`, `1` in roman slot | `IV`, `III`, `I` | roman subgroup |
 | `i`, `l`, `I` in number slot | 1 | e.g. `B-i` → B-1 |
 | `z` | 2 | `B-zz` → B-22 |
-| `y`, `j`, `$` | 5 | `F-IV-y` → F-IV-5 |
+| `y`, `$` | 5 | `F-IV-y` → F-IV-5. `j` is not mapped (see below) |
 | `iy`, `iz`, `io` | 17, 12, 10 | two-digit numbers |
 | trailing `a` | suffix | `A-ioa` → A-10a (only a literal trailing `a`; an earlier version applied this to any letter and was corrected) |
 | lone `n` / `u` | 11 | `A-n` → A-11 |
 | `~`, `^` | `-` | `D-I^7` → D-I-7 |
 
-Tokens that could not be normalized are kept with `parse_flag` and not guessed.
+Tokens that could not be normalized, including every `j`, are not guessed. They are written
+to `kk-index-b-unresolved.csv` and excluded from the edge list. The `j` rule was removed
+after page-image checks showed the scan prints `j` as both 3 and 5 (for example, `D-III-j`
+is `D-III-3` in "carriers of culture" and `D-II-j` is `D-II-5` in "social"). Corrections
+checked against the page image are in `kk-index-a-manual-fixes.csv` and
+`kk-index-b-manual-fixes.csv`. Each row cites its printed evidence.
 
-**Validation so far.** Index A (186 rows) and Index B (1275 edges) were compared on code
-coverage. 151 codes appear in both. Index B has 36 codes that Index A does not list; most
-are damaged OCR (`D-1112`, `C-I-183`), and a few are plausible K&K numbers that Index A's
-OCR lost. Five Index A tokens cannot be normalized. A 20-edge random spot check against the
-OCR lines found no errors after the fixes above. This is not a full manual audit.
+**Validation so far (before the 2026-10-24 Index A corrections in 3.1).** Index A (186 rows) and Index B (1279 edges, after the recoveries below) was compared on code
+coverage. 153 Index B codes also appear in Index A; 16 do not, most of them damaged OCR.
+A 20-edge random spot check against the OCR lines found no errors after the normalization
+rules. The 138 flagged Index B edges were then checked against the printed page images:
+108 codes were confirmed, 26 were corrected, and 4 truncated codes were left unresolved.
+Of the Index A tokens the rules could not read, four were corrected and `C-I-Addendum` is
+left as printed. Bose's `B-j` was also corrected.
+
+The 198 unflagged OCR-corrected edges were then read against the Index B page images (printed pp. 74-78). Verdicts are in `data/kk-index-b-ocr-audit.csv`: 195 match the printed code, 3 were corrected through the manual-fix table (`C-I` relationships, `A-i` social groupings, `C-I-i` ways), and 1 was corrected by fixing the roman-numeral parser, which read `IH` as `II` (`D-IH-2`, `F-IH-2`). One edge (`E-5` under "v-i") has the right code but sits under the wrong heading. The audit was read at page-image resolution without zoomed crops, so verdicts are a single-reader check, not a double-keyed verification.
+
+### 3.1 Index A corrections (2026-10-24)
+
+The Index A parse had been treated as verified, but only its unresolved tokens had been checked. On 2026-10-24 every row on printed pp. 73–74 (PDF pp. 76–77) was read against the page image at 200 dpi, and disputed lines were re-read at 300 dpi. That found 30 fix rows, each marked `ok` by the parser but wrong in code, year, or author name, and one row (Angyal, B-14, 1941) that is absent from the OCR text layer altogether.
+
+The corrections are in `data/kk-index-a-manual-fixes.csv` (columns `kk_code`, `author_new`, `qualifier_new`) and `data/kk-index-a-missing-rows.csv`. Examples: Wissler A-2 (parsed A-1), Thomas C-II-2 (parsed C-1), Young D-I-5 (parsed D-I-3), Slotkin D-II-15 (parsed D-II-1), Keller D-I-2 (parsed D-I-1), Kelly F-IV-5 (parsed F-IV-3), Henry B-21 (parsed B-11), Dollard E-2 (parsed E-1), Katz D-IV-2 (parsed D-IV-1). OCR-damaged years were restored (Sapir 1921, Thurnwald 1950, Tozzer 1925, Huntington 1945). Merged or misspelled names were fixed: "Carver < 1935)-Couru" is Coutu, "Blumenthal • Boas" is Boas, and "Tumey-High" is Turney-High.
+
+Index A now has 187 rows (186 resolved, plus Sears's `C-I-Addendum`), covering 165 codes. Seven Index B codes that were missing from Index A (A-2, B-14, B-21, C-II-2, D-I-5, D-II-15, E-2) now appear there. Ten Index B edges (eight codes) still carry codes Index A does not list:
+
+- `C-7`, `D-8`, `F-9`: printed without the roman numeral on the page (checked at 300 dpi). Candidates such as C-I-7, D-I-8, and F-I-9 exist in Index A, but the codes are kept as printed, not remapped.
+- `D-7`, `D-5`, `F-4`, `E-17`: kept as printed. Not verified at 300 dpi.
+- `D-II-16` (`socially transmitted behavior`): Index A has no Aberle row. The code is cited in Index B, and it is the code the crosswalk assigns to Boroch's D2-16 (see 3.2).
+
+### 3.2 Crosswalk changes (2026-10-24)
+
+The crosswalk now strips initials from Boroch surnames ("A. Davis" matches Davis Allison), requires a Boroch suffix (a or b) to match when given (White 1949b/1949a resolve to F-III-3/F-III-4), and accepts Boroch's first-publication year (`year_orig`). Benedict A5 is quoted as 1931 but first published 1929, which is K&K's A-4 (1929). Hand decisions are in `data/kk-boroch-crosswalk-decisions.csv`, each with a stated basis:
+
+- D3-1 (Tozzer, no year): matched to D-III-1. The only K&K Tozzer in subgroup D-III; moderate confidence.
+- D2-16 (Aberle et al. 1950): matched to D-II-16 on the quoted text, "Culture is socially transmitted behavior...", which matches the Index B element label. Inferred, not read from Index A.
+- Open: A16 and A17 (Kluckhohn & Kelly 1945a; K&K A-14 and A-15), A20 (Herskovits 1948; A-18 and A-19), C1-11 (Kluckhohn & Kelly 1945a; C-I-10, 11, 12), and B5 (Myres 1927; K&K B-4a is 1929, so the year conflicts). These need a check of the quoted text. They are not assigned by position.
+
+Result: 127 rule matches, 2 hand decisions, 4 ambiguous, 1 unmatched, and F4-6 (resolved in section 5).
 
 ## 4. The 39 appendix-only codes
 
@@ -77,8 +108,10 @@ F4-5, G1, G3, G6. (F4-5 is the code that F4-6 most likely misprints; see section
 Tests against K&K's text point to two mechanisms.
 
 - **Unnumbered quotations.** Some are quotations K&K never numbered in Index B
-  (A21 Herskovits 1948:625, A22 Thurnwald 1950, B17 Jacobs & Stern, B23 Radcliffe-Brown,
-  C1-7 Gillin & Gillin). For these, K&K's index has no entry at all.
+  (A21 Herskovits 1948:625, B17 Jacobs & Stern, B23 Radcliffe-Brown, C1-7 Gillin & Gillin).
+  For these, K&K's index has no entry at all. (A22 Thurnwald 1950 was listed here in an
+  earlier version. Index A prints it as A-20 (1950), so it is not unnumbered. Earlier parses
+  gave 1930, which was an OCR error corrected on 2026-10-24; see 3.1.)
 - **Vocabulary reduction.** Some are numbered in K&K's Index B, but only under element
   headings that Boroch's 56-row vocabulary omits. D1-10 (Ford 1942) falls under
   "societal problems / problem-solutions / solving / success of responses". F1-2 (Willey
@@ -125,11 +158,15 @@ the same passages at pp. 333, 337. The discrepancy is recorded and not resolved.
 
 ## 8. Known gaps
 
-- Index A and Index B OCR is not checked against the page image beyond the sample above.
-- 39 appendix-only codes have no author or year in this repository, so the crosswalk
-  cannot link them.
-- Index B element labels are unverified against the page image and may contain residual
-  OCR damage.
-- Seven Table 2 definitions have ambiguous author-year matches (for example, Kluckhohn &
-  Kelly 1945 is quoted for several codes). Those are left unresolved, with candidates
-  listed in `kk-boroch-crosswalk.csv`, pending a decision log.
+Status as of 2026-10-24. Items marked open need a decision or a page-image check that has not been made.
+
+- **Heading attribution (open).** Sub-elements printed under "carriers of culture", "common or shared patterns", "systems", "social"/"society", and "ideas and cognitive processes" are attached to the wrong heading. Codes are unaffected, but heading-level analyses are not reliable. A block-to-heading map has not been built.
+- **Unresolved Index B tokens (open, 8).** Five have two printed candidates; three are unreadable on the scan. They are excluded from the edge list. Resolving them needs a second scan or a decision to accept the exclusion. The CHECK rows for `F-i` (group) and `D-I` (society) are in this set.
+- **Junk sub-element names (open, 33 edges).** Sub-elements such as `j`, `i`, and `y` are OCR fragments or misattributed labels. The per-case decision (map to the printed sub-element, or drop from the sub-element matrix and keep in the heading matrix) has not been made.
+- **Flagged edges.** All 26 FIX rows are in the manual-fix table; their keys and codes match the flagged audit. Two CHECK rows are resolved (`F-1` "adjustments" → F-IV-3; `F-19` "adaptive behavior" → F-I-19). A `B-ji` FIX row merges into an existing `B-5` edge when the build removes duplicates.
+- **Unaudited ok rows (open).** The 932 unflagged `ok` rows have not been checked against the page image. A 50-row random sample (seed 4817) is in `data/kk-index-b-ok-sample.csv`, with blank verdict columns.
+- **Index A.** Every row on printed pp. 73–74 was read against the page image (section 3.1). That is a single-reader check, not double-keyed. Sears's `C-I-Addendum` is printed that way and stays unresolved.
+- **Crosswalk (open, 5).** A16, A17, A20, C1-11, and B5 need a text check (section 3.2).
+- **Appendix-only codes.** The 39 codes have no author or year in `kkcc-definition-years.csv`, so the crosswalk does not link them. The Index A rows for several of them (for example D-I-10 Ford 1942, F-I-1a Willey 1927b, E-4 Redfield, A-20 Thurnwald 1950) do exist; they were not linked.
+- **Element labels.** Index B element labels are unverified against the page image and may contain residual OCR damage.
+- **Rights (open).** Whether K&K Index B element labels can be released is undecided (see README).
