@@ -482,6 +482,12 @@ apply_heading_corrections <- function(edges) {
     edges$heading[hit] <- r$to
     edges$heading_rule[hit] <- paste0(r$from, "->", r$to)
   }
+  # Heading names misread by OCR (printed names confirmed on the scan; block map 2026-10-24).
+  heading_renames <- c("adjustive-ajjptive function of culture" = "adjustive-adaptive function of culture",
+                       "process ts and means" = "processes and means")
+  for (old in names(heading_renames)) {
+    edges$heading[edges$heading == old] <- heading_renames[[old]]
+  }
   message("Heading corrections: ", sum(!is.na(edges$heading_rule)), " edges re-headed")
   edges
 }

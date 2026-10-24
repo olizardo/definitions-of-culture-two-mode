@@ -212,7 +212,7 @@ parsed heading) and before the outputs. Codes and the 1285-edge total are unchan
 | `feelings` | forbidden, the | 1 | "forbidden, the— ... D-I-16" |
 | `people, a` | permitted, the | 1 | "permitted, the— ... D-I-16" |
 
-Total: 174 parsed rows re-headed. The edge file keeps 173 distinct rows: the common-or-shared-patterns block
+The heading `adjustive-ajjptive function of culture` (34 edges) is an OCR misreading of the printed `adjustive-adaptive function of culture`; it is renamed in the same step (checked on the scan, printed p. 74). The heading `process ts and means` (OCR split of the printed `processes and means`, scan p. 77) is renamed the same way. Total: 174 parsed rows re-headed. The edge file keeps 173 distinct rows: the common-or-shared-patterns block
 prints G-3 twice (`G-I-j` and `G-j`, both manual fixes to G-3), and the duplicate-removal step keeps one.
 All six rules also rename the first element, which carried the block heading text in its name: "carriers of culture-individuals" → "individuals", "ideas and cogni ve processes-ideas"
 → "ideas", "or shared patterns-common" → "common", "systems-systems" → "systems", and "forbidden the-" /
@@ -377,6 +377,11 @@ Status as of 2026-10-24. Items marked open need a decision or a page-image check
 - **Heading attribution (corrected 2026-10-24, one reader).** The rules in section 3.5 are applied in `build-index-b.R`. A machine cross-check (section 3.7) puts 1268 of 1285 edges in their assigned block; 17 edges are listed for a page-image check. A human second reader has not checked the rules.
 - **Unresolved Index B tokens (open, 2).** Six of the eight were resolved on 2026-10-24 (section 3.4). `D-I` (society) is excluded as a duplicate. `F-I\` (means of adjustment) is unreadable behind a smudge and stays unresolved. Four resolutions rest on printed sequence rather than a clean glyph read; a second reader should check them.
 - **Junk sub-element names (resolved 2026-10-24, section 3.6).** All 33 `junk_name` edges and six single-letter `manual_fix` edges are mapped to the element printed in their block. The decisions were read from the text layer, not the page image.
+
+**Garbled element labels (2026-10-24).** The OCR damage in some element names is not in the codes. The
+ABBYY text layer carries the same damage, so text checks cannot catch it; the Archive OCR, which lacks it,
+flags it. `intcrcorrclated customs` (E-2) is corrected to `intercorrelated customs` by a `rename_sub` row,
+checked on the scan crop. The other labels were corrected by `rename_sub` rows on 2026-10-24: `manmade environment` and `sc1 etion` (checked on the scan crops), and `j intcgrared and oninregrared groups`, `non-phvsiological products`, `not ereated`, `reactionfonnat ons`, `constitutional chaners`, `categories of acpons` and `v-i distoned satisfaction` (proposed from the text layer; not yet checked on the scan). Element count 466 → 465. The OCR prefixes on `v-j adjusting`, `v-j biopsychological organism` and `i-j rational` were removed by `rename_sub` rows (the remaining words were confirmed as printed by the user).
 - **Flagged edges.** All 26 FIX rows are in the manual-fix table; their keys and codes match the flagged audit. Two CHECK rows are resolved (`F-1` "adjustments" → F-IV-3; `F-19` "adaptive behavior" → F-I-19). A `B-ji` FIX row merges into an existing `B-5` edge when the build removes duplicates.
 - **Unaudited ok rows (open).** 915 `ok` edges have no audit verdict (section 3.3) and have not been checked against the page image. A 50-row random sample (seed 4817) is in `data/kk-index-b-ok-sample.csv`, with blank verdict columns.
 - **Manual fixes without an audit row (open).** 62 of the 66 `manual_fix` edges have no row in either audit file (section 3.3, a dated snapshot). Their evidence is the printed citation in `kk-index-b-manual-fixes.csv`. The six 2026-10-24 resolutions are in that group.

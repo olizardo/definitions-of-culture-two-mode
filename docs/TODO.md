@@ -6,7 +6,7 @@ Last updated 2026-10-24. Read `AGENTS.md` (project memory) and `docs/PROVENANCE.
 
 - Index A: 187 rows, 186 resolved, 165 codes. Every row on printed pp. 73-74 was read against
   the page image (200 dpi; disputed lines at 300 dpi). Sears's `C-I-Addendum` stays unresolved.
-- Index B: 1285 edges. Flags: ok 966, ocr_corrected 210, manual_fix 66, junk_name 33,
+- Index B: 1285 edges. Flags: ok 966, ocr_corrected 210, manual_fix 99, junk_name 0 (resolved 2026-10-24),
   code_not_in_index_a 10. 2 unresolved tokens (`D-I` excluded as a duplicate; `F-I\` smudged;
   see `data/kk-index-b-unresolved.csv`). Six tokens resolved 2026-10-24 (manual-fix file).
 - Crosswalk (`data/kk-boroch-crosswalk.csv`, 135 rows): 127 auto, 2 hand decisions (D3-1, D2-16),
@@ -17,6 +17,9 @@ Last updated 2026-10-24. Read `AGENTS.md` (project memory) and `docs/PROVENANCE.
 - 2026-10-24 (later): heading corrections applied in `build-index-b.R` (`apply_heading_corrections()`,
   PROVENANCE 3.5). Crosswalk, networks, `analysis-index-b.R` and the audit files were rerun, so the data/
   outputs changed (see the git diff). Nothing is committed.
+- 2026-10-24 (latest): junk names resolved (PROVENANCE 3.6); garbled labels fixed by `rename_sub` rows; OCR heading
+  variants renamed (`adjustive-adaptive`, `processes and means`); machine block check added
+  (`scripts/check-index-b-blocks.R`, PROVENANCE 3.7). Provisional verdicts are in the review sheet.
 - Uncommitted (check `git status`): `scripts/build-index-b.R` (sub-element rename support),
   `data/kk-index-b-manual-fixes.csv` (six new resolutions, four renames, `new_sub_element` column),
   the regenerated Index B outputs in `data/`, this file, and the new untracked
@@ -90,9 +93,10 @@ manual-fix keys: the build errors if a key matches no token.
 8. **Rights (user decision).** Whether K&K Index B element labels can ship is undecided.
    `data/kkcc-definition-texts.csv` holds verbatim Boroch quotations and must stay out of any
    release.
-9. **Git.** Commit the pending work in logical units: (a) `scripts/build-index-b.R` (rename support);
-   (b) the manual-fix file and the regenerated Index B outputs; (c) the second-scan check file;
-   (d) this TODO. The Archive text in `documents/` is gitignored and stays out. Earlier commits:
+9. **Git.** Commit the pending work in logical units: (a) `scripts/build-index-b.R` (rename support, heading
+   and junk rules); (b) the manual-fix file and the regenerated Index B outputs; (c) the second-scan check file;
+   (d) this TODO; (e) `scripts/check-index-b-blocks.R`, `data/kk-index-b-junk-decisions.csv` and the block-check
+   files, including the review sheet. The Archive text in `documents/` is gitignored and stays out. Earlier commits:
    `1c026b5` (reorganization), `42ab463` (Phase 0 notes), `e007b5a`, `7533002`, `e866111`, `f78bece`.
 12. **Downstream rerun: done 2026-10-24.** `scripts/analysis-index-b.R` was rerun after the heading correction
     (network stats and the degree-comparison figure regenerated).
@@ -117,12 +121,19 @@ manual-fix keys: the build errors if a key matches no token.
     printed sub-element lists. Record verdicts in a file keyed to printed page and block.
 15. **Second reader (partly done; human reader still open).** A machine cross-check (`scripts/check-index-b-blocks.R`,
     PROVENANCE 3.7) puts 1268 of 1285 edges in their assigned block. The 17 others are in
-    `data/kk-index-b-block-check-review.csv` and need a page-image check. Crops are in the scratch directory `crops/`, not the repo. It is not a human reader.
+    `data/kk-index-b-block-check-review.csv`. Provisional verdicts: 10 OK (read from correct crops), 1 CODE_WRONG?
+    (B-11 under process), 6 CHECK (crops wrong; see item 18). Crops are in the scratch directory `crops/`, not the repo. It is not a human reader.
     Original note: The block map and the heading corrections have one reader. A second reader
     should check the civilization and symbols cases and a sample of the other blocks.
 16. **Rebuild and recount: done 2026-10-24.** 174 parsed rows re-headed (173 distinct edges; G-3 is printed twice
     in one block). The 1285-edge total is unchanged. Heading matrix 53 × 174, 1059 ties; sub-element matrix
-    471 × 174, 1183 ties (`systems` now shared by two blocks with identical codes).
+    465 × 174, 1171 ties after the label fixes (`systems` is shared by two blocks with identical codes).
+18. **Regenerate the CHECK crops.** The crop locator fell back to the column top when it failed to find a heading, so
+    the crops for F-I-13, B-21, C-I-5, A-9, D-I-15 and E-5 under organized show the wrong entries (several are
+    byte-identical). Fix the locator, regenerate, and read them. Also check B-11 vs B-21 under process.
+19. **Text-proposed labels.** Seven garbled labels were fixed from the text layer and the Archive OCR, not the scan:
+    distorted satisfaction, integrated and unintegrated groups, non-physiological products, not created,
+    reaction-formations, constitutional changes, categories of actions. Check each on the scan crop.
 17. **Memory correction: done 2026-10-24.** AGENTS.md lists "social" and "society" under group reference as heading
     errors. The page image shows both are printed in the group reference block, so drop that note.
     The "social group", "social groupings" and "socially" entries are printed in both group reference
@@ -140,7 +151,7 @@ manual-fix keys: the build errors if a key matches no token.
 - Angyal's row (B-14) is from the page image. It is absent from the project's OCR text, and the
   second scan's tesseract output for PDF p. 89 doesn't include it (page 88 probably has it, not
   checked).
-- Element labels are unverified against the page image and may contain residual OCR damage.
+- Element labels: the garbled ones are fixed (PROVENANCE 3.6), but seven of the fixes are text-layer proposals not checked on the scan. Other labels are unverified against the page image.
 - The 39 appendix-only Boroch codes (PROVENANCE section 4) are not in `kkcc-definition-years.csv`,
   which covers only the 135 Table 2 codes, so the crosswalk does not link them. Several have
   matching K&K Index A rows (for example D-I-10 Ford 1942, F-I-1a Willey 1927b, E-4 Redfield,
