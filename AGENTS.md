@@ -243,22 +243,21 @@ from the PDF via pdftotext -layout.
   `F-U`, `F-I-i}`, `F-H-j` and `A-j` the glyph is not clearly read, so the basis is printed sequence
   plus the candidate's absence from the edges. Recorded in `data/kk-index-b-manual-fixes.csv`
   (evidence column) and `data/kk-index-b-second-scan-check.csv`.
-- Heading attribution is wrong in several blocks (block map built 2026-10-24,
-  `data/kk-index-b-block-map.csv`): `capabilities` (73 edges) should be carriers of culture;
-  `history` (50) should be ideas and cognitive processes; `civilization` (36 of 41) should be common or
-  shared patterns; `symbols` (12 of 26) should be systems; `feelings` (1) should be forbidden, the;
-  `people, a` (1) should be permitted, the. "social" and "society" under group reference are NOT errors:
-  the page image prints them in the group reference block (checked 2026-10-24). Codes are right;
-  heading-level analyses are not reliable until the correction is applied in `build-index-b.R`.
-  Confirmed on page images 2026-10-24: C-7, F-9 and F-4 print under "common or shared patterns"
-  (edges say `civilization`); D-8 and E-17 print under the "carriers of culture" block (edges say
-  `capabilities`).
+- Heading corrections are applied in `build-index-b.R` (`apply_heading_corrections()`, 2026-10-24),
+  from the block map `data/kk-index-b-block-map.csv`: `capabilities` (73) → carriers of culture;
+  `history` (50) → ideas and cognitive processes; `civilization` → common or shared patterns except
+  the five "civilization" elements (A-1, A-3, B-17, D-I-2, F-I-3); `symbols` → systems where the element
+  starts with "systems" (12); `feelings` (1) → forbidden, the; `people, a` (1) → permitted, the.
+  174 parsed rows re-headed (173 distinct edges after dedup; G-3 is printed twice in that block); the edge
+  total is still 1285. Several first elements also carried the block
+  heading in their names (e.g. "carriers of culture-individuals"); these are renamed to the printed
+  element. One reader, no double-keying. The "social" and "society" entries under group reference are
+  not errors (both print there).
 - Rights: `data/kkcc-definition-texts.csv` holds verbatim Boroch quotations and stays out of
   any release. Whether the K&K Index B element labels can ship is still undecided. The page-image
   checks used an unofficial scan copy that is not in the repo. Cite printed page numbers, not
   that copy.
-- Open decisions: fix heading attribution (the block-level map is not built yet); the 2 remaining
-  unresolved tokens need a better source; decide the rights questions above. A second reader
+- Open decisions: the 2 remaining unresolved tokens need a better source; decide the rights questions above. A second reader
   should check `F-U`, `F-I-i}`, `F-H-j` and `A-j`.
 - Index B recoveries (2026-10-24): `j` tokens were resolved only where the printed entry under
   that sub-element had one candidate (e.g. "carriers" prints C-II-3 and no C-II-5). The printed
@@ -275,12 +274,13 @@ from the PDF via pdftotext -layout.
   The fine network is disconnected by design (7 components); the main network is connected.
   `analysis-collapse-main.R` was removed; the step it performed is in the builder.
 - K&K Index B networks (2026-10-24): `scripts/build-index-b-networks.R` builds igraph objects
-  `data/kk-index-b-subelement-network.rds` (472 sub-elements x 174 codes, 1193 ties) and
-  `data/kk-index-b-heading-network.rds` (51 headings x 174 codes, 1058 ties), each list(biadjacency, graph).
-  Code vertices carry the Index A/B flags, authors, and the Boroch code (Table 2 crosswalk plus linked
+  `data/kk-index-b-subelement-network.rds` (471 sub-elements x 174 codes, 1183 ties) and
+  `data/kk-index-b-heading-network.rds` (53 headings x 174 codes, 1059 ties), each list(biadjacency, graph).
+  Counts as of the 2026-10-24 heading correction (before it: 472 x 1193 and 51 x 1058). Code vertices carry the Index A/B flags, authors, and the Boroch code (Table 2 crosswalk plus linked
   appendix-only codes; F-IV-5 carries both F4-5 and F4-6). Element vertices carry headings, junk-name,
   manual-fix and OCR-correction flags. Matrices match the kk_biadjacency_*.rds files exactly.
-  Heading attribution is still open, so heading-level results are not reliable.
+  Heading attribution is corrected (see the K&K Index A/B section); the remaining heading-level caveat
+  is the single-reader check.
 
 ## Second pass (2026-10-24): Index A verification and crosswalk
 
@@ -315,10 +315,10 @@ from the PDF via pdftotext -layout.
   with every corrected Index A row checked. The Archive's OCR is weaker than ours on Index A
   (digit and i/1 confusions, wrapped Kluckhohn/Kelly lines lose their author), so disagreements
   with it are leads, not evidence against our rows.
-- Open items are tracked in `docs/TODO.md`. Remaining work: heading attribution (block map), the
-  33 junk sub-element names, the 2 unresolved Index B tokens, the 50-row sample in
-  `data/kk-index-b-ok-sample.csv`, the rights decision, and rerunning (the crosswalk rows are resolved as of 2026-10-24)
-  `analysis-index-b.R` (stale after the 1285-edge rebuild).
+- Open items are tracked in `docs/TODO.md`. Remaining work: the 2
+  unresolved Index B tokens, the 50-row sample in `data/kk-index-b-ok-sample.csv`, the sub-element check
+  of the remaining ~1100 edges, a human second reader for the heading corrections (a machine cross-check was run 2026-10-24; 17 edges await a page-image check), and the rights decision.
+  Heading attribution and the `analysis-index-b.R` rerun were done on 2026-10-24.
 
 
 ## Appendix-only texts, crosswalk decisions, page checks (2026-10-24)
@@ -392,8 +392,8 @@ from the PDF via pdftotext -layout.
   link in our data. The two networks connect through the crosswalk (130 K&K codes).
 - K&K Index B networks: `scripts/build-index-b-networks.R` writes `data/kk-index-b-subelement-network.rds`
   (472 × 174, 1193 ties, 646 vertices, 15 components including 5 isolated codes) and
-  `data/kk-index-b-heading-network.rds` (51 × 174, 1058 ties). Matrices match the existing
-  `kk_biadjacency_*.rds` files exactly. Heading level is not reliable until item 13 of docs/TODO.md is applied.
+  `data/kk-index-b-heading-network.rds` (51 × 174, 1058 ties). Both were built before the 2026-10-24 heading
+  correction; the current counts are in the K&K Index A/B section above (471 × 174, 1183 ties; 53 × 174, 1059 ties).
 - Heading block map: `data/kk-index-b-block-map.csv` lists the 53 printed blocks on PDF pp. 77–81 (printed
   pp. 74–78). Heading errors found by the comparison: see the heading attribution item above. Sub-element
   verification of the remaining ~1100 edges is open (TODO items 13–17).

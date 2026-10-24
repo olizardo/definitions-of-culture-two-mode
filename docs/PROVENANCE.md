@@ -196,6 +196,96 @@ not clean glyph reads. A second reader should check `F-U`, `F-I-i}`, `F-H-j` and
 Parse flags: ok 966, ocr_corrected 210, junk_name 33, code_not_in_index_a 10. The crosswalk is
 unchanged (127 auto, 2 manual decisions, 1 F4-6, 1 no match, 4 ambiguous).
 
+### 3.5 Heading corrections (2026-10-24)
+
+The text layer assigns some entries to the wrong block heading. The block map
+(`data/kk-index-b-block-map.csv`, printed pp. 74–78) gives the printed block for each entry. The rules are in
+`apply_heading_corrections()` in `scripts/build-index-b.R`, applied after the manual fixes (which key on the
+parsed heading) and before the outputs. Codes and the 1285-edge total are unchanged.
+
+| Parsed heading | Printed block | Edges re-headed | Basis |
+|---|---|---|---|
+| `capabilities` | carriers of culture | 73 | all entries print under "carriers of culture— individuals, ..." (printed p. 75) |
+| `history` | ideas and cognitive processes | 50 | all entries print under "ideas and cognitive processes— ideas, ..." (printed p. 76) |
+| `civilization` (36 of 41) | common or shared patterns | 37 | printed civilization block lists only "civilization" (A-1, A-3, B-17, D-I-2, F-I-3), so those 5 stay; one of the 37 rows is a duplicate of G-3 (see below) |
+| `symbols` (12 of 26) | systems | 12 | printed systems block lists systems-systems, systems of thought, systems of knowledge |
+| `feelings` | forbidden, the | 1 | "forbidden, the— ... D-I-16" |
+| `people, a` | permitted, the | 1 | "permitted, the— ... D-I-16" |
+
+Total: 174 parsed rows re-headed. The edge file keeps 173 distinct rows: the common-or-shared-patterns block
+prints G-3 twice (`G-I-j` and `G-j`, both manual fixes to G-3), and the duplicate-removal step keeps one.
+All six rules also rename the first element, which carried the block heading text in its name: "carriers of culture-individuals" → "individuals", "ideas and cogni ve processes-ideas"
+→ "ideas", "or shared patterns-common" → "common", "systems-systems" → "systems", and "forbidden the-" /
+"permitted the-" → "forbidden, the" / "permitted, the". Each rename matches the printed element name.
+
+Side effects, checked on the rebuilt outputs:
+
+- Sub-element matrix: 472 → 471 sub-elements. The "systems" element now shares a row with the
+  "patterns, systems, and organization" block, which lists the same 10 codes. The 10 duplicate ties
+  go (1193 → 1183) and no code is lost.
+- Heading matrix: 51 → 53 headings, 1058 → 1059 ties. F-I-3 is printed under both civilization and
+  common or shared patterns, so it gains one tie.
+- Audit (`kk-index-b-audit*.csv`) matches on heading and sub-element labels, so pairs change: for
+  example, `SYMBOL` no longer links to A-11, which K&K print under systems.
+- The crosswalk was rerun. Its codes are unchanged; only the B5 decision note text differs from the
+  committed copy, because the decision file was updated and the output was stale.
+
+Not done: a second reader for the civilization and symbols cases, and a sub-element check of the
+remaining ~1100 edges (TODO items 14–15).
+
+### 3.6 Junk sub-element decisions (2026-10-24)
+
+The 33 `junk_name` edges had element names that are OCR fragments (`j`, `i`, `y`, `z`, `5`). Each
+was mapped to the element printed in the same block, in `data/kk-index-b-junk-decisions.csv`. None was
+dropped. The printed lists come from the PDF text layer and were not checked on the page image.
+
+| Parsed heading | Parsed element | Edges | Mapped to | Printed basis |
+|---|---|---|---|---|
+| customs | `j` | 9 | customs | printed "customs" element list (printed p. 75) |
+| carriers of culture | `j` | 6 | a people | printed "a people" list (printed p. 75) |
+| group reference | `i` | 11 | social (kept under group reference) | printed "social" element in the group reference block (printed p. 76, PDF p. 79); the same list also prints in the social block (printed p. 77), a printed duplicate |
+| patterns, systems, and organization | `5` | 1 | patterns | printed "patterns" list (printed p. 77) |
+| social heritage or tradition | `i` | 2 | social heredity | printed "social heredity" list (printed p. 78) |
+| ways and life-ways | `y`, `z` | 4 | ways | printed "ways" list (printed p. 78) |
+
+Six `manual_fix` edges carried single-letter element names as well and were mapped the same way: F-III-3
+(carriers, `j` → a people), B-13 (customs, `j` → customs; printed "B-ij"), D-II-5, E-3 and F-I-13 (group
+reference, `i` → social), and D-I-12 (ways, `y` → ways).
+
+The group reference entries were first moved to the social heading. That collided with the 36 existing
+social/social edges (1285 → 1274), so the decision was changed to keep them under group reference. The
+earlier note placing this entry on printed p. 77 was also wrong: the group reference copy is on p. 76.
+
+Result: 39 rows in the decisions file. `junk_name` 33 → 0, `manual_fix` 66 → 99. The edge total is still
+1285. No single-letter element names remain. Sub-element names go from 471 to 466; the five removed names
+are `j`, `i`, `y`, `z` and `5`.
+
+### 3.7 Machine cross-check of heading assignments (2026-10-24)
+
+`scripts/check-index-b-blocks.R` is a machine check, not a second human reader. It takes the PDF text
+layer (a separate code path from the build's parser), finds each printed block by its heading followed by a
+dash, and asks whether each edge's code appears in its assigned block's printed region. Matching is
+OCR-tolerant: each digit accepts its printed look-alikes (1/i/l/t, 5/y/s/$, and so on), eleven may print
+as n or u, and a tilde or a space may stand in for a dash.
+
+Result for the 1285 edges: 1268 print in their assigned block. 17 do not, and those are listed in
+`data/kk-index-b-block-check-review.csv` for a page-image check. Of the 17, 14 are `manual_fix`, one is
+`ocr_corrected`, and two are plain `ok` edges (B-11 and B-22 under `process` in process ts and means). Two earlier
+failures were checked by reading and now pass: B-4a (printed "past, B~4a" in the time block) and C-I-15
+(printed "C -I-i y" in the ways list).
+
+Limits: the check is block-level only; it does not test the element. A code that prints in another block
+does not prove an error, and the tolerant matcher can match one code in several blocks (A-11 matches
+several). A pass shows that the code is printed somewhere in the block, not under the element the edge
+gives. The check is not a substitute for the human second reader in TODO item 15.
+
+Review sheet: `data/kk-index-b-block-check-review.csv` (17 rows; blank `verdict` and `note` columns for the
+page-image reader). Each row names its crop, a 200 dpi image of the assigned block's column, cut from
+the scan with `pdftoppm` and kept in the scratch directory, not the repo. The crops are copies of the
+scan, so they stay out of any release. Two crops were checked by eye before handoff and both look like
+matcher misses: E-2 (`dynamic structural relations`, where the text layer read the code as `F.-2`) and
+E-5 (patterns, where the scan prints it as `E-5` and the text layer as `E -j`). The rest are unchecked.
+
 ## 4. The 39 appendix-only codes
 
 Boroch's appendix (171 codes) has 39 codes that never appear in Table 2: A21, A22, B17,
@@ -284,9 +374,9 @@ the same passages at pp. 333, 337. The discrepancy is recorded and not resolved.
 
 Status as of 2026-10-24. Items marked open need a decision or a page-image check that has not been made.
 
-- **Heading attribution (open).** Sub-elements printed under "carriers of culture", "common or shared patterns", "systems", "social"/"society", and "ideas and cognitive processes" are attached to the wrong heading. Codes are unaffected, but heading-level analyses are not reliable. A block-to-heading map has not been built. Confirmed on the page image (section 3.4): C-7, F-9 and F-4 print under "common or shared patterns", and D-8 and E-17 under the "carriers of culture" block.
+- **Heading attribution (corrected 2026-10-24, one reader).** The rules in section 3.5 are applied in `build-index-b.R`. A machine cross-check (section 3.7) puts 1268 of 1285 edges in their assigned block; 17 edges are listed for a page-image check. A human second reader has not checked the rules.
 - **Unresolved Index B tokens (open, 2).** Six of the eight were resolved on 2026-10-24 (section 3.4). `D-I` (society) is excluded as a duplicate. `F-I\` (means of adjustment) is unreadable behind a smudge and stays unresolved. Four resolutions rest on printed sequence rather than a clean glyph read; a second reader should check them.
-- **Junk sub-element names (open, 33 edges).** Sub-elements such as `j`, `i`, and `y` are OCR fragments or misattributed labels. The per-case decision (map to the printed sub-element, or drop from the sub-element matrix and keep in the heading matrix) has not been made. All 33 codes print in the blocks the edges give (section 3.4), so the printed block can settle most cases.
+- **Junk sub-element names (resolved 2026-10-24, section 3.6).** All 33 `junk_name` edges and six single-letter `manual_fix` edges are mapped to the element printed in their block. The decisions were read from the text layer, not the page image.
 - **Flagged edges.** All 26 FIX rows are in the manual-fix table; their keys and codes match the flagged audit. Two CHECK rows are resolved (`F-1` "adjustments" → F-IV-3; `F-19` "adaptive behavior" → F-I-19). A `B-ji` FIX row merges into an existing `B-5` edge when the build removes duplicates.
 - **Unaudited ok rows (open).** 915 `ok` edges have no audit verdict (section 3.3) and have not been checked against the page image. A 50-row random sample (seed 4817) is in `data/kk-index-b-ok-sample.csv`, with blank verdict columns.
 - **Manual fixes without an audit row (open).** 62 of the 66 `manual_fix` edges have no row in either audit file (section 3.3, a dated snapshot). Their evidence is the printed citation in `kk-index-b-manual-fixes.csv`. The six 2026-10-24 resolutions are in that group.

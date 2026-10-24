@@ -14,6 +14,9 @@ Last updated 2026-10-24. Read `AGENTS.md` (project memory) and `docs/PROVENANCE.
 - Committed: the 2026-10-24 reorganization (`1c026b5`: scripts in `scripts/`, PDFs and Archive text
   in `documents/`, stale files deleted, `build-definition-texts.R` parse fix) and the Phase 0 notes
   (`42ab463`).
+- 2026-10-24 (later): heading corrections applied in `build-index-b.R` (`apply_heading_corrections()`,
+  PROVENANCE 3.5). Crosswalk, networks, `analysis-index-b.R` and the audit files were rerun, so the data/
+  outputs changed (see the git diff). Nothing is committed.
 - Uncommitted (check `git status`): `scripts/build-index-b.R` (sub-element rename support),
   `data/kk-index-b-manual-fixes.csv` (six new resolutions, four renames, `new_sub_element` column),
   the regenerated Index B outputs in `data/`, this file, and the new untracked
@@ -55,15 +58,9 @@ manual-fix keys: the build errors if a key matches no token.
 2. **Check the 50-row sample.** Fill `verdict` and `printed_page` in
    `data/kk-index-b-ok-sample.csv` (seed 4817, drawn from the 966 ok edges). Report the error rate
    with its uncertainty. A larger sample is needed if the rate is above about 5%.
-3. **Heading attribution (high priority; block map built, see item 13).** Build a block-to-heading map from the page images, then
-   apply it in `build-index-b.R`, not in the output CSVs. Known errors: "carriers of culture"
-   sits under `capabilities`; "common or shared patterns" under `civilization`; "systems" under
-   `symbols`; "social" and "society" under `group reference`; "ideas and cognitive processes"
-   under `history`. Example: `E-5` under "v-i" (group reference) is printed under "society"
-   (`data/kk-index-b-ocr-audit.csv`, verdict `OK_HEADING_WRONG`). Rebuild the heading matrix
-   after. Confirmed on page image 2026-10-24: C-7, F-9 and F-4 print under "common or shared
-   patterns" (edges say `civilization`); D-8 and E-17 print under the "carriers of culture" block
-   (edges say `capabilities`).
+3. **Heading attribution: done 2026-10-24** (items 13 and 16). `E-5` under "v-i" is a `group reference`
+   entry printed under "society" (`data/kk-index-b-ocr-audit.csv`, `OK_HEADING_WRONG`); this is
+   not covered by the block rules and has not been re-checked.
 4. **Unresolved tokens: 2 left** (`data/kk-index-b-unresolved.csv`). Six were resolved on page
    images and recorded in the manual-fix file: `A-q` → A-9, `F-i` → F-I-6, `F-U` → B-21,
    `F-I-i}` → F-I-13, `F-H-j` → F-II-5, `A-j` → A-5. Of these, `F-U`, `F-I-i}`, `F-H-j` and `A-j`
@@ -72,7 +69,8 @@ manual-fix keys: the build errors if a key matches no token.
    `D-I` (society) is excluded as a duplicate: D-I-12 and D-I-13 are both printed and both already
    edges. `F-I\` (means of adjustment) is unreadable behind a smudge after "F-I-" (PDF p. 80, printed
    p. 77). Leave it unresolved unless a better scan appears.
-5. **Junk sub-element names (33 edges, `parse_flag = junk_name`).** Every code is confirmed in its
+5. **Junk sub-element names: done 2026-10-24** (decisions in `data/kk-index-b-junk-decisions.csv`; PROVENANCE 3.6;
+   the six single-letter `manual_fix` names were also mapped). Original note: 33 edges, `parse_flag = junk_name`. Every code is confirmed in its
    printed block: customs (9 codes, printed p. 75), capabilities / "a people" (6, p. 75), the social
    entry under group reference (11, p. 77), patterns (1, p. 77), social heritage (2, p. 77), and
    ways and life-ways (4, p. 78). Decide each case: map to the printed sub-element, or drop from the
@@ -96,8 +94,8 @@ manual-fix keys: the build errors if a key matches no token.
    (b) the manual-fix file and the regenerated Index B outputs; (c) the second-scan check file;
    (d) this TODO. The Archive text in `documents/` is gitignored and stays out. Earlier commits:
    `1c026b5` (reorganization), `42ab463` (Phase 0 notes), `e007b5a`, `7533002`, `e866111`, `f78bece`.
-12. **Downstream rerun.** `scripts/analysis-index-b.R` has not been rerun since the edges changed
-    (1279 → 1285). Its network stats and degree-comparison figure are stale until it is rerun.
+12. **Downstream rerun: done 2026-10-24.** `scripts/analysis-index-b.R` was rerun after the heading correction
+    (network stats and the degree-comparison figure regenerated).
     The crosswalk was rerun and is unchanged (127 auto, 2 manual, 1 F4-6, 1 no match, 4 ambiguous).
 10. **Documentation** to keep current: `README.md` (data dictionary, limitations),
     `docs/PROVENANCE.md` (sections 3.1, 3.2, 8), and the "K&K Index A/B dataset" section of
@@ -107,7 +105,8 @@ manual-fix keys: the build errors if a key matches no token.
     fix against the page image at 300 dpi and record it in `data/kk-index-b-zoom-check.csv` or
     `data/kk-index-b-ocr-audit.csv`.
 
-13. **Heading corrections (block map built).** `data/kk-index-b-block-map.csv` lists the 53 printed
+13. **Heading corrections: done 2026-10-24** (rules in `apply_heading_corrections()`; PROVENANCE 3.5).
+    Original notes: `data/kk-index-b-block-map.csv` lists the 53 printed
     blocks on PDF pp. 77–81 (printed pp. 74–78). Edges under the wrong heading, checked on the page
     images: `capabilities` (73) → carriers of culture; `history` (50) → ideas and cognitive processes;
     `civilization` (36 of 41) → common or shared patterns (includes "attitudinal relationship", which
@@ -116,12 +115,15 @@ manual-fix keys: the build errors if a key matches no token.
     `people, a` (1) → permitted, the. Apply as a rule in `build-index-b.R`, not in the output CSVs.
 14. **Sub-element check for the remaining edges.** About 1100 edges are not yet checked against the
     printed sub-element lists. Record verdicts in a file keyed to printed page and block.
-15. **Second reader.** The block map and the heading corrections have one reader. A second reader
+15. **Second reader (partly done; human reader still open).** A machine cross-check (`scripts/check-index-b-blocks.R`,
+    PROVENANCE 3.7) puts 1268 of 1285 edges in their assigned block. The 17 others are in
+    `data/kk-index-b-block-check-review.csv` and need a page-image check. Crops are in the scratch directory `crops/`, not the repo. It is not a human reader.
+    Original note: The block map and the heading corrections have one reader. A second reader
     should check the civilization and symbols cases and a sample of the other blocks.
-16. **Rebuild and recount.** After the rule in item 13 is applied, rerun `build-index-b.R`, the crosswalk,
-    and `build-index-b-networks.R`. Recount the heading changes (expected about 170 edges) and confirm the
-    1285-edge total is unchanged. Then rerun `analysis-index-b.R`.
-17. **Memory correction.** AGENTS.md lists "social" and "society" under group reference as heading
+16. **Rebuild and recount: done 2026-10-24.** 174 parsed rows re-headed (173 distinct edges; G-3 is printed twice
+    in one block). The 1285-edge total is unchanged. Heading matrix 53 × 174, 1059 ties; sub-element matrix
+    471 × 174, 1183 ties (`systems` now shared by two blocks with identical codes).
+17. **Memory correction: done 2026-10-24.** AGENTS.md lists "social" and "society" under group reference as heading
     errors. The page image shows both are printed in the group reference block, so drop that note.
     The "social group", "social groupings" and "socially" entries are printed in both group reference
     and social, so they are duplicates in print, not parser errors.

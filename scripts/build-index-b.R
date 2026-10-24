@@ -442,6 +442,66 @@ apply_index_b_fixes <- function(edges, fixes) {
   edges
 }
 
+# Heading corrections. The text layer puts some entries under the wrong block
+# heading (checked against printed pp. 74-78, PDF pp. 77-81; see
+# data/kk-index-b-block-map.csv). Applied after the manual fixes, which key on
+# the parsed heading. The first element under some blocks also carries the block
+# heading text in its name ("carriers of culture-individuals", "systems-systems");
+# those are renamed to the printed element name.
+apply_heading_corrections <- function(edges) {
+  rules <- list(
+    # Whole block: every entry printed under "carriers of culture".
+    list(from = "capabilities", to = "carriers of culture", where = NULL,
+         rename = c("carriers of culture-individuals" = "individuals")),
+    # Whole block: printed under "ideas and cognitive processes".
+    list(from = "history", to = "ideas and cognitive processes", where = NULL,
+         rename = c("ideas and cogni ve processes-ideas" = "ideas")),
+    # Printed civilization block lists only the "civilization" element under that
+    # heading; the other 36 of 41 print under "common or shared patterns".
+    list(from = "civilization", to = "common or shared patterns",
+         where = function(s) s != "civilization",
+         rename = c("or shared patterns-common" = "common")),
+    # Printed systems block: systems-systems, systems of thought, systems of knowledge.
+    list(from = "symbols", to = "systems", where = function(s) grepl("^systems", s),
+         rename = c("systems-systems" = "systems")),
+    # Single entries; the element label is the heading text itself.
+    list(from = "feelings", to = "forbidden, the", where = NULL,
+         rename = c("forbidden the-" = "forbidden, the")),
+    list(from = "people, a", to = "permitted, the", where = NULL,
+         rename = c("permitted the-" = "permitted, the"))
+  )
+  edges$heading_rule <- NA_character_
+  for (r in rules) {
+    hit <- edges$heading == r$from
+    if (!is.null(r$where)) hit <- hit & r$where(edges$sub_element)
+    if (!is.null(r$rename)) {
+      for (old in names(r$rename)) {
+        edges$sub_element[hit & edges$sub_element == old] <- r$rename[[old]]
+      }
+    }
+    edges$heading[hit] <- r$to
+    edges$heading_rule[hit] <- paste0(r$from, "->", r$to)
+  }
+  message("Heading corrections: ", sum(!is.na(edges$heading_rule)), " edges re-headed")
+  edges
+}
+
+# Junk sub-element decisions (data/kk-index-b-junk-decisions.csv). Each of the 33
+# junk_name edges is mapped to the element printed in its block (basis column;
+# PROVENANCE 3.6). Keys use the heading after apply_heading_corrections().
+apply_junk_decisions <- function(edges, decisions) {
+  for (i in seq_len(nrow(decisions))) {
+    hit <- edges$heading == decisions$heading[i] &
+           edges$sub_element == decisions$sub_element[i] &
+           edges$ocr_raw == decisions$ocr_raw[i]
+    stopifnot(length(hit) >= 1)
+    edges$heading[hit] <- decisions$new_heading[i]
+    edges$sub_element[hit] <- decisions$new_sub_element[i]
+    edges$manual[hit] <- TRUE
+  }
+  edges
+}
+
 pages <- locate_pages(pdf_path)
 last_page <- pages$part_iii - 1
 words <- read_bbox_words(pdf_path, min(unlist(pages)), last_page)
@@ -459,6 +519,9 @@ index_a <- add_index_a_missing(index_a,
 index_b <- parse_index_b(lines_b)
 index_b$edges <- apply_index_b_fixes(index_b$edges,
                                      read.csv("data/kk-index-b-manual-fixes.csv", stringsAsFactors = FALSE))
+index_b$edges <- apply_heading_corrections(index_b$edges)
+index_b$edges <- apply_junk_decisions(index_b$edges,
+                                       read.csv("data/kk-index-b-junk-decisions.csv", stringsAsFactors = FALSE))
 excluded <- parse_index_b(lines_x)
 
 # ---- 9. Outputs ---------------------------------------------------------------
