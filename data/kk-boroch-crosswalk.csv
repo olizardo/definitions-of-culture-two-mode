@@ -1,136 +1,136 @@
-"boroch_code","in_table2","boroch_author","boroch_year","positional_kk","n_candidates","kk_code","candidates","match_status","positional_agrees"
-"A1",TRUE,"Tylor",1871,"A-1",1,"A-1","A-1","auto",TRUE
-"A10",TRUE,"Winston",1933,"A-10",1,"A-9","A-9","auto",FALSE
-"A10a",TRUE,"Winston",1933,"A-10a",1,"A-9","A-9","auto",FALSE
-"A11",TRUE,"Linton",1936,"A-11",1,"A-10","A-10","auto",FALSE
-"A12",TRUE,"Lowie",1937,"A-12",0,NA,"","no_kk_match",FALSE
-"A13",TRUE,"Panunzio",1939,"A-13",1,"A-11","A-11","auto",FALSE
-"A14",TRUE,"Murray",1943,"A-14",1,"A-12","A-12","auto",FALSE
-"A15",TRUE,"Malinowski",1944,"A-15",0,NA,"","no_kk_match",FALSE
-"A16",TRUE,"Kluckhohn and Kelly",1945,"A-16",2,NA,"A-14;A-15","ambiguous",FALSE
-"A17",TRUE,"Kluckhohn and Kelly",1945,"A-17",2,NA,"A-14;A-15","ambiguous",FALSE
-"A18",TRUE,"Bidney",1947,"A-18",1,"A-16","A-16","auto",FALSE
-"A19",TRUE,"Kroeber",1948,"A-19",1,"A-17","A-17","auto",FALSE
-"A2",TRUE,"Wissler",1920,"A-2",1,"A-1","A-1","auto",FALSE
-"A20",TRUE,"Herskovits",1948,"A-20",2,NA,"A-18;A-19","ambiguous",FALSE
-"A3",TRUE,"Dixon",1928,"A-3",1,"A-3","A-3","auto",TRUE
-"A4",TRUE,"Dixon",1928,"A-4",1,"A-3","A-3","auto",FALSE
-"A5",TRUE,"Benedict",1931,"A-5",0,NA,"","no_kk_match",FALSE
-"A6",TRUE,"Burkitt",1929,"A-6",1,"A-5","A-5","auto",FALSE
-"A7",TRUE,"Bose",1929,"A-7",1,"A-6","A-6","auto",FALSE
-"A8",TRUE,"Boas",1930,"A-8",0,NA,"","no_kk_match",FALSE
-"A9",TRUE,"Hiller",1933,"A-9",1,"A-8","A-8","auto",FALSE
-"B1",TRUE,"Park and Burgess",1921,"B-1",1,"B-1","B-1","auto",TRUE
-"B10",TRUE,"Linton",1936,"B-10",1,"B-9","B-9","auto",FALSE
-"B11",TRUE,"Mead",1937,"B-11",1,"B-10","B-10","auto",FALSE
-"B12",TRUE,"Sutherland and Woodward",1940,"B-12",1,"B-11","B-11","auto",FALSE
-"B13",TRUE,"Davis and Dollard",1940,"B-13",1,"B-12","B-12","auto",FALSE
-"B14",TRUE,"Groves and Moore",1940,"B-14",1,"B-13","B-13","auto",FALSE
-"B15",TRUE,"Angyal",1941,"B-15",0,NA,"","no_kk_match",FALSE
-"B16",TRUE,"Kluckhohn",1942,"B-16",1,"B-15","B-15","auto",FALSE
-"B18",TRUE,"Dietschy",1947,"B-18",1,"B-17","B-17","auto",FALSE
-"B19",TRUE,"Kroeber",1948,"B-19",1,"B-18","B-18","auto",FALSE
-"B2",TRUE,"Sapir",1921,"B-2",0,NA,"","no_kk_match",FALSE
-"B20",TRUE,"Parsons",1949,"B-20",1,"B-19","B-19","auto",FALSE
-"B21",TRUE,"Kluckhohn",1949,"B-21",1,"B-20","B-20","auto",FALSE
-"B22",TRUE,"Henry",1949,"B-22",1,"B-11","B-11","auto",FALSE
-"B3",TRUE,"Sapir",1924,"B-3",1,"B-3","B-3","auto",TRUE
-"B4",TRUE,"Tozzer",1925,"B-4",0,NA,"","no_kk_match",FALSE
-"B5",TRUE,"Myres",1927,"B-5",0,NA,"","no_kk_match",FALSE
-"B6",TRUE,"Bose",1929,"B-6",1,"B-5","B-5","auto",FALSE
-"B7",TRUE,"Malinowski",1931,"B-7",1,"B-6","B-6","auto",FALSE
-"B8",TRUE,"Winston",1933,"B-8",1,"B-7","B-7","auto",FALSE
-"B9",TRUE,"Lowie",1934,"B-9",1,"B-8","B-8","auto",FALSE
-"C1-1",TRUE,"Wissler",1929,"C-I-1",1,"C-I-1","C-I-1","auto",TRUE
-"C1-11",TRUE,"Kluckhohn and Kelly",1945,"C-I-11",3,NA,"C-I-10;C-I-11;C-I-12","ambiguous",FALSE
-"C1-16",TRUE,"Lasswell",1948,"C-I-16",1,"C-I-15","C-I-15","auto",FALSE
-"C1-17",TRUE,"Bennett and Tumin",1949,"C-I-17",1,"C-I-16","C-I-16","auto",FALSE
-"C1-18",TRUE,"Frank",1948,"C-I-18",1,"C-I-17","C-I-17","auto",FALSE
-"C1-2",TRUE,"Bogardus",1930,"C-I-2",1,"C-I-2","C-I-2","auto",TRUE
-"C1-3",TRUE,"Young",1934,"C-I-3",1,"C-I-3","C-I-3","auto",TRUE
-"C1-4",TRUE,"Klineberg",1935,"C-I-4",1,"C-I-4","C-I-4","auto",TRUE
-"C1-5",TRUE,"Firth",1939,"C-I-5",1,"C-I-5","C-I-5","auto",TRUE
-"C1-5a",TRUE,"Firth",1939,"C-I-5a",1,"C-I-5","C-I-5","auto",FALSE
-"C1-6",TRUE,"Lynd",1940,"C-I-6",1,"C-I-5a","C-I-5a","auto",FALSE
-"C1-8",TRUE,"Simmons",1942,"C-I-8",0,NA,"","no_kk_match",FALSE
-"C2-2",TRUE,"Thomas",1937,"C-II-2",0,NA,"","no_kk_match",FALSE
-"C2-3",TRUE,"Bidney",1942,"C-II-3",1,"C-II-3","C-II-3","auto",TRUE
-"C2-4",TRUE,"Bidney",1946,"C-II-4",1,"C-II-4","C-II-4","auto",TRUE
-"C2-5",TRUE,"Bidney",1947,"C-II-5",1,"C-II-5","C-II-5","auto",TRUE
-"C2-6",TRUE,"Sorokin",1947,"C-II-6",1,"C-II-6","C-II-6","auto",TRUE
-"D1-1",TRUE,"Small",1905,"D-I-1",1,"D-I-1","D-I-1","auto",TRUE
-"D1-11",TRUE,"Young",1942,"D-I-11",1,"D-I-11","D-I-11","auto",TRUE
-"D1-12",TRUE,"Kluckhohn and Leighton",1946,"D-I-12",1,"D-I-12","D-I-12","auto",TRUE
-"D1-13",TRUE,"Morris",1946,"D-I-13",1,"D-I-13","D-I-13","auto",TRUE
-"D1-14",TRUE,"Morris",1948,"D-I-14",1,"D-I-14","D-I-14","auto",TRUE
-"D1-15",TRUE,"Turney-High",1949,"D-I-15",0,NA,"","no_kk_match",FALSE
-"D1-16",TRUE,"Gorer",1949,"D-I-16",1,"D-I-16","D-I-16","auto",TRUE
-"D1-17",TRUE,"Piddington",1950,"D-I-17",1,"D-I-17","D-I-17","auto",TRUE
-"D1-2",TRUE,"Sumner and Keller",1927,"D-I-2",2,NA,"D-I-1;D-I-2","ambiguous",FALSE
-"D1-3",TRUE,"Dawson",1928,"D-I-3",1,"D-I-3","D-I-3","auto",TRUE
-"D1-4",TRUE,"Keller",1931,"D-I-4",1,"D-I-4","D-I-4","auto",TRUE
-"D1-5",TRUE,"Young",1934,"D-I-5",1,"D-I-3","D-I-3","auto",FALSE
-"D1-6",TRUE,"Lundberg",1939,"D-I-6",1,"D-I-6","D-I-6","auto",TRUE
-"D1-7",TRUE,"Panunzio",1939,"D-I-7",1,"D-I-7","D-I-7","auto",TRUE
-"D1-8",TRUE,"Ford",1939,"D-I-8",1,"D-I-8","D-I-8","auto",TRUE
-"D1-9",TRUE,"Blumenthal",1941,"D-I-9",1,"D-I-9","D-I-9","auto",TRUE
-"D2-1",TRUE,"Wissler",1916,"D-II-1",1,"D-II-1","D-II-1","auto",TRUE
-"D2-10",TRUE,"Hoebel",1949,"D-II-10",0,NA,"","no_kk_match",FALSE
-"D2-11",TRUE,"Haring",1949,"D-II-11",1,"D-II-11","D-II-11","auto",TRUE
-"D2-12",TRUE,"Wilson and Kolb",1949,"D-II-12",1,"D-II-12","D-II-12","auto",TRUE
-"D2-13",TRUE,"Hockett",1950,"D-II-13",0,NA,"","no_kk_match",FALSE
-"D2-14",TRUE,"Steward",1950,"D-II-14",0,NA,"","no_kk_match",FALSE
-"D2-15",TRUE,"Slotkin",1950,"D-II-15",1,"D-II-1","D-II-1","auto",FALSE
-"D2-16",TRUE,"Aberle et al.",1950,"D-II-16",0,NA,"","no_kk_match",FALSE
-"D2-2",TRUE,"Hart and Pantzer",1925,"D-II-2",0,NA,"","no_kk_match",FALSE
-"D2-3",TRUE,"Miller and Dollard",1941,"D-II-3",1,"D-II-3","D-II-3","auto",TRUE
-"D2-4",TRUE,"Kluckhohn",1942,"D-II-4",1,"D-II-4","D-II-4","auto",TRUE
-"D2-5",TRUE,"LaPiere",1946,"D-II-5",1,"D-II-5","D-II-5","auto",TRUE
-"D2-6",TRUE,"Benedict",1947,"D-II-6",1,"D-II-6","D-II-6","auto",TRUE
-"D2-7",TRUE,"Young",1947,"D-II-7",1,"D-II-7","D-II-7","auto",TRUE
-"D2-8",TRUE,"Opler",1947,"D-II-8",1,"D-II-8","D-II-8","auto",TRUE
-"D2-9",TRUE,"A. Davis",1948,"D-II-9",0,NA,"","no_kk_match",FALSE
-"D3-1",TRUE,"Tozzer",NA,"D-III-1",0,NA,"","no_kk_match",FALSE
-"D3-2",TRUE,"Young",1934,"D-III-2",1,"D-III-2","D-III-2","auto",TRUE
-"D3-3",TRUE,"Murdock",1941,"D-III-3",1,"D-III-3","D-III-3","auto",TRUE
-"D4-2",TRUE,"Katz and Schanck",1938,"D-IV-2",1,"D-IV-1","D-IV-1","auto",FALSE
-"E1",TRUE,"Willey",1929,"E-1",1,"E-1","E-1","auto",TRUE
-"E10",TRUE,"Turney-High",1949,"E-10",0,NA,"","no_kk_match",FALSE
-"E2",TRUE,"Dollard",1939,"E-2",1,"E-1","E-1","auto",FALSE
-"E3",TRUE,"Ogburn and Nimkoff",1940,"E-3",1,"E-3","E-3","auto",TRUE
-"E6",TRUE,"Linton",1945,"E-6",1,"E-5","E-5","auto",FALSE
-"E7",TRUE,"Kluckhohn and Kelly",1945,"E-7",1,"E-6","E-6","auto",FALSE
-"E8",TRUE,"Gillin",1948,"E-8",1,"E-7","E-7","auto",FALSE
-"E9",TRUE,"Coutu",1949,"E-9",0,NA,"","no_kk_match",FALSE
-"F1-1",TRUE,"Groves",1928,"F-I-1",1,"F-I-1","F-I-1","auto",TRUE
-"F1-10",TRUE,"Bernard",1941,"F-I-10",1,"F-I-9","F-I-9","auto",FALSE
-"F1-13",TRUE,"Bernard",1942,"F-I-13",1,"F-I-12","F-I-12","auto",FALSE
-"F1-14",TRUE,"Young",1942,"F-I-14",0,NA,"","no_kk_match",FALSE
-"F1-15",TRUE,"Huntington",1945,"F-I-15",0,NA,"","no_kk_match",FALSE
-"F1-16",TRUE,"Carr",1945,"F-I-16",1,"F-I-15","F-I-15","auto",FALSE
-"F1-20",TRUE,"Murdock",1949,"F-I-20",1,"F-I-19","F-I-19","auto",FALSE
-"F1-3",TRUE,"Folsom",1928,"F-I-3",1,"F-I-2","F-I-2","auto",FALSE
-"F1-4",TRUE,"Folsom",1931,"F-I-4",1,"F-I-3","F-I-3","auto",FALSE
-"F1-5",TRUE,"Winston",1933,"F-I-5",1,"F-I-4","F-I-4","auto",FALSE
-"F1-7",TRUE,"Warden",1936,"F-I-7",0,NA,"","no_kk_match",FALSE
-"F1-8",TRUE,"Sorokin",1937,"F-I-8",1,"F-I-7","F-I-7","auto",FALSE
-"F1-9",TRUE,"Reuter",1939,"F-I-9",1,"F-I-8","F-I-8","auto",FALSE
-"F2-1",TRUE,"Ward",1903,"F-II-1",1,"F-II-1","F-II-1","auto",TRUE
-"F2-10",TRUE,"Taylor",1948,"F-II-10",1,"F-II-8","F-II-8","auto",FALSE
-"F2-11",TRUE,"Ford",1949,"F-II-11",1,"F-II-9","F-II-9","auto",FALSE
-"F2-4",TRUE,"Blumenthal",1937,"F-II-4",1,"F-II-4","F-II-4","auto",TRUE
-"F2-5",TRUE,"Blumenthal",1937,"F-II-5",1,"F-II-4","F-II-4","auto",FALSE
-"F2-7",TRUE,"Kluckhohn and Kelly",1945,"F-II-7",1,"F-II-6","F-II-6","auto",FALSE
-"F2-8",TRUE,"Feibleman",1946,"F-II-8",0,NA,"","no_kk_match",FALSE
-"F2-9",TRUE,"Feibleman",1946,"F-II-9",0,NA,"","no_kk_match",FALSE
-"F3-1",TRUE,"Bain",1942,"F-III-1",1,"F-III-1","F-III-1","auto",TRUE
-"F3-2",TRUE,"White",1943,"F-III-2",1,"F-III-2","F-III-2","auto",TRUE
-"F3-3",TRUE,"White",1949,"F-III-3",2,NA,"F-III-3;F-III-4","ambiguous",FALSE
-"F3-4",TRUE,"White",1949,"F-III-4",2,NA,"F-III-3;F-III-4","ambiguous",FALSE
-"F3-5",TRUE,"K. Davis",1949,"F-III-5",0,NA,"","no_kk_match",FALSE
-"F4-3",TRUE,"Blumenthal",1941,"F-IV-3",1,"F-IV-3","F-IV-3","auto",TRUE
-"F4-6",TRUE,"Kluckhohn and Kelly",1945,"F-IV-6",2,NA,"F-IV-3;F-IV-5","manual_F4-6_slip",FALSE
-"G2",TRUE,"Marett",1928,"G-2",0,NA,"","no_kk_match",FALSE
-"G4",TRUE,"Rouse",1939,"G-4",1,"G-4","G-4","auto",TRUE
-"G5",TRUE,"Osgood",1942,"G-5",1,"G-5","G-5","auto",TRUE
-"G7",TRUE,"Bryson",1947,"G-7",1,"G-7","G-7","auto",TRUE
+"boroch_code","in_table2","boroch_author","boroch_year","boroch_year_orig","boroch_suffix","positional_kk","n_candidates","kk_code","candidates","match_status","positional_agrees","decision","decision_note"
+"A1",TRUE,"Tylor",1871,NA,NA,"A-1",1,"A-1","A-1","auto",TRUE,NA,NA
+"A10",TRUE,"Winston",1933,NA,NA,"A-10",1,"A-9","A-9","auto",FALSE,NA,NA
+"A10a",TRUE,"Winston",1933,NA,NA,"A-10a",1,"A-9","A-9","auto",FALSE,NA,NA
+"A11",TRUE,"Linton",1936,NA,NA,"A-11",1,"A-10","A-10","auto",FALSE,NA,NA
+"A12",TRUE,"Lowie",1937,NA,NA,"A-12",1,"A-10a","A-10a","auto",FALSE,NA,NA
+"A13",TRUE,"Panunzio",1939,NA,NA,"A-13",1,"A-11","A-11","auto",FALSE,NA,NA
+"A14",TRUE,"Murray",1943,NA,NA,"A-14",1,"A-12","A-12","auto",FALSE,NA,NA
+"A15",TRUE,"Malinowski",1944,NA,NA,"A-15",1,"A-13","A-13","auto",FALSE,NA,NA
+"A16",TRUE,"Kluckhohn and Kelly",1945,NA,"a","A-16",2,NA,"A-14;A-15","ambiguous",FALSE,"open","Kluckhohn and Kelly 1945a. K&K A-14 and A-15 carry the same author, year, and suffix, so metadata cannot order them. Needs a check of the quoted text against K&K Part II A-14 and A-15."
+"A17",TRUE,"Kluckhohn and Kelly",1945,NA,"a","A-17",2,NA,"A-14;A-15","ambiguous",FALSE,"open","Kluckhohn and Kelly 1945a. Same two candidates as A16 (K&K A-14, A-15). Needs a text check; not matched by position."
+"A18",TRUE,"Bidney",1947,NA,NA,"A-18",1,"A-16","A-16","auto",FALSE,NA,NA
+"A19",TRUE,"Kroeber",1948,NA,"a","A-19",1,"A-17","A-17","auto",FALSE,NA,NA
+"A2",TRUE,"Wissler",1920,NA,NA,"A-2",1,"A-2","A-2","auto",TRUE,NA,NA
+"A20",TRUE,"Herskovits",1948,NA,NA,"A-20",2,NA,"A-18;A-19","ambiguous",FALSE,"open","Herskovits 1948 with no suffix. K&K A-18 and A-19 are both Herskovits 1948. Needs a text check."
+"A3",TRUE,"Dixon",1928,NA,NA,"A-3",1,"A-3","A-3","auto",TRUE,NA,NA
+"A4",TRUE,"Dixon",1928,NA,NA,"A-4",1,"A-3","A-3","auto",FALSE,NA,NA
+"A5",TRUE,"Benedict",1931,1929,NA,"A-5",1,"A-4","A-4","auto",FALSE,NA,NA
+"A6",TRUE,"Burkitt",1929,NA,NA,"A-6",1,"A-5","A-5","auto",FALSE,NA,NA
+"A7",TRUE,"Bose",1929,NA,NA,"A-7",1,"A-6","A-6","auto",FALSE,NA,NA
+"A8",TRUE,"Boas",1930,NA,NA,"A-8",1,"A-7","A-7","auto",FALSE,NA,NA
+"A9",TRUE,"Hiller",1933,NA,NA,"A-9",1,"A-8","A-8","auto",FALSE,NA,NA
+"B1",TRUE,"Park and Burgess",1921,NA,NA,"B-1",1,"B-1","B-1","auto",TRUE,NA,NA
+"B10",TRUE,"Linton",1936,NA,NA,"B-10",1,"B-9","B-9","auto",FALSE,NA,NA
+"B11",TRUE,"Mead",1937,NA,NA,"B-11",1,"B-10","B-10","auto",FALSE,NA,NA
+"B12",TRUE,"Sutherland and Woodward",1940,NA,NA,"B-12",1,"B-11","B-11","auto",FALSE,NA,NA
+"B13",TRUE,"Davis and Dollard",1940,NA,NA,"B-13",1,"B-12","B-12","auto",FALSE,NA,NA
+"B14",TRUE,"Groves and Moore",1940,NA,NA,"B-14",1,"B-13","B-13","auto",FALSE,NA,NA
+"B15",TRUE,"Angyal",1941,NA,NA,"B-15",1,"B-14","B-14","auto",FALSE,NA,NA
+"B16",TRUE,"Kluckhohn",1942,NA,NA,"B-16",1,"B-15","B-15","auto",FALSE,NA,NA
+"B18",TRUE,"Dietschy",1947,NA,NA,"B-18",1,"B-17","B-17","auto",FALSE,NA,NA
+"B19",TRUE,"Kroeber",1948,NA,"a","B-19",1,"B-18","B-18","auto",FALSE,NA,NA
+"B2",TRUE,"Sapir",1921,NA,NA,"B-2",1,"B-2","B-2","auto",TRUE,NA,NA
+"B20",TRUE,"Parsons",1949,NA,NA,"B-20",1,"B-19","B-19","auto",FALSE,NA,NA
+"B21",TRUE,"Kluckhohn",1949,NA,"a","B-21",1,"B-20","B-20","auto",FALSE,NA,NA
+"B22",TRUE,"Henry",1949,NA,NA,"B-22",1,"B-21","B-21","auto",FALSE,NA,NA
+"B3",TRUE,"Sapir",1924,NA,"a","B-3",1,"B-3","B-3","auto",TRUE,NA,NA
+"B4",TRUE,"Tozzer",1925,NA,NA,"B-4",1,"B-4","B-4","auto",TRUE,NA,NA
+"B5",TRUE,"Myres",1927,NA,NA,"B-5",0,NA,"","no_kk_match",FALSE,"open","Myres 1927 (Boroch). The only K&K Myres row is B-4a (1929), and Boroch has no year_orig. Probable B-4a, but the year differs; needs a check of the appendix text and the source."
+"B6",TRUE,"Bose",1929,NA,NA,"B-6",1,"B-5","B-5","auto",FALSE,NA,NA
+"B7",TRUE,"Malinowski",1931,NA,NA,"B-7",1,"B-6","B-6","auto",FALSE,NA,NA
+"B8",TRUE,"Winston",1933,NA,NA,"B-8",1,"B-7","B-7","auto",FALSE,NA,NA
+"B9",TRUE,"Lowie",1934,NA,NA,"B-9",1,"B-8","B-8","auto",FALSE,NA,NA
+"C1-1",TRUE,"Wissler",1929,NA,NA,"C-I-1",1,"C-I-1","C-I-1","auto",TRUE,NA,NA
+"C1-11",TRUE,"Kluckhohn and Kelly",1945,NA,"a","C-I-11",3,NA,"C-I-10;C-I-11;C-I-12","ambiguous",FALSE,"open","Kluckhohn and Kelly 1945a. Three K&K candidates with the same author and year: C-I-10, C-I-11, C-I-12. Needs a text check."
+"C1-16",TRUE,"Lasswell",1948,NA,NA,"C-I-16",1,"C-I-15","C-I-15","auto",FALSE,NA,NA
+"C1-17",TRUE,"Bennett and Tumin",1949,NA,NA,"C-I-17",1,"C-I-16","C-I-16","auto",FALSE,NA,NA
+"C1-18",TRUE,"Frank",1948,NA,NA,"C-I-18",1,"C-I-17","C-I-17","auto",FALSE,NA,NA
+"C1-2",TRUE,"Bogardus",1930,NA,NA,"C-I-2",1,"C-I-2","C-I-2","auto",TRUE,NA,NA
+"C1-3",TRUE,"Young",1934,NA,NA,"C-I-3",1,"C-I-3","C-I-3","auto",TRUE,NA,NA
+"C1-4",TRUE,"Klineberg",1935,NA,NA,"C-I-4",1,"C-I-4","C-I-4","auto",TRUE,NA,NA
+"C1-5",TRUE,"Firth",1939,NA,NA,"C-I-5",1,"C-I-5","C-I-5","auto",TRUE,NA,NA
+"C1-5a",TRUE,"Firth",1939,NA,NA,"C-I-5a",1,"C-I-5","C-I-5","auto",FALSE,NA,NA
+"C1-6",TRUE,"Lynd",1940,NA,NA,"C-I-6",1,"C-I-5a","C-I-5a","auto",FALSE,NA,NA
+"C1-8",TRUE,"Simmons",1942,NA,NA,"C-I-8",1,"C-I-7","C-I-7","auto",FALSE,NA,NA
+"C2-2",TRUE,"Thomas",1937,NA,NA,"C-II-2",1,"C-II-2","C-II-2","auto",TRUE,NA,NA
+"C2-3",TRUE,"Bidney",1942,NA,NA,"C-II-3",1,"C-II-3","C-II-3","auto",TRUE,NA,NA
+"C2-4",TRUE,"Bidney",1946,NA,NA,"C-II-4",1,"C-II-4","C-II-4","auto",TRUE,NA,NA
+"C2-5",TRUE,"Bidney",1947,NA,NA,"C-II-5",1,"C-II-5","C-II-5","auto",TRUE,NA,NA
+"C2-6",TRUE,"Sorokin",1947,NA,NA,"C-II-6",1,"C-II-6","C-II-6","auto",TRUE,NA,NA
+"D1-1",TRUE,"Small",1905,NA,NA,"D-I-1",1,"D-I-1","D-I-1","auto",TRUE,NA,NA
+"D1-11",TRUE,"Young",1942,NA,NA,"D-I-11",1,"D-I-11","D-I-11","auto",TRUE,NA,NA
+"D1-12",TRUE,"Kluckhohn and Leighton",1946,NA,NA,"D-I-12",1,"D-I-12","D-I-12","auto",TRUE,NA,NA
+"D1-13",TRUE,"Morris",1946,NA,NA,"D-I-13",1,"D-I-13","D-I-13","auto",TRUE,NA,NA
+"D1-14",TRUE,"Morris",1948,NA,NA,"D-I-14",1,"D-I-14","D-I-14","auto",TRUE,NA,NA
+"D1-15",TRUE,"Turney-High",1949,NA,NA,"D-I-15",1,"D-I-15","D-I-15","auto",TRUE,NA,NA
+"D1-16",TRUE,"Gorer",1949,NA,NA,"D-I-16",1,"D-I-16","D-I-16","auto",TRUE,NA,NA
+"D1-17",TRUE,"Piddington",1950,NA,NA,"D-I-17",1,"D-I-17","D-I-17","auto",TRUE,NA,NA
+"D1-2",TRUE,"Sumner and Keller",1927,NA,NA,"D-I-2",1,"D-I-2","D-I-2","auto",TRUE,NA,NA
+"D1-3",TRUE,"Dawson",1928,NA,NA,"D-I-3",1,"D-I-3","D-I-3","auto",TRUE,NA,NA
+"D1-4",TRUE,"Keller",1931,NA,NA,"D-I-4",1,"D-I-4","D-I-4","auto",TRUE,NA,NA
+"D1-5",TRUE,"Young",1934,NA,NA,"D-I-5",1,"D-I-5","D-I-5","auto",TRUE,NA,NA
+"D1-6",TRUE,"Lundberg",1939,NA,NA,"D-I-6",1,"D-I-6","D-I-6","auto",TRUE,NA,NA
+"D1-7",TRUE,"Panunzio",1939,NA,NA,"D-I-7",1,"D-I-7","D-I-7","auto",TRUE,NA,NA
+"D1-8",TRUE,"Ford",1939,NA,NA,"D-I-8",1,"D-I-8","D-I-8","auto",TRUE,NA,NA
+"D1-9",TRUE,"Blumenthal",1941,NA,NA,"D-I-9",1,"D-I-9","D-I-9","auto",TRUE,NA,NA
+"D2-1",TRUE,"Wissler",1916,NA,NA,"D-II-1",1,"D-II-1","D-II-1","auto",TRUE,NA,NA
+"D2-10",TRUE,"Hoebel",1949,NA,NA,"D-II-10",1,"D-II-10","D-II-10","auto",TRUE,NA,NA
+"D2-11",TRUE,"Haring",1949,NA,NA,"D-II-11",1,"D-II-11","D-II-11","auto",TRUE,NA,NA
+"D2-12",TRUE,"Wilson and Kolb",1949,NA,NA,"D-II-12",1,"D-II-12","D-II-12","auto",TRUE,NA,NA
+"D2-13",TRUE,"Hockett",1950,NA,NA,"D-II-13",1,"D-II-13","D-II-13","auto",TRUE,NA,NA
+"D2-14",TRUE,"Steward",1950,NA,NA,"D-II-14",1,"D-II-14","D-II-14","auto",TRUE,NA,NA
+"D2-15",TRUE,"Slotkin",1950,NA,NA,"D-II-15",1,"D-II-15","D-II-15","auto",TRUE,NA,NA
+"D2-16",TRUE,"Aberle et al.",1950,NA,NA,"D-II-16",0,"D-II-16","","manual_decision",TRUE,"match","K&K has no Aberle row in Index A, so the author rule cannot apply. Index B cites D-II-16 under ""socially transmitted behavior"", and Boroch's D2-16 quotation begins ""Culture is socially transmitted behavior"". Matched on quoted text; inferred, not read from Index A."
+"D2-2",TRUE,"Hart and Pantzer",1925,NA,NA,"D-II-2",1,"D-II-2","D-II-2","auto",TRUE,NA,NA
+"D2-3",TRUE,"Miller and Dollard",1941,NA,NA,"D-II-3",1,"D-II-3","D-II-3","auto",TRUE,NA,NA
+"D2-4",TRUE,"Kluckhohn",1942,NA,NA,"D-II-4",1,"D-II-4","D-II-4","auto",TRUE,NA,NA
+"D2-5",TRUE,"LaPiere",1946,NA,NA,"D-II-5",1,"D-II-5","D-II-5","auto",TRUE,NA,NA
+"D2-6",TRUE,"Benedict",1947,NA,NA,"D-II-6",1,"D-II-6","D-II-6","auto",TRUE,NA,NA
+"D2-7",TRUE,"Young",1947,NA,NA,"D-II-7",1,"D-II-7","D-II-7","auto",TRUE,NA,NA
+"D2-8",TRUE,"Opler",1947,NA,NA,"D-II-8",1,"D-II-8","D-II-8","auto",TRUE,NA,NA
+"D2-9",TRUE,"A. Davis",1948,NA,NA,"D-II-9",1,"D-II-9","D-II-9","auto",TRUE,NA,NA
+"D3-1",TRUE,"Tozzer",NA,NA,NA,"D-III-1",0,"D-III-1","","manual_decision",TRUE,"match","Boroch gives no year (PDF ""data""; footnote ""missing (before 1930)""). Matched on surname Tozzer and subgroup D-III, the only K&K Tozzer in D-III; K&K prints (n.d.). Year-free match, so confidence is moderate."
+"D3-2",TRUE,"Young",1934,NA,NA,"D-III-2",1,"D-III-2","D-III-2","auto",TRUE,NA,NA
+"D3-3",TRUE,"Murdock",1941,NA,NA,"D-III-3",1,"D-III-3","D-III-3","auto",TRUE,NA,NA
+"D4-2",TRUE,"Katz and Schanck",1938,NA,NA,"D-IV-2",1,"D-IV-2","D-IV-2","auto",TRUE,NA,NA
+"E1",TRUE,"Willey",1929,NA,NA,"E-1",1,"E-1","E-1","auto",TRUE,NA,NA
+"E10",TRUE,"Turney-High",1949,NA,NA,"E-10",1,"E-9","E-9","auto",FALSE,NA,NA
+"E2",TRUE,"Dollard",1939,NA,NA,"E-2",1,"E-2","E-2","auto",TRUE,NA,NA
+"E3",TRUE,"Ogburn and Nimkoff",1940,NA,NA,"E-3",1,"E-3","E-3","auto",TRUE,NA,NA
+"E6",TRUE,"Linton",1945,NA,"a","E-6",1,"E-5","E-5","auto",FALSE,NA,NA
+"E7",TRUE,"Kluckhohn and Kelly",1945,NA,"a","E-7",1,"E-6","E-6","auto",FALSE,NA,NA
+"E8",TRUE,"Gillin",1948,NA,NA,"E-8",1,"E-7","E-7","auto",FALSE,NA,NA
+"E9",TRUE,"Coutu",1949,NA,NA,"E-9",1,"E-8","E-8","auto",FALSE,NA,NA
+"F1-1",TRUE,"Groves",1928,NA,NA,"F-I-1",1,"F-I-1","F-I-1","auto",TRUE,NA,NA
+"F1-10",TRUE,"Bernard",1941,NA,NA,"F-I-10",1,"F-I-9","F-I-9","auto",FALSE,NA,NA
+"F1-13",TRUE,"Bernard",1942,NA,NA,"F-I-13",1,"F-I-12","F-I-12","auto",FALSE,NA,NA
+"F1-14",TRUE,"Young",1942,NA,NA,"F-I-14",1,"F-I-13","F-I-13","auto",FALSE,NA,NA
+"F1-15",TRUE,"Huntington",1945,NA,NA,"F-I-15",1,"F-I-14","F-I-14","auto",FALSE,NA,NA
+"F1-16",TRUE,"Carr",1945,NA,NA,"F-I-16",1,"F-I-15","F-I-15","auto",FALSE,NA,NA
+"F1-20",TRUE,"Murdock",1949,NA,"a","F-I-20",1,"F-I-19","F-I-19","auto",FALSE,NA,NA
+"F1-3",TRUE,"Folsom",1928,NA,NA,"F-I-3",1,"F-I-2","F-I-2","auto",FALSE,NA,NA
+"F1-4",TRUE,"Folsom",1931,NA,NA,"F-I-4",1,"F-I-3","F-I-3","auto",FALSE,NA,NA
+"F1-5",TRUE,"Winston",1933,NA,NA,"F-I-5",1,"F-I-4","F-I-4","auto",FALSE,NA,NA
+"F1-7",TRUE,"Warden",1936,NA,NA,"F-I-7",1,"F-I-6","F-I-6","auto",FALSE,NA,NA
+"F1-8",TRUE,"Sorokin",1937,NA,NA,"F-I-8",1,"F-I-7","F-I-7","auto",FALSE,NA,NA
+"F1-9",TRUE,"Reuter",1939,NA,NA,"F-I-9",1,"F-I-8","F-I-8","auto",FALSE,NA,NA
+"F2-1",TRUE,"Ward",1903,NA,NA,"F-II-1",1,"F-II-1","F-II-1","auto",TRUE,NA,NA
+"F2-10",TRUE,"Taylor",1948,NA,NA,"F-II-10",1,"F-II-8","F-II-8","auto",FALSE,NA,NA
+"F2-11",TRUE,"Ford",1949,NA,NA,"F-II-11",1,"F-II-9","F-II-9","auto",FALSE,NA,NA
+"F2-4",TRUE,"Blumenthal",1937,NA,NA,"F-II-4",1,"F-II-4","F-II-4","auto",TRUE,NA,NA
+"F2-5",TRUE,"Blumenthal",1937,NA,NA,"F-II-5",1,"F-II-4","F-II-4","auto",FALSE,NA,NA
+"F2-7",TRUE,"Kluckhohn and Kelly",1945,NA,"a","F-II-7",1,"F-II-6","F-II-6","auto",FALSE,NA,NA
+"F2-8",TRUE,"Feibleman",1946,NA,NA,"F-II-8",1,"F-II-7","F-II-7","auto",FALSE,NA,NA
+"F2-9",TRUE,"Feibleman",1946,NA,NA,"F-II-9",1,"F-II-7","F-II-7","auto",FALSE,NA,NA
+"F3-1",TRUE,"Bain",1942,NA,NA,"F-III-1",1,"F-III-1","F-III-1","auto",TRUE,NA,NA
+"F3-2",TRUE,"White",1943,NA,NA,"F-III-2",1,"F-III-2","F-III-2","auto",TRUE,NA,NA
+"F3-3",TRUE,"White",1949,NA,"b","F-III-3",1,"F-III-3","F-III-3","auto",TRUE,NA,NA
+"F3-4",TRUE,"White",1949,NA,"a","F-III-4",1,"F-III-4","F-III-4","auto",TRUE,NA,NA
+"F3-5",TRUE,"K. Davis",1949,NA,NA,"F-III-5",1,"F-III-5","F-III-5","auto",TRUE,NA,NA
+"F4-3",TRUE,"Blumenthal",1941,NA,NA,"F-IV-3",1,"F-IV-3","F-IV-3","auto",TRUE,NA,NA
+"F4-6",TRUE,"Kluckhohn and Kelly",1945,NA,NA,"F-IV-6",1,"F-IV-5","F-IV-5","manual_F4-6_slip",FALSE,NA,NA
+"G2",TRUE,"Marett",1928,NA,NA,"G-2",1,"G-2","G-2","auto",TRUE,NA,NA
+"G4",TRUE,"Rouse",1939,NA,NA,"G-4",1,"G-4","G-4","auto",TRUE,NA,NA
+"G5",TRUE,"Osgood",1942,NA,NA,"G-5",1,"G-5","G-5","auto",TRUE,NA,NA
+"G7",TRUE,"Bryson",1947,NA,NA,"G-7",1,"G-7","G-7","auto",TRUE,NA,NA
