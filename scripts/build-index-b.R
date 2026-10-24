@@ -270,8 +270,12 @@ parse_index_a <- function(lines) {
 # A new entry begins at a line that starts with a lowercase heading followed by
 # a dash, or with a bare "(see ...)" cross-reference.
 is_entry_start <- function(line) {
-  grepl("^[a-z][^—–]*?(\\s[—–]\\s|\\s-\\s-\\s|[a-z][—–][a-z]|\\s[—–])", line, perl = TRUE) |
-    grepl("^[a-z][^(]*\\(see", line, perl = TRUE)
+  # A heading dash is spaced on both sides or sits between two letters; a dash
+  # with a space only before it is an OCR code dash ("F —II—5") and is not a start.
+  grepl("^[a-z][^—–]*?(\\s[—–]\\s|\\s-\\s-\\s|[a-z][—–][a-z])", line, perl = TRUE) |
+    # "(see" starts an entry only when no code precedes it; a cross-reference
+    # at the end of a line of codes ("social class, B-22 (see also ...)") does not.
+    grepl("^(?![^(]*[A-G] ?[-–—])[a-z][^(]*\\(see", line, perl = TRUE)
 }
 
 group_entries <- function(lines) {
