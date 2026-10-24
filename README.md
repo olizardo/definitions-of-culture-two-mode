@@ -19,29 +19,29 @@ the two.
 
 - Kroeber, A. L., & Kluckhohn, C. (1952). *Culture: A Critical Review of Concepts and
   Definitions*. Papers of the Peabody Museum of American Archaeology and Ethnology,
-  Harvard University, 47(1). Scanned copy used: `Kroeber-kluckhohn.pdf` (ABBYY
+  Harvard University, 47(1). Scanned copy used: `documents/Kroeber-kluckhohn.pdf` (ABBYY
   FineReader 11 OCR, 2013). Index A ("Authors", monograph p. 73) and Index B
   ("Conceptual elements in definitions", pp. 74–78) are parsed from this copy.
 - Boroch, R. "A Formal Concept of Culture in the Classification of Alfred L. Kroeber
-  and Clyde Kluckhohn." *Analecta*. File: `ROBAFC-5.1.pdf`. Table 2 and the definition
+  and Clyde Kluckhohn." *Analecta*. File: `documents/ROBAFC-5.1.pdf`. Table 2 and the definition
   appendix are hand-transcribed (see `docs/PROVENANCE.md`).
 - Moore, C. A. (1980). Literature review on culture definitions. ERIC ED229292
-  (`ED229292.pdf`). Used as an external cross-check of author–year citations.
+  (`documents/ED229292.pdf`). Used as an external cross-check of author–year citations.
 
 ## Files
 
 | Script | Reads | Writes |
 |---|---|---|
-| `build-index-b.R` | `Kroeber-kluckhohn.pdf` | Index A, Index B, excluded words, definition registry, OCR correction log, biadjacency matrices |
+| `build-index-b.R` | `documents/Kroeber-kluckhohn.pdf` | Index A, Index B, excluded words, definition registry, OCR correction log, biadjacency matrices |
 | `build-index-b-crosswalk.R` | Index B outputs, `kkcc_two_mode.rds`, `kkcc-definition-years.csv`, `kkcc-definition-texts.csv` | Boroch ↔ K&K crosswalk, Table 2 audit |
 | `analysis-index-b.R` | biadjacency matrices, `kkcc_two_mode.rds` | network statistics, degree-comparison figure |
 
-Run order (from the project root):
+Scripts live in `scripts/`; `documents/` holds the source PDFs and the Archive text. Run order (from the project root):
 
-1. `build-definition-years.R`, then `build-supplement-bibliography.R` (Boroch metadata)
-2. `build-index-b.R`
-3. `build-index-b-crosswalk.R`
-4. `analysis-index-b.R`
+1. `scripts/build-definition-years.R`, then `scripts/build-supplement-bibliography.R` (Boroch metadata)
+2. `scripts/build-index-b.R`
+3. `scripts/build-index-b-crosswalk.R`
+4. `scripts/analysis-index-b.R`
 
 Each build script writes a session-info file to `data/`. The R environment is pinned
 in `renv.lock` (R 4.5.3). Requires `pdftotext` (poppler) on the PATH.

@@ -5,6 +5,18 @@ Concepts), from `ROBAFC-5.1.pdf` (Robert Boroch, "A Formal Concept of Culture in
 Classification of Alfred L. Kroeber and Clyde Kluckhohn", Analecta). Data hand-transcribed
 from the PDF via pdftotext -layout.
 
+## Project layout (reorganized 2026-10-24)
+
+- Scripts are in `scripts/`. Bare script names elsewhere in this file mean `scripts/<name>`.
+  Scripts use paths relative to the project root, so run them from there.
+- Source PDFs and the Archive text are in `documents/` (`ROBAFC-5.1.pdf`, `Kroeber-kluckhohn.pdf`,
+  `ED229292.pdf`, `pdfcoffee.com-…pdf`, `papersofpeabodymvol47no1peab_djvu.txt`; the last is gitignored).
+  Read `documents/...` for the PDF paths below.
+- Deleted as stale (recoverable from git history): `analysis-basic-stats.R` (superseded by inline
+  chunks in the report), legacy `analysis-ca-mst.R` and its `kkcc-ca-*-lcc.csv` / `*-2core.csv`
+  outputs, and the unused `kkcc_biadjacency.csv` and `kkcc_definition_attributes.csv`.
+- `docs/` holds PROVENANCE.md and TODO.md. `figures/` and `data/` are unchanged.
+
 ## Data provenance
 
 - **Table 2** (frequential analysis, pp. 66–71 of PDF text): concept categories (rows) x
@@ -188,7 +200,9 @@ from the PDF via pdftotext -layout.
   `kk_biadjacency_*`, `kk-boroch-crosswalk.csv`. The crosswalk matches Boroch's codes to K&K
   by author, year, group, and subgroup, never by position.
 - Page-image corrections are NOT hand-edited into outputs. They are in
-  `data/kk-index-a-manual-fixes.csv` (author_raw, raw_code → kk_code) and
+  `data/kk-index-a-manual-fixes.csv` (author_raw, raw_code → kk_code, author_new,
+  qualifier_new; blank = unchanged) plus `data/kk-index-a-missing-rows.csv` (rows the OCR text
+  layer omits), and
   `data/kk-index-b-manual-fixes.csv` (heading, sub_element, ocr_raw → kk_code; `NA` means
   unresolved). The build applies them and errors if a key matches no token. Add corrections
   there, then rebuild. Copy key strings from the parsed edges file, not from the PDF.
@@ -233,3 +247,42 @@ from the PDF via pdftotext -layout.
 - Rebuilding `kkcc_two_mode.rds` (analysis-collapse-main.R) drops the vertex attributes
   that the biblio and years builders add. Re-run `build-definition-years.R` and
   `build-supplement-bibliography.R` after it.
+
+## Second pass (2026-10-24): Index A verification and crosswalk
+
+- Every Index A row on printed pp. 73-74 (PDF pp. 76-77) was re-read at 200 dpi, with 300 dpi
+  crops for disputed lines. 30 manual-fix rows (codes, years, author names) and 1 missing row
+  (Angyal B-14 1941, absent from the OCR text layer) were added. Index A is now 187 rows, 186
+  resolved, 165 codes. Key OCR errors to watch for: `Blumenthal • Boas` and `Carver < 1935)-Couru`
+  (merged entries), `Hiller * Hockett`, `Tumey-High` (Turney-High), `Thumwald` (Thurnwald), and
+  year OCR like `(19 11)`, `(19:8)`, `(194$)`. The original `ok` flag does not mean verified.
+- Printed facts now confirmed on the page image: Thurnwald A-20 (1950), not 1930; Wissler A-2
+  (1920), not A-1; Thomas C-II-2 (1937); Young D-I-5 (1934); Kelly F-IV-5 (with Kluckhohn, 1945a),
+  which corroborates the F4-6 resolution; Henry B-21 (1949); Slotkin D-II-15 (1950); Dollard E-2.
+- Crosswalk (`build-index-b-crosswalk.R`) now reads `kk-index-a-authors.csv` itself. It also strips
+  initials from Boroch surnames ("A. Davis"), requires a Boroch suffix (a/b) to match when given,
+  and accepts `year_orig` (first publication). Result: 127 auto, 2 hand decisions, 4 ambiguous,
+  1 no match. Hand decisions go in `data/kk-boroch-crosswalk-decisions.csv`: D3-1 → D-III-1
+  (Tozzer, no year; moderate confidence) and D2-16 → D-II-16 (quoted text "socially transmitted
+  behavior"; Aberle has no Index A row). Open: A16, A17 (K&K A-14, A-15), A20 (A-18, A-19),
+  C1-11 (C-I-10/11/12), B5 (probable B-4a, year conflict). Positional agreement is 69 of 135,
+  which is expected given renumbering.
+- Index B codes printed without a roman numeral: `C-7`, `D-8`, and `F-9` were verified at
+  300 dpi as printed that way. They are kept as printed, not remapped. `D-7`, `D-5`, `F-4`,
+  `E-17` are kept too, not verified at 300 dpi.
+- Index B edge count is unchanged at 1279 after the Index A fixes. 10 edges (8 codes) are not in
+  Index A.
+- Two public Internet Archive copies of the 1952 monograph (Peabody Papers vol. 47 no. 1) were
+  located and checked. `culturecriticalr0000kroe_z3a4` has a Scribe OCR text PDF (252 pp.) and a
+  `_djvu.txt` (882 KB). `culture0000unse` is access-restricted and its text returns HTTP 401.
+  A text file copy, `papersofpeabodymvol47no1peab_djvu.txt`, is UNTRACKED in the repo root.
+  Do not commit or release it: rights are unresolved. Move it out of the repo or add it to
+  `.gitignore`. Downloaded PDFs and text are in the scratch directory.
+- Independent OCR: tesseract 5 (eng) is installed. Run at 300 dpi on the Archive PDF, it agreed
+  with every corrected Index A row checked. The Archive's OCR is weaker than ours on Index A
+  (digit and i/1 confusions, wrapped Kluckhohn/Kelly lines lose their author), so disagreements
+  with it are leads, not evidence against our rows.
+- Open items are tracked in `docs/TODO.md` (status block at the top). Remaining work: heading
+  attribution, the 8 unresolved Index B tokens, the 33 junk sub-element names, checking the 50-row
+  sample in `data/kk-index-b-ok-sample.csv`, the 5 open crosswalk rows, and the rights decision.
+

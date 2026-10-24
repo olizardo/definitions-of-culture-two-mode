@@ -13,7 +13,7 @@
 
 suppressPackageStartupMessages(library(igraph))
 
-pdf_path <- "Kroeber-kluckhohn.pdf"
+pdf_path <- "documents/Kroeber-kluckhohn.pdf"
 data_dir <- "data"
 stopifnot(file.exists(pdf_path))
 

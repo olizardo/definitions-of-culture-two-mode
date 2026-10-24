@@ -18,7 +18,7 @@
 #   ("the 77 sum total") are removed; en-dashes split by line wraps are
 #   rejoined ("handed– down" -> "handed–down")
 
-txt <- system2("pdftotext", c("-layout", "ROBAFC-5.1.pdf", "-"), stdout = TRUE)
+txt <- system2("pdftotext", c("-layout", "documents/ROBAFC-5.1.pdf", "-"), stdout = TRUE)
 lines <- txt[710:1459]   # appendix definition tables
 
 code.pat <- "^[[:space:]]*([A-G][0-9]{1,2}(?:[-\u2013][0-9]{1,2})?[a-z]?)[[:space:]]+"
@@ -86,7 +86,7 @@ grab <- function(ls) {
   t <- gsub(" ?(Group [A-G] [A-Za-z]+ Definitions|Robert Boroch|culture as a problem-solving device|A Formal Concept of Culture in the Classification of Alfred L\\. Kroeber\\.+) ?", "", t, perl = TRUE)
   t <- sub("\\.? *or artifact$", ".", t, perl = TRUE)   # marginal note merged into E10's end
   t <- sub(" \\.$", ".", t, perl = TRUE)   # stray period left by a removed header
-  t <- sub("\\\.$", ".", t, perl = TRUE)   # doubled period
+  # doubled-period collapse disabled: D1-8 ends in ".." in the committed CSV; check the page image before enabling
   gsub("\\s+", " ", t, perl = TRUE)
 }
 

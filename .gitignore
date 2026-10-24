@@ -1,2 +1,5 @@
 /.quarto/
 **/*.quarto_ipynb
+
+# Archive OCR copy of the 1952 monograph: rights unresolved, do not commit
+documents/*_djvu.txt

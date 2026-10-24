@@ -25,7 +25,7 @@
 # The TRE engine mis-parses "[?][?][?]"-style classes, so perl = TRUE is used
 # for the entry-start pattern.
 
-pdf <- "ROBAFC-5.1.pdf"
+pdf <- "documents/ROBAFC-5.1.pdf"
 txt <- system2("pdftotext", c("-layout", pdf, "-"), stdout = TRUE)
 txt <- gsub("ﬁ", "fi", txt); txt <- gsub("ﬂ", "fl", txt); txt <- gsub("ﬀ", "ff", txt)
 

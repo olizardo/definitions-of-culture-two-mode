@@ -15,7 +15,7 @@
 # token, and cut the author string at the first 4-digit year. Flagged entries
 # are hand-corrected in CORRECTIONS below.
 
-pdf <- "ROBAFC-5.1.pdf"
+pdf <- "documents/ROBAFC-5.1.pdf"
 txt <- system2("pdftotext", c("-layout", pdf, "-"), stdout = TRUE)
 lines <- txt[710:1459]   # appendix definition tables
 
