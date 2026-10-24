@@ -1,67 +1,77 @@
-"heading","sub_element","ocr_raw","kk_code","action","evidence"
-"beliefs","religious beliefs","D-1112","D-II-12","set","OCR split of D-II-12"
-"biological heritage","human biological equipment and process","F-I","F-IV-5","set","truncated; printed F-IV-5"
-"capabilities","carriers of culture-individuals","D-III-j","D-III-3","set","j read as 5; printed 3; heading carriers of culture"
-"capabilities","j","F-III-j","F-III-3","set","printed 3; parsed 5"
-"capabilities","members of a society","C-I5","C-I-5","set","OCR C-I5 truncated; members of a society"
-"civilization","or shared patterns-common","G-I-j","G-3","set","sub is common; G-I-j misread"
-"civilization","shared","C-I8","C-I-8","set","I dropped in parse; printed C-I-8 (shared)"
-"customs","j","B-ij","B-13","set","B-ij read as 15; printed 13"
-"dynamic structural relations","intcrcorrclated customs","F-2","E-2","set","printed intercorrelated customs, E-2"
-"elements and their enumeration","language","D-II-ia","D-II-12","set","suffix a wrong; printed D-II-12"
-"environmental conditions and situations","natural surroundings","D-I-j","D-I-3","set","natural surroundings; j read as 5"
-"environmental conditions and situations","social situation","D-III-j","D-III-3","set","social situation; j read as 5"
-"group reference","group","B-ji","B-5","set","B-ji"
-"group reference","i","E-j","E-3","set","E-j; social list has E-3"
-"habits","established habits","D-III-j","D-III-3","set","established habits; j read as 5"
-"history","mind","F-i","F-II-5","set","mind entry; printed F-II-5"
-"patterns, systems, and organization","organized","F-j","E-5","set","organized; printed E-5"
-"process ts and means","social procedures","G-I-i","C-I-2","set","social procedures"
-"products of human activity","tools","C-I-53","C-I-5a","set","variant a read as 3"
-"psychoanalytic elements","substitutes","D-I","D-IV-1","set","substitutes"
-"psychoanalytic elements","reactionfonnat ons","D-I","D-IV-1","set","reaction-formations"
-"social","social","F-I4","F-I-4","set","I dropped"
-"social","social","F-I8","F-I-8","set","I read as 1"
-"totality, culture as comprehensive","sum","A-103","A-10a","set","sum; printed A-10a"
-"ways and life-ways","y","D-I-i","D-I-12","set","truncated; printed D-I-12"
-"ways and life-ways","maniere de vivre","C-I-183","C-I-18a","set","variant a read as 3"
-"adjustive-ajjptive function of culture","adjustments","F-I",NA,"unresolve","truncated; printed candidates: F-I-4; F-I-9; F-IV-3"
-"behavior","adaptive behavior","F-19",NA,"unresolve","truncated; printed candidates: F-I-9 or F-I-19"
-"group reference","group","F-i",NA,"unresolve","truncated; printed candidates: F-I-6 or F-I-19"
-"group reference","society","D-I",NA,"unresolve","truncated; printed candidates: D-I-12 or D-I-13"
-"group reference","i","D-II-j","D-II-5","set","printed D-II-5 under social (not group reference)"
-"dynamic structural relations","relationships","C-I","C-II-6","set","printed C-II-6 under relationships (page image, printed p. 75)"
-"ways and life-ways","ways","C-I-i","C-I-15","set","printed C-I-15 under ways (page image, printed p. 78)"
-"group reference","social groupings","A-i","A-13","set","printed A-13 under social groupings (page image, printed p. 76)"
-"acts, actions, and activities","actions","F-I-1*4","F-I-14","set","printed F-I-14 under actions (page image, printed p. 74)"
-"adjustive-ajjptive function of culture","adjustments","F-I","F-IV-3","set","printed adjustments list F-I-4, F-I-9, F-IV-3; F-I-4 and F-I-9 already present, so F-IV-3 (printed p. 74)"
-"behavior","adaptive behavior","F-19","F-I-19","set","behavior list prints F-19 (no roman I); adaptive behavior entry gives F-I-19 (printed p. 74)"
-"capabilities","carriers of culture-individuals","C-II-J","C-II-3","set","printed carriers list has C-II-3, no C-II-5 (printed p. 75)"
-"capabilities","persons","B-ij","B-13","set","printed persons list has B-13, no B-15 (printed p. 75)"
-"capabilities","members of a society","C-II-j","C-II-3","set","printed members list has C-II-3, no C-II-5 (printed p. 75)"
-"capabilities","generations","F-I-j","F-I-3","set","printed generations list has F-I-3, no F-I-5 (printed p. 75)"
-"civilization","civilization","A-j","A-3","set","printed civilization list has A-3, no A-5 (printed p. 75)"
-"civilization","civilization","F-I-jcommon","F-I-3","set","printed civilization list has F-I-3, no F-I-5 (printed p. 75)"
-"civilization","or shared patterns-common","F-I-j","F-I-3","set","printed common list has F-I-3, no F-I-5 (printed p. 75)"
-"civilization","or shared patterns-common","G-j","G-3","set","printed common list has G-3, no G-5 (printed p. 75)"
-"civilization","living together","D-II-j","D-II-5","set","printed living together, D-II-5 (printed p. 75)"
-"civilization","accepted","C-I-j","C-I-3","set","printed accepted, C-I-3 (printed p. 75)"
-"constancy","relatively permanent","F-I-j","F-I-3","set","printed relatively permanent, F-I-3 (printed p. 75)"
-"cultivation, culture of self","cultivated","C-II-j","C-II-3","set","printed cultivated, C-II-3, C-II-4 (printed p. 75)"
-"customs","customs","A-j","A-3","set","printed customs list has A-3, no A-5 (printed p. 75)"
-"dynamic structural relations","interlinked institutions","E-j","E-3","set","printed interlinked institutions, E-3 (printed p. 75)"
-"dynamic structural relations","correlation","E-j","E-3","set","printed correlation, E-3 (printed p. 75)"
-"elements and their enumeration","elements","B-j","B-3","set","printed elements list has B-3, no B-5 (printed p. 75)"
-"elements and their enumeration","knowledge","B-ij","B-13","set","printed knowledge list has B-13 (printed p. 75)"
-"environmental conditions and situations","events","F-III-j","F-III-3","set","printed events, F-III-3 (printed p. 75)"
-"goals, ends, and orientations","design of the human maze","D-II-j","D-II-3","set","printed design of the human maze, D-II-3 (printed p. 75)"
-"group reference","society","C-I-j","C-I-5","set","printed society list has C-I-5, no C-I-3 (printed p. 76)"
-"material culture","artificial","D-T-iy","D-I-15","set","printed artificial, D-I-15 (printed p. 76)"
-"modes","modes of behavior","D-IF-i4","D-II-14","set","printed modes of behavior, D-II-14 (printed p. 76)"
-"patterns, systems, and organization","configuration","E-j","E-5","set","printed configuration, E-5, E-8, G-6 (printed p. 77)"
-"patterns, systems, and organization","integrated","E-9-","E-9","set","printed integrated, E-3, E-9 (printed p. 77)"
-"products of human activity","materials","F-II-7-","F-II-7","set","printed materials, F-II-7 (printed p. 77)"
-"symbols","symbols","F-I-j","F-I-3","set","printed symbols list has F-I-3, no F-I-5 (printed p. 77)"
-"traits","material traits","E-3-","E-3","set","printed material traits, E-3 (printed p. 78)"
-"transmission, non-genctic","transmission","D-I-14]","D-I-14","set","printed transmission list has D-I-14 (printed p. 78)"
-"patterns, systems, and organization","patterns","F-I-<","F-I-6","set","patterns list prints F-I-6 and no F-I-4 (F-I-4 is under habit patterns) (printed p. 77)"
+"heading","sub_element","ocr_raw","kk_code","action","evidence","new_sub_element"
+"beliefs","religious beliefs","D-1112","D-II-12","set","OCR split of D-II-12",NA
+"biological heritage","human biological equipment and process","F-I","F-IV-5","set","truncated; printed F-IV-5",NA
+"capabilities","carriers of culture-individuals","D-III-j","D-III-3","set","j read as 5; printed 3; heading carriers of culture",NA
+"capabilities","j","F-III-j","F-III-3","set","printed 3; parsed 5",NA
+"capabilities","members of a society","C-I5","C-I-5","set","OCR C-I5 truncated; members of a society",NA
+"civilization","or shared patterns-common","G-I-j","G-3","set","sub is common; G-I-j misread",NA
+"civilization","shared","C-I8","C-I-8","set","I dropped in parse; printed C-I-8 (shared)",NA
+"customs","j","B-ij","B-13","set","B-ij read as 15; printed 13",NA
+"dynamic structural relations","intcrcorrclated customs","F-2","E-2","set","printed intercorrelated customs, E-2",NA
+"elements and their enumeration","language","D-II-ia","D-II-12","set","suffix a wrong; printed D-II-12",NA
+"environmental conditions and situations","natural surroundings","D-I-j","D-I-3","set","natural surroundings; j read as 5",NA
+"environmental conditions and situations","social situation","D-III-j","D-III-3","set","social situation; j read as 5",NA
+"group reference","group","B-ji","B-5","set","B-ji",NA
+"group reference","i","E-j","E-3","set","E-j; social list has E-3",NA
+"habits","established habits","D-III-j","D-III-3","set","established habits; j read as 5",NA
+"history","mind","F-i","F-II-5","set","mind entry; printed F-II-5",NA
+"patterns, systems, and organization","organized","F-j","E-5","set","organized; printed E-5",NA
+"process ts and means","social procedures","G-I-i","C-I-2","set","social procedures",NA
+"products of human activity","tools","C-I-53","C-I-5a","set","variant a read as 3",NA
+"psychoanalytic elements","substitutes","D-I","D-IV-1","set","substitutes",NA
+"psychoanalytic elements","reactionfonnat ons","D-I","D-IV-1","set","reaction-formations",NA
+"social","social","F-I4","F-I-4","set","I dropped",NA
+"social","social","F-I8","F-I-8","set","I read as 1",NA
+"totality, culture as comprehensive","sum","A-103","A-10a","set","sum; printed A-10a",NA
+"ways and life-ways","y","D-I-i","D-I-12","set","truncated; printed D-I-12",NA
+"ways and life-ways","maniere de vivre","C-I-183","C-I-18a","set","variant a read as 3",NA
+"adjustive-ajjptive function of culture","adjustments","F-I",NA,"unresolve","truncated; printed candidates: F-I-4; F-I-9; F-IV-3",NA
+"behavior","adaptive behavior","F-19",NA,"unresolve","truncated; printed candidates: F-I-9 or F-I-19",NA
+"group reference","group","F-i","F-I-6","set","page image p.75 (PDF 79): group list 'E-9, F-I-6, F-I-19'; F-I-6 absent from group sub-element, F-I-19 present",NA
+"group reference","society","D-I",NA,"unresolve","duplicate: printed society list has D-I-12 and D-I-13 (printed p.76); both already edges under this sub-element, so the token adds no new edge",NA
+"group reference","i","D-II-j","D-II-5","set","printed D-II-5 under social (not group reference)",NA
+"dynamic structural relations","relationships","C-I","C-II-6","set","printed C-II-6 under relationships (page image, printed p. 75)",NA
+"ways and life-ways","ways","C-I-i","C-I-15","set","printed C-I-15 under ways (page image, printed p. 78)",NA
+"group reference","social groupings","A-i","A-13","set","printed A-13 under social groupings (page image, printed p. 76)",NA
+"acts, actions, and activities","actions","F-I-1*4","F-I-14","set","printed F-I-14 under actions (page image, printed p. 74)",NA
+"adjustive-ajjptive function of culture","adjustments","F-I","F-IV-3","set","printed adjustments list F-I-4, F-I-9, F-IV-3; F-I-4 and F-I-9 already present, so F-IV-3 (printed p. 74)",NA
+"behavior","adaptive behavior","F-19","F-I-19","set","behavior list prints F-19 (no roman I); adaptive behavior entry gives F-I-19 (printed p. 74)",NA
+"capabilities","carriers of culture-individuals","C-II-J","C-II-3","set","printed carriers list has C-II-3, no C-II-5 (printed p. 75)",NA
+"capabilities","persons","B-ij","B-13","set","printed persons list has B-13, no B-15 (printed p. 75)",NA
+"capabilities","members of a society","C-II-j","C-II-3","set","printed members list has C-II-3, no C-II-5 (printed p. 75)",NA
+"capabilities","generations","F-I-j","F-I-3","set","printed generations list has F-I-3, no F-I-5 (printed p. 75)",NA
+"civilization","civilization","A-j","A-3","set","printed civilization list has A-3, no A-5 (printed p. 75)",NA
+"civilization","civilization","F-I-jcommon","F-I-3","set","printed civilization list has F-I-3, no F-I-5 (printed p. 75)",NA
+"civilization","or shared patterns-common","F-I-j","F-I-3","set","printed common list has F-I-3, no F-I-5 (printed p. 75)",NA
+"civilization","or shared patterns-common","G-j","G-3","set","printed common list has G-3, no G-5 (printed p. 75)",NA
+"civilization","living together","D-II-j","D-II-5","set","printed living together, D-II-5 (printed p. 75)",NA
+"civilization","accepted","C-I-j","C-I-3","set","printed accepted, C-I-3 (printed p. 75)",NA
+"constancy","relatively permanent","F-I-j","F-I-3","set","printed relatively permanent, F-I-3 (printed p. 75)",NA
+"cultivation, culture of self","cultivated","C-II-j","C-II-3","set","printed cultivated, C-II-3, C-II-4 (printed p. 75)",NA
+"customs","customs","A-j","A-3","set","printed customs list has A-3, no A-5 (printed p. 75)",NA
+"dynamic structural relations","interlinked institutions","E-j","E-3","set","printed interlinked institutions, E-3 (printed p. 75)",NA
+"dynamic structural relations","correlation","E-j","E-3","set","printed correlation, E-3 (printed p. 75)",NA
+"elements and their enumeration","elements","B-j","B-3","set","printed elements list has B-3, no B-5 (printed p. 75)",NA
+"elements and their enumeration","knowledge","B-ij","B-13","set","printed knowledge list has B-13 (printed p. 75)",NA
+"environmental conditions and situations","events","F-III-j","F-III-3","set","printed events, F-III-3 (printed p. 75)",NA
+"goals, ends, and orientations","design of the human maze","D-II-j","D-II-3","set","printed design of the human maze, D-II-3 (printed p. 75)",NA
+"group reference","society","C-I-j","C-I-5","set","printed society list has C-I-5, no C-I-3 (printed p. 76)",NA
+"material culture","artificial","D-T-iy","D-I-15","set","printed artificial, D-I-15 (printed p. 76)",NA
+"modes","modes of behavior","D-IF-i4","D-II-14","set","printed modes of behavior, D-II-14 (printed p. 76)",NA
+"patterns, systems, and organization","configuration","E-j","E-5","set","printed configuration, E-5, E-8, G-6 (printed p. 77)",NA
+"patterns, systems, and organization","integrated","E-9-","E-9","set","printed integrated, E-3, E-9 (printed p. 77)",NA
+"products of human activity","materials","F-II-7-","F-II-7","set","printed materials, F-II-7 (printed p. 77)",NA
+"symbols","symbols","F-I-j","F-I-3","set","printed symbols list has F-I-3, no F-I-5 (printed p. 77)",NA
+"traits","material traits","E-3-","E-3","set","printed material traits, E-3 (printed p. 78)",NA
+"transmission, non-genctic","transmission","D-I-14]","D-I-14","set","printed transmission list has D-I-14 (printed p. 78)",NA
+"patterns, systems, and organization","patterns","F-I-<","F-I-6","set","patterns list prints F-I-6 and no F-I-4 (F-I-4 is under habit patterns) (printed p. 77)",NA
+"group reference","society","A-q","A-9","set","page image p.76 (PDF 79): society list 'A-4, A-9, A-10'; A-9 absent from society sub-element",NA
+"group reference","group","F-U","B-21","set","page image p.75 (PDF 78): group list 'B-20, B-21, C-I-3'; B-21 absent from group sub-element. Glyph unreadable; assigned by elimination with F-i (F-I-6 is the other missing printed code)",NA
+"group reference","i","F-I-i}","F-I-13","set","page image p.76 (PDF 79): social list row 'F-I-12, F-I-13, F-I-16'; token sits between F-I-12 and F-I-16. F-I-13 already an edge under heading social",NA
+"history","ideas and cogni ve processes-ideas","F-H-j","F-II-5","set","page image p.76 (PDF 79): ideas list 'F-II-2, F-II-3, F-II-5'; token follows F-II-3 in the same line",NA
+"totality, culture as comprehensive","sum","A-j","A-5","set","page image p.77 (PDF 81): sum list 'A-3, A-5, A-10'; A-3 already an edge, A-5 absent",NA
+"process ts and means","means of adjustment","F-I\",NA,"unresolve","page image p.77 (PDF 80): smudge after 'F-I' at the end of the means-of-adjustment list; unreadable at 600 dpi",NA
+"transmission, non-genctic","socially transmined","D-II-14","D-II-14","rename_sub","printed sub-element is 'socially transmitted' (page image p.78, PDF 81). Renamed by apply_index_b_fixes; code and flags unchanged.","socially transmitted"
+"transmission, non-genctic","socially transmined","D-II-16","D-II-16","rename_sub","printed sub-element is 'socially transmitted' (page image p.78, PDF 81). Renamed by apply_index_b_fixes; code and flags unchanged. Code gap (no Index A row) stays open in the crosswalk decision D2-16","socially transmitted"
+"transmission, non-genctic","socially transmined","F-I-19","F-I-19","rename_sub","printed sub-element is 'socially transmitted' (page image p.78, PDF 81). Renamed by apply_index_b_fixes; code and flags unchanged.","socially transmitted"
+"transmission, non-genctic","socially transmined","F-II-10","F-II-10","rename_sub","printed sub-element is 'socially transmitted' (page image p.78, PDF 81). Renamed by apply_index_b_fixes; code and flags unchanged.","socially transmitted"

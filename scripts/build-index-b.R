@@ -431,6 +431,11 @@ apply_index_b_fixes <- function(edges, fixes) {
                  edges$sub_element == fixes$sub_element[i] &
                  edges$ocr_raw == fixes$ocr_raw[i])
     stopifnot(length(hit) >= 1)
+    # Sub-element renames correct a name only; they leave the code and flags alone.
+    if (identical(fixes$action[i], "rename_sub")) {
+      edges$sub_element[hit] <- fixes$new_sub_element[i]
+      next
+    }
     edges$kk_code[hit] <- fixes$kk_code[i]
     edges$manual[hit] <- TRUE
   }
