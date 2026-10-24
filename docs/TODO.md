@@ -96,11 +96,14 @@ manual-fix keys: the build errors if a key matches no token.
 
 - Index A's verification is a single-reader check. There's no double-keying. Do not describe the
   dataset as fully verified.
-- The 932 unflagged ok rows have not been audited (only the 50-row sample, pending).
+- 915 ok edges have no audit verdict (966 ok minus 51 with a row in `kk-index-b-flagged-audit.csv`).
+  The earlier figure of 932 could not be reproduced. Only the 50-row sample is pending. 56 of 60
+  manual fixes have no row in either audit file (PROVENANCE 3.3).
 - Angyal's row (B-14) is from the page image. It is absent from the project's OCR text, and the
   second scan's tesseract output for PDF p. 89 doesn't include it (page 88 probably has it, not
   checked).
 - Element labels are unverified against the page image and may contain residual OCR damage.
-- The 39 appendix-only Boroch codes have no author or year in `kkcc-definition-years.csv`, so the
-  crosswalk does not link them. Several have matching K&K Index A rows (for example D-I-10 Ford
-  1942, F-I-1a Willey 1927b, E-4 Redfield, A-20 Thurnwald 1950) that were not linked.
+- The 39 appendix-only Boroch codes (PROVENANCE section 4) are not in `kkcc-definition-years.csv`,
+  which covers only the 135 Table 2 codes, so the crosswalk does not link them. Several have
+  matching K&K Index A rows (for example D-I-10 Ford 1942, F-I-1a Willey 1927b, E-4 Redfield,
+  A-20 Thurnwald 1950) that were not linked. Linking them would be a new decision, not a fix.

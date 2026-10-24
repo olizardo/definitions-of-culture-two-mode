@@ -104,7 +104,7 @@ added from the page image (currently one, Angyal).
 **`kk-boroch-crosswalk-decisions.csv`**: hand decisions for crosswalk rows that the rule
 cannot settle. Each row gives the decision (`match` or `open`), the K&K code, and the basis.
 
-**`kk-index-b-ok-sample.csv`**: a 50-row random sample (seed 4817) of the 932 unflagged `ok`
+**`kk-index-b-ok-sample.csv`**: a 50-row random sample (seed 4817) of the 966 `ok`
 edges, with blank verdict columns for a page-image check.
 
 **`kk-index-b-unresolved.csv`**: Index B tokens that have no code (for example, every

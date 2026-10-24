@@ -222,7 +222,7 @@ from the PDF via pdftotext -layout.
 - Audit scope: the 138 flagged edges, all 198 OCR-corrected edges
   (`data/kk-index-b-ocr-audit.csv`), the 32 recovered j/fragment tokens and the 8 unresolved
   tokens (`data/kk-index-b-zoom-check.csv`) were checked against the printed pages of the scan
-  (Index B = PDF pp. 77-81). The 932 unflagged `ok` rows have NOT been audited. The OCR-corrected
+  (Index B = PDF pp. 77-81). 915 `ok` edges have no audit verdict (PROVENANCE 3.3). The OCR-corrected
   audit was read at 200 dpi and the recoveries at 300-400 dpi, by one reader; there is no
   double-keyed check. Do not describe the dataset as fully verified.
 - Heading attribution is wrong in several blocks: "carriers of culture" entries sit under

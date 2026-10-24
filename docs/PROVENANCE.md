@@ -98,6 +98,26 @@ The crosswalk now strips initials from Boroch surnames ("A. Davis" matches Davis
 
 Result: 127 rule matches, 2 hand decisions, 4 ambiguous, 1 unmatched, and F4-6 (resolved in section 5).
 
+### 3.3 Audit coverage (2026-10-24)
+
+Coverage of the Index B edges by the audit files, joined on kk_code + heading + sub_element
+(`data/kk-index-b-edges.csv`, 1279 edges; `kk-index-b-flagged-audit.csv` and
+`kk-index-b-ocr-audit.csv`):
+
+| parse_flag | edges | with an audit row | without |
+|---|---|---|---|
+| ok | 966 | 51 (flagged audit) | 915 |
+| ocr_corrected | 210 | 210 (198 OCR audit, 12 flagged audit) | 0 |
+| junk_name | 33 | 33 (flagged audit) | 0 |
+| code_not_in_index_a | 10 | 10 (flagged audit) | 0 |
+| manual_fix | 60 | 4 (OCR audit) | 56 |
+
+Of the 138 flagged-audit rows, 30 do not join to any edge. They appear to be keyed on uncorrected
+tokens (for example F-1, C-18, A-103, D-1112). Their verdicts exist only in the flagged audit.
+The 932 unaudited-ok figure in earlier notes could not be reproduced. The join gives 915.
+The 56 manual fixes without an audit row are justified by the printed evidence in
+`kk-index-b-manual-fixes.csv`, not by an independent verdict.
+
 ## 4. The 39 appendix-only codes
 
 Boroch's appendix (171 codes) has 39 codes that never appear in Table 2: A21, A22, B17,
@@ -164,7 +184,7 @@ Status as of 2026-10-24. Items marked open need a decision or a page-image check
 - **Unresolved Index B tokens (open, 8).** Five have two printed candidates; three are unreadable on the scan. They are excluded from the edge list. Resolving them needs a second scan or a decision to accept the exclusion. The CHECK rows for `F-i` (group) and `D-I` (society) are in this set.
 - **Junk sub-element names (open, 33 edges).** Sub-elements such as `j`, `i`, and `y` are OCR fragments or misattributed labels. The per-case decision (map to the printed sub-element, or drop from the sub-element matrix and keep in the heading matrix) has not been made.
 - **Flagged edges.** All 26 FIX rows are in the manual-fix table; their keys and codes match the flagged audit. Two CHECK rows are resolved (`F-1` "adjustments" → F-IV-3; `F-19` "adaptive behavior" → F-I-19). A `B-ji` FIX row merges into an existing `B-5` edge when the build removes duplicates.
-- **Unaudited ok rows (open).** The 932 unflagged `ok` rows have not been checked against the page image. A 50-row random sample (seed 4817) is in `data/kk-index-b-ok-sample.csv`, with blank verdict columns.
+- **Unaudited ok rows (open).** 915 `ok` edges have no audit verdict (section 3.3) and have not been checked against the page image. A 50-row random sample (seed 4817) is in `data/kk-index-b-ok-sample.csv`, with blank verdict columns.
 - **Index A.** Every row on printed pp. 73–74 was read against the page image (section 3.1). That is a single-reader check, not double-keyed. Sears's `C-I-Addendum` is printed that way and stays unresolved.
 - **Crosswalk (open, 5).** A16, A17, A20, C1-11, and B5 need a text check (section 3.2).
 - **Appendix-only codes.** The 39 codes have no author or year in `kkcc-definition-years.csv`, so the crosswalk does not link them. The Index A rows for several of them (for example D-I-10 Ford 1942, F-I-1a Willey 1927b, E-4 Redfield, A-20 Thurnwald 1950) do exist; they were not linked.
