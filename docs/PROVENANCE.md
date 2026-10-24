@@ -18,7 +18,10 @@ printed "Number of uses". Two facts matter for analysis:
 
 - "TOTAL USES" counts uses with multiplicity; the binary matrices deduplicate.
 - The 56 rows mix 16 main categories with 40 auxiliary notions. The collapsed network
-  (`kkcc_two_mode_main.rds`) unions each auxiliary into its parent.
+  (`kkcc_two_mode_main.rds`) unions each auxiliary into its parent. The parent of each auxiliary is
+  set from Boroch section 3.2.2 items a)–p) (`scripts/build-concept-categories.R`), not from row position,
+  because auxiliaries such as "Habit" and "Belief" print before their parent. Each main category's
+  binary tie count is at or below its printed total (`data/kkcc-concept-categories.csv`).
 
 Table 2 has 135 definition columns. Boroch's appendix has 171 codes. The two sets overlap
 in 132 codes, and they differ in both directions:
@@ -95,9 +98,41 @@ The crosswalk now strips initials from Boroch surnames ("A. Davis" matches Davis
 
 - D3-1 (Tozzer, no year): matched to D-III-1. The only K&K Tozzer in subgroup D-III; moderate confidence.
 - D2-16 (Aberle et al. 1950): matched to D-II-16 on the quoted text, "Culture is socially transmitted behavior...", which matches the Index B element label. Inferred, not read from Index A.
-- Open: A16 and A17 (Kluckhohn & Kelly 1945a; K&K A-14 and A-15), A20 (Herskovits 1948; A-18 and A-19), C1-11 (Kluckhohn & Kelly 1945a; C-I-10, 11, 12), and B5 (Myres 1927; K&K B-4a is 1929, so the year conflicts). These need a check of the quoted text. They are not assigned by position.
+- A16 → A-14, A17 → A-15, A20 → A-18, C1-11 → C-I-10 (2026-10-24). Each rests on a verbatim
+  match between Boroch's appendix text and the K&K Part II quotation printed on the page image
+  (printed p. 44 = PDF p. 47 for A16, A17 and A20; printed p. 50 = PDF p. 53 for C1-11). The
+  printed item number is taken as the K&K code within the group: items 14, 15 and 18 on p. 44
+  are A-14, A-15 and A-18, and item 10 on p. 50 is C-I-10. The printed citations are Kluckhohn
+  & Kelly 1945a: 82, 1945a: 96, Herskovits 1948: 154 and Kluckhohn & Kelly 1945a: 84, so each
+  matches Boroch's author and year. These are hand decisions, recorded in
+  `data/kk-boroch-crosswalk-decisions.csv`.
+- Appendix-only (not in the crosswalk, which covers the 135 Table 2 codes): A21 → A-19 and
+  C1-12 → C-I-11, both from the same page images (item 19, Herskovits 1948: 625, p. 44; item 11,
+  Kluckhohn & Kelly 1945a: 97, p. 50). Recorded in `data/kkcc-appendix-only-links.csv`.
+- C1-22 → C-I-Addendum (2026-10-24). K&K prints an addendum after C-I item 19: "Addendum: When this monograph was already in press ... by the biologist, Paul Sears:". The quoted text matches Boroch's C1-22 verbatim, and the printed citation "(1939, 78–79)" was read on the page image (PDF p. 54, printed p. 51, 400 dpi crop; the OCR layer dropped the "1"). The printed folio "51" and running head "Definitions: Group C: Normative" are visible on the page image (200 dpi). Index A's Sears row is C-I-Addendum (1939). The addendum has no number, so the link is the label, not a numbered code. No Index B edge carries it.
+- B5 → B-4a (2026-10-24). The printed Part II entry on p. 47 (PDF p. 50) is "4a. Myres, 1927: 16.",
+  and its quotation matches Boroch B5 verbatim. The only Myres row in Index A is B-4a, which
+  prints "(1929)" on p. 73 (PDF p. 76). So K&K's index and Part II disagree by two years on the
+  same entry. Decision (2026-10-24): 1927 is the working year for B-4a, matching the Part II
+  entry and Boroch. The Index A transcription keeps the printed "(1929)" as a known K&K
+  discrepancy. No script reads the Index A year for Myres. Primary-source check (2026-10-24):
+  the Google Books record for Myres, *The Political Ideas of the Greeks* (Abingdon Press, 1927;
+  George Slocum Bennett Foundation lectures, 8th series, 1925–26), gives 1927 as the publication
+  year, which supports the working year. (The Google Books record is metadata only; it was not
+  checked against the book's title page.)
 
-Result: 127 rule matches, 2 hand decisions, 4 ambiguous, 1 unmatched, and F4-6 (resolved in section 5).
+Second-copy check (2026-10-24). The 229-page Adobe paper-capture copy (`documents/kroeber-amp-…
+_compress.pdf`, byte-identical to `pdfcoffee.com-…pdf`) was rendered at 150 dpi. Printed p. 44 is
+PDF p. 50 and printed p. 50 is PDF p. 56, so the printed-page offset is +6 here, against +3 in
+`Kroeber-kluckhohn.pdf`. The same printed citations appear on both: items 14 (1945a: 82), 15
+(1945a: 96), 18 (Herskovits 1948: 154), 19 (Herskovits 1948: 625) and 20 (Thurnwald 1950: 104)
+on p. 44; items 10 (1945a: 84) and 11 (1945a: 97) on p. 50. The checkpoints are in
+`data/kk-page-map.csv`. An automatic page map was not built: the ABBYY scan's text layer lacks the
+running headers, and the copy's text-layer page count does not match pdfinfo, so the map is
+limited to pages checked by eye.
+
+Result after these decisions: 127 rule matches, 7 hand decisions (D3-1, D2-16, A16, A17, A20,
+C1-11, B5), no ambiguous rows, and F4-6 (resolved in section 5). No row is unmatched.
 
 ### 3.3 Audit coverage (2026-10-24; snapshot before the resolutions in 3.4)
 
@@ -184,6 +219,32 @@ Tests against K&K's text point to two mechanisms.
 Table 2 is therefore best read as a transposition of K&K's Index B restricted to Boroch's
 notion vocabulary, not as an independent coding of all definitions.
 
+### 4.1 Year conflicts in the appendix-only links (2026-10-24)
+
+`data/kkcc-appendix-only-links.csv` flagged seven codes where Boroch's year differed from the
+year in K&K's own text, as read from our OCR layer (`documents/Kroeber-kluckhohn.pdf`, PDF page =
+printed page + 3). The page images settle all seven. K&K prints the same year as Boroch and
+as Index A in every case, so the conflict came from OCR errors in the text layer, not from K&K.
+
+| Code | Boroch | K&K printed citation (printed p.) | Index A row | OCR reading that caused the flag |
+|---|---|---|---|---|
+| A22 | Thurnwald 1950 | "20. Thurnwald, 1950: 104" (p. 44) | A-20 (1950) | "1930" |
+| C1-9 | Linton 1945b | "8. Linton, 1945b: 203" (p. 50) | C-I-8 (1945b) | "1943b" |
+| C1-10 | Linton 1945a | "9. Linton, 1945a: 30" (p. 50) | C-I-9 (1945a) | "1943a" |
+| E5 | Linton 1945a | "5. Linton, 1945a: 5, 32" (p. 61) | E-5 (1945a) | "1943a" |
+| F2-3 | Schmidt 1937 | "3. Schmidt, 1937: 131" (p. 66) | F-II-3 (1937) | "1931" |
+| F2-12 | Becker 1950 | "10. Becker, 1950: 251" (p. 67) | F-II-10 (1950) | "1930" |
+| F4-2 | Ostwald 1915 | "2. Ostwald, 1915: 192" (p. 70) | F-IV-2 (1915) | "1913" |
+
+Each row was checked on the page image (150 dpi). The Index A rows were already checked against
+the page images in 3.1. These seven codes are now linked to the Index A row shown. The year
+dispute is closed.
+
+The same pages settle the open rows A16, A17, A20 and A21 (section 3.2), and C1-11 and C1-12
+(section 3.2 for C1-11, the appendix-only links for C1-12). C1-13 is now settled too: its quotation is printed as item 12 on
+printed p. 51 (PDF p. 54), "Kluckhohn and Kelly, 1945a: 91", which follows items 10 and 11 as C-I-12.
+No appendix-only row remains ambiguous.
+
 ## 5. The F4-6 resolution
 
 Boroch's Table 2 includes a column F4-6 with no appendix entry. The evidence points to an
@@ -230,7 +291,10 @@ Status as of 2026-10-24. Items marked open need a decision or a page-image check
 - **Unaudited ok rows (open).** 915 `ok` edges have no audit verdict (section 3.3) and have not been checked against the page image. A 50-row random sample (seed 4817) is in `data/kk-index-b-ok-sample.csv`, with blank verdict columns.
 - **Manual fixes without an audit row (open).** 62 of the 66 `manual_fix` edges have no row in either audit file (section 3.3, a dated snapshot). Their evidence is the printed citation in `kk-index-b-manual-fixes.csv`. The six 2026-10-24 resolutions are in that group.
 - **Index A.** Every row on printed pp. 73–74 was read against the page image (section 3.1). That is a single-reader check, not double-keyed. Sears's `C-I-Addendum` is printed that way and stays unresolved.
-- **Crosswalk (open, 5).** A16, A17, A20, C1-11, and B5 need a text check (section 3.2).
+- **Crosswalk (resolved 2026-10-24).** A16, A17, A20, C1-11 and B5 are decided in section 3.2, and
+  the appendix-only rows A21, C1-12 and C1-13 are in `data/kkcc-appendix-only-links.csv`. The
+  one point is that Index A prints Myres B-4a as 1929 while the Part II entry reads 1927; 1927 is the
+  publication year of the original Myres book (section 3.2).
 - **Appendix-only codes.** The 39 codes have no author or year in `kkcc-definition-years.csv`, so the crosswalk does not link them. The Index A rows for several of them (for example D-I-10 Ford 1942, F-I-1a Willey 1927b, E-4 Redfield, A-20 Thurnwald 1950) do exist; they were not linked.
 - **Element labels.** Index B element labels are unverified against the page image and may contain residual OCR damage.
 - **Rights (open).** Whether K&K Index B element labels can be released is undecided (see README).

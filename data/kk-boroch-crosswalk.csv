@@ -7,12 +7,12 @@
 "A13",TRUE,"Panunzio",1939,NA,NA,"A-13",1,"A-11","A-11","auto",FALSE,NA,NA
 "A14",TRUE,"Murray",1943,NA,NA,"A-14",1,"A-12","A-12","auto",FALSE,NA,NA
 "A15",TRUE,"Malinowski",1944,NA,NA,"A-15",1,"A-13","A-13","auto",FALSE,NA,NA
-"A16",TRUE,"Kluckhohn and Kelly",1945,NA,"a","A-16",2,NA,"A-14;A-15","ambiguous",FALSE,"open","Kluckhohn and Kelly 1945a. K&K A-14 and A-15 carry the same author, year, and suffix, so metadata cannot order them. Needs a check of the quoted text against K&K Part II A-14 and A-15."
-"A17",TRUE,"Kluckhohn and Kelly",1945,NA,"a","A-17",2,NA,"A-14;A-15","ambiguous",FALSE,"open","Kluckhohn and Kelly 1945a. Same two candidates as A16 (K&K A-14, A-15). Needs a text check; not matched by position."
+"A16",TRUE,"Kluckhohn and Kelly",1945,NA,"a","A-16",2,"A-14","A-14;A-15","manual_decision",FALSE,"match","Printed Part II p. 44 (PDF p. 47), item 14: 'Kluckhohn and Kelly, 1945a: 82'. Quoted text matches Boroch A16 verbatim. Both Kluckhohn & Kelly 1945a rows are A-14 and A-15; item 14 is A-14. Checked on a 150 dpi page image."
+"A17",TRUE,"Kluckhohn and Kelly",1945,NA,"a","A-17",2,"A-15","A-14;A-15","manual_decision",FALSE,"match","Printed Part II p. 44 (PDF p. 47), item 15: 'Kluckhohn and Kelly, 1945a: 96'. Quoted text matches Boroch A17. Item 15 is A-15. Checked on a 150 dpi page image."
 "A18",TRUE,"Bidney",1947,NA,NA,"A-18",1,"A-16","A-16","auto",FALSE,NA,NA
 "A19",TRUE,"Kroeber",1948,NA,"a","A-19",1,"A-17","A-17","auto",FALSE,NA,NA
 "A2",TRUE,"Wissler",1920,NA,NA,"A-2",1,"A-2","A-2","auto",TRUE,NA,NA
-"A20",TRUE,"Herskovits",1948,NA,NA,"A-20",2,NA,"A-18;A-19","ambiguous",FALSE,"open","Herskovits 1948 with no suffix. K&K A-18 and A-19 are both Herskovits 1948. Needs a text check."
+"A20",TRUE,"Herskovits",1948,NA,NA,"A-20",2,"A-18","A-18;A-19","manual_decision",FALSE,"match","Printed Part II p. 44 (PDF p. 47), item 18: 'Herskovits, 1948: 154'. Quoted text matches Boroch A20. Herskovits 1948 rows are A-18 and A-19; item 18 is A-18 (item 19 is the A21 quotation, p. 625). Checked on a 150 dpi page image."
 "A3",TRUE,"Dixon",1928,NA,NA,"A-3",1,"A-3","A-3","auto",TRUE,NA,NA
 "A4",TRUE,"Dixon",1928,NA,NA,"A-4",1,"A-3","A-3","auto",FALSE,NA,NA
 "A5",TRUE,"Benedict",1931,1929,NA,"A-5",1,"A-4","A-4","auto",FALSE,NA,NA
@@ -36,13 +36,13 @@
 "B22",TRUE,"Henry",1949,NA,NA,"B-22",1,"B-21","B-21","auto",FALSE,NA,NA
 "B3",TRUE,"Sapir",1924,NA,"a","B-3",1,"B-3","B-3","auto",TRUE,NA,NA
 "B4",TRUE,"Tozzer",1925,NA,NA,"B-4",1,"B-4","B-4","auto",TRUE,NA,NA
-"B5",TRUE,"Myres",1927,NA,NA,"B-5",0,NA,"","no_kk_match",FALSE,"open","Myres 1927 (Boroch). The only K&K Myres row is B-4a (1929), and Boroch has no year_orig. Probable B-4a, but the year differs; needs a check of the appendix text and the source."
+"B5",TRUE,"Myres",1927,NA,NA,"B-5",0,"B-4a","","manual_decision",FALSE,"match","Printed Part II p. 47 (PDF p. 50), item 4a: 'Myres, 1927: 16.' Quoted text matches Boroch B5 verbatim, and the author and 1927 agree with Boroch. Index A (p. 73, PDF p. 76) prints 'Myres, B-4a (1929)', so K&K's index and Part II disagree on the year. The only Myres row is B-4a. The Part II year is used to match Boroch's 1927; the 1929 index year is recorded here, not resolved. Checked on 150-200 dpi page images."
 "B6",TRUE,"Bose",1929,NA,NA,"B-6",1,"B-5","B-5","auto",FALSE,NA,NA
 "B7",TRUE,"Malinowski",1931,NA,NA,"B-7",1,"B-6","B-6","auto",FALSE,NA,NA
 "B8",TRUE,"Winston",1933,NA,NA,"B-8",1,"B-7","B-7","auto",FALSE,NA,NA
 "B9",TRUE,"Lowie",1934,NA,NA,"B-9",1,"B-8","B-8","auto",FALSE,NA,NA
 "C1-1",TRUE,"Wissler",1929,NA,NA,"C-I-1",1,"C-I-1","C-I-1","auto",TRUE,NA,NA
-"C1-11",TRUE,"Kluckhohn and Kelly",1945,NA,"a","C-I-11",3,NA,"C-I-10;C-I-11;C-I-12","ambiguous",FALSE,"open","Kluckhohn and Kelly 1945a. Three K&K candidates with the same author and year: C-I-10, C-I-11, C-I-12. Needs a text check."
+"C1-11",TRUE,"Kluckhohn and Kelly",1945,NA,"a","C-I-11",3,"C-I-10","C-I-10;C-I-11;C-I-12","manual_decision",FALSE,"match","Printed Part II p. 50 (PDF p. 53), item 10: 'Kluckhohn and Kelly, 1945a: 84'. Quoted text matches Boroch C1-11. The three Kluckhohn & Kelly 1945a rows are C-I-10, C-I-11, C-I-12; item 10 is C-I-10. Checked on a 150 dpi page image."
 "C1-16",TRUE,"Lasswell",1948,NA,NA,"C-I-16",1,"C-I-15","C-I-15","auto",FALSE,NA,NA
 "C1-17",TRUE,"Bennett and Tumin",1949,NA,NA,"C-I-17",1,"C-I-16","C-I-16","auto",FALSE,NA,NA
 "C1-18",TRUE,"Frank",1948,NA,NA,"C-I-18",1,"C-I-17","C-I-17","auto",FALSE,NA,NA

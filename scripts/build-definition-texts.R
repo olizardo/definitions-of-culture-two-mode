@@ -90,9 +90,9 @@ grab <- function(ls) {
   gsub("\\s+", " ", t, perl = TRUE)
 }
 
-def_attrs <- readRDS("data/kkcc_two_mode.rds")$def_attrs
+codes_all <- colnames(readRDS("data/kkcc_two_mode.rds")$biadjacency)
 codes <- gsub("\u2013", "-", sub(paste0(code.pat, ".*$"), "\\1", lines[starts]), perl = TRUE)
-out <- def_attrs[, "code", drop = FALSE]
+out <- data.frame(code = codes_all, stringsAsFactors = FALSE)
 out$text <- vapply(seq_along(starts), function(i) grab(lines[starts[i]:ends[i]]), "")[match(out$code, codes)]
 # variants absent from the appendix inherit the base code's text
 idx <- is.na(out$text)

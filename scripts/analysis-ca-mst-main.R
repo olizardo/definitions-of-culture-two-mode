@@ -1,7 +1,7 @@
 # CA and maximum spanning trees for the collapsed KKCC network
 # (16 main categories x 135 definitions, union binarized).
 # Follows tm-ca.html (CA via eigen) and tm-duality.html (Breiger projections, MST).
-# Inputs: data/kkcc_two_mode_main.rds; def_attrs from data/kkcc_two_mode.rds.
+# Inputs: data/kkcc_two_mode_main.rds; def_attrs from scripts/kkcc-definition-attrs.R.
 
 library(igraph)
 library(ggplot2)
@@ -12,7 +12,8 @@ set.seed(8427)
 d  <- readRDS("data/kkcc_two_mode_main.rds")
 A  <- d$biadjacency
 g  <- d$graph
-def_attrs <- readRDS("data/kkcc_two_mode.rds")$def_attrs
+source("scripts/kkcc-definition-attrs.R")
+def_attrs <- definition_attrs()
 
 dir.create("figures", showWarnings = FALSE)
 

@@ -1,8 +1,8 @@
 # Build the Supplement Bibliography of ROBAFC-5.1.pdf (pp. 94-99: the works
 # cited in the appendix definition tables) as a structured dataset, match each
-# of the 135 KKCC definition codes to its bibliography entry, and attach the
-# entry as vertex attributes (bib_entry, author_canonical, bib_ref) on the
-# definition vertices of both igraph objects, plus columns of def_attrs.
+# of the 135 KKCC definition codes to its bibliography entry. Writes
+# data/kkcc-supplement-bibliography.csv and data/kkcc-definition-biblio.csv;
+# graph attributes are attached by scripts/build-two-mode-networks.R.
 #
 # The bibliography also canonicalizes author names (appendix strings like
 # "A. Davis" / "K. Davis" normalize to the bibliography's surname forms) and
@@ -179,29 +179,4 @@ dy$decade[idx] <- floor(dy$year[idx] / 10) * 10
 write.csv(dy, "data/kkcc-definition-years.csv", row.names = FALSE)
 cat("F4-6 resolved:", dy$author[idx], dy$year[idx], "\n")
 
-# ------------------------------------------------------------ 4. attach graphs
-for (f in c("data/kkcc_two_mode.rds", "data/kkcc_two_mode_main.rds")) {
-  dd <- readRDS(f)
-  ji <- match(V(dd$graph)$name, def.bib$code)
-  V(dd$graph)$bib_entry        <- def.bib$entry_id[ji]
-  V(dd$graph)$author_canonical <- def.bib$author_canonical[ji]
-  V(dd$graph)$bib_ref          <- def.bib$bib_ref[ji]
-  # F4-6's inferred author/year also lands on the plain attributes
-  vi <- match(V(dd$graph)$name, dy$code)
-  V(dd$graph)$author <- dy$author[vi]
-  V(dd$graph)$year   <- dy$year[vi]
-  V(dd$graph)$decade <- dy$decade[vi]
-  jj <- match(dd$def_attrs$code, def.bib$code)
-  dd$def_attrs$bib_entry        <- def.bib$entry_id[jj]
-  dd$def_attrs$match_status     <- def.bib$match_status[jj]
-  dd$def_attrs$author_canonical <- def.bib$author_canonical[jj]
-  dd$def_attrs$bib_year         <- def.bib$bib_year[jj]
-  dd$def_attrs$bib_ref          <- def.bib$bib_ref[jj]
-  dd$def_attrs$author           <- dy$author[match(dd$def_attrs$code, dy$code)]
-  dd$def_attrs$year             <- dy$year[match(dd$def_attrs$code, dy$code)]
-  dd$def_attrs$decade           <- dy$decade[match(dd$def_attrs$code, dy$code)]
-  saveRDS(dd, f)
-  cat("attached bib attributes in", f, "- definition vertices with bib_entry:",
-      sum(V(dd$graph)$type & !is.na(V(dd$graph)$bib_entry)), "of", sum(V(dd$graph)$type), "\n")
-}
-rm(dd, txt, bib.lines, entries, au, mm, dy, def.bib, bib, ji, jj, vi)
+# Graph attributes are attached by scripts/build-two-mode-networks.R.

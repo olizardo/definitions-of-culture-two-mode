@@ -1,0 +1,57 @@
+"concept","is_main","parent_category","list_item","printed_uses"
+"SOCIAL",TRUE,"SOCIAL","a",68
+"Socially",FALSE,"SOCIAL","a",NA
+"BEHAVIOR",TRUE,"BEHAVIOR","b",59
+"Behaviors",FALSE,"BEHAVIOR","b",NA
+"Behavior-families",FALSE,"BEHAVIOR","b",NA
+"Behavior-patterns",FALSE,"BEHAVIOR","b",NA
+"PATTERNS",TRUE,"PATTERNS","c",32
+"Pattern",FALSE,"PATTERNS","c",NA
+"Pattern-creating order",FALSE,"PATTERNS","c",NA
+"Patterning",FALSE,"PATTERNS","c",NA
+"Patterned customs",FALSE,"PATTERNS","c",NA
+"Patterned totality of group",FALSE,"PATTERNS","c",NA
+"Patterned ways of behavior",FALSE,"PATTERNS","c",NA
+"Patterned ways of thinking and acting",FALSE,"PATTERNS","c",NA
+"Habit",FALSE,"HABITS","d",NA
+"HABITS",TRUE,"HABITS","d",29
+"Habiting",FALSE,"HABITS","d",NA
+"Habitual attitudes",FALSE,"HABITS","d",NA
+"Habitual behaviour",FALSE,"HABITS","d",NA
+"Habitual patterns",FALSE,"HABITS","d",NA
+"Habitual ways of life",FALSE,"HABITS","d",NA
+"Social habituation",FALSE,"HABITS","d",NA
+"ACTING",TRUE,"ACTING","e",25
+"Interacting",FALSE,"ACTING","e",NA
+"Reacting",FALSE,"ACTING","e",NA
+"Activity",FALSE,"ACTING","e",NA
+"Activities",FALSE,"ACTING","e",NA
+"HERITAGE",TRUE,"HERITAGE","f",21
+"Heredity",FALSE,"HERITAGE","f",NA
+"Inherit/inherited",FALSE,"HERITAGE","f",NA
+"Inherits",FALSE,"HERITAGE","f",NA
+"Inherit-ance",FALSE,"HERITAGE","f",NA
+"Belief",FALSE,"BELIEFS","g",NA
+"BELIEFS",TRUE,"BELIEFS","g",20
+"Custom",FALSE,"CUSTOMS","h",NA
+"CUSTOMS",TRUE,"CUSTOMS","h",20
+"SYMBOL",TRUE,"SYMBOL","i",18
+"Symbolic action",FALSE,"SYMBOL","i",NA
+"Symbolic behavior",FALSE,"SYMBOL","i",NA
+"Symbolic systems",FALSE,"SYMBOL","i",NA
+"Non-symbolic counterparts",FALSE,"SYMBOL","i",NA
+"Symbolic transmission",FALSE,"SYMBOL","i",NA
+"Symbolically communicable",FALSE,"SYMBOL","i",NA
+"Symbol-ling",FALSE,"SYMBOL","i",NA
+"SYSTEM",TRUE,"SYSTEM","j",15
+"Systems",FALSE,"SYSTEM","j",NA
+"ATTITUDES",TRUE,"ATTITUDES","k",12
+"Attitudinal relationship",FALSE,"ATTITUDES","k",NA
+"Non-attitudional relationships",FALSE,"ATTITUDES","k",NA
+"Adjustment",FALSE,"ADJUSTMENTS","l",NA
+"ADJUSTMENTS",TRUE,"ADJUSTMENTS","l",10
+"KNOWLEDGE",TRUE,"KNOWLEDGE","m",8
+"LANGUAGE",TRUE,"LANGUAGE","n",7
+"TRANSMISSION",TRUE,"TRANSMISSION","o",4
+"Transmissible results",FALSE,"TRANSMISSION","o",NA
+"INDUSTRIES",TRUE,"INDUSTRIES","p",3

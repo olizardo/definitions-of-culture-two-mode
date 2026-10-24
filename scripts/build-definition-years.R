@@ -1,8 +1,7 @@
 # Build author/year attributes for the 135 KKCC definition codes by parsing
-# the appendix definition tables of ROBAFC-5.1.pdf, then attach them as node
-# attributes (author, year, decade) to the definition vertices of both igraph
-# objects (kkcc_two_mode.rds and kkcc_two_mode_main.rds) and as columns of
-# def_attrs.
+# the appendix definition tables of ROBAFC-5.1.pdf into
+# data/kkcc-definition-years.csv. Graph attributes are attached by
+# scripts/build-two-mode-networks.R.
 #
 # Appendix entries look like "A1 Tylor, 1871: 1 <definition text>", but the
 # -layout text wraps unpredictably: the "year: page" citation can land on its
@@ -67,15 +66,15 @@ cat("parsed entries:", nrow(rec), "\n")
 cat("no citation year found:\n")
 print(rec[is.na(rec$year), c("code", "author")], row.names = FALSE)
 
-def_attrs <- readRDS("data/kkcc_two_mode.rds")$def_attrs
+codes <- colnames(readRDS("data/kkcc_two_mode.rds")$biadjacency)
 cat("codes missing from appendix:",
-    paste(setdiff(def_attrs$code, rec$code), collapse = ", "), "\n")
-cat("appendix codes not in def_attrs:",
-    paste(setdiff(rec$code, def_attrs$code), collapse = ", "), "\n")
+    paste(setdiff(codes, rec$code), collapse = ", "), "\n")
+cat("appendix codes not in the network:",
+    paste(setdiff(rec$code, codes), collapse = ", "), "\n")
 
 # variants (A10a, C1-5a) are absent from the appendix: add rows inheriting
 # the base code's citation
-miss <- setdiff(def_attrs$code, rec$code)
+miss <- setdiff(codes, rec$code)
 for (cd in miss) {
   b <- sub("[a-z]$", "", cd)
   if (b %in% rec$code) {
@@ -85,7 +84,7 @@ for (cd in miss) {
   }
 }
 
-out <- def_attrs[, "code", drop = FALSE]
+out <- data.frame(code = codes, stringsAsFactors = FALSE)
 out$author <- rec$author[match(out$code, rec$code)]
 out$year   <- as.integer(rec$year[match(out$code, rec$code)])
 out$year_suffix <- rec$year_suffix[match(out$code, rec$code)]
@@ -125,23 +124,4 @@ print(out[is.na(out$author) | is.na(out$year), ], row.names = FALSE)
 print(out, row.names = FALSE)
 write.csv(out, "data/kkcc-definition-years.csv", row.names = FALSE)
 
-# ------------------------------------------------------------ attach to graphs
-# add author/year/decade as node attributes on the definition vertices of both
-# igraph objects, and as columns of def_attrs (concept vertices stay NA)
-for (f in c("data/kkcc_two_mode.rds", "data/kkcc_two_mode_main.rds")) {
-  dd <- readRDS(f)
-  vi <- match(V(dd$graph)$name, out$code)
-  V(dd$graph)$author <- out$author[vi]
-  V(dd$graph)$year   <- out$year[vi]
-  V(dd$graph)$decade <- out$decade[vi]
-  dd$def_attrs$author    <- out$author[match(dd$def_attrs$code, out$code)]
-  dd$def_attrs$year      <- out$year[match(dd$def_attrs$code, out$code)]
-  dd$def_attrs$year_suffix <- out$year_suffix[match(dd$def_attrs$code, out$code)]
-  dd$def_attrs$year_orig <- out$year_orig[match(dd$def_attrs$code, out$code)]
-  dd$def_attrs$decade    <- out$decade[match(dd$def_attrs$code, out$code)]
-  stopifnot(sum(!is.na(V(dd$graph)$year)) == sum(!is.na(out$year)))
-  saveRDS(dd, f)
-  cat("attached attributes in", f, "- definition vertices with year:",
-      sum(V(dd$graph)$type & !is.na(V(dd$graph)$year)), "of", sum(V(dd$graph)$type), "\n")
-}
-rm(dd)
+# Graph attributes are attached by scripts/build-two-mode-networks.R.

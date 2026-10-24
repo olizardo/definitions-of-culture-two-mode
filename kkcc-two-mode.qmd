@@ -25,7 +25,8 @@ library(igraph)
 d <- readRDS("data/kkcc_two_mode_main.rds")
 A <- d$biadjacency    # main categories (rows) x definitions (columns)
 g <- d$graph          # attributed bipartite graph
-def_attrs <- readRDS("data/kkcc_two_mode.rds")$def_attrs
+source("scripts/kkcc-definition-attrs.R")
+def_attrs <- definition_attrs()
 bb <- read.csv("data/kkcc-supplement-bibliography.csv")   # supplement bibliography
 db <- read.csv("data/kkcc-definition-biblio.csv")         # code -> bibliography entry
 ```

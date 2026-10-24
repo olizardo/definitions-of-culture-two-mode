@@ -10,7 +10,8 @@ from the PDF via pdftotext -layout.
 - Scripts are in `scripts/`. Bare script names elsewhere in this file mean `scripts/<name>`.
   Scripts use paths relative to the project root, so run them from there.
 - Source PDFs and the Archive text are in `documents/` (`ROBAFC-5.1.pdf`, `Kroeber-kluckhohn.pdf`,
-  `ED229292.pdf`, `pdfcoffee.com-…pdf`, `papersofpeabodymvol47no1peab_djvu.txt`; the last is gitignored).
+  `ED229292.pdf`, `pdfcoffee.com-…pdf` (tracked in git), `kroeber-amp-…_compress.pdf` (untracked, byte-identical to the pdfcoffee copy), `papersofpeabodymvol47no1peab_djvu.txt`; the last is gitignored).
+  Page-image checks use `Kroeber-kluckhohn.pdf` (ABBYY, 219 pp.); see the 2026-10-24 section below for page offsets.
   Read `documents/...` for the PDF paths below.
 - Deleted as stale (recoverable from git history): `analysis-basic-stats.R` (superseded by inline
   chunks in the report), legacy `analysis-ca-mst.R` and its `kkcc-ca-*-lcc.csv` / `*-2core.csv`
@@ -28,7 +29,7 @@ from the PDF via pdftotext -layout.
 - Appendix definition tables give author/year/source-page per code. Code inventory:
   author/year/decade now extracted from the PDF appendix by `build-definition-years.R`
   into `data/kkcc-definition-years.csv` and attached as node attributes (author, year,
-  decade) on definition vertices of BOTH rds graphs and as def_attrs columns. Year = the
+  decade) on definition vertices of BOTH rds graphs. Year = the
   quoted edition year (the one before "source-page"); year_orig keeps re-edition years
   like A5 "(1929)13, 1931"; year_suffix (the "a" in "1945a:") disambiguates same-year
   works in the bibliography. One NA by design: D3-1 Tozzer (PDF says "data", footnote
@@ -53,9 +54,8 @@ from the PDF via pdftotext -layout.
   K&K quotes and vocabulary-reduction casualties. Rebuilding incidence directly from
   K&K Index B (in K&K numbering) would be the complete dataset — a different provenance
   than Boroch's Table 2.
-  Caveat: re-running analysis-collapse-main.R rebuilds kkcc_two_mode_main.rds and would
-  drop these attributes — re-run build-definition-years.R AND build-supplement-bibliography.R
-  after it (in that order).
+  Superseded 2026-10-24: attributes are now attached by scripts/build-two-mode-networks.R
+  (see the 2026-10-24 rebuild section); the old patch-in-place steps were removed.
 - Code inventory:
   A1–A22 + variant A10a; B1–B23; C1-1..C1-22 + C1-5a; C2-1..C2-6; D1-1..D1-17, D2-1..D2-16,
   D3-1..D3-3, D4-1..D4-2; E1–E10; F1-1..F1-21, F2-1..F2-12, F3-1..F3-5, F4-1..F4-6; G1–G7.
@@ -85,10 +85,11 @@ from the PDF via pdftotext -layout.
   parent, binarized: `data/kkcc_biadjacency_main.csv`, `data/kkcc_two_mode_main.rds`
   (301 edges, density 0.139, connected).
 - Fine-grained 56 x 135 version kept in `data/kkcc_two_mode.rds` with attributes
-  (is_main, parent_category, def_group, def_type on graph; def_attrs data.frame).
-  DOING row omitted (singleton, per user); Behaving/Industry are zero-use rows.
+  (is_main, parent_category, def_group, def_type on the igraph graph). Rebuilt 2026-10-24: no def_attrs
+  element any more; use `scripts/kkcc-definition-attrs.R`.
+  DOING row omitted (singleton, per user). No zero-use rows in the current network (checked 2026-10-24).
 - Analysis scripts: basic stats are inline chunks in the report (`analysis-basic-stats.R` was
-  deleted 2026-10-24), `analysis-collapse-main.R` (builds collapsed network),
+  deleted 2026-10-24), the collapse step (now in `build-two-mode-networks.R`; `analysis-collapse-main.R` was removed 2026-10-24),
   `analysis-ca-mst-main.R` (CA via eigen() per tm-ca.html — Z.v scores = unit-variance
   eigenvectors x sqrt(lambda); passive type barycenters radially stretched from origin
   by BARY.SCALE=5 (purely visual, to clear the concept cluster);
@@ -125,8 +126,8 @@ from the PDF via pdftotext -layout.
   surnames + year/suffix into data/kkcc-definition-biblio.csv (match_status:
   auto/manual D3-1/inferred F4-6=B103), fills F4-6's author/year/decade into the
   years CSV, and attaches vertex attributes bib_entry, author_canonical, bib_ref to
-  definition vertices of BOTH graphs (plus def_attrs columns). Rerunning it re-writes
-  kkcc-definition-years.csv (F4-6 row) — run it AFTER build-definition-years.R).
+  definition vertices of BOTH graphs (plus def_attrs columns). Superseded 2026-10-24: the graph
+  attachment was removed; the CSVs are inputs to `build-two-mode-networks.R`.
   Gotchas hit while parsing: R's TRE mis-parses "[?]"-style classes (use perl=TRUE);
   gregexpr+sub(sub,"") erases the whole match — post-process the match text instead;
   scan.authors needs (?![[:alpha:]]) after initials so title capitals don't match.
@@ -187,7 +188,7 @@ from the PDF via pdftotext -layout.
   `new_sub_element`; keeps the code and flags; applied in `apply_index_b_fixes()`). Keys must match
   the full parsed token table, not the exported `kk-index-b-edges.csv`, which keeps resolved codes
   only. Unresolved tokens are absent from that export. A key with no match stops the build.
-- Page mapping: our scan's PDF page = printed page + 3 (PDF 77 = printed 74). The Archive Scribe
+- Page mapping: our scan's PDF page = printed page + 3 (PDF 77 = printed 74). The 229-page copy is printed + 6 (see the 2026-10-24 section). The Archive Scribe
   scan is printed + 16 (PDF 90 = printed 74). The Archive scan's left column is clipped at the scan
   edge, so its text loses leading characters: use it only as a lead.
 - Pixel crops: `pdftoppm -r DPI -x X -y Y -W W -H H` takes pixels (points × DPI / 72). Coordinates
@@ -222,8 +223,8 @@ from the PDF via pdftotext -layout.
 - Current counts (rebuilt 2026-10-24, after the Index A page-image pass): Index A 187 rows
   (186 resolved, 165 codes; `kk-index-a-missing-rows.csv` adds Angyal). Sears's `C-I-Addendum`
   stays unresolved. Index B 1285 edges (10 code_not_in_index_a, 33 junk_name, 210 ocr_corrected,
-  66 manual_fix, 966 ok); 2 unresolved (`D-I` excluded as a duplicate, `F-I\` smudged). Crosswalk 127 auto, 2 hand decisions (D3-1, D2-16),
-  4 ambiguous, 1 no match (B5), 1 F4-6. Open crosswalk rows are listed in
+  66 manual_fix, 966 ok); 2 unresolved (`D-I` excluded as a duplicate, `F-I\` smudged). Crosswalk (updated 2026-10-24): 127 auto, 7 hand decisions
+  (see the 2026-10-24 section), 1 F4-6, 0 ambiguous, 0 unmatched. Hand decisions are in
   `kk-boroch-crosswalk-decisions.csv`.
 - Index A manual fixes now carry `author_new` and `qualifier_new` as well as `kk_code`. Blank means
   unchanged. Keys are author_raw + raw_code; copy them from `kk-index-a-authors.csv`.
@@ -242,10 +243,13 @@ from the PDF via pdftotext -layout.
   `F-U`, `F-I-i}`, `F-H-j` and `A-j` the glyph is not clearly read, so the basis is printed sequence
   plus the candidate's absence from the edges. Recorded in `data/kk-index-b-manual-fixes.csv`
   (evidence column) and `data/kk-index-b-second-scan-check.csv`.
-- Heading attribution is wrong in several blocks: "carriers of culture" entries sit under
-  `capabilities`; "common or shared patterns" under `civilization`; "systems" under `symbols`;
-  "social" and "society" under `group reference`; "ideas and cognitive processes" entries
-  under `history`. Codes are right; heading-level analyses are not reliable until this is fixed.
+- Heading attribution is wrong in several blocks (block map built 2026-10-24,
+  `data/kk-index-b-block-map.csv`): `capabilities` (73 edges) should be carriers of culture;
+  `history` (50) should be ideas and cognitive processes; `civilization` (36 of 41) should be common or
+  shared patterns; `symbols` (12 of 26) should be systems; `feelings` (1) should be forbidden, the;
+  `people, a` (1) should be permitted, the. "social" and "society" under group reference are NOT errors:
+  the page image prints them in the group reference block (checked 2026-10-24). Codes are right;
+  heading-level analyses are not reliable until the correction is applied in `build-index-b.R`.
   Confirmed on page images 2026-10-24: C-7, F-9 and F-4 print under "common or shared patterns"
   (edges say `civilization`); D-8 and E-17 print under the "carriers of culture" block (edges say
   `capabilities`).
@@ -264,9 +268,19 @@ from the PDF via pdftotext -layout.
 - Documentation: `README.md` (data dictionary, methods, limitations, rights) and
   `docs/PROVENANCE.md` (evidence for F4-6, appendix-only codes, Moore, OCR rules). Both were
   updated on 2026-10-24.
-- Rebuilding `kkcc_two_mode.rds` (analysis-collapse-main.R) drops the vertex attributes
-  that the biblio and years builders add. Re-run `build-definition-years.R` and
-  `build-supplement-bibliography.R` after it.
+- 2026-10-24 rebuild: both networks are built by `scripts/build-two-mode-networks.R` as igraph 2.3.3
+  objects with node attributes (concept: is_main, parent_category, list_item, printed_uses, n_uses;
+  definition: def_group, def_subgroup, def_type, author, year, decade, bib fields). The concept-to-category
+  mapping comes from `scripts/build-concept-categories.R`. `check-two-mode-networks.R` validates the result.
+  The fine network is disconnected by design (7 components); the main network is connected.
+  `analysis-collapse-main.R` was removed; the step it performed is in the builder.
+- K&K Index B networks (2026-10-24): `scripts/build-index-b-networks.R` builds igraph objects
+  `data/kk-index-b-subelement-network.rds` (472 sub-elements x 174 codes, 1193 ties) and
+  `data/kk-index-b-heading-network.rds` (51 headings x 174 codes, 1058 ties), each list(biadjacency, graph).
+  Code vertices carry the Index A/B flags, authors, and the Boroch code (Table 2 crosswalk plus linked
+  appendix-only codes; F-IV-5 carries both F4-5 and F4-6). Element vertices carry headings, junk-name,
+  manual-fix and OCR-correction flags. Matrices match the kk_biadjacency_*.rds files exactly.
+  Heading attribution is still open, so heading-level results are not reliable.
 
 ## Second pass (2026-10-24): Index A verification and crosswalk
 
@@ -284,8 +298,8 @@ from the PDF via pdftotext -layout.
   and accepts `year_orig` (first publication). Result: 127 auto, 2 hand decisions, 4 ambiguous,
   1 no match. Hand decisions go in `data/kk-boroch-crosswalk-decisions.csv`: D3-1 → D-III-1
   (Tozzer, no year; moderate confidence) and D2-16 → D-II-16 (quoted text "socially transmitted
-  behavior"; Aberle has no Index A row). Open: A16, A17 (K&K A-14, A-15), A20 (A-18, A-19),
-  C1-11 (C-I-10/11/12), B5 (probable B-4a, year conflict). Positional agreement is 69 of 135,
+  behavior"; Aberle has no Index A row). Open rows A16, A17, A20, C1-11 and B5 were resolved on
+  2026-10-24 (see the 2026-10-24 section below). Positional agreement is 69 of 135,
   which is expected given renumbering.
 - Index B codes printed without a roman numeral: `C-7`, `D-8`, and `F-9` were verified at
   300 dpi as printed that way. They are kept as printed, not remapped. `D-7`, `D-5`, `F-4`,
@@ -303,6 +317,84 @@ from the PDF via pdftotext -layout.
   with it are leads, not evidence against our rows.
 - Open items are tracked in `docs/TODO.md`. Remaining work: heading attribution (block map), the
   33 junk sub-element names, the 2 unresolved Index B tokens, the 50-row sample in
-  `data/kk-index-b-ok-sample.csv`, the 5 open crosswalk rows, the rights decision, and rerunning
+  `data/kk-index-b-ok-sample.csv`, the rights decision, and rerunning (the crosswalk rows are resolved as of 2026-10-24)
   `analysis-index-b.R` (stale after the 1285-edge rebuild).
+
+
+## Appendix-only texts, crosswalk decisions, page checks (2026-10-24)
+
+- The 39 appendix-only codes (PROVENANCE section 4; the earlier "36" is stale): texts in
+  `data/kkcc-appendix-only-texts.csv` (author, year, suffix, verbatim text; B17 and F4-5 authors
+  fixed by hand). Links in `data/kkcc-appendix-only-links.csv`: 32 linked (25 by a unique row,
+  7 year-checked on page images), 3 with no Index A row (C1-20 Maquet; F1-21, which has no group-F
+  row; G1 Sapir, whose only Index A row is B-2), C1-22 Sears → C-I-Addendum (resolved 2026-10-24:
+  printed addendum in C-I, verbatim text match, citation read on page image), 0 unresolved, 0 ambiguous. Decided 2026-10-24: A21 → A-19, C1-12 → C-I-11,
+  C1-13 → C-I-12.
+- Table 2 hand decisions (7, all in `kk-boroch-crosswalk-decisions.csv`): D3-1, D2-16 (earlier),
+  A16 → A-14, A17 → A-15, A20 → A-18, C1-11 → C-I-10, B5 → B-4a. Basis: a verbatim match
+  between Boroch's text and the printed Part II quotation, plus the printed citation. The printed
+  item number is the K&K code within the group (items 14, 15, 18 on printed p. 44 = A-14, A-15,
+  A-18; item 10 on p. 50 = C-I-10).
+- Myres B-4a: Part II prints "4a. Myres, 1927: 16." (printed p. 47), and Index A prints "(1929)"
+  (printed p. 73). User decision 2026-10-24: 1927 is the working year, supported by the Google Books
+  record for the original book (Abingdon Press, 1927; metadata only). The Index A transcription
+  stays as printed. No script reads the Myres index year.
+- The year conflicts flagged for seven appendix-only codes (A22, C1-9, C1-10, E5, F2-3, F2-12,
+  F4-2) were OCR errors in our raw text layer (it read 1943 for Linton 1945, 1931 for Schmidt
+  1937, 1930 for Becker 1950, 1930 for Thurnwald 1950, 1913 for Ostwald 1915). The printed years
+  agree with Boroch and Index A. Do not take years from the raw text layer without a page check.
+- Page offsets. `Kroeber-kluckhohn.pdf` (ABBYY): printed = PDF − 3 (checked on printed 17, 44,
+  46, 50, 61, 62, 66, 67, 70). The 229-page copy (`…_compress.pdf`): printed = PDF − 6 (checked on
+  printed 35, 37, 44, 50, 53). `data/kk-page-map.csv` holds checkpoints only. An automatic map was
+  not built: the ABBYY text layer has no running headers, and the copy's text-layer page count
+  does not match pdfinfo, so use `pdftoppm` numbering for the copy.
+- Index A printed pp. 73-74 = PDF 76-77 in the scan.
+- Gotchas:
+  - `build-definition-texts.R` `grab()` calls `grepl(JUNK, ...)` with a vector of patterns, so only
+    the first pattern is used, and R warns on every line. The committed texts are unaffected: a
+    rebuild matched exactly, because later cleanup removes the same headers. The filter is still
+    not doing what it says; fix it by testing each pattern, not the first.
+  - Searching page text with `awk -v RS='\f'` finds the page, but short phrases also match
+    footnotes. The B5 search first hit "horticulture" in a footnote on printed p. 36. Confirm on the
+    image.
+  - The copies of the book in `documents/` are the same text. Each new copy needs a page offset of
+    its own, so do not assume an offset from another copy.
+- Rights: `data/kkcc-definition-texts.csv`, `data/kkcc-appendix-only-texts.csv` and the Part II
+  quotations in PROVENANCE are verbatim quotations of Boroch or K&K. They stay out of any release.
+  `pdfcoffee.com-…pdf` is tracked in git; the untracked `…_compress.pdf` is the same file. Do not
+  commit more copies; whether to remove the tracked one is an open decision.
+
+## Session 2026-10-24 (later): rebuilds, coverage limits, block map
+
+- Concept mapping: `scripts/build-concept-categories.R` writes `data/kkcc-concept-categories.csv`
+  (56 concepts → 16 categories) from the printed list in Boroch section 3.2.2, items a)–p). Parents are not
+  taken from row position (auxiliaries such as "Habit" print before their parent). DOING (item q) has no row.
+- Two-mode networks rebuilt by `scripts/build-two-mode-networks.R` (igraph 2.3.3 objects; rds = list(biadjacency,
+  graph)). Fine: 191 vertices, 316 edges, 7 components by design. Main: 151 vertices, 301 edges, connected.
+  Definition attributes come from the years and biblio CSVs; verbatim texts are not embedded.
+  `scripts/check-two-mode-networks.R` validates the result. `def_attrs` is no longer stored in the rds;
+  read it with `scripts/kkcc-definition-attrs.R` (`subgroup_code` is the full code, which the
+  subgroup regex depends on). `analysis-collapse-main.R` was removed (git history only).
+- The patch-in-place steps are removed from `build-definition-years.R`, `build-supplement-bibliography.R`
+  and `build-definition-texts.R`; they now use the fine matrix's columns as the code universe.
+- Regression check after the rebuild: centrality, prestige and score-mean CSVs match HEAD after sorting; the
+  CA scores are unchanged. The report renders from a scratch copy with text unchanged apart from
+  script paths; the committed `kkcc-two-mode.html` was updated. `figures/kkcc-mst-main-definition.png`
+  changed bytes but looks the same on inspection; the cause is not identified.
+- Text data: 135 Boroch Table 2 texts (F4-6 has none) and 39 appendix-only texts. Of the 174 distinct K&K codes
+  in Index A/B, 163 link to a Boroch text; 11 do not (C-7, C-I-18a, D-5, D-7, D-8, D-III-4, E-17, F-4, F-9,
+  F-I-20, G-1). K&K Part II definitions outside the index are not covered (the earlier estimate of about 300
+  total is unverified).
+- C1-22 resolved: K&K's printed addendum to C-I (Sears 1939, 78–79; PDF p. 54, printed p. 51 by the folio on
+  the page image). Index A's `C-I-Addendum` is the label; the addendum is unnumbered.
+- Concept links exist only for two sources: Boroch's Table 2 (135 definitions × 56 notions; Boroch's
+  categories) and K&K Index B (169 codes; K&K sub-elements and headings). Other K&K definitions have no concept
+  link in our data. The two networks connect through the crosswalk (130 K&K codes).
+- K&K Index B networks: `scripts/build-index-b-networks.R` writes `data/kk-index-b-subelement-network.rds`
+  (472 × 174, 1193 ties, 646 vertices, 15 components including 5 isolated codes) and
+  `data/kk-index-b-heading-network.rds` (51 × 174, 1058 ties). Matrices match the existing
+  `kk_biadjacency_*.rds` files exactly. Heading level is not reliable until item 13 of docs/TODO.md is applied.
+- Heading block map: `data/kk-index-b-block-map.csv` lists the 53 printed blocks on PDF pp. 77–81 (printed
+  pp. 74–78). Heading errors found by the comparison: see the heading attribution item above. Sub-element
+  verification of the remaining ~1100 edges is open (TODO items 13–17).
 

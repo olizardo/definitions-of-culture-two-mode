@@ -55,7 +55,7 @@ manual-fix keys: the build errors if a key matches no token.
 2. **Check the 50-row sample.** Fill `verdict` and `printed_page` in
    `data/kk-index-b-ok-sample.csv` (seed 4817, drawn from the 966 ok edges). Report the error rate
    with its uncertainty. A larger sample is needed if the rate is above about 5%.
-3. **Heading attribution (high priority).** Build a block-to-heading map from the page images, then
+3. **Heading attribution (high priority; block map built, see item 13).** Build a block-to-heading map from the page images, then
    apply it in `build-index-b.R`, not in the output CSVs. Known errors: "carriers of culture"
    sits under `capabilities`; "common or shared patterns" under `civilization`; "systems" under
    `symbols`; "social" and "society" under `group reference`; "ideas and cognitive processes"
@@ -78,10 +78,10 @@ manual-fix keys: the build errors if a key matches no token.
    ways and life-ways (4, p. 78). Decide each case: map to the printed sub-element, or drop from the
    sub-element matrix and keep the edge in the heading matrix. Record the decision in
    `docs/PROVENANCE.md`. The printed blocks should settle most of them.
-6. **Open crosswalk rows** (`data/kk-boroch-crosswalk-decisions.csv`): A16, A17 (K&K A-14, A-15),
-   A20 (A-18, A-19), C1-11 (C-I-10/11/12), B5 (probable B-4a, year conflict). Check each against
-   the appendix text in `data/kkcc-definition-texts.csv` and the K&K Part II text. Record the
-   decision in the same file with its basis. Do not match by position.
+6. **Open crosswalk rows: done (2026-10-24).** A16 → A-14, A17 → A-15, A20 → A-18, C1-11 → C-I-10,
+   B5 → B-4a (PROVENANCE 3.2). Appendix-only: A21 → A-19, C1-12 → C-I-11, C1-13 → C-I-12
+   (`data/kkcc-appendix-only-links.csv`). Index A prints Myres as "(1929)" for B-4a, while the Part II
+   entry reads 1927. The original book is dated 1927 (Google Books record), so 1927 is the year used; the Index A discrepancy is recorded in PROVENANCE 3.2.
 7. **Ten code_not_in_index_a edges.** All ten are printed where the edges say (page image, our
    scan, 200 dpi). `C-7`, `D-8`, `F-9` were verified at 300 dpi earlier. `D-7`, `D-5`, `F-4`, `E-17`
    were verified at 200 dpi on 2026-10-24, not at 300 dpi. Heading errors are noted in item 3.
@@ -106,6 +106,25 @@ manual-fix keys: the build errors if a key matches no token.
     token. Edge counts and parse-flag counts change only as expected. Spot-check each new manual
     fix against the page image at 300 dpi and record it in `data/kk-index-b-zoom-check.csv` or
     `data/kk-index-b-ocr-audit.csv`.
+
+13. **Heading corrections (block map built).** `data/kk-index-b-block-map.csv` lists the 53 printed
+    blocks on PDF pp. 77–81 (printed pp. 74–78). Edges under the wrong heading, checked on the page
+    images: `capabilities` (73) → carriers of culture; `history` (50) → ideas and cognitive processes;
+    `civilization` (36 of 41) → common or shared patterns (includes "attitudinal relationship", which
+    is also printed under attitudes and feelings, so the count is approximate); `symbols` (12 of 26) →
+    systems (systems-systems, systems of thought, systems of knowledge); `feelings` (1) → forbidden, the;
+    `people, a` (1) → permitted, the. Apply as a rule in `build-index-b.R`, not in the output CSVs.
+14. **Sub-element check for the remaining edges.** About 1100 edges are not yet checked against the
+    printed sub-element lists. Record verdicts in a file keyed to printed page and block.
+15. **Second reader.** The block map and the heading corrections have one reader. A second reader
+    should check the civilization and symbols cases and a sample of the other blocks.
+16. **Rebuild and recount.** After the rule in item 13 is applied, rerun `build-index-b.R`, the crosswalk,
+    and `build-index-b-networks.R`. Recount the heading changes (expected about 170 edges) and confirm the
+    1285-edge total is unchanged. Then rerun `analysis-index-b.R`.
+17. **Memory correction.** AGENTS.md lists "social" and "society" under group reference as heading
+    errors. The page image shows both are printed in the group reference block, so drop that note.
+    The "social group", "social groupings" and "socially" entries are printed in both group reference
+    and social, so they are duplicates in print, not parser errors.
 
 ## Known gaps and cautions
 

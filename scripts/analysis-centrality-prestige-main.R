@@ -12,14 +12,15 @@
 # PageRank family: two-mode PageRank (co-HITS), double-normalized PageRank
 # (BGRM, Rui et al. 2007), and square-root normalized BiRank (He et al. 2016).
 #
-# Inputs: data/kkcc_two_mode_main.rds; def_attrs from data/kkcc_two_mode.rds.
+# Inputs: data/kkcc_two_mode_main.rds; def_attrs from scripts/kkcc-definition-attrs.R.
 
 library(igraph)
 
 d <- readRDS("data/kkcc_two_mode_main.rds")
 A <- d$biadjacency
 g <- d$graph
-def_attrs <- readRDS("data/kkcc_two_mode.rds")$def_attrs
+source("scripts/kkcc-definition-attrs.R")
+def_attrs <- definition_attrs()
 
 dir.create("data", showWarnings = FALSE)
 

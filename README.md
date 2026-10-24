@@ -35,13 +35,24 @@ the two.
 | `build-index-b.R` | `documents/Kroeber-kluckhohn.pdf` | Index A, Index B, excluded words, definition registry, OCR correction log, biadjacency matrices |
 | `build-index-b-crosswalk.R` | Index B outputs, `kkcc_two_mode.rds`, `kkcc-definition-years.csv`, `kkcc-definition-texts.csv` | Boroch ↔ K&K crosswalk, Table 2 audit |
 | `analysis-index-b.R` | biadjacency matrices, `kkcc_two_mode.rds` | network statistics, degree-comparison figure |
+| `build-concept-categories.R` | `kkcc_two_mode.rds` (concept labels), Boroch section 3.2.2 (encoded in the script) | `kkcc-concept-categories.csv` |
+| `build-two-mode-networks.R` | `kkcc-concept-categories.csv`, `kkcc-definition-years.csv`, `kkcc-definition-biblio.csv`, fine biadjacency | `kkcc_two_mode.rds`, `kkcc_two_mode_main.rds`, `kkcc_biadjacency_main.csv` |
+| `check-two-mode-networks.R` | both networks, definition CSVs | nothing (stops on a mismatch) |
+| `build-index-b-networks.R` | `kk-index-b-edges.csv`, `kk-index-b-definitions.csv`, `kk-boroch-crosswalk.csv`, `kkcc-appendix-only-links.csv` | `kk-index-b-subelement-network.rds`, `kk-index-b-heading-network.rds` |
+| `kkcc-definition-attrs.R` (helper) | `kkcc_two_mode.rds` | returns the definition table used by the analyses |
 
 Scripts live in `scripts/`; `documents/` holds the source PDFs and the Archive text. Run order (from the project root):
 
-1. `scripts/build-definition-years.R`, then `scripts/build-supplement-bibliography.R` (Boroch metadata)
-2. `scripts/build-index-b.R`
-3. `scripts/build-index-b-crosswalk.R`
-4. `scripts/analysis-index-b.R`
+1. `scripts/build-definition-years.R`, then `scripts/build-supplement-bibliography.R` (Boroch metadata CSVs)
+2. `scripts/build-concept-categories.R` (concept-to-category mapping, from Boroch section 3.2.2)
+3. `scripts/build-two-mode-networks.R` (both networks, as igraph objects with node attributes)
+4. `scripts/check-two-mode-networks.R` (validation; stops on any mismatch)
+5. `scripts/build-index-b.R`
+6. `scripts/build-index-b-crosswalk.R`
+7. `scripts/build-index-b-networks.R` (K&K Index B sub-element and heading networks, as igraph objects)
+8. `scripts/analysis-index-b.R`
+
+The analysis scripts and the report read definition attributes through `scripts/kkcc-definition-attrs.R`.
 
 Each build script writes a session-info file to `data/`. The R environment is pinned
 in `renv.lock` (R 4.5.3). Requires `pdftotext` (poppler) on the PATH.

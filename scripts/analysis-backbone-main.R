@@ -7,7 +7,7 @@
 # SDSM keeps almost nothing (2 concept / 0 definition edges).
 # Uses backbone::backbone_from_projection() (Neal 2022, PLOS One), which takes
 # the bipartite matrix itself, not the projection.
-# Inputs: data/kkcc_two_mode_main.rds; def_attrs from data/kkcc_two_mode.rds.
+# Inputs: data/kkcc_two_mode_main.rds; def_attrs from scripts/kkcc-definition-attrs.R.
 
 library(igraph)
 library(ggplot2)
@@ -19,7 +19,8 @@ set.seed(8427)
 
 d <- readRDS("data/kkcc_two_mode_main.rds")
 A <- d$biadjacency
-def_attrs <- readRDS("data/kkcc_two_mode.rds")$def_attrs
+source("scripts/kkcc-definition-attrs.R")
+def_attrs <- definition_attrs()
 
 dir.create("figures", showWarnings = FALSE)
 
