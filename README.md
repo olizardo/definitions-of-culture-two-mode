@@ -40,6 +40,7 @@ the two.
 | `check-two-mode-networks.R` | both networks, definition CSVs | nothing (stops on a mismatch) |
 | `build-index-b-networks.R` | `kk-index-b-edges.csv`, `kk-index-b-definitions.csv`, `kk-boroch-crosswalk.csv`, `kkcc-appendix-only-links.csv` | `kk-index-b-subelement-network.rds`, `kk-index-b-heading-network.rds` |
 | `check-index-b-blocks.R` | `documents/Kroeber-kluckhohn.pdf`, `kk-index-b-edges.csv`, `kk-index-b-block-map.csv` | `kk-index-b-block-check.csv`, `kk-index-b-block-check-summary.csv`, `kk-index-b-block-check-review.csv` (machine cross-check of heading assignments; not a human reader) |
+| `check-index-b-networks.R` | `kk-index-b-*-network.rds`, `kk-index-b-edges.csv`, `kk-index-b-definitions.csv`, `kk-boroch-crosswalk.csv` | nothing (stops on a mismatch) |
 | `kkcc-definition-attrs.R` (helper) | `kkcc_two_mode.rds` | returns the definition table used by the analyses |
 
 Scripts live in `scripts/`; `documents/` holds the source PDFs and the Archive text. Run order (from the project root):
@@ -53,6 +54,7 @@ Scripts live in `scripts/`; `documents/` holds the source PDFs and the Archive t
 7. `scripts/build-index-b-networks.R` (K&K Index B sub-element and heading networks, as igraph objects)
 8. `scripts/analysis-index-b.R`
 9. `scripts/check-index-b-blocks.R` (machine cross-check of Index B heading assignments against the printed text)
+10. `scripts/check-index-b-networks.R` (validation of the Index B igraph objects; stops on any mismatch)
 
 The analysis scripts and the report read definition attributes through `scripts/kkcc-definition-attrs.R`.
 
