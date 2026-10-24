@@ -120,7 +120,9 @@ added from the page image (currently one, Angyal).
 cannot settle. Each row gives the decision (`match` or `open`), the K&K code, and the basis.
 
 **`kk-index-b-ok-sample.csv`**: a 50-row random sample (seed 4817) of the 966 `ok`
-edges, with blank verdict columns for a page-image check.
+edges, checked against the page image on 2026-10-24: `verdict` (all 50 OK), the printed
+page, and per-row notes. Single reader; the sample's `heading` column predates the
+heading corrections, so verdicts were checked against the current edge list.
 
 **`kk-index-b-unresolved.csv`**: Index B tokens that have no code (for example, every
 `j` token, and OCR fragments the rules cannot read). They are excluded from the edge list
@@ -210,10 +212,18 @@ unlinked and are reported as such, not guessed.
   remain unresolved (`kk-index-b-unresolved.csv`): `D-I` (society) is excluded as a duplicate,
   and `F-I\` (means of adjustment) is unreadable behind a smudge.
 - Crosswalk: 127 of 135 Boroch definitions match exactly one K&K code by rule (author,
-  year or first-publication year, suffix, group, and subgroup). Two more are set by hand with
-  a recorded basis (D3-1, D2-16). Four are ambiguous and one is unmatched (A16, A17, A20,
-  C1-11, B5), all left open. F4-6 is resolved by hand. Positional agreement holds for 69 of
-  135 rows, which confirms that Boroch renumbered.
+  year or first-publication year, suffix, group, and subgroup). Seven are set by hand with
+  a recorded basis (D3-1, D2-16, A16, A17, A20, C1-11, B5), one (F4-6) is a documented
+  slip resolution. Positional agreement holds for 69 of 135 rows, which confirms that
+  Boroch renumbered.
+- Ok-edge sample: a 50-row random sample of the 966 `ok` edges was read against the
+  page image (PDF pp. 77–81, quadrant crops at 300 dpi). Verdict: 50 OK, 0 errors;
+  Clopper–Pearson 95% upper bound on the error rate is 7.1%. Single reader
+  (`data/kk-index-b-ok-sample.csv`).
+- Machine block check: `check-index-b-blocks.R` puts 1268 of 1285 edges inside their
+  assigned printed block; the 17 others are in `kk-index-b-block-check-review.csv` with
+  verdicts read from page-image crops. This is a machine cross-check plus one reader,
+  not a double-keyed audit.
 - Spot check: 20 random Index B edges were compared with their OCR lines after the
   normalization fixes. All 20 were correct on inspection. This is a small sample, not a
   full manual audit.
@@ -231,8 +241,11 @@ unlinked and are reported as such, not guessed.
   tokens were resolved on the page image (PROVENANCE 3.4); four of those rest on printed
   sequence and the candidate's absence, not a clean glyph read. Some printed codes lack a subgroup (e.g. `D-7`); these are
   kept as printed.
-- **Element labels.** The `sub_element` labels are short index words. Some are garbled
-  (e.g. "sc1 etion"). They are unverified against the page image.
+- **Element labels.** The `sub_element` labels are short index words. The 33 garbled
+  labels (former `junk_name` rows) are mapped to the printed elements
+  (`kk-index-b-junk-decisions.csv`), but seven of those fixes and a few renames are
+  text-layer proposals not yet checked on the scan (PROVENANCE 3.6). Other labels are
+  unverified against the page image beyond the audits above.
 - **Boroch's coding is semantic, not lexical.** A Table 2 row such as "BEHAVIOR" is
   not always a K&K Index B heading. The audit reports this rather than correcting it.
 - **Vocabulary reduction.** Boroch's 56 notions, his 171 appendix codes, and K&K's full

@@ -279,12 +279,16 @@ does not prove an error, and the tolerant matcher can match one code in several 
 several). A pass shows that the code is printed somewhere in the block, not under the element the edge
 gives. The check is not a substitute for the human second reader in TODO item 15.
 
-Review sheet: `data/kk-index-b-block-check-review.csv` (17 rows; blank `verdict` and `note` columns for the
-page-image reader). Each row names its crop, a 200 dpi image of the assigned block's column, cut from
-the scan with `pdftoppm` and kept in the scratch directory, not the repo. The crops are copies of the
-scan, so they stay out of any release. Two crops were checked by eye before handoff and both look like
-matcher misses: E-2 (`dynamic structural relations`, where the text layer read the code as `F.-2`) and
-E-5 (patterns, where the scan prints it as `E-5` and the text layer as `E -j`). The rest are unchecked.
+Review sheet: `data/kk-index-b-block-check-review.csv` (17 rows). All 17 were resolved on 2026-10-24 by
+reading the printed pages from full-page quadrant crops (300 dpi) and targeted 400–600 dpi zooms, rather
+than repairing the original crop locator (which fell back to the column top when a heading match failed).
+Final verdicts: 16 OK, 1 CODE_WRONG. The CODE_WRONG row is B-11 under `processes and means / process`:
+the print reads "process, B-21, B-22, D-I-6, F-I-16" (400 dpi zoom) and B-11 prints nowhere in the block;
+fixed by a `set` row (B-11 → B-21, keyed on the parsed heading "process ts and means") in
+`data/kk-index-b-manual-fixes.csv`, and the pipeline was rebuilt (1285 edges unchanged). One evidence note
+was amended: the `D-I-15 / material culture / artificial` fix had claimed a clean print of D-I-15, but a
+600 dpi zoom on 2026-10-24 shows the roman numeral under an ink blot; the edge is kept with the stated
+basis recorded in the manual-fix file. Verdicts were read by one reader.
 
 ## 4. The 39 appendix-only codes
 
@@ -383,7 +387,7 @@ ABBYY text layer carries the same damage, so text checks cannot catch it; the Ar
 flags it. `intcrcorrclated customs` (E-2) is corrected to `intercorrelated customs` by a `rename_sub` row,
 checked on the scan crop. The other labels were corrected by `rename_sub` rows on 2026-10-24: `manmade environment` and `sc1 etion` (checked on the scan crops), and `j intcgrared and oninregrared groups`, `non-phvsiological products`, `not ereated`, `reactionfonnat ons`, `constitutional chaners`, `categories of acpons` and `v-i distoned satisfaction` (proposed from the text layer; not yet checked on the scan). Element count 466 → 465. The OCR prefixes on `v-j adjusting`, `v-j biopsychological organism` and `i-j rational` were removed by `rename_sub` rows (the remaining words were confirmed as printed by the user).
 - **Flagged edges.** All 26 FIX rows are in the manual-fix table; their keys and codes match the flagged audit. Two CHECK rows are resolved (`F-1` "adjustments" → F-IV-3; `F-19` "adaptive behavior" → F-I-19). A `B-ji` FIX row merges into an existing `B-5` edge when the build removes duplicates.
-- **Unaudited ok rows (open).** 915 `ok` edges have no audit verdict (section 3.3) and have not been checked against the page image. A 50-row random sample (seed 4817) is in `data/kk-index-b-ok-sample.csv`, with blank verdict columns.
+- **Unaudited ok rows (partly checked 2026-10-24).** 915 `ok` edges have no audit verdict (section 3.3). A 50-row random sample (seed 4817) is in `data/kk-index-b-ok-sample.csv`; all 50 rows were read against the page images on 2026-10-24 (PDF pp. 77-81, quadrant crops at 300 dpi, single reader). Verdict: 50 OK, 0 errors; Clopper-Pearson 95% upper bound on the error rate 7.1% (rule of three: 6%). The sample's heading column predates the heading corrections; verdicts were checked against the current edges, which always matched the printed block. Per-row notes are in the sample file.
 - **Manual fixes without an audit row (open).** 62 of the 66 `manual_fix` edges have no row in either audit file (section 3.3, a dated snapshot). Their evidence is the printed citation in `kk-index-b-manual-fixes.csv`. The six 2026-10-24 resolutions are in that group.
 - **Index A.** Every row on printed pp. 73–74 was read against the page image (section 3.1). That is a single-reader check, not double-keyed. Sears's `C-I-Addendum` is printed that way and stays unresolved.
 - **Crosswalk (resolved 2026-10-24).** A16, A17, A20, C1-11 and B5 are decided in section 3.2, and

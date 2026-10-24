@@ -58,9 +58,14 @@ manual-fix keys: the build errors if a key matches no token.
    a lead. The junk sub-element names remain open (item 5). Index A cross-check: tesseract agreed with every corrected row checked, so it's a useful
    lead, not proof. The Index A comparison from the other copy (`papersofpeabodymvol47no1peab`)
    was noisy; it misattributed continuation lines and misread digits.
-2. **Check the 50-row sample.** Fill `verdict` and `printed_page` in
-   `data/kk-index-b-ok-sample.csv` (seed 4817, drawn from the 966 ok edges). Report the error rate
-   with its uncertainty. A larger sample is needed if the rate is above about 5%.
+2. **Check the 50-row sample: done 2026-10-24.** All 50 rows in `data/kk-index-b-ok-sample.csv`
+   were read against the page images (PDF pp. 77-81, quadrant crops at 300 dpi). Verdict: 50 OK,
+   0 errors. Clopper-Pearson 95% upper bound on the error rate is 7.1% (rule of three: 6%), so a
+   larger sample is not forced by this result. Caveats: single reader; the sample's `heading` and
+   two `sub_element` values are pre-correction (stale); verdicts were checked against the CURRENT
+   edges, where the heading corrections (capabilities, history, civilization → common or shared
+   patterns) apply — the printed block always matched the current edge. Notes recorded per row in
+   the sample file.
 3. **Heading attribution: done 2026-10-24** (items 13 and 16). `E-5` under "v-i" is a `group reference`
    entry printed under "society" (`data/kk-index-b-ocr-audit.csv`, `OK_HEADING_WRONG`); this is
    not covered by the block rules and has not been re-checked.
@@ -121,16 +126,23 @@ manual-fix keys: the build errors if a key matches no token.
     printed sub-element lists. Record verdicts in a file keyed to printed page and block.
 15. **Second reader (partly done; human reader still open).** A machine cross-check (`scripts/check-index-b-blocks.R`,
     PROVENANCE 3.7) puts 1268 of 1285 edges in their assigned block. The 17 others are in
-    `data/kk-index-b-block-check-review.csv`. Provisional verdicts: 10 OK (read from correct crops), 1 CODE_WRONG?
-    (B-11 under process), 6 CHECK (crops wrong; see item 18). Crops are in the scratch directory `crops/`, not the repo. It is not a human reader.
+    `data/kk-index-b-block-check-review.csv` with final verdicts (2026-10-24): 16 OK, 1 CODE_WRONG
+    (B-11 under process, fixed; see item 18). It is not a human reader.
     Original note: The block map and the heading corrections have one reader. A second reader
     should check the civilization and symbols cases and a sample of the other blocks.
 16. **Rebuild and recount: done 2026-10-24.** 174 parsed rows re-headed (173 distinct edges; G-3 is printed twice
     in one block). The 1285-edge total is unchanged. Heading matrix 53 × 174, 1059 ties; sub-element matrix
     465 × 174, 1171 ties after the label fixes (`systems` is shared by two blocks with identical codes).
-18. **Regenerate the CHECK crops.** The crop locator fell back to the column top when it failed to find a heading, so
-    the crops for F-I-13, B-21, C-I-5, A-9, D-I-15 and E-5 under organized show the wrong entries (several are
-    byte-identical). Fix the locator, regenerate, and read them. Also check B-11 vs B-21 under process.
+18. **Regenerate the CHECK crops: done 2026-10-24.** The old locator was not repaired; instead the
+    affected entries were read from full-page quadrant crops (300 dpi) plus targeted 400–600 dpi
+    zooms. Verdicts in `data/kk-index-b-block-check-review.csv` are final: 16 OK, 1 CODE_WRONG.
+    The CODE_WRONG row is `B-11 / processes and means / process`: the print reads
+    "process, B-21, B-22, D-I-6, F-I-16" and B-11 prints nowhere in the block. Fixed by a `set`
+    row (B-11 → B-21, key on the parsed heading "process ts and means") in
+    `data/kk-index-b-manual-fixes.csv`; the pipeline was rebuilt (edge total unchanged at 1285).
+    Also amended: the D-I-15 `material culture / artificial` evidence overstated the read —
+    the numeral sits under an ink blot (600 dpi, unreadable); the edge is kept with the stated
+    basis (blot spans one character width; D-I-15 is the single-numeral candidate in Index A).
 19. **Text-proposed labels.** Seven garbled labels were fixed from the text layer and the Archive OCR, not the scan:
     distorted satisfaction, integrated and unintegrated groups, non-physiological products, not created,
     reaction-formations, constitutional changes, categories of actions. Check each on the scan crop.
@@ -144,7 +156,8 @@ manual-fix keys: the build errors if a key matches no token.
 - Index A's verification is a single-reader check. There's no double-keying. Do not describe the
   dataset as fully verified.
 - 915 ok edges have no audit verdict (966 ok minus 51 with a row in `kk-index-b-flagged-audit.csv`).
-  The earlier figure of 932 could not be reproduced. Only the 50-row sample is pending. Of the 66
+  The earlier figure of 932 could not be reproduced. The 50-row sample was checked on 2026-10-24
+  (50 OK, 0 errors). Of the 66
   manual_fix edges, 62 have no row in either audit file (PROVENANCE 3.3). The six 2026-10-24
   resolutions and the other 56 manual fixes are justified by printed evidence in the manual-fix
   file, not by an audit verdict.

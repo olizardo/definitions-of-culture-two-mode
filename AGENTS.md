@@ -234,7 +234,10 @@ from the PDF via pdftotext -layout.
 - Audit scope: the 138 flagged edges, all 198 OCR-corrected edges
   (`data/kk-index-b-ocr-audit.csv`), the 32 recovered j/fragment tokens and the 8 unresolved
   tokens (`data/kk-index-b-zoom-check.csv`) were checked against the printed pages of the scan
-  (Index B = PDF pp. 77-81). 915 `ok` edges have no audit verdict (PROVENANCE 3.3). The OCR-corrected
+  (Index B = PDF pp. 77-81). 915 `ok` edges have no audit verdict (PROVENANCE 3.3); the 50-row
+  ok-sample was checked 2026-10-24 (all 50 OK, Clopper-Pearson 95% upper bound 7.1%; the sample's
+  heading column predates the heading corrections, so verdicts were scored against the current
+  edges). The OCR-corrected
   audit was read at 200 dpi and the recoveries at 300-400 dpi, by one reader; there is no
   double-keyed check. Do not describe the dataset as fully verified.
 - 2026-10-24 zoom pass: the 10 code_not_in_index_a and 33 junk_name codes were checked against our
@@ -263,7 +266,8 @@ from the PDF via pdftotext -layout.
   not yet checked on the scan (PROVENANCE 3.6).
 - Machine cross-check (2026-10-24, PROVENANCE 3.7): `scripts/check-index-b-blocks.R` puts 1268 of 1285 edges in
   their assigned printed block. The 17 others are in `data/kk-index-b-block-check-review.csv` with provisional
-  verdicts: 10 OK, 1 CODE_WRONG? (B-11 under process; scan prints B-21), 6 CHECK. The CHECK crops were wrong
+  verdicts (final 2026-10-24): 16 OK, 1 CODE_WRONG (B-11 under process is a misread of B-21, fixed by a
+  `set` row keyed on "process ts and means"; pipeline rebuilt, 1285 edges unchanged). The CHECK crops were wrong
   (the crop locator fell back to the column top), so they need regenerating. This is not a human reader.
 - Rights: `data/kkcc-definition-texts.csv` holds verbatim Boroch quotations and stays out of
   any release. Whether the K&K Index B element labels can ship is still undecided. The page-image
@@ -328,8 +332,8 @@ from the PDF via pdftotext -layout.
   (digit and i/1 confusions, wrapped Kluckhohn/Kelly lines lose their author), so disagreements
   with it are leads, not evidence against our rows.
 - Open items are tracked in `docs/TODO.md`. Remaining work: the 2
-  unresolved Index B tokens, the 50-row sample in `data/kk-index-b-ok-sample.csv`, the sub-element check
-  of the remaining ~1100 edges, the 17 block-check rows (1 CODE_WRONG?, 6 CHECK, 10 provisional OK; regenerate the CHECK crops), the 7 text-proposed labels pending a scan check, a human second reader, and the rights decision.
+  unresolved Index B tokens, the sub-element check
+  of the remaining ~1100 edges, the 7 text-proposed labels pending a scan check, a human second reader, and the rights decision.
   Junk names, the heading and label fixes, and the `analysis-index-b.R` rerun were done on 2026-10-24.
 
 

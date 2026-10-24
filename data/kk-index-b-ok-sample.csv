@@ -1,51 +1,51 @@
-kk_code,heading,sub_element,ocr_raw,printed_page,verdict,note
-A-3,"acts, actions, and activities",activities,A-3,,,
-D-I-6,"techniques, skills, and abilities",technologies,D-I-6,,,
-D-I-12,biological heritage,biological equipment,D-I-12,,,
-F-III-3,symbols,symbols,F-III-3,,,
-A-6,symbols,speech-symbols,A-6,,,
-C-I-5,"acts, actions, and activities",act,C-I-5,,,
-B-6,products of human activity,goods,B-6,,,
-C-I-13,ways and life-ways,way of life,C-I-13,,,
-F-III-4,"techniques, skills, and abilities",mental ability,F-III-4,,,
-F-I-6,social,social,F-I-6,,,
-D-I-9,products of human activity,products,D-I-9,,,
-D-II-5,capabilities,generations,D-II-5,,,
-B-10,"totality, culture as comprehensive",whole complex,B-10,,,
-C-I-8,"transmission, non-genctic",transmission,C-I-8,,,
-A-7,capabilities,carriers of culture-individuals,A-7,,,
-F-I-8,"totality, culture as comprehensive",sum,F-I-8,,,
-D-II-11,civilization,conforms,D-II-11,,,
-A-8,learning,learning,A-8,,,
-C-II-3,"values, ideals, tastes, and preferences",artistic ideals,C-II-3,,,
-F-I-19,"transmission, non-genctic",socially transmined,F-I-19,,,
-A-9,traits,non-material traits,A-9,,,
-F-I-8,products of human activity,shelter,F-I-8,,,
-A-7,products of human activity,products,A-7,,,
-A-8,ways and life-ways,ways,A-8,,,
-C-I-10,"patterns, systems, and organization",channel,C-I-10,,,
-A-4,group reference,society,A-4,,,
-D-I-6,habits,habits,D-I-6,,,
-A-9,"techniques, skills, and abilities",language uses,A-9,,,
-F-I-2,products of human activity,tools,F-I-2,,,
-A-16,group reference,social,A-16,,,
-B-11,"techniques, skills, and abilities",techniques,B-11,,,
-E-5,behavior,repetitive responses,E-5,,,
-D-I-10,behavior,responses,D-I-10,,,
-F-I-8,"patterns, systems, and organization",social organization,F-I-8,,,
-D-II-2,behavior,behavior patterns,D-II-2,,,
-D-I-7,constancy,self-perpetuating,D-I-7,,,
-D-I-3,civilization,or shared patterns-common,D-I-3,,,
-C-II-3,civilization,conform to ideals,C-II-3,,,
-D-I-6,"transmission, non-genctic",transmission,D-I-6,,,
-F-I-14,modes,modes of thought,F-I-14,,,
-D-II-10,"totality, culture as comprehensive",total,D-II-10,,,
-E-3,traits,traits,E-3,,,
-F-I-13,social,social,F-I-13,,,
-F-I-10,learning,learning,F-I-10,,,
-D-II-8,history,ideas and cogni ve processes-ideas,D-II-8,,,
-C-I-18,group reference,society,C-I-18,,,
-E-4,civilization,conventional understandings,E-4,,,
-D-II-14,group reference,society,D-II-14,,,
-D-I-10,group reference,societal problems,D-I-10,,,
-F-I-15,time and historical derivation,past behavior,F-I-15,,,
+"kk_code","heading","sub_element","ocr_raw","printed_page","verdict","note"
+"A-3","acts, actions, and activities","activities","A-3",74,"OK",""
+"D-I-6","techniques, skills, and abilities","technologies","D-I-6",78,"OK",""
+"D-I-12","biological heritage","biological equipment","D-I-12",74,"OK",""
+"F-III-3","symbols","symbols","F-III-3",77,"OK",""
+"A-6","symbols","speech-symbols","A-6",78,"OK",""
+"C-I-5","acts, actions, and activities","act","C-I-5",74,"OK",""
+"B-6","products of human activity","goods","B-6",77,"OK",""
+"C-I-13","ways and life-ways","way of life","C-I-13",78,"OK",""
+"F-III-4","techniques, skills, and abilities","mental ability","F-III-4",78,"OK",""
+"F-I-6","social","social","F-I-6",76,"OK",""
+"D-I-9","products of human activity","products","D-I-9",77,"OK",""
+"D-II-5","capabilities","generations","D-II-5",75,"OK","sample heading 'capabilities' is the printed see-reference; printed under carriers of culture (current edge correct)"
+"B-10","totality, culture as comprehensive","whole complex","B-10",78,"OK",""
+"C-I-8","transmission, non-genctic","transmission","C-I-8",78,"OK",""
+"A-7","capabilities","carriers of culture-individuals","A-7",75,"OK","sample sub_element is the pre-fix name; printed element is 'individuals' (current edge correct)"
+"F-I-8","totality, culture as comprehensive","sum","F-I-8",78,"OK",""
+"D-II-11","civilization","conforms","D-II-11",75,"OK","sample heading stale (pre-correction); printed under common or shared patterns; current edge heading correct"
+"A-8","learning","learning","A-8",76,"OK",""
+"C-II-3","values, ideals, tastes, and preferences","artistic ideals","C-II-3",78,"OK",""
+"F-I-19","transmission, non-genctic","socially transmined","F-I-19",78,"OK","sub_element 'socially transmined' is the OCR variant; print reads 'socially transmitted'"
+"A-9","traits","non-material traits","A-9",78,"OK",""
+"F-I-8","products of human activity","shelter","F-I-8",77,"OK",""
+"A-7","products of human activity","products","A-7",77,"OK",""
+"A-8","ways and life-ways","ways","A-8",78,"OK",""
+"C-I-10","patterns, systems, and organization","channel","C-I-10",77,"OK",""
+"A-4","group reference","society","A-4",76,"OK",""
+"D-I-6","habits","habits","D-I-6",76,"OK",""
+"A-9","techniques, skills, and abilities","language uses","A-9",78,"OK","code also prints under language and elements blocks; techniques block printing confirmed"
+"F-I-2","products of human activity","tools","F-I-2",77,"OK",""
+"A-16","group reference","social","A-16",76,"OK",""
+"B-11","techniques, skills, and abilities","techniques","B-11",78,"OK",""
+"E-5","behavior","repetitive responses","E-5",74,"OK",""
+"D-I-10","behavior","responses","D-I-10",74,"OK",""
+"F-I-8","patterns, systems, and organization","social organization","F-I-8",77,"OK",""
+"D-II-2","behavior","behavior patterns","D-II-2",74,"OK",""
+"D-I-7","constancy","self-perpetuating","D-I-7",75,"OK",""
+"D-I-3","civilization","or shared patterns-common","D-I-3",75,"OK","sample heading stale; printed under common or shared patterns; current edge heading correct"
+"C-II-3","civilization","conform to ideals","C-II-3",75,"OK","sample heading stale; printed under common or shared patterns; current edge heading correct"
+"D-I-6","transmission, non-genctic","transmission","D-I-6",78,"OK",""
+"F-I-14","modes","modes of thought","F-I-14",76,"OK",""
+"D-II-10","totality, culture as comprehensive","total","D-II-10",78,"OK",""
+"E-3","traits","traits","E-3",78,"OK",""
+"F-I-13","social","social","F-I-13",76,"OK",""
+"F-I-10","learning","learning","F-I-10",76,"OK",""
+"D-II-8","history","ideas and cogni ve processes-ideas","D-II-8",76,"OK","sample sub_element is the pre-fix name; printed element is 'ideas'; current edge correct"
+"C-I-18","group reference","society","C-I-18",76,"OK",""
+"E-4","civilization","conventional understandings","E-4",75,"OK","sample heading stale; printed under common or shared patterns; current edge heading correct"
+"D-II-14","group reference","society","D-II-14",76,"OK",""
+"D-I-10","group reference","societal problems","D-I-10",76,"OK",""
+"F-I-15","time and historical derivation","past behavior","F-I-15",78,"OK",""
