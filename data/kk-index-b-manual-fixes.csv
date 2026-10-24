@@ -56,7 +56,7 @@
 "environmental conditions and situations","events","F-III-j","F-III-3","set","printed events, F-III-3 (printed p. 75)",NA
 "goals, ends, and orientations","design of the human maze","D-II-j","D-II-3","set","printed design of the human maze, D-II-3 (printed p. 75)",NA
 "group reference","society","C-I-j","C-I-5","set","printed society list has C-I-5, no C-I-3 (printed p. 76)",NA
-"material culture","artificial","D-T-iy","D-I-15","set","printed artificial, D-I-15 (printed p. 76)",NA
+"material culture","artificial","D-T-iy","D-I-15","set","printed artificial, D-?-15 (printed p. 76); numeral sits under an ink blot (re-checked 2026-10-24 at 600 dpi, unreadable); the blot spans a single-character width, consistent with I, and D-I-15 is the single-numeral candidate in Index A; keep with this stated basis",NA
 "modes","modes of behavior","D-IF-i4","D-II-14","set","printed modes of behavior, D-II-14 (printed p. 76)",NA
 "patterns, systems, and organization","configuration","E-j","E-5","set","printed configuration, E-5, E-8, G-6 (printed p. 77)",NA
 "patterns, systems, and organization","integrated","E-9-","E-9","set","printed integrated, E-3, E-9 (printed p. 77)",NA
@@ -89,3 +89,4 @@
 "adjustive-ajjptive function of culture","v-j adjusting","A-15","A-15","rename_sub","OCR prefix (letter and 'j') removed; the remaining word was confirmed as printed by the user","adjusting"
 "biological heritage","v-j biopsychological organism","D-I-15","D-I-15","rename_sub","OCR prefix (letter and 'j') removed; the remaining word was confirmed as printed by the user","biopsychological organism"
 "history","i-j rational","C-I-n","C-I-11","rename_sub","OCR prefix (letter and 'j') removed; the remaining word was confirmed as printed by the user","rational"
+"process ts and means","process","B-11","B-21","set","printed process, B-21, B-22, D-I-6, F-I-16 (PDF p. 80, printed p. 77; 400-dpi zoom 2026-10-24); B-11 does not print anywhere in this block; the ok token B-11 was a misread of B-21",NA
