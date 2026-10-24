@@ -1,19 +1,34 @@
 # Handoff: K&K Index A/B dataset
 
-Last updated 2026-10-24. Read `AGENTS.md` (project memory) and `docs/PROVENANCE.md` first.
+Last updated 2026-10-24 (latest status update below). Read `AGENTS.md` (project memory) and `docs/PROVENANCE.md` first.
+
+## Status update (2026-10-24, latest)
+
+- Applied the two CODE_WRONG rows (motor reactions A-1 → A-17; "culture is that which is useful" D-I-13 → D-I-15) as `set` rows; both confirmed on the page image in the verdict file.
+- Applied two user readings (not image-checked in this session): the "means of adjustment" token `F-I\` → F-IV-3 (printed "means of adjustment, D-I-17; F-IV-3"), and the totality-block "accumulated treasury" token `A-i5` → A-15 (this reverses the earlier duplicate decision; the social-heritage copy A-15, B-13, F-I-15 stays).
+- Current build: 1318 edges; sub-element network 472 x 174 (1193 ties); heading network 53 x 174 (1085 ties). Block check: 1296 edges in their printed block, 22 in another block. Unresolved tokens: 2 (`D-I` society, `F-j` organized; both excluded as duplicates by decision).
+- The A-20 "adjust" edge was traced: it is correct, and the block-check flag is a checker limitation (the text layer reads the code as `\-2o`).
+
+## Status update (2026-10-24, later session)
+
+- Commits: `f99c209` (parser: entry-start fixes; `is_entry_start` no longer treats a code dash as a
+  heading dash, and "(see" only starts an entry when no code precedes it) and `0cd27c8` (occurrence
+  key in `apply_index_b_fixes()`, keyed decisions, missing rows, rebuilt outputs, verdict file).
+- Counts: Index B 1316 edges; sub-element network 472 x 174 (1192 ties); heading network 53 x 174
+  (1084 ties). Validators pass. Block check: 21 edges printed in another block (mostly checker
+  artifacts; see item 14).
+- Applied: the three NEEDS_DECISION items (organized E-5 and totality A-15 unresolved as duplicates;
+  B-1, B-6, B-7 relabelled to social heritage; B-11 added under social heritage).
+- The 36 MISSING_EDGE rows from the sub-element check are resolved: 18 by the parser fixes, the rest
+  by keyed manual fixes or missing rows (A-5, A-2, B-14, C-I-3, D-II-5, B-17, B-11, E-7, B-22, D-I-6).
+  Remaining open tokens are listed in item 4 and item 20.
+- Not yet applied: the two CODE_WRONG rows in the verdict file (see item 20).
 
 ## Current state
 
 - Index A: 187 rows, 186 resolved, 165 codes. Every row on printed pp. 73-74 was read against
   the page image (200 dpi; disputed lines at 300 dpi). Sears's `C-I-Addendum` stays unresolved.
-- Index B: 1287 edges (1285 parsed + 2 recovered via `data/kk-index-b-missing-rows.csv`; in both
-  cases the OCR glued the code into the following element name). Flags: ok 965, ocr_corrected 210,
-  manual_fix 102, junk_name 0 (resolved 2026-10-24),
-  code_not_in_index_a 10. 2 unresolved tokens (`D-I` excluded as a duplicate; `F-I\` smudged;
-  see `data/kk-index-b-unresolved.csv`). Six tokens resolved 2026-10-24 (manual-fix file); the B-11
-  misread under process was corrected to B-21 (PROVENANCE 3.7). Four glue-artifact element names
-  were renamed to the printed elements on 2026-10-24 (expressing, relationships, traditional,
-  socially inherited, interactional fields — see PROVENANCE 3.8).
+- Index B: 1318 edges. Flags: ok 978, ocr_corrected 207, manual_fix 123, code_not_in_index_a 10. 2 unresolved tokens (`D-I` society and `F-j` organized, both excluded as duplicates by decision; see `data/kk-index-b-unresolved.csv`). The CODE_WRONG fixes, F-IV-3 and A-15 are described in the latest status update above and in PROVENANCE 3.9.
 - Crosswalk (`data/kk-boroch-crosswalk.csv`, 135 rows): 127 auto, 7 hand decisions (D3-1, D2-16,
   A16, A17, A20, C1-11, B5), 0 ambiguous, 0 unmatched, 1 F4-6 slip (resolved in PROVENANCE section 5).
 - Committed (2026-10-24): the reorganization (`1c026b5`), Phase 0 notes (`42ab463`), the Index B
@@ -67,14 +82,7 @@ manual-fix keys: the build errors if a key matches no token.
 3. **Heading attribution: done 2026-10-24** (items 13 and 16). `E-5` under "v-i" is a `group reference`
    entry printed under "society" (`data/kk-index-b-ocr-audit.csv`, `OK_HEADING_WRONG`); this is
    not covered by the block rules and has not been re-checked.
-4. **Unresolved tokens: 2 left** (`data/kk-index-b-unresolved.csv`). Six were resolved on page
-   images and recorded in the manual-fix file: `A-q` → A-9, `F-i` → F-I-6, `F-U` → B-21,
-   `F-I-i}` → F-I-13, `F-H-j` → F-II-5, `A-j` → A-5. Of these, `F-U`, `F-I-i}`, `F-H-j` and `A-j`
-   rest on the printed sequence and on the candidate's absence from the edges, not a clean read of
-   the OCR glyph. `F-U` was assigned by elimination. A second reader should check those four.
-   `D-I` (society) is excluded as a duplicate: D-I-12 and D-I-13 are both printed and both already
-   edges. `F-I\` (means of adjustment) is unreadable behind a smudge after "F-I-" (PDF p. 80, printed
-   p. 77). Leave it unresolved unless a better scan appears.
+4. **Unresolved tokens: 2 left (2026-10-24, latest)** (`data/kk-index-b-unresolved.csv`: "society D-I" and "organized F-j"). Both are excluded as duplicates by decision. `F-I\` (means of adjustment) is now F-IV-3, and `A-i5` (accumulated treasury) is now A-15, both from the user's readings; they are not image-checked in this session. Earlier six page-image resolutions (`A-q`, `F-i`, `F-U`, `F-I-i}`, `F-H-j`, `A-j`) are unchanged; `F-U`, `F-I-i}`, `F-H-j` and `A-j` rest on printed sequence plus the candidate's absence. A second reader should check all of these.
 5. **Junk sub-element names: done 2026-10-24** (decisions in `data/kk-index-b-junk-decisions.csv`; PROVENANCE 3.6;
    the six single-letter `manual_fix` names were also mapped). Original note: 33 edges, `parse_flag = junk_name`. Every code is confirmed in its
    printed block: customs (9 codes, printed p. 75), capabilities / "a people" (6, p. 75), the social
@@ -93,7 +101,7 @@ manual-fix keys: the build errors if a key matches no token.
    Boroch's D2-16 to it. Do not remap any code without a page-image basis.
    Also: the `socially transmined` sub-element is corrected to `socially transmitted` for D-II-14,
    D-II-16, F-I-19 and F-II-10 (manual-fix `rename_sub` rows, applied by `build-index-b.R`).
-8. **Rights (user decision).** Whether K&K Index B element labels can ship is undecided.
+8. **Rights (partly decided 2026-10-24).** The user regards the 1952 K&K monograph as publicly available online and does not see the K&K element labels as a rights barrier (README, Rights). Boroch's article and its verbatim quotations are still restricted.
    `data/kkcc-definition-texts.csv` holds verbatim Boroch quotations and must stay out of any
    release.
 9. **Git: done 2026-10-24.** The pending work is committed in logical units: the earlier script and
@@ -120,7 +128,7 @@ manual-fix keys: the build errors if a key matches no token.
     is also printed under attitudes and feelings, so the count is approximate); `symbols` (12 of 26) →
     systems (systems-systems, systems of thought, systems of knowledge); `feelings` (1) → forbidden, the;
     `people, a` (1) → permitted, the. Apply as a rule in `build-index-b.R`, not in the output CSVs.
-14. **Sub-element check for the remaining edges.** About 1100 edges are not yet checked against the
+14. **Sub-element check for the remaining edges (in progress, 2026-10-24 later).** Verdict file: `data/kk-index-b-subelement-check.csv` (1316-row build; OK / OK_TEXT / OK_IMAGE / APPLIED / FIXED_REBUILD / CODE_WRONG / NEEDS_CHECK / NEEDS_DECISION). Blocks on printed pp. 74-78 are covered: pp. 74-75 and most of 76-78 are text-layer diffs; the large blocks (ideas, processes, learning, products, manners, symbols, the transmission and social blocks) were checked on the page image. Still OK_TEXT (not image-checked): most of habits, material culture, modes, the rest of symbols, and blocks on pp. 79-81 beyond those listed. Original note: About 1100 edges are not yet checked against the
     printed sub-element lists. Record verdicts in a file keyed to printed page and block.
 15. **Second reader (partly done; human reader still open).** A machine cross-check (`scripts/check-index-b-blocks.R`,
     PROVENANCE 3.7) puts 1268 of 1285 edges in their assigned block. The 17 others are in
@@ -169,3 +177,12 @@ manual-fix keys: the build errors if a key matches no token.
   which covers only the 135 Table 2 codes, so the crosswalk does not link them. Several have
   matching K&K Index A rows (for example D-I-10 Ford 1942, F-I-1a Willey 1927b, E-4 Redfield,
   A-20 Thurnwald 1950) that were not linked. Linking them would be a new decision, not a fix.
+
+20. **Open after the 2026-10-24 latest session.**
+    - DONE: the two CODE_WRONG rows (A-1 → A-17; D-I-13 → D-I-15).
+    - DONE: the A-20 "adjust" edge was traced. It is correct; the block-check flag is a checker artifact (OCR form `\-2o`).
+    - DONE (user reading): accumulated treasury A-15 and means of adjustment F-IV-3. Need a second reader.
+    - Open: the NEEDS_CHECK "a people" tokens (C-I-1 j, D-I-i, F-III-j, F-IV-j) are not in the edge list and are not image-checked.
+    - Open: image-check the OK_TEXT blocks on printed pp. 76-78 and the blocks on pp. 79-81 that are still text-layer only.
+    - Positional fixes need the occurrence column; use it for any further duplicate-token fix.
+    - Housekeeping: `AGENTS.md` and `scripts/analysis-ca-index-b.R` have uncommitted changes; `Rplots.pdf` and `data/kk-index-b-missing-rows-DRAFT.csv` are untracked and superseded.

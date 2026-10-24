@@ -212,16 +212,7 @@ unlinked and are reported as such, not guessed.
   way and stays unresolved. Every row on printed pp. 73–74 was read against the page image;
   30 rows that the parser had marked `ok` were wrong (codes, years, or names) and are corrected
   in `kk-index-a-manual-fixes.csv` (see `docs/PROVENANCE.md`, 3.1).
-- Index B: 1287 edge rows (1285 parsed, plus 2 recovered from the page image via
-  `kk-index-b-missing-rows.csv`; in both cases the OCR glued the code into the following
-  element name). 210 rows are OCR-corrected: 198 were each read against the page
-  image (`data/kk-index-b-ocr-audit.csv`), and 12 were checked in the flagged audit. 66 rows
-  come from the manual-fix table. These include 32 page-image recoveries of former `j` and
-  fragment tokens, each re-checked at higher resolution (`data/kk-index-b-zoom-check.csv`),
-  and six resolutions of unresolved tokens on 2026-10-24 (PROVENANCE 3.4). 10 edges (8 codes)
-  carry codes that Index A does not list; on the page image they print as listed. Two tokens
-  remain unresolved (`kk-index-b-unresolved.csv`): `D-I` (society) is excluded as a duplicate,
-  and `F-I\` (means of adjustment) is unreadable behind a smudge.
+- Index B: 1318 edge rows. Flags: ok 978, ocr_corrected 207, manual_fix 123, code_not_in_index_a 10. The manual-fix rows include 32 page-image recoveries of former `j` and fragment tokens, each re-checked at higher resolution (`data/kk-index-b-zoom-check.csv`), the six resolutions of 2026-10-24 (PROVENANCE 3.4), and the 2026-10-24 late corrections: A-1 → A-17 and D-I-13 → D-I-15 (page image), and F-IV-3 and A-15 (user readings, not image-checked in this session; PROVENANCE 3.9). 10 edges (8 codes) carry codes that Index A does not list; on the page image they print as listed. Two tokens remain unresolved (`kk-index-b-unresolved.csv`): `D-I` (society) and `F-j` (organized), both excluded as duplicates by decision.
 - Crosswalk: 127 of 135 Boroch definitions match exactly one K&K code by rule (author,
   year or first-publication year, suffix, group, and subgroup). Seven are set by hand with
   a recorded basis (D3-1, D2-16, A16, A17, A20, C1-11, B5), one (F4-6) is a documented
@@ -231,10 +222,7 @@ unlinked and are reported as such, not guessed.
   page image (PDF pp. 77–81, quadrant crops at 300 dpi). Verdict: 50 OK, 0 errors;
   Clopper–Pearson 95% upper bound on the error rate is 7.1%. Single reader
   (`data/kk-index-b-ok-sample.csv`).
-- Machine block check: `check-index-b-blocks.R` puts 1269 of 1287 edges inside their
-  assigned printed block; the 17 others are in `kk-index-b-block-check-review.csv` with
-  verdicts read from page-image crops. This is a machine cross-check plus one reader,
-  not a double-keyed audit.
+- Machine block check: `check-index-b-blocks.R` puts 1296 of 1318 edges inside their assigned printed block; the 22 others are not all covered by `kk-index-b-block-check-review.csv`, which holds the verdicts for the earlier 17-edge set; the current 22 need their own review. This is a machine cross-check plus one reader, not a double-keyed audit.
 - Spot check: 20 random Index B edges were compared with their OCR lines after the
   normalization fixes. All 20 were correct on inspection. This is a small sample, not a
   full manual audit.
@@ -247,10 +235,11 @@ unlinked and are reported as such, not guessed.
   the page image was used to correct them, and 30 Index A rows that the parser had marked
   `ok` were wrong in code, year, or name (`docs/PROVENANCE.md`, 3.1). `C-I-Addendum` is
   printed that way and remains unresolved. Index B has 2 unresolved tokens
-  (`kk-index-b-unresolved.csv`): `D-I` is excluded as a duplicate, and `F-I\` is unreadable
-  behind a smudge. Both are excluded from the edge list rather than guessed. Six other
-  tokens were resolved on the page image (PROVENANCE 3.4); four of those rest on printed
-  sequence and the candidate's absence, not a clean glyph read. Some printed codes lack a subgroup (e.g. `D-7`); these are
+  (`kk-index-b-unresolved.csv`): `D-I` (society) and `F-j` (organized), both excluded as
+  duplicates by decision. Other tokens were resolved as recorded in PROVENANCE 3.4 and 3.9.
+  Four of the earlier resolutions rest on printed sequence and the candidate's absence, not a
+  clean glyph read. The late readings `F-I\` (now F-IV-3) and `A-i5` (now A-15) are the user's,
+  not yet checked on the image. Some printed codes lack a subgroup (e.g. `D-7`); these are
   kept as printed.
 - **Element labels.** The `sub_element` labels are short index words. The 33 garbled
   labels (former `junk_name` rows) are mapped to the printed elements
@@ -280,6 +269,8 @@ and both K&K and Boroch are copyrighted. Keep that file out of the release manif
 until a rights decision is made. The K&K Index B element labels are short index words,
 but they are still K&K's wording; confirm they are acceptable for release before
 publication. The scanned PDFs are not part of the release.
+
+User note (2026-10-24): the 1952 K&K monograph is publicly available online, and the user does not regard K&K element labels as a rights barrier. Availability online does not by itself settle redistribution rights, so the K&K labels may ship on that basis. Boroch's article (ROBAFC-5.1) and its verbatim quotations are not covered by this note and remain under the restriction above.
 
 ## Suggested citation
 
