@@ -121,6 +121,8 @@ join_hyphen_wraps <- function(lines) {
 
 # Roman subgroup OCR variants -> canonical I / II / III / IV.
 norm_roman <- function(s) {
+  # "IH" / "lH" is OCR for III; the H->I step below would otherwise give II.
+  if (s %in% c("IH", "lH")) return("III")
   s <- gsub("l", "I", s)
   s <- gsub("1", "I", s)
   s <- gsub("H", "I", s)
@@ -136,7 +138,10 @@ norm_roman <- function(s) {
 norm_number <- function(s) {
   # A lone "n" or "u" in a number slot is OCR for eleven ("A-n" = A-11).
   if (s %in% c("n", "u")) return("11")
-  map <- c(i = "1", l = "1", I = "1", j = "5", y = "5", "$" = "5", s = "5",
+  # "j" is deliberately unmapped: on the scan it is read as both 3 and 5, so a
+  # guess is wrong about half the time. Such tokens stay unresolved until a
+  # page-image check adds them to data/kk-index-b-manual-fixes.csv.
+  map <- c(i = "1", l = "1", I = "1", y = "5", "$" = "5", s = "5",
            z = "2", o = "0", O = "0", g = "9", b = "6", t = "1")
   chars <- strsplit(s, "")[[1]]
   out <- vapply(chars, function(ch) {
@@ -309,15 +314,13 @@ parse_entry_codes <- function(body, heading) {
     if (t %in% c(",", ";", ".")) next
     if (is_code_like(t)) {
       nc <- normalize_code(t)
-      if (!nc$ok) {
-        flags <- c(flags, paste0("unparsed_code:", t))
-        after_code <- TRUE
-        next
-      }
       nm <- if (length(name)) paste(name, collapse = " ") else clean_name(heading)
+      # Unparseable tokens keep a row with kk_code NA so they can be fixed or reported.
+      if (!nc$ok) flags <- c(flags, paste0("unparsed_code:", t))
       rows[[length(rows) + 1]] <- data.frame(
-        sub_element = clean_name(nm), kk_code = nc$code, ocr_raw = t,
-        corrected = nc$corrected, stringsAsFactors = FALSE)
+        sub_element = clean_name(nm),
+        kk_code = if (nc$ok) nc$code else NA_character_,
+        ocr_raw = t, corrected = nc$ok && nc$corrected, stringsAsFactors = FALSE)
       after_code <- TRUE
       next
     }
@@ -394,6 +397,46 @@ assemble_regions <- function(lines, pages) {
 
 # ---- 8. Driver ----------------------------------------------------------------
 
+# Manual fixes, each verified against the printed page image (see
+# docs/PROVENANCE.md). Keys must match exactly; a key with no hit is an error.
+apply_index_a_fixes <- function(a, fixes) {
+  # Blank fields mean "leave unchanged". Each fix can set the code, the author
+  # name, and the year qualifier of the matched row.
+  set <- function(x) !is.na(x) & nzchar(x)
+  for (i in seq_len(nrow(fixes))) {
+    hit <- which(a$author_raw == fixes$author_raw[i] & a$raw_code == fixes$raw_code[i])
+    stopifnot(length(hit) >= 1)
+    if (set(fixes$kk_code[i])) {
+      a$kk_code[hit] <- fixes$kk_code[i]
+      a$ok[hit] <- TRUE
+    }
+    if (set(fixes$author_new[i])) a$author_raw[hit] <- fixes$author_new[i]
+    if (set(fixes$qualifier_new[i])) a$qualifier[hit] <- fixes$qualifier_new[i]
+  }
+  a
+}
+
+# Index A rows the OCR text layer omits entirely (checked against the page image).
+add_index_a_missing <- function(a, missing) {
+  rows <- data.frame(author_raw = missing$author_raw, kk_code = missing$kk_code,
+                     raw_code = missing$raw_code, qualifier = missing$qualifier,
+                     ok = TRUE, stringsAsFactors = FALSE)
+  rbind(a, rows)
+}
+
+apply_index_b_fixes <- function(edges, fixes) {
+  edges$manual <- FALSE
+  for (i in seq_len(nrow(fixes))) {
+    hit <- which(edges$heading == fixes$heading[i] &
+                 edges$sub_element == fixes$sub_element[i] &
+                 edges$ocr_raw == fixes$ocr_raw[i])
+    stopifnot(length(hit) >= 1)
+    edges$kk_code[hit] <- fixes$kk_code[i]
+    edges$manual[hit] <- TRUE
+  }
+  edges
+}
+
 pages <- locate_pages(pdf_path)
 last_page <- pages$part_iii - 1
 words <- read_bbox_words(pdf_path, min(unlist(pages)), last_page)
@@ -404,8 +447,13 @@ lines_a <- join_hyphen_wraps(regions$index_a)
 lines_b <- join_hyphen_wraps(regions$index_b)
 lines_x <- join_hyphen_wraps(regions$excluded)
 
-index_a <- parse_index_a(lines_a)
+index_a <- apply_index_a_fixes(parse_index_a(lines_a),
+                               read.csv("data/kk-index-a-manual-fixes.csv", stringsAsFactors = FALSE))
+index_a <- add_index_a_missing(index_a,
+                               read.csv("data/kk-index-a-missing-rows.csv", stringsAsFactors = FALSE))
 index_b <- parse_index_b(lines_b)
+index_b$edges <- apply_index_b_fixes(index_b$edges,
+                                     read.csv("data/kk-index-b-manual-fixes.csv", stringsAsFactors = FALSE))
 excluded <- parse_index_b(lines_x)
 
 # ---- 9. Outputs ---------------------------------------------------------------
@@ -417,8 +465,18 @@ edges <- index_b$edges
 edges$in_index_a <- edges$kk_code %in% index_a_codes
 edges$parse_flag <- ifelse(!edges$in_index_a, "code_not_in_index_a",
                     ifelse(edges$corrected, "ocr_corrected", "ok"))
-edges$parse_flag[nchar(edges$sub_element) < 2 | grepl("^[0-9 ]+$", edges$sub_element)] <- "junk_name"
-edges <- unique(edges[, c("kk_code", "heading", "sub_element", "ocr_raw", "parse_flag")])
+edges$parse_flag[edges$manual] <- "manual_fix"
+junk <- !edges$manual & !is.na(edges$kk_code) &
+  (nchar(edges$sub_element) < 2 | grepl("^[0-9 ]+$", edges$sub_element))
+edges$parse_flag[junk] <- "junk_name"
+edges$parse_flag[is.na(edges$kk_code)] <- "unresolved"
+
+# Tokens that still have no code are reported, not silently dropped.
+unresolved <- unique(edges[is.na(edges$kk_code), c("heading", "sub_element", "ocr_raw", "parse_flag")])
+edges <- edges[!is.na(edges$kk_code), ]
+edges <- edges[!duplicated(paste(edges$kk_code, edges$heading, edges$sub_element)),
+               c("kk_code", "heading", "sub_element", "ocr_raw", "parse_flag")]
+write.csv(unresolved, file.path(data_dir, "kk-index-b-unresolved.csv"), row.names = FALSE)
 
 excl <- excluded$edges
 excl <- unique(excl[, c("kk_code", "heading", "sub_element", "ocr_raw")])
