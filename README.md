@@ -42,6 +42,13 @@ the two.
 | `check-index-b-blocks.R` | `documents/Kroeber-kluckhohn.pdf`, `kk-index-b-edges.csv`, `kk-index-b-block-map.csv` | `kk-index-b-block-check.csv`, `kk-index-b-block-check-summary.csv`, `kk-index-b-block-check-review.csv` (machine cross-check of heading assignments; not a human reader) |
 | `check-index-b-networks.R` | `kk-index-b-*-network.rds`, `kk-index-b-edges.csv`, `kk-index-b-definitions.csv`, `kk-boroch-crosswalk.csv` | nothing (stops on a mismatch) |
 | `kkcc-definition-attrs.R` (helper) | `kkcc_two_mode.rds` | returns the definition table used by the analyses |
+| `build-definition-years.R` | Boroch appendix (`documents/ROBAFC-5.1.pdf`) | `kkcc-definition-years.csv` |
+| `build-supplement-bibliography.R` | Boroch Supplement Bibliography | `kkcc-supplement-bibliography.csv`, `kkcc-definition-biblio.csv` |
+| `build-definition-texts.R` | Boroch appendix | `kkcc-definition-texts.csv` (verbatim; not for release) |
+| `analysis-ca-index-b.R` | Index B sub-element network | CA of the largest-component 2-core, MST figures, CA score CSVs |
+| `analysis-ca-mst-main.R` | main two-mode network | CA and Kruskal maximum spanning trees (main network) |
+| `analysis-backbone-main.R` | main network projections | FDSM backbones (alpha 0.10) |
+| `analysis-centrality-prestige-main.R` | main network | centrality, prestige and PageRank-family scores |
 
 Scripts live in `scripts/`; `documents/` holds the source PDFs and the Archive text. Run order (from the project root):
 
@@ -55,10 +62,11 @@ Scripts live in `scripts/`; `documents/` holds the source PDFs and the Archive t
 8. `scripts/analysis-index-b.R`
 9. `scripts/check-index-b-blocks.R` (machine cross-check of Index B heading assignments against the printed text)
 10. `scripts/check-index-b-networks.R` (validation of the Index B igraph objects; stops on any mismatch)
+11. `scripts/analysis-ca-index-b.R` (CA and MST figures for the Index B sub-element network)
 
 The analysis scripts and the report read definition attributes through `scripts/kkcc-definition-attrs.R`.
 
-Each build script writes a session-info file to `data/`. The R environment is pinned
+The Index B build and crosswalk scripts write session-info files to `data/` (`build-index-b-sessioninfo.txt`, `build-index-b-crosswalk-sessioninfo.txt`). The R environment is pinned
 in `renv.lock` (R 4.5.3). Requires `pdftotext` (poppler) on the PATH.
 
 ## Data dictionary
@@ -74,7 +82,7 @@ author–code pair.
 | `kk_code` | normalized K&K code (e.g. `C-I-5a`) |
 | `raw_code` | the OCR token before normalization |
 | `qualifier` | the printed parenthetical: year, or "(with X, year)" |
-| `ok` | `FALSE` if the token could not be normalized (5 rows, see Limitations) |
+| `ok` | `FALSE` if the token could not be normalized (1 row: Sears's `C-I-Addendum`, see Limitations) |
 
 **`kk-index-b-edges.csv`**: the main Index B edge list. One row per heading × element × code,
 duplicates removed.
@@ -126,7 +134,7 @@ loses entirely (a mangled code is glued into the following element name, so
 nothing parses). Each row gives the heading, sub_element, and kk_code, the
 glued OCR fragment, and the printed evidence. The build appends them
 (`parse_flag = manual_fix`) and errors if one would duplicate an existing
-edge. Currently two rows.
+edge. See the file for the current rows.
 
 **`kk-index-b-ok-sample.csv`**: a 50-row random sample (seed 4817) of the 966 `ok`
 edges, checked against the page image on 2026-10-24: `verdict` (all 50 OK), the printed
@@ -188,7 +196,7 @@ run starts a new element name, and codes attach to the current name.
 
 **OCR normalization.** Code tokens were normalized with an explicit, logged rule set
 (`normalize_code()`): roman-numeral variants (`lV`, `IH`, `l`, `1`), digit confusions
-(`i`/`l` → 1, `z` → 2, `y` → 5, `o` → 0, lone `n`/`u` → 11). `j` is not mapped:
+(`i`/`l` → 1, `z` → 2, `y` → 5, `o` → 0, lone `n`/`u` → 11). These general rules are being replaced by explicit manual fixes where a token matters (see AGENTS.md). `j` is not mapped:
 on the scan it is printed as both 3 and 5, so a `j` token is unresolved until checked
 against the page image, the suffix `a`
 (`ioa` → 10a), and dash variants (`~`, `^`). Every changed token is in

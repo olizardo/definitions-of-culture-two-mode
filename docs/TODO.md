@@ -2,6 +2,20 @@
 
 Last updated 2026-10-24 (latest status update below). Read `AGENTS.md` (project memory) and `docs/PROVENANCE.md` first.
 
+## Current state (2026-10-24, final for this session)
+
+- Index B: 1318 edges. Flags: ok 978, ocr_corrected 207, manual_fix 123, code_not_in_index_a 10. Sub-element network 472 x 174 (1193 ties); heading network 53 x 174 (1085 ties). Block check: 1296 in printed block, 22 in another block.
+- Unresolved tokens: 2 (`D-I` society, `F-j` organized), excluded as duplicates by decision.
+- User-confirmed readings (not image-checked in this session): F-IV-3, A-15 (all edges), B-15, D-II-15, D-I-5 under learned behavior, C-I-13, F-II-5, A-5, F-I-13, B-21 under group. F-I-15 under transmission is correct and unchanged.
+- Open items:
+  1. Audit the remaining general-rule tokens in the 207 ocr_corrected edges (most common: A-i, D-I-i, B-i, C-I-i, D-IV-i, E-i, D-I-y). Group by printed block and check each block on the page image.
+  2. Review the 22 block-check flags.
+  3. Image-check the OK_TEXT blocks on printed pp. 76-81.
+  4. Second reader for the user-confirmed readings and the manual fixes they came from.
+  5. The NEEDS_CHECK "a people" tokens are resolved (C-I-13, D-I-1, F-III-3 match your list; F-IV-j has no edge).
+- Rights: K&K element labels are cleared by the user (the 1952 monograph is publicly available online). Boroch's article and its verbatim quotations remain restricted.
+- Not committed: the rebuild, the manual-fix changes, the regenerated outputs and the docs. Review the regenerated audit and definitions CSVs before committing.
+
 ## Status update (2026-10-24, latest)
 
 - Applied the two CODE_WRONG rows (motor reactions A-1 → A-17; "culture is that which is useful" D-I-13 → D-I-15) as `set` rows; both confirmed on the page image in the verdict file.
