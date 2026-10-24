@@ -1,102 +1,123 @@
-"heading","sub_element","ocr_raw","kk_code","action","evidence","new_sub_element"
-"beliefs","religious beliefs","D-1112","D-II-12","set","OCR split of D-II-12",NA
-"biological heritage","human biological equipment and process","F-I","F-IV-5","set","truncated; printed F-IV-5",NA
-"capabilities","carriers of culture-individuals","D-III-j","D-III-3","set","j read as 5; printed 3; heading carriers of culture",NA
-"capabilities","j","F-III-j","F-III-3","set","printed 3; parsed 5",NA
-"capabilities","members of a society","C-I5","C-I-5","set","OCR C-I5 truncated; members of a society",NA
-"civilization","or shared patterns-common","G-I-j","G-3","set","sub is common; G-I-j misread",NA
-"civilization","shared","C-I8","C-I-8","set","I dropped in parse; printed C-I-8 (shared)",NA
-"customs","j","B-ij","B-13","set","B-ij read as 15; printed 13",NA
-"dynamic structural relations","intcrcorrclated customs","F-2","E-2","set","printed intercorrelated customs, E-2",NA
-"elements and their enumeration","language","D-II-ia","D-II-12","set","suffix a wrong; printed D-II-12",NA
-"environmental conditions and situations","natural surroundings","D-I-j","D-I-3","set","natural surroundings; j read as 5",NA
-"environmental conditions and situations","social situation","D-III-j","D-III-3","set","social situation; j read as 5",NA
-"group reference","group","B-ji","B-5","set","B-ji",NA
-"group reference","i","E-j","E-3","set","E-j; social list has E-3",NA
-"habits","established habits","D-III-j","D-III-3","set","established habits; j read as 5",NA
-"history","mind","F-i","F-II-5","set","mind entry; printed F-II-5",NA
-"patterns, systems, and organization","organized","F-j","E-5","set","organized; printed E-5",NA
-"process ts and means","social procedures","G-I-i","C-I-2","set","social procedures",NA
-"products of human activity","tools","C-I-53","C-I-5a","set","variant a read as 3",NA
-"psychoanalytic elements","substitutes","D-I","D-IV-1","set","substitutes",NA
-"psychoanalytic elements","reactionfonnat ons","D-I","D-IV-1","set","reaction-formations",NA
-"social","social","F-I4","F-I-4","set","I dropped",NA
-"social","social","F-I8","F-I-8","set","I read as 1",NA
-"totality, culture as comprehensive","sum","A-103","A-10a","set","sum; printed A-10a",NA
-"ways and life-ways","y","D-I-i","D-I-12","set","truncated; printed D-I-12",NA
-"ways and life-ways","maniere de vivre","C-I-183","C-I-18a","set","variant a read as 3",NA
-"adjustive-ajjptive function of culture","adjustments","F-I",NA,"unresolve","truncated; printed candidates: F-I-4; F-I-9; F-IV-3",NA
-"behavior","adaptive behavior","F-19",NA,"unresolve","truncated; printed candidates: F-I-9 or F-I-19",NA
-"group reference","group","F-i","F-I-6","set","page image p.76 (PDF 79): group list 'E-9, F-I-6, F-I-19'; F-I-6 absent from group sub-element, F-I-19 present",NA
-"group reference","society","D-I",NA,"unresolve","duplicate: printed society list has D-I-12 and D-I-13 (printed p.76); both already edges under this sub-element, so the token adds no new edge",NA
-"group reference","i","D-II-j","D-II-5","set","printed D-II-5 under social (not group reference)",NA
-"dynamic structural relations","relationships","C-I","C-II-6","set","printed C-II-6 under relationships (page image, printed p. 75)",NA
-"ways and life-ways","ways","C-I-i","C-I-15","set","printed C-I-15 under ways (page image, printed p. 78)",NA
-"group reference","social groupings","A-i","A-13","set","printed A-13 under social groupings (page image, printed p. 76)",NA
-"acts, actions, and activities","actions","F-I-1*4","F-I-14","set","printed F-I-14 under actions (page image, printed p. 74)",NA
-"adjustive-ajjptive function of culture","adjustments","F-I","F-IV-3","set","printed adjustments list F-I-4, F-I-9, F-IV-3; F-I-4 and F-I-9 already present, so F-IV-3 (printed p. 74)",NA
-"behavior","adaptive behavior","F-19","F-I-19","set","behavior list prints F-19 (no roman I); adaptive behavior entry gives F-I-19 (printed p. 74)",NA
-"capabilities","carriers of culture-individuals","C-II-J","C-II-3","set","printed carriers list has C-II-3, no C-II-5 (printed p. 75)",NA
-"capabilities","persons","B-ij","B-13","set","printed persons list has B-13, no B-15 (printed p. 75)",NA
-"capabilities","members of a society","C-II-j","C-II-3","set","printed members list has C-II-3, no C-II-5 (printed p. 75)",NA
-"capabilities","generations","F-I-j","F-I-3","set","printed generations list has F-I-3, no F-I-5 (printed p. 75)",NA
-"civilization","civilization","A-j","A-3","set","printed civilization list has A-3, no A-5 (printed p. 75)",NA
-"civilization","civilization","F-I-jcommon","F-I-3","set","printed civilization list has F-I-3, no F-I-5 (printed p. 75)",NA
-"civilization","or shared patterns-common","F-I-j","F-I-3","set","printed common list has F-I-3, no F-I-5 (printed p. 75)",NA
-"civilization","or shared patterns-common","G-j","G-3","set","printed common list has G-3, no G-5 (printed p. 75)",NA
-"civilization","living together","D-II-j","D-II-5","set","printed living together, D-II-5 (printed p. 75)",NA
-"civilization","accepted","C-I-j","C-I-3","set","printed accepted, C-I-3 (printed p. 75)",NA
-"constancy","relatively permanent","F-I-j","F-I-3","set","printed relatively permanent, F-I-3 (printed p. 75)",NA
-"cultivation, culture of self","cultivated","C-II-j","C-II-3","set","printed cultivated, C-II-3, C-II-4 (printed p. 75)",NA
-"customs","customs","A-j","A-3","set","printed customs list has A-3, no A-5 (printed p. 75)",NA
-"dynamic structural relations","interlinked institutions","E-j","E-3","set","printed interlinked institutions, E-3 (printed p. 75)",NA
-"dynamic structural relations","correlation","E-j","E-3","set","printed correlation, E-3 (printed p. 75)",NA
-"elements and their enumeration","elements","B-j","B-3","set","printed elements list has B-3, no B-5 (printed p. 75)",NA
-"elements and their enumeration","knowledge","B-ij","B-13","set","printed knowledge list has B-13 (printed p. 75)",NA
-"environmental conditions and situations","events","F-III-j","F-III-3","set","printed events, F-III-3 (printed p. 75)",NA
-"goals, ends, and orientations","design of the human maze","D-II-j","D-II-3","set","printed design of the human maze, D-II-3 (printed p. 75)",NA
-"group reference","society","C-I-j","C-I-5","set","printed society list has C-I-5, no C-I-3 (printed p. 76)",NA
-"material culture","artificial","D-T-iy","D-I-15","set","printed artificial, D-?-15 (printed p. 76); numeral sits under an ink blot (re-checked 2026-10-24 at 600 dpi, unreadable); the blot spans a single-character width, consistent with I, and D-I-15 is the single-numeral candidate in Index A; keep with this stated basis",NA
-"modes","modes of behavior","D-IF-i4","D-II-14","set","printed modes of behavior, D-II-14 (printed p. 76)",NA
-"patterns, systems, and organization","configuration","E-j","E-5","set","printed configuration, E-5, E-8, G-6 (printed p. 77)",NA
-"patterns, systems, and organization","integrated","E-9-","E-9","set","printed integrated, E-3, E-9 (printed p. 77)",NA
-"products of human activity","materials","F-II-7-","F-II-7","set","printed materials, F-II-7 (printed p. 77)",NA
-"symbols","symbols","F-I-j","F-I-3","set","printed symbols list has F-I-3, no F-I-5 (printed p. 77)",NA
-"traits","material traits","E-3-","E-3","set","printed material traits, E-3 (printed p. 78)",NA
-"transmission, non-genctic","transmission","D-I-14]","D-I-14","set","printed transmission list has D-I-14 (printed p. 78)",NA
-"patterns, systems, and organization","patterns","F-I-<","F-I-6","set","patterns list prints F-I-6 and no F-I-4 (F-I-4 is under habit patterns) (printed p. 77)",NA
-"group reference","society","A-q","A-9","set","page image p.76 (PDF 79): society list 'A-4, A-9, A-10'; A-9 absent from society sub-element",NA
-"group reference","group","F-U","B-21","set","page image p.75 (PDF 78): group list 'B-20, B-21, C-I-3'; B-21 absent from group sub-element. Glyph unreadable; assigned by elimination with F-i (F-I-6 is the other missing printed code)",NA
-"group reference","i","F-I-i}","F-I-13","set","page image p.76 (PDF 79): social list row 'F-I-12, F-I-13, F-I-16'; token sits between F-I-12 and F-I-16. F-I-13 already an edge under heading social",NA
-"history","ideas and cogni ve processes-ideas","F-H-j","F-II-5","set","page image p.76 (PDF 79): ideas list 'F-II-2, F-II-3, F-II-5'; token follows F-II-3 in the same line",NA
-"totality, culture as comprehensive","sum","A-j","A-5","set","page image p.78 (PDF 81): sum list 'A-3, A-5, A-10'; A-3 already an edge, A-5 absent",NA
-"process ts and means","means of adjustment","F-I\",NA,"unresolve","page image p.77 (PDF 80): smudge after 'F-I' at the end of the means-of-adjustment list; unreadable at 600 dpi",NA
-"transmission, non-genctic","socially transmined","D-II-14","D-II-14","rename_sub","printed sub-element is 'socially transmitted' (page image p.78, PDF 81). Renamed by apply_index_b_fixes; code and flags unchanged.","socially transmitted"
-"transmission, non-genctic","socially transmined","D-II-16","D-II-16","rename_sub","printed sub-element is 'socially transmitted' (page image p.78, PDF 81). Renamed by apply_index_b_fixes; code and flags unchanged. Code gap (no Index A row) stays open in the crosswalk decision D2-16","socially transmitted"
-"transmission, non-genctic","socially transmined","F-I-19","F-I-19","rename_sub","printed sub-element is 'socially transmitted' (page image p.78, PDF 81). Renamed by apply_index_b_fixes; code and flags unchanged.","socially transmitted"
-"transmission, non-genctic","socially transmined","F-II-10","F-II-10","rename_sub","printed sub-element is 'socially transmitted' (page image p.78, PDF 81). Renamed by apply_index_b_fixes; code and flags unchanged.","socially transmitted"
-"dynamic structural relations","intcrcorrclated customs","F-2","E-2","rename_sub","printed sub-element is 'intercorrelated customs' (page image, scan crop of printed p.75, PDF p.78; E-2 entry). Renamed by apply_index_b_fixes; code and flags unchanged.","intercorrelated customs"
-"environmental conditions and situations","manmade environment","F-I-ia","F-I-1a","rename_sub","label OCR damage; printed name confirmed on the scan (crop of the block)","man-made environment"
-"process ts and means","sc1 etion","F-II-7","F-II-7","rename_sub","label OCR damage; printed name confirmed on the scan (crop of the block)","selection"
-"psychoanalytic elements","v-i distoned satisfaction","D-IV-i","D-IV-1","rename_sub","label OCR damage; proposed printed name from the text layer and the Archive OCR, not yet checked on the scan","distorted satisfaction"
-"group reference","j intcgrared and oninregrared groups","C-I-ya","C-I-5a","rename_sub","label OCR damage; print reads 'integrated and unintegrated groups, C-I-5a, C-II-6' (group reference block, printed p. 76; scan crop 2026-10-24)","integrated and unintegrated groups"
-"group reference","j intcgrared and oninregrared groups","C-II-6","C-II-6","rename_sub","label OCR damage; print reads 'integrated and unintegrated groups, C-I-5a, C-II-6' (group reference block, printed p. 76; scan crop 2026-10-24)","integrated and unintegrated groups"
-"implicit culture","non-phvsiological products","B-18","B-18","rename_sub","label OCR damage; print reads 'non-physiological products, B-18' (implicit culture block, printed p. 76; scan crop 2026-10-24)","non-physiological products"
-"creation and modification","not ereated","A-ioa","A-10a","rename_sub","label OCR damage; print reads 'not created, A-10a' (creation and modification block, printed p. 75, line-break hyphen; scan crop 2026-10-24)","not created"
-"psychoanalytic elements","reactionfonnat ons","D-I","D-IV-1","rename_sub","label OCR damage; print reads 'reaction-formations, D-IV-1' (psychoanalytic elements block, printed p. 77; scan crop 2026-10-24)","reaction-formations"
-"social institutions","constitutional chaners","A-13","A-13","rename_sub","label OCR damage; print reads 'constitutional charters, A-13' (600 dpi scan crop, 2026-10-24); the text-layer proposal 'changes' was WRONG and is corrected here","constitutional charters"
-"acts, actions, and activities","categories of acpons","D-II-14","D-II-14","rename_sub","label OCR damage; print reads 'categories of actions, D-II-14' (acts block, printed p. 74; scan crop 2026-10-24)","categories of actions"
-"adjustive-ajjptive function of culture","v-j adjusting","A-15","A-15","rename_sub","OCR prefix (letter and 'j') removed; the remaining word was confirmed as printed by the user","adjusting"
-"biological heritage","v-j biopsychological organism","D-I-15","D-I-15","rename_sub","OCR prefix (letter and 'j') removed; the remaining word was confirmed as printed by the user","biopsychological organism"
-"history","i-j rational","C-I-n","C-I-11","rename_sub","OCR prefix (letter and 'j') removed; the remaining word was confirmed as printed by the user","rational"
-"process ts and means","process","B-11","B-21","set","printed process, B-21, B-22, D-I-6, F-I-16 (PDF p. 80, printed p. 77; 400-dpi zoom 2026-10-24); B-11 does not print anywhere in this block; the ok token B-11 was a misread of B-21",NA
-"behavior","7 expressing","C-I-17","C-I-17","rename_sub","printed 'expressing, C-I-17, G-2' (behavior block, printed p. 74; the '7' prefix is OCR damage)","expressing"
-"behavior","7 expressing","G-2","G-2","rename_sub","printed 'expressing, C-I-17, G-2' (behavior block, printed p. 74)","expressing"
-"dynamic structural relations","i-6","F-II-8","F-II-8","rename_sub","printed 'relationships, C-II-6, F-II-8' (dynamic structural relations block, printed p. 75, 400 dpi); the OCR glued the entry into 'i-6'","relationships"
-"social heritage or tradition","i>-ii-5 traditional","B-10","B-10","rename_sub","printed 'traditional, B-10, D-I-10, D-I-13, D-III-3' (social heritage block, printed p. 76); the OCR glued 'B-10' into the element name","traditional"
-"social heritage or tradition","i>-ii-5 traditional","D-I-io","D-I-10","rename_sub","printed 'traditional, B-10, D-I-10, D-I-13, D-III-3' (social heritage block, printed p. 76); the OCR glued 'B-10' into the element name","traditional"
-"social heritage or tradition","i>-ii-5 traditional","D-I-13","D-I-13","rename_sub","printed 'traditional, B-10, D-I-10, D-I-13, D-III-3' (social heritage block, printed p. 76); the OCR glued 'B-10' into the element name","traditional"
-"social heritage or tradition","i>-ii-5 traditional","D-III-3","D-III-3","rename_sub","printed 'traditional, B-10, D-I-10, D-I-13, D-III-3' (social heritage block, printed p. 76); the OCR glued 'B-10' into the element name","traditional"
-"social heritage or tradition","socially inherited b 2","B-3","B-3","rename_sub","printed 'socially inherited, B-2, B-3, B-6' (social heritage block, printed p. 77); the OCR glued 'B-2' into the element name","socially inherited"
-"social heritage or tradition","socially inherited b 2","B-6","B-6","rename_sub","printed 'socially inherited, B-2, B-3, B-6' (social heritage block, printed p. 77); the OCR glued 'B-2' into the element name","socially inherited"
-"dynamic structural relations","communicative interaction i iii-5 interactional fields","E-8","E-8","rename_sub","printed 'communicative interaction, F-III-5; interactional fields, E-8' (dynamic structural relations block, printed p. 75, 400 dpi); the OCR glued 'F-III-5' into the element name","interactional fields"
+heading,sub_element,ocr_raw,kk_code,action,evidence,new_sub_element,occurrence
+beliefs,religious beliefs,D-1112,D-II-12,set,OCR split of D-II-12,NA,
+adjustive-ajjptive function of culture,adjust \-2o,D-I-6,NA,rename_sub,"printed 'adjust, A-20, D-I-6, D-II-14' (adjustive-adaptive block, printed p. 74, 400 dpi crop 2026-10-25): OCR read A-20 as '\-2o' and the parser made it an element name",adjust,
+adjustive-ajjptive function of culture,adjust \-2o,D-II-14,NA,rename_sub,same printed line as the D-I-6 row,adjust,
+group reference,b j,D-II-2,NA,rename_sub,"printed 'socially, A-8, A-17, B-2, B-3, D-II-2, F-I-19' (group reference block, printed p. 76, 400 dpi crop 2026-10-25): B-3 read as 'B j' and made an element name",socially,
+group reference,b j,F-I-19,NA,rename_sub,same printed line as the D-II-2 row,socially,
+group reference,v-i,D-IV-2,NA,rename_sub,"printed society tail 'D-III-2, D-IV-1, D-IV-2, E-3, E-5, F-I-19, F-II-8, F-II-10' (group reference block, printed p. 76, 400 dpi crop 2026-10-25): OCR split 'D - I V - i' and the 'v-i' fragment became an element name",society,
+group reference,v-i,E-3,NA,rename_sub,same printed line as the D-IV-2 row,society,
+group reference,v-i,E-s,NA,rename_sub,same printed line as the D-IV-2 row,society,
+group reference,v-i,F-I-19,NA,rename_sub,same printed line as the D-IV-2 row,society,
+group reference,v-i,F-II-8,NA,rename_sub,same printed line as the D-IV-2 row,society,
+group reference,v-i,F-II-10,NA,rename_sub,same printed line as the D-IV-2 row,society,
+psychoanalytic elements,v-i sublimations,D-IV-i,NA,rename_sub,"printed 'substitutes, D-IV-1; sublimations, D-IV-1; reaction-formations, D-IV-1; distorted satisfaction, D-IV-1' (psychoanalytic elements block, printed p. 77, 400 dpi crop 2026-10-25): same 'v-i' fragment mechanism; element is sublimations",sublimations,
+biological heritage,human biological equipment and process,F-I,F-IV-5,set,truncated; printed F-IV-5,NA,
+capabilities,carriers of culture-individuals,D-III-j,D-III-3,set,j read as 5; printed 3; heading carriers of culture,NA,
+capabilities,j,F-III-j,F-III-3,set,printed 3; parsed 5,NA,
+capabilities,members of a society,C-I5,C-I-5,set,OCR C-I5 truncated; members of a society,NA,
+civilization,or shared patterns-common,G-I-j,G-3,set,sub is common; G-I-j misread,NA,
+civilization,shared,C-I8,C-I-8,set,I dropped in parse; printed C-I-8 (shared),NA,
+customs,j,B-ij,B-13,set,B-ij read as 15; printed 13,NA,
+dynamic structural relations,intcrcorrclated customs,F-2,E-2,set,"printed intercorrelated customs, E-2",NA,
+elements and their enumeration,language,D-II-ia,D-II-12,set,suffix a wrong; printed D-II-12,NA,
+environmental conditions and situations,natural surroundings,D-I-j,D-I-3,set,natural surroundings; j read as 5,NA,
+environmental conditions and situations,social situation,D-III-j,D-III-3,set,social situation; j read as 5,NA,
+group reference,group,B-ji,B-5,set,B-ji,NA,
+group reference,i,E-j,E-3,set,E-j; social list has E-3,NA,
+habits,established habits,D-III-j,D-III-3,set,established habits; j read as 5,NA,
+history,mind,F-i,F-II-5,set,mind entry; printed F-II-5,NA,
+"patterns, systems, and organization",organized,F-j,E-5,set,organized; printed E-5,NA,
+process ts and means,social procedures,G-I-i,C-I-2,set,social procedures,NA,
+products of human activity,tools,C-I-53,C-I-5a,set,variant a read as 3,NA,
+psychoanalytic elements,substitutes,D-I,D-IV-1,set,substitutes,NA,
+psychoanalytic elements,reactionfonnat ons,D-I,D-IV-1,set,reaction-formations,NA,
+social,social,F-I4,F-I-4,set,I dropped,NA,
+social,social,F-I8,F-I-8,set,I read as 1,NA,
+"totality, culture as comprehensive",sum,A-103,A-10a,set,sum; printed A-10a,NA,
+ways and life-ways,y,D-I-i,D-I-12,set,truncated; printed D-I-12,NA,
+ways and life-ways,maniere de vivre,C-I-183,C-I-18a,set,variant a read as 3,NA,
+adjustive-ajjptive function of culture,adjustments,F-I,NA,unresolve,truncated; printed candidates: F-I-4; F-I-9; F-IV-3,NA,
+behavior,adaptive behavior,F-19,NA,unresolve,truncated; printed candidates: F-I-9 or F-I-19,NA,
+group reference,group,F-i,F-I-6,set,"page image p.76 (PDF 79): group list 'E-9, F-I-6, F-I-19'; F-I-6 absent from group sub-element, F-I-19 present",NA,
+group reference,society,D-I,NA,unresolve,"duplicate: printed society list has D-I-12 and D-I-13 (printed p.76); both already edges under this sub-element, so the token adds no new edge",NA,
+group reference,i,D-II-j,D-II-5,set,printed D-II-5 under social (not group reference),NA,
+dynamic structural relations,relationships,C-I,C-II-6,set,"printed C-II-6 under relationships (page image, printed p. 75)",NA,
+ways and life-ways,ways,C-I-i,C-I-15,set,"printed C-I-15 under ways (page image, printed p. 78)",NA,
+group reference,social groupings,A-i,A-13,set,"printed A-13 under social groupings (page image, printed p. 76)",NA,
+"acts, actions, and activities",actions,F-I-1*4,F-I-14,set,"printed F-I-14 under actions (page image, printed p. 74)",NA,
+adjustive-ajjptive function of culture,adjustments,F-I,F-IV-3,set,"printed adjustments list F-I-4, F-I-9, F-IV-3; F-I-4 and F-I-9 already present, so F-IV-3 (printed p. 74)",NA,
+behavior,adaptive behavior,F-19,F-I-19,set,behavior list prints F-19 (no roman I); adaptive behavior entry gives F-I-19 (printed p. 74),NA,
+capabilities,carriers of culture-individuals,C-II-J,C-II-3,set,"printed carriers list has C-II-3, no C-II-5 (printed p. 75)",NA,
+capabilities,persons,B-ij,B-13,set,"printed persons list has B-13, no B-15 (printed p. 75)",NA,
+capabilities,members of a society,C-II-j,C-II-3,set,"printed members list has C-II-3, no C-II-5 (printed p. 75)",NA,
+capabilities,generations,F-I-j,F-I-3,set,"printed generations list has F-I-3, no F-I-5 (printed p. 75)",NA,
+civilization,civilization,A-j,A-3,set,"printed civilization list has A-3, no A-5 (printed p. 75)",NA,
+civilization,civilization,F-I-jcommon,F-I-3,set,"printed civilization list has F-I-3, no F-I-5 (printed p. 75)",NA,
+civilization,or shared patterns-common,F-I-j,F-I-3,set,"printed common list has F-I-3, no F-I-5 (printed p. 75)",NA,
+civilization,or shared patterns-common,G-j,G-3,set,"printed common list has G-3, no G-5 (printed p. 75)",NA,
+civilization,living together,D-II-j,D-II-5,set,"printed living together, D-II-5 (printed p. 75)",NA,
+civilization,accepted,C-I-j,C-I-3,set,"printed accepted, C-I-3 (printed p. 75)",NA,
+constancy,relatively permanent,F-I-j,F-I-3,set,"printed relatively permanent, F-I-3 (printed p. 75)",NA,
+"cultivation, culture of self",cultivated,C-II-j,C-II-3,set,"printed cultivated, C-II-3, C-II-4 (printed p. 75)",NA,
+customs,customs,A-j,A-3,set,"printed customs list has A-3, no A-5 (printed p. 75)",NA,
+dynamic structural relations,interlinked institutions,E-j,E-3,set,"printed interlinked institutions, E-3 (printed p. 75)",NA,
+dynamic structural relations,correlation,E-j,E-3,set,"printed correlation, E-3 (printed p. 75)",NA,
+elements and their enumeration,elements,B-j,B-3,set,"printed elements list has B-3, no B-5 (printed p. 75)",NA,
+elements and their enumeration,knowledge,B-ij,B-13,set,printed knowledge list has B-13 (printed p. 75),NA,
+environmental conditions and situations,events,F-III-j,F-III-3,set,"printed events, F-III-3 (printed p. 75)",NA,
+"goals, ends, and orientations",design of the human maze,D-II-j,D-II-3,set,"printed design of the human maze, D-II-3 (printed p. 75)",NA,
+group reference,society,C-I-j,C-I-5,set,"printed society list has C-I-5, no C-I-3 (printed p. 76)",NA,
+material culture,artificial,D-T-iy,D-I-15,set,"printed artificial, D-?-15 (printed p. 76); numeral sits under an ink blot (re-checked 2026-10-24 at 600 dpi, unreadable); the blot spans a single-character width, consistent with I, and D-I-15 is the single-numeral candidate in Index A; keep with this stated basis",NA,
+modes,modes of behavior,D-IF-i4,D-II-14,set,"printed modes of behavior, D-II-14 (printed p. 76)",NA,
+"patterns, systems, and organization",configuration,E-j,E-5,set,"printed configuration, E-5, E-8, G-6 (printed p. 77)",NA,
+"patterns, systems, and organization",integrated,E-9-,E-9,set,"printed integrated, E-3, E-9 (printed p. 77)",NA,
+products of human activity,materials,F-II-7-,F-II-7,set,"printed materials, F-II-7 (printed p. 77)",NA,
+symbols,symbols,F-I-j,F-I-3,set,"printed symbols list has F-I-3, no F-I-5 (printed p. 77)",NA,
+traits,material traits,E-3-,E-3,set,"printed material traits, E-3 (printed p. 78)",NA,
+"transmission, non-genctic",transmission,D-I-14],D-I-14,set,printed transmission list has D-I-14 (printed p. 78),NA,
+"patterns, systems, and organization",patterns,F-I-<,F-I-6,set,patterns list prints F-I-6 and no F-I-4 (F-I-4 is under habit patterns) (printed p. 77),NA,
+group reference,society,A-q,A-9,set,"page image p.76 (PDF 79): society list 'A-4, A-9, A-10'; A-9 absent from society sub-element",NA,
+group reference,group,F-U,B-21,set,"page image p.75 (PDF 78): group list 'B-20, B-21, C-I-3'; B-21 absent from group sub-element. Glyph unreadable; assigned by elimination with F-i (F-I-6 is the other missing printed code)",NA,
+group reference,i,F-I-i},F-I-13,set,"page image p.76 (PDF 79): social list row 'F-I-12, F-I-13, F-I-16'; token sits between F-I-12 and F-I-16. F-I-13 already an edge under heading social",NA,
+history,ideas and cogni ve processes-ideas,F-H-j,F-II-5,set,"page image p.76 (PDF 79): ideas list 'F-II-2, F-II-3, F-II-5'; token follows F-II-3 in the same line",NA,
+"totality, culture as comprehensive",sum,A-j,A-5,set,"page image p.78 (PDF 81): sum list 'A-3, A-5, A-10'; A-3 already an edge, A-5 absent",NA,
+process ts and means,means of adjustment,F-I\,NA,unresolve,page image p.77 (PDF 80): smudge after 'F-I' at the end of the means-of-adjustment list; unreadable at 600 dpi,NA,
+"transmission, non-genctic",socially transmined,D-II-14,D-II-14,rename_sub,"printed sub-element is 'socially transmitted' (page image p.78, PDF 81). Renamed by apply_index_b_fixes; code and flags unchanged.",socially transmitted,
+"transmission, non-genctic",socially transmined,D-II-16,D-II-16,rename_sub,"printed sub-element is 'socially transmitted' (page image p.78, PDF 81). Renamed by apply_index_b_fixes; code and flags unchanged. Code gap (no Index A row) stays open in the crosswalk decision D2-16",socially transmitted,
+"transmission, non-genctic",socially transmined,F-I-19,F-I-19,rename_sub,"printed sub-element is 'socially transmitted' (page image p.78, PDF 81). Renamed by apply_index_b_fixes; code and flags unchanged.",socially transmitted,
+"transmission, non-genctic",socially transmined,F-II-10,F-II-10,rename_sub,"printed sub-element is 'socially transmitted' (page image p.78, PDF 81). Renamed by apply_index_b_fixes; code and flags unchanged.",socially transmitted,
+dynamic structural relations,intcrcorrclated customs,F-2,E-2,rename_sub,"printed sub-element is 'intercorrelated customs' (page image, scan crop of printed p.75, PDF p.78; E-2 entry). Renamed by apply_index_b_fixes; code and flags unchanged.",intercorrelated customs,
+environmental conditions and situations,manmade environment,F-I-ia,F-I-1a,rename_sub,label OCR damage; printed name confirmed on the scan (crop of the block),man-made environment,
+process ts and means,sc1 etion,F-II-7,F-II-7,rename_sub,label OCR damage; printed name confirmed on the scan (crop of the block),selection,
+psychoanalytic elements,v-i distoned satisfaction,D-IV-i,D-IV-1,rename_sub,"label OCR damage; proposed printed name from the text layer and the Archive OCR, not yet checked on the scan",distorted satisfaction,
+group reference,j intcgrared and oninregrared groups,C-I-ya,C-I-5a,rename_sub,"label OCR damage; print reads 'integrated and unintegrated groups, C-I-5a, C-II-6' (group reference block, printed p. 76; scan crop 2026-10-24)",integrated and unintegrated groups,
+group reference,j intcgrared and oninregrared groups,C-II-6,C-II-6,rename_sub,"label OCR damage; print reads 'integrated and unintegrated groups, C-I-5a, C-II-6' (group reference block, printed p. 76; scan crop 2026-10-24)",integrated and unintegrated groups,
+implicit culture,non-phvsiological products,B-18,B-18,rename_sub,"label OCR damage; print reads 'non-physiological products, B-18' (implicit culture block, printed p. 76; scan crop 2026-10-24)",non-physiological products,
+creation and modification,not ereated,A-ioa,A-10a,rename_sub,"label OCR damage; print reads 'not created, A-10a' (creation and modification block, printed p. 75, line-break hyphen; scan crop 2026-10-24)",not created,
+psychoanalytic elements,reactionfonnat ons,D-I,D-IV-1,rename_sub,"label OCR damage; print reads 'reaction-formations, D-IV-1' (psychoanalytic elements block, printed p. 77; scan crop 2026-10-24)",reaction-formations,
+social institutions,constitutional chaners,A-13,A-13,rename_sub,"label OCR damage; print reads 'constitutional charters, A-13' (600 dpi scan crop, 2026-10-24); the text-layer proposal 'changes' was WRONG and is corrected here",constitutional charters,
+"acts, actions, and activities",categories of acpons,D-II-14,D-II-14,rename_sub,"label OCR damage; print reads 'categories of actions, D-II-14' (acts block, printed p. 74; scan crop 2026-10-24)",categories of actions,
+adjustive-ajjptive function of culture,v-j adjusting,A-15,A-15,rename_sub,OCR prefix (letter and 'j') removed; the remaining word was confirmed as printed by the user,adjusting,
+biological heritage,v-j biopsychological organism,D-I-15,D-I-15,rename_sub,OCR prefix (letter and 'j') removed; the remaining word was confirmed as printed by the user,biopsychological organism,
+history,i-j rational,C-I-n,C-I-11,rename_sub,OCR prefix (letter and 'j') removed; the remaining word was confirmed as printed by the user,rational,
+process ts and means,process,B-11,B-21,set,"printed process, B-21, B-22, D-I-6, F-I-16 (PDF p. 80, printed p. 77; 400-dpi zoom 2026-10-24); B-11 does not print anywhere in this block; the ok token B-11 was a misread of B-21",NA,
+behavior,7 expressing,C-I-17,C-I-17,rename_sub,"printed 'expressing, C-I-17, G-2' (behavior block, printed p. 74; the '7' prefix is OCR damage)",expressing,
+behavior,7 expressing,G-2,G-2,rename_sub,"printed 'expressing, C-I-17, G-2' (behavior block, printed p. 74)",expressing,
+dynamic structural relations,i-6,F-II-8,F-II-8,rename_sub,"printed 'relationships, C-II-6, F-II-8' (dynamic structural relations block, printed p. 75, 400 dpi); the OCR glued the entry into 'i-6'",relationships,
+social heritage or tradition,i>-ii-5 traditional,B-10,B-10,rename_sub,"printed 'traditional, B-10, D-I-10, D-I-13, D-III-3' (social heritage block, printed p. 76); the OCR glued 'B-10' into the element name",traditional,
+social heritage or tradition,i>-ii-5 traditional,D-I-io,D-I-10,rename_sub,"printed 'traditional, B-10, D-I-10, D-I-13, D-III-3' (social heritage block, printed p. 76); the OCR glued 'B-10' into the element name",traditional,
+social heritage or tradition,i>-ii-5 traditional,D-I-13,D-I-13,rename_sub,"printed 'traditional, B-10, D-I-10, D-I-13, D-III-3' (social heritage block, printed p. 76); the OCR glued 'B-10' into the element name",traditional,
+social heritage or tradition,i>-ii-5 traditional,D-III-3,D-III-3,rename_sub,"printed 'traditional, B-10, D-I-10, D-I-13, D-III-3' (social heritage block, printed p. 76); the OCR glued 'B-10' into the element name",traditional,
+social heritage or tradition,socially inherited b 2,B-3,B-3,rename_sub,"printed 'socially inherited, B-2, B-3, B-6' (social heritage block, printed p. 77); the OCR glued 'B-2' into the element name",socially inherited,
+social heritage or tradition,socially inherited b 2,B-6,B-6,rename_sub,"printed 'socially inherited, B-2, B-3, B-6' (social heritage block, printed p. 77); the OCR glued 'B-2' into the element name",socially inherited,
+dynamic structural relations,communicative interaction i iii-5 interactional fields,E-8,E-8,rename_sub,"printed 'communicative interaction, F-III-5; interactional fields, E-8' (dynamic structural relations block, printed p. 75, 400 dpi); the OCR glued 'F-III-5' into the element name",interactional fields,
+"acts, actions, and activities",noninstmctivc activities,E-9,,rename_sub,"printed ""non-instinctive activities, E-9"" (acts block, printed p. 74; 300 dpi crop 2026-10-24); OCR garbled the name ""noninstmctivc""",non-instinctive activities,
+"acts, actions, and activities",social activities k-i doing,C-I-2,,rename_sub,"printed ""social activities, A-2; doing, C-I-2, C-I-5a"" (acts block, printed p. 74; 300 dpi crop 2026-10-24); the element name absorbed ""K-i"" (A-2) and ""doing""",doing,
+"acts, actions, and activities",social activities k-i doing,C-I-5a,,rename_sub,same printed line as the C-I-2 row (printed p. 74),doing,
+"acts, actions, and activities",activities,A-3,A-5,set,"printed ""activities, A-3, A-5, A-8"" (acts block, printed p. 74; 300 dpi crop 2026-10-24); OCR read the printed A-5 as a second A-3; this is the second occurrence",,2
+group reference,social,B-4,B-14,set,"printed ""social, ... B-13, B-14, B-15"" (group reference block, printed p. 76; 300 dpi crop 2026-10-24); OCR read the printed B-14 as B-4; this is the second occurrence",,2
+"patterns, systems, and organization",organized,F-j,NA,unresolve,"printed ""organized, B-14, D-II-7, E-3, F-I-5, F-I-8, G-7"" and ""configuration, E-5, E-8, G-6"" (patterns block, printed p. 77; 400 dpi crop 2026-10-24): E-5 is printed only under configuration; configuration E-5 is already an edge, so this organized copy is a duplicate",,
+"totality, culture as comprehensive",accumulated treasury,A-i5,NA,unresolve,"printed ""accumulated treasury, A-15, B-13, F-I-15"" in the social heritage block (printed p. 77; crop 2026-10-24); the totality block copy is a column-break artefact, and social heritage already has these edges",,
+social heritage or tradition,social heredity,B-i,,rename_sub,"printed under ""social heritage"" (social heritage or tradition block, printed p. 77; 300 dpi crop 2026-10-24); the OCR text layer put it under ""social heredity"", where it is not printed (heredity lists B-9 and B-15 only)",social heritage,
+social heritage or tradition,social heredity,B-6,,rename_sub,"printed under ""social heritage"" (social heritage or tradition block, printed p. 77; 300 dpi crop 2026-10-24); the OCR text layer put it under ""social heredity"", where it is not printed (heredity lists B-9 and B-15 only)",social heritage,
+social heritage or tradition,social heredity,B-7,,rename_sub,"printed under ""social heritage"" (social heritage or tradition block, printed p. 77; 300 dpi crop 2026-10-24); the OCR text layer put it under ""social heredity"", where it is not printed (heredity lists B-9 and B-15 only)",social heritage,

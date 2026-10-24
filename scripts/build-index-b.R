@@ -434,6 +434,13 @@ apply_index_b_fixes <- function(edges, fixes) {
     hit <- which(edges$heading == fixes$heading[i] &
                  edges$sub_element == fixes$sub_element[i] &
                  edges$ocr_raw == fixes$ocr_raw[i])
+    # An occurrence column (1-based, in parse order) picks one of several
+    # identical tokens under the same heading and sub-element.
+    occ <- if ("occurrence" %in% names(fixes)) fixes$occurrence[i] else NA
+    if (!is.na(occ)) {
+      stopifnot(length(hit) >= occ)
+      hit <- hit[occ]
+    }
     stopifnot(length(hit) >= 1)
     # Sub-element renames correct a name only; they leave the code and flags alone.
     if (identical(fixes$action[i], "rename_sub")) {

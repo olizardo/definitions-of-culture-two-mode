@@ -977,7 +977,7 @@
 "Interacting","A6","A-5",0,FALSE,TRUE,"neither"
 "Reacting","A6","A-5",0,FALSE,TRUE,"neither"
 "Activity","A6","A-5",0,FALSE,FALSE,"neither"
-"Activities","A6","A-5",1,FALSE,TRUE,"boroch_only"
+"Activities","A6","A-5",1,TRUE,TRUE,"confirmed"
 "HERITAGE","A6","A-5",0,FALSE,FALSE,"neither"
 "Heredity","A6","A-5",0,FALSE,FALSE,"neither"
 "Inherit/inherited","A6","A-5",0,FALSE,FALSE,"neither"
