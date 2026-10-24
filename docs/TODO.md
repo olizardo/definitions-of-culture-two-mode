@@ -156,7 +156,9 @@ manual-fix keys: the build errors if a key matches no token.
 - Angyal's row (B-14) is from the page image. It is absent from the project's OCR text, and the
   second scan's tesseract output for PDF p. 89 doesn't include it (page 88 probably has it, not
   checked).
-- Element labels: the garbled ones are fixed (PROVENANCE 3.6), but seven of the fixes are text-layer proposals not checked on the scan. Other labels are unverified against the page image.
+- Element labels: the garbled ones are fixed (PROVENANCE 3.6); the seven text-proposed label fixes were
+  checked on the scan on 2026-10-24 — six confirmed, one wrong ("constitutional changes" → the print
+  reads "constitutional charters", corrected and rebuilt). Other labels are unverified against the page image.
 - The 39 appendix-only Boroch codes (PROVENANCE section 4) are not in `kkcc-definition-years.csv`,
   which covers only the 135 Table 2 codes, so the crosswalk does not link them. Several have
   matching K&K Index A rows (for example D-I-10 Ford 1942, F-I-1a Willey 1927b, E-4 Redfield,

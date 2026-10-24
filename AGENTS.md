@@ -261,9 +261,10 @@ from the PDF via pdftotext -layout.
   maps the 33 junk_name edges and six single-letter manual_fix edges to printed elements. Garbled labels are
   fixed by `rename_sub` rows: intercorrelated customs, man-made environment and selection (checked on the scan);
   distorted satisfaction, integrated and unintegrated groups, non-physiological products, not created,
-  reaction-formations, constitutional changes, categories of actions, and the prefix removals adjusting,
-  biopsychological organism, rational. The first 3 were on the scan; the others are text-layer proposals
-  not yet checked on the scan (PROVENANCE 3.6).
+  reaction-formations, constitutional charters, categories of actions, and the prefix removals adjusting,
+  biopsychological organism, rational. All label fixes were checked on the scan 2026-10-24; six printed as
+  proposed, but "constitutional changes" was WRONG — the print reads "constitutional charters, A-13"
+  (600 dpi), corrected and rebuilt (PROVENANCE 3.6).
 - Machine cross-check (2026-10-24, PROVENANCE 3.7): `scripts/check-index-b-blocks.R` puts 1268 of 1285 edges in
   their assigned printed block. The 17 others are in `data/kk-index-b-block-check-review.csv` with provisional
   verdicts (final 2026-10-24): 16 OK, 1 CODE_WRONG (B-11 under process is a misread of B-21, fixed by a
@@ -333,7 +334,7 @@ from the PDF via pdftotext -layout.
   with it are leads, not evidence against our rows.
 - Open items are tracked in `docs/TODO.md`. Remaining work: the 2
   unresolved Index B tokens, the sub-element check
-  of the remaining ~1100 edges, the 7 text-proposed labels pending a scan check, a human second reader, and the rights decision.
+  of the remaining ~1100 edges, a human second reader, and the rights decision.
   Junk names, the heading and label fixes, and the `analysis-index-b.R` rerun were done on 2026-10-24.
 
 

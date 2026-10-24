@@ -243,9 +243,10 @@ unlinked and are reported as such, not guessed.
   kept as printed.
 - **Element labels.** The `sub_element` labels are short index words. The 33 garbled
   labels (former `junk_name` rows) are mapped to the printed elements
-  (`kk-index-b-junk-decisions.csv`), but seven of those fixes and a few renames are
-  text-layer proposals not yet checked on the scan (PROVENANCE 3.6). Other labels are
-  unverified against the page image beyond the audits above.
+  (`kk-index-b-junk-decisions.csv`); the label fixes were checked on the scan (one
+  text-layer proposal, "constitutional changes", was wrong and corrected to the printed
+  "constitutional charters"). Other labels are unverified against the page image beyond
+  the audits above.
 - **Boroch's coding is semantic, not lexical.** A Table 2 row such as "BEHAVIOR" is
   not always a K&K Index B heading. The audit reports this rather than correcting it.
 - **Vocabulary reduction.** Boroch's 56 notions, his 171 appendix codes, and K&K's full
