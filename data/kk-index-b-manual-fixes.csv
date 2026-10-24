@@ -27,7 +27,7 @@
 "ways and life-ways","maniere de vivre","C-I-183","C-I-18a","set","variant a read as 3",NA
 "adjustive-ajjptive function of culture","adjustments","F-I",NA,"unresolve","truncated; printed candidates: F-I-4; F-I-9; F-IV-3",NA
 "behavior","adaptive behavior","F-19",NA,"unresolve","truncated; printed candidates: F-I-9 or F-I-19",NA
-"group reference","group","F-i","F-I-6","set","page image p.75 (PDF 79): group list 'E-9, F-I-6, F-I-19'; F-I-6 absent from group sub-element, F-I-19 present",NA
+"group reference","group","F-i","F-I-6","set","page image p.76 (PDF 79): group list 'E-9, F-I-6, F-I-19'; F-I-6 absent from group sub-element, F-I-19 present",NA
 "group reference","society","D-I",NA,"unresolve","duplicate: printed society list has D-I-12 and D-I-13 (printed p.76); both already edges under this sub-element, so the token adds no new edge",NA
 "group reference","i","D-II-j","D-II-5","set","printed D-II-5 under social (not group reference)",NA
 "dynamic structural relations","relationships","C-I","C-II-6","set","printed C-II-6 under relationships (page image, printed p. 75)",NA
@@ -69,7 +69,7 @@
 "group reference","group","F-U","B-21","set","page image p.75 (PDF 78): group list 'B-20, B-21, C-I-3'; B-21 absent from group sub-element. Glyph unreadable; assigned by elimination with F-i (F-I-6 is the other missing printed code)",NA
 "group reference","i","F-I-i}","F-I-13","set","page image p.76 (PDF 79): social list row 'F-I-12, F-I-13, F-I-16'; token sits between F-I-12 and F-I-16. F-I-13 already an edge under heading social",NA
 "history","ideas and cogni ve processes-ideas","F-H-j","F-II-5","set","page image p.76 (PDF 79): ideas list 'F-II-2, F-II-3, F-II-5'; token follows F-II-3 in the same line",NA
-"totality, culture as comprehensive","sum","A-j","A-5","set","page image p.77 (PDF 81): sum list 'A-3, A-5, A-10'; A-3 already an edge, A-5 absent",NA
+"totality, culture as comprehensive","sum","A-j","A-5","set","page image p.78 (PDF 81): sum list 'A-3, A-5, A-10'; A-3 already an edge, A-5 absent",NA
 "process ts and means","means of adjustment","F-I\",NA,"unresolve","page image p.77 (PDF 80): smudge after 'F-I' at the end of the means-of-adjustment list; unreadable at 600 dpi",NA
 "transmission, non-genctic","socially transmined","D-II-14","D-II-14","rename_sub","printed sub-element is 'socially transmitted' (page image p.78, PDF 81). Renamed by apply_index_b_fixes; code and flags unchanged.","socially transmitted"
 "transmission, non-genctic","socially transmined","D-II-16","D-II-16","rename_sub","printed sub-element is 'socially transmitted' (page image p.78, PDF 81). Renamed by apply_index_b_fixes; code and flags unchanged. Code gap (no Index A row) stays open in the crosswalk decision D2-16","socially transmitted"

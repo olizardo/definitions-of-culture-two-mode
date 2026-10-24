@@ -87,13 +87,13 @@ from the PDF via pdftotext -layout.
 - Fine-grained 56 x 135 version kept in `data/kkcc_two_mode.rds` with attributes
   (is_main, parent_category, def_group, def_type on graph; def_attrs data.frame).
   DOING row omitted (singleton, per user); Behaving/Industry are zero-use rows.
-- Analysis scripts: `analysis-basic-stats.R` (tm-basic.html style stats),
-  `analysis-collapse-main.R` (builds collapsed network),
+- Analysis scripts: basic stats are inline chunks in the report (`analysis-basic-stats.R` was
+  deleted 2026-10-24), `analysis-collapse-main.R` (builds collapsed network),
   `analysis-ca-mst-main.R` (CA via eigen() per tm-ca.html — Z.v scores = unit-variance
   eigenvectors x sqrt(lambda); passive type barycenters radially stretched from origin
   by BARY.SCALE=5 (purely visual, to clear the concept cluster);
   Breiger projections + make.max.st Kruskal max spanning trees via ggraph).
-  Legacy fine-grained script: `analysis-ca-mst.R`. Figures in `figures/`, CA score CSVs
+  The legacy fine-grained `analysis-ca-mst.R` was deleted 2026-10-24. Figures in `figures/`, CA score CSVs
   in `data/`. Convention: base pipe, ggplot2, labeled code cells in the Quarto report
   `kkcc-two-mode.qmd` (renamed from kkcc-basic-stats.qmd). The report now contains the
   basic-stats sections PLUS sections for CA, MSTs, backbones, centrality/prestige,
@@ -183,6 +183,17 @@ from the PDF via pdftotext -layout.
 - `norm_roman()` in `build-index-b.R` replaced H with I after the other substitutions, so
   "IH" became "II" (D-IH-2 and F-IH-2 were wrong). Fixed 2026-10-24 by returning III for IH/lH
   first. Check any new roman-slot token that contains H.
+- Manual-fix actions: `set` (kk_code), `unresolve` (kk_code NA), and `rename_sub` (sets
+  `new_sub_element`; keeps the code and flags; applied in `apply_index_b_fixes()`). Keys must match
+  the full parsed token table, not the exported `kk-index-b-edges.csv`, which keeps resolved codes
+  only. Unresolved tokens are absent from that export. A key with no match stops the build.
+- Page mapping: our scan's PDF page = printed page + 3 (PDF 77 = printed 74). The Archive Scribe
+  scan is printed + 16 (PDF 90 = printed 74). The Archive scan's left column is clipped at the scan
+  edge, so its text loses leading characters: use it only as a lead.
+- Pixel crops: `pdftoppm -r DPI -x X -y Y -W W -H H` takes pixels (points × DPI / 72). Coordinates
+  from `pdftotext -bbox` are in points.
+- Resolving a token from printed sequence plus the candidate's absence from the edges is a
+  page-image inference: state the basis in the manual-fix evidence column.
 
 ## Related fix upstream
 
@@ -210,8 +221,8 @@ from the PDF via pdftotext -layout.
   flagged edges, keyed to the printed page evidence.
 - Current counts (rebuilt 2026-10-24, after the Index A page-image pass): Index A 187 rows
   (186 resolved, 165 codes; `kk-index-a-missing-rows.csv` adds Angyal). Sears's `C-I-Addendum`
-  stays unresolved. Index B 1279 edges (10 code_not_in_index_a, 33 junk_name, 210 ocr_corrected,
-  60 manual_fix, 966 ok); 8 unresolved. Crosswalk 127 auto, 2 hand decisions (D3-1, D2-16),
+  stays unresolved. Index B 1285 edges (10 code_not_in_index_a, 33 junk_name, 210 ocr_corrected,
+  66 manual_fix, 966 ok); 2 unresolved (`D-I` excluded as a duplicate, `F-I\` smudged). Crosswalk 127 auto, 2 hand decisions (D3-1, D2-16),
   4 ambiguous, 1 no match (B5), 1 F4-6. Open crosswalk rows are listed in
   `kk-boroch-crosswalk-decisions.csv`.
 - Index A manual fixes now carry `author_new` and `qualifier_new` as well as `kk_code`. Blank means
@@ -225,17 +236,26 @@ from the PDF via pdftotext -layout.
   (Index B = PDF pp. 77-81). 915 `ok` edges have no audit verdict (PROVENANCE 3.3). The OCR-corrected
   audit was read at 200 dpi and the recoveries at 300-400 dpi, by one reader; there is no
   double-keyed check. Do not describe the dataset as fully verified.
+- 2026-10-24 zoom pass: the 10 code_not_in_index_a and 33 junk_name codes were checked against our
+  scan's page images (printed pp. 74-78). The 8 unresolved tokens were zoomed at 400-600 dpi. Six
+  resolved: `A-q`→A-9, `F-i`→F-I-6, `F-U`→B-21, `F-I-i}`→F-I-13, `F-H-j`→F-II-5, `A-j`→A-5. For
+  `F-U`, `F-I-i}`, `F-H-j` and `A-j` the glyph is not clearly read, so the basis is printed sequence
+  plus the candidate's absence from the edges. Recorded in `data/kk-index-b-manual-fixes.csv`
+  (evidence column) and `data/kk-index-b-second-scan-check.csv`.
 - Heading attribution is wrong in several blocks: "carriers of culture" entries sit under
   `capabilities`; "common or shared patterns" under `civilization`; "systems" under `symbols`;
   "social" and "society" under `group reference`; "ideas and cognitive processes" entries
   under `history`. Codes are right; heading-level analyses are not reliable until this is fixed.
+  Confirmed on page images 2026-10-24: C-7, F-9 and F-4 print under "common or shared patterns"
+  (edges say `civilization`); D-8 and E-17 print under the "carriers of culture" block (edges say
+  `capabilities`).
 - Rights: `data/kkcc-definition-texts.csv` holds verbatim Boroch quotations and stays out of
   any release. Whether the K&K Index B element labels can ship is still undecided. The page-image
   checks used an unofficial scan copy that is not in the repo. Cite printed page numbers, not
   that copy.
-- Open decisions: fix heading attribution (the block-level map is not built yet); resolve the
-  8 remaining unresolved tokens only if a better source appears (they are unreadable or have two
-  printed candidates); decide the rights questions above.
+- Open decisions: fix heading attribution (the block-level map is not built yet); the 2 remaining
+  unresolved tokens need a better source; decide the rights questions above. A second reader
+  should check `F-U`, `F-I-i}`, `F-H-j` and `A-j`.
 - Index B recoveries (2026-10-24): `j` tokens were resolved only where the printed entry under
   that sub-element had one candidate (e.g. "carriers" prints C-II-3 and no C-II-5). The printed
   candidate check is per sub-element, not per printed page; treat as a page-image inference.
@@ -269,20 +289,20 @@ from the PDF via pdftotext -layout.
   which is expected given renumbering.
 - Index B codes printed without a roman numeral: `C-7`, `D-8`, and `F-9` were verified at
   300 dpi as printed that way. They are kept as printed, not remapped. `D-7`, `D-5`, `F-4`,
-  `E-17` are kept too, not verified at 300 dpi.
-- Index B edge count is unchanged at 1279 after the Index A fixes. 10 edges (8 codes) are not in
-  Index A.
+  `E-17` are kept too; verified on the page image at 200 dpi on 2026-10-24, not at 300 dpi.
+- Index B edge count is 1285 (1279 before the 2026-10-24 resolutions). 10 edges (8 codes) are not
+  in Index A.
 - Two public Internet Archive copies of the 1952 monograph (Peabody Papers vol. 47 no. 1) were
   located and checked. `culturecriticalr0000kroe_z3a4` has a Scribe OCR text PDF (252 pp.) and a
   `_djvu.txt` (882 KB). `culture0000unse` is access-restricted and its text returns HTTP 401.
-  A text file copy, `papersofpeabodymvol47no1peab_djvu.txt`, is UNTRACKED in the repo root.
-  Do not commit or release it: rights are unresolved. Move it out of the repo or add it to
-  `.gitignore`. Downloaded PDFs and text are in the scratch directory.
+  A text file copy, `documents/papersofpeabodymvol47no1peab_djvu.txt`, is gitignored
+  (`documents/*_djvu.txt`). Do not commit or release it: rights are unresolved. Downloaded PDFs and text are in the scratch directory.
 - Independent OCR: tesseract 5 (eng) is installed. Run at 300 dpi on the Archive PDF, it agreed
   with every corrected Index A row checked. The Archive's OCR is weaker than ours on Index A
   (digit and i/1 confusions, wrapped Kluckhohn/Kelly lines lose their author), so disagreements
   with it are leads, not evidence against our rows.
-- Open items are tracked in `docs/TODO.md` (status block at the top). Remaining work: heading
-  attribution, the 8 unresolved Index B tokens, the 33 junk sub-element names, checking the 50-row
-  sample in `data/kk-index-b-ok-sample.csv`, the 5 open crosswalk rows, and the rights decision.
+- Open items are tracked in `docs/TODO.md`. Remaining work: heading attribution (block map), the
+  33 junk sub-element names, the 2 unresolved Index B tokens, the 50-row sample in
+  `data/kk-index-b-ok-sample.csv`, the 5 open crosswalk rows, the rights decision, and rerunning
+  `analysis-index-b.R` (stale after the 1285-edge rebuild).
 

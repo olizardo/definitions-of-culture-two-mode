@@ -83,7 +83,8 @@ duplicates removed.
 
 Codes with `in_index_a = FALSE` are Index B codes that Index A does not list. Eight codes
 remain (`C-7`, `D-8`, `F-9` are printed without the roman numeral; `D-II-16` is cited in
-Index B but has no Index A row). Treat them as unverified.
+Index B but has no Index A row). On the page image (2026-10-24) they print as listed; see
+PROVENANCE 3.4. They are kept as printed, not remapped.
 
 **`kk-index-b-words-excluded.csv`**: K&K's "Words not included in Index B". Same layout
 as the edge list (`kk_code`, `heading`, `sub_element`, `ocr_raw`). These words are
@@ -96,7 +97,8 @@ normalization. Rules are in `normalize_code()` and `norm_number()` in `build-ind
 **`kk-index-a-manual-fixes.csv`** and **`kk-index-b-manual-fixes.csv`**: corrections
 checked against the printed page image. Each row gives the parsed token, the corrected
 code (or `NA` for unresolved), and the printed evidence. The build applies them and
-errors if a key matches no token.
+errors if a key matches no token. For `action = rename_sub`, the row sets `new_sub_element`
+and leaves the code and the flags unchanged.
 
 **`kk-index-a-missing-rows.csv`**: Index A rows that the OCR text layer omits entirely,
 added from the page image (currently one, Angyal).
@@ -114,6 +116,10 @@ and reported here so they can be checked.
 **`kk-index-b-flagged-audit.csv`**: verdict for each of the 138 Index B edges that were
 flagged for review (codes not in Index A, or junk sub-element names), with the printed
 code the page shows.
+
+**`kk-index-b-second-scan-check.csv`**: the 43 flagged edges (10 `code_not_in_index_a`, 33
+`junk_name`) checked against the page image of our scan (PROVENANCE 3.4). Columns give the
+second-scan text match, the page-image verdict, and the printed page and block.
 
 **`kk_biadjacency_subelement.{rds,csv}`** and **`kk_biadjacency_heading.{rds,csv}`**:
 binary matrices (element or heading × K&K code). The `.rds` is a base matrix with
@@ -182,13 +188,14 @@ unlinked and are reported as such, not guessed.
   way and stays unresolved. Every row on printed pp. 73–74 was read against the page image;
   30 rows that the parser had marked `ok` were wrong (codes, years, or names) and are corrected
   in `kk-index-a-manual-fixes.csv` (see `docs/PROVENANCE.md`, 3.1).
-- Index B: 1279 edge rows. 198 rows are OCR-corrected and were each read against the page
-  image (`data/kk-index-b-ocr-audit.csv`). 60 rows come from the manual-fix table, which
-  includes 32 page-image recoveries of former `j` and fragment tokens; each was re-checked
-  at higher resolution (`data/kk-index-b-zoom-check.csv`). 10 edges (8 codes) carry codes
-  that Index A does not list. 8 tokens remain unresolved (`kk-index-b-unresolved.csv`): five have two printed
-  candidates under the same sub-element, and three are unreadable on the scan (a garbled
-  token, a misattributed sub-element label, and a token clipped at the column gutter).
+- Index B: 1285 edge rows. 210 rows are OCR-corrected: 198 were each read against the page
+  image (`data/kk-index-b-ocr-audit.csv`), and 12 were checked in the flagged audit. 66 rows
+  come from the manual-fix table. These include 32 page-image recoveries of former `j` and
+  fragment tokens, each re-checked at higher resolution (`data/kk-index-b-zoom-check.csv`),
+  and six resolutions of unresolved tokens on 2026-10-24 (PROVENANCE 3.4). 10 edges (8 codes)
+  carry codes that Index A does not list; on the page image they print as listed. Two tokens
+  remain unresolved (`kk-index-b-unresolved.csv`): `D-I` (society) is excluded as a duplicate,
+  and `F-I\` (means of adjustment) is unreadable behind a smudge.
 - Crosswalk: 127 of 135 Boroch definitions match exactly one K&K code by rule (author,
   year or first-publication year, suffix, group, and subgroup). Two more are set by hand with
   a recorded basis (D3-1, D2-16). Four are ambiguous and one is unmatched (A16, A17, A20,
@@ -205,10 +212,11 @@ unlinked and are reported as such, not guessed.
   remain damaged after normalization. Of the Index A tokens that the rules could not read,
   the page image was used to correct them, and 30 Index A rows that the parser had marked
   `ok` were wrong in code, year, or name (`docs/PROVENANCE.md`, 3.1). `C-I-Addendum` is
-  printed that way and remains unresolved. Index B has 8 unresolved
-  tokens (`kk-index-b-unresolved.csv`). Five have two printed candidates under the same
-  sub-element; the other three are unreadable on the scan. They are excluded from the edge
-  list rather than guessed. Some printed codes lack a subgroup (e.g. `D-7`); these are
+  printed that way and remains unresolved. Index B has 2 unresolved tokens
+  (`kk-index-b-unresolved.csv`): `D-I` is excluded as a duplicate, and `F-I\` is unreadable
+  behind a smudge. Both are excluded from the edge list rather than guessed. Six other
+  tokens were resolved on the page image (PROVENANCE 3.4); four of those rest on printed
+  sequence and the candidate's absence, not a clean glyph read. Some printed codes lack a subgroup (e.g. `D-7`); these are
   kept as printed.
 - **Element labels.** The `sub_element` labels are short index words. Some are garbled
   (e.g. "sc1 etion"). They are unverified against the page image.

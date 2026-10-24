@@ -85,8 +85,9 @@ The corrections are in `data/kk-index-a-manual-fixes.csv` (columns `kk_code`, `a
 Index A now has 187 rows (186 resolved, plus Sears's `C-I-Addendum`), covering 165 codes. Seven Index B codes that were missing from Index A (A-2, B-14, B-21, C-II-2, D-I-5, D-II-15, E-2) now appear there. Ten Index B edges (eight codes) still carry codes Index A does not list:
 
 - `C-7`, `D-8`, `F-9`: printed without the roman numeral on the page (checked at 300 dpi). Candidates such as C-I-7, D-I-8, and F-I-9 exist in Index A, but the codes are kept as printed, not remapped.
-- `D-7`, `D-5`, `F-4`, `E-17`: kept as printed. Not verified at 300 dpi.
-- `D-II-16` (`socially transmitted behavior`): Index A has no Aberle row. The code is cited in Index B, and it is the code the crosswalk assigns to Boroch's D2-16 (see 3.2).
+- `D-7`, `D-5`, `F-4`, `E-17`: kept as printed. Confirmed on the page image at 200 dpi (section 3.4), not at 300 dpi.
+- `D-II-16` (`socially transmitted behavior`): Index A has no Aberle row. The code is cited in Index B, and it is the code the crosswalk assigns to Boroch's D2-16 (see 3.2). Its sub-element is printed
+  "socially transmitted", not "socially transmined" (section 3.4).
 
 ### 3.2 Crosswalk changes (2026-10-24)
 
@@ -98,7 +99,7 @@ The crosswalk now strips initials from Boroch surnames ("A. Davis" matches Davis
 
 Result: 127 rule matches, 2 hand decisions, 4 ambiguous, 1 unmatched, and F4-6 (resolved in section 5).
 
-### 3.3 Audit coverage (2026-10-24)
+### 3.3 Audit coverage (2026-10-24; snapshot before the resolutions in 3.4)
 
 Coverage of the Index B edges by the audit files, joined on kk_code + heading + sub_element
 (`data/kk-index-b-edges.csv`, 1279 edges; `kk-index-b-flagged-audit.csv` and
@@ -117,6 +118,48 @@ tokens (for example F-1, C-18, A-103, D-1112). Their verdicts exist only in the 
 The 932 unaudited-ok figure in earlier notes could not be reproduced. The join gives 915.
 The 56 manual fixes without an audit row are justified by the printed evidence in
 `kk-index-b-manual-fixes.csv`, not by an independent verdict.
+
+### 3.4 Page-image pass on flagged and unresolved tokens (2026-10-24)
+
+Source: our scan (`documents/Kroeber-kluckhohn.pdf`), Index B = PDF pp. 77–81 = printed pp. 74–78
+(PDF page = printed page + 3). Pages were viewed at 200 dpi, and the unresolved tokens at 400–600
+dpi. The Internet Archive copy (`culturecriticalr0000kroe_z3a4`) was used as a lead only: its left
+column is clipped at the scan edge, so leading characters are lost. Verdicts are single-reader.
+
+**Flagged codes.** All 10 `code_not_in_index_a` codes print where the edges place them.
+Four print under the heading the edges give (D-7 under adjustive-adaptive; D-7 under implicit
+culture; D-II-16 under behavior; D-5 under products of human activity). Five print under a different
+heading: C-7, F-9 and F-4 under "common or shared patterns" (edges: civilization); D-8 and E-17
+under the "carriers of culture" block (edges: capabilities). D-II-16 under "transmission,
+non-genetic" is confirmed, with the damaged sub-element described below. All 33 `junk_name` codes
+print in the blocks the edges give: customs (9 codes, printed p. 75), capabilities / "a people"
+(6, p. 75), the social entry under group reference (11, p. 77), patterns (1, p. 77), social
+heritage (2, p. 77), and ways and life-ways (4, p. 78). Their sub-element names remain open.
+
+**Sub-element correction.** The sub-element `socially transmined` is OCR damage for printed
+"socially transmitted" (page 78, transmission, non-genetic). It affects four edges (D-II-14,
+D-II-16, F-I-19, F-II-10). They are corrected by `rename_sub` rows in
+`data/kk-index-b-manual-fixes.csv`, applied by `apply_index_b_fixes()`. Codes and flags are unchanged.
+
+**Unresolved tokens.** Six of the eight were resolved; two remain.
+
+| Token (heading / sub-element) | Decision | Printed basis | Confidence |
+|---|---|---|---|
+| `A-q` (group reference / society) | A-9 | "A-4, A-9, A-10" in the society list (printed p. 76); A-9 absent from the edges here | high |
+| `F-i` (group reference / group) | F-I-6 | "E-9, F-I-6, F-I-19" in the group list (p. 76); F-I-6 absent here | medium-high |
+| `F-U` (group reference / group) | B-21 | "B-20, B-21, C-I-3" in the group list (p. 75); glyph unreadable, so assigned by elimination with `F-i` | medium |
+| `F-I-i}` (group reference / i) | F-I-13 | between F-I-12 and F-I-16 in the social list (p. 76); F-I-13 is already an edge under heading "social" | medium |
+| `F-H-j` (history / ideas) | F-II-5 | immediately after F-II-3 in the ideas list (p. 76); glyph not clearly read | medium-high |
+| `A-j` (totality / sum) | A-5 | between A-3 (already an edge) and A-10 in the sum list (p. 78); glyph not clearly read | medium-high |
+| `D-I` (group reference / society) | excluded as a duplicate | D-I-12 and D-I-13 both printed (p. 76) and both already edges | not added |
+| `F-I\` (process ts and means / means of adjustment) | unresolved | smudge after "F-I-" at the end of the list (p. 77) | none |
+
+Resolutions that rest on printed sequence plus the candidate's absence from the edges are inferences,
+not clean glyph reads. A second reader should check `F-U`, `F-I-i}`, `F-H-j` and `A-j`.
+
+**Effect on the build.** Index B edges go from 1279 to 1285. Manual-fix edges go from 60 to 66.
+Parse flags: ok 966, ocr_corrected 210, junk_name 33, code_not_in_index_a 10. The crosswalk is
+unchanged (127 auto, 2 manual decisions, 1 F4-6, 1 no match, 4 ambiguous).
 
 ## 4. The 39 appendix-only codes
 
@@ -180,11 +223,12 @@ the same passages at pp. 333, 337. The discrepancy is recorded and not resolved.
 
 Status as of 2026-10-24. Items marked open need a decision or a page-image check that has not been made.
 
-- **Heading attribution (open).** Sub-elements printed under "carriers of culture", "common or shared patterns", "systems", "social"/"society", and "ideas and cognitive processes" are attached to the wrong heading. Codes are unaffected, but heading-level analyses are not reliable. A block-to-heading map has not been built.
-- **Unresolved Index B tokens (open, 8).** Five have two printed candidates; three are unreadable on the scan. They are excluded from the edge list. Resolving them needs a second scan or a decision to accept the exclusion. The CHECK rows for `F-i` (group) and `D-I` (society) are in this set.
-- **Junk sub-element names (open, 33 edges).** Sub-elements such as `j`, `i`, and `y` are OCR fragments or misattributed labels. The per-case decision (map to the printed sub-element, or drop from the sub-element matrix and keep in the heading matrix) has not been made.
+- **Heading attribution (open).** Sub-elements printed under "carriers of culture", "common or shared patterns", "systems", "social"/"society", and "ideas and cognitive processes" are attached to the wrong heading. Codes are unaffected, but heading-level analyses are not reliable. A block-to-heading map has not been built. Confirmed on the page image (section 3.4): C-7, F-9 and F-4 print under "common or shared patterns", and D-8 and E-17 under the "carriers of culture" block.
+- **Unresolved Index B tokens (open, 2).** Six of the eight were resolved on 2026-10-24 (section 3.4). `D-I` (society) is excluded as a duplicate. `F-I\` (means of adjustment) is unreadable behind a smudge and stays unresolved. Four resolutions rest on printed sequence rather than a clean glyph read; a second reader should check them.
+- **Junk sub-element names (open, 33 edges).** Sub-elements such as `j`, `i`, and `y` are OCR fragments or misattributed labels. The per-case decision (map to the printed sub-element, or drop from the sub-element matrix and keep in the heading matrix) has not been made. All 33 codes print in the blocks the edges give (section 3.4), so the printed block can settle most cases.
 - **Flagged edges.** All 26 FIX rows are in the manual-fix table; their keys and codes match the flagged audit. Two CHECK rows are resolved (`F-1` "adjustments" → F-IV-3; `F-19` "adaptive behavior" → F-I-19). A `B-ji` FIX row merges into an existing `B-5` edge when the build removes duplicates.
 - **Unaudited ok rows (open).** 915 `ok` edges have no audit verdict (section 3.3) and have not been checked against the page image. A 50-row random sample (seed 4817) is in `data/kk-index-b-ok-sample.csv`, with blank verdict columns.
+- **Manual fixes without an audit row (open).** 62 of the 66 `manual_fix` edges have no row in either audit file (section 3.3, a dated snapshot). Their evidence is the printed citation in `kk-index-b-manual-fixes.csv`. The six 2026-10-24 resolutions are in that group.
 - **Index A.** Every row on printed pp. 73–74 was read against the page image (section 3.1). That is a single-reader check, not double-keyed. Sears's `C-I-Addendum` is printed that way and stays unresolved.
 - **Crosswalk (open, 5).** A16, A17, A20, C1-11, and B5 need a text check (section 3.2).
 - **Appendix-only codes.** The 39 codes have no author or year in `kkcc-definition-years.csv`, so the crosswalk does not link them. The Index A rows for several of them (for example D-I-10 Ford 1942, F-I-1a Willey 1927b, E-4 Redfield, A-20 Thurnwald 1950) do exist; they were not linked.
