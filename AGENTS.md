@@ -222,8 +222,10 @@ from the PDF via pdftotext -layout.
   flagged edges, keyed to the printed page evidence.
 - Current counts (rebuilt 2026-10-24, after the Index A page-image pass): Index A 187 rows
   (186 resolved, 165 codes; `kk-index-a-missing-rows.csv` adds Angyal). Sears's `C-I-Addendum`
-  stays unresolved. Index B 1285 edges (10 code_not_in_index_a, 0 junk_name, 210 ocr_corrected,
-  99 manual_fix, 966 ok; the 33 junk names were resolved 2026-10-24); 2 unresolved (`D-I` excluded as a duplicate, `F-I\` smudged). Crosswalk (updated 2026-10-24): 127 auto, 7 hand decisions
+  stays unresolved. Index B 1287 edges = 1285 parsed + 2 recovered via
+  `data/kk-index-b-missing-rows.csv` (glued-code losses; PROVENANCE 3.8) (10 code_not_in_index_a,
+  0 junk_name, 210 ocr_corrected, 102 manual_fix, 965 ok; the 33 junk names were resolved
+  2026-10-24); 2 unresolved (`D-I` excluded as a duplicate, `F-I\` smudged). Crosswalk (updated 2026-10-24): 127 auto, 7 hand decisions
   (see the 2026-10-24 section), 1 F4-6, 0 ambiguous, 0 unmatched. Hand decisions are in
   `kk-boroch-crosswalk-decisions.csv`.
 - Index A manual fixes now carry `author_new` and `qualifier_new` as well as `kk_code`. Blank means
@@ -291,11 +293,22 @@ from the PDF via pdftotext -layout.
   The fine network is disconnected by design (7 components); the main network is connected.
   `analysis-collapse-main.R` was removed; the step it performed is in the builder.
 - K&K Index B networks (2026-10-24): `scripts/build-index-b-networks.R` builds igraph objects
-  `data/kk-index-b-subelement-network.rds` (465 sub-elements x 174 codes, 1171 ties) and
-  `data/kk-index-b-heading-network.rds` (53 headings x 174 codes, 1059 ties), each list(biadjacency, graph).
-  Counts as of 2026-10-24 after the label fixes (before the heading correction: 472 x 1193 and 51 x 1058). Code vertices carry the Index A/B flags, authors, and the Boroch code (Table 2 crosswalk plus linked
+  `data/kk-index-b-subelement-network.rds` (464 sub-elements x 174 codes, 1172 ties) and
+  `data/kk-index-b-heading-network.rds` (53 headings x 174 codes, 1061 ties), each list(biadjacency, graph).
+  Counts as of 2026-10-24 after the glue-artifact fixes (PROVENANCE 3.8). Code vertices carry the Index A/B flags, authors, and the Boroch code (Table 2 crosswalk plus linked
   appendix-only codes; F-IV-5 carries both F4-5 and F4-6). Element vertices carry headings, junk-name,
   manual-fix and OCR-correction flags. Matrices match the kk_biadjacency_*.rds files exactly.
+- `scripts/check-index-b-networks.R` (2026-10-24) validates both Index B igraph objects against the
+  CSVs: structure, node_type, graph/matrix round-trip, (element, code) pair sets, headings attribute,
+  definition-registry attributes (n_index_b_elements counts EDGE ROWS per code, not distinct
+  sub-elements), and crosswalk matches on the boroch_code strings ("; "-joined).
+- Trailing punctuation: `clean_name()` in build-index-b.R already strips `. , ; : '` from element
+  names; no label ends in punctuation (checked 2026-10-24).
+- `scripts/analysis-ca-index-b.R` (2026-10-24): CA of the sub-element network's largest component
+  2-core (157 x 143, 848 edges). The full network is disconnected by design, so the LCC 2-core is the
+  analysis object. Outputs: figures/kk-index-b-ca-subel-lcc2core-{scree,d12,d23}.png and
+  data/kk-index-b-ca-subel-lcc2core-{elements,codes}.csv. Five isolated codes (F-I-5, F-IV-1, F-IV-2,
+  F-IV-4, G-1) have zero Index B ties and are outside every component.
   Heading attribution is corrected (see the K&K Index A/B section); the remaining heading-level caveat
   is the single-reader check.
 

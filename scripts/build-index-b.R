@@ -442,6 +442,23 @@ apply_index_b_fixes <- function(edges, fixes) {
   edges
 }
 
+# Index B edges the OCR text layer loses entirely: a mangled code is glued
+# into the following element name, so the printed edge never parses. Each row
+# was checked against the page image (see the evidence column).
+add_index_b_missing <- function(edges, missing) {
+  for (i in seq_len(nrow(missing))) {
+    hit <- which(edges$heading == missing$heading[i] &
+                 edges$sub_element == missing$sub_element[i] &
+                 edges$kk_code == missing$kk_code[i])
+    stopifnot(length(hit) == 0)  # an add must not duplicate an existing edge
+    edges <- rbind(edges, data.frame(
+      heading = missing$heading[i], sub_element = missing$sub_element[i],
+      kk_code = missing$kk_code[i], ocr_raw = missing$ocr_glued[i],
+      corrected = FALSE, manual = TRUE, stringsAsFactors = FALSE))
+  }
+  edges
+}
+
 # Heading corrections. The text layer puts some entries under the wrong block
 # heading (checked against printed pp. 74-78, PDF pp. 77-81; see
 # data/kk-index-b-block-map.csv). Applied after the manual fixes, which key on
@@ -525,6 +542,8 @@ index_a <- add_index_a_missing(index_a,
 index_b <- parse_index_b(lines_b)
 index_b$edges <- apply_index_b_fixes(index_b$edges,
                                      read.csv("data/kk-index-b-manual-fixes.csv", stringsAsFactors = FALSE))
+index_b$edges <- add_index_b_missing(index_b$edges,
+                                     read.csv("data/kk-index-b-missing-rows.csv", stringsAsFactors = FALSE))
 index_b$edges <- apply_heading_corrections(index_b$edges)
 index_b$edges <- apply_junk_decisions(index_b$edges,
                                        read.csv("data/kk-index-b-junk-decisions.csv", stringsAsFactors = FALSE))

@@ -290,6 +290,37 @@ was amended: the `D-I-15 / material culture / artificial` fix had claimed a clea
 600 dpi zoom on 2026-10-24 shows the roman numeral under an ink blot; the edge is kept with the stated
 basis recorded in the manual-fix file. Verdicts were read by one reader.
 
+### 3.8 Glued element names and recovered edges (2026-10-24)
+
+In five places the OCR printed a code so badly (lowercase, missing dashes) that the parser glued it
+into the following element name, so the element name is wrong and, in two cases, the printed edge for
+the glued code is missing entirely. All were found via the CA of the sub-element network and checked
+on the page image:
+
+- behavior: printed "expressing, C-I-17, G-2" (p. 74); parsed as element `7 expressing`. Renamed
+  (`rename_sub`, both tokens). No missing edge.
+- dynamic structural relations: printed "relationships, C-II-6, F-II-8" (p. 75, 400 dpi); parsed as
+  `i-6` with F-II-8. Renamed to `relationships`; C-II-6/relationships already existed from an
+  earlier manual fix. No missing edge.
+- social heritage or tradition: printed "traditional, B-10, D-I-10, D-I-13, D-III-3" (p. 76); parsed
+  as `i>-ii-5 traditional`. Renamed (4 tokens). No missing edge.
+- social heritage or tradition: printed "socially inherited, B-2, B-3, B-6" (p. 77); parsed as
+  `socially inherited b 2` with B-3, B-6. Renamed (2 tokens); the B-2 edge was lost (the OCR printed
+  the code as `b 2`, no dash) and is recovered via the new missing-rows file.
+- dynamic structural relations: printed "communicative interaction, F-III-5; interactional fields,
+  E-8" (p. 75, 400 dpi); parsed as one glued element with E-8. Renamed to `interactional fields`
+  (merging with the element of the same name under totality, culture as comprehensive); the
+  F-III-5/communicative interaction edge was lost (OCR printed the code as `i iii- 5`) and is
+  recovered via the missing-rows file.
+
+Mechanism: `data/kk-index-b-missing-rows.csv` (heading, sub_element, kk_code, ocr_glued, evidence) is
+appended by the new `add_index_b_missing()` in `build-index-b.R`, which errors if a row would
+duplicate an existing edge. Recovered edges carry `parse_flag = manual_fix`. After the fixes the
+edge list has 1287 rows, 464 sub-elements, 53 headings; sub-element matrix 464 × 174 with 1172 ties,
+heading matrix 53 × 174 with 1061 ties. The block check flags F-III-5/communicative interaction as
+`code_in_other_block` only because the text layer reads the code as `i iii- 5` (F OCR'd as i); the
+printed block is confirmed at 400 dpi (review sheet, verdict OK). One reader; no double-keying.
+
 ## 4. The 39 appendix-only codes
 
 Boroch's appendix (171 codes) has 39 codes that never appear in Table 2: A21, A22, B17,

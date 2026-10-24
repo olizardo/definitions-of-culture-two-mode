@@ -6,10 +6,14 @@ Last updated 2026-10-24. Read `AGENTS.md` (project memory) and `docs/PROVENANCE.
 
 - Index A: 187 rows, 186 resolved, 165 codes. Every row on printed pp. 73-74 was read against
   the page image (200 dpi; disputed lines at 300 dpi). Sears's `C-I-Addendum` stays unresolved.
-- Index B: 1285 edges. Flags: ok 965, ocr_corrected 210, manual_fix 100, junk_name 0 (resolved 2026-10-24),
+- Index B: 1287 edges (1285 parsed + 2 recovered via `data/kk-index-b-missing-rows.csv`; in both
+  cases the OCR glued the code into the following element name). Flags: ok 965, ocr_corrected 210,
+  manual_fix 102, junk_name 0 (resolved 2026-10-24),
   code_not_in_index_a 10. 2 unresolved tokens (`D-I` excluded as a duplicate; `F-I\` smudged;
   see `data/kk-index-b-unresolved.csv`). Six tokens resolved 2026-10-24 (manual-fix file); the B-11
-  misread under process was corrected to B-21 (PROVENANCE 3.7).
+  misread under process was corrected to B-21 (PROVENANCE 3.7). Four glue-artifact element names
+  were renamed to the printed elements on 2026-10-24 (expressing, relationships, traditional,
+  socially inherited, interactional fields — see PROVENANCE 3.8).
 - Crosswalk (`data/kk-boroch-crosswalk.csv`, 135 rows): 127 auto, 7 hand decisions (D3-1, D2-16,
   A16, A17, A20, C1-11, B5), 0 ambiguous, 0 unmatched, 1 F4-6 slip (resolved in PROVENANCE section 5).
 - Committed (2026-10-24): the reorganization (`1c026b5`), Phase 0 notes (`42ab463`), the Index B
@@ -21,7 +25,9 @@ Last updated 2026-10-24. Read `AGENTS.md` (project memory) and `docs/PROVENANCE.
 
 ## Rebuild
 
-Order: `scripts/build-index-b.R` → `scripts/build-index-b-crosswalk.R` → `scripts/analysis-index-b.R`.
+Order: `scripts/build-index-b.R` → `scripts/build-index-b-crosswalk.R` → `scripts/analysis-index-b.R`,
+then `scripts/build-index-b-networks.R` and the validators `scripts/check-index-b-networks.R` and
+`scripts/check-index-b-blocks.R` (and `scripts/analysis-ca-index-b.R` for the CA).
 Run them from the project root in a clean session, with `source(..., local = new.env())`.
 The crosswalk must read its inputs from files; a stale session object once produced wrong outputs. After any change, check the
 manual-fix keys: the build errors if a key matches no token.

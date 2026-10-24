@@ -121,6 +121,13 @@ added from the page image (currently one, Angyal).
 **`kk-boroch-crosswalk-decisions.csv`**: hand decisions for crosswalk rows that the rule
 cannot settle. Each row gives the decision (`match` or `open`), the K&K code, and the basis.
 
+**`kk-index-b-missing-rows.csv`**: printed Index B edges that the OCR text layer
+loses entirely (a mangled code is glued into the following element name, so
+nothing parses). Each row gives the heading, sub_element, and kk_code, the
+glued OCR fragment, and the printed evidence. The build appends them
+(`parse_flag = manual_fix`) and errors if one would duplicate an existing
+edge. Currently two rows.
+
 **`kk-index-b-ok-sample.csv`**: a 50-row random sample (seed 4817) of the 966 `ok`
 edges, checked against the page image on 2026-10-24: `verdict` (all 50 OK), the printed
 page, and per-row notes. Single reader; the sample's `heading` column predates the
@@ -205,7 +212,9 @@ unlinked and are reported as such, not guessed.
   way and stays unresolved. Every row on printed pp. 73–74 was read against the page image;
   30 rows that the parser had marked `ok` were wrong (codes, years, or names) and are corrected
   in `kk-index-a-manual-fixes.csv` (see `docs/PROVENANCE.md`, 3.1).
-- Index B: 1285 edge rows. 210 rows are OCR-corrected: 198 were each read against the page
+- Index B: 1287 edge rows (1285 parsed, plus 2 recovered from the page image via
+  `kk-index-b-missing-rows.csv`; in both cases the OCR glued the code into the following
+  element name). 210 rows are OCR-corrected: 198 were each read against the page
   image (`data/kk-index-b-ocr-audit.csv`), and 12 were checked in the flagged audit. 66 rows
   come from the manual-fix table. These include 32 page-image recoveries of former `j` and
   fragment tokens, each re-checked at higher resolution (`data/kk-index-b-zoom-check.csv`),
@@ -222,7 +231,7 @@ unlinked and are reported as such, not guessed.
   page image (PDF pp. 77–81, quadrant crops at 300 dpi). Verdict: 50 OK, 0 errors;
   Clopper–Pearson 95% upper bound on the error rate is 7.1%. Single reader
   (`data/kk-index-b-ok-sample.csv`).
-- Machine block check: `check-index-b-blocks.R` puts 1268 of 1285 edges inside their
+- Machine block check: `check-index-b-blocks.R` puts 1269 of 1287 edges inside their
   assigned printed block; the 17 others are in `kk-index-b-block-check-review.csv` with
   verdicts read from page-image crops. This is a machine cross-check plus one reader,
   not a double-keyed audit.
