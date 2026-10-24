@@ -1,0 +1,8 @@
+"boroch_code","decision","kk_code","note"
+"D3-1","match","D-III-1","Boroch gives no year (PDF ""data""; footnote ""missing (before 1930)""). Matched on surname Tozzer and subgroup D-III, the only K&K Tozzer in D-III; K&K prints (n.d.). Year-free match, so confidence is moderate."
+"D2-16","match","D-II-16","K&K has no Aberle row in Index A, so the author rule cannot apply. Index B cites D-II-16 under ""socially transmitted behavior"", and Boroch's D2-16 quotation begins ""Culture is socially transmitted behavior"". Matched on quoted text; inferred, not read from Index A."
+"A16","open","","Kluckhohn and Kelly 1945a. K&K A-14 and A-15 carry the same author, year, and suffix, so metadata cannot order them. Needs a check of the quoted text against K&K Part II A-14 and A-15."
+"A17","open","","Kluckhohn and Kelly 1945a. Same two candidates as A16 (K&K A-14, A-15). Needs a text check; not matched by position."
+"A20","open","","Herskovits 1948 with no suffix. K&K A-18 and A-19 are both Herskovits 1948. Needs a text check."
+"C1-11","open","","Kluckhohn and Kelly 1945a. Three K&K candidates with the same author and year: C-I-10, C-I-11, C-I-12. Needs a text check."
+"B5","open","","Myres 1927 (Boroch). The only K&K Myres row is B-4a (1929), and Boroch has no year_orig. Probable B-4a, but the year differs; needs a check of the appendix text and the source."
