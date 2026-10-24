@@ -196,6 +196,19 @@ from the PDF via pdftotext -layout.
 - Resolving a token from printed sequence plus the candidate's absence from the edges is a
   page-image inference: state the basis in the manual-fix evidence column.
 
+- Index B parser (build-index-b.R, fixed 2026-10-24): `is_entry_start()` must not treat an OCR code
+  dash as a heading dash. "F —II—5" (space before the dash) used to start a headingless entry, and
+  `parse_index_b()` silently dropped it (flag `no_heading`); 18 edges were lost this way. The "(see"
+  branch also fires on a cross-reference at the end of a line of codes ("social class, B-22 (see also
+  ...)") unless a code precedes it. After any parser change, check `pe$entries$heading` for NA.
+- Index B tokens that are not code-shaped ("K -i", "B 17", "I>-II-5") are absorbed into element names
+  instead of becoming edges. Fix them with a `missing-rows` row, not a `manual-fixes` row, because the
+  manual-fix matcher keys on a token that does not exist as a row.
+- `apply_index_b_fixes()` has an optional `occurrence` column (1-based, parse order) for identical
+  tokens under the same heading and sub-element (duplicate A-3 and B-4 OCR reads). Blank = all matches.
+- Dedup on (kk_code, heading, sub_element) merges identical rows. Two printed entries with the same
+  code under the same sub-element become one edge.
+
 ## Related fix upstream
 
 - Corrected the same knn recycling bug in the course tutorial
@@ -204,6 +217,8 @@ from the PDF via pdftotext -layout.
   pages checked; only tm-basic had the bug.
 
 ## K&K Index A/B dataset (updated 2026-10-24)
+
+> Counts and open items below are superseded by "Session 2026-10-24 (latest): parser fixes and decisions" at the end of this file.
 
 - Pipeline, in order: `build-index-b.R` → `build-index-b-crosswalk.R` → `analysis-index-b.R`.
   It parses `Kroeber-kluckhohn.pdf` (ABBYY OCR of the 1952 scan). Outputs:
@@ -304,9 +319,9 @@ from the PDF via pdftotext -layout.
   sub-elements), and crosswalk matches on the boroch_code strings ("; "-joined).
 - Trailing punctuation: `clean_name()` in build-index-b.R already strips `. , ; : '` from element
   names; no label ends in punctuation (checked 2026-10-24).
-- `scripts/analysis-ca-index-b.R` (2026-10-24): CA of the sub-element network's largest component
-  2-core (157 x 143, 848 edges). The full network is disconnected by design, so the LCC 2-core is the
-  analysis object. Outputs: figures/kk-index-b-ca-subel-lcc2core-{scree,d12,d23}.png and
+- `scripts/analysis-ca-index-b.R` (2026-10-24; rebuilt 2026-10-25 after the fix pass): CA of the
+  sub-element network's largest component 2-core (155 x 143, 848 edges). The full network is
+  disconnected by design, so the LCC 2-core is the analysis object. Outputs: figures/kk-index-b-ca-subel-lcc2core-{scree,d12,d23}.png and
   data/kk-index-b-ca-subel-lcc2core-{elements,codes}.csv. Five isolated codes (F-I-5, F-IV-1, F-IV-2,
   F-IV-4, G-1) have zero Index B ties and are outside every component.
   Heading attribution is corrected (see the K&K Index A/B section); the remaining heading-level caveat
@@ -334,8 +349,18 @@ from the PDF via pdftotext -layout.
 - Index B codes printed without a roman numeral: `C-7`, `D-8`, and `F-9` were verified at
   300 dpi as printed that way. They are kept as printed, not remapped. `D-7`, `D-5`, `F-4`,
   `E-17` are kept too; verified on the page image at 200 dpi on 2026-10-24, not at 300 dpi.
-- Index B edge count is 1285 (1279 before the 2026-10-24 resolutions). 10 edges (8 codes) are not
-  in Index A.
+- Index B edge count is 1290 (1285 before the 2026-10-25 fix pass; 1279 before the 2026-10-24
+  resolutions). 10 edges (8 codes) are not in Index A.
+- 2026-10-25 fix pass (page-image verified, 400 dpi crops): four bogus sub-element names were
+  parser artifacts of mangled codes, fixed via rename_sub rows in `kk-index-b-manual-fixes.csv`
+  plus 3 rows in `kk-index-b-missing-rows.csv`: "adjust \-2o" → "adjust" (OCR read A-20 as
+  "\-2o"; printed p. 74; A-20 edge recovered), "b j" → "socially" (B-3 printed as "B j", j→3;
+  printed p. 76; B-3 edge recovered), "v-i" → "society" (OCR split "D - I V - i"; printed p. 76;
+  D-IV-1 edge recovered), "v-i sublimations" → "sublimations" (psychoanalytic elements, printed
+  p. 77). Gotcha: keys must use the PRE-correction heading "adjustive-ajjptive function of
+  culture" — heading-variant renaming happens after the manual fixes. "sum" and "total" are
+  separate printed elements under "totality, culture as comprehensive" (PDF p. 81); do not merge
+  them. New network counts: subelement 462 x 174, 1172 ties; heading 53 x 174, 1064 ties.
 - Two public Internet Archive copies of the 1952 monograph (Peabody Papers vol. 47 no. 1) were
   located and checked. `culturecriticalr0000kroe_z3a4` has a Scribe OCR text PDF (252 pp.) and a
   `_djvu.txt` (882 KB). `culture0000unse` is access-restricted and its text returns HTTP 401.
@@ -394,6 +419,33 @@ from the PDF via pdftotext -layout.
   `pdfcoffee.com-…pdf` is tracked in git; the untracked `…_compress.pdf` is the same file. Do not
   commit more copies; whether to remove the tracked one is an open decision.
 
+## Session 2026-10-24 (later): Index B CA d45, MSTs, communities, fix pass
+
+- Scripted in `scripts/analysis-ca-index-b.R` (not yet in the report, as of 2026-10-25): CA dims 4 vs 5 (`d45` panel) for the Index B
+  sub-element network (2.3% + 2.3% inertia, diffuse), and maximum spanning trees of the
+  concept (sub-element) projection. Figures written: `figures/kk-index-b-ca-subel-lcc2core-d45.png`,
+  `kk-index-b-mst-concept-heading.png` (nodes colored by printed heading block),
+  `kk-index-b-mst-concept-btw.png` (fill = tree betweenness, viridis on sqrt scale),
+  `kk-index-b-mst-concept-comm.png` (color = leading-eigenvector community of the WEIGHTED
+  2-core projection, 5 communities, sizes 68/41/26/19/1; size = sqrt tree betweenness,
+  capped 2.5-7.5), `kk-index-b-mst-concept-comm-tree.png` (communities on the tree itself:
+  16 branch-like communities, 2-17 nodes; leading-eigenvector degenerates to branches on a
+  tree - the projection coloring is the meaningful one). The `figures/kk-index-b-mst-concept.png`
+  (uncolored) was deleted on request.
+- The concept-MST section of `analysis-ca-index-b.R` (added 2026-10-25) writes all four MST figures
+  (heading, btw, comm, comm-tree) from the LCC 2-core projection. Gotchas: the tree-community count
+  is not stable across runs (16 interactively, 17 in a script run), so the tree palette is sized
+  from `nlevels()`, never hard-coded. Size is `2.5 + 5 * sqrt(btw / max(btw))`, and the sqrt keeps
+  hubs from dominating. The first script run after the MST section was added failed on the
+  palette length; the fix was applied and the full script rerun succeeded (2026-10-25): all five
+  CA panels and the four MST figures are regenerated by `Rscript scripts/analysis-ca-index-b.R`.
+- MST gotcha: build the concept projection from the LCC 2-CORE matrix (155 x 143, 848 edges),
+  not the full sub-element network - a first version used the full matrix and was redone.
+- Community x heading cross-tab (projection communities, 155 elements, 41 headings):
+  weak alignment - no community over 16% concentrated in one heading; headings typically split
+  across 2+ communities (median 2). The 5 communities cut across K&K's element taxonomy rather
+  than repackaging it. Community 5 is the singleton "responses" (behavior block).
+
 ## Session 2026-10-24 (later): rebuilds, coverage limits, block map
 
 - Concept mapping: `scripts/build-concept-categories.R` writes `data/kkcc-concept-categories.csv`
@@ -428,3 +480,39 @@ from the PDF via pdftotext -layout.
   pp. 74–78). Heading errors found by the comparison: see the heading attribution item above. Sub-element
   verification of the remaining ~1100 edges is open (TODO items 13–17).
 
+## Session 2026-10-24 (latest): parser fixes and decisions
+
+- Commits: `f99c209` (parser: entry-start fixes) and `0cd27c8` (manual-fix occurrence key, decided rows,
+  rebuilt outputs). Verdict record: `data/kk-index-b-subelement-check.csv` (sub-element check of printed
+  pp. 74-78; verdicts OK / OK_TEXT / OK_IMAGE / MISSING_EDGE / CODE_WRONG / APPLIED / FIXED_REBUILD).
+  Deleted from the record: none. Untracked, not for commit: `data/kk-index-b-missing-rows-DRAFT.csv`
+  (superseded), `Rplots.pdf`.
+- Current counts: Index B edges 1316 (`data/kk-index-b-edges.csv`); sub-element network 472 x 174
+  (1192 ties); heading network 53 x 174 (1084 ties). Block check: 21 edges printed in another block
+  (includes checker artifacts; see below). All validators pass.
+- Applied decisions: organized E-5 unresolved (duplicate; printed under configuration); totality
+  A-15 "accumulated treasury" unresolved (duplicate; the social-heritage copy A-15, B-13, F-I-15 stays);
+  B-6, B-7, B-1 social heredity -> social heritage (rename_sub); B-11 added under social heritage
+  (missing row). The totality block itself is intact (74 rows, including body, embodiment, mass,
+  aggregate, assemblage, outfit, texture, set, fund, congeries, collection, interactional fields).
+- Recovered by the parser fixes: 18 acts-block and transmission edges (E-9, C-I-2, C-I-5a names
+  cleaned by rename_sub; A-2 added by missing row from "K -i"); E-7, B-22 (social), D-I-6 (societal);
+  F-I-14 (modes of action); A-5 (activities, occurrence 2 of A-3); B-14 (group reference social,
+  occurrence 2 of B-4); D-II-5 (tradition); B-17 (history); C-I-3 (common) by missing row.
+- Still open:
+  - "G-I-j" stays unresolved (`data/kk-index-b-unresolved.csv`); C-I-3 is in as a missing row.
+  - Unresolved tokens: "society D-I", "organized F-j" (now unresolved by decision), "means of adjustment
+    F-I\" (smudged), "accumulated treasury A-i5" (duplicate, by decision).
+  - Pending decisions in the verdict file: the "a people" tokens C-I-1 j, D-I-i, F-III-j, F-IV-j
+    (NEEDS_CHECK) are not image-checked.
+  - The A-20 "adjust" edge was newly flagged by the block check after the rebuild and has not been traced.
+  - `patterns F-I-5` (printed as "F-I-<5") is unresolved in the verdict file.
+  - Block check flags are mostly checker artifacts: it reads OCR text, so codes printed in two blocks
+    or with a wrong OCR token show as "in another block". Do not add heading-correction rules on the
+    strength of the flag alone.
+- Uncommitted, not from this session: `AGENTS.md` (this file, until committed) and
+  `scripts/analysis-ca-index-b.R`. The CA figures in `f99c209`/`0cd27c8` come from the current script,
+  so review its changes before relying on them.
+- Rebuild order (unchanged): build-index-b.R -> build-index-b-crosswalk.R -> analysis-index-b.R ->
+  build-index-b-networks.R -> check-index-b-networks.R -> check-index-b-blocks.R -> analysis-ca-index-b.R.
+  Run in fresh environments with `sys.source(..., envir = new.env())`.

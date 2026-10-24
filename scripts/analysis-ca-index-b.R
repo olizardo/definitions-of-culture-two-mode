@@ -179,11 +179,111 @@ ca.panel("dim1", "dim2", "First Dimension", "Second Dimension",
 ca.panel("dim2", "dim3", "Second Dimension", "Third Dimension",
          "dims 2 vs 3; sub-elements (active); K&K groups (passive barycenters)",
          "figures/kk-index-b-ca-subel-lcc2core-d23.png")
+ca.panel("dim4", "dim5", "Fourth Dimension", "Fifth Dimension",
+         "dims 4 vs 5; sub-elements (active); K&K groups (passive barycenters)",
+         "figures/kk-index-b-ca-subel-lcc2core-d45.png")
 
 # ------------------------------------------------------------------ scores
 write.csv(cbind(element = rownames(Z.v.p), mass = mass.p, Z.v.p),
           "data/kk-index-b-ca-subel-lcc2core-elements.csv", row.names = FALSE)
 write.csv(cbind(code = rownames(Z.v.g), df.g[, c("group", "degree")], Z.v.g),
           "data/kk-index-b-ca-subel-lcc2core-codes.csv", row.names = FALSE)
+
+# ------------------------------------------------------------------ concept MST
+# Maximum spanning tree of the concept (sub-element) projection on the same
+# LCC 2-core: ties = shared definition codes; Kruskal max-weight tree.
+library(ggraph)
+
+P.concept <- Ac %*% t(Ac); diag(P.concept) <- 0
+G.concept <- graph_from_adjacency_matrix(P.concept, mode = "undirected",
+                                         weighted = TRUE, diag = FALSE)
+make.max.st <- function(gr) {
+  el <- as_edgelist(gr, names = FALSE)
+  idx <- order(E(gr)$weight, decreasing = TRUE)
+  st <- make_empty_graph(n = vcount(gr), directed = FALSE)
+  V(st)$name <- V(gr)$name
+  for (i in idx) {
+    cand <- add_edges(st, el[i, ])
+    if (is_acyclic(cand)) st <- cand
+    if (ecount(st) == vcount(gr) - 1) break
+  }
+  st
+}
+st.concept <- make.max.st(G.concept)
+cat("concept MST edges:", ecount(st.concept), "of", vcount(st.concept) - 1, "possible\n")
+
+# node attributes: printed Index B heading block, projection community,
+# tree betweenness and a sqrt-scaled node size (sqrt keeps hubs from dominating)
+sub_idx <- which(V(g)$node_type == "sub_element")
+head_map <- setNames(sub(";.*$", "", V(g)$headings[sub_idx]), V(g)$name[sub_idx])
+h <- head_map[V(st.concept)$name]; h[is.na(h)] <- "?"
+V(st.concept)$heading <- h
+
+com.proj <- cluster_leading_eigen(G.concept, weights = E(G.concept)$weight)
+V(st.concept)$comm <- factor(membership(com.proj)[V(st.concept)$name])
+com.tree <- cluster_leading_eigen(st.concept)
+V(st.concept)$commtree <- factor(membership(com.tree))
+
+btw <- betweenness(st.concept, directed = FALSE, normalized = FALSE)
+V(st.concept)$btw <- btw
+V(st.concept)$size <- 2.5 + 5 * sqrt(btw / max(btw))
+
+# palettes
+hs <- sort(unique(h)); n.h <- length(hs)
+heading_pal <- setNames(hcl(h = rep(c(15, 75, 135, 195, 255, 315, 45, 105, 165, 225, 285, 345),
+                                    length.out = n.h),
+                            c = 60, l = rep(c(62, 78), length.out = n.h)), hs)
+n.tree <- nlevels(V(st.concept)$commtree)
+pal.tree <- setNames(hcl(h = seq(15, 375, length.out = n.tree + 1)[-(n.tree + 1)],
+                         c = 65, l = 65),
+                     levels(V(st.concept)$commtree))
+
+mst.plot <- function(fill_vals, fill_scale, subtitle, file, size_by_btw = FALSE,
+                     legend = "none") {
+  V(st.concept)$fillv <- fill_vals
+  node_layer <- if (size_by_btw) {
+    geom_node_point(aes(fill = fillv, size = size), shape = 21,
+                    color = "grey25", stroke = 0.5)
+  } else {
+    geom_node_point(aes(fill = fillv), shape = 21, size = 4.5,
+                    color = "grey25", stroke = 0.5)
+  }
+  p <- ggraph(st.concept, layout = "kk") +
+    geom_edge_link(color = "grey80", linewidth = 0.4) +
+    node_layer +
+    geom_node_text(aes(label = name), repel = TRUE, size = 2.5,
+                   fontface = "bold", max.overlaps = Inf, seed = 8427,
+                   segment.color = NA, force = 0.5, max.iter = 20000) +
+    fill_scale +
+    scale_size_identity() +
+    theme_void() +
+    theme(plot.title = element_text(face = "bold", size = 13),
+          legend.position = if (legend == "none") "none" else "bottom",
+          legend.title = element_text(size = 8),
+          legend.text = element_text(size = 5.5),
+          legend.key.size = unit(0.22, "cm")) +
+    labs(title = "Maximum spanning tree, concept (sub-element) projection, K&K Index B LCC 2-core",
+         subtitle = subtitle)
+  if (legend == "heading")
+    p <- p + guides(fill = guide_legend(title = "Index B heading", ncol = 9, byrow = TRUE))
+  ggsave(file, p, width = 15, height = 9, dpi = 150, bg = "white")
+}
+
+mst.plot(V(st.concept)$heading, scale_fill_manual(values = heading_pal),
+         "ties = shared definition codes; nodes colored by printed Index B heading block",
+         "figures/kk-index-b-mst-concept-heading.png", legend = "heading")
+
+mst.plot(btw, scale_fill_viridis_c(option = "viridis", trans = "sqrt", begin = 0.05, end = 0.95,
+                                   name = "betweenness"),
+         "ties = shared definition codes; node fill = betweenness in the tree (sqrt scale)",
+         "figures/kk-index-b-mst-concept-btw.png")
+
+mst.plot(V(st.concept)$comm, scale_fill_brewer(palette = "Set3", name = "community"),
+         "color = leading-eigenvector community of the projection; size = tree betweenness (sqrt-scaled)",
+         "figures/kk-index-b-mst-concept-comm.png", size_by_btw = TRUE)
+
+mst.plot(V(st.concept)$commtree, scale_fill_manual(values = pal.tree),
+         "color = leading-eigenvector community computed on the tree itself; size = tree betweenness (sqrt-scaled)",
+         "figures/kk-index-b-mst-concept-comm-tree.png", size_by_btw = TRUE)
 
 cat("figures and score CSVs written\n")
