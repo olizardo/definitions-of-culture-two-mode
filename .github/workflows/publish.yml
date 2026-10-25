@@ -1,0 +1,53 @@
+name: publish
+
+on:
+  push:
+    branches: [site-source]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-gh-pages
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out site source
+        uses: actions/checkout@v4
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: "1.10.18"
+
+      - name: Render site
+        run: quarto render
+
+      - name: Check out gh-pages
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: pages
+
+      - name: Replace published contents
+        run: |
+          set -euo pipefail
+          cd pages
+          git ls-files -z | xargs -0 git rm -q --
+          cp -r ../_site/. .
+          cp ../.nojekyll .
+          mkdir -p data
+          cp ../data/. data/
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to publish"
+          else
+            git -c user.name="github-actions[bot]" \
+                -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+                commit -q -m "Publish site from ${GITHUB_SHA::7}"
+            git push origin HEAD:gh-pages
+          fi

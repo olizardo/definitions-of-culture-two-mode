@@ -1,0 +1,28 @@
+---
+title: "Download"
+---
+
+The network files are R objects (`.rds`), so read them with `readRDS()`. The citation table is a CSV file with one row per work.
+
+| File | Network | Object | Download |
+|---|---|---|---|
+| `kk-index-b-verified-network.rds` | Definitions × sub-elements | list: `graph`, `biadjacency` | [download](https://raw.githubusercontent.com/olizardo/definitions-of-culture-two-mode/gh-pages/data/kk-index-b-verified-network.rds) |
+| `kk-index-b-heading-network.rds` | Definitions × headings | list: `graph`, `biadjacency` | [download](https://raw.githubusercontent.com/olizardo/definitions-of-culture-two-mode/gh-pages/data/kk-index-b-heading-network.rds) |
+| `kk-index-b-works-sub-element-network.rds` | Works × sub-elements | igraph graph | [download](https://raw.githubusercontent.com/olizardo/definitions-of-culture-two-mode/gh-pages/data/kk-index-b-works-sub-element-network.rds) |
+| `kk-index-b-works-heading-network.rds` | Works × headings | igraph graph | [download](https://raw.githubusercontent.com/olizardo/definitions-of-culture-two-mode/gh-pages/data/kk-index-b-works-heading-network.rds) |
+| `kk-index-b-work-citations.csv` | Works (citation table) | CSV table | [download](https://raw.githubusercontent.com/olizardo/definitions-of-culture-two-mode/gh-pages/data/kk-index-b-work-citations.csv) |
+
+## Reading the files in R
+
+```r
+library(igraph)
+
+base <- "https://raw.githubusercontent.com/olizardo/definitions-of-culture-two-mode/gh-pages/data/"
+defs <- readRDS(gzcon(url(paste0(base, "kk-index-b-verified-network.rds"))))
+g_defs <- defs$graph
+m_defs <- defs$biadjacency
+
+g_works <- readRDS(gzcon(url(paste0(base, "kk-index-b-works-sub-element-network.rds"))))
+```
+
+The definitions files are lists. Take `$graph` for the igraph object and `$biadjacency` for the 0/1 matrix. The works files are igraph objects directly. The work table is not included, but each work vertex carries its `codes`, `n_codes`, `n_concepts`, `year`, `decade`, `label`, and `pub_type` attributes.

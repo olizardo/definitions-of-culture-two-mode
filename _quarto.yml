@@ -1,0 +1,30 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Kroeber & Kluckhohn Two-Mode Network Data"
+  site-url: https://olizardo.github.io/definitions-of-culture-two-mode
+  search: true
+  repo-url: https://github.com/olizardo/definitions-of-culture-two-mode
+  navbar:
+    left:
+      - text: "Overview"
+        href: index.qmd
+      - text: "Codebook"
+        href: codebook.qmd
+      - text: "Download"
+        href: download.qmd
+      - text: "Changelog"
+        href: changelog.qmd
+      - text: "Glossary"
+        href: glossary.qmd
+  page-footer: "Preliminary release. Subject to further verification and cleaning."
+
+format:
+  html:
+    theme: flatly
+    toc: true
+
+execute:
+  freeze: auto

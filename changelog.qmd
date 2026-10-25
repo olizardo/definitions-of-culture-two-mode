@@ -1,0 +1,28 @@
+---
+title: "Changelog"
+---
+
+Versions follow `MAJOR.MINOR.PATCH`. A minor bump adds data or changes network contents; a patch fixes an
+error in existing data without changing its structure.
+
+## 0.3.0 (2026-10-25)
+
+- Added `pub_type` to the work vertices of both works networks. Values: `article`, `book`, `chapter`, `other`. Of the 133 works, 27 are articles, 91 books, 8 chapters and 7 other. A chapter is an entry in an edited volume or a reference work; numbered monograph series count as books. Blumenthal 1937 and Steward 1950 are uncertain and coded `other`.
+- The network structure is unchanged: vertices, edges and edge weights are the same as in 0.2.0.
+- Refreshed the network files from the current build. The works networks keep the same 133 works.
+
+## 0.2.0 (2026-10-26)
+
+- Added `kk-index-b-work-citations.csv`: 133 works with their codes, surnames, year, K&K and Boroch match status, and the Boroch reference.
+- Refreshed the three network files from the current build. The works networks now have 133 works (v0.1.0 had 136). The works-level outputs were compared with the previous build: centrality is stable, CA positions are moderately stable, and MST community assignments changed for about a third of the works. Edge-level changes were not compared one by one.
+- Changed MANIFEST.md to list each object's dimensions as rows × columns.
+
+Known open items in the citation table:
+
+- Some rows have a K&K line from another author (`year_only_no_author`), or no K&K match.
+- Five works are in K&K only (`kk_only`). Roberts 1951 and Young 1944 have year conflicts.
+- The Committee mimeograph (Bernard, Blumenthal, Dodd, Hart 1941) is one work with five codes.
+
+## 0.1.0
+
+- Preliminary release: the three Index B network files (definitions × sub-elements, definitions × headings, works × sub-elements and works × headings). 136 works.

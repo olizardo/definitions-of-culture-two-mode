@@ -1,0 +1,49 @@
+---
+title: "Codebook"
+---
+
+The networks are bipartite igraph graphs. The definitions files are lists that hold the igraph graph (`graph`) and a 0/1 biadjacency matrix (`biadjacency`); the works files are igraph graphs alone. Vertex `type` is FALSE for sub-element, heading and work vertices and TRUE for codes or works, depending on the network. Codes are the K&K codes (the definitions). Read the files with `readRDS()`. The library is `igraph`.
+
+## Graph and edge attributes
+
+| Attribute | Level | Meaning |
+|---|---|---|
+| `name` | all vertices | sub-element label, heading label, K&K code, or work label |
+| `built`, `igraph_version`, `source_files`, `caveat` | graph (definitions networks only) | build date, versions, source files, and a caveat that the Index B data are not fully verified |
+| `n_source_rows` | edge (definitions networks only) | number of Index B rows behind the tie |
+| `parse_flags` | edge (definitions networks only) | parse flags of those rows (`ok`, `ocr_corrected`, `code_not_in_index_a`, `junk_name`, `manual_fix`), separated by `; ` |
+
+## Sub-element and heading vertices
+
+| Attribute | Meaning |
+|---|---|
+| `node_type` | `sub_element` or `heading` |
+| `headings` | headings the sub-element appears under, separated by `; ` (sub-element network only) |
+| `n_headings` | number of headings the sub-element appears under (sub-element network only) |
+| `n_subelements` | sub-elements under the heading (heading network only) |
+| `n_codes` | codes linked to the sub-element or heading |
+| `has_junk_name`, `has_manual_fix`, `has_ocr_correction` | the sub-element or heading has an edge with that parse flag (sub-element network only) |
+
+## Code vertices (definitions networks)
+
+| Attribute | Meaning |
+|---|---|
+| `kk_group`, `kk_subgroup` | K&K group letter and subgroup (for example `A`, `I`) |
+| `in_index_a`, `in_index_b` | the code appears in Index A or Index B |
+| `n_index_b_elements` | Index B sub-elements under the code |
+| `index_a_authors` | Index A authors listed under the code, with qualifiers |
+| `boroch_code`, `boroch_source` | Boroch's code for the same definition (NA if none), and whether it comes from `table2` or `appendix-only` |
+
+## Work vertices (works networks)
+
+| Attribute | Meaning |
+|---|---|
+| `node_type` | `work` |
+| `codes` | K&K codes the work sits under, separated by `; ` |
+| `n_codes`, `n_concepts` | number of codes and of Index B concepts for the work |
+| `year` | year as printed, with any letter suffix |
+| `decade` | decade of the year (integer) |
+| `label` | short author-year label |
+| `pub_type` | publication type from the K&K bibliography entry: `article` (journal article), `book` (monograph, including numbered series), `chapter` (entry in an edited volume or reference work), or `other` (mimeographed, unpublished, or pamphlet or bulletin; some assignments are uncertain, see the [changelog](changelog.qmd)) |
+
+The works files store the bipartite graph only; the work table is not included. A work is keyed by its author set and year. A work can sit under several codes, and a code can hold several works.

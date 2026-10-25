@@ -1,0 +1,24 @@
+---
+title: "Glossary"
+---
+
+Terms used across the site.
+
+| Term | Definition |
+|---|---|
+| Two-mode (bipartite) network | A network with two kinds of node, where edges join only nodes of different kinds. Here the kinds are codes, sub-elements, headings and works. |
+| Network | A two-mode network stored as an `.rds` file. There are four: definitions × sub-elements, definitions × headings, works × sub-elements, works × headings. |
+| Graph | The igraph object holding a network's vertices, edges and attributes. |
+| Biadjacency matrix | The 0/1 matrix with one row per node of one kind and one column per node of the other. It is stored alongside the graph in the definitions files. |
+| Code (K&K code) | One numbered culture definition in Kroeber & Kluckhohn's classification, such as A-14. The "definitions" in network names are these codes. |
+| Sub-element | A specific element listed under a heading in K&K's Index B, such as "systems". |
+| Heading | A grouping in Index B that holds sub-elements. |
+| Work | A publication behind one or more codes, keyed by its author set and year (for example, Kelly & Kluckhohn 1945a). |
+| Index A / Index B | K&K's two indexes: Index A lists the authors and years behind each code, and Index B lists the codes under each sub-element and heading. |
+| Boroch code | The code label from Boroch's (2016) reanalysis of the same classification, attached where it matches a K&K code. |
+| Vertex / edge | A node / a link between two nodes. Attributes are properties of either. |
+| Parse flag | A marker on an edge saying how its source row was read: `ok`, `ocr_corrected`, `code_not_in_index_a`, `junk_name` or `manual_fix`. |
+| Work table | The per-work table (one row per work, with its codes and counts). The release includes it; the site's works files do not. |
+| Split file | A works network published on the site as a graph only, without the work table. |
+| Publication type (`pub_type`) | The kind of publication a work is: `article`, `book`, `chapter` or `other`. |
+| Release / version | The data bundle, which includes a changelog and a manifest. The version follows MAJOR.MINOR.PATCH; a minor bump adds data or changes network contents. |
