@@ -81,13 +81,13 @@
 "D2-13",TRUE,"Hockett",1950,NA,NA,"D-II-13",1,"D-II-13","D-II-13","auto",TRUE,NA,NA
 "D2-14",TRUE,"Steward",1950,NA,NA,"D-II-14",1,"D-II-14","D-II-14","auto",TRUE,NA,NA
 "D2-15",TRUE,"Slotkin",1950,NA,NA,"D-II-15",1,"D-II-15","D-II-15","auto",TRUE,NA,NA
-"D2-16",TRUE,"Aberle et al.",1950,NA,NA,"D-II-16",0,"D-II-16","","manual_decision",TRUE,"match","K&K has no Aberle row in Index A, so the author rule cannot apply. Index B cites D-II-16 under ""socially transmitted behavior"", and Boroch's D2-16 quotation begins ""Culture is socially transmitted behavior"". Matched on quoted text; inferred, not read from Index A."
+"D2-16",TRUE,"Aberle et al.",1950,NA,NA,"D-II-16",0,"D-II-16","","manual_decision",TRUE,"match","K&K footnote 16 (printed p. 59, PDF 62; page image checked 2026-10-25 at 600 dpi) cites 'Aberle, et al, 1950: 102' with the quote 'Culture is socially transmitted behavior con...', which Boroch D2-16 quotes. K&K has no Aberle row in Index A, so the author rule cannot apply; the match rests on the footnote and the printed Index B entry."
 "D2-2",TRUE,"Hart and Pantzer",1925,NA,NA,"D-II-2",1,"D-II-2","D-II-2","auto",TRUE,NA,NA
 "D2-3",TRUE,"Miller and Dollard",1941,NA,NA,"D-II-3",1,"D-II-3","D-II-3","auto",TRUE,NA,NA
 "D2-4",TRUE,"Kluckhohn",1942,NA,NA,"D-II-4",1,"D-II-4","D-II-4","auto",TRUE,NA,NA
 "D2-5",TRUE,"LaPiere",1946,NA,NA,"D-II-5",1,"D-II-5","D-II-5","auto",TRUE,NA,NA
 "D2-6",TRUE,"Benedict",1947,NA,NA,"D-II-6",1,"D-II-6","D-II-6","auto",TRUE,NA,NA
-"D2-7",TRUE,"Young",1947,NA,NA,"D-II-7",1,"D-II-7","D-II-7","auto",TRUE,NA,NA
+"D2-7",TRUE,"Young",1947,NA,NA,"D-II-7",0,"D-II-7","","manual_decision",TRUE,"match","Boroch cites Young 1947; Index A year changed to 1946 by user decision 2026-10-25 (kk-index-a-manual-fixes.csv), so the author-and-year rule does not match. Same author, same code: Kimball Young, Handbook of Social Psychology (see the Index A row for the basis)"
 "D2-8",TRUE,"Opler",1947,NA,NA,"D-II-8",1,"D-II-8","D-II-8","auto",TRUE,NA,NA
 "D2-9",TRUE,"A. Davis",1948,NA,NA,"D-II-9",1,"D-II-9","D-II-9","auto",TRUE,NA,NA
 "D3-1",TRUE,"Tozzer",NA,NA,NA,"D-III-1",0,"D-III-1","","manual_decision",TRUE,"match","Boroch gives no year (PDF ""data""; footnote ""missing (before 1930)""). Matched on surname Tozzer and subgroup D-III, the only K&K Tozzer in D-III; K&K prints (n.d.). Year-free match, so confidence is moderate."

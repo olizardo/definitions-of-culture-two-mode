@@ -1,4 +1,4 @@
 "network","concepts","definitions","edges","density","components","largest_component","isolated_concepts","isolated_definitions","median_concept_degree","max_concept_degree","median_definition_degree","max_definition_degree"
 "Boroch Table 2 (56 notions x 135 definitions)",56,135,316,0.042,7,177,0,0,2,51,2,8
-"K&K Index B, heading level (verified codes)",53,167,1078,0.122,6,215,0,5,16,86,6,17
-"K&K Index B, sub-element level (verified codes)",468,162,1187,0.016,5,619,0,0,1,36,7,25
+"K&K Index B, heading level (verified codes)",53,170,1084,0.12,6,218,0,5,16,86,6,17
+"K&K Index B, sub-element level (verified codes)",472,165,1193,0.015,6,624,0,0,1,36,7,25

@@ -46,9 +46,6 @@ full.name.lookup <- c(
 # Label for one work key, e.g. "Davis Allison & Dollard 1940" ->
 # "Davis Allison A. & Dollard J. 1940". Authors with no lookup entry stay as they are.
 label.authors <- function(key) {
-  # D-II-7 is Kimball Young's Handbook of Social Psychology (Boroch quotes it as
-  # 1947; the book's record gives 1946). Labelled 1946; the work key is unchanged.
-  key <- sub("^Young 1947$", "Young 1946", key)
   yr <- sub(".* ([0-9]{3,4}[a-z]?)$", "\\1", key)
   auth <- trimws(strsplit(sub(" [0-9]{3,4}[a-z]?$", "", key), " & ")[[1]])
   lab <- vapply(auth, function(a) {

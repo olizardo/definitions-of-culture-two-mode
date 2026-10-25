@@ -19,11 +19,14 @@ verified.codes <- defs$kk_code[defs$in_verified]
 is.code <- V(g.full)$type
 excluded <- is.code & !(V(g.full)$name %in% verified.codes)
 
-excluded.tab <- do.call(rbind, lapply(V(g.full)$name[excluded], function(code) {
+excluded.list <- lapply(V(g.full)$name[excluded], function(code) {
   subs <- as_ids(neighbors(g.full, code))
   data.frame(kk_code = code, n_subelements = length(subs),
              subelements = paste(sort(subs), collapse = "; "), stringsAsFactors = FALSE)
-}))
+})
+# An empty exclusion set gives a zero-row table with the same columns.
+excluded.tab <- if (length(excluded.list)) do.call(rbind, excluded.list) else
+  data.frame(kk_code = character(), n_subelements = integer(), subelements = character())
 excluded.tab <- excluded.tab[order(excluded.tab$kk_code), ]
 write.csv(excluded.tab, "data/kk-index-b-excluded-codes.csv", row.names = FALSE)
 

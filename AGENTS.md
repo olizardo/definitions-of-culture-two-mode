@@ -109,10 +109,10 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
 - Name spellings and OCR name fixes that do not change a code go in
   `data/kk-index-b-name-decisions.csv` (year, index_name, work_name, basis), not in the Index A fixes.
   The work build reads it. Each row needs a printed-page basis.
-- Index A "Young 1947" (D-II-7) is a discrepancy. Boroch cites 1947 and the printed index agrees;
-  the K&K bibliography has no Young 1947. Kimball Young's *Handbook of Social Psychology* is the
-  quoted source (Google Books gives 1946 as the original year). Labelled "Young K. 1946" in
-  `scripts/label-authors-index-b.R`; the work key stays 1947 pending a verified source.
+- Index A D-II-7 is now Young 1946 (user decision 2026-10-25). The printed index says 1947 and Boroch cites 1947;
+  the change is recorded as an Index A manual fix (`kk-index-a-manual-fixes.csv`, evidence states the printed year),
+  and the crosswalk has a `match` decision for D2-7 because the author-and-year rule no longer matches. The basis is the
+  book record (Kimball Young, *Handbook of Social Psychology*, Google Books gives 1946); not checked on a page image.
 - The Part III author index (printed p. 141) credits some authors with lowercase letter-number codes from Part
   III's own groups. Those are not Part II codes, so each attribution needs its own basis. The user-verified
   attributions are in `data/kk-part-iii-author-codes.csv`; `build-index-b.R` appends them to the author table,
@@ -141,7 +141,7 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
 - The works build prunes codes and concepts with fewer than two links, so a code with one element (D-5) can
   be in the verified network and still drop out of the projections.
 - One verified definitions network: `scripts/build-index-b-verified.R` keeps the codes flagged `in_verified`
-  (Index A codes plus the Part III codes; `build-index-b.R` defines the flag) and writes `data/kk-index-b-verified-network.rds`. Every definitions analysis (basic stats,
+  (Index A codes, the Part III codes, and the codes in `data/kk-index-b-verified-extra-codes.csv`; `build-index-b.R` defines the flag) and writes `data/kk-index-b-verified-network.rds`. Every definitions analysis (basic stats,
   CA, MST, centrality) reads it. Do not add a second filter in an analysis script. Excluded codes and their
   sub-elements are in `data/kk-index-b-excluded-codes.csv`; they are unverified and still need checking
   against the printed index (TODO). The raw `kk-index-b-subelement-network.rds` keeps them by design.

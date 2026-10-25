@@ -109,7 +109,7 @@ duplicates removed.
 
 Codes with `in_index_a = FALSE` are Index B codes that Index A does not list. Eight codes
 remain (`C-7`, `D-8`, `F-9` are printed without the roman numeral; `D-II-16` is cited in
-Index B but has no Index A row). On the page image (2026-10-24) they print as listed; see
+Index B but has no Index A row; it is in the verified network on K&K footnote 16, Aberle et al. 1950: 102). On the page image (2026-10-24) they print as listed; see
 PROVENANCE 3.4. They are kept as printed, not remapped.
 
 **`kk-index-b-words-excluded.csv`**: K&K's "Words not included in Index B". Same layout
@@ -220,13 +220,13 @@ unlinked and are reported as such, not guessed.
   were checked row by row during transcription (see `AGENTS.md`).
 - Index A: 187 author–code rows (186 from the OCR text, plus 1 restored from the page image).
   186 are resolved, covering 165 distinct K&K codes. Sears's `C-I-Addendum` is printed that
-  way and stays unresolved. Every row on printed pp. 73–74 was read against the page image;
+  way; it is an addendum linked to a specialty code and not a network code (user decision 2026-10-25). Every row on printed pp. 73–74 was read against the page image;
   30 rows that the parser had marked `ok` were wrong (codes, years, or names) and are corrected
   in `kk-index-a-manual-fixes.csv` (see `docs/PROVENANCE.md`, 3.1).
 - Index B: 1318 edge rows. Flags: ok 978, ocr_corrected 207, manual_fix 125, code_not_in_index_a 8. The manual-fix rows include 32 page-image recoveries of former `j` and fragment tokens, each re-checked at higher resolution (`data/kk-index-b-zoom-check.csv`), the six resolutions of 2026-10-24 (PROVENANCE 3.4), and the 2026-10-24 late corrections: A-1 → A-17 and D-I-13 → D-I-15 (page image), and F-IV-3 and A-15 (user readings, not image-checked in this session; PROVENANCE 3.9). 8 edges (6 codes) carry codes that Index A does not list (D-5 and D-7 are Part III codes and are in the verified network); on the page image they print as listed. Two tokens remain unresolved (`kk-index-b-unresolved.csv`): `D-I` (society) and `F-j` (organized), both excluded as duplicates by decision.
 - Crosswalk: 127 of 135 Boroch definitions match exactly one K&K code by rule (author,
-  year or first-publication year, suffix, group, and subgroup). Seven are set by hand with
-  a recorded basis (D3-1, D2-16, A16, A17, A20, C1-11, B5), one (F4-6) is a documented
+  year or first-publication year, suffix, group, and subgroup). Eight are set by hand with
+  a recorded basis (D3-1, D2-16, A16, A17, A20, C1-11, B5, D2-7), one (F4-6) is a documented
   slip resolution. Positional agreement holds for 69 of 135 rows, which confirms that
   Boroch renumbered.
 - Ok-edge sample: a 50-row random sample of the 966 `ok` edges was read against the
@@ -245,7 +245,7 @@ unlinked and are reported as such, not guessed.
   remain damaged after normalization. Of the Index A tokens that the rules could not read,
   the page image was used to correct them, and 30 Index A rows that the parser had marked
   `ok` were wrong in code, year, or name (`docs/PROVENANCE.md`, 3.1). `C-I-Addendum` is
-  printed that way and remains unresolved. Index B has 2 unresolved tokens
+  printed that way; it is not a network code (user decision 2026-10-25). Index B has 2 unresolved tokens
   (`kk-index-b-unresolved.csv`): `D-I` (society) and `F-j` (organized), both excluded as
   duplicates by decision. Other tokens were resolved as recorded in PROVENANCE 3.4 and 3.9.
   Four of the earlier resolutions rest on printed sequence and the candidate's absence, not a

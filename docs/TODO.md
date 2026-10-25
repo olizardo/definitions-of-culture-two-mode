@@ -4,7 +4,7 @@ Last updated 2026-10-24 (latest status update below). Read `AGENTS.md` (project 
 
 ## Current state (2026-10-24, final for this session)
 
-- Index B: 1318 edges. Flags: ok 978, ocr_corrected 207, manual_fix 125, code_not_in_index_a 8 (6 codes). Counts rechecked 2026-10-25 from the rebuilt committed data. Full networks (all 172 codes, including the 5 excluded): sub-element 472 x 172 (1193 ties); heading 53 x 172 (1084 ties). Verified networks used by the analyses: sub-element 468 x 162 (1187 edges); heading 53 x 167 (1078 edges; 5 verified codes have no edges, from `data/kk-index-b-network-stats.csv`). Excluded codes: 5 (6 edges). Block check: 1295 in printed block, 23 in another block; all 23 have page-image verdicts; the 23rd (C-I-7, `commonly recognized`, from the C-7 remap) was checked 2026-10-25 against the printed Index B entry, footnote 7 and Index A (verdict OK).
+- Index B: 1318 edges. Flags: ok 978, ocr_corrected 207, manual_fix 125, code_not_in_index_a 8 (6 codes). Counts rechecked 2026-10-25 after C-I-18a, D-II-16 and E-17 were added to the verified network. Full networks (all 172 codes, including the 4 excluded): sub-element 472 x 172 (1193 ties); heading 53 x 172 (1084 ties). Verified networks used by the analyses: sub-element 472 x 165 (1193 edges); heading 53 x 170 (1084 edges; codes with no Index B edges drop out; from `data/kk-index-b-network-stats.csv`). Excluded codes: none. Two printed-code errors were remapped on 2026-10-25: F-9 to E-9 (main-text footnote 9, Turney-High 1949: 5) and F-4 to F-I-4 (footnote 4, Winston 1933: 209; Index A lists Winston as F-I-4). D-II-16 (footnote 16, Aberle et al. 1950: 102) and E-17 (footnote 17, Taylor 1950: 559-60; weaker basis, commentary rather than a definition) were added 2026-10-25. Block check: 1293 in printed block, 25 in another block. The two extra flags are the remaps: the printed block lists F-9 and F-4, not E-9 and F-I-4. Not yet reviewed on the page image beyond the citations.
 - Unresolved tokens: 2 (`D-I` society, `F-j` organized), excluded as duplicates by decision.
 - User-confirmed readings (not image-checked in this session): F-IV-3, A-15 (all edges), B-15, D-II-15, D-I-5 under learned behavior, C-I-13, F-II-5, A-5, F-I-13, B-21 under group. F-I-15 under transmission is correct and unchanged.
 - Open items:
@@ -13,7 +13,7 @@ Last updated 2026-10-24 (latest status update below). Read `AGENTS.md` (project 
   3. Image-check the OK_TEXT blocks on printed pp. 76-81.
   4. Second reader for the user-confirmed readings and the manual fixes they came from.
   5. Partly resolved: C-I-13, D-I-1 and F-III-3 match your list, and F-IV-j has no edge. The verdict file still has one NEEDS_CHECK row (carriers of culture, "a people, adjustments"; edge code not decided). See item 20.
-  6. Verify the five codes not in Index A and excluded from the verified network (listed in `data/kk-index-b-excluded-codes.csv`: C-I-18a, D-II-16, E-17, F-4, F-9; 6 edges). Check each against the printed index; a code that is really in K&K's index was missed by the Index A parse and should be restored. These are excluded from the verified definitions network (`data/kk-index-b-verified-network.rds`) until checked. C-I-18a is in this list (5 codes, 6 edges in total), but its flag is `manual_fix`, not `code_not_in_index_a`; that flag covers 8 edges and 6 codes (the excluded list plus D-5 and D-7, which are verified as Part III codes). Page check 2026-10-25 (Index A, printed pp. 73-74 = PDF pp. 76-77, column images at 300 dpi; Titiev's line at 600 dpi): none of the nine codes appears as an Index A entry, so nothing is restored. The closest case is Titiev, C-I-18 (no suffix). C-I-18a is a distinct code, not an OCR form of C-I-18: the user confirmed the printed Index B entry ('maniere de vivre', French for 'way of life') and that K&K credit Maquet (1949, p. 324) in the main text (not checked here). Maquet has no entry in the printed Index A (pp. 73-74), so the code stays excluded from the verified network, which uses Index A codes only. Whether to include it is a decision; the edge is unchanged.
+  6. The verified network now excludes no codes (`data/kk-index-b-excluded-codes.csv` is empty). Codes that are not in Index A are kept on a recorded basis (`data/kk-index-b-verified-extra-codes.csv`: C-I-18a, D-II-16, E-17) or on Part III (D-5, D-7).
 - Rights: K&K element labels are cleared by the user (the 1952 monograph is publicly available online). Boroch's article and its verbatim quotations remain restricted.
 - Working tree (checked 2026-10-25): `git status` lists 56 changed or untracked entries, including modified scripts, data, figures and docs, and deleted figures and `kkcc-two-mode.qmd`. Review these before committing.
 
@@ -42,10 +42,10 @@ Last updated 2026-10-24 (latest status update below). Read `AGENTS.md` (project 
 ## Current state
 
 - Index A: 187 rows, 186 resolved, 165 codes. Every row on printed pp. 73-74 was read against
-  the page image (200 dpi; disputed lines at 300 dpi). Sears's `C-I-Addendum` stays unresolved.
+  the page image (200 dpi; disputed lines at 300 dpi). Sears's `C-I-Addendum` is an addendum linked to a specialty code and is not a network code (user decision 2026-10-25); it is not assigned and stays out of the network.
 - Index B: 1318 edges. Flags: ok 978, ocr_corrected 207, manual_fix 125, code_not_in_index_a 8 (6 codes), as rechecked 2026-10-25. 2 unresolved tokens (`D-I` society and `F-j` organized, both excluded as duplicates by decision; see `data/kk-index-b-unresolved.csv`). The CODE_WRONG fixes, F-IV-3 and A-15 are described in the latest status update above and in PROVENANCE 3.9.
-- Crosswalk (`data/kk-boroch-crosswalk.csv`, 135 rows): 127 auto, 7 hand decisions (D3-1, D2-16,
-  A16, A17, A20, C1-11, B5), 0 ambiguous, 0 unmatched, 1 F4-6 slip (resolved in PROVENANCE section 5).
+- Crosswalk (`data/kk-boroch-crosswalk.csv`, 135 rows): 126 auto, 8 hand decisions (D3-1, D2-16,
+  A16, A17, A20, C1-11, B5, D2-7), 0 ambiguous, 0 unmatched, 1 F4-6 slip (resolved in PROVENANCE section 5).
 - Committed (2026-10-24): the reorganization (`1c026b5`), Phase 0 notes (`42ab463`), the Index B
   script work and audit files, the B-11→B-21 fix and regenerated outputs (`2997ec2`), the finalized
   block-check verdicts (`347c431`), the ok-sample check and documentation updates (`203a743`). The
@@ -112,8 +112,7 @@ manual-fix keys: the build errors if a key matches no token.
 7. **Eight code_not_in_index_a edges (six codes).** All of them are printed where the edges say (page image, our
    scan, 200 dpi). `C-7`, `D-8`, `F-9` were verified at 300 dpi earlier. `D-7`, `D-5`, `F-4`, `E-17`
    were verified at 200 dpi on 2026-10-24, not at 300 dpi. Heading errors are noted in item 3.
-   `D-II-16` (`socially transmitted behavior`) has no Index A row, but a crosswalk decision maps
-   Boroch's D2-16 to it. Do not remap any code without a page-image basis.
+   `D-II-16` (`socially transmitted behavior`) has no Index A row. It is in the verified network on K&K footnote 16 (Aberle et al. 1950: 102; 2026-10-25), and a crosswalk decision maps Boroch's D2-16 to it. Do not remap any code without a page-image basis.
    Correction (2026-10-25): `C-7` and `D-8` are not network codes. Manual `set` rows remap them to `C-I-7` and `E-8` (main-text footnotes; PROVENANCE). `D-5` and `D-7` are in the verified network because they are Part III codes (`in_part_iii`), not Index A codes. The user lists `D-5` and `D-7` as verified (2026-10-25, user confirmation, not a new page check). The 2026-10-25 Index A check (Current state) found no Index A row for them.
    Also: the `socially transmined` sub-element is corrected to `socially transmitted` for D-II-14,
    D-II-16, F-I-19 and F-II-10 (manual-fix `rename_sub` rows, applied by `build-index-b.R`).
@@ -128,7 +127,7 @@ manual-fix keys: the build errors if a key matches no token.
 12. **Downstream rerun: done 2026-10-24.** `scripts/analysis-index-b.R` was rerun after the heading correction
     (network stats and the degree-comparison figure regenerated).
     Rerun 2026-10-25 after the "passed down (or on)" label change: `analysis-index-b.R`, `build-work-concept-network-index-b.R`, `analysis-ca-index-b.R`, `analysis-ca-works-index-b.R`, `analysis-centrality-index-b.R`, `analysis-mst-definitions-index-b.R`, `analysis-mst-works-index-b.R`. Every changed CSV differs from HEAD only in the label, so the numbers, CA signs and centrality values are unchanged. The Boroch main-network scripts were not rerun (no Index B input). The PNG figures were regenerated but were not compared pixel by pixel.
-    The crosswalk was rerun and is unchanged. Current counts (2026-10-25): 127 auto, 7 manual decisions, 1 F4-6 slip, 0 ambiguous, 0 unmatched.
+    The crosswalk was rerun and is unchanged. Current counts (2026-10-25, after the Young year change): 126 auto, 8 manual decisions, 1 F4-6 slip, 0 ambiguous, 0 unmatched.
 10. **Documentation** to keep current: `README.md` (data dictionary, limitations),
     `docs/PROVENANCE.md` (sections 3.1, 3.2, 8), and the "K&K Index A/B dataset" section of
     `AGENTS.md`. Update only current-state text; leave the historical notes alone.

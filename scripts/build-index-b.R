@@ -614,13 +614,16 @@ subgroup_of <- function(code) {
   parts <- strsplit(code, "-")
   vapply(parts, function(p) if (length(p) == 3) p[2] else NA_character_, "")
 }
+# Codes outside Index A and Part III that the user has placed in the verified network
+# (data/kk-index-b-verified-extra-codes.csv, one basis per code).
+verified_extra <- read.csv("data/kk-index-b-verified-extra-codes.csv", stringsAsFactors = FALSE)
 definitions <- data.frame(
   kk_code = universe,
   group = group_of(universe),
   subgroup = subgroup_of(universe),
   in_index_a = universe %in% index_a_codes,
   in_part_iii = universe %in% part3$kk_code,
-  in_verified = universe %in% c(index_a_codes, part3$kk_code),
+  in_verified = universe %in% c(index_a_codes, part3$kk_code, verified_extra$kk_code),
   in_index_b = universe %in% edges$kk_code,
   n_index_b_elements = as.integer(table(factor(edges$kk_code, levels = universe))),
   index_a_authors = vapply(universe, function(cd) {
