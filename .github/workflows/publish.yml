@@ -41,7 +41,7 @@ jobs:
           cp -r ../_site/. .
           cp ../.nojekyll .
           mkdir -p data
-          cp ../data/. data/
+          cp -r ../data/. data/
           git add -A
           if git diff --cached --quiet; then
             echo "No changes to publish"
