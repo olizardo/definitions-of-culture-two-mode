@@ -18,8 +18,8 @@ counts into this file; they go stale.
   works network, both the works and concept views), and `kk-index-b/degree-works-definitions.png`.
   Filenames carry the network or node type; the folder carries the dataset. Scripts create their folders.
 - `documents/`: source PDFs and an ignored text copy. `*_djvu.txt` is gitignored; do not commit or release it.
-  `pdfcoffee.com-…pdf` was untracked from git on 2026-10-25 (staged removal, not yet committed). The file
-  stays on disk; the git history still contains it.
+  `pdfcoffee.com-…pdf` is still tracked in git as of 2026-10-25 (the staged removal was not committed).
+  Removing it from the index is an open decision; the file stays on disk either way.
 - `kk-index-b-two-mode.tex`: the LaTeX draft report on the works and definitions networks. It replaced the
   Quarto report `kkcc-two-mode.qmd`, which was removed. The tex reads figures and CSVs written by the
   analysis scripts; it does not source them, so rerun the scripts and update the numbers by hand.
@@ -34,7 +34,9 @@ Order: `build-index-b.R` → `build-index-b-crosswalk.R` → `build-index-b-netw
 `analysis-ca-index-b.R` → `analysis-ca-works-index-b.R` → `analysis-centrality-index-b.R` →
 `analysis-mst-definitions-index-b.R` → `analysis-mst-works-index-b.R`. The definitions analyses read
 `data/kk-index-b-verified-network.rds`, not the unfiltered sub-element network. The works build
-(`build-work-concept-network-index-b.R`) also reads the verified network. Run each in a fresh environment: `sys.source(file, envir = new.env())`.
+(`build-work-concept-network-index-b.R`) also reads the verified network. Run each in a fresh environment: `e <- new.env(); e$norm <- base::norm; sys.source(file, envir = e)`.
+A new environment inherits the global session, and a live session may define a `norm` stub that shadows
+`base::norm` (the prestige analysis then fails with `unused argument (type = "F")`).
 The crosswalk reads its inputs from files; a stale session object once produced wrong output.
 
 After any change, check that: the build runs without errors; every manual-fix key matches a token;
@@ -50,7 +52,9 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
   the manual fixes, so the key must use the variant. Copy keys from the parsed output, not the PDF.
 - Heading corrections (`apply_heading_corrections()`) move entries after parsing, so a key uses the heading
   before the move: `capabilities` (now carriers of culture); `civilization` (only the civilization element
-  stays there; the others are now common or shared patterns).
+  stays there; the others are now common or shared patterns). The moved entries keep their pre-correction heading
+  in `data/kk-index-b-flagged-audit.csv`. When a key fails with `length(hit) >= 1`, check that file for the heading
+  (F-9 was under `civilization`).
 - Use `occurrence` for identical tokens under the same heading and sub-element. Blank = all matches.
 - Non-code tokens (e.g. "K -i", "B 17") are fixed in `kk-index-b-missing-rows.csv`, not here.
 - Evidence must be a quoted CSV field. An unquoted comma or quote shifts the columns and the build
@@ -59,7 +63,7 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
   show as changed in git.
 - Record the basis in the evidence column: printed page, crop resolution, or "user reading, not
   checked on the page image". Do not claim a page check you did not do.
-- A remap of a printed code (D-8 → E-8, C-7 → C-I-7) is decided from the main text, which takes precedence
+- A remap of a printed code (D-8 → E-8, C-7 → C-I-7, F-9 → E-9, F-4 → F-I-4) is decided from the main text, which takes precedence
   over the printed Index B. Cite the main-text footnote (author, year, page) as the basis and say whether it
   was image-checked.
 
@@ -72,7 +76,8 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
 - `j` is printed as 3 or 5 on the scan. It is deliberately unmapped; resolve `j` tokens only from a
   page-image check or a single printed candidate under that sub-element.
 - A trailing `a` is read as `3` (`A-103` = A-10a, `C-I-53` = C-I-5a).
-- A dropped roman I (`C-18` = C-I-8) and a truncated last digit (`D-I-1` for D-I-12) are common.
+- A dropped roman I (`C-18` = C-I-8, `F-4` = F-I-4) and a truncated last digit (`D-I-1` for D-I-12) are common.
+  Check a printed code without a roman numeral against the Index A author rows before accepting it.
 - Roman tokens containing H: `norm_roman()` returns III for IH/lH. Check any new roman-slot token that
   contains H.
 - `norm_number()` treats a lone `n` or `u` as 11 (`A-n` = A-11).
@@ -117,6 +122,11 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
   III's own groups. Those are not Part II codes, so each attribution needs its own basis. The user-verified
   attributions are in `data/kk-part-iii-author-codes.csv`; `build-index-b.R` appends them to the author table,
   not to `index_a`.
+- Authors that K&K cite in the main text but Index A omits: Maquet (C-I-18a), Aberle et al. (D-II-16), Taylor 1950
+  (E-17). Sears's `C-I-Addendum` is an addendum linked to a specialty code, not a network code (user decision
+  2026-10-25). Codes outside Index A enter the verified network only through `data/kk-index-b-verified-extra-codes.csv`,
+  with one basis per code. Taylor's footnote 17 is commentary rather than a definition, so its basis is weaker than
+  footnote 16 (Aberle) or 18a (Maquet).
 
 ## Crosswalk and Boroch's data
 
@@ -125,7 +135,10 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
   group and subgroup. Positional agreement is a check only.
 - Hand decisions are in `data/kk-boroch-crosswalk-decisions.csv`, each with a basis.
 - Table 2 has 135 definition columns. The appendix has 171 codes; 39 never appear in Table 2 (texts in
-  `kkcc-appendix-only-texts.csv`, links in `kkcc-appendix-only-links.csv`).
+  `kkcc-appendix-only-texts.csv`, links in `kkcc-appendix-only-links.csv`). 37 of the 39 are linked to K&K codes,
+  and the network uses those links as Boroch labels. F1-21 and G1 have no Index A row.
+- Crosswalk hand decisions with a non-author basis: D2-7 (Young 1946, year changed in Index A) and D2-16 (K&K
+  footnote 16). Each basis is in `data/kk-boroch-crosswalk-decisions.csv`.
 - F4-6 is an off-by-one slip for F4-5 = Kluckhohn & Kelly 1945a: 87 (evidence in PROVENANCE section 5).
 - Table 2's "TOTAL USES" counts uses with multiplicity; the binary matrices deduplicate.
 - Main categories exclude their auxiliaries (SOCIAL 58 + Socially 10 = printed 68).
@@ -142,9 +155,9 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
   be in the verified network and still drop out of the projections.
 - One verified definitions network: `scripts/build-index-b-verified.R` keeps the codes flagged `in_verified`
   (Index A codes, the Part III codes, and the codes in `data/kk-index-b-verified-extra-codes.csv`; `build-index-b.R` defines the flag) and writes `data/kk-index-b-verified-network.rds`. Every definitions analysis (basic stats,
-  CA, MST, centrality) reads it. Do not add a second filter in an analysis script. Excluded codes and their
-  sub-elements are in `data/kk-index-b-excluded-codes.csv`; they are unverified and still need checking
-  against the printed index (TODO). The raw `kk-index-b-subelement-network.rds` keeps them by design.
+  CA, MST, centrality) reads it. Do not add a second filter in an analysis script. Any code left out of
+  the network is listed in `data/kk-index-b-excluded-codes.csv` with its sub-elements; the file is empty as of
+  2026-10-25. The raw `kk-index-b-subelement-network.rds` keeps all codes by design.
 - Measures that need a connected network (closeness, betweenness, distances) run on the LCC. The
   normalizations are in `scripts/analysis-centrality-index-b.R`, from Borgatti & Everett (1997) as given at
   https://olizardo.github.io/SOCIOL208/cent-tm.html: closeness `n_Y + 2(n_X − 1)`; betweenness for the larger
@@ -208,7 +221,8 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
 
 - renv is initialized (R 4.5.3, PPM bookworm binaries). After installing anything new, run
   `renv::snapshot()`. Restart the R session to activate renv.
-- `backbone` 3.0.4 is still in `renv.lock`, but no script uses it since the backbone analysis was removed.
+- `backbone` 3.0.4: as of 2026-10-25 its entry is deleted from `renv.lock` in the working tree but not committed
+  (not done by the assistant). No script uses it since the backbone analysis was removed. Confirm before committing.
   Remove it with `renv::remove("backbone")` and `renv::snapshot()` once that is confirmed.
 
 ## Rights
@@ -218,4 +232,8 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
 - The user regards the 1952 K&K monograph as publicly available online, and treats K&K element labels
   as releasable. Boroch's article and its verbatim quotations remain restricted. Availability online
   does not by itself settle redistribution rights; flag this in any release note.
+- Boroch's article is posted on PhilPapers (https://philpapers.org/archive/ROBAFC-5.pdf). The assistant could not
+  access that URL (HTTP 403), so its posting terms are unverified. The local copy, `documents/ROBAFC-5.1.pdf`
+  (MD5 767c5c651a991d0de5c368afd4f0f7eb), has no copyright or license notice. A public posting does not by itself
+  settle redistribution.
 - Cite printed page numbers, not the unofficial scan copies.
