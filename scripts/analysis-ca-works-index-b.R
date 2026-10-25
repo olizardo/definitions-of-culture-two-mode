@@ -17,6 +17,7 @@ invisible(lapply("figures/kk-index-b/works", dir.create, recursive = TRUE, showW
 
 source("scripts/label-authors-index-b.R")
 source("scripts/core-index-b.R")
+source("scripts/pub-type-style.R")
 
 net <- readRDS("data/kk-index-b-work-concept-network-full.rds")
 # Sub-elements x works, restricted to the largest component's 2-core
@@ -92,9 +93,17 @@ scree.plot <- function(val, file) {
 }
 
 # map panels: active points labelled (top by |score| or mass), passive points grey
-ca.maps <- function(fit, X, active.label, title, prefix, passive.word, active.word) {
+ca.maps <- function(fit, X, active.label, title, prefix, passive.word, active.word, pub = NULL) {
   df.act <- data.frame(fit$p, name = rownames(X), mass = rowSums(X) / sum(X),
                        label = active.label(rownames(X)))
+  # publication type of the active nodes, when given: shape only, no other encoding
+  if (!is.null(pub)) df.act$pubtype <- factor(pub[rownames(X)], levels = names(pub.shape.ca))
+  shape.aes <- function(m) {
+    if (!is.null(pub)) m[["shape"]] <- rlang::quo(pubtype)
+    m
+  }
+  pub.scale <- if (is.null(pub)) NULL else
+    scale_shape_manual(values = pub.shape.ca, name = "publication type", drop = FALSE)
   df.pas <- data.frame(fit$g, name = colnames(X))
 
   top_labels <- function(x, y, n = 20) {
@@ -113,10 +122,10 @@ ca.maps <- function(fit, X, active.label, title, prefix, passive.word, active.wo
       geom_vline(xintercept = 0, color = "grey80") +
       geom_point(data = df.pas, aes(.data[[x]], .data[[y]]),
                  size = 1.4, color = "grey75", alpha = 0.7) +
-      geom_point(data = df.act, aes(.data[[x]], .data[[y]]),
-                 size = 2.2, shape = 16, color = "grey35", alpha = 0.9) +
-      geom_point(data = df.lab, aes(.data[[x]], .data[[y]]),
-                 size = 3.2, shape = 16, color = "#1B9E77") +
+      geom_point(data = df.act, shape.aes(aes(.data[[x]], .data[[y]])),
+                 size = 2.2, color = "grey35", alpha = 0.9) +
+      geom_point(data = df.lab, shape.aes(aes(.data[[x]], .data[[y]])),
+                 size = 3.2, color = "#1B9E77") +
       geom_label_repel(fill = "white", label.size = 0, color = "#0E5C47",
                        data = df.lab, aes(.data[[x]], .data[[y]], label = label),
                        size = 2.7, fontface = "bold", max.overlaps = Inf,
@@ -124,7 +133,9 @@ ca.maps <- function(fit, X, active.label, title, prefix, passive.word, active.wo
                        force = 1.5, force_pull = 0.2, point.padding = 0.4,
                        box.padding = 0.35, max.iter = 20000) +
       theme_minimal() +
-      theme(legend.position = "none", plot.title = element_text(face = "bold", size = 11)) +
+      pub.scale +
+      theme(legend.position = if (is.null(pub)) "none" else "bottom",
+            plot.title = element_text(face = "bold", size = 11)) +
       labs(title = title, subtitle = subtitle, x = xlab, y = ylab)
     ggsave(file, width = 9, height = 7, dpi = 150, bg = "white")
   }
@@ -143,6 +154,7 @@ ca.maps <- function(fit, X, active.label, title, prefix, passive.word, active.wo
 }
 
 # ------------------------------------------------- works view (works active)
+pub.work <- setNames(net$works$pub_type, net$works$work)
 fit.w <- fit.ca(Ac)
 cat(sprintf("total inertia (nontrivial): %.3f; top %d dims share %.1f%%\n",
             sum(fit.w$val), fit.w$ND, 100 * sum(fit.w$val[1:fit.w$ND]) / sum(fit.w$val)))
@@ -151,7 +163,7 @@ ca.maps(fit.w, Ac,
         active.label = function(k) vapply(k, label.authors, character(1)),
         title = "CA of the works network (Index B work nodes, LCC 2-core)",
         prefix = "figures/kk-index-b/works/ca-lcc2core",
-        passive.word = "sub-elements", active.word = "works")
+        passive.word = "sub-elements", active.word = "works", pub = pub.work)
 
 # ------------------------------------------------ concept view (concepts active)
 fit.c <- fit.ca(t(Ac))

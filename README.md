@@ -53,6 +53,7 @@ the two.
 | `analysis-mst-definitions-index-b.R` | verified network | Kruskal MST of the code projection (2-core) |
 | `analysis-centrality-index-b.R` | verified network; works file (`two_mode_graph`) | Two-mode closeness and betweenness on each network's largest component, centrality CSVs |
 | `build-index-b-work-citations.R` | `kk-index-b-works.csv`, `kkcc-supplement-bibliography.csv`, `kk-index-b-work-citations-page-checks.csv`, K&K bibliography (`documents/Kroeber-kluckhohn.pdf`) | `kk-index-b-work-citations.csv` (one row per work: K&K and Boroch matches, page-image checks, status) |
+| `attach-work-pub-type-index-b.R` | `kk-index-b-work-pub-type.csv`, `kk-index-b-work-concept-network-full.rds` | `kk-index-b-work-concept-network-full.rds` (adds `pub_type` to `works` and to the work vertices of both graphs) |
 | `core-index-b.R` (helper) | any two-mode matrix | `lcc_2core()` (largest component, then 2-core) and `sub_work_matrix()` |
 | `analysis-ca-mst-main.R` | main two-mode network | CA and Kruskal maximum spanning trees (main network) |
 | `analysis-centrality-prestige-main.R` | main network | centrality, prestige and PageRank-family scores |
@@ -74,6 +75,7 @@ Scripts live in `scripts/`; `documents/` holds the source PDFs and the Archive t
 13. `scripts/analysis-ca-index-b.R` (CA and MST figures for the definitions network), then `analysis-mst-definitions-index-b.R` and `analysis-centrality-index-b.R`
 14. `scripts/analysis-ca-works-index-b.R` and `scripts/analysis-mst-works-index-b.R` (works network)
 15. `scripts/build-index-b-work-citations.R` (citation table for the works: K&K bibliography and Boroch supplement, with page-image checks; writes `data/kk-index-b-work-citations.csv`)
+16. `scripts/attach-work-pub-type-index-b.R` (adds `pub_type` to the works table and both work-vertex sets in the full works file; types are decided per work in `data/kk-index-b-work-pub-type.csv`, with a basis for each row)
 
 The analysis scripts and the report read definition attributes through `scripts/kkcc-definition-attrs.R`.
 
@@ -249,11 +251,12 @@ stored data; projections are derived in the analyses.
   selection). Sub-element vertices carry the sub-element attributes copied from the verified network
   (`type` FALSE, `node_type` `sub_element`, `headings`, `n_headings`, `n_codes`, `has_junk_name`,
   `has_manual_fix`, `has_ocr_correction`). Work vertices (`type` TRUE, `node_type` `work`) carry `n_codes`,
-  `codes`, `n_concepts`, `year` (as printed, letter suffix kept), `decade` (integer) and `label`.
+  `codes`, `n_concepts`, `year` (as printed, letter suffix kept), `decade` (integer), `label` and `pub_type`
+  (`article`, `book`, `chapter` or `other`; see `scripts/attach-work-pub-type-index-b.R`).
 - `two_mode_heading_graph`: heading × work bipartite. Heading vertices carry `n_subelements` and `n_codes`
   from the heading network; work vertices carry the work attributes. A work is under a heading if one of its
   codes is.
-- `works`: the work table (`work`, `n_codes`, `codes`, `n_concepts`).
+- `works`: the work table (`work`, `n_codes`, `codes`, `n_concepts`, `pub_type`).
 
 Derived in the analyses (`sub_work_matrix()` and `lcc_2core()` in `scripts/core-index-b.R`): the sub-element ×
 work matrix, the sub-element projection (ties = works both sub-elements cite), and the work projection (ties =

@@ -2,6 +2,15 @@
   "permission": {
     "executeCode": {
       "*": "allow"
+    },
+    "bash": {
+      "cd *": "allow",
+      "cat *": "allow",
+      "python3 *": "allow",
+      "/usr/share/positron/resources/app/quarto/bin/quarto *": "allow",
+      "grep *": "allow",
+      "head *": "allow",
+      "ls *": "allow"
     }
   }
 }

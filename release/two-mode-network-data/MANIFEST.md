@@ -1,4 +1,4 @@
-# Two-mode network data, version 0.2.0 (preliminary)
+# Two-mode network data, version 0.3.0 (preliminary)
 
 Derived from Kroeber & Kluckhohn (1952), Index A/B. Subject to further verification (see docs/TODO.md; the copy here is a snapshot).
 Version history is in `CHANGELOG.md`.
@@ -12,6 +12,8 @@ Version history is in `CHANGELOG.md`.
 | `kk-index-b-work-citations.csv` | (table) | one row per work | 133 rows |
 
 Read the `.rds` files with `readRDS()`. Objects are igraph graphs (`igraph` package), and the `biadjacency` element is the 0/1 matrix.
+
+Work vertices in both works networks, and the `works` table in the full works file, carry `pub_type`: `article`, `book`, `chapter` or `other` (added in 0.3.0). The basis for each assignment is in the project repository and is not released.
 
 The citations table has these columns:
 

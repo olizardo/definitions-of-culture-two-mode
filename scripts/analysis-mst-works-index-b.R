@@ -13,6 +13,7 @@ set.seed(8427)
 invisible(lapply(c("figures/boroch", "figures/kk-index-b/definitions", "figures/kk-index-b/works"), dir.create, recursive = TRUE, showWarnings = FALSE))
 
 source("scripts/core-index-b.R")
+source("scripts/pub-type-style.R")
 
 net <- readRDS("data/kk-index-b-work-concept-network-full.rds")
 # Sub-elements x works, restricted to the largest component's 2-core
@@ -46,6 +47,8 @@ V(st.work)$label <- vapply(V(st.work)$name, label.authors, character(1))
 V(st.concept)$label <- V(st.concept)$name
 unlabelled <- V(st.work)$label[!grepl("[A-Z][.]", V(st.work)$label)]
 cat("works with an author lacking initials:", length(unlabelled), "\n")
+V(st.work)$pub_type <- works.tab$pub_type[match(V(st.work)$name, works.tab$work)]
+stopifnot(!anyNA(V(st.work)$pub_type))
 V(st.concept)$label <- V(st.concept)$name
 
 pal.for <- function(st) {
@@ -54,12 +57,18 @@ pal.for <- function(st) {
            levels(V(st)$comm))
 }
 
-tree.plot <- function(st, title, subtitle, file) {
+tree.plot <- function(st, title, subtitle, file, by.pub = FALSE) {
+  pts <- if (by.pub) {
+    geom_node_point(aes(fill = comm, size = btw, shape = pub_type),
+                    color = "grey25", stroke = 0.5)
+  } else {
+    geom_node_point(aes(fill = comm, size = btw), shape = 21,
+                    color = "grey25", stroke = 0.5)
+  }
   p <- ggraph(st, layout = "kk") +
     geom_edge_link(aes(width = weight), color = "grey75", alpha = 0.8) +
     scale_edge_width(range = c(0.3, 1.6), guide = "none") +
-    geom_node_point(aes(fill = comm, size = btw), shape = 21,
-                    color = "grey25", stroke = 0.5) +
+    pts +
     scale_fill_manual(values = pal.for(st), guide = "none") +
     scale_size_continuous(range = c(2.5, 9), name = "betweenness (tree)") +
     geom_node_text(aes(label = label), repel = TRUE, size = 2.6,
@@ -69,6 +78,9 @@ tree.plot <- function(st, title, subtitle, file) {
     theme(plot.title = element_text(face = "bold", size = 13),
           legend.position = "bottom") +
     labs(title = title, subtitle = subtitle)
+  if (by.pub)
+    p <- p + scale_shape_manual(values = pub.shape.mst, name = "publication type",
+                                guide = guide_legend(override.aes = list(fill = "grey60", size = 4)))
   ggsave(file, p, width = 14, height = 10, dpi = 150, bg = "white")
 }
 
@@ -79,11 +91,13 @@ tree.plot(st.concept,
 tree.plot(st.work,
           "Maximum spanning tree, works network (work nodes), K&K Index B LCC 2-core",
           "ties = number of sub-elements both works cite; node size = betweenness in the tree; color = leading-eigenvector community on the tree",
-          "figures/kk-index-b/works/mst-work.png")
+          "figures/kk-index-b/works/mst-work.png", by.pub = TRUE)
 
 tab <- function(st, type) {
+  pub <- if (is.null(V(st)$pub_type)) rep(NA_character_, vcount(st)) else V(st)$pub_type
   data.frame(type = type, node = V(st)$name, community = as.integer(V(st)$comm),
-             betweenness = V(st)$btw, degree_tree = degree(st), stringsAsFactors = FALSE)
+             betweenness = V(st)$btw, degree_tree = degree(st), pub_type = pub,
+             stringsAsFactors = FALSE)
 }
 out <- rbind(tab(st.concept, "concept"), tab(st.work, "work"))
 write.csv(out[order(out$type, -out$betweenness), ],
