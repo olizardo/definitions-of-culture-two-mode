@@ -10,6 +10,9 @@
 library(igraph)
 library(ggplot2)
 library(ggrepel)
+library(ggstar)
+
+source("scripts/kk-group-style.R")
 
 set.seed(8427)
 invisible(lapply(c("figures/boroch", "figures/kk-index-b/definitions", "figures/kk-index-b/works"), dir.create, recursive = TRUE, showWarnings = FALSE))
@@ -144,28 +147,29 @@ top_labels <- function(x, y, n = 25) {
 ca.panel <- function(x, y, xlab, ylab, subtitle, file) {
   lab <- top_labels(x, y)
   df.lab <- df.p[df.p$element %in% lab, ]
+  # one label layer for elements and group centroids, so ggrepel keeps them apart
+  lab.all <- rbind(
+    data.frame(px = df.lab[[x]], py = df.lab[[y]], text = df.lab$element),
+    data.frame(px = df.bary[[x]], py = df.bary[[y]],
+               text = paste0(df.bary$group, ": ", kk.group.names[df.bary$group])))
   ggplot() +
     geom_hline(yintercept = 0, color = "grey80") +
     geom_vline(xintercept = 0, color = "grey80") +
     geom_point(data = df.g, aes(.data[[x]], .data[[y]]),
                size = 1.4, color = "grey75", alpha = 0.7) +
-    geom_point(data = df.bary, aes(.data[[x]], .data[[y]], color = group),
-               shape = 18, size = 5) +
-    geom_label_repel(fill = "white", label.size = 0, color = "#0E5C47", data = df.bary, aes(.data[[x]], .data[[y]], label = group),
-                    size = 3, fontface = "italic", max.overlaps = Inf,
-                    segment.color = "grey70", min.segment.length = 0, seed = 8427,
-                    force = 1, force_pull = 0.2, point.padding = 0.6,
-                    box.padding = 0.45, max.iter = 20000) +
+    geom_star(data = df.bary, aes(.data[[x]], .data[[y]], starshape = group, fill = group),
+              color = "grey25", size = 5) +
     geom_point(data = df.p, aes(.data[[x]], .data[[y]]),
                size = 2.6, shape = 16, color = "grey35", alpha = 0.9) +
     geom_point(data = df.lab, aes(.data[[x]], .data[[y]]),
                size = 3.4, shape = 16, color = "#1B9E77") +
-    geom_label_repel(fill = "white", label.size = 0, color = "#0E5C47", data = df.lab, aes(.data[[x]], .data[[y]], label = element),
+    geom_label_repel(fill = "white", label.size = 0, color = "#0E5C47", data = lab.all, aes(px, py, label = text),
                     size = 2.7, fontface = "bold", max.overlaps = Inf,
                     segment.color = "grey70", min.segment.length = 0, seed = 8427,
                     force = 1.5, force_pull = 0.2, point.padding = 0.4,
                     box.padding = 0.35, max.iter = 20000) +
-    scale_color_manual(values = group_pal) +
+    scale_fill_manual(values = group_pal) +
+    scale_starshape_manual(values = kk.group.star[groups], guide = "none") +
     theme_minimal() +
     theme(legend.position = "none", plot.title = element_text(face = "bold", size = 11)) +
     labs(title = "CA of the definitions network (Index B sub-element nodes, LCC 2-core)",
@@ -175,7 +179,7 @@ ca.panel <- function(x, y, xlab, ylab, subtitle, file) {
 
 ca.panel("dim1", "dim2", "First Dimension", "Second Dimension",
          "sub-elements (active; labeled if top by |score| or mass);
-         K&K groups (passive barycenters, diamonds)",
+         K&K groups (passive barycenters, shape = group)",
          "figures/kk-index-b/definitions/ca-lcc2core-d12.png")
 ca.panel("dim2", "dim3", "Second Dimension", "Third Dimension",
          "dims 2 vs 3; sub-elements (active); K&K groups (passive barycenters)",

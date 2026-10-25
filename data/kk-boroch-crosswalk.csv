@@ -36,7 +36,7 @@
 "B22",TRUE,"Henry",1949,NA,NA,"B-22",1,"B-21","B-21","auto",FALSE,NA,NA
 "B3",TRUE,"Sapir",1924,NA,"a","B-3",1,"B-3","B-3","auto",TRUE,NA,NA
 "B4",TRUE,"Tozzer",1925,NA,NA,"B-4",1,"B-4","B-4","auto",TRUE,NA,NA
-"B5",TRUE,"Myres",1927,NA,NA,"B-5",0,"B-4a","","manual_decision",FALSE,"match","Printed Part II p. 47 (PDF p. 50), item 4a: 'Myres, 1927: 16.' Quoted text matches Boroch B5 verbatim; author and 1927 agree. Index A (p. 73, PDF p. 76) prints 'Myres, B-4a (1929)'. Decision (2026-10-24): 1927 is the working year for B-4a; the Index A transcription is kept as printed."
+"B5",TRUE,"Myres",1927,NA,NA,"B-5",1,"B-4a","B-4a","manual_decision",FALSE,"match","Printed Part II p. 47 (PDF p. 50), item 4a: 'Myres, 1927: 16.' Quoted text matches Boroch B5 verbatim; author and 1927 agree. Index A (p. 73, PDF p. 76) prints 'Myres, B-4a (1929)'. Decision (2026-10-24): 1927 is the working year for B-4a; the Index A transcription is kept as printed."
 "B6",TRUE,"Bose",1929,NA,NA,"B-6",1,"B-5","B-5","auto",FALSE,NA,NA
 "B7",TRUE,"Malinowski",1931,NA,NA,"B-7",1,"B-6","B-6","auto",FALSE,NA,NA
 "B8",TRUE,"Winston",1933,NA,NA,"B-8",1,"B-7","B-7","auto",FALSE,NA,NA
@@ -87,7 +87,7 @@
 "D2-4",TRUE,"Kluckhohn",1942,NA,NA,"D-II-4",1,"D-II-4","D-II-4","auto",TRUE,NA,NA
 "D2-5",TRUE,"LaPiere",1946,NA,NA,"D-II-5",1,"D-II-5","D-II-5","auto",TRUE,NA,NA
 "D2-6",TRUE,"Benedict",1947,NA,NA,"D-II-6",1,"D-II-6","D-II-6","auto",TRUE,NA,NA
-"D2-7",TRUE,"Young",1947,NA,NA,"D-II-7",0,"D-II-7","","manual_decision",TRUE,"match","Boroch cites Young 1947; Index A year changed to 1946 by user decision 2026-10-25 (kk-index-a-manual-fixes.csv), so the author-and-year rule does not match. Same author, same code: Kimball Young, Handbook of Social Psychology (see the Index A row for the basis)"
+"D2-7",TRUE,"Young",1947,NA,NA,"D-II-7",0,"D-II-7","","manual_decision",TRUE,"match","Boroch cites Young 1947; Index A year changed to 1944 by user decision 2026-10-26 (kk-index-a-manual-fixes.csv), so the author-and-year rule does not match. Same author, same code: Kimball Young, Social Psychology (2nd ed.), K&K bibliography 1944 (see the Index A row for the basis)"
 "D2-8",TRUE,"Opler",1947,NA,NA,"D-II-8",1,"D-II-8","D-II-8","auto",TRUE,NA,NA
 "D2-9",TRUE,"A. Davis",1948,NA,NA,"D-II-9",1,"D-II-9","D-II-9","auto",TRUE,NA,NA
 "D3-1",TRUE,"Tozzer",NA,NA,NA,"D-III-1",0,"D-III-1","","manual_decision",TRUE,"match","Boroch gives no year (PDF ""data""; footnote ""missing (before 1930)""). Matched on surname Tozzer and subgroup D-III, the only K&K Tozzer in D-III; K&K prints (n.d.). Year-free match, so confidence is moderate."

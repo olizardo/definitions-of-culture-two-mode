@@ -31,8 +31,9 @@ entry.names <- function(e) {
 # Reviewed exceptions (data/kk-index-b-name-decisions.csv) override the rule: a
 # name with a decision takes that work name and is not prefix-merged.
 decisions <- read.csv("data/kk-index-b-name-decisions.csv", stringsAsFactors = FALSE)
+decisions$group_year[is.na(decisions$group_year)] <- ""
 canon.names <- function(nm, year) {
-  dec <- decisions[decisions$year == year, ]
+  dec <- decisions[decisions$year == year | decisions$group_year == year, ]
   for (i in seq_len(nrow(dec))) nm[nm == dec$index_name[i]] <- dec$work_name[i]
   decided <- dec$work_name
   for (x in setdiff(nm, decided)) {
@@ -53,6 +54,14 @@ code.works <- function(s) {
   ok <- nzchar(yr)
   if (!all(ok)) warning("entry without a year: ", paste(ents[!ok], collapse = " | "))
   ents <- ents[ok]; yr <- yr[ok]
+  # A decision with a group_year moves the entry into that year's work (Bernard 1941b joins 1941)
+  gdec <- decisions[nzchar(decisions$group_year), ]
+  yr <- vapply(seq_along(yr), function(i) {
+    for (j in seq_len(nrow(gdec)))
+      if (yr[i] == gdec$year[j] && gdec$index_name[j] %in% entry.names(ents[i]))
+        return(gdec$group_year[j])
+    yr[i]
+  }, character(1))
   keys <- vapply(unique(yr), function(y) {
     nm <- canon.names(unique(unlist(lapply(ents[yr == y], entry.names))), y)
     paste(paste(sort(nm), collapse = " & "), y)

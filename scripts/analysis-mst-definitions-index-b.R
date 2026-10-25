@@ -1,11 +1,12 @@
 # Maximum spanning tree of the definitions (code) projection of the K&K Index B
 # sub-element network, on the largest component's 2-core (same Ac as
 # scripts/analysis-ca-index-b.R). Ties between two codes = shared sub-elements
-# (edge weight). Nodes labeled "Author Year" from the Index A entry; colored by
+# (edge weight). Nodes labeled with their K&K code; colored by
 # leading-eigenvector community computed on the tree; sized by tree betweenness.
 
 library(igraph)
 library(ggraph)
+library(ggstar)
 
 set.seed(8427)
 invisible(lapply(c("figures/boroch", "figures/kk-index-b/definitions", "figures/kk-index-b/works"), dir.create, recursive = TRUE, showWarnings = FALSE))
@@ -70,12 +71,20 @@ for (i in seq_len(nrow(works.tab))) {
   for (k in strsplit(works.tab$codes[i], "; ")[[1]])
     code.works.map[[k]] <- c(code.works.map[[k]], works.tab$work[i])
 }
-labels <- vapply(V(st.def)$name, function(k) {
+works.lab <- vapply(V(st.def)$name, function(k) {
   ws <- code.works.map[[k]]
-  if (is.null(ws)) return(k)
+  if (is.null(ws)) return("")
   paste(vapply(ws, label.authors, character(1)), collapse = " / ")
 }, character(1))
-V(st.def)$label <- labels
+# Nodes are labeled with their code; the works each code holds go to the node table
+V(st.def)$label <- V(st.def)$name
+# shape encodes the K&K definition group (first letter of the code, A-G)
+V(st.def)$family <- substr(V(st.def)$name, 1, 1)
+fams <- sort(unique(V(st.def)$family))
+stopifnot(length(fams) <= 7)
+source("scripts/kk-group-style.R")
+group.star <- kk.group.star[fams]
+group.labels <- setNames(paste0(fams, ": ", kk.group.names[fams]), fams)
 
 # leading-eigenvector community on the tree; tree betweenness
 com.tree <- cluster_leading_eigen(st.def)
@@ -89,12 +98,16 @@ n.comm <- nlevels(V(st.def)$comm)
 pal <- setNames(hcl(h = seq(15, 375, length.out = n.comm + 1)[-(n.comm + 1)],
                     c = 65, l = 65), levels(V(st.def)$comm))
 
-p <- ggraph(st.def, layout = "kk") +
+# layout computed once so the star layer and the edges share node positions
+lay <- create_layout(st.def, layout = "kk")
+p <- ggraph(lay) +
   geom_edge_link(aes(width = weight), color = "grey75", alpha = 0.8) +
   scale_edge_width(range = c(0.3, 1.6), guide = "none") +
-  geom_node_point(aes(fill = comm, size = btw), shape = 21,
-                  color = "grey25", stroke = 0.5) +
+  geom_star(data = lay, aes(x = x, y = y, starshape = family, fill = comm, size = btw),
+            color = "grey25") +
   scale_fill_manual(values = pal, guide = "none") +
+  scale_starshape_manual(values = group.star, labels = group.labels, name = "definition type (K&K group)",
+                         guide = guide_legend(override.aes = list(size = 4, fill = "black"))) +
   scale_size_continuous(range = c(2.5, 9), name = "betweenness (tree)") +
   geom_node_text(aes(label = label), repel = TRUE, size = 2.6,
                  max.overlaps = Inf, seed = 8427, segment.color = NA,
@@ -104,11 +117,11 @@ p <- ggraph(st.def, layout = "kk") +
         legend.position = "bottom",
         legend.title = element_text(size = 8), legend.text = element_text(size = 7)) +
   labs(title = "Maximum spanning tree, definitions network (code nodes), K&K Index B LCC 2-core",
-       subtitle = "ties = shared sub-elements; labels = Index A author and year; node size = betweenness in the tree")
+       subtitle = "ties = shared sub-elements; labels = K&K code; shape = definition type; node size = betweenness in the tree")
 ggsave("figures/kk-index-b/definitions/mst-code-comm-tree.png", p,
        width = 14, height = 10, dpi = 150, bg = "white")
 
-tree.out <- data.frame(kk_code = V(st.def)$name, label = V(st.def)$label,
+tree.out <- data.frame(kk_code = V(st.def)$name, works = works.lab,
                        community = as.integer(V(st.def)$comm),
                        betweenness = btw, degree_tree = degree(st.def))
 write.csv(tree.out[order(-tree.out$betweenness), ],

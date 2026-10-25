@@ -52,6 +52,7 @@ the two.
 | `analysis-mst-works-index-b.R` | works file (`two_mode_graph`) | Kruskal MSTs of the sub-element and work projections (2-core) |
 | `analysis-mst-definitions-index-b.R` | verified network | Kruskal MST of the code projection (2-core) |
 | `analysis-centrality-index-b.R` | verified network; works file (`two_mode_graph`) | Two-mode closeness and betweenness on each network's largest component, centrality CSVs |
+| `build-index-b-work-citations.R` | `kk-index-b-works.csv`, `kkcc-supplement-bibliography.csv`, `kk-index-b-work-citations-page-checks.csv`, K&K bibliography (`documents/Kroeber-kluckhohn.pdf`) | `kk-index-b-work-citations.csv` (one row per work: K&K and Boroch matches, page-image checks, status) |
 | `core-index-b.R` (helper) | any two-mode matrix | `lcc_2core()` (largest component, then 2-core) and `sub_work_matrix()` |
 | `analysis-ca-mst-main.R` | main two-mode network | CA and Kruskal maximum spanning trees (main network) |
 | `analysis-centrality-prestige-main.R` | main network | centrality, prestige and PageRank-family scores |
@@ -72,6 +73,7 @@ Scripts live in `scripts/`; `documents/` holds the source PDFs and the Archive t
 12. `scripts/analysis-index-b.R`
 13. `scripts/analysis-ca-index-b.R` (CA and MST figures for the definitions network), then `analysis-mst-definitions-index-b.R` and `analysis-centrality-index-b.R`
 14. `scripts/analysis-ca-works-index-b.R` and `scripts/analysis-mst-works-index-b.R` (works network)
+15. `scripts/build-index-b-work-citations.R` (citation table for the works: K&K bibliography and Boroch supplement, with page-image checks; writes `data/kk-index-b-work-citations.csv`)
 
 The analysis scripts and the report read definition attributes through `scripts/kkcc-definition-attrs.R`.
 
@@ -87,8 +89,8 @@ the works network, or the code projection of the definitions network) are derive
 |---|---|---|---|---|
 | 1 | definitions × sub-elements | `kk-index-b-verified-network.rds` (`graph`, `biadjacency`) | 472 sub-elements, 170 codes | sub-element and code attributes |
 | 2 | definitions × headings | `kk-index-b-heading-network.rds` (`graph`, `biadjacency`) | 53 headings, 170 codes | heading and code attributes |
-| 3 | works × sub-elements | `kk-index-b-work-concept-network-full.rds`, `two_mode_graph` | 472 sub-elements, 136 works | sub-element and work attributes |
-| 4 | works × headings | same file, `two_mode_heading_graph` | 53 headings, 136 works | heading and work attributes |
+| 3 | works × sub-elements | `kk-index-b-work-concept-network-full.rds`, `two_mode_graph` | 472 sub-elements, 134 works | sub-element and work attributes |
+| 4 | works × headings | same file, `two_mode_heading_graph` | 53 headings, 134 works | heading and work attributes |
 
 Where attributes overlap, the values agree across the four networks (checked 2026-10-25). The raw
 `kk-index-b-subelement-network.rds` is the build output that the verified network is filtered from.
@@ -243,7 +245,7 @@ source files, and a caveat that Index B has not been fully verified.
 **`kk-index-b-work-concept-network-full.rds`**: a list with three elements. The two-mode networks are the
 stored data; projections are derived in the analyses.
 
-- `two_mode_graph`: sub-element × work bipartite (all 472 sub-elements, all 136 works, no LCC or 2-core
+- `two_mode_graph`: sub-element × work bipartite (all 472 sub-elements, all 134 works, no LCC or 2-core
   selection). Sub-element vertices carry the sub-element attributes copied from the verified network
   (`type` FALSE, `node_type` `sub_element`, `headings`, `n_headings`, `n_codes`, `has_junk_name`,
   `has_manual_fix`, `has_ocr_correction`). Work vertices (`type` TRUE, `node_type` `work`) carry `n_codes`,

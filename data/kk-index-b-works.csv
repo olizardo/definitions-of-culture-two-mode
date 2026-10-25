@@ -1,15 +1,15 @@
 "work","n_codes","codes","n_concepts"
-"Kelly & Kluckhohn 1945a",8,"A-14; A-15; C-I-10; C-I-11; C-I-12; E-6; F-II-6; F-IV-5",51
+"Kelly & Kluckhohn C. 1945a",8,"A-14; A-15; C-I-10; C-I-11; C-I-12; E-6; F-II-6; F-IV-5",51
+"Committee on Conceptual Integration (Bernard, Blumenthal, Dodd, Hart) 1941",5,"D-I-9; F-I-10; F-I-11; F-I-9; F-IV-3",9
 "Herskovits 1948",4,"A-18; A-19; C-I-14; F-I-17",23
 "Bidney 1947",3,"A-16; C-II-5; F-I-16",21
 "Roheim 1934",3,"A-14; D-7; D-IV-1",20
 "Winston 1933",3,"A-9; B-7; F-I-4",21
 "Young 1934",3,"C-I-3; D-I-5; D-III-2",22
-"Blumenthal 1941",2,"D-I-9; F-IV-3",5
 "Bose 1929",2,"A-6; B-5",18
-"Kluckhohn & Leighton 1946",2,"C-I-13; D-I-12",14
-"Kluckhohn 1942",2,"B-15; D-II-4",9
-"Kluckhohn 1949a",2,"B-20; F-I-18",8
+"Kluckhohn C. & Leighton 1946",2,"C-I-13; D-I-12",14
+"Kluckhohn C. 1942",2,"B-15; D-II-4",9
+"Kluckhohn C. 1949a",2,"B-20; F-I-18",8
 "Kroeber 1948a",2,"A-17; B-18",23
 "Linton 1936",2,"A-10; B-9",16
 "Linton 1945a",2,"C-I-9; E-5",9
@@ -25,7 +25,6 @@
 "Benedict 1934",1,"G-3",3
 "Benedict 1947",1,"D-II-6",3
 "Bennett & Tumin 1949",1,"C-I-16",6
-"Bernard 1941b",1,"F-I-9",3
 "Bernard 1942",1,"F-I-12",5
 "Bidney 1942",1,"C-II-3",11
 "Bidney 1946",1,"C-II-4",13
@@ -44,7 +43,6 @@
 "Dawson 1928",1,"D-I-3",5
 "Dietschy 1947",1,"B-17",3
 "Dixon 1928",1,"A-3",11
-"Dodd 1941",1,"F-I-10",3
 "Dollard & Miller 1941",1,"D-II-3",3
 "Dollard 1939",1,"E-2",3
 "F. R. Kluckhohn 1950",1,"F-I-20",4
@@ -65,18 +63,17 @@
 "Groves 1928",1,"F-I-1",1
 "Haring 1949",1,"D-II-11",4
 "Hart & Pantzer 1925",1,"D-II-2",6
-"Hart 1941",1,"F-I-11",3
 "Henry 1949",1,"B-21",7
 "Hiller 1933",1,"A-8",17
 "Hockett 1950",1,"D-II-13",3
 "Hoebel 1949",1,"D-II-10",6
 "Huntington 1945",1,"F-I-14",12
-"Jacobs & Stem 1947",1,"B-16",2
+"Jacobs & Stern B.J. 1947",1,"B-16",2
 "Katz & Schanck 1938",1,"D-IV-2",6
 "Keller & Sumner 1927",1,"D-I-2",7
 "Keller 1931",1,"D-I-4",3
 "Klineberg 1935",1,"C-I-4",9
-"Kluckhohn 1951a",1,"C-I-19",4
+"Kluckhohn C. 1951a",1,"C-I-19",4
 "Kolb & Wilson 1949",1,"D-II-12",11
 "LaPiere 1946",1,"D-II-5",12
 "Lasswell 1948",1,"C-I-15",3
@@ -94,7 +91,7 @@
 "Murdock 1941",1,"D-III-3",7
 "Murdock 1949a",1,"F-I-19",15
 "Murray 1943",1,"A-12",7
-"Myres 1929",1,"B-4a",1
+"Myres 1927",1,"B-4a",1
 "Nimkoff & Ogburn 1940",1,"E-3",15
 "Opler 1947",1,"D-II-8",8
 "Osgood 1940",1,"F-II-5",4
@@ -134,4 +131,4 @@
 "Willey 1929",1,"E-1",5
 "Wissler 1920",1,"A-2",7
 "Wissler 1929",1,"C-I-1",9
-"Young 1946",1,"D-II-7",10
+"Young 1944",1,"D-II-7",10

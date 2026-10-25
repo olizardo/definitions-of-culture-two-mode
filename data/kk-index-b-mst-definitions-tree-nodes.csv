@@ -1,4 +1,4 @@
-"kk_code","label","community","betweenness","degree_tree"
+"kk_code","works","community","betweenness","degree_tree"
 "F-I-3","Folsom J. 1931",21,7119,4
 "C-I-6","Gillin J. L. & Gillin J. P. 1942",22,5924,12
 "F-I-8","Reuter E. B. 1939",21,4989,6
@@ -25,7 +25,7 @@
 "B-13","Groves E. R. & Moore H. E. 1940",22,702,4
 "C-I-17","Frank L. K. 1948",7,699,3
 "C-I-8","Linton R. 1945b",6,699,3
-"D-II-7","Young K. 1946",9,699,3
+"D-II-7","Young K. 1944",9,699,3
 "B-9","Linton R. 1936",21,560,2
 "F-III-3","White L. A. 1949b",21,426,4
 "D-I-11","Young K. 1942",9,425,3
@@ -42,7 +42,7 @@
 "B-7","Winston S. 1933",22,284,2
 "C-I-14","Herskovits M. J. 1948",13,284,2
 "D-I-6","Lundberg G. 1939",23,284,2
-"D-I-9","Blumenthal A. 1941",5,284,2
+"D-I-9","Committee on Conceptual Integration (Bernard, Blumenthal, Dodd, Hart) 1941",5,284,2
 "D-II-15","Slotkin J. S. 1950",6,284,2
 "D-III-3","Murdock G. P. 1941",12,284,2
 "F-IV-5","Kelly W. H. & Kluckhohn C. 1945a",7,284,2
@@ -67,9 +67,9 @@
 "F-I-15","Carr L. J. 1945",2,143,2
 "F-I-18","Kluckhohn C. 1949a",18,143,2
 "F-I-4","Winston S. 1933",12,143,2
-"F-I-9","Bernard L. L. 1941b",5,143,2
+"F-I-9","Committee on Conceptual Integration (Bernard, Blumenthal, Dodd, Hart) 1941",5,143,2
 "F-II-6","Kelly W. H. & Kluckhohn C. 1945a",9,143,2
-"F-IV-3","Blumenthal A. 1941",18,143,2
+"F-IV-3","Committee on Conceptual Integration (Bernard, Blumenthal, Dodd, Hart) 1941",18,143,2
 "G-2","Marett R. R. 1928",18,143,2
 "A-10a","Lowie R. H. 1937",2,0,1
 "A-12","Murray R. W. 1943",1,0,1
@@ -82,7 +82,7 @@
 "A-9","Winston S. 1933",10,0,1
 "B-10","Mead M. 1937",4,0,1
 "B-14","Angyal A. 1941",22,0,1
-"B-16","Jacobs M. & Stem 1947",8,0,1
+"B-16","Jacobs M. & Stern B.J. 1947",8,0,1
 "B-17","Dietschy H. 1947",2,0,1
 "B-19","Parsons T. 1949",22,0,1
 "B-21","Henry J. 1949",4,0,1
@@ -123,8 +123,8 @@
 "E-4","Redfield R. 1940",1,0,1
 "E-7","Gillin J. P. 1948",17,0,1
 "E-9","Turney-High H. H. 1949",19,0,1
-"F-I-10","Dodd S. C. 1941",5,0,1
-"F-I-11","Hart H. 1941",11,0,1
+"F-I-10","Committee on Conceptual Integration (Bernard, Blumenthal, Dodd, Hart) 1941",5,0,1
+"F-I-11","Committee on Conceptual Integration (Bernard, Blumenthal, Dodd, Hart) 1941",11,0,1
 "F-I-12","Bernard L. L. 1942",4,0,1
 "F-I-16","Bidney D. 1947",12,0,1
 "F-I-17","Herskovits M. J. 1948",18,0,1

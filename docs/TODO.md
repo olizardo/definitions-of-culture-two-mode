@@ -1,6 +1,6 @@
 # Open items: K&K Index A/B dataset
 
-Last updated 2026-10-25. Method and dated decisions: `docs/PROVENANCE.md`. Current counts: `README.md`.
+Last updated 2026-10-26. Method and dated decisions: `docs/PROVENANCE.md`. Current counts: `README.md`.
 Completed items have been removed from this list; PROVENANCE keeps the history.
 
 ## Token and edge verification
@@ -34,9 +34,9 @@ Completed items have been removed from this list; PROVENANCE keeps the history.
 
 ## Networks and figures
 
-9. **Works-network figures after the 2-core change.** The concept MST now builds its projection from the
-    2-core matrix, so its weights changed. The works CA, works MST, centrality and degree figures were
-    regenerated and not compared with the previous versions. Review them.
+9. ~~**Works-network figures after the 2-core change.**~~ **Done 2026-10-26.** All works figures and outputs were
+    compared with the previous versions; see PROVENANCE section 10. The MST community assignments changed for
+    about a third of the works, so any text that names communities must be checked against the current output.
 
 ## Release and rights
 
@@ -50,3 +50,17 @@ Completed items have been removed from this list; PROVENANCE keeps the history.
     removed it). Decide whether to untrack and ignore it. Many uncommitted changes in scripts, data, figures
     and docs need review before committing. `Rplots.pdf` and `data/kk-index-b-missing-rows-DRAFT.csv` are
     tracked; the DRAFT is superseded by `data/kk-index-b-missing-rows.csv`.
+
+## Citation list (2026-10-26)
+
+Source: `data/kk-index-b-work-citations.csv` (built by `scripts/build-index-b-work-citations.R`); page-image checks in `data/kk-index-b-work-citations-page-checks.csv`. Status values are described in PROVENANCE section 9.
+
+12. **Unchecked K&K picks.** Resolved. Every `matched_multiple` work is now page-checked (PROVENANCE 9.10–9.31). The Rouse 1939 series is spelled "Anthropology" in the citation; the page prints "Anthrolopogy" (PROVENANCE 9.31).
+13. **Year-only rows.** Works with `kk_status` = `year_only_no_author` show a K&K line from another author. Replace the displayed line with a page-checked entry, or record the work as not in K&K's bibliography and blank the line.
+14. **Title check.** It counts shared words of five letters or more, so generic words ("culture", "science") can make a wrong pick agree. The `both_agree` flag is not evidence on its own. Remove generic words, rerun, and review the rows whose flag changes.
+15. **Boroch-only works:** none remaining. Each was checked against the K&K bibliography or the K&K text (PROVENANCE 9.10–9.17).
+16. **K&K-only works, kept.** Boroch does not cite F. R. Kluckhohn 1950, Goldenweiser 1933 and 1937, Roberts 1951 or Young 1944 (`boroch_status` = `not_found`). They stay in the citation table with their K&K entries, since they are Index B works and K&K is the source. Roberts 1951 keeps its year conflict (item 17). Linton 1945b is not K&K-only: Boroch cites it (B106, C1), so its K&K pick is checked (PROVENANCE 9.19).
+17. **Year conflicts kept as recorded.** Roberts 1951: the K&K bibliography prints 1950, the index and main text say 1951, eHRAF says 1951. Young 1944: the printed index and footnote 7 say 1947, the bibliography says 1944, Boroch says 1947. Both conflicts are K&K's own printing; the choices are recorded in PROVENANCE 9.2 and 9.3.
+18. **Publisher sources.** Closed. Abingdon Press (Myres 1927) and Houghton Mifflin (Nimkoff & Ogburn 1940) are added from Google Books and the user, and recorded in the notes of their page-check rows (PROVENANCE 9.33).
+19. **Young 1942 record.** The CiNii link the user gave is behind an access challenge, so the publisher and edition are unverified. The row rests on the bibliography entry.
+20. ~~**Committee mimeograph, figures.**~~ **Decided 2026-10-26:** the code tree keeps five code vertices (D-I-9, F-I-9, F-I-10, F-I-11, F-IV-3), now labeled with their codes; see PROVENANCE 10.6. Still open: Boroch B075 combines Bernard's Social Forces article and the mimeograph in one entry, so it needs a note.
