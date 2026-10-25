@@ -56,14 +56,15 @@ stats
 
 # Works network (sub-elements x works) and definitions network (sub-elements x
 # verified codes), each seen from its two node sets.
-works <- readRDS(file.path(data_dir, "kk-index-b-work-concept-network.rds"))$incidence
+source("scripts/core-index-b.R")
+works <- sub_work_matrix(readRDS(file.path(data_dir, "kk-index-b-work-concept-network-full.rds"))$two_mode_graph)
 works <- works[rowSums(works) > 0, , drop = FALSE]
 
 degree_df <- rbind(
   data.frame(panel = "Works network: sub-element nodes", degree = rowSums(works)),
   data.frame(panel = "Definitions network: sub-element nodes", degree = rowSums(kk_sub_v)),
   data.frame(panel = "Works network: work nodes", degree = colSums(works)),
-  # isolated codes (no sub-elements) are not nodes of the network
+  # codes with no sub-elements (isolates) are left out of this degree panel
   data.frame(panel = "Definitions network: definition (code) nodes",
              degree = colSums(kk_sub_v)[colSums(kk_sub_v) > 0])
 )

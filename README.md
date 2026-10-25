@@ -34,7 +34,7 @@ the two.
 |---|---|---|
 | `build-index-b.R` | `documents/Kroeber-kluckhohn.pdf` | Index A, Index B, excluded words, definition registry, OCR correction log, biadjacency matrices |
 | `build-index-b-crosswalk.R` | Index B outputs, `kkcc_two_mode.rds`, `kkcc-definition-years.csv`, `kkcc-definition-texts.csv` | Boroch ↔ K&K crosswalk, Table 2 audit |
-| `analysis-index-b.R` | biadjacency matrices, `kkcc_two_mode.rds` | network statistics, works vs definitions degree figure |
+| `analysis-index-b.R` | verified network, works file (`two_mode_graph`), `kkcc_two_mode.rds` | network statistics, works vs definitions degree figure |
 | `build-concept-categories.R` | `kkcc_two_mode.rds` (concept labels), Boroch section 3.2.2 (encoded in the script) | `kkcc-concept-categories.csv` |
 | `build-two-mode-networks.R` | `kkcc-concept-categories.csv`, `kkcc-definition-years.csv`, `kkcc-definition-biblio.csv`, fine biadjacency | `kkcc_two_mode.rds`, `kkcc_two_mode_main.rds`, `kkcc_biadjacency_main.csv` |
 | `check-two-mode-networks.R` | both networks, definition CSVs | nothing (stops on a mismatch) |
@@ -46,9 +46,13 @@ the two.
 | `build-definition-years.R` | Boroch appendix (`documents/ROBAFC-5.1.pdf`) | `kkcc-definition-years.csv` |
 | `build-supplement-bibliography.R` | Boroch Supplement Bibliography | `kkcc-supplement-bibliography.csv`, `kkcc-definition-biblio.csv` |
 | `build-definition-texts.R` | Boroch appendix | `kkcc-definition-texts.csv` (verbatim; not for release) |
-| `analysis-ca-index-b.R` | Index B sub-element network | CA of the largest-component 2-core, MST figures, CA score CSVs |
-| `analysis-ca-works-index-b.R` | Index B works network | CA of the works × sub-element 2-core, CA figures, CA score CSVs |
-| `analysis-centrality-index-b.R` | Index B definitions and works networks | Two-mode closeness and betweenness on each network's largest component, centrality CSVs |
+| `build-work-concept-network-index-b.R` | verified network, heading network, `kk-index-b-definitions.csv`, `kk-index-b-name-decisions.csv`, `label-authors-index-b.R` | `kk-index-b-work-concept-network-full.rds` (`two_mode_graph`, `two_mode_heading_graph`, `works`), `kk-index-b-works.csv` |
+| `analysis-ca-index-b.R` | verified network | CA of the largest-component 2-core (`lcc_2core()`), MST figures, CA score CSVs |
+| `analysis-ca-works-index-b.R` | works file (`two_mode_graph`) | CA of the sub-element × work 2-core (`lcc_2core()`), CA figures, CA score CSVs |
+| `analysis-mst-works-index-b.R` | works file (`two_mode_graph`) | Kruskal MSTs of the sub-element and work projections (2-core) |
+| `analysis-mst-definitions-index-b.R` | verified network | Kruskal MST of the code projection (2-core) |
+| `analysis-centrality-index-b.R` | verified network; works file (`two_mode_graph`) | Two-mode closeness and betweenness on each network's largest component, centrality CSVs |
+| `core-index-b.R` (helper) | any two-mode matrix | `lcc_2core()` (largest component, then 2-core) and `sub_work_matrix()` |
 | `analysis-ca-mst-main.R` | main two-mode network | CA and Kruskal maximum spanning trees (main network) |
 | `analysis-centrality-prestige-main.R` | main network | centrality, prestige and PageRank-family scores |
 
@@ -62,15 +66,32 @@ Scripts live in `scripts/`; `documents/` holds the source PDFs and the Archive t
 6. `scripts/build-index-b-crosswalk.R`
 7. `scripts/build-index-b-networks.R` (K&K Index B sub-element and heading networks, as igraph objects)
 8. `scripts/build-index-b-verified.R` (verified sub-element x code network; codes not in Index A are excluded here)
-9. `scripts/analysis-index-b.R`
+9. `scripts/check-index-b-networks.R` (validation of the Index B igraph objects; stops on any mismatch)
 10. `scripts/check-index-b-blocks.R` (machine cross-check of Index B heading assignments against the printed text)
-11. `scripts/check-index-b-networks.R` (validation of the Index B igraph objects; stops on any mismatch)
-12. `scripts/analysis-ca-index-b.R` (CA and MST figures for the Index B definitions network), then `analysis-mst-definitions-index-b.R` and `analysis-centrality-index-b.R`
+11. `scripts/build-work-authors-index-b.R`, then `scripts/build-work-concept-network-index-b.R` (works file: `two_mode_graph` and `two_mode_heading_graph`)
+12. `scripts/analysis-index-b.R`
+13. `scripts/analysis-ca-index-b.R` (CA and MST figures for the definitions network), then `analysis-mst-definitions-index-b.R` and `analysis-centrality-index-b.R`
+14. `scripts/analysis-ca-works-index-b.R` and `scripts/analysis-mst-works-index-b.R` (works network)
 
 The analysis scripts and the report read definition attributes through `scripts/kkcc-definition-attrs.R`.
 
 The Index B build and crosswalk scripts write session-info files to `data/` (`build-index-b-sessioninfo.txt`, `build-index-b-crosswalk-sessioninfo.txt`). The R environment is pinned
 in `renv.lock` (R 4.5.3). Requires `pdftotext` (poppler) on the PATH.
+
+## Main networks
+
+Four two-mode networks are the stored Index B data. Projections (for example, the sub-element projection of
+the works network, or the code projection of the definitions network) are derived in the analyses, not stored.
+
+| # | network | stored in | nodes | attributes |
+|---|---|---|---|---|
+| 1 | definitions × sub-elements | `kk-index-b-verified-network.rds` (`graph`, `biadjacency`) | 472 sub-elements, 170 codes | sub-element and code attributes |
+| 2 | definitions × headings | `kk-index-b-heading-network.rds` (`graph`, `biadjacency`) | 53 headings, 170 codes | heading and code attributes |
+| 3 | works × sub-elements | `kk-index-b-work-concept-network-full.rds`, `two_mode_graph` | 472 sub-elements, 136 works | sub-element and work attributes |
+| 4 | works × headings | same file, `two_mode_heading_graph` | 53 headings, 136 works | heading and work attributes |
+
+Where attributes overlap, the values agree across the four networks (checked 2026-10-25). The raw
+`kk-index-b-subelement-network.rds` is the build output that the verified network is filtered from.
 
 ## Data dictionary
 
@@ -189,6 +210,53 @@ with status:
 **`kk-index-b-network-stats.csv`**: density, components, and degree summaries for the
 Boroch and K&K networks (`analysis-index-b.R`).
 
+**`kk-index-b-subelement-network.rds`**, **`kk-index-b-heading-network.rds`**, **`kk-index-b-verified-network.rds`**:
+lists with `biadjacency` (0/1 matrix) and `graph` (igraph, bipartite). The sub-element and heading
+networks keep all 170 codes. The verified network drops codes not flagged `in_verified` and sub-elements left with no verified code;
+nothing is dropped at present, so it has the same nodes as the sub-element network. The five codes with no
+Index B edge (F-I-5, F-IV-1, F-IV-2, F-IV-4, G-1) are isolates. Vertex `type` is FALSE for element vertices and TRUE for codes.
+
+Vertex attributes, by vertex kind:
+
+| attribute | element vertices | code vertices | meaning |
+|---|---|---|---|
+| `name` | yes | yes | sub-element label or K&K code |
+| `node_type` | `sub_element` or `heading` | NA | which element level the vertex is |
+| `headings` | sub-element network and verified only | NA | headings the sub-element appears under, `; `-separated |
+| `n_headings` | sub-element network and verified only | NA | number of headings the sub-element appears under |
+| `n_subelements` | heading network only | NA | sub-elements under the heading |
+| `n_codes` | yes | NA | codes linked to the element |
+| `has_junk_name`, `has_manual_fix`, `has_ocr_correction` | sub-element network and verified only | NA | the sub-element has an edge with that parse flag |
+| `kk_group`, `kk_subgroup` | NA | yes | K&K group letter and subgroup (e.g. `A`, `I`) |
+| `in_index_a`, `in_index_b` | NA | yes | the code appears in Index A / Index B |
+| `n_index_b_elements` | NA | yes | Index B elements under the code |
+| `index_a_authors` | NA | yes | Index A authors listed under the code |
+| `boroch_code`, `boroch_source` | NA | yes | Boroch's code for the same definition (NA if none); `table2` or `appendix-only` |
+
+The works file's two-mode graphs use the same sub-element and heading attributes; work vertices use the work
+attributes described under the works file below.
+
+Edge attributes (all three): `n_source_rows` is the number of Index B rows behind the tie, and
+`parse_flags` lists the parse flags of those rows, `; `-separated. Graph attributes record the build date,
+source files, and a caveat that Index B has not been fully verified.
+
+**`kk-index-b-work-concept-network-full.rds`**: a list with three elements. The two-mode networks are the
+stored data; projections are derived in the analyses.
+
+- `two_mode_graph`: sub-element × work bipartite (all 472 sub-elements, all 136 works, no LCC or 2-core
+  selection). Sub-element vertices carry the sub-element attributes copied from the verified network
+  (`type` FALSE, `node_type` `sub_element`, `headings`, `n_headings`, `n_codes`, `has_junk_name`,
+  `has_manual_fix`, `has_ocr_correction`). Work vertices (`type` TRUE, `node_type` `work`) carry `n_codes`,
+  `codes`, `n_concepts`, `year` (as printed, letter suffix kept), `decade` (integer) and `label`.
+- `two_mode_heading_graph`: heading × work bipartite. Heading vertices carry `n_subelements` and `n_codes`
+  from the heading network; work vertices carry the work attributes. A work is under a heading if one of its
+  codes is.
+- `works`: the work table (`work`, `n_codes`, `codes`, `n_concepts`).
+
+Derived in the analyses (`sub_work_matrix()` and `lcc_2core()` in `scripts/core-index-b.R`): the sub-element ×
+work matrix, the sub-element projection (ties = works both sub-elements cite), and the work projection (ties =
+sub-elements both works cite). The LCC and 2-core are applied there, not in the stored file.
+
 ## Methods
 
 **Index A and Index B parsing.** The scanned pages were read at word level (coordinates
@@ -237,6 +305,8 @@ unlinked and are reported as such, not guessed.
 - Spot check: 20 random Index B edges were compared with their OCR lines after the
   normalization fixes. All 20 were correct on inspection. This is a small sample, not a
   full manual audit.
+- Main networks: the sub-element, heading and work attributes agree across the four networks (0 mismatches),
+  and the derived counts (`n_codes`, `n_subelements`) match each network's own edges (checked 2026-10-25).
 - Moore (1980) cross-check and the F4-6 resolution: see `docs/PROVENANCE.md`.
 
 ## Known limitations

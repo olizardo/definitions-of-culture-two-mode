@@ -22,9 +22,8 @@ g.def.lcc <- induced_subgraph(g.def, cs$membership == which.max(cs$csize))
 cat("definitions network: components", cs$no, "| LCC", vcount(g.def.lcc),
     "nodes,", ecount(g.def.lcc), "edges\n")
 
-net <- readRDS("data/kk-index-b-work-concept-network.rds")
-M <- net$incidence
-g.wk <- graph_from_biadjacency_matrix(M, directed = FALSE, multiple = FALSE)
+net <- readRDS("data/kk-index-b-work-concept-network-full.rds")
+g.wk <- net$two_mode_graph
 cs.wk <- components(g.wk)
 g.wk.lcc <- induced_subgraph(g.wk, cs.wk$membership == which.max(cs.wk$csize))
 cat("works network: components", cs.wk$no, "| LCC", vcount(g.wk.lcc),

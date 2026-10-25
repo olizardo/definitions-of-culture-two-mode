@@ -5,9 +5,8 @@ Two-mode network analysis of Boroch's KKCC classification (Kroeber & Kluckhohn, 
 appendix (hand-transcribed from the PDF) and K&K's Index A/B (parsed from `documents/Kroeber-kluckhohn.pdf`,
 an ABBYY OCR of the 1952 scan).
 
-Source of truth for counts and open items: `docs/TODO.md` (current state at the top). Method, evidence
-and dated decisions: `docs/PROVENANCE.md`. Data dictionary and limitations: `README.md`. Do not copy
-counts into this file; they go stale.
+Open items: `docs/TODO.md`. Method, evidence and dated decisions: `docs/PROVENANCE.md`. Data dictionary,
+network descriptions and limitations: `README.md`. Do not copy counts into this file; they go stale.
 
 ## Layout
 
@@ -18,13 +17,24 @@ counts into this file; they go stale.
   works network, both the works and concept views), and `kk-index-b/degree-works-definitions.png`.
   Filenames carry the network or node type; the folder carries the dataset. Scripts create their folders.
 - `documents/`: source PDFs and an ignored text copy. `*_djvu.txt` is gitignored; do not commit or release it.
-  `pdfcoffee.com-…pdf` is still tracked in git as of 2026-10-25 (the staged removal was not committed).
-  Removing it from the index is an open decision; the file stays on disk either way.
-- `kk-index-b-two-mode.tex`: the LaTeX draft report on the works and definitions networks. It replaced the
-  Quarto report `kkcc-two-mode.qmd`, which was removed. The tex reads figures and CSVs written by the
-  analysis scripts; it does not source them, so rerun the scripts and update the numbers by hand.
-  `kkcc-two-mode.html` is a stale render of the removed report.
+  `documents/pdfcoffee.com-*.pdf` is gitignored, but the file is still tracked at HEAD (see TODO).
+- `kk-index-b-two-mode.tex`: the LaTeX draft report on the works and definitions networks. It reads the figures
+  and CSVs written by the analysis scripts but does not source them, so rerun the scripts and update the
+  numbers by hand.
 - Scratch files go in `$PA_SCRATCH_DIR`, not the repo.
+
+## Main networks
+
+Four two-mode networks are the stored Index B data. Projections are derived in the analyses, never stored.
+
+1. Definitions × sub-elements: `kk-index-b-verified-network.rds` (`graph`, `biadjacency`).
+2. Definitions × headings: `kk-index-b-heading-network.rds` (`graph`, `biadjacency`).
+3. Works × sub-elements: `kk-index-b-work-concept-network-full.rds`, element `two_mode_graph`.
+4. Works × headings: same file, element `two_mode_heading_graph`.
+
+The works file also holds the work table (`works`). Attribute values agree across the four networks where
+they overlap (checked 2026-10-25). Derive projections with `lcc_2core()` and `sub_work_matrix()` in
+`scripts/core-index-b.R`, and apply the LCC and 2-core there, not in the stored file.
 
 ## Rebuilding the K&K Index A/B data
 
@@ -34,14 +44,14 @@ Order: `build-index-b.R` → `build-index-b-crosswalk.R` → `build-index-b-netw
 `analysis-ca-index-b.R` → `analysis-ca-works-index-b.R` → `analysis-centrality-index-b.R` →
 `analysis-mst-definitions-index-b.R` → `analysis-mst-works-index-b.R`. The definitions analyses read
 `data/kk-index-b-verified-network.rds`, not the unfiltered sub-element network. The works build
-(`build-work-concept-network-index-b.R`) also reads the verified network. Run each in a fresh environment: `e <- new.env(); e$norm <- base::norm; sys.source(file, envir = e)`.
+(`build-work-concept-network-index-b.R`) reads the verified network and the heading network. Run each in a fresh environment: `e <- new.env(); e$norm <- base::norm; sys.source(file, envir = e)`.
 A new environment inherits the global session, and a live session may define a `norm` stub that shadows
 `base::norm` (the prestige analysis then fails with `unused argument (type = "F")`).
 The crosswalk reads its inputs from files; a stale session object once produced wrong output.
 
 After any change, check that: the build runs without errors; every manual-fix key matches a token;
 edge and parse-flag counts change only as expected; the validators pass. Then update the counts in
-`docs/TODO.md` and `README.md`.
+`README.md`.
 
 ## Manual fixes (`data/kk-index-b-manual-fixes.csv`)
 
@@ -114,7 +124,7 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
 - Name spellings and OCR name fixes that do not change a code go in
   `data/kk-index-b-name-decisions.csv` (year, index_name, work_name, basis), not in the Index A fixes.
   The work build reads it. Each row needs a printed-page basis.
-- Index A D-II-7 is now Young 1946 (user decision 2026-10-25). The printed index says 1947 and Boroch cites 1947;
+- Index A D-II-7 is Young 1946 (user decision 2026-10-25). The printed index says 1947 and Boroch cites 1947;
   the change is recorded as an Index A manual fix (`kk-index-a-manual-fixes.csv`, evidence states the printed year),
   and the crosswalk has a `match` decision for D2-7 because the author-and-year rule no longer matches. The basis is the
   book record (Kimball Young, *Handbook of Social Psychology*, Google Books gives 1946); not checked on a page image.
@@ -150,23 +160,26 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
 - Custom graph builders must preserve vertex names.
 - Disconnected two-mode graphs give several lambda = 1 eigen-dimensions in CA; drop all of them (use the 2-core).
 - eigen() signs are arbitrary. Align definition scores to concept scores via the duality relation.
-- Build the CA and MST projections from the LCC 2-core, not the full network.
-- The works build prunes codes and concepts with fewer than two links, so a code with one element (D-5) can
-  be in the verified network and still drop out of the projections.
+- Build the CA and MST projections from the LCC 2-core (`lcc_2core()`), not from the full stored network.
+- Projection weights depend on the rows and columns kept. Removing a work or a sub-element changes the
+  weights of the remaining pairs, so a projection of a 2-core must be recomputed from the 2-core matrix,
+  not taken as an induced subgraph of the full projection.
 - One verified definitions network: `scripts/build-index-b-verified.R` keeps the codes flagged `in_verified`
-  (Index A codes, the Part III codes, and the codes in `data/kk-index-b-verified-extra-codes.csv`; `build-index-b.R` defines the flag) and writes `data/kk-index-b-verified-network.rds`. Every definitions analysis (basic stats,
+  (Index A codes, the Part III codes, and the codes in `data/kk-index-b-verified-extra-codes.csv`; `build-index-b.R` defines the flag) and writes `data/kk-index-b-verified-network.rds`. Sub-elements with no verified code are dropped; codes with no Index B edge are kept as isolates. Every definitions analysis (basic stats,
   CA, MST, centrality) reads it. Do not add a second filter in an analysis script. Any code left out of
-  the network is listed in `data/kk-index-b-excluded-codes.csv` with its sub-elements; the file is empty as of
-  2026-10-25. The raw `kk-index-b-subelement-network.rds` keeps all codes by design.
+  the network is listed in `data/kk-index-b-excluded-codes.csv` with its sub-elements. The raw
+  `kk-index-b-subelement-network.rds` keeps all codes by design.
 - Measures that need a connected network (closeness, betweenness, distances) run on the LCC. The
   normalizations are in `scripts/analysis-centrality-index-b.R`, from Borgatti & Everett (1997) as given at
   https://olizardo.github.io/SOCIOL208/cent-tm.html: closeness `n_Y + 2(n_X − 1)`; betweenness for the larger
   set `2(S−1)(L−1)` and for the smaller set `S(S−1)/2 + (L−1)(L−2)/2 + (L−1)(S−1)`, with L and S the larger
   and smaller set sizes. The betweenness formulas match the page, but the page states them only for its example.
 - Two-mode graphs from `graph_from_biadjacency_matrix()` put the sub-elements as FALSE and the second mode
-  (codes or works) as TRUE. Pass `type` directly as `is.second`; negating it swaps the roles.
+  (codes, headings or works) as TRUE. Pass `type` directly as `is.second`; negating it swaps the roles.
 - Element names are not unique across headings ("systems", "accumulated treasury", "language"); a
   sub-element network node merges them. Use the heading network when the heading matters.
+- A node attribute that exists on both modes (for example `n_codes`) must be written without overwriting the
+  other mode's values. Copy by name and keep existing values on the other vertices.
 - The validators check structure, round-trip to the CSVs, and attributes. They do not check the content
   of individual edges.
 
@@ -175,9 +188,7 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
 - A work is keyed by its author set and year string (`scripts/build-work-concept-network-index-b.R`),
   built from the Index A entries under each code. Codes are categories and can hold several works; a
   work can sit under several codes. Do not treat a code as a work.
-- The work-year parser keeps each entry's year with that entry (fixed 2026-10-25). `regmatches()` had dropped
-  year-less entries and shifted every later year onto the wrong entry. A year-less entry is dropped with a
-  warning (e.g. "Kelly" under A-14).
+- Each entry keeps its own year. A year-less entry is dropped with a warning (e.g. "Kelly" under A-14).
 - Co-authored works list every author sharing the year. A co-author written as a prefix of a full name
   in the same year group takes the full name (`canon.names()`), unless `kk-index-b-name-decisions.csv`
   says otherwise. The prefix rule once merged two different Gillins; the decision file now overrides it.
@@ -191,8 +202,9 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
   text layer). It is not verified; the page-check CSV is the verified record. The parser drops headings
   split across lines (Kelly is the main gap) and misses some years.
 - The MSTs (`scripts/analysis-mst-works-index-b.R`, `scripts/analysis-mst-definitions-index-b.R`) are
-  Kruskal maximum spanning trees (`mst()` on `-weight`). Node size is tree betweenness; color is the
-  leading-eigenvector community on the tree. The code-level tree labels each code with the works it holds.
+  Kruskal maximum spanning trees (`mst()` on `-weight`) of projections derived from the two-mode networks.
+  Node size is tree betweenness; color is the leading-eigenvector community on the tree. The code-level tree
+  labels each code with the works it holds.
 - Figure subtitles must describe what the labels show.
 - Titles name the network ("definitions network", "works network") and the node type, so each figure says
   where it came from. CA labels use `geom_label_repel` with a white fill so they stay readable over the points.

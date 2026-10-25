@@ -12,14 +12,19 @@ library(ggraph)
 set.seed(8427)
 invisible(lapply(c("figures/boroch", "figures/kk-index-b/definitions", "figures/kk-index-b/works"), dir.create, recursive = TRUE, showWarnings = FALSE))
 
-net <- readRDS("data/kk-index-b-work-concept-network.rds")
-M <- net$incidence
+source("scripts/core-index-b.R")
+
+net <- readRDS("data/kk-index-b-work-concept-network-full.rds")
+# Sub-elements x works, restricted to the largest component's 2-core
+M <- lcc_2core(sub_work_matrix(net$two_mode_graph))
 works.tab <- net$works
 
 # work projection: shared sub-elements between two works
 Q <- crossprod(M); diag(Q) <- 0
 G.work <- graph_from_adjacency_matrix(Q, mode = "undirected", weighted = TRUE, diag = FALSE)
-G.concept <- net$graph
+# Concept projection of the 2-core: ties count only the works that were kept
+P.c <- M %*% t(M); diag(P.c) <- 0
+G.concept <- graph_from_adjacency_matrix(P.c, mode = "undirected", weighted = TRUE, diag = FALSE)
 
 tree.of <- function(gr) {
   st <- mst(gr, weights = -E(gr)$weight)

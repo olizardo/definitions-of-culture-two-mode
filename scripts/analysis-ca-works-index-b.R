@@ -6,7 +6,7 @@
 # Same decomposition as scripts/analysis-ca-index-b.R (CA via eigen, standard
 # scores Z = unit-variance eigenvector x sqrt(lambda), duality check). Both views
 # share their nonzero eigenvalues, so the scree plot is written once (works view).
-# Input: data/kk-index-b-work-concept-network.rds (incidence = sub-elements x works).
+# Input: data/kk-index-b-work-concept-network-full.rds (incidence = sub-elements x works).
 
 library(igraph)
 library(ggplot2)
@@ -16,24 +16,12 @@ set.seed(8427)
 invisible(lapply("figures/kk-index-b/works", dir.create, recursive = TRUE, showWarnings = FALSE))
 
 source("scripts/label-authors-index-b.R")
+source("scripts/core-index-b.R")
 
-net <- readRDS("data/kk-index-b-work-concept-network.rds")
-M <- net$incidence
-
-# ------------------------------------------------- largest component 2-core
-gb <- graph_from_biadjacency_matrix(M, directed = FALSE, multiple = FALSE)
-comp <- components(gb)
-cat("bipartite components:", comp$no, "\n")
-lcc <- which.max(comp$csize)
-keep.e <- rownames(M)[comp$membership[seq_len(nrow(M))] == lcc]
-keep.w <- colnames(M)[comp$membership[nrow(M) + seq_len(ncol(M))] == lcc]
-Ac <- t(M)[keep.w, keep.e, drop = FALSE]
-repeat {
-  keep.r <- rowSums(Ac) >= 2
-  keep.c <- colSums(Ac) >= 2
-  if (all(keep.r) && all(keep.c)) break
-  Ac <- Ac[keep.r, keep.c, drop = FALSE]
-}
+net <- readRDS("data/kk-index-b-work-concept-network-full.rds")
+# Sub-elements x works, restricted to the largest component's 2-core
+M <- lcc_2core(sub_work_matrix(net$two_mode_graph))
+Ac <- t(M)
 cat("2-core:", nrow(Ac), "works x", ncol(Ac), "sub-elements, edges:", sum(Ac), "\n")
 n.comp2core <- components(graph_from_biadjacency_matrix(Ac, directed = FALSE))$no
 cat("2-core components:", n.comp2core, "\n")

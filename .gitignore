@@ -3,3 +3,6 @@
 
 # Archive OCR copy of the 1952 monograph: rights unresolved, do not commit
 documents/*_djvu.txt
+
+# Scanned copy of the K&K monograph with an unclear source: keep out of git
+documents/pdfcoffee.com-*.pdf

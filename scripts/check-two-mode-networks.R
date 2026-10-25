@@ -50,7 +50,16 @@ for (nm in c("fine", "main")) {
   ok(sprintf("%s: %d concepts with parent categories", nm, length(cn)))
 }
 
-old <- readRDS(Sys.getenv("OLD_RDS", unset = "/tmp/pa-1000/ee71b419-51cd-4f69-9e9c-e5bf7417a1e8/backup-rds/kkcc_two_mode.rds"))
+# Reference copy: OLD_RDS if set, otherwise the last committed version from git.
+old_path <- Sys.getenv("OLD_RDS", unset = "")
+old <- if (nzchar(old_path)) {
+  readRDS(old_path)
+} else {
+  con <- pipe("git show HEAD:data/kkcc_two_mode.rds", "rb")
+  obj <- readRDS(gzcon(con))
+  close(con)
+  obj
+}
 if (!is.null(old$def_attrs)) {
   dv <- V(fine$graph)[V(fine$graph)$type]
   o <- old$def_attrs[match(dv$name, old$def_attrs$code), ]

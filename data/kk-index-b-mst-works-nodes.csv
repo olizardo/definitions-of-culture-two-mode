@@ -1,282 +1,281 @@
 "type","node","community","betweenness","degree_tree"
-"concept","society",4,7682,20
-"concept","social",5,7338,15
-"concept","behavior",4,7236,7
-"concept","group",5,7203,12
-"concept","customs",5,3780,4
-"concept","habits",3,3468,6
-"concept","members of a society",3,3432,2
-"concept","beliefs",2,3035,8
-"concept","ideas",6,2507,8
-"concept","total",5,1926,5
-"concept","area",4,1752,2
-"concept","period of time",8,1627,3
-"concept","mean",8,1341,2
-"concept","sum",5,1226,7
-"concept","ways",2,1224,6
-"concept","usages",8,1200,2
-"concept","skills",8,1068,4
-"concept","learning",6,923,4
-"concept","tools",2,772,4
-"concept","way of life",1,621,4
-"concept","physical biological and human nature",8,616,2
-"concept","techniques",4,616,2
-"concept","systems",5,468,4
-"concept","objects",7,467,3
-"concept","intellectual ideals",4,465,2
-"concept","needs",8,465,2
-"concept","social group",5,465,2
-"concept","acting",2,313,3
-"concept","attitudes",2,313,3
-"concept","behavior patterns",5,313,3
-"concept","generations",6,313,3
-"concept","products",3,313,3
-"concept","thought",4,313,3
-"concept","instruments",8,312,2
-"concept","interrelated patterns",11,312,2
-"concept","social ideals",9,312,2
-"concept","traditional",6,312,2
-"concept","a people",1,157,2
-"concept","acquired",4,157,2
-"concept","communicated",5,157,2
-"concept","complex whole",4,157,2
-"concept","cultivated",9,157,2
-"concept","goods",5,157,2
-"concept","human environment",8,157,2
-"concept","integrated",5,157,2
-"concept","knowledge",2,157,2
-"concept","language",6,157,2
-"concept","learned behavior",4,157,2
-"concept","material objects",7,157,2
-"concept","material traits",4,157,2
-"concept","norms",5,157,2
-"concept","organization",5,157,2
-"concept","past",5,157,2
-"concept","patterned ways of behavior",5,157,2
-"concept","responses",11,157,2
-"concept","satisfied needs of individuals",5,157,2
-"concept","social heredity",5,157,2
-"concept","socially",6,157,2
-"concept","societal problems",6,157,2
-"concept","thinking",2,157,2
-"concept","time",5,157,2
-"concept","transmission",3,157,2
-"concept","values",6,157,2
+"concept","social",19,8800,15
+"concept","group",18,7006,11
+"concept","behavior",4,6536,7
+"concept","society",4,5930,20
+"concept","customs",2,3561,4
+"concept","beliefs",2,3443,14
+"concept","ideas",5,2708,4
+"concept","total",17,1928,7
+"concept","generations",5,1761,4
+"concept","usages",7,1350,3
+"concept","members of a society",3,1332,2
+"concept","habits",3,1217,6
+"concept","individuals",4,1214,5
+"concept","sum",17,919,5
+"concept","ways",2,769,5
+"concept","way of life",1,767,4
+"concept","skills",7,764,3
+"concept","techniques",4,612,2
+"concept","behavior patterns",19,465,4
+"concept","systems",18,465,4
+"concept","learning",5,464,3
+"concept","objects",6,464,3
+"concept","attitudes",2,462,2
+"concept","intellectual ideals",4,462,2
+"concept","needs",7,462,2
+"concept","a people",1,311,3
+"concept","knowledge",2,311,3
+"concept","thought",4,311,3
+"concept","habit patterns",4,310,2
+"concept","instruments",7,310,2
+"concept","mean",7,310,2
+"concept","social ideals",8,310,2
+"concept","tools",2,310,2
+"concept","traditional",4,310,2
+"concept","common",19,156,2
+"concept","complex whole",4,156,2
+"concept","cultivated",8,156,2
+"concept","goods",19,156,2
+"concept","human environment",7,156,2
+"concept","inventions",19,156,2
+"concept","language",2,156,2
+"concept","learned behavior",4,156,2
+"concept","material objects",6,156,2
+"concept","material traits",4,156,2
+"concept","mind",5,156,2
+"concept","norms",17,156,2
+"concept","organization",18,156,2
+"concept","past",17,156,2
+"concept","patterned ways of behavior",19,156,2
+"concept","period of time",7,156,2
+"concept","products",3,156,2
+"concept","responses",15,156,2
+"concept","satisfied needs of individuals",19,156,2
+"concept","shared",4,156,2
+"concept","social heredity",19,156,2
+"concept","socially",5,156,2
+"concept","societal problems",9,156,2
+"concept","symbols",2,156,2
+"concept","thinking",2,156,2
+"concept","time",17,156,2
+"concept","transmission",3,156,2
+"concept","values",3,156,2
 "concept","accepted",2,0,1
-"concept","accumulated treasury",6,0,1
+"concept","accumulated treasury",2,0,1
+"concept","acquired",4,0,1
 "concept","act",2,0,1
-"concept","actions",7,0,1
-"concept","activities",6,0,1
-"concept","adjust",8,0,1
-"concept","adjustments",5,0,1
-"concept","aggregate",5,0,1
-"concept","all that man has produced",6,0,1
+"concept","acting",2,0,1
+"concept","actions",6,0,1
+"concept","activities",5,0,1
+"concept","adjust",7,0,1
+"concept","adjustments",17,0,1
+"concept","aggregate",1,0,1
+"concept","all that man has produced",5,0,1
+"concept","area",4,0,1
 "concept","art",4,0,1
 "concept","artifacts",3,0,1
-"concept","artificial",2,0,1
-"concept","artistic ideals",9,0,1
+"concept","artificial",17,0,1
+"concept","artistic ideals",8,0,1
 "concept","association between persons",2,0,1
 "concept","basic needs",4,0,1
 "concept","behave",1,0,1
-"concept","body",5,0,1
+"concept","body",19,0,1
 "concept","capabilities",3,0,1
-"concept","civilization",5,0,1
-"concept","common",2,0,1
-"concept","common ends",8,0,1
-"concept","communication",5,0,1
-"concept","community",5,0,1
-"concept","concepts",8,0,1
+"concept","civilization",2,0,1
+"concept","common ends",7,0,1
+"concept","communicated",11,0,1
+"concept","communication",18,0,1
+"concept","community",18,0,1
 "concept","conditioned",4,0,1
-"concept","conditioning",5,0,1
+"concept","conditioning",17,0,1
 "concept","configuration",4,0,1
 "concept","created",2,0,1
-"concept","cultural tradition",8,0,1
-"concept","designs for living",5,0,1
+"concept","cultural tradition",7,0,1
+"concept","designs for living",18,0,1
 "concept","doing",2,0,1
 "concept","elements",10,0,1
-"concept","environment",5,0,1
-"concept","etiquette",6,0,1
-"concept","expressing",2,0,1
+"concept","environment",17,0,1
+"concept","etiquette",2,0,1
+"concept","expressing",4,0,1
 "concept","feeling",4,0,1
-"concept","folkways",2,0,1
 "concept","forms",4,0,1
-"concept","goals",1,0,1
-"concept","habit patterns",11,0,1
+"concept","goals",14,0,1
 "concept","habitual",4,0,1
 "concept","historically",4,0,1
-"concept","human creation",5,0,1
-"concept","imitation",6,0,1
-"concept","individuals",4,0,1
+"concept","human creation",2,0,1
+"concept","imitation",19,0,1
 "concept","industries",13,0,1
-"concept","inherits",5,0,1
-"concept","institutions",5,0,1
-"concept","integrated and unintegrated groups",6,0,1
-"concept","interaction",5,0,1
-"concept","inventions",5,0,1
+"concept","inherits",19,0,1
+"concept","institutions",19,0,1
+"concept","integrated",19,0,1
+"concept","integrated and unintegrated groups",12,0,1
+"concept","interaction",18,0,1
+"concept","interrelated patterns",15,0,1
 "concept","learned patterns",4,0,1
-"concept","man-made",7,0,1
+"concept","man-made",6,0,1
 "concept","mass",4,0,1
-"concept","means of adjustment",14,0,1
+"concept","means of adjustment",17,0,1
 "concept","members of a group",2,0,1
-"concept","mind",5,0,1
 "concept","modes of behavior",4,0,1
 "concept","modes of thought",4,0,1
 "concept","morals",2,0,1
 "concept","non-material traits",4,0,1
-"concept","organized",5,0,1
-"concept","passed down (or on)",6,0,1
-"concept","patterns",5,0,1
-"concept","persons",5,0,1
-"concept","practical arts",5,0,1
-"concept","present",5,0,1
+"concept","organized",19,0,1
+"concept","participant",4,0,1
+"concept","passed down (or on)",5,0,1
+"concept","patterns",19,0,1
+"concept","persons",18,0,1
+"concept","practical arts",2,0,1
+"concept","present",17,0,1
 "concept","process",4,0,1
 "concept","product",4,0,1
-"concept","reactions",5,0,1
-"concept","relationships",5,0,1
+"concept","reactions",18,0,1
+"concept","relationships",18,0,1
 "concept","relatively constant",4,0,1
-"concept","results",12,0,1
-"concept","satisfaction",5,0,1
-"concept","selection",5,0,1
-"concept","sentiments",6,0,1
-"concept","shared",4,0,1
-"concept","social heritage",5,0,1
-"concept","social legacy",14,0,1
-"concept","social needs",5,0,1
-"concept","social organization",5,0,1
+"concept","repetitive responses",4,0,1
+"concept","results",16,0,1
+"concept","satisfaction",18,0,1
+"concept","selection",17,0,1
+"concept","sentiments",2,0,1
+"concept","social group",2,0,1
+"concept","social heritage",19,0,1
+"concept","social legacy",17,0,1
+"concept","social needs",19,0,1
+"concept","social organization",17,0,1
 "concept","social procedures",2,0,1
-"concept","socially inherited",6,0,1
+"concept","socially inherited",16,0,1
 "concept","socially transmitted",4,0,1
-"concept","solutions",6,0,1
+"concept","solutions",9,0,1
 "concept","standardized",2,0,1
-"concept","standards",4,0,1
-"concept","strain",5,0,1
-"concept","summation",5,0,1
-"concept","superorganic order",5,0,1
-"concept","symbols",2,0,1
-"concept","technical processes",5,0,1
-"concept","totality",5,0,1
-"concept","tradition",5,0,1
-"concept","traits",5,0,1
+"concept","standards",19,0,1
+"concept","strain",19,0,1
+"concept","summation",18,0,1
+"concept","superorganic order",18,0,1
+"concept","technical processes",19,0,1
+"concept","totality",19,0,1
+"concept","tradition",2,0,1
+"concept","traits",18,0,1
 "concept","utensils",2,0,1
-"work","Kelly & Kluckhohn 1945a",15,6011,18
-"work","Young 1934",4,3472,7
-"work","Winston 1933",5,2791,10
-"work","Gillin J.L. & Gillin John P 1942",2,2204,7
-"work","Kroeber 1948a",16,2152,6
+"work","Kelly & Kluckhohn 1945a",2,6035,18
+"work","Young 1934",4,3213,7
+"work","Gillin J.L. & Gillin John P 1942",2,2855,8
+"work","Winston 1933",5,2545,12
+"work","Kroeber 1948a",2,1970,5
 "work","Folsom 1931",6,1559,6
-"work","Herskovits 1948",1,1466,8
-"work","Linton 1945b",3,1028,4
-"work","White 1949b",15,928,6
+"work","Herskovits 1948",1,1151,8
 "work","Dixon 1928",6,809,4
-"work","Kluckhohn 1949a",1,589,5
-"work","Huntington 1945",3,580,2
-"work","Bidney 1946",14,474,5
+"work","White 1949b",2,702,5
+"work","Linton 1945b",2,695,3
+"work","Young 1942",7,695,3
 "work","Linton 1936",8,474,5
 "work","Hiller 1933",6,473,4
-"work","Young 1946",3,473,4
-"work","Roheim 1934",15,471,3
+"work","Young 1946",7,473,4
+"work","Roheim 1934",2,471,3
+"work","Linton 1945a",3,468,2
+"work","Groves & Moore 1940",2,356,3
+"work","Sutherland & Woodward 1940",2,356,3
+"work","Goldenweiser 1937",3,354,2
+"work","Bidney 1946",2,239,3
 "work","Bose 1929",4,239,3
-"work","Firth 1939",5,239,3
-"work","Lynd 1940",10,239,3
-"work","Morris 1946",15,239,3
-"work","Steward 1950",4,239,3
-"work","Blumenthal 1941",16,238,2
+"work","Kluckhohn & Leighton 1946",4,239,3
+"work","Morris 1946",2,239,3
+"work","Opler 1947",2,239,3
+"work","Steward 1950",3,239,3
+"work","Blumenthal 1941",2,238,2
 "work","Burgess & Park 1921",5,238,2
-"work","Sutherland & Woodward 1940",15,238,2
-"work","Taylor 1948",15,238,2
-"work","Tylor 1871",15,238,2
-"work","Dodd 1941",7,120,2
-"work","Gillin John P 1948",9,120,2
-"work","Groves & Moore 1940",15,120,2
+"work","Kluckhohn 1949a",1,238,2
+"work","Lundberg 1939",12,238,2
+"work","Taylor 1948",2,238,2
+"work","Tylor 1871",2,238,2
+"work","Dodd 1941",9,120,2
+"work","Gillin John P 1948",11,120,2
+"work","Huntington 1945",7,120,2
 "work","Jacobs & Stem 1947",5,120,2
 "work","Keller & Sumner 1927",6,120,2
-"work","Klineberg 1935",15,120,2
-"work","Kluckhohn & Leighton 1946",4,120,2
 "work","Kluckhohn 1951a",1,120,2
-"work","Kolb & Wilson 1949",15,120,2
-"work","Linton 1945a",3,120,2
-"work","Malinowski 1944",11,120,2
+"work","Kolb & Wilson 1949",2,120,2
+"work","Lowie 1934",2,120,2
+"work","Lynd 1940",12,120,2
 "work","Morris 1948",5,120,2
-"work","Murdock 1949a",15,120,2
+"work","Murdock 1949a",2,120,2
 "work","Piddington 1950",1,120,2
 "work","Reuter 1939",6,120,2
 "work","Sapir 1921",6,120,2
-"work","Warden 1936",15,120,2
-"work","Young 1942",3,120,2
+"work","Ward 1903",2,120,2
+"work","Warden 1936",2,120,2
 "work","Angyal 1941",1,0,1
 "work","Bain 1942",2,0,1
-"work","Becker 1950",4,0,1
-"work","Benedict 1929",15,0,1
-"work","Benedict 1934",3,0,1
+"work","Becker 1950",3,0,1
+"work","Benedict 1929",2,0,1
+"work","Benedict 1934",7,0,1
 "work","Benedict 1947",4,0,1
 "work","Bennett & Tumin 1949",5,0,1
-"work","Bernard 1941b",7,0,1
+"work","Bernard 1941b",9,0,1
 "work","Bernard 1942",1,0,1
-"work","Bidney 1942",14,0,1
-"work","Bidney 1947",14,0,1
+"work","Bidney 1942",2,0,1
+"work","Bidney 1947",2,0,1
 "work","Blumenthal 1937",6,0,1
-"work","Boas 1930",15,0,1
+"work","Boas 1930",2,0,1
 "work","Bogardus 1930",6,0,1
-"work","Bryson 1947",3,0,1
+"work","Bryson 1947",7,0,1
 "work","Burkitt 1929",6,0,1
 "work","Carr 1945",5,0,1
 "work","Coutu 1949",1,0,1
 "work","Davis Allison & Dollard 1940",1,0,1
 "work","Davis Allison 1948",4,0,1
-"work","Davis Kingsley 1949",14,0,1
-"work","Dawson 1928",1,0,1
+"work","Davis Kingsley 1949",7,0,1
+"work","Dawson 1928",4,0,1
 "work","Dietschy 1947",6,0,1
-"work","Dollard 1939",9,0,1
-"work","F. R. Kluckhohn 1950",1,0,1
+"work","Dollard 1939",11,0,1
+"work","F. R. Kluckhohn 1950",13,0,1
 "work","Feibleman 1946",2,0,1
+"work","Firth 1939",5,0,1
 "work","Folsom 1928",6,0,1
 "work","Ford Clellan S 1939",4,0,1
-"work","Ford Clellan S 1942",12,0,1
+"work","Ford Clellan S 1942",13,0,1
 "work","Ford James A 1949",8,0,1
-"work","Frank 1948",15,0,1
-"work","Goldenweiser 1937",3,0,1
+"work","Frank 1948",5,0,1
 "work","Gorer 1949",1,0,1
 "work","Haring 1949",5,0,1
 "work","Hart & Pantzer 1925",8,0,1
-"work","Hart 1941",1,0,1
-"work","Henry 1949",15,0,1
-"work","Hockett 1950",3,0,1
+"work","Hart 1941",2,0,1
+"work","Henry 1949",2,0,1
+"work","Hockett 1950",14,0,1
 "work","Hoebel 1949",8,0,1
 "work","Katz & Schanck 1938",5,0,1
+"work","Klineberg 1935",2,0,1
 "work","Kluckhohn 1942",8,0,1
 "work","LaPiere 1946",6,0,1
-"work","Lasswell 1948",15,0,1
-"work","Lowie 1934",15,0,1
-"work","Lowie 1937",15,0,1
-"work","Lundberg 1939",10,0,1
-"work","Malinowski 1931",3,0,1
+"work","Lasswell 1948",2,0,1
+"work","Lowie 1937",2,0,1
+"work","Malinowski 1931",7,0,1
+"work","Malinowski 1944",14,0,1
 "work","Marett 1928",1,0,1
-"work","Mead 1937",14,0,1
-"work","Murdock 1941",13,0,1
-"work","Murray 1943",15,0,1
+"work","Mead 1937",4,0,1
+"work","Murdock 1941",16,0,1
+"work","Murray 1943",2,0,1
 "work","Nimkoff & Ogburn 1940",5,0,1
-"work","Opler 1947",16,0,1
 "work","Osgood 1940",4,0,1
-"work","Osgood 1942",15,0,1
-"work","Panunzio 1939",12,0,1
+"work","Osgood 1942",2,0,1
+"work","Panunzio 1939",15,0,1
 "work","Parsons 1949",4,0,1
-"work","Radcliffe-Brown, A. R. 1949",15,0,1
-"work","Redfield 1940",15,0,1
+"work","Radcliffe-Brown, A. R. 1949",2,0,1
+"work","Redfield 1940",2,0,1
 "work","Rouse 1939",5,0,1
 "work","Sapir 1924a",6,0,1
-"work","Slotkin 1950",4,0,1
+"work","Slotkin 1950",3,0,1
 "work","Small 1905",1,0,1
 "work","Sorokin 1937",5,0,1
-"work","Sorokin 1947",10,0,1
+"work","Sorokin 1947",12,0,1
 "work","Thomas 1937",2,0,1
 "work","Thurnwald 1950",6,0,1
 "work","Titiev 1949",2,0,1
-"work","Tozzer 1925",15,0,1
+"work","Tozzer 1925",2,0,1
 "work","Turney-High 1949",5,0,1
-"work","Ward 1903",11,0,1
-"work","White 1943",15,0,1
-"work","White 1949a",15,0,1
-"work","Willey 1929",5,0,1
-"work","Wissler 1916",16,0,1
-"work","Wissler 1920",15,0,1
+"work","White 1943",2,0,1
+"work","White 1949a",2,0,1
+"work","Willey 1929",2,0,1
+"work","Wissler 1916",10,0,1
+"work","Wissler 1920",2,0,1
 "work","Wissler 1929",6,0,1

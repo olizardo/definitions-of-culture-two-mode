@@ -31,11 +31,13 @@ excluded.tab <- excluded.tab[order(excluded.tab$kk_code), ]
 write.csv(excluded.tab, "data/kk-index-b-excluded-codes.csv", row.names = FALSE)
 
 g.v <- delete_vertices(g.full, excluded)
-g.v <- delete_vertices(g.v, degree(g.v) == 0)
+# Drop sub-elements left with no verified code; keep codes with no Index B edge as isolates.
+subs.v <- V(g.v)[!V(g.v)$type]
+g.v <- delete_vertices(g.v, subs.v[degree(g.v, subs.v) == 0])
 bip <- as_biadjacency_matrix(g.v, sparse = FALSE)
 stopifnot(all(colnames(bip) %in% verified.codes),
-          all(rowSums(bip) > 0), all(colSums(bip) > 0),
-          sum(bip) == ecount(g.v))
+          ncol(bip) == length(verified.codes),
+          all(rowSums(bip) > 0), sum(bip) == ecount(g.v))
 
 saveRDS(list(biadjacency = bip, graph = g.v), "data/kk-index-b-verified-network.rds")
 cat("verified network:", nrow(bip), "sub-elements x", ncol(bip), "codes,", sum(bip), "edges\n")
