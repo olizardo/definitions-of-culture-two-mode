@@ -4,14 +4,14 @@
     "href": "download.html",
     "title": "Download",
     "section": "",
-    "text": "Files are served from the GitHub repository. Each file is an R object (.rds), so read it with readRDS()."
+    "text": "Each file is an R object (.rds), so read it with readRDS()."
   },
   {
     "objectID": "download.html#reading-the-files-in-r",
     "href": "download.html#reading-the-files-in-r",
     "title": "Download",
     "section": "Reading the files in R",
-    "text": "Reading the files in R\nlibrary(igraph)\n\nu &lt;- \"https://raw.githubusercontent.com/olizardo/definitions-of-culture-two-mode/gh-pages/data/kk-index-b-verified-network.rds\"\nnet &lt;- readRDS(gzcon(url(u)))\ng &lt;- net$graph\nThe works file contains three objects: two_mode_graph, two_mode_heading_graph, and works. Read it the same way and select the one you need."
+    "text": "Reading the files in R\nlibrary(igraph)\n\nbase &lt;- \"https://raw.githubusercontent.com/olizardo/definitions-of-culture-two-mode/gh-pages/data/\"\ndefs &lt;- readRDS(gzcon(url(paste0(base, \"kk-index-b-verified-network.rds\"))))\ng_defs &lt;- defs$graph\nm_defs &lt;- defs$biadjacency\n\ng_works &lt;- readRDS(gzcon(url(paste0(base, \"kk-index-b-works-sub-element-network.rds\"))))\nThe definitions files are lists. Take $graph for the igraph object and $biadjacency for the 0/1 matrix. The works files are igraph objects directly. The work table is not included, but each work vertex carries its codes, n_codes, n_concepts, year, decade, and label attributes."
   },
   {
     "objectID": "index.html",
@@ -32,7 +32,7 @@
     "href": "index.html#networks",
     "title": "Kroeber & Kluckhohn Two-Mode Network Data",
     "section": "Networks",
-    "text": "Networks\n\n\n\n\n\n\n\n\nNetwork\nNodes\nStored in\n\n\n\n\nDefinitions × sub-elements\n472 sub-elements, 170 codes\nkk-index-b-verified-network.rds\n\n\nDefinitions × headings\n53 headings, 170 codes\nkk-index-b-heading-network.rds\n\n\nWorks × sub-elements\n472 sub-elements, 136 works\nkk-index-b-work-concept-network-full.rds (two_mode_graph)\n\n\nWorks × headings\n53 headings, 136 works\nkk-index-b-work-concept-network-full.rds (two_mode_heading_graph)\n\n\n\nThe files are R objects. Each definitions network stores a 0/1 biadjacency matrix and an igraph graph. Works networks store igraph graphs only. See the codebook for the attributes and the download page for the files."
+    "text": "Networks\n\n\n\n\n\n\n\n\nNetwork\nNodes\nStored in\n\n\n\n\nDefinitions × sub-elements\n472 sub-elements, 170 codes\nkk-index-b-verified-network.rds\n\n\nDefinitions × headings\n53 headings, 170 codes\nkk-index-b-heading-network.rds\n\n\nWorks × sub-elements\n472 sub-elements, 136 works\nkk-index-b-works-sub-element-network.rds\n\n\nWorks × headings\n53 headings, 136 works\nkk-index-b-works-heading-network.rds\n\n\n\nThe files are R objects. Each definitions network stores a 0/1 biadjacency matrix and an igraph graph. Works networks store igraph graphs only. See the codebook for the attributes and the download page for the files."
   },
   {
     "objectID": "index.html#how-the-data-were-built",
@@ -102,6 +102,6 @@
     "href": "codebook.html#work-vertices-works-networks",
     "title": "Codebook",
     "section": "Work vertices (works networks)",
-    "text": "Work vertices (works networks)\n\n\n\n\n\n\n\nAttribute\nMeaning\n\n\n\n\nnode_type\nwork\n\n\ncodes\nK&K codes the work sits under, separated by ;\n\n\nn_codes, n_concepts\nnumber of codes and of Index B concepts for the work\n\n\nyear\nyear as printed, with any letter suffix\n\n\ndecade\ndecade of the year (integer)\n\n\nlabel\nshort author-year label\n\n\n\nThe works network also stores a works table with the columns work, n_codes, codes, and n_concepts. A work is keyed by its author set and year. A work can sit under several codes, and a code can hold several works."
+    "text": "Work vertices (works networks)\n\n\n\n\n\n\n\nAttribute\nMeaning\n\n\n\n\nnode_type\nwork\n\n\ncodes\nK&K codes the work sits under, separated by ;\n\n\nn_codes, n_concepts\nnumber of codes and of Index B concepts for the work\n\n\nyear\nyear as printed, with any letter suffix\n\n\ndecade\ndecade of the year (integer)\n\n\nlabel\nshort author-year label\n\n\n\nThe works files store the bipartite graph only; the work table is not included. A work is keyed by its author set and year. A work can sit under several codes, and a code can hold several works."
   }
 ]

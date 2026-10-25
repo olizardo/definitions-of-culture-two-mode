@@ -183,30 +183,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Files are served from the GitHub repository. Each file is an R object (<code>.rds</code>), so read it with <code>readRDS()</code>.</p>
+<p>Each file is an R object (<code>.rds</code>), so read it with <code>readRDS()</code>.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
 <th>File</th>
-<th>Contents</th>
+<th>Network</th>
 <th>Download</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><code>kk-index-b-verified-network.rds</code></td>
-<td>definitions × sub-elements (<code>graph</code>, <code>biadjacency</code>)</td>
+<td>definitions × sub-elements (list: <code>graph</code>, <code>biadjacency</code>)</td>
 <td><a href="https://raw.githubusercontent.com/olizardo/definitions-of-culture-two-mode/gh-pages/data/kk-index-b-verified-network.rds">download</a></td>
 </tr>
 <tr class="even">
 <td><code>kk-index-b-heading-network.rds</code></td>
-<td>definitions × headings (<code>graph</code>, <code>biadjacency</code>)</td>
+<td>definitions × headings (list: <code>graph</code>, <code>biadjacency</code>)</td>
 <td><a href="https://raw.githubusercontent.com/olizardo/definitions-of-culture-two-mode/gh-pages/data/kk-index-b-heading-network.rds">download</a></td>
 </tr>
 <tr class="odd">
-<td><code>kk-index-b-work-concept-network-full.rds</code></td>
-<td>works × sub-elements (<code>two_mode_graph</code>), works × headings (<code>two_mode_heading_graph</code>), work table (<code>works</code>)</td>
-<td><a href="https://raw.githubusercontent.com/olizardo/definitions-of-culture-two-mode/gh-pages/data/kk-index-b-work-concept-network-full.rds">download</a></td>
+<td><code>kk-index-b-works-sub-element-network.rds</code></td>
+<td>works × sub-elements (igraph)</td>
+<td><a href="https://raw.githubusercontent.com/olizardo/definitions-of-culture-two-mode/gh-pages/data/kk-index-b-works-sub-element-network.rds">download</a></td>
+</tr>
+<tr class="even">
+<td><code>kk-index-b-works-heading-network.rds</code></td>
+<td>works × headings (igraph)</td>
+<td><a href="https://raw.githubusercontent.com/olizardo/definitions-of-culture-two-mode/gh-pages/data/kk-index-b-works-heading-network.rds">download</a></td>
 </tr>
 </tbody>
 </table>
@@ -214,10 +219,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="reading-the-files-in-r">Reading the files in R</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/olizardo/definitions-of-culture-two-mode/gh-pages/data/kk-index-b-verified-network.rds"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>net <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">gzcon</span>(<span class="fu">url</span>(u)))</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> net<span class="sc">$</span>graph</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The works file contains three objects: <code>two_mode_graph</code>, <code>two_mode_heading_graph</code>, and <code>works</code>. Read it the same way and select the one you need.</p>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>base <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/olizardo/definitions-of-culture-two-mode/gh-pages/data/"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>defs <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">gzcon</span>(<span class="fu">url</span>(<span class="fu">paste0</span>(base, <span class="st">"kk-index-b-verified-network.rds"</span>))))</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>g_defs <span class="ot">&lt;-</span> defs<span class="sc">$</span>graph</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>m_defs <span class="ot">&lt;-</span> defs<span class="sc">$</span>biadjacency</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>g_works <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">gzcon</span>(<span class="fu">url</span>(<span class="fu">paste0</span>(base, <span class="st">"kk-index-b-works-sub-element-network.rds"</span>))))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The definitions files are lists. Take <code>$graph</code> for the igraph object and <code>$biadjacency</code> for the 0/1 matrix. The works files are igraph objects directly. The work table is not included, but each work vertex carries its <code>codes</code>, <code>n_codes</code>, <code>n_concepts</code>, <code>year</code>, <code>decade</code>, and <code>label</code> attributes.</p>
 
 
 </section>
