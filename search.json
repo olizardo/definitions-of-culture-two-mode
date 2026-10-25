@@ -1,0 +1,107 @@
+[
+  {
+    "objectID": "download.html",
+    "href": "download.html",
+    "title": "Download",
+    "section": "",
+    "text": "Files are served from the GitHub repository. Each file is an R object (.rds), so read it with readRDS()."
+  },
+  {
+    "objectID": "download.html#reading-the-files-in-r",
+    "href": "download.html#reading-the-files-in-r",
+    "title": "Download",
+    "section": "Reading the files in R",
+    "text": "Reading the files in R\nlibrary(igraph)\n\nu &lt;- \"https://raw.githubusercontent.com/olizardo/definitions-of-culture-two-mode/gh-pages/data/kk-index-b-verified-network.rds\"\nnet &lt;- readRDS(gzcon(url(u)))\ng &lt;- net$graph\nThe works file contains three objects: two_mode_graph, two_mode_heading_graph, and works. Read it the same way and select the one you need."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Kroeber & Kluckhohn Two-Mode Network Data",
+    "section": "",
+    "text": "Preliminary release. The data are subject to further verification and cleaning. Later versions may change the networks."
+  },
+  {
+    "objectID": "index.html#overview",
+    "href": "index.html#overview",
+    "title": "Kroeber & Kluckhohn Two-Mode Network Data",
+    "section": "Overview",
+    "text": "Overview\nThese are two-mode (bipartite) networks built from the index of Kroeber and Kluckhohn’s Culture: A Critical Review of Concepts and Definitions (1952). Index B assigns each of the 170 culture definitions (K&K codes) to the element headings and sub-elements under which the monograph indexes it. Index A gives the author and year behind each code. The works network links each of the 136 works to the same sub-elements and headings.\nBoroch’s (2016) reanalysis of the same classification supplies the Boroch code labels, which are attached as vertex attributes where his Table 2 or appendix covers the same definition."
+  },
+  {
+    "objectID": "index.html#networks",
+    "href": "index.html#networks",
+    "title": "Kroeber & Kluckhohn Two-Mode Network Data",
+    "section": "Networks",
+    "text": "Networks\n\n\n\n\n\n\n\n\nNetwork\nNodes\nStored in\n\n\n\n\nDefinitions × sub-elements\n472 sub-elements, 170 codes\nkk-index-b-verified-network.rds\n\n\nDefinitions × headings\n53 headings, 170 codes\nkk-index-b-heading-network.rds\n\n\nWorks × sub-elements\n472 sub-elements, 136 works\nkk-index-b-work-concept-network-full.rds (two_mode_graph)\n\n\nWorks × headings\n53 headings, 136 works\nkk-index-b-work-concept-network-full.rds (two_mode_heading_graph)\n\n\n\nThe files are R objects. Each definitions network stores a 0/1 biadjacency matrix and an igraph graph. Works networks store igraph graphs only. See the codebook for the attributes and the download page for the files."
+  },
+  {
+    "objectID": "index.html#how-the-data-were-built",
+    "href": "index.html#how-the-data-were-built",
+    "title": "Kroeber & Kluckhohn Two-Mode Network Data",
+    "section": "How the data were built",
+    "text": "How the data were built\nIndex A and Index B were parsed from the OCR text layer of the 1952 monograph. Parsing errors were corrected where the printed page image settled the reading, and each correction records its basis. Codes that Index A does not list are kept in the networks only when they are linked to an Index B element through the verified-code rules."
+  },
+  {
+    "objectID": "index.html#known-limitations",
+    "href": "index.html#known-limitations",
+    "title": "Kroeber & Kluckhohn Two-Mode Network Data",
+    "section": "Known limitations",
+    "text": "Known limitations\n\nMost corrections have one reader. A second reader has not yet checked all of them.\nSome OCR tokens were resolved from the printed sequence rather than the page image, and are flagged as such in the build records.\nElement labels other than the corrected ones have not all been checked against the page image.\nSome elements sit under more than one heading. The sub-element network merges same-name elements; use the heading network when the heading matters.\nA work is keyed by its author set and year. Entries without a year are dropped."
+  },
+  {
+    "objectID": "index.html#rights",
+    "href": "index.html#rights",
+    "title": "Kroeber & Kluckhohn Two-Mode Network Data",
+    "section": "Rights",
+    "text": "Rights\nThe data are derived coded structure: codes, authors, years, element labels and incidence. They contain no definition text or verbatim quotations. The 1952 monograph is publicly available online, and its element labels are included on that basis. Boroch’s article is not included."
+  },
+  {
+    "objectID": "index.html#citation",
+    "href": "index.html#citation",
+    "title": "Kroeber & Kluckhohn Two-Mode Network Data",
+    "section": "Citation",
+    "text": "Citation\nPlease cite the data set, and the sources it is derived from:\n\nLizardo, Omar. 2026. Kroeber & Kluckhohn Culture Definitions: Two-Mode Network Data (preliminary release). Data set. https://olizardo.github.io/definitions-of-culture-two-mode/\nKroeber, A. L., and Clyde Kluckhohn. 1952. Culture: A Critical Review of Concepts and Definitions. Papers of the Peabody Museum of American Archaeology and Ethnology 47(1). Cambridge, MA: Harvard University.\nBoroch, Robert. 2016. “A Formal Concept of Culture in the Classification of Alfred L. Kroeber and Clyde Kluckhohn.” Analecta XXV(2)."
+  },
+  {
+    "objectID": "index.html#license",
+    "href": "index.html#license",
+    "title": "Kroeber & Kluckhohn Two-Mode Network Data",
+    "section": "License",
+    "text": "License\nProposed: Creative Commons Attribution 4.0 (CC BY 4.0). To be confirmed before publication."
+  },
+  {
+    "objectID": "codebook.html",
+    "href": "codebook.html",
+    "title": "Codebook",
+    "section": "",
+    "text": "All objects are igraph graphs (bipartite). Vertex type is FALSE for element vertices (sub-elements, headings, or works) and TRUE for codes or works, depending on the network. Read the files with readRDS(). The library is igraph."
+  },
+  {
+    "objectID": "codebook.html#graph-and-edge-attributes",
+    "href": "codebook.html#graph-and-edge-attributes",
+    "title": "Codebook",
+    "section": "Graph and edge attributes",
+    "text": "Graph and edge attributes\n\n\n\n\n\n\n\n\nAttribute\nLevel\nMeaning\n\n\n\n\nname\nall vertices\nsub-element label, heading label, K&K code, or work label\n\n\nbuilt, igraph_version, source_files, caveat\ngraph\nbuild date, versions, source files, and a caveat that the Index B data are not fully verified\n\n\nn_source_rows\nedge\nnumber of Index B rows behind the tie\n\n\nparse_flags\nedge\nparse flags of those rows (ok, ocr_corrected, code_not_in_index_a, junk_name, manual_fix), separated by ;"
+  },
+  {
+    "objectID": "codebook.html#element-vertices-sub-element-and-heading-networks",
+    "href": "codebook.html#element-vertices-sub-element-and-heading-networks",
+    "title": "Codebook",
+    "section": "Element vertices (sub-element and heading networks)",
+    "text": "Element vertices (sub-element and heading networks)\n\n\n\n\n\n\n\nAttribute\nMeaning\n\n\n\n\nnode_type\nsub_element or heading\n\n\nheadings\nheadings the sub-element appears under, separated by ; (sub-element network only)\n\n\nn_headings\nnumber of headings the sub-element appears under (sub-element network only)\n\n\nn_subelements\nsub-elements under the heading (heading network only)\n\n\nn_codes\ncodes linked to the element\n\n\nhas_junk_name, has_manual_fix, has_ocr_correction\nthe element has an edge with that parse flag (sub-element network only)"
+  },
+  {
+    "objectID": "codebook.html#code-vertices-definitions-networks",
+    "href": "codebook.html#code-vertices-definitions-networks",
+    "title": "Codebook",
+    "section": "Code vertices (definitions networks)",
+    "text": "Code vertices (definitions networks)\n\n\n\n\n\n\n\nAttribute\nMeaning\n\n\n\n\nkk_group, kk_subgroup\nK&K group letter and subgroup (for example A, I)\n\n\nin_index_a, in_index_b\nthe code appears in Index A or Index B\n\n\nn_index_b_elements\nIndex B elements under the code\n\n\nindex_a_authors\nIndex A authors listed under the code, with qualifiers\n\n\nboroch_code, boroch_source\nBoroch’s code for the same definition (NA if none), and whether it comes from table2 or appendix-only"
+  },
+  {
+    "objectID": "codebook.html#work-vertices-works-networks",
+    "href": "codebook.html#work-vertices-works-networks",
+    "title": "Codebook",
+    "section": "Work vertices (works networks)",
+    "text": "Work vertices (works networks)\n\n\n\n\n\n\n\nAttribute\nMeaning\n\n\n\n\nnode_type\nwork\n\n\ncodes\nK&K codes the work sits under, separated by ;\n\n\nn_codes, n_concepts\nnumber of codes and of Index B concepts for the work\n\n\nyear\nyear as printed, with any letter suffix\n\n\ndecade\ndecade of the year (integer)\n\n\nlabel\nshort author-year label\n\n\n\nThe works network also stores a works table with the columns work, n_codes, codes, and n_concepts. A work is keyed by its author set and year. A work can sit under several codes, and a code can hold several works."
+  }
+]
