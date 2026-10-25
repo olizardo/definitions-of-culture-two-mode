@@ -106,6 +106,14 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="./download.html"> 
 <span class="menu-text">Download</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./changelog.html"> 
+<span class="menu-text">Changelog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./glossary.html"> 
+<span class="menu-text">Glossary</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -123,7 +131,7 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#graph-and-edge-attributes" id="toc-graph-and-edge-attributes" class="nav-link active" data-scroll-target="#graph-and-edge-attributes">Graph and edge attributes</a></li>
-  <li><a href="#element-vertices-sub-element-and-heading-networks" id="toc-element-vertices-sub-element-and-heading-networks" class="nav-link" data-scroll-target="#element-vertices-sub-element-and-heading-networks">Element vertices (sub-element and heading networks)</a></li>
+  <li><a href="#sub-element-and-heading-vertices" id="toc-sub-element-and-heading-vertices" class="nav-link" data-scroll-target="#sub-element-and-heading-vertices">Sub-element and heading vertices</a></li>
   <li><a href="#code-vertices-definitions-networks" id="toc-code-vertices-definitions-networks" class="nav-link" data-scroll-target="#code-vertices-definitions-networks">Code vertices (definitions networks)</a></li>
   <li><a href="#work-vertices-works-networks" id="toc-work-vertices-works-networks" class="nav-link" data-scroll-target="#work-vertices-works-networks">Work vertices (works networks)</a></li>
   </ul>
@@ -151,7 +159,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>All objects are igraph graphs (bipartite). Vertex <code>type</code> is FALSE for element vertices (sub-elements, headings, or works) and TRUE for codes or works, depending on the network. Read the files with <code>readRDS()</code>. The library is <code>igraph</code>.</p>
+<p>The networks are bipartite igraph graphs. The definitions files are lists that hold the igraph graph (<code>graph</code>) and a 0/1 biadjacency matrix (<code>biadjacency</code>); the works files are igraph graphs alone. Vertex <code>type</code> is FALSE for sub-element, heading and work vertices and TRUE for codes or works, depending on the network. Codes are the K&amp;K codes (the definitions). Read the files with <code>readRDS()</code>. The library is <code>igraph</code>.</p>
 <section id="graph-and-edge-attributes" class="level2">
 <h2 class="anchored" data-anchor-id="graph-and-edge-attributes">Graph and edge attributes</h2>
 <table class="caption-top table">
@@ -175,24 +183,24 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="even">
 <td><code>built</code>, <code>igraph_version</code>, <code>source_files</code>, <code>caveat</code></td>
-<td>graph</td>
+<td>graph (definitions networks only)</td>
 <td>build date, versions, source files, and a caveat that the Index B data are not fully verified</td>
 </tr>
 <tr class="odd">
 <td><code>n_source_rows</code></td>
-<td>edge</td>
+<td>edge (definitions networks only)</td>
 <td>number of Index B rows behind the tie</td>
 </tr>
 <tr class="even">
 <td><code>parse_flags</code></td>
-<td>edge</td>
+<td>edge (definitions networks only)</td>
 <td>parse flags of those rows (<code>ok</code>, <code>ocr_corrected</code>, <code>code_not_in_index_a</code>, <code>junk_name</code>, <code>manual_fix</code>), separated by <code>;</code></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="element-vertices-sub-element-and-heading-networks" class="level2">
-<h2 class="anchored" data-anchor-id="element-vertices-sub-element-and-heading-networks">Element vertices (sub-element and heading networks)</h2>
+<section id="sub-element-and-heading-vertices" class="level2">
+<h2 class="anchored" data-anchor-id="sub-element-and-heading-vertices">Sub-element and heading vertices</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -223,11 +231,11 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="odd">
 <td><code>n_codes</code></td>
-<td>codes linked to the element</td>
+<td>codes linked to the sub-element or heading</td>
 </tr>
 <tr class="even">
 <td><code>has_junk_name</code>, <code>has_manual_fix</code>, <code>has_ocr_correction</code></td>
-<td>the element has an edge with that parse flag (sub-element network only)</td>
+<td>the sub-element or heading has an edge with that parse flag (sub-element network only)</td>
 </tr>
 </tbody>
 </table>
@@ -256,7 +264,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="odd">
 <td><code>n_index_b_elements</code></td>
-<td>Index B elements under the code</td>
+<td>Index B sub-elements under the code</td>
 </tr>
 <tr class="even">
 <td><code>index_a_authors</code></td>
@@ -272,10 +280,6 @@ ul.task-list li input[type="checkbox"] {
 <section id="work-vertices-works-networks" class="level2">
 <h2 class="anchored" data-anchor-id="work-vertices-works-networks">Work vertices (works networks)</h2>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Attribute</th>
@@ -306,6 +310,10 @@ ul.task-list li input[type="checkbox"] {
 <tr class="even">
 <td><code>label</code></td>
 <td>short author-year label</td>
+</tr>
+<tr class="odd">
+<td><code>pub_type</code></td>
+<td>publication type from the K&amp;K bibliography entry: <code>article</code> (journal article), <code>book</code> (monograph, including numbered series), <code>chapter</code> (entry in an edited volume or reference work), or <code>other</code> (mimeographed, unpublished, or pamphlet or bulletin; some assignments are uncertain, see the <a href="./changelog.html">changelog</a>)</td>
 </tr>
 </tbody>
 </table>

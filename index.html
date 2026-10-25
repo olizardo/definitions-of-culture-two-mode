@@ -106,6 +106,14 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="./download.html"> 
 <span class="menu-text">Download</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./changelog.html"> 
+<span class="menu-text">Changelog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./glossary.html"> 
+<span class="menu-text">Glossary</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -154,10 +162,10 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><strong>Preliminary release.</strong> The data are subject to further verification and cleaning. Later versions may change the networks.</p>
+<p><strong>Preliminary release, version 0.3.0.</strong> The data are subject to further verification and cleaning. Later versions may change the networks. See the <a href="./changelog.html">changelog</a> for the version history.</p>
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>These are two-mode (bipartite) networks built from the index of Kroeber and Kluckhohn’s <em>Culture: A Critical Review of Concepts and Definitions</em> (1952). Index B assigns each of the 170 culture definitions (K&amp;K codes) to the element headings and sub-elements under which the monograph indexes it. Index A gives the author and year behind each code. The works network links each of the 136 works to the same sub-elements and headings.</p>
+<p>These are two-mode (bipartite) networks built from the index of Kroeber and Kluckhohn’s <em>Culture: A Critical Review of Concepts and Definitions</em> (1952). Index B assigns each of the 170 culture definitions (K&amp;K codes) to the headings and sub-elements under which the monograph indexes it. Index A gives the author and year behind each code. The works network links each of the 133 works to the same sub-elements and headings.</p>
 <p>Boroch’s (2016) reanalysis of the same classification supplies the Boroch code labels, which are attached as vertex attributes where his Table 2 or appendix covers the same definition.</p>
 </section>
 <section id="networks" class="level2">
@@ -172,7 +180,7 @@ ul.task-list li input[type="checkbox"] {
 <tr class="header">
 <th>Network</th>
 <th>Nodes</th>
-<th>Stored in</th>
+<th>File</th>
 </tr>
 </thead>
 <tbody>
@@ -188,12 +196,12 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="odd">
 <td>Works × sub-elements</td>
-<td>472 sub-elements, 136 works</td>
+<td>472 sub-elements, 133 works</td>
 <td><code>kk-index-b-works-sub-element-network.rds</code></td>
 </tr>
 <tr class="even">
 <td>Works × headings</td>
-<td>53 headings, 136 works</td>
+<td>53 headings, 133 works</td>
 <td><code>kk-index-b-works-heading-network.rds</code></td>
 </tr>
 </tbody>
@@ -209,20 +217,20 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>Most corrections have one reader. A second reader has not yet checked all of them.</li>
 <li>Some OCR tokens were resolved from the printed sequence rather than the page image, and are flagged as such in the build records.</li>
-<li>Element labels other than the corrected ones have not all been checked against the page image.</li>
-<li>Some elements sit under more than one heading. The sub-element network merges same-name elements; use the heading network when the heading matters.</li>
+<li>Sub-element and heading labels other than the corrected ones have not all been checked against the page image.</li>
+<li>Some sub-elements sit under more than one heading. The sub-element network merges same-name elements; use the heading network when the heading matters.</li>
 <li>A work is keyed by its author set and year. Entries without a year are dropped.</li>
 </ul>
 </section>
 <section id="rights" class="level2">
 <h2 class="anchored" data-anchor-id="rights">Rights</h2>
-<p>The data are derived coded structure: codes, authors, years, element labels and incidence. They contain no definition text or verbatim quotations. The 1952 monograph is publicly available online, and its element labels are included on that basis. Boroch’s article is not included.</p>
+<p>The data are derived coded structure: codes, authors, years, sub-element and heading labels and incidence. They contain no definition text or verbatim quotations. The 1952 monograph is publicly available online, and its element labels are included on that basis. Boroch’s article is not included.</p>
 </section>
 <section id="citation" class="level2">
 <h2 class="anchored" data-anchor-id="citation">Citation</h2>
 <p>Please cite the data set, and the sources it is derived from:</p>
 <ul>
-<li>Lizardo, Omar. 2026. <em>Kroeber &amp; Kluckhohn Culture Definitions: Two-Mode Network Data</em> (preliminary release). Data set. https://olizardo.github.io/definitions-of-culture-two-mode/</li>
+<li>Lizardo, Omar. 2026. <em>Kroeber &amp; Kluckhohn Culture Definitions: Two-Mode Network Data</em> (version 0.3.0, preliminary release). Data set. https://olizardo.github.io/definitions-of-culture-two-mode/</li>
 <li>Kroeber, A. L., and Clyde Kluckhohn. 1952. <em>Culture: A Critical Review of Concepts and Definitions.</em> Papers of the Peabody Museum of American Archaeology and Ethnology 47(1). Cambridge, MA: Harvard University.</li>
 <li>Boroch, Robert. 2016. “A Formal Concept of Culture in the Classification of Alfred L. Kroeber and Clyde Kluckhohn.” <em>Analecta</em> XXV(2).</li>
 </ul>
