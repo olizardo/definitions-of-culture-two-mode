@@ -11,7 +11,7 @@
     "href": "download.html",
     "title": "Download",
     "section": "",
-    "text": "Each file is an R object (.rds), so read it with readRDS()."
+    "text": "The network files are R objects (.rds), so read them with readRDS(). The citation table is a CSV file with one row per work."
   },
   {
     "objectID": "download.html#reading-the-files-in-r",
@@ -19,6 +19,41 @@
     "title": "Download",
     "section": "Reading the files in R",
     "text": "Reading the files in R\nlibrary(igraph)\n\nbase &lt;- \"https://raw.githubusercontent.com/olizardo/definitions-of-culture-two-mode/gh-pages/data/\"\ndefs &lt;- readRDS(gzcon(url(paste0(base, \"kk-index-b-verified-network.rds\"))))\ng_defs &lt;- defs$graph\nm_defs &lt;- defs$biadjacency\n\ng_works &lt;- readRDS(gzcon(url(paste0(base, \"kk-index-b-works-sub-element-network.rds\"))))\nThe definitions files are lists. Take $graph for the igraph object and $biadjacency for the 0/1 matrix. The works files are igraph objects directly. The work table is not included, but each work vertex carries its codes, n_codes, n_concepts, year, decade, label, and pub_type attributes."
+  },
+  {
+    "objectID": "codebook.html",
+    "href": "codebook.html",
+    "title": "Codebook",
+    "section": "",
+    "text": "The networks are bipartite igraph graphs. The definitions files are lists that hold the igraph graph (graph) and a 0/1 biadjacency matrix (biadjacency); the works files are igraph graphs alone. Vertex type is FALSE for sub-element, heading and work vertices and TRUE for codes or works, depending on the network. Codes are the K&K codes (the definitions). Read the files with readRDS(). The library is igraph."
+  },
+  {
+    "objectID": "codebook.html#graph-and-edge-attributes",
+    "href": "codebook.html#graph-and-edge-attributes",
+    "title": "Codebook",
+    "section": "Graph and edge attributes",
+    "text": "Graph and edge attributes\n\n\n\n\n\n\n\n\nAttribute\nLevel\nMeaning\n\n\n\n\nname\nall vertices\nsub-element label, heading label, K&K code, or work label\n\n\nbuilt, igraph_version, source_files, caveat\ngraph (definitions networks only)\nbuild date, versions, source files, and a caveat that the Index B data are not fully verified\n\n\nn_source_rows\nedge (definitions networks only)\nnumber of Index B rows behind the tie\n\n\nparse_flags\nedge (definitions networks only)\nparse flags of those rows (ok, ocr_corrected, code_not_in_index_a, junk_name, manual_fix), separated by ;"
+  },
+  {
+    "objectID": "codebook.html#sub-element-and-heading-vertices",
+    "href": "codebook.html#sub-element-and-heading-vertices",
+    "title": "Codebook",
+    "section": "Sub-element and heading vertices",
+    "text": "Sub-element and heading vertices\n\n\n\n\n\n\n\nAttribute\nMeaning\n\n\n\n\nnode_type\nsub_element or heading\n\n\nheadings\nheadings the sub-element appears under, separated by ; (sub-element network only)\n\n\nn_headings\nnumber of headings the sub-element appears under (sub-element network only)\n\n\nn_subelements\nsub-elements under the heading (heading network only)\n\n\nn_codes\ncodes linked to the sub-element or heading\n\n\nhas_junk_name, has_manual_fix, has_ocr_correction\nthe sub-element or heading has an edge with that parse flag (sub-element network only)"
+  },
+  {
+    "objectID": "codebook.html#code-vertices-definitions-networks",
+    "href": "codebook.html#code-vertices-definitions-networks",
+    "title": "Codebook",
+    "section": "Code vertices (definitions networks)",
+    "text": "Code vertices (definitions networks)\n\n\n\n\n\n\n\nAttribute\nMeaning\n\n\n\n\nkk_group, kk_subgroup\nK&K group letter and subgroup (for example A, I)\n\n\nin_index_a, in_index_b\nthe code appears in Index A or Index B\n\n\nn_index_b_elements\nIndex B sub-elements under the code\n\n\nindex_a_authors\nIndex A authors listed under the code, with qualifiers\n\n\nboroch_code, boroch_source\nBoroch’s code for the same definition (NA if none), and whether it comes from table2 or appendix-only"
+  },
+  {
+    "objectID": "codebook.html#work-vertices-works-networks",
+    "href": "codebook.html#work-vertices-works-networks",
+    "title": "Codebook",
+    "section": "Work vertices (works networks)",
+    "text": "Work vertices (works networks)\n\n\n\nAttribute\nMeaning\n\n\n\n\nnode_type\nwork\n\n\ncodes\nK&K codes the work sits under, separated by ;\n\n\nn_codes, n_concepts\nnumber of codes and of Index B concepts for the work\n\n\nyear\nyear as printed, with any letter suffix\n\n\ndecade\ndecade of the year (integer)\n\n\nlabel\nshort author-year label\n\n\npub_type\npublication type from the K&K bibliography entry: article (journal article), book (monograph, including numbered series), chapter (entry in an edited volume or reference work), or other (mimeographed, unpublished, or pamphlet or bulletin; some assignments are uncertain, see the changelog)\n\n\n\nThe works files store the bipartite graph only; the work table is not included. A work is keyed by its author set and year. A work can sit under several codes, and a code can hold several works."
   },
   {
     "objectID": "index.html",
@@ -75,41 +110,6 @@
     "title": "Kroeber & Kluckhohn Two-Mode Network Data",
     "section": "License",
     "text": "License\nProposed: Creative Commons Attribution 4.0 (CC BY 4.0). To be confirmed before publication."
-  },
-  {
-    "objectID": "codebook.html",
-    "href": "codebook.html",
-    "title": "Codebook",
-    "section": "",
-    "text": "The networks are bipartite igraph graphs. The definitions files are lists that hold the igraph graph (graph) and a 0/1 biadjacency matrix (biadjacency); the works files are igraph graphs alone. Vertex type is FALSE for sub-element, heading and work vertices and TRUE for codes or works, depending on the network. Codes are the K&K codes (the definitions). Read the files with readRDS(). The library is igraph."
-  },
-  {
-    "objectID": "codebook.html#graph-and-edge-attributes",
-    "href": "codebook.html#graph-and-edge-attributes",
-    "title": "Codebook",
-    "section": "Graph and edge attributes",
-    "text": "Graph and edge attributes\n\n\n\n\n\n\n\n\nAttribute\nLevel\nMeaning\n\n\n\n\nname\nall vertices\nsub-element label, heading label, K&K code, or work label\n\n\nbuilt, igraph_version, source_files, caveat\ngraph (definitions networks only)\nbuild date, versions, source files, and a caveat that the Index B data are not fully verified\n\n\nn_source_rows\nedge (definitions networks only)\nnumber of Index B rows behind the tie\n\n\nparse_flags\nedge (definitions networks only)\nparse flags of those rows (ok, ocr_corrected, code_not_in_index_a, junk_name, manual_fix), separated by ;"
-  },
-  {
-    "objectID": "codebook.html#sub-element-and-heading-vertices",
-    "href": "codebook.html#sub-element-and-heading-vertices",
-    "title": "Codebook",
-    "section": "Sub-element and heading vertices",
-    "text": "Sub-element and heading vertices\n\n\n\n\n\n\n\nAttribute\nMeaning\n\n\n\n\nnode_type\nsub_element or heading\n\n\nheadings\nheadings the sub-element appears under, separated by ; (sub-element network only)\n\n\nn_headings\nnumber of headings the sub-element appears under (sub-element network only)\n\n\nn_subelements\nsub-elements under the heading (heading network only)\n\n\nn_codes\ncodes linked to the sub-element or heading\n\n\nhas_junk_name, has_manual_fix, has_ocr_correction\nthe sub-element or heading has an edge with that parse flag (sub-element network only)"
-  },
-  {
-    "objectID": "codebook.html#code-vertices-definitions-networks",
-    "href": "codebook.html#code-vertices-definitions-networks",
-    "title": "Codebook",
-    "section": "Code vertices (definitions networks)",
-    "text": "Code vertices (definitions networks)\n\n\n\n\n\n\n\nAttribute\nMeaning\n\n\n\n\nkk_group, kk_subgroup\nK&K group letter and subgroup (for example A, I)\n\n\nin_index_a, in_index_b\nthe code appears in Index A or Index B\n\n\nn_index_b_elements\nIndex B sub-elements under the code\n\n\nindex_a_authors\nIndex A authors listed under the code, with qualifiers\n\n\nboroch_code, boroch_source\nBoroch’s code for the same definition (NA if none), and whether it comes from table2 or appendix-only"
-  },
-  {
-    "objectID": "codebook.html#work-vertices-works-networks",
-    "href": "codebook.html#work-vertices-works-networks",
-    "title": "Codebook",
-    "section": "Work vertices (works networks)",
-    "text": "Work vertices (works networks)\n\n\n\nAttribute\nMeaning\n\n\n\n\nnode_type\nwork\n\n\ncodes\nK&K codes the work sits under, separated by ;\n\n\nn_codes, n_concepts\nnumber of codes and of Index B concepts for the work\n\n\nyear\nyear as printed, with any letter suffix\n\n\ndecade\ndecade of the year (integer)\n\n\nlabel\nshort author-year label\n\n\npub_type\npublication type from the K&K bibliography entry: article (journal article), book (monograph, including numbered series), chapter (entry in an edited volume or reference work), or other (mimeographed, unpublished, or pamphlet or bulletin; some assignments are uncertain, see the changelog)\n\n\n\nThe works files store the bipartite graph only; the work table is not included. A work is keyed by its author set and year. A work can sit under several codes, and a code can hold several works."
   },
   {
     "objectID": "changelog.html",
