@@ -6,10 +6,10 @@ The network files are R objects (`.rds`), so read them with `readRDS()`. The cit
 
 | File | Network | Object | Download |
 |---|---|---|---|
-| `kk-index-b-verified-network.rds` | Definitions × sub-elements | list: `graph`, `biadjacency` | [download](https://raw.githubusercontent.com/olizardo/definitions-of-culture-two-mode/gh-pages/data/kk-index-b-verified-network.rds) |
-| `kk-index-b-heading-network.rds` | Definitions × headings | list: `graph`, `biadjacency` | [download](https://raw.githubusercontent.com/olizardo/definitions-of-culture-two-mode/gh-pages/data/kk-index-b-heading-network.rds) |
-| `kk-index-b-works-sub-element-network.rds` | Works × sub-elements | igraph graph | [download](https://raw.githubusercontent.com/olizardo/definitions-of-culture-two-mode/gh-pages/data/kk-index-b-works-sub-element-network.rds) |
-| `kk-index-b-works-heading-network.rds` | Works × headings | igraph graph | [download](https://raw.githubusercontent.com/olizardo/definitions-of-culture-two-mode/gh-pages/data/kk-index-b-works-heading-network.rds) |
+| `kk-index-b-verified-network.rds` | Definitions × sub-elements | list of `graph` (igraph) and `biadjacency` (matrix) | [download](https://raw.githubusercontent.com/olizardo/definitions-of-culture-two-mode/gh-pages/data/kk-index-b-verified-network.rds) |
+| `kk-index-b-heading-network.rds` | Definitions × headings | list of `graph` (igraph) and `biadjacency` (matrix) | [download](https://raw.githubusercontent.com/olizardo/definitions-of-culture-two-mode/gh-pages/data/kk-index-b-heading-network.rds) |
+| `kk-index-b-works-sub-element-network.rds` | Works × sub-elements | igraph graph (no list wrapper) | [download](https://raw.githubusercontent.com/olizardo/definitions-of-culture-two-mode/gh-pages/data/kk-index-b-works-sub-element-network.rds) |
+| `kk-index-b-works-heading-network.rds` | Works × headings | igraph graph (no list wrapper) | [download](https://raw.githubusercontent.com/olizardo/definitions-of-culture-two-mode/gh-pages/data/kk-index-b-works-heading-network.rds) |
 | `kk-index-b-work-citations.csv` | Works (citation table) | CSV table | [download](https://raw.githubusercontent.com/olizardo/definitions-of-culture-two-mode/gh-pages/data/kk-index-b-work-citations.csv) |
 
 ## Reading the files in R
