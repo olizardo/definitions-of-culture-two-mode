@@ -18,7 +18,8 @@ counts into this file; they go stale.
   works network, both the works and concept views), and `kk-index-b/degree-works-definitions.png`.
   Filenames carry the network or node type; the folder carries the dataset. Scripts create their folders.
 - `documents/`: source PDFs and an ignored text copy. `*_djvu.txt` is gitignored; do not commit or release it.
-  `pdfcoffee.com-…pdf` is tracked in git; its removal is an open decision.
+  `pdfcoffee.com-…pdf` was untracked from git on 2026-10-25 (staged removal, not yet committed). The file
+  stays on disk; the git history still contains it.
 - `kk-index-b-two-mode.tex`: the LaTeX draft report on the works and definitions networks. It replaced the
   Quarto report `kkcc-two-mode.qmd`, which was removed. The tex reads figures and CSVs written by the
   analysis scripts; it does not source them, so rerun the scripts and update the numbers by hand.
@@ -27,9 +28,11 @@ counts into this file; they go stale.
 
 ## Rebuilding the K&K Index A/B data
 
-Order: `build-index-b.R` → `build-index-b-crosswalk.R` → `analysis-index-b.R` →
-`build-index-b-networks.R` → `build-index-b-verified.R` → `check-index-b-networks.R` →
-`check-index-b-blocks.R` → `analysis-ca-index-b.R`. The definitions analyses read
+Order: `build-index-b.R` → `build-index-b-crosswalk.R` → `build-index-b-networks.R` →
+`build-index-b-verified.R` → `check-index-b-networks.R` → `check-index-b-blocks.R` →
+`build-work-authors-index-b.R` → `build-work-concept-network-index-b.R` → `analysis-index-b.R` →
+`analysis-ca-index-b.R` → `analysis-ca-works-index-b.R` → `analysis-centrality-index-b.R` →
+`analysis-mst-definitions-index-b.R` → `analysis-mst-works-index-b.R`. The definitions analyses read
 `data/kk-index-b-verified-network.rds`, not the unfiltered sub-element network. The works build
 (`build-work-concept-network-index-b.R`) also reads the verified network. Run each in a fresh environment: `sys.source(file, envir = new.env())`.
 The crosswalk reads its inputs from files; a stale session object once produced wrong output.
@@ -45,6 +48,9 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
 - Keys match the PARSED token table, not the exported edges. Use the PRE-correction heading. Heading
   variants (e.g. `adjustive-ajjptive function of culture`, `process ts and means`) are renamed after
   the manual fixes, so the key must use the variant. Copy keys from the parsed output, not the PDF.
+- Heading corrections (`apply_heading_corrections()`) move entries after parsing, so a key uses the heading
+  before the move: `capabilities` (now carriers of culture); `civilization` (only the civilization element
+  stays there; the others are now common or shared patterns).
 - Use `occurrence` for identical tokens under the same heading and sub-element. Blank = all matches.
 - Non-code tokens (e.g. "K -i", "B 17") are fixed in `kk-index-b-missing-rows.csv`, not here.
 - Evidence must be a quoted CSV field. An unquoted comma or quote shifts the columns and the build
@@ -53,6 +59,9 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
   show as changed in git.
 - Record the basis in the evidence column: printed page, crop resolution, or "user reading, not
   checked on the page image". Do not claim a page check you did not do.
+- A remap of a printed code (D-8 → E-8, C-7 → C-I-7) is decided from the main text, which takes precedence
+  over the printed Index B. Cite the main-text footnote (author, year, page) as the basis and say whether it
+  was image-checked.
 
 ## Rules for OCR tokens
 
@@ -77,6 +86,9 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
 - `Kroeber-kluckhohn.pdf` (ABBYY): printed page = PDF page − 3. Index B = PDF pp. 77–81.
 - The 229-page copy (`…_compress.pdf`, same file as the tracked pdfcoffee copy): printed = PDF − 6.
 - Each new copy needs its own offset. Cite printed page numbers, not a copy's PDF page.
+- Main-text footnotes cite the SOURCE's page ("Goldenweiser, 1933: 59"), not the page of the K&K text that
+  carries the footnote. Coutu's footnote 8 is on printed p. 61 (PDF 64). The Part III author index is printed
+  p. 141 (PDF 143). "Words not included in Index B" is printed pp. 78–79 (PDF 81–82).
 - Crops: `pdftoppm -r DPI -x X -y Y -W W -H H` takes pixels (points × DPI / 72). `pdftotext -bbox`
   reports points. Use 300 dpi for normal checks and 400–600 dpi for ambiguous glyphs.
 - The ABBYY text layer lacks running headers. Searching a page with `awk -v RS='\f'` also hits
@@ -101,6 +113,10 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
   the K&K bibliography has no Young 1947. Kimball Young's *Handbook of Social Psychology* is the
   quoted source (Google Books gives 1946 as the original year). Labelled "Young K. 1946" in
   `scripts/label-authors-index-b.R`; the work key stays 1947 pending a verified source.
+- The Part III author index (printed p. 141) credits some authors with lowercase letter-number codes from Part
+  III's own groups. Those are not Part II codes, so each attribution needs its own basis. The user-verified
+  attributions are in `data/kk-part-iii-author-codes.csv`; `build-index-b.R` appends them to the author table,
+  not to `index_a`.
 
 ## Crosswalk and Boroch's data
 
@@ -122,8 +138,10 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
 - Disconnected two-mode graphs give several lambda = 1 eigen-dimensions in CA; drop all of them (use the 2-core).
 - eigen() signs are arbitrary. Align definition scores to concept scores via the duality relation.
 - Build the CA and MST projections from the LCC 2-core, not the full network.
-- One verified definitions network: `scripts/build-index-b-verified.R` keeps only codes in Index A
-  (`in_index_a`) and writes `data/kk-index-b-verified-network.rds`. Every definitions analysis (basic stats,
+- The works build prunes codes and concepts with fewer than two links, so a code with one element (D-5) can
+  be in the verified network and still drop out of the projections.
+- One verified definitions network: `scripts/build-index-b-verified.R` keeps the codes flagged `in_verified`
+  (Index A codes plus the Part III codes; `build-index-b.R` defines the flag) and writes `data/kk-index-b-verified-network.rds`. Every definitions analysis (basic stats,
   CA, MST, centrality) reads it. Do not add a second filter in an analysis script. Excluded codes and their
   sub-elements are in `data/kk-index-b-excluded-codes.csv`; they are unverified and still need checking
   against the printed index (TODO). The raw `kk-index-b-subelement-network.rds` keeps them by design.
@@ -144,6 +162,9 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
 - A work is keyed by its author set and year string (`scripts/build-work-concept-network-index-b.R`),
   built from the Index A entries under each code. Codes are categories and can hold several works; a
   work can sit under several codes. Do not treat a code as a work.
+- The work-year parser keeps each entry's year with that entry (fixed 2026-10-25). `regmatches()` had dropped
+  year-less entries and shifted every later year onto the wrong entry. A year-less entry is dropped with a
+  warning (e.g. "Kelly" under A-14).
 - Co-authored works list every author sharing the year. A co-author written as a prefix of a full name
   in the same year group takes the full name (`canon.names()`), unless `kk-index-b-name-decisions.csv`
   says otherwise. The prefix rule once merged two different Gillins; the decision file now overrides it.
