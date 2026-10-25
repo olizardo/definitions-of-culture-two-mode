@@ -4,18 +4,18 @@ Last updated 2026-10-24 (latest status update below). Read `AGENTS.md` (project 
 
 ## Current state (2026-10-24, final for this session)
 
-- Index B: 1318 edges. Flags: ok 978, ocr_corrected 207, manual_fix 123, code_not_in_index_a 10. Sub-element network 472 x 174 (1193 ties); heading network 53 x 174 (1085 ties). Block check: 1296 in printed block, 22 in another block.
+- Index B: 1318 edges. Flags: ok 978, ocr_corrected 207, manual_fix 123, code_not_in_index_a 10. Full networks (all codes, including the 9 excluded): sub-element 472 x 174 (1193 ties); heading 53 x 174 (1085 ties). Verified networks used by the analyses: sub-element 464 x 160 (1182 ties); heading 53 x 165 (1074 ties, from `data/kk-index-b-network-stats.csv`). Block check: 1296 in printed block, 22 in another block.
 - Unresolved tokens: 2 (`D-I` society, `F-j` organized), excluded as duplicates by decision.
 - User-confirmed readings (not image-checked in this session): F-IV-3, A-15 (all edges), B-15, D-II-15, D-I-5 under learned behavior, C-I-13, F-II-5, A-5, F-I-13, B-21 under group. F-I-15 under transmission is correct and unchanged.
 - Open items:
   1. Audit the remaining general-rule tokens in the 207 ocr_corrected edges (most common: A-i, D-I-i, B-i, C-I-i, D-IV-i, E-i, D-I-y). Group by printed block and check each block on the page image.
-  2. Review the 22 block-check flags.
+  2. ~~Review the 22 block-check flags~~ Done 2026-10-25. Reviewed on the page image (`data/kk-index-b-block-check-review-current.csv`): 21 OK, and 1 block OK with the code unreadable (F-IV-3 under processes and means). The F-IV-3 reading was checked by the user on 2026-10-25 (their check, not an image reading recorded here), so the second-reader need for F-IV-3 is closed. The PDF text-layer check (column `text_layer_check`) does not confirm any of the 22: it garbles 14 codes and 7 headings (e.g. "F -lV -5", "A -3, A -3"), so it cannot serve as an independent reader. Verdicts still rest on one image reader.
   3. Image-check the OK_TEXT blocks on printed pp. 76-81.
   4. Second reader for the user-confirmed readings and the manual fixes they came from.
-  5. The NEEDS_CHECK "a people" tokens are resolved (C-I-13, D-I-1, F-III-3 match your list; F-IV-j has no edge).
-  6. Verify the nine codes not in Index A (listed in `data/kk-index-b-excluded-codes.csv`: C-7, C-I-18a, D-5, D-7, D-8, D-II-16, E-17, F-4, F-9; 11 edges). Check each against the printed index; a code that is really in K&K's index was missed by the Index A parse and should be restored. These are excluded from the verified definitions network (`data/kk-index-b-verified-network.rds`) until checked.
+  5. Partly resolved: C-I-13, D-I-1 and F-III-3 match your list, and F-IV-j has no edge. The verdict file still has one NEEDS_CHECK row (carriers of culture, "a people, adjustments"; edge code not decided). See item 20.
+  6. Verify the nine codes not in Index A (listed in `data/kk-index-b-excluded-codes.csv`: C-7, C-I-18a, D-5, D-7, D-8, D-II-16, E-17, F-4, F-9; 11 edges). Check each against the printed index; a code that is really in K&K's index was missed by the Index A parse and should be restored. These are excluded from the verified definitions network (`data/kk-index-b-verified-network.rds`) until checked. C-I-18a is in this list (9 codes, 11 edges in total), but its flag is `manual_fix`, not `code_not_in_index_a`; that flag covers 10 edges and 8 codes. Page check 2026-10-25 (Index A, printed pp. 73-74 = PDF pp. 76-77, column images at 300 dpi; Titiev's line at 600 dpi): none of the nine codes appears as an Index A entry, so nothing is restored. The closest case is Titiev, C-I-18 (no suffix). C-I-18a is a distinct code, not an OCR form of C-I-18: the user confirmed the printed Index B entry ('maniere de vivre', French for 'way of life') and that K&K credit Maquet (1949, p. 324) in the main text (not checked here). Maquet has no entry in the printed Index A (pp. 73-74), so the code stays excluded from the verified network, which uses Index A codes only. Whether to include it is a decision; the edge is unchanged.
 - Rights: K&K element labels are cleared by the user (the 1952 monograph is publicly available online). Boroch's article and its verbatim quotations remain restricted.
-- Not committed: the rebuild, the manual-fix changes, the regenerated outputs and the docs. Review the regenerated audit and definitions CSVs before committing.
+- Working tree (checked 2026-10-25): `git status` lists 56 changed or untracked entries, including modified scripts, data, figures and docs, and deleted figures and `kkcc-two-mode.qmd`. Review these before committing.
 
 ## Status update (2026-10-24, latest)
 
@@ -29,12 +29,12 @@ Last updated 2026-10-24 (latest status update below). Read `AGENTS.md` (project 
 - Commits: `f99c209` (parser: entry-start fixes; `is_entry_start` no longer treats a code dash as a
   heading dash, and "(see" only starts an entry when no code precedes it) and `0cd27c8` (occurrence
   key in `apply_index_b_fixes()`, keyed decisions, missing rows, rebuilt outputs, verdict file).
-- Counts: Index B 1316 edges; sub-element network 472 x 174 (1192 ties); heading network 53 x 174
+- Counts (superseded by Current state): Index B 1316 edges; sub-element network 472 x 174 (1192 ties); heading network 53 x 174
   (1084 ties). Validators pass. Block check: 21 edges printed in another block (mostly checker
   artifacts; see item 14).
 - Applied: the three NEEDS_DECISION items (organized E-5 and totality A-15 unresolved as duplicates;
   B-1, B-6, B-7 relabelled to social heritage; B-11 added under social heritage).
-- The 36 MISSING_EDGE rows from the sub-element check are resolved: 18 by the parser fixes, the rest
+- The 36 MISSING_EDGE rows from the sub-element check were reported resolved (2026-10-24), and the verdict file's 27 leftover MISSING_EDGE rows are now OK (2026-10-25; see item 14): 18 by the parser fixes, the rest
   by keyed manual fixes or missing rows (A-5, A-2, B-14, C-I-3, D-II-5, B-17, B-11, E-7, B-22, D-I-6).
   Remaining open tokens are listed in item 4 and item 20.
 - Not yet applied: the two CODE_WRONG rows in the verdict file (see item 20).
@@ -49,7 +49,7 @@ Last updated 2026-10-24 (latest status update below). Read `AGENTS.md` (project 
 - Committed (2026-10-24): the reorganization (`1c026b5`), Phase 0 notes (`42ab463`), the Index B
   script work and audit files, the B-11→B-21 fix and regenerated outputs (`2997ec2`), the finalized
   block-check verdicts (`347c431`), the ok-sample check and documentation updates (`203a743`). The
-  working tree is clean; check `git status` before building on this.
+  working tree was clean after these commits, but it is not clean as of 2026-10-25 (see Current state).
 - The untracked copy of a full book text, `documents/papersofpeabodymvol47no1peab_djvu.txt`, is
   now in `documents/` and gitignored. Do not commit or release it.
 
@@ -126,7 +126,8 @@ manual-fix keys: the build errors if a key matches no token.
    `1c026b5` (reorganization), `42ab463` (Phase 0 notes), `e007b5a`, `7533002`, `e866111`, `f78bece`.
 12. **Downstream rerun: done 2026-10-24.** `scripts/analysis-index-b.R` was rerun after the heading correction
     (network stats and the degree-comparison figure regenerated).
-    The crosswalk was rerun and is unchanged (127 auto, 2 manual, 1 F4-6, 1 no match, 4 ambiguous).
+    Rerun 2026-10-25 after the "passed down (or on)" label change: `analysis-index-b.R`, `build-work-concept-network-index-b.R`, `analysis-ca-index-b.R`, `analysis-ca-works-index-b.R`, `analysis-centrality-index-b.R`, `analysis-mst-definitions-index-b.R`, `analysis-mst-works-index-b.R`. Every changed CSV differs from HEAD only in the label, so the numbers, CA signs and centrality values are unchanged. The Boroch main-network scripts were not rerun (no Index B input). The PNG figures were regenerated but were not compared pixel by pixel.
+    The crosswalk was rerun and is unchanged. Current counts (2026-10-25): 127 auto, 7 manual decisions, 1 F4-6 slip, 0 ambiguous, 0 unmatched.
 10. **Documentation** to keep current: `README.md` (data dictionary, limitations),
     `docs/PROVENANCE.md` (sections 3.1, 3.2, 8), and the "K&K Index A/B dataset" section of
     `AGENTS.md`. Update only current-state text; leave the historical notes alone.
@@ -143,20 +144,20 @@ manual-fix keys: the build errors if a key matches no token.
     is also printed under attitudes and feelings, so the count is approximate); `symbols` (12 of 26) →
     systems (systems-systems, systems of thought, systems of knowledge); `feelings` (1) → forbidden, the;
     `people, a` (1) → permitted, the. Apply as a rule in `build-index-b.R`, not in the output CSVs.
-14. **Sub-element check for the remaining edges (in progress, 2026-10-24 later).** Verdict file: `data/kk-index-b-subelement-check.csv` (1316-row build; OK / OK_TEXT / OK_IMAGE / APPLIED / FIXED_REBUILD / CODE_WRONG / NEEDS_CHECK / NEEDS_DECISION). Blocks on printed pp. 74-78 are covered: pp. 74-75 and most of 76-78 are text-layer diffs; the large blocks (ideas, processes, learning, products, manners, symbols, the transmission and social blocks) were checked on the page image. Still OK_TEXT (not image-checked): most of habits, material culture, modes, the rest of symbols, and blocks on pp. 79-81 beyond those listed. Original note: About 1100 edges are not yet checked against the
+14. **Sub-element check for the remaining edges (in progress, 2026-10-24 later).** Verdict file: `data/kk-index-b-subelement-check.csv` (1327 rows against the 1318-edge build; the row-to-edge mapping is not reconciled). Current verdict tally (2026-10-25): OK 572, OK_IMAGE 297, OK_TEXT 440, FIXED_REBUILD 10, APPLIED 6, NEEDS_CHECK 2; no MISSING_EDGE, CODE_WRONG or NEEDS_DECISION rows remain. The 27 former MISSING_EDGE rows (23 unique edges) were checked against the build on 2026-10-25: each printed heading and sub-element has a build edge under the same code. The build wrote "passed down" for the printed "passed down (or on)", so six rows matched only after that label was normalized. Six `rename_sub` rows (`data/kk-index-b-manual-fixes.csv`, 2026-10-25) now set the build label to "passed down (or on)"; the rebuild changed only those six sub-element labels, and the validators pass. They are now OK, with the verdict and note recorded in the file (the original note is kept). The verdicts changed are only the 27 MISSING_EDGE rows; no other column changed. Blocks on printed pp. 74-78 are covered: pp. 74-75 and most of 76-78 are text-layer diffs; the large blocks (ideas, processes, learning, products, manners, symbols, the transmission and social blocks) were checked on the page image. Still OK_TEXT (not image-checked): most of habits, material culture, modes, the rest of symbols, and blocks on pp. 79-81 beyond those listed. Original note: About 1100 edges are not yet checked against the
     printed sub-element lists. Record verdicts in a file keyed to printed page and block.
 15. **Second reader (partly done; human reader still open).** A machine cross-check (`scripts/check-index-b-blocks.R`,
-    PROVENANCE 3.7) puts 1268 of 1285 edges in their assigned block. The 17 others are in
-    `data/kk-index-b-block-check-review.csv` with final verdicts (2026-10-24): 16 OK, 1 CODE_WRONG
+    PROVENANCE 3.7) was run on the earlier 1285-edge build (1268 in block). On the current 1318-edge build it puts 1296 in their block and 22 elsewhere. The earlier 17 flagged edges are in
+    `data/kk-index-b-block-check-review.csv` with verdicts (2026-10-24): 17 OK, 1 CODE_WRONG (18 rows). None of its keys match the 22 current flags; those 22 were reviewed on the page image on 2026-10-25 (see `data/kk-index-b-block-check-review-current.csv`).
     (B-11 under process, fixed; see item 18). It is not a human reader.
     Original note: The block map and the heading corrections have one reader. A second reader
     should check the civilization and symbols cases and a sample of the other blocks.
 16. **Rebuild and recount: done 2026-10-24.** 174 parsed rows re-headed (173 distinct edges; G-3 is printed twice
-    in one block). The 1285-edge total is unchanged. Heading matrix 53 × 174, 1059 ties; sub-element matrix
+    in one block). (Superseded: the build is now 1318 edges.) The 1285-edge total was unchanged at that point. Heading matrix 53 × 174, 1059 ties then; sub-element matrix
     465 × 174, 1171 ties after the label fixes (`systems` is shared by two blocks with identical codes).
 18. **Regenerate the CHECK crops: done 2026-10-24.** The old locator was not repaired; instead the
     affected entries were read from full-page quadrant crops (300 dpi) plus targeted 400–600 dpi
-    zooms. Verdicts in `data/kk-index-b-block-check-review.csv` are final: 16 OK, 1 CODE_WRONG.
+    zooms. Verdicts in `data/kk-index-b-block-check-review.csv` are final: 17 OK, 1 CODE_WRONG (18 rows).
     The CODE_WRONG row is `B-11 / processes and means / process`: the print reads
     "process, B-21, B-22, D-I-6, F-I-16" and B-11 prints nowhere in the block. Fixed by a `set`
     row (B-11 → B-21, key on the parsed heading "process ts and means") in
@@ -176,10 +177,10 @@ manual-fix keys: the build errors if a key matches no token.
 
 - Index A's verification is a single-reader check. There's no double-keying. Do not describe the
   dataset as fully verified.
-- 915 ok edges have no audit verdict (966 ok minus 51 with a row in `kk-index-b-flagged-audit.csv`).
+- 930 ok edges have no row in `kk-index-b-flagged-audit.csv` (978 ok edges minus 48 matched by kk_code, sub_element and ocr_raw; the match is approximate). `kk-index-b-audit.csv` is a Boroch/K&K cell audit, not an edge audit, so it does not cover these edges.
   The earlier figure of 932 could not be reproduced. The 50-row sample was checked on 2026-10-24
-  (50 OK, 0 errors). Of the 66
-  manual_fix edges, 62 have no row in either audit file (PROVENANCE 3.3). The six 2026-10-24
+  (50 OK, 0 errors). Of the 123
+  manual_fix edges, 120 have no row in `kk-index-b-flagged-audit.csv`, the only audit file keyed to edges (2026-10-25 count; PROVENANCE 3.3 still has the older figure). The six 2026-10-24
   resolutions and the other 56 manual fixes are justified by printed evidence in the manual-fix
   file, not by an audit verdict.
 - Angyal's row (B-14) is from the page image. It is absent from the project's OCR text, and the
@@ -200,4 +201,4 @@ manual-fix keys: the build errors if a key matches no token.
     - Open: the NEEDS_CHECK "a people" tokens (C-I-1 j, D-I-i, F-III-j, F-IV-j) are not in the edge list and are not image-checked.
     - Open: image-check the OK_TEXT blocks on printed pp. 76-78 and the blocks on pp. 79-81 that are still text-layer only.
     - Positional fixes need the occurrence column; use it for any further duplicate-token fix.
-    - Housekeeping: `AGENTS.md` and `scripts/analysis-ca-index-b.R` have uncommitted changes; `Rplots.pdf` and `data/kk-index-b-missing-rows-DRAFT.csv` are untracked and superseded.
+    - Housekeeping: `git status` lists 56 changed or untracked entries (2026-10-25; see Current state). `Rplots.pdf` and `data/kk-index-b-missing-rows-DRAFT.csv` are tracked and unchanged, not untracked as this line said. The DRAFT is superseded by `kk-index-b-missing-rows.csv`.

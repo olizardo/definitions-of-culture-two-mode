@@ -57,7 +57,10 @@ canon.names <- function(nm, year) {
 code.works <- function(s) {
   if (is.na(s) || !nzchar(s)) return(character())
   ents <- trimws(strsplit(s, ";")[[1]])
-  yr <- regmatches(ents, regexpr("[0-9]{3,4}[a-z]?", ents))
+  # Per-entry year, "" when absent. regmatches() would drop unmatched entries and
+  # misalign the years with the entries that follow them.
+  has.yr <- grepl("[0-9]{3,4}[a-z]?", ents)
+  yr <- ifelse(has.yr, sub("^.*?([0-9]{3,4}[a-z]?).*$", "\\1", ents, perl = TRUE), "")
   ok <- nzchar(yr)
   if (!all(ok)) warning("entry without a year: ", paste(ents[!ok], collapse = " | "))
   ents <- ents[ok]; yr <- yr[ok]

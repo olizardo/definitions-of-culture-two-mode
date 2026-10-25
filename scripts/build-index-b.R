@@ -588,6 +588,15 @@ excl <- unique(excl[, c("kk_code", "heading", "sub_element", "ocr_raw")])
 authors <- index_a[, c("author_raw", "kk_code", "raw_code", "qualifier", "ok")]
 authors$qualifier[is.na(authors$qualifier)] <- ""
 
+# Part III author index (user-verified attributions, data/kk-part-iii-author-codes.csv).
+# Added to the author table only; index_a and the in_index_a flag are unchanged.
+part3 <- read.csv("data/kk-part-iii-author-codes.csv", stringsAsFactors = FALSE)
+part3 <- data.frame(author_raw = part3$author, kk_code = part3$kk_code, raw_code = part3$kk_code,
+                    qualifier = paste0("(", part3$year, ")"), ok = TRUE, stringsAsFactors = FALSE)
+existing <- paste(authors$author_raw, authors$kk_code, authors$qualifier)
+part3 <- part3[!paste(part3$author_raw, part3$kk_code, part3$qualifier) %in% existing, ]
+authors <- rbind(authors, part3)
+
 # Every OCR token whose normalized form differs from the printed text, from
 # both indexes. Lets readers audit each correction.
 corrections <- unique(rbind(
@@ -610,6 +619,8 @@ definitions <- data.frame(
   group = group_of(universe),
   subgroup = subgroup_of(universe),
   in_index_a = universe %in% index_a_codes,
+  in_part_iii = universe %in% part3$kk_code,
+  in_verified = universe %in% c(index_a_codes, part3$kk_code),
   in_index_b = universe %in% edges$kk_code,
   n_index_b_elements = as.integer(table(factor(edges$kk_code, levels = universe))),
   index_a_authors = vapply(universe, function(cd) {

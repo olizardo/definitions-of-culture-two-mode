@@ -41,7 +41,7 @@ boroch <- readRDS(file.path(data_dir, "kkcc_two_mode.rds"))$biadjacency
 # Keep the K&K columns that are codes in Index A (the verified universe)
 # so that Index-B-only OCR artefacts do not inflate definition counts.
 defs <- read.csv(file.path(data_dir, "kk-index-b-definitions.csv"))
-verified <- defs$kk_code[defs$in_index_a]
+verified <- defs$kk_code[defs$in_verified]
 kk_sub_v <- readRDS(file.path(data_dir, "kk-index-b-verified-network.rds"))$biadjacency
 kk_head_v <- kk_head[, colnames(kk_head) %in% verified, drop = FALSE]
 kk_head_v <- kk_head_v[rowSums(kk_head_v) > 0, , drop = FALSE]

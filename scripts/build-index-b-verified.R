@@ -1,6 +1,6 @@
 # Canonical verified sub-element x definition-code network for K&K Index B.
 #
-# Keeps only codes listed in K&K Index A (in_index_a in kk-index-b-definitions.csv)
+# Keeps only codes in K&K Index A or the user-verified Part III attributions (in_verified in kk-index-b-definitions.csv)
 # and drops sub-elements left with no verified code. Codes that are not in Index A
 # are written to a separate table so they stay traceable. Every definitions-network
 # analysis (basic stats, CA, MST, centrality) reads this object.
@@ -14,7 +14,7 @@ library(igraph)
 se <- readRDS("data/kk-index-b-subelement-network.rds")
 g.full <- se$graph
 defs <- read.csv("data/kk-index-b-definitions.csv")
-verified.codes <- defs$kk_code[defs$in_index_a]
+verified.codes <- defs$kk_code[defs$in_verified]
 
 is.code <- V(g.full)$type
 excluded <- is.code & !(V(g.full)$name %in% verified.codes)

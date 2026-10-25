@@ -40,7 +40,7 @@ the two.
 | `check-two-mode-networks.R` | both networks, definition CSVs | nothing (stops on a mismatch) |
 | `build-index-b-networks.R` | `kk-index-b-edges.csv`, `kk-index-b-definitions.csv`, `kk-boroch-crosswalk.csv`, `kkcc-appendix-only-links.csv` | `kk-index-b-subelement-network.rds`, `kk-index-b-heading-network.rds` |
 | `build-index-b-verified.R` | `kk-index-b-subelement-network.rds`, `kk-index-b-definitions.csv` | `kk-index-b-verified-network.rds` (the one definitions network every analysis reads), `kk-index-b-excluded-codes.csv` (codes not in Index A, with their sub-elements) |
-| `check-index-b-blocks.R` | `documents/Kroeber-kluckhohn.pdf`, `kk-index-b-edges.csv`, `kk-index-b-block-map.csv` | `kk-index-b-block-check.csv`, `kk-index-b-block-check-summary.csv`, `kk-index-b-block-check-review.csv` (machine cross-check of heading assignments; not a human reader) |
+| `check-index-b-blocks.R` | `documents/Kroeber-kluckhohn.pdf`, `kk-index-b-edges.csv`, `kk-index-b-block-map.csv` | `kk-index-b-block-check.csv`, `kk-index-b-block-check-summary.csv`, `kk-index-b-block-check-review.csv` (earlier 18-row set, previous build), `kk-index-b-block-check-review-current.csv` (page-image verdicts for the current 22 flagged edges, one reader) (machine cross-check of heading assignments; not a human reader) |
 | `check-index-b-networks.R` | `kk-index-b-*-network.rds`, `kk-index-b-edges.csv`, `kk-index-b-definitions.csv`, `kk-boroch-crosswalk.csv` | nothing (stops on a mismatch) |
 | `kkcc-definition-attrs.R` (helper) | `kkcc_two_mode.rds` | returns the definition table used by the analyses |
 | `build-definition-years.R` | Boroch appendix (`documents/ROBAFC-5.1.pdf`) | `kkcc-definition-years.csv` |
@@ -233,7 +233,7 @@ unlinked and are reported as such, not guessed.
   page image (PDF pp. 77–81, quadrant crops at 300 dpi). Verdict: 50 OK, 0 errors;
   Clopper–Pearson 95% upper bound on the error rate is 7.1%. Single reader
   (`data/kk-index-b-ok-sample.csv`).
-- Machine block check: `check-index-b-blocks.R` puts 1296 of 1318 edges inside their assigned printed block; the 22 others are not all covered by `kk-index-b-block-check-review.csv`, which holds the verdicts for the earlier 17-edge set; the current 22 need their own review. This is a machine cross-check plus one reader, not a double-keyed audit.
+- Machine block check: `check-index-b-blocks.R` puts 1296 of 1318 edges inside their assigned printed block; the 22 others have page-image verdicts in `kk-index-b-block-check-review-current.csv` (2026-10-25). All 22 are printed under their assigned heading according to one reader; the PDF text layer does not confirm them (OCR garbles the codes), and F-IV-3 under "means of adjustment" is not legible on the image (the user checked the reading on 2026-10-25). `kk-index-b-block-check-review.csv` holds the earlier 18-row set, keyed to a previous build. This is a machine cross-check plus one reader, not a double-keyed audit.
 - Spot check: 20 random Index B edges were compared with their OCR lines after the
   normalization fixes. All 20 were correct on inspection. This is a small sample, not a
   full manual audit.
