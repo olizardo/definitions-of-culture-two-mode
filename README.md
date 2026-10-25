@@ -34,11 +34,12 @@ the two.
 |---|---|---|
 | `build-index-b.R` | `documents/Kroeber-kluckhohn.pdf` | Index A, Index B, excluded words, definition registry, OCR correction log, biadjacency matrices |
 | `build-index-b-crosswalk.R` | Index B outputs, `kkcc_two_mode.rds`, `kkcc-definition-years.csv`, `kkcc-definition-texts.csv` | Boroch ↔ K&K crosswalk, Table 2 audit |
-| `analysis-index-b.R` | biadjacency matrices, `kkcc_two_mode.rds` | network statistics, degree-comparison figure |
+| `analysis-index-b.R` | biadjacency matrices, `kkcc_two_mode.rds` | network statistics, works vs definitions degree figure |
 | `build-concept-categories.R` | `kkcc_two_mode.rds` (concept labels), Boroch section 3.2.2 (encoded in the script) | `kkcc-concept-categories.csv` |
 | `build-two-mode-networks.R` | `kkcc-concept-categories.csv`, `kkcc-definition-years.csv`, `kkcc-definition-biblio.csv`, fine biadjacency | `kkcc_two_mode.rds`, `kkcc_two_mode_main.rds`, `kkcc_biadjacency_main.csv` |
 | `check-two-mode-networks.R` | both networks, definition CSVs | nothing (stops on a mismatch) |
 | `build-index-b-networks.R` | `kk-index-b-edges.csv`, `kk-index-b-definitions.csv`, `kk-boroch-crosswalk.csv`, `kkcc-appendix-only-links.csv` | `kk-index-b-subelement-network.rds`, `kk-index-b-heading-network.rds` |
+| `build-index-b-verified.R` | `kk-index-b-subelement-network.rds`, `kk-index-b-definitions.csv` | `kk-index-b-verified-network.rds` (the one definitions network every analysis reads), `kk-index-b-excluded-codes.csv` (codes not in Index A, with their sub-elements) |
 | `check-index-b-blocks.R` | `documents/Kroeber-kluckhohn.pdf`, `kk-index-b-edges.csv`, `kk-index-b-block-map.csv` | `kk-index-b-block-check.csv`, `kk-index-b-block-check-summary.csv`, `kk-index-b-block-check-review.csv` (machine cross-check of heading assignments; not a human reader) |
 | `check-index-b-networks.R` | `kk-index-b-*-network.rds`, `kk-index-b-edges.csv`, `kk-index-b-definitions.csv`, `kk-boroch-crosswalk.csv` | nothing (stops on a mismatch) |
 | `kkcc-definition-attrs.R` (helper) | `kkcc_two_mode.rds` | returns the definition table used by the analyses |
@@ -46,8 +47,9 @@ the two.
 | `build-supplement-bibliography.R` | Boroch Supplement Bibliography | `kkcc-supplement-bibliography.csv`, `kkcc-definition-biblio.csv` |
 | `build-definition-texts.R` | Boroch appendix | `kkcc-definition-texts.csv` (verbatim; not for release) |
 | `analysis-ca-index-b.R` | Index B sub-element network | CA of the largest-component 2-core, MST figures, CA score CSVs |
+| `analysis-ca-works-index-b.R` | Index B works network | CA of the works × sub-element 2-core, CA figures, CA score CSVs |
+| `analysis-centrality-index-b.R` | Index B definitions and works networks | Two-mode closeness and betweenness on each network's largest component, centrality CSVs |
 | `analysis-ca-mst-main.R` | main two-mode network | CA and Kruskal maximum spanning trees (main network) |
-| `analysis-backbone-main.R` | main network projections | FDSM backbones (alpha 0.10) |
 | `analysis-centrality-prestige-main.R` | main network | centrality, prestige and PageRank-family scores |
 
 Scripts live in `scripts/`; `documents/` holds the source PDFs and the Archive text. Run order (from the project root):
@@ -59,10 +61,11 @@ Scripts live in `scripts/`; `documents/` holds the source PDFs and the Archive t
 5. `scripts/build-index-b.R`
 6. `scripts/build-index-b-crosswalk.R`
 7. `scripts/build-index-b-networks.R` (K&K Index B sub-element and heading networks, as igraph objects)
-8. `scripts/analysis-index-b.R`
-9. `scripts/check-index-b-blocks.R` (machine cross-check of Index B heading assignments against the printed text)
-10. `scripts/check-index-b-networks.R` (validation of the Index B igraph objects; stops on any mismatch)
-11. `scripts/analysis-ca-index-b.R` (CA and MST figures for the Index B sub-element network)
+8. `scripts/build-index-b-verified.R` (verified sub-element x code network; codes not in Index A are excluded here)
+9. `scripts/analysis-index-b.R`
+10. `scripts/check-index-b-blocks.R` (machine cross-check of Index B heading assignments against the printed text)
+11. `scripts/check-index-b-networks.R` (validation of the Index B igraph objects; stops on any mismatch)
+12. `scripts/analysis-ca-index-b.R` (CA and MST figures for the Index B definitions network), then `analysis-mst-definitions-index-b.R` and `analysis-centrality-index-b.R`
 
 The analysis scripts and the report read definition attributes through `scripts/kkcc-definition-attrs.R`.
 

@@ -8,6 +8,7 @@ library(ggplot2)
 library(ggrepel)
 
 set.seed(8427)
+invisible(lapply(c("figures/boroch", "figures/kk-index-b/definitions", "figures/kk-index-b/works"), dir.create, recursive = TRUE, showWarnings = FALSE))
 
 d  <- readRDS("data/kkcc_two_mode_main.rds")
 A  <- d$biadjacency
@@ -72,10 +73,10 @@ ggplot(df.scree[1:n.show, ], aes(x = dim)) +
                         labels = scales::percent_format(accuracy = 1))) +
   theme_minimal() +
   theme(plot.title = element_text(face = "bold", size = 11)) +
-  labs(title = "CA scree plot, collapsed KKCC network",
+  labs(title = "CA scree plot, definitions network (collapsed KKCC)",
        subtitle = "bars: nontrivial eigenvalues; line: cumulative share of inertia",
        x = "Dimension")
-ggsave("figures/kkcc-ca-main-scree.png", width = 8, height = 5, dpi = 150, bg = "white")
+ggsave("figures/boroch/ca-definitions-main-scree.png", width = 8, height = 5, dpi = 150, bg = "white")
 
 df.p <- data.frame(Z.v.p, concept = rownames(A))
 df.g <- data.frame(Z.v.g,
@@ -139,14 +140,14 @@ ca.panel.type <- function(x, y, xlab, ylab, subtitle, file) {
                size = 1.4, color = "grey75", alpha = 0.7) +
     geom_point(data = df.bary, aes(.data[[x]], .data[[y]], color = type),
                shape = 18, size = 5) +
-    geom_text_repel(data = df.bary, aes(.data[[x]], .data[[y]], label = type),
+    geom_label_repel(fill = "white", label.size = 0, color = "#0E5C47", data = df.bary, aes(.data[[x]], .data[[y]], label = type),
                     size = 3, fontface = "italic", max.overlaps = Inf,
                     segment.color = "grey70", min.segment.length = 0, seed = 8427,
                     force = 1, force_pull = 0.2, point.padding = 0.6,
                     box.padding = 0.45, max.iter = 20000) +
     geom_point(data = df.p, aes(.data[[x]], .data[[y]], color = concept),
                size = 4.6, shape = 16, alpha = 0.95) +
-    geom_text_repel(data = df.p, aes(.data[[x]], .data[[y]], label = concept),
+    geom_label_repel(fill = "white", label.size = 0, color = "#0E5C47", data = df.p, aes(.data[[x]], .data[[y]], label = concept),
                     size = 3.2, fontface = "bold", max.overlaps = Inf,
                     segment.color = "grey70", min.segment.length = 0, seed = 8427,
                     force = 1.5, force_pull = 0.2, point.padding = 0.5,
@@ -154,20 +155,20 @@ ca.panel.type <- function(x, y, xlab, ylab, subtitle, file) {
     scale_color_manual(values = c(main_pal, type_pal)) +
     theme_minimal() +
     theme(legend.position = "none", plot.title = element_text(face = "bold", size = 11)) +
-    labs(title = "CA of the collapsed KKCC network",
+    labs(title = "CA of the definitions network (collapsed KKCC)",
          subtitle = subtitle, x = xlab, y = ylab)
   ggsave(file, width = 9, height = 7, dpi = 150, bg = "white")
 }
 
 ca.panel.type("dim1", "dim2", "First Dimension", "Second Dimension",
               "main categories (active, filled); definition types (passive barycenters, diamonds)",
-              "figures/kkcc-ca-main.png")
+              "figures/boroch/ca-definitions-main-d12.png")
 ca.panel.type("dim2", "dim3", "Second Dimension", "Third Dimension",
               "dims 2 vs 3; main categories (active, filled); definition types (passive barycenters, diamonds)",
-              "figures/kkcc-ca-main-d23.png")
+              "figures/boroch/ca-definitions-main-d23.png")
 ca.panel.type("dim4", "dim5", "Fourth Dimension", "Fifth Dimension",
               "dims 4 vs 5; main categories (active, filled); definition types (passive barycenters, diamonds)",
-              "figures/kkcc-ca-main-d45.png")
+              "figures/boroch/ca-definitions-main-d45.png")
 
 write.csv(cbind(concept = rownames(Z.v.p), Z.v.p), "data/kkcc-ca-concept-scores-main.csv",
           row.names = FALSE)
@@ -222,8 +223,8 @@ ggraph(st.concept, layout = lo.c) +
   scale_y_continuous(expand = expansion(mult = c(0.06, 0.08))) +
   theme_void() +
   theme(plot.title = element_text(face = "bold", size = 13)) +
-  labs(title = "Maximum spanning tree, concept projection (shared definitions)")
-ggsave("figures/kkcc-mst-main-concept.png", width = 11, height = 7.5, dpi = 150, bg = "white")
+  labs(title = "Maximum spanning tree, definitions network (concept nodes, shared definitions)")
+ggsave("figures/boroch/mst-definitions-main-concept.png", width = 11, height = 7.5, dpi = 150, bg = "white")
 
 # definition projection: nodes filled by definition type, all nodes labeled,
 # size proportional to degree
@@ -245,8 +246,8 @@ ggraph(st.def, layout = lo.d) +
         legend.title = element_text(size = 9),
         legend.text = element_text(size = 8)) +
   guides(fill = guide_legend(nrow = 1, override.aes = list(size = 3))) +
-  labs(title = "Maximum spanning tree, definition projection (shared categories)",
+  labs(title = "Maximum spanning tree, definitions network (definition nodes, shared categories)",
        fill = "definition type", size = "degree")
-ggsave("figures/kkcc-mst-main-definition.png", width = 13, height = 8, dpi = 150, bg = "white")
+ggsave("figures/boroch/mst-definitions-main-definition.png", width = 13, height = 8, dpi = 150, bg = "white")
 
 cat("figures written to figures/\n")

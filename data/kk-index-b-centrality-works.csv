@@ -1,0 +1,281 @@
+"node","mode","degree","closeness","betweenness.pct"
+"society","first",29,0.6129,10.6771
+"social","first",32,0.6112,12.3675
+"behavior","first",23,0.5897,7.6426
+"group","first",24,0.5742,6.2306
+"beliefs","first",18,0.5727,5.0997
+"Kelly & Kluckhohn 1945a","second",30,0.5725,11.1827
+"total","first",21,0.5624,5.8853
+"ideas","first",21,0.5595,6.1092
+"sum","first",19,0.5375,3.5368
+"ways","first",10,0.5362,2.2274
+"individuals","first",18,0.5349,3.3485
+"Gillin J.L. & Gillin John P 1942","second",14,0.5341,2.547
+"habits","first",15,0.5336,2.7614
+"Herskovits 1948","second",18,0.5313,5.1355
+"Winston 1933","second",18,0.5299,5.4108
+"customs","first",15,0.5259,2.6386
+"Kroeber 1948a","second",17,0.5257,3.9065
+"Taylor 1948","second",15,0.5257,3.4306
+"acquired","first",14,0.5234,1.7495
+"members of a society","first",13,0.5221,1.3131
+"learning","first",15,0.5159,3.3847
+"Bidney 1947","second",13,0.5148,2.8279
+"Linton 1936","second",14,0.5148,3.2534
+"knowledge","first",8,0.5147,0.8925
+"behavior patterns","first",11,0.5123,1.3731
+"transmission","first",13,0.5123,2.735
+"institutions","first",9,0.5111,1.1736
+"shared","first",7,0.5075,0.6314
+"systems","first",8,0.5075,2.7388
+"a people","first",13,0.5064,2.2721
+"common","first",10,0.5064,1.528
+"attitudes","first",10,0.5052,1.0123
+"thinking","first",6,0.5052,0.8166
+"products","first",9,0.504,2.0463
+"way of life","first",12,0.504,1.6898
+"Young 1934","second",20,0.5032,5.1195
+"acting","first",4,0.4983,0.2525
+"Murdock 1949a","second",13,0.4981,2.8944
+"generations","first",9,0.496,1.1855
+"feeling","first",5,0.4938,0.5579
+"techniques","first",6,0.4938,0.3647
+"Hiller 1933","second",14,0.492,2.4206
+"Nimkoff & Ogburn 1940","second",13,0.492,3.2363
+"Tylor 1871","second",12,0.492,1.5811
+"patterns","first",11,0.4916,1.2635
+"Feibleman 1946","second",7,0.4908,1.0634
+"values","first",6,0.4905,0.8496
+"Reuter 1939","second",15,0.4884,3.4954
+"persons","first",7,0.4872,0.6285
+"Klineberg 1935","second",8,0.4836,0.8955
+"complex whole","first",5,0.4829,0.847
+"human creation","first",3,0.4829,0.1606
+"social heritage","first",7,0.4829,0.6251
+"tradition","first",6,0.4829,0.3058
+"tools","first",8,0.4818,0.8493
+"Opler 1947","second",7,0.4813,0.6792
+"Bose 1929","second",14,0.4801,2.2641
+"Dixon 1928","second",9,0.4801,1.2808
+"activities","first",7,0.4797,0.4373
+"art","first",5,0.4797,0.3452
+"totality","first",4,0.4786,0.1938
+"Burgess & Park 1921","second",6,0.4778,0.6742
+"habitual","first",5,0.4776,0.3669
+"learned behavior","first",9,0.4776,0.9779
+"symbols","first",8,0.4776,0.9227
+"Angyal 1941","second",9,0.4767,1.3108
+"LaPiere 1946","second",8,0.4767,0.7825
+"Sutherland & Woodward 1940","second",11,0.4767,1.7966
+"artifacts","first",5,0.4766,0.3173
+"thought","first",7,0.4766,0.6931
+"language","first",5,0.4745,0.6943
+"Linton 1945a","second",8,0.4744,1.6555
+"passed down","first",6,0.4735,0.3201
+"socially","first",6,0.4735,0.7999
+"Firth 1939","second",8,0.4733,1.3248
+"Thomas 1937","second",7,0.4733,0.7013
+"traits","first",4,0.4724,0.1452
+"Folsom 1931","second",13,0.4722,1.9409
+"standardized","first",3,0.4694,0.1548
+"morals","first",3,0.4684,0.0555
+"organized","first",5,0.4684,0.2797
+"Groves & Moore 1940","second",9,0.4678,1.2155
+"Kluckhohn 1949a","second",8,0.4678,0.9835
+"accumulated treasury","first",3,0.4674,0.2122
+"historically","first",3,0.4674,0.1064
+"Lowie 1937","second",6,0.4667,1.1385
+"actions","first",6,0.4664,0.4955
+"objects","first",4,0.4664,0.1671
+"Linton 1945b","second",8,0.4656,0.8043
+"material traits","first",3,0.4654,0.1212
+"non-material traits","first",3,0.4654,0.1212
+"Frank 1948","second",12,0.4645,1.8365
+"body","first",3,0.4644,0.0815
+"association between persons","first",4,0.4634,0.2426
+"process","first",4,0.4624,0.2912
+"Bidney 1946","second",13,0.4623,2.3032
+"White 1949b","second",10,0.4623,1.8671
+"forms","first",4,0.4615,0.2423
+"summation","first",2,0.4615,0.0683
+"Malinowski 1931","second",9,0.4602,1.7171
+"Warden 1936","second",6,0.4591,1.1347
+"material objects","first",5,0.4576,0.32
+"Wissler 1929","second",7,0.457,1.3737
+"created","first",3,0.4566,0.0729
+"etiquette","first",3,0.4566,0.3098
+"patterned ways of behavior","first",4,0.4566,0.1643
+"Gorer 1949","second",7,0.456,0.9654
+"Kluckhohn & Leighton 1946","second",11,0.456,2.0138
+"designs for living","first",2,0.4557,0.0448
+"Bogardus 1930","second",11,0.455,2.0737
+"civilization","first",5,0.4547,0.3691
+"Sorokin 1937","second",6,0.4539,0.543
+"Bennett & Tumin 1949","second",5,0.4529,0.2893
+"Kluckhohn 1942","second",8,0.4529,1.2735
+"social group","first",5,0.4528,0.2559
+"mass","first",2,0.4519,0.0397
+"conditioned","first",2,0.451,0.0146
+"community","first",3,0.4501,0.1245
+"members of a group","first",2,0.4501,0.1174
+"Gillin John P 1948","second",6,0.4488,0.9246
+"Murdock 1941","second",5,0.4488,0.5126
+"Radcliffe-Brown, A. R. 1949","second",11,0.4488,2.3668
+"environment","first",4,0.4482,0.1696
+"organization","first",6,0.4482,0.6384
+"Bidney 1942","second",10,0.4478,1.5496
+"Boas 1930","second",6,0.4478,0.5978
+"Titiev 1949","second",5,0.4478,0.3728
+"Folsom 1928","second",7,0.4468,0.5418
+"Mead 1937","second",7,0.4468,1.2607
+"adjustments","first",5,0.4464,0.559
+"Huntington 1945","second",10,0.4458,1.4291
+"Malinowski 1944","second",3,0.4458,0.1169
+"Turney-High 1949","second",8,0.4448,1.0907
+"Young 1947","second",7,0.4438,0.5063
+"past","first",3,0.4437,0.1252
+"man-made","first",3,0.4428,0.406
+"goals","first",2,0.4419,0.0389
+"Morris 1948","second",6,0.4419,0.4303
+"Osgood 1942","second",4,0.4419,0.2612
+"Henry 1949","second",5,0.4409,0.3075
+"Benedict 1929","second",5,0.4399,0.1993
+"act","first",4,0.4392,0.2107
+"Katz & Schanck 1938","second",3,0.4389,0.0823
+"Hoebel 1949","second",6,0.438,0.4598
+"interaction","first",3,0.4366,0.197
+"Davis Allison 1948","second",4,0.4361,0.19
+"habit patterns","first",2,0.4348,0.1886
+"social heredity","first",2,0.4348,0.0188
+"strain","first",2,0.4348,0.0188
+"Piddington 1950","second",6,0.4342,1.1373
+"conditioning","first",2,0.434,0.0183
+"reactions","first",3,0.434,0.0581
+"time","first",2,0.4331,0.0727
+"Roheim 1934","second",3,0.4323,0.1872
+"Ward 1903","second",2,0.4323,0.0585
+"practical arts","first",2,0.4322,0.0319
+"elements","first",4,0.4314,0.3092
+"Lundberg 1939","second",9,0.4304,1.8347
+"common ends","first",2,0.4297,0.0588
+"Lowie 1934","second",5,0.4286,0.1949
+"behave","first",2,0.428,0.0194
+"relationships","first",2,0.428,0.0709
+"Davis Allison & Dollard 1940","second",5,0.4277,0.3203
+"learned patterns","first",2,0.4272,0.0219
+"Wissler 1916","second",4,0.4267,0.1401
+"Young 1942","second",6,0.4267,0.7415
+"product","first",2,0.4255,0.0352
+"relatively constant","first",2,0.4255,0.0412
+"Morris 1946","second",6,0.4249,0.7427
+"imitation","first",3,0.4247,0.0844
+"area","first",2,0.4239,0.0235
+"Dollard 1939","second",2,0.4231,0.028
+"capabilities","first",3,0.4222,0.0168
+"communicated","first",3,0.4222,0.1141
+"artificial","first",3,0.4214,0.0722
+"Bain 1942","second",3,0.4204,0.2078
+"Kolb & Wilson 1949","second",7,0.4204,0.5279
+"accepted","first",2,0.419,0.0725
+"goods","first",2,0.4182,0.0239
+"satisfied needs of individuals","first",4,0.4182,0.1059
+"technical processes","first",2,0.4182,0.0239
+"Kluckhohn 1951a","second",4,0.4178,0.1798
+"satisfaction","first",2,0.4174,0.1732
+"traditional","first",4,0.4174,0.135
+"Bernard 1942","second",3,0.4169,0.1758
+"Thurnwald 1950","second",3,0.4169,0.2458
+"White 1949a","second",7,0.4169,0.6908
+"adjust","first",3,0.4166,0.1002
+"Slotkin 1950","second",3,0.4161,0.1336
+"all that man has produced","first",2,0.4158,0.0201
+"selection","first",2,0.4158,0.0212
+"Steward 1950","second",5,0.4143,0.5595
+"integrated","first",2,0.4142,0.0194
+"inventions","first",2,0.4142,0.0194
+"Blumenthal 1937","second",6,0.4135,0.6402
+"Bryson 1947","second",3,0.4135,0.1035
+"Small 1905","second",5,0.4135,0.8723
+"socially transmitted","first",3,0.4127,0.0649
+"social legacy","first",2,0.4119,0.0158
+"Redfield 1940","second",5,0.4118,0.417
+"basic needs","first",2,0.4111,0.031
+"social organization","first",2,0.4103,0.0672
+"communication","first",3,0.4088,0.0985
+"societal problems","first",4,0.4088,0.1553
+"folkways","first",1,0.408,0
+"Hart & Pantzer 1925","second",5,0.4067,0.2706
+"Burkitt 1929","second",4,0.4051,0.4128
+"Lynd 1940","second",7,0.4051,0.8416
+"Marett 1928","second",2,0.4051,0.1881
+"period of time","first",2,0.4043,0.0485
+"Becker 1950","second",3,0.4043,0.1521
+"Keller & Sumner 1927","second",5,0.4043,0.3871
+"Murray 1943","second",6,0.4043,0.6309
+"Tozzer 1925","second",2,0.4034,0.128
+"expressing","first",2,0.402,0.03
+"mind","first",2,0.402,0.0417
+"social procedures","first",2,0.4013,0.021
+"norms","first",2,0.4005,0.0525
+"Davis Kingsley 1949","second",3,0.4002,0.2382
+"Rouse 1939","second",3,0.4002,0.4679
+"White 1943","second",4,0.4002,0.2506
+"configuration","first",2,0.3991,0.0367
+"superorganic order","first",2,0.3991,0.0753
+"Ford Clellan S 1939","second",3,0.3986,0.2549
+"Benedict 1934","second",3,0.3978,0.4006
+"modes of behavior","first",2,0.3962,0.0167
+"Ford Clellan S 1942","second",6,0.3962,0.888
+"socially inherited","first",3,0.3955,0.1336
+"Panunzio 1939","second",13,0.3954,3.1161
+"social needs","first",2,0.3948,0.0104
+"inherits","first",3,0.394,0.049
+"utensils","first",2,0.394,0.0142
+"Sapir 1921","second",3,0.3939,0.2168
+"cultural tradition","first",2,0.3933,0.0251
+"skills","first",2,0.3933,0.1041
+"usages","first",2,0.3933,0.1041
+"aggregate","first",2,0.3926,0.0394
+"doing","first",2,0.3926,0.0327
+"Haring 1949","second",3,0.39,0.073
+"Hockett 1950","second",2,0.3885,0.0325
+"modes of thought","first",2,0.3884,0.0194
+"present","first",2,0.3884,0.0141
+"means of adjustment","first",2,0.3878,0.0376
+"solutions","first",2,0.3878,0.0185
+"Parsons 1949","second",4,0.3878,0.2042
+"interrelated patterns","first",2,0.3871,0.062
+"instruments","first",2,0.3864,0.1584
+"mean","first",2,0.3864,0.1297
+"needs","first",2,0.3864,0.0944
+"artistic ideals","first",2,0.3857,0.0017
+"cultivated","first",2,0.3857,0.0017
+"intellectual ideals","first",2,0.3857,0.0017
+"social ideals","first",2,0.3857,0.0017
+"Blumenthal 1941","second",4,0.3855,0.3352
+"Dawson 1928","second",3,0.3855,0.125
+"sentiments","first",2,0.385,0.0129
+"Osgood 1940","second",3,0.3833,0.2044
+"Sorokin 1947","second",6,0.3833,0.5788
+"human environment","first",2,0.383,0.038
+"F. R. Kluckhohn 1950","second",2,0.3818,0.2288
+"Carr 1945","second",3,0.3789,0.0779
+"Ford James A 1949","second",2,0.3782,0.0593
+"Hart 1941","second",3,0.3761,0.1878
+"industries","first",3,0.3758,0.0931
+"Coutu 1949","second",4,0.3746,0.2883
+"Dodd 1941","second",3,0.3739,0.4925
+"Jacobs & Stem 1947","second",2,0.3725,0.0287
+"Lasswell 1948","second",3,0.3719,0.0619
+"standards","first",2,0.3669,0.0174
+"Willey 1929","second",4,0.3664,0.4126
+"integrated and unintegrated groups","first",2,0.3633,0.0262
+"Dietschy 1947","second",2,0.3617,0.0233
+"Benedict 1947","second",2,0.3591,0.0191
+"Bernard 1941b","second",3,0.3578,0.2768
+"responses","first",2,0.3544,0.0454
+"Sapir 1924a","second",3,0.3467,0.0767
+"concepts","first",1,0.3395,0
+"physical biological and human nature","first",1,0.3395,0
+"Wissler 1920","second",3,0.3378,0.089
+"results","first",2,0.3313,0.0086

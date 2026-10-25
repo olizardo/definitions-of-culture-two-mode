@@ -4,18 +4,19 @@
 #
 # The full sub-element network is disconnected by design (15 components and 5
 # isolated codes), so the CA is computed on the largest component's 2-core,
-# which is connected. Inputs: data/kk-index-b-subelement-network.rds.
+# which is connected. Input: data/kk-index-b-verified-network.rds (built by
+# scripts/build-index-b-verified.R; codes not in Index A are excluded).
 
 library(igraph)
 library(ggplot2)
 library(ggrepel)
 
 set.seed(8427)
+invisible(lapply(c("figures/boroch", "figures/kk-index-b/definitions", "figures/kk-index-b/works"), dir.create, recursive = TRUE, showWarnings = FALSE))
 
 dir.create("figures", showWarnings = FALSE)
 
-se <- readRDS("data/kk-index-b-subelement-network.rds")
-g <- se$graph
+g <- readRDS("data/kk-index-b-verified-network.rds")$graph
 code_group <- setNames(V(g)$kk_group, V(g)$name)
 
 # ------------------------------------------------- largest component 2-core
@@ -102,10 +103,10 @@ ggplot(df.scree[1:n.show, ], aes(x = dim)) +
                         labels = scales::percent_format(accuracy = 1))) +
   theme_minimal() +
   theme(plot.title = element_text(face = "bold", size = 11)) +
-  labs(title = "CA scree plot, K&K Index B sub-element network (LCC 2-core)",
+  labs(title = "CA scree plot, definitions network (Index B sub-element nodes, LCC 2-core)",
        subtitle = "bars: nontrivial eigenvalues; line: cumulative share of inertia",
        x = "Dimension")
-ggsave("figures/kk-index-b-ca-subel-lcc2core-scree.png",
+ggsave("figures/kk-index-b/definitions/ca-lcc2core-scree.png",
        width = 8, height = 5, dpi = 150, bg = "white")
 
 # data frames for plotting
@@ -150,7 +151,7 @@ ca.panel <- function(x, y, xlab, ylab, subtitle, file) {
                size = 1.4, color = "grey75", alpha = 0.7) +
     geom_point(data = df.bary, aes(.data[[x]], .data[[y]], color = group),
                shape = 18, size = 5) +
-    geom_text_repel(data = df.bary, aes(.data[[x]], .data[[y]], label = group),
+    geom_label_repel(fill = "white", label.size = 0, color = "#0E5C47", data = df.bary, aes(.data[[x]], .data[[y]], label = group),
                     size = 3, fontface = "italic", max.overlaps = Inf,
                     segment.color = "grey70", min.segment.length = 0, seed = 8427,
                     force = 1, force_pull = 0.2, point.padding = 0.6,
@@ -159,7 +160,7 @@ ca.panel <- function(x, y, xlab, ylab, subtitle, file) {
                size = 2.6, shape = 16, color = "grey35", alpha = 0.9) +
     geom_point(data = df.lab, aes(.data[[x]], .data[[y]]),
                size = 3.4, shape = 16, color = "#1B9E77") +
-    geom_text_repel(data = df.lab, aes(.data[[x]], .data[[y]], label = element),
+    geom_label_repel(fill = "white", label.size = 0, color = "#0E5C47", data = df.lab, aes(.data[[x]], .data[[y]], label = element),
                     size = 2.7, fontface = "bold", max.overlaps = Inf,
                     segment.color = "grey70", min.segment.length = 0, seed = 8427,
                     force = 1.5, force_pull = 0.2, point.padding = 0.4,
@@ -167,7 +168,7 @@ ca.panel <- function(x, y, xlab, ylab, subtitle, file) {
     scale_color_manual(values = group_pal) +
     theme_minimal() +
     theme(legend.position = "none", plot.title = element_text(face = "bold", size = 11)) +
-    labs(title = "CA of the K&K Index B sub-element network (LCC 2-core)",
+    labs(title = "CA of the definitions network (Index B sub-element nodes, LCC 2-core)",
          subtitle = subtitle, x = xlab, y = ylab)
   ggsave(file, width = 9, height = 7, dpi = 150, bg = "white")
 }
@@ -175,13 +176,13 @@ ca.panel <- function(x, y, xlab, ylab, subtitle, file) {
 ca.panel("dim1", "dim2", "First Dimension", "Second Dimension",
          "sub-elements (active; labeled if top by |score| or mass);
          K&K groups (passive barycenters, diamonds)",
-         "figures/kk-index-b-ca-subel-lcc2core-d12.png")
+         "figures/kk-index-b/definitions/ca-lcc2core-d12.png")
 ca.panel("dim2", "dim3", "Second Dimension", "Third Dimension",
          "dims 2 vs 3; sub-elements (active); K&K groups (passive barycenters)",
-         "figures/kk-index-b-ca-subel-lcc2core-d23.png")
+         "figures/kk-index-b/definitions/ca-lcc2core-d23.png")
 ca.panel("dim4", "dim5", "Fourth Dimension", "Fifth Dimension",
          "dims 4 vs 5; sub-elements (active); K&K groups (passive barycenters)",
-         "figures/kk-index-b-ca-subel-lcc2core-d45.png")
+         "figures/kk-index-b/definitions/ca-lcc2core-d45.png")
 
 # ------------------------------------------------------------------ scores
 write.csv(cbind(element = rownames(Z.v.p), mass = mass.p, Z.v.p),
@@ -262,28 +263,15 @@ mst.plot <- function(fill_vals, fill_scale, subtitle, file, size_by_btw = FALSE,
           legend.title = element_text(size = 8),
           legend.text = element_text(size = 5.5),
           legend.key.size = unit(0.22, "cm")) +
-    labs(title = "Maximum spanning tree, concept (sub-element) projection, K&K Index B LCC 2-core",
+    labs(title = "Maximum spanning tree, definitions network (sub-element nodes), K&K Index B LCC 2-core",
          subtitle = subtitle)
   if (legend == "heading")
     p <- p + guides(fill = guide_legend(title = "Index B heading", ncol = 9, byrow = TRUE))
   ggsave(file, p, width = 15, height = 9, dpi = 150, bg = "white")
 }
 
-mst.plot(V(st.concept)$heading, scale_fill_manual(values = heading_pal),
-         "ties = shared definition codes; nodes colored by printed Index B heading block",
-         "figures/kk-index-b-mst-concept-heading.png", legend = "heading")
-
-mst.plot(btw, scale_fill_viridis_c(option = "viridis", trans = "sqrt", begin = 0.05, end = 0.95,
-                                   name = "betweenness"),
-         "ties = shared definition codes; node fill = betweenness in the tree (sqrt scale)",
-         "figures/kk-index-b-mst-concept-btw.png")
-
-mst.plot(V(st.concept)$comm, scale_fill_brewer(palette = "Set3", name = "community"),
-         "color = leading-eigenvector community of the projection; size = tree betweenness (sqrt-scaled)",
-         "figures/kk-index-b-mst-concept-comm.png", size_by_btw = TRUE)
-
 mst.plot(V(st.concept)$commtree, scale_fill_manual(values = pal.tree),
          "color = leading-eigenvector community computed on the tree itself; size = tree betweenness (sqrt-scaled)",
-         "figures/kk-index-b-mst-concept-comm-tree.png", size_by_btw = TRUE)
+         "figures/kk-index-b/definitions/mst-subelement-comm-tree.png", size_by_btw = TRUE)
 
 cat("figures and score CSVs written\n")

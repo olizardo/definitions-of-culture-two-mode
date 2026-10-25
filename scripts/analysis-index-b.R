@@ -35,7 +35,6 @@ describe_network <- function(m, label) {
 }
 
 data_dir <- "data"
-kk_sub <- readRDS(file.path(data_dir, "kk_biadjacency_subelement.rds"))
 kk_head <- readRDS(file.path(data_dir, "kk_biadjacency_heading.rds"))
 boroch <- readRDS(file.path(data_dir, "kkcc_two_mode.rds"))$biadjacency
 
@@ -43,8 +42,7 @@ boroch <- readRDS(file.path(data_dir, "kkcc_two_mode.rds"))$biadjacency
 # so that Index-B-only OCR artefacts do not inflate definition counts.
 defs <- read.csv(file.path(data_dir, "kk-index-b-definitions.csv"))
 verified <- defs$kk_code[defs$in_index_a]
-kk_sub_v <- kk_sub[, colnames(kk_sub) %in% verified, drop = FALSE]
-kk_sub_v <- kk_sub_v[rowSums(kk_sub_v) > 0, , drop = FALSE]
+kk_sub_v <- readRDS(file.path(data_dir, "kk-index-b-verified-network.rds"))$biadjacency
 kk_head_v <- kk_head[, colnames(kk_head) %in% verified, drop = FALSE]
 kk_head_v <- kk_head_v[rowSums(kk_head_v) > 0, , drop = FALSE]
 
@@ -56,18 +54,38 @@ stats <- rbind(
 write.csv(stats, file.path(data_dir, "kk-index-b-network-stats.csv"), row.names = FALSE)
 stats
 
+# Works network (sub-elements x works) and definitions network (sub-elements x
+# verified codes), each seen from its two node sets.
+works <- readRDS(file.path(data_dir, "kk-index-b-work-concept-network.rds"))$incidence
+works <- works[rowSums(works) > 0, , drop = FALSE]
+
 degree_df <- rbind(
-  data.frame(network = "Boroch Table 2", mode = "definition", degree = colSums(boroch)),
-  data.frame(network = "Boroch Table 2", mode = "concept", degree = rowSums(boroch)),
-  data.frame(network = "K&K sub-element", mode = "definition", degree = colSums(kk_sub_v)),
-  data.frame(network = "K&K sub-element", mode = "concept", degree = rowSums(kk_sub_v))
+  data.frame(panel = "Works network: sub-element nodes", degree = rowSums(works)),
+  data.frame(panel = "Definitions network: sub-element nodes", degree = rowSums(kk_sub_v)),
+  data.frame(panel = "Works network: work nodes", degree = colSums(works)),
+  # isolated codes (no sub-elements) are not nodes of the network
+  data.frame(panel = "Definitions network: definition (code) nodes",
+             degree = colSums(kk_sub_v)[colSums(kk_sub_v) > 0])
 )
+degree_df$panel <- factor(degree_df$panel, levels = unique(degree_df$panel))
 
+# x ticks per panel: the panel's lowest integer degree, then multiples of 5.
+# lim is the expanded range: bars reach 0.5 beyond each integer and the scale adds 0.6.
+degree.breaks <- function(lim) {
+  pad <- 0.5 + 0.6
+  lo <- round(lim[1] + pad); hi <- round(lim[2] - pad)
+  m <- seq(0, hi, by = 5)
+  unique(c(lo, m[m > lo]))
+}
+
+dir.create(file.path("figures", "kk-index-b"), recursive = TRUE, showWarnings = FALSE)
 ggplot(degree_df, aes(x = degree)) +
-  geom_histogram(binwidth = 1, boundary = 0.5) +
-  facet_grid(mode ~ network, scales = "free_y") +
-  labs(x = "Degree (number of linked elements)", y = "Count",
-       title = "Degree distributions: Boroch Table 2 vs K&K Index B")
-
-ggsave(file.path("figures", "kk-index-b-degree-comparison.png"), bg = "white",
-       width = 8, height = 5, dpi = 150)
+  geom_histogram(binwidth = 1, boundary = 0.5, fill = "grey40", color = "white") +
+  # each panel has its own axes so bar heights read against their own scale
+  facet_wrap(~ panel, ncol = 2, scales = "free", axes = "all") +
+  scale_x_continuous(breaks = degree.breaks, expand = expansion(add = 0.6)) +
+  theme_minimal() +
+  labs(x = "Degree (number of linked nodes)", y = "Count",
+       title = "Degree distributions: works network vs definitions network, K&K Index B")
+ggsave(file.path("figures", "kk-index-b", "degree-works-definitions.png"), bg = "white",
+       width = 8, height = 6, dpi = 150)

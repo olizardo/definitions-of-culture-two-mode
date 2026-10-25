@@ -1,0 +1,211 @@
+% Draft. Generated with AI assistance under human direction; not yet reviewed by an analyst.
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{caption}
+
+\title{Two-mode networks of culture elements, works, and definitions:\\
+K\&K Index B, works and definition networks}
+\author{Draft}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We describe two two-mode networks built from the K\&K Index B of Kroeber and Kluckhohn's \emph{Culture: A Critical Review of Concepts and Definitions} (1952). In the \emph{definitions network}, Index B sub-elements are linked to the definition codes (A--G) under which they are indexed. In the \emph{works network}, sub-elements are linked to the authored works they cite. Both networks share the sub-element node set, which lets us compare how sub-elements are spread across definitions and across works. We report basic structure, degree distributions, nearest-neighbour degree, degree correlation, and modularity, then apply correspondence analysis and maximum spanning trees to each network. The analysis is descriptive. Several steps depend on decisions noted in the text.
+\end{abstract}
+
+\section{Data and networks}
+
+The Index B sub-element matrix records, for each sub-element, the definition codes it is indexed under. We keep only codes that appear in the K\&K Index A (the verified universe), which removes Index B OCR artefacts. Sub-element names repeat across headings in the source, and the sub-element network treats same-named sub-elements as one node. No names repeat in the matrices used here, so the counts below are unaffected. The works network uses the same sub-element nodes, with ties to the works that cite each sub-element. Works are keyed by author and year, and a work can sit under several codes.
+
+\section{Two-mode structure}
+
+Table~\ref{tab:structure} reports the basic statistics. Edges are counted from the biadjacency matrices, and the two modes are counted separately, not from the total vertex count.
+
+\begin{table}[ht]
+\centering
+\caption{Basic structure of the two networks (full networks, before any 2-core).}
+\label{tab:structure}
+\begin{tabular}{lrr}
+\toprule
+ & Definitions network & Works network \\
+\midrule
+Sub-element nodes & 464 & 159 \\
+Second-mode nodes & 160 codes & 121 works \\
+Edges & 1182 & 833 \\
+Density & 0.016 & 0.043 \\
+Mean degree, sub-elements & 2.55 (range 1--36) & 5.24 (range 1--32) \\
+Mean degree, second mode & 7.39 (range 1--25) & 6.88 (range 2--30) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Degrees in the two modes count different things. A sub-element's degree is the number of codes (or works) it is linked to. A code's or work's degree is the number of sub-elements it contains. In each network the two degree sums equal the edge count.
+
+\section{Degree distributions}
+
+Figure~\ref{fig:degree} shows the degree distributions for each node set. Sub-elements in both networks are concentrated at low degree: in the definitions network most sub-elements sit under one code, and in the works network most cite two or three works. The definition codes and works have more spread: most have between about 2 and 10 sub-elements, with a long tail. Each panel has its own axes, so the x-ranges differ across panels. Definition codes with no sub-elements are excluded.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{figures/kk-index-b/degree-works-definitions.png}
+\caption{Degree distributions. Top row: sub-elements in the works network (left) and the definitions network (right). Bottom row: works (left) and definition codes (right).}
+\label{fig:degree}
+\end{figure}
+
+\section{Degree centrality, nearest-neighbour degree, and degree correlation}
+
+Degree centrality is the degree normalized by the size of the opposite mode. Average nearest-neighbour degree is the mean degree of a node's neighbours. For sub-elements it is the mean number of codes (or works) of the sub-elements' neighbours. For codes or works it is the mean degree of the sub-elements they contain. Table~\ref{tab:knn} gives the network means.
+
+\begin{table}[ht]
+\centering
+\caption{Average nearest-neighbour degree and degree correlation.}
+\label{tab:knn}
+\begin{tabular}{lrr}
+\toprule
+ & Definitions network & Works network \\
+\midrule
+Mean $k_{nn}$, sub-elements & 10.40 & 10.20 \\
+Mean $k_{nn}$, second mode & 9.11 & 11.30 \\
+Degree correlation $r$ & $-0.110$ & $-0.096$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The degree correlation relates each node's degree to the mean degree of its opposite-mode neighbours. Both values are slightly negative, so high-degree sub-elements tend to be paired with lower-degree codes or works, and the reverse. The magnitude is small in both networks, and with 159 to 464 sub-elements the difference between the two is not a basis for a claim.
+
+\section{Bipartite checks and modularity}
+
+Both graphs are bipartite, and both are undirected. Modularity with communities defined by node type is $-0.50$ in both networks, the low value expected when all edges run between the two modes. This is a structural check, not a finding about community structure.
+
+\section{Component structure}
+
+The works network is connected (one component of 280 nodes). The definitions network uses only the codes in the Index A verified list, 464 sub-elements by 160 codes with 1182 edges. It has four components: a largest component of 617 nodes and three small ones of size 3, 2, and 2. The CA and MST use the 2-core of this largest component. Nine codes that are not in Index A were removed when the verified network was built (11 edges in total); they are listed in \texttt{data/kk-index-b-excluded-codes.csv}.
+
+\section{Correspondence analysis}
+
+Correspondence analysis (CA) was run on the largest component's 2-core of each network, using the decomposition of the row and column profile operators with \texttt{eigen()}. The trivial first dimension (eigenvalue 1) is dropped. Scores are standard coordinates, scaled by the square root of the eigenvalue, and the column scores are sign-aligned to the row scores through the duality relation.
+
+\paragraph{Definitions network.} The 2-core has 159 sub-elements, 145 codes, and 865 edges. Total inertia is 25.41. The first dimension accounts for 2.6\% of inertia and the first five for 11.9\%, so the spectrum is flat. Figure~\ref{fig:ca-def} shows the dimension 1--2 map; Figures~\ref{fig:ca-def-d23} and~\ref{fig:ca-def-d45} show the later dimensions. We do not interpret the axes here; that needs a closer reading of which sub-elements and codes sit at each extreme.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/kk-index-b/definitions/ca-lcc2core-d12.png}
+\caption{CA of the definitions network, dimensions 1 vs 2. Sub-elements are active (labelled if top by score or mass); K\&K groups are passive barycenters.}
+\label{fig:ca-def}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.7\textwidth]{figures/kk-index-b/definitions/ca-lcc2core-d23.png}
+\caption{CA of the definitions network, dimensions 2 vs 3.}
+\label{fig:ca-def-d23}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.7\textwidth]{figures/kk-index-b/definitions/ca-lcc2core-d45.png}
+\caption{CA of the definitions network, dimensions 4 vs 5.}
+\label{fig:ca-def-d45}
+\end{figure}
+
+\paragraph{Works network.} The works 2-core has 121 works, 156 sub-elements, and 830 edges. Total inertia is 21.27, with the first dimension at 2.7\% and the first five at 12.7\%. Works are the active set in the main view (Figure~\ref{fig:ca-works}). At the extremes of dimension 1, Bernard 1941b, Dodd 1941, and Blumenthal 1941 have the largest positive scores, while Panunzio 1939 has the largest negative score. Those are the only dimension 1 readings offered here.
+
+Sub-elements are the active set in the concept view (Figure~\ref{fig:ca-concepts}). The strongest positive dimension-1 scores go to ``concepts'' and ``physical biological and human nature'' (both at 0.30), then ``skills,'' ``usages,'' and ``man-made.'' The duplicated score for each pair reflects two sub-elements with the same name.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/kk-index-b/works/ca-lcc2core-d12.png}
+\caption{CA of the works network, works active, dimensions 1 vs 2.}
+\label{fig:ca-works}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/kk-index-b/works/ca-concepts-lcc2core-d12.png}
+\caption{CA of the works network, sub-elements (concepts) active, dimensions 1 vs 2.}
+\label{fig:ca-concepts}
+\end{figure}
+
+\section{Maximum spanning trees}
+
+For each one-mode projection, ties are weighted by the number of shared neighbours, and the maximum spanning tree is the minimum spanning tree on negated weights (Kruskal's algorithm). The definitions trees use the largest component's 2-core; the works trees use the full works network, which is connected. Node size is betweenness in the tree, and colour is the leading-eigenvector community computed on the tree.
+
+\paragraph{Definitions network.} The code-level tree has 144 edges (of 144 possible). Its highest-betweenness codes are F-I-3 (Folsom 1931), C-I-6 (Gillin \& Gillin 1942), F-I-8 (Reuter 1939), F-II-8 (Taylor 1948), and F-I-19 (Murdock 1949a). The sub-element tree has 158 edges (of 158 possible) and its highest-betweenness sub-elements are ``group,'' ``society,'' ``social,'' ``behavior,'' and ``members of a society.'' Figures~\ref{fig:mst-def-code} and~\ref{fig:mst-def-sub} show the two trees.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{figures/kk-index-b/definitions/mst-code-comm-tree.png}
+\caption{Maximum spanning tree of the definitions network, code nodes. Colour is the leading-eigenvector community on the tree; size is betweenness in the tree.}
+\label{fig:mst-def-code}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{figures/kk-index-b/definitions/mst-subelement-comm-tree.png}
+\caption{Maximum spanning tree of the definitions network, sub-element nodes.}
+\label{fig:mst-def-sub}
+\end{figure}
+
+\paragraph{Works network.} The work-level tree has 120 edges (of 120 possible). Its highest-betweenness works are Kelly \& Kluckhohn 1945a, Gillin \& Gillin 1942, Young 1934, Folsom 1931, and Winston 1933. The sub-element tree has 158 edges (of 158 possible). Figures~\ref{fig:mst-works-work} and~\ref{fig:mst-works-sub} show the two trees.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{figures/kk-index-b/works/mst-work.png}
+\caption{Maximum spanning tree of the works network, work nodes.}
+\label{fig:mst-works-work}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{figures/kk-index-b/works/mst-subelement.png}
+\caption{Maximum spanning tree of the works network, sub-element nodes. Ties count the works that cite both sub-elements.}
+\label{fig:mst-works-sub}
+\end{figure}
+
+\section{Closeness and betweenness}
+
+Closeness and betweenness are computed on each network's largest connected component, since both need connected networks. The definitions component is the verified-code component (617 nodes); the works network is connected (280 nodes). Closeness uses the two-mode normalization $n_Y + 2(n_X - 1)$, where $n_X$ is the node's own set and $n_Y$ the other set. Betweenness uses the two-mode normalization for the larger and smaller sets, as given by Borgatti and Everett (1997). In both networks the sub-elements are the larger set. Betweenness is reported as a percentage of its normalization maximum.
+
+\begin{table}[ht]
+\centering
+\caption{Most central sub-elements and second-mode nodes by closeness, with betweenness as a percentage of the normalization maximum.}
+\label{tab:centrality}
+\begin{tabular}{llrrr}
+\toprule
+Network & Node & Degree & Closeness & Betweenness (\%) \\
+\midrule
+Definitions & social & 36 & 0.570 & 24.0 \\
+ & society & 30 & 0.539 & 15.6 \\
+ & beliefs & 18 & 0.531 & 8.2 \\
+ & group & 26 & 0.529 & 10.7 \\
+ & total & 22 & 0.523 & 9.9 \\
+ & behavior & 24 & 0.520 & 9.7 \\
+\midrule
+Works & society & 29 & 0.613 & 10.7 \\
+ & social & 32 & 0.611 & 12.4 \\
+ & behavior & 23 & 0.590 & 7.6 \\
+ & group & 24 & 0.574 & 6.2 \\
+ & beliefs & 18 & 0.573 & 5.1 \\
+ & Kelly \& Kluckhohn 1945a & 30 & 0.573 & 11.2 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Within the definitions network, social, society, group, and behavior appear among the leaders on both closeness and betweenness, so they sit close to many other nodes and also lie on many shortest paths. Social has the highest betweenness among the top-closeness nodes in both networks; we have not checked it against every node. In the works network the top closeness ranks are largely the same sub-elements, and Kelly \& Kluckhohn 1945a is the one work among the leaders on both measures. Full tables are in \texttt{data/kk-index-b-centrality-definitions.csv} and \texttt{data/kk-index-b-centrality-works.csv}. The top closeness ranks follow degree closely, and we have not yet measured how strongly closeness and degree are correlated across all nodes.
+
+\section{Not carried over from the earlier report}
+
+The earlier report on the Boroch network also included status and prestige (HITS, PageRank, BGRM, BiRank), averages by definition type, and a provenance section. These are not repeated here. The averages and provenance sections were specific to Boroch's definition attributes.
+
+\section{Limitations}
+
+The networks depend on the K\&K Index B transcription and on the verified-code filter. Element names are not unique across headings, so same-named elements are merged, which can join unrelated entries. Works are keyed by author and year, so a work with several year forms may appear twice. Several readings depend on OCR corrections recorded in the repository's manual-fix files; the validators check structure and round-trips, not the content of each edge. Nine codes that are not in Index A are excluded from every definitions-network analysis; their list is in \texttt{data/kk-index-b-excluded-codes.csv}.
+
+\end{document}

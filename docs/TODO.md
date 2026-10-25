@@ -13,6 +13,7 @@ Last updated 2026-10-24 (latest status update below). Read `AGENTS.md` (project 
   3. Image-check the OK_TEXT blocks on printed pp. 76-81.
   4. Second reader for the user-confirmed readings and the manual fixes they came from.
   5. The NEEDS_CHECK "a people" tokens are resolved (C-I-13, D-I-1, F-III-3 match your list; F-IV-j has no edge).
+  6. Verify the nine codes not in Index A (listed in `data/kk-index-b-excluded-codes.csv`: C-7, C-I-18a, D-5, D-7, D-8, D-II-16, E-17, F-4, F-9; 11 edges). Check each against the printed index; a code that is really in K&K's index was missed by the Index A parse and should be restored. These are excluded from the verified definitions network (`data/kk-index-b-verified-network.rds`) until checked.
 - Rights: K&K element labels are cleared by the user (the 1952 monograph is publicly available online). Boroch's article and its verbatim quotations remain restricted.
 - Not committed: the rebuild, the manual-fix changes, the regenerated outputs and the docs. Review the regenerated audit and definitions CSVs before committing.
 
