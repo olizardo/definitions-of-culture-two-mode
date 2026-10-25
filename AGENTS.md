@@ -41,9 +41,10 @@ The works file also holds the work table (`works`). Attribute values agree acros
 they overlap (checked 2026-10-25). Derive projections with `lcc_2core()` and `sub_work_matrix()` in
 `scripts/core-index-b.R`, and apply the LCC and 2-core there, not in the stored file.
 
-The published site and the release folder split the works file into two graph-only files
-(`kk-index-b-works-sub-element-network.rds`, `kk-index-b-works-heading-network.rds`) and leave out the work table.
-The split files are made from the full file; do not edit the full file's contents to make the split.
+The release folder holds the full works file, with the work table. The published site holds two graph-only
+split files (`kk-index-b-works-sub-element-network.rds` = `two_mode_graph`, `kk-index-b-works-heading-network.rds` =
+`two_mode_heading_graph`) without the work table. No script in the repo makes the split: it was made by hand
+(2026-10-25) and must be regenerated from the full file each time it is published. Do not edit the full file's contents to make the split.
 
 The network build reads `data/kkcc-appendix-only-links.csv` (`build-index-b-networks.R`), and the appendix-only links
 set the Boroch labels on the code vertices. After a change to that file, rerun the network chain from
@@ -53,7 +54,7 @@ set the Boroch labels on the code vertices. After a change to that file, rerun t
 
 Order: `build-index-b.R` → `build-index-b-crosswalk.R` → `build-index-b-networks.R` →
 `build-index-b-verified.R` → `check-index-b-networks.R` → `check-index-b-blocks.R` →
-`build-work-authors-index-b.R` → `build-work-concept-network-index-b.R` → `analysis-index-b.R` →
+`build-work-authors-index-b.R` → `build-work-concept-network-index-b.R` → `attach-work-pub-type-index-b.R` → `analysis-index-b.R` →
 `analysis-ca-index-b.R` → `analysis-ca-works-index-b.R` → `analysis-centrality-index-b.R` →
 `analysis-mst-definitions-index-b.R` → `analysis-mst-works-index-b.R` → `analysis-mst-headings-index-b.R`. The definitions analyses read
 `data/kk-index-b-verified-network.rds`, not the unfiltered sub-element network. The works build
@@ -233,6 +234,16 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
 - Text-layer OCR misreads volumes and series (Bain vol. 17 is vol. 27 on the image). Check the image at 300 dpi before recording a volume, and do not copy an OCR value.
 - A K&K misprint (for example "Anthrolopogy" for Anthropology) is recorded in the page-check note; the citation line uses the correct spelling.
 - Boroch's supplement is not edited. Its errors are noted in the page-check notes (for example B060, whose title is K&K's 1937 festschrift article).
+- Publication type (`pub_type`: article, book, chapter, other) is decided per work in `data/kk-index-b-work-pub-type.csv`
+  (work, pub_type, basis). It comes from the K&K bibliography line, with Boroch's reference where K&K gives no source.
+  Chapters are entries in edited volumes or reference works; numbered monograph series are books. Uncertain cases
+  (Blumenthal 1937, Steward 1950) are coded `other`, and the basis says so. The basis column is not released.
+- `scripts/attach-work-pub-type-index-b.R` adds `pub_type` to the `works` table and to the work vertices of both graphs in
+  the full works file. It must run after every rebuild by `build-work-concept-network-index-b.R`, which overwrites that file.
+  It does not change any edge or weight.
+- `scripts/pub-type-style.R` holds the shapes. The works CA (`analysis-ca-works-index-b.R`, works view only) and the work MST
+  (`analysis-mst-works-index-b.R`) use them. The sub-element views have no type. The MST node table
+  (`data/kk-index-b-mst-works-nodes.csv`) has a `pub_type` column, blank for sub-element rows.
 - Figure subtitles must describe what the labels show.
 - Titles name the network ("definitions network", "works network") and the node type, so each figure says
   where it came from. CA labels use `geom_label_repel` with a white fill so they stay readable over the points.
@@ -278,8 +289,10 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
 
 ## Release and publication
 
-- The release is the two-mode network data in `release/two-mode-network-data/`, version 0.2.0: three `.rds` files
-  (the four stored Index B networks), `kk-index-b-work-citations.csv`, `MANIFEST.md` and `CHANGELOG.md`.
+- The release is the two-mode network data in `release/two-mode-network-data/`, version 0.3.0: three `.rds` files
+  (the four stored Index B networks; the full works file keeps the work table), `kk-index-b-work-citations.csv`,
+  `MANIFEST.md` and `CHANGELOG.md`. The 0.3.0 entry is dated 2026-10-25 (confirmed by the user, 2026-10-25), which is earlier than the 0.2.0
+  entry (2026-10-26).
   Versioning: a minor bump for added data or changed network contents, a patch for fixes that leave the structure
   alone. Each change goes in `CHANGELOG.md` with its version and date. The `.rds` files are copies of `data/`:
   refresh them when the data changes, and update the dimensions in `MANIFEST.md`. The citation file keeps core
@@ -287,10 +300,28 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
   (`kkcc_two_mode*.rds`) are not in the release. Keep them out unless the user changes this.
 - Published site: GitHub Pages from the `gh-pages` branch of `origin` (`olizardo/definitions-of-culture-two-mode`),
   at https://olizardo.github.io/definitions-of-culture-two-mode/. The site source is
-  `~/projects/ACADEMICS/kkcc-two-mode-data/` (a local Quarto project, not in this repo; `website/` renders to `docs/`).
-- Publish by cloning `gh-pages` into a scratch directory, replacing its contents with the rendered `docs/`, copying the
-  `.rds` files into `data/` and `.nojekyll` into the root, committing, and pushing as a fast-forward. Never force-push.
-  Do not push `master`/`main` from this repo as part of a site update. Pushes need the user's approval.
+  the `site-source` branch of this repo (an orphan branch, not `main`): pages, `_quarto.yml`, `data/` and
+  `.github/workflows/publish.yml`. Edit the site on `site-source`. The older local project
+  `~/projects/ACADEMICS/kkcc-two-mode-data/` has no git remote and is a stale copy; do not edit it for site changes.
+  Its pages are `index`, `codebook`, `download`, `changelog` and `glossary`. The site changelog follows the release CHANGELOG but leaves out references to the internal
+  docs (PROVENANCE, TODO), which readers of the site cannot open. Keep the two in step when the version changes.
+  The download table has one column set for all four files: File, Network, Object, Download.
+- Pages builds from `gh-pages` on every push to that branch (GitHub's built-in Pages build, not a custom workflow).
+  Nothing publishes from `main`.
+- Publishing is automatic. A push to `site-source` runs `.github/workflows/publish.yml`: it installs Quarto 1.10.18,
+  renders the site to `_site/`, replaces the contents of `gh-pages` with `_site/` and `data/`, and pushes one
+  fast-forward commit as `github-actions[bot]`. The job has a concurrency lock and never force-pushes. It runs only on
+  `site-source`, not on `gh-pages`, so the commit it pushes cannot start another run. Pushing to `site-source`
+  publishes the site, so it needs the user's approval.
+- Split works files (`data/kk-index-b-works-*-network.rds`) are not made by the workflow. They are made by hand from the
+  full works file (graph only, work table dropped) and committed to `data/` on `site-source`. Refresh them when the works data change.
+- Manual fallback, if the workflow is unavailable: clone `gh-pages` into a scratch directory, replace its contents with
+  the rendered site, copy `data/` and `.nojekyll`, commit, and push as a fast-forward. Never force-push. Do not push
+  `main` as part of a site update.
+- Last publication: 2026-10-25, through the workflow: `gh-pages` commit `1e30db9`, built from `site-source` commit `e285d03`.
+  Before that, the manual publishes were `5d8cec2` (version 0.3.0 pages) and `61e4c02` (download table), both approved by the user.
+  `gh-pages` also carries `data/kk-index-b-work-citations.csv` (identical to the release copy), which the download page
+  links. The workflow copies `data/` from `site-source`, which holds the same file, so keep it there.
 - The repo's `main` has uncommitted work (see TODO) and is not part of the publication.
 
 ## Rights

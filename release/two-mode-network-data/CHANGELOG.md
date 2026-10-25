@@ -9,7 +9,7 @@ error in existing data without changing its structure.
 - The network structure is unchanged: vertices, edges and edge weights are the same as in 0.2.0.
 - Refreshed the network files from the current build. The works networks keep the same 133 works.
 
-## 0.2.0 (2026-10-26)
+## 0.2.0 (2026-10-25)
 
 - Added `kk-index-b-work-citations.csv`: 133 works with their codes, surnames, year, K&K and Boroch match status, and the Boroch reference.
 - Refreshed the three network files from the current build. The works networks now have 133 works (v0.1.0 had 136). The works-level outputs were compared with the previous build (see docs/PROVENANCE.md section 10 in the project repository): centrality is stable, CA positions are moderately stable, and MST community assignments changed for about a third of the works. Edge-level changes were not compared one by one.
