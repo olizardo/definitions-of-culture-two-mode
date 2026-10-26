@@ -67,14 +67,14 @@
     "href": "index.html#overview",
     "title": "Kroeber & Kluckhohn Two-Mode Network Data",
     "section": "Overview",
-    "text": "Overview\nThese are two-mode (bipartite) networks built from the index of Kroeber and Kluckhohn’s Culture: A Critical Review of Concepts and Definitions (1952). Index B assigns each of the 170 culture definitions (K&K codes) to the headings and sub-elements under which the monograph indexes it. Index A gives the author and year behind each code. The works network links each of the 133 works to the same sub-elements and headings.\nBoroch’s (2016) reanalysis of the same classification supplies the Boroch code labels, which are attached as vertex attributes where his Table 2 or appendix covers the same definition."
+    "text": "Overview\nThese are two-mode (bipartite) networks built from the index of Kroeber and Kluckhohn’s Culture: A Critical Review of Concepts and Definitions (1952). Index B assigns each of the 171 culture definitions (K&K codes) to the headings and sub-elements under which the monograph indexes it. Index A gives the author and year behind each code. The works network links each of the 133 works to the same sub-elements and headings.\nBoroch’s (2016) reanalysis of the same classification supplies the Boroch code labels, which are attached as vertex attributes where his Table 2 or appendix covers the same definition."
   },
   {
     "objectID": "index.html#networks",
     "href": "index.html#networks",
     "title": "Kroeber & Kluckhohn Two-Mode Network Data",
     "section": "Networks",
-    "text": "Networks\n\n\n\n\n\n\n\n\nNetwork\nNodes\nFile\n\n\n\n\nDefinitions × sub-elements\n472 sub-elements, 170 codes\nkk-index-b-verified-network.rds\n\n\nDefinitions × headings\n53 headings, 170 codes\nkk-index-b-heading-network.rds\n\n\nWorks × sub-elements\n472 sub-elements, 133 works\nkk-index-b-works-sub-element-network.rds\n\n\nWorks × headings\n53 headings, 133 works\nkk-index-b-works-heading-network.rds\n\n\n\nThe files are R objects. Each definitions network stores a 0/1 biadjacency matrix and an igraph graph. Works networks store igraph graphs only. See the codebook for the attributes and the download page for the files."
+    "text": "Networks\n\n\n\n\n\n\n\n\nNetwork\nNodes\nFile\n\n\n\n\nDefinitions × sub-elements\n472 sub-elements, 171 codes\nkk-index-b-verified-network.rds\n\n\nDefinitions × headings\n53 headings, 171 codes\nkk-index-b-heading-network.rds\n\n\nWorks × sub-elements\n472 sub-elements, 133 works\nkk-index-b-works-sub-element-network.rds\n\n\nWorks × headings\n53 headings, 133 works\nkk-index-b-works-heading-network.rds\n\n\n\nThe files are R objects. Each definitions network stores a 0/1 biadjacency matrix and an igraph graph. Works networks store igraph graphs only. See the codebook for the attributes and the download page for the files."
   },
   {
     "objectID": "index.html#how-the-data-were-built",
@@ -122,26 +122,33 @@
     "objectID": "changelog.html#section",
     "href": "changelog.html#section",
     "title": "Changelog",
-    "section": "0.3.1 (2026-10-26)",
-    "text": "0.3.1 (2026-10-26)\n\nAttribute and content fixes; the network structure is unchanged (vertices, edges and weights are the same as in 0.3.0).\nThe G-1 definition (Sapir 1921) now carries the Boroch appendix label G1, and the works table behind the works networks lists “Sapir 1921” under both of its codes (B-2; G-1). Printed Index A p. 74 lists Sapir under G-1 (1921); an earlier transcription note had missed the row.\nBernard’s Index A year is now shown as printed, (1941b); the committee mimeograph remains one work of four authors under 1941, as in 0.3.0.\nRefreshed the network files and the citations table from the current build."
+    "section": "0.4.0 (2026-10-26)",
+    "text": "0.4.0 (2026-10-26)\n\nAdded the Part III statement code C-5 to the verified network (Goldenweiser 1937: 45-46, printed p. 99). C-5 has no Index A entry and no Index B element, so it enters the definitions networks as an isolate: the definitions networks go from 170 to 171 codes, with the edges unchanged.\nThe Part III attribution of Goldenweiser 1937 moves from E-5 to C-5. The printed Part III author index (p. 141) reads “c-5 (1937)”; the source OCR misreads it as e-5, which the earlier mapping had followed. K&K quote Goldenweiser’s Anthropology (1937) only in Part III, never in Part II.\nGoldenweiser 1937 therefore holds no sub-element and no heading: it leaves the works largest component and 2-core. E-5 now holds one work (Linton 1945a). The definitions-level networks are unchanged apart from the added isolate.\nRefreshed the network files and the citations table from the current build.\nRights unchanged: the definition and quotation texts stay out of the release. The K&K monograph is treated as publicly available online; online availability does not by itself settle redistribution rights."
   },
   {
     "objectID": "changelog.html#section-1",
     "href": "changelog.html#section-1",
     "title": "Changelog",
-    "section": "0.3.0 (2026-10-25)",
-    "text": "0.3.0 (2026-10-25)\n\nAdded pub_type to the work vertices of both works networks. Values: article, book, chapter, other. Of the 133 works, 27 are articles, 91 books, 8 chapters and 7 other. A chapter is an entry in an edited volume or a reference work; numbered monograph series count as books. Blumenthal 1937 and Steward 1950 are uncertain and coded other.\nThe network structure is unchanged: vertices, edges and edge weights are the same as in 0.2.0.\nRefreshed the network files from the current build. The works networks keep the same 133 works."
+    "section": "0.3.1 (2026-10-26)",
+    "text": "0.3.1 (2026-10-26)\n\nAttribute and content fixes; the network structure is unchanged (vertices, edges and weights are the same as in 0.3.0).\nThe G-1 definition (Sapir 1921) now carries the Boroch appendix label G1, and the works table behind the works networks lists “Sapir 1921” under both of its codes (B-2; G-1). Printed Index A p. 74 lists Sapir under G-1 (1921); an earlier transcription note had missed the row.\nBernard’s Index A year is now shown as printed, (1941b); the committee mimeograph remains one work of four authors under 1941, as in 0.3.0.\nRefreshed the network files and the citations table from the current build."
   },
   {
     "objectID": "changelog.html#section-2",
     "href": "changelog.html#section-2",
     "title": "Changelog",
-    "section": "0.2.0 (2026-10-26)",
-    "text": "0.2.0 (2026-10-26)\n\nAdded kk-index-b-work-citations.csv: 133 works with their codes, surnames, year, K&K and Boroch match status, and the Boroch reference.\nRefreshed the three network files from the current build. The works networks now have 133 works (v0.1.0 had 136). The works-level outputs were compared with the previous build: centrality is stable, CA positions are moderately stable, and MST community assignments changed for about a third of the works. Edge-level changes were not compared one by one.\nChanged MANIFEST.md to list each object’s dimensions as rows × columns.\n\nKnown open items in the citation table:\n\nSome rows have a K&K line from another author (year_only_no_author), or no K&K match.\nFive works are in K&K only (kk_only). Roberts 1951 and Young 1944 have year conflicts.\nThe Committee mimeograph (Bernard, Blumenthal, Dodd, Hart 1941) is one work with five codes."
+    "section": "0.3.0 (2026-10-25)",
+    "text": "0.3.0 (2026-10-25)\n\nAdded pub_type to the work vertices of both works networks. Values: article, book, chapter, other. Of the 133 works, 27 are articles, 91 books, 8 chapters and 7 other. A chapter is an entry in an edited volume or a reference work; numbered monograph series count as books. Blumenthal 1937 and Steward 1950 are uncertain and coded other.\nThe network structure is unchanged: vertices, edges and edge weights are the same as in 0.2.0.\nRefreshed the network files from the current build. The works networks keep the same 133 works."
   },
   {
     "objectID": "changelog.html#section-3",
     "href": "changelog.html#section-3",
+    "title": "Changelog",
+    "section": "0.2.0 (2026-10-26)",
+    "text": "0.2.0 (2026-10-26)\n\nAdded kk-index-b-work-citations.csv: 133 works with their codes, surnames, year, K&K and Boroch match status, and the Boroch reference.\nRefreshed the three network files from the current build. The works networks now have 133 works (v0.1.0 had 136). The works-level outputs were compared with the previous build: centrality is stable, CA positions are moderately stable, and MST community assignments changed for about a third of the works. Edge-level changes were not compared one by one.\nChanged MANIFEST.md to list each object’s dimensions as rows × columns.\n\nKnown open items in the citation table:\n\nSome rows have a K&K line from another author (year_only_no_author), or no K&K match.\nFive works are in K&K only (kk_only). Roberts 1951 and Young 1944 have year conflicts.\nThe Committee mimeograph (Bernard, Blumenthal, Dodd, Hart 1941) is one work with five codes."
+  },
+  {
+    "objectID": "changelog.html#section-4",
+    "href": "changelog.html#section-4",
     "title": "Changelog",
     "section": "0.1.0",
     "text": "0.1.0\n\nPreliminary release: the three Index B network files (definitions × sub-elements, definitions × headings, works × sub-elements and works × headings). 136 works."
