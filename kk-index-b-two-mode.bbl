@@ -1,0 +1,26 @@
+\begin{thebibliography}{3}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Breiger(1974)]{breiger1974}
+R.~L. Breiger.
+\newblock The duality of persons and groups.
+\newblock \emph{Social Forces}, 53\penalty0 (2):\penalty0 181--190, 1974.
+
+\bibitem[Everett and Borgatti(2013)]{everett2013dual-projection-c89}
+M.~G. Everett and S.~P. Borgatti.
+\newblock The dual-projection approach for two-mode networks.
+\newblock \emph{Social networks}, 35\penalty0 (2):\penalty0 204--210, 2013.
+\newblock ISSN 0378-8733.
+
+\bibitem[Kruskal(1956)]{kruskal1956}
+J.~B. Kruskal.
+\newblock On the shortest spanning subtree of a graph and the traveling
+  salesman problem.
+\newblock \emph{Proceedings of the American Mathematical Society}, 7\penalty0
+  (1):\penalty0 48--50, 1956.
+
+\end{thebibliography}

@@ -37,12 +37,23 @@ Completed items have been removed from this list; PROVENANCE keeps the history.
 9. ~~**Works-network figures after the 2-core change.**~~ **Done 2026-10-26.** All works figures and outputs were
     compared with the previous versions; see PROVENANCE section 10. The MST community assignments changed for
     about a third of the works, so any text that names communities must be checked against the current output.
+22. **Works outputs after the C-5 remap.** Goldenweiser 1937 left the works 2-core (119 → 118 works; LCC
+    593 → 592 nodes), so the works CA, works MST and works centrality outputs changed content
+    (PROVENANCE 12.4). Any manuscript text naming works communities, works counts or works positions must be
+    checked against the current output. The definitions-side outputs are unchanged.
 
 ## Release and rights
 
 10. **Release boundary.** `data/kkcc-definition-texts.csv`, `data/kkcc-appendix-only-texts.csv` and the
     Part II quotations in PROVENANCE stay out of any release. Boroch's article (ROBAFC-5.1) and its
     verbatim quotations remain restricted. The K&K element labels are cleared by the user.
+21. ~~**Release refresh after the 2026-10-26 attribute changes.**~~ **Done 2026-10-26.** The three release
+    `.rds` files and the citations table (core columns, trimmed) were refreshed from the current build;
+    version bumped to 0.3.1 (patch, structure unchanged) in MANIFEST.md and CHANGELOG.md. The site-source
+    branch got the same refresh in commit `25a25f2` (network files, trimmed citations CSV, refreshed split
+    works files rebuilt from the full works file, changelog and citation version bumped). Published
+    2026-10-26 with the user's approval: the workflow built `gh-pages` commit `79e1651` from `25a25f2`, and
+    the live site serves the 0.3.1 changelog and the refreshed citations CSV.
 
 ## Housekeeping
 
@@ -64,3 +75,7 @@ Source: `data/kk-index-b-work-citations.csv` (built by `scripts/build-index-b-wo
 18. **Publisher sources.** Closed. Abingdon Press (Myres 1927) and Houghton Mifflin (Nimkoff & Ogburn 1940) are added from Google Books and the user, and recorded in the notes of their page-check rows (PROVENANCE 9.33).
 19. **Young 1942 record.** The CiNii link the user gave is behind an access challenge, so the publisher and edition are unverified. The row rests on the bibliography entry.
 20. ~~**Committee mimeograph, figures.**~~ **Decided 2026-10-26:** the code tree keeps five code vertices (D-I-9, F-I-9, F-I-10, F-I-11, F-IV-3), now labeled with their codes; see PROVENANCE 10.6. Still open: Boroch B075 combines Bernard's Social Forces article and the mimeograph in one entry, so it needs a note.
+
+## NMF analyses (2026-10-26)
+
+23. **NMF analyses.** Both NMF analyses (`scripts/analysis-nmf-works-index-b.R`, `scripts/analysis-nmf-texts-index-b.R`) are in the manuscript (PROVENANCE 13.7), both at k = 7 (the user removed the ad hoc k = 4 solution, 2026-10-26). Both fail to recover K&K's groups A-G at better than chance (PROVENANCE 13.3, 13.5). Open: the framing of the null agreement result is a draft and needs the user's review; the sub-element names in `data/kk-index-b-nmf-works-factors.csv` are ambiguous across headings.

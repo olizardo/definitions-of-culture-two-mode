@@ -1,12 +1,12 @@
-# Two-mode network data, version 0.3.0 (preliminary)
+# Two-mode network data, version 0.4.0 (preliminary)
 
 Derived from Kroeber & Kluckhohn (1952), Index A/B. Subject to further verification (see docs/TODO.md; the copy here is a snapshot).
 Version history is in `CHANGELOG.md`.
 
 | File | Object(s) | Network | Dimensions (rows x columns) |
 |---|---|---|---|
-| `kk-index-b-verified-network.rds` | `graph`, `biadjacency` | sub-elements x definitions (codes) | 472 x 170 |
-| `kk-index-b-heading-network.rds` | `graph`, `biadjacency` | headings x definitions (codes) | 53 x 170 |
+| `kk-index-b-verified-network.rds` | `graph`, `biadjacency` | sub-elements x definitions (codes) | 472 x 171 |
+| `kk-index-b-heading-network.rds` | `graph`, `biadjacency` | headings x definitions (codes) | 53 x 171 |
 | `kk-index-b-work-concept-network-full.rds` | `two_mode_graph` | sub-elements x works | 472 x 133 |
 | `kk-index-b-work-concept-network-full.rds` | `two_mode_heading_graph` | headings x works | 53 x 133 |
 | `kk-index-b-work-citations.csv` | (table) | one row per work | 133 rows |

@@ -3,6 +3,21 @@
 Versions follow `MAJOR.MINOR.PATCH`. A minor bump adds data or changes network contents; a patch fixes an
 error in existing data without changing its structure.
 
+## 0.4.0 (2026-10-26)
+
+- Added the Part III statement code C-5 to the verified network (Goldenweiser 1937: 45-46, printed p. 99). C-5 has no Index A entry and no Index B element, so it enters the definitions networks as an isolate: the definitions networks go from 170 to 171 codes, with the edges unchanged.
+- The Part III attribution of Goldenweiser 1937 moves from E-5 to C-5. The printed Part III author index (p. 141) reads "c-5 (1937)"; the source OCR misreads it as e-5, which the earlier mapping had followed. K&K quote Goldenweiser's Anthropology (1937) only in Part III, never in Part II.
+- Goldenweiser 1937 therefore holds no sub-element and no heading: it leaves the works largest component and 2-core, so the works-level CA, MST and centrality outputs change. E-5 now holds one work (Linton 1945a). The definitions-level outputs are unchanged.
+- Refreshed the three network files and the citations table from the current build.
+- Rights unchanged: the definition and quotation texts stay out of the release. The K&K monograph is treated as publicly available online; online availability does not by itself settle redistribution rights.
+
+## 0.3.1 (2026-10-26)
+
+- Attribute and content fixes; the network structure is unchanged (vertices, edges and weights are the same as in 0.3.0).
+- The G-1 definition (Sapir 1921) now carries the Boroch appendix label G1, and the works table's "Sapir 1921" row lists both of its codes (B-2; G-1). Printed Index A p. 74 lists Sapir under G-1 (1921); an earlier transcription note had missed the row.
+- Bernard's Index A year is now shown as printed, (1941b); the committee mimeograph remains one work of four authors under 1941, as in 0.3.0.
+- Refreshed the three network files and the citations table from the current build.
+
 ## 0.3.0 (2026-10-25)
 
 - Added `pub_type` to the work vertices of both works networks and to the `works` table in the full works file. Values: `article`, `book`, `chapter`, `other`. Of the 133 works, 27 are articles, 91 books, 8 chapters and 7 other. A chapter is an entry in an edited volume or a reference work; numbered monograph series count as books. Blumenthal 1937 and Steward 1950 are uncertain and coded `other`.

@@ -1,0 +1,1093 @@
+"factor","rank","sub_element","loading"
+1,1,"a people",0.0972
+1,2,"way of life",0.0927
+1,3,"group",0.073
+1,4,"behavior patterns",0.0604
+1,5,"transmission",0.0462
+1,6,"techniques",0.0393
+1,7,"material objects",0.0369
+1,8,"environment",0.0364
+1,9,"body",0.036
+1,10,"goals",0.0334
+1,11,"objects",0.0333
+1,12,"total",0.0323
+1,13,"habitual",0.0286
+1,14,"behave",0.0269
+1,15,"man-made",0.0238
+1,16,"conditioning",0.0213
+1,17,"values",0.0195
+1,18,"behavior",0.0191
+1,19,"knowledge",0.018
+1,20,"actions",0.0159
+1,21,"persons",0.0135
+1,22,"configuration",0.0133
+1,23,"mind",0.0116
+1,24,"social legacy",0.0105
+1,25,"solutions",0.0102
+1,26,"area",0.0101
+1,27,"ways",0.0091
+1,28,"societal problems",0.0085
+1,29,"forms",0.0082
+1,30,"reactions",0.0078
+1,31,"time",0.0075
+1,32,"attitudes",0.0074
+1,33,"common",0.0072
+1,34,"thinking",0.0071
+1,35,"elements",0.0069
+1,36,"learned behavior",0.0067
+1,37,"aggregate",0.0066
+1,38,"designs for living",0.0066
+1,39,"human creation",0.0064
+1,40,"beliefs",0.0055
+1,41,"institutions",0.005
+1,42,"industries",0.0049
+1,43,"mean",0.0043
+1,44,"tradition",0.0039
+1,45,"shared",0.0038
+1,46,"organized",0.0034
+1,47,"period of time",0.0028
+1,48,"common ends",0.0016
+1,49,"feeling",0.0015
+1,50,"imitation",0.0014
+1,51,"adjustments",0.0012
+1,52,"organization",0.0011
+1,53,"social heritage",0.0011
+1,54,"totality",0.001
+1,55,"selection",8e-04
+1,56,"expressing",7e-04
+1,57,"social",2e-04
+1,58,"society",2e-04
+1,59,"product",0
+1,60,"communication",0
+1,61,"individuals",0
+1,62,"patterns",0
+1,63,"superorganic order",0
+1,64,"art",0
+1,65,"communicated",0
+1,66,"inherits",0
+1,67,"learned patterns",0
+1,68,"patterned ways of behavior",0
+1,69,"activities",0
+1,70,"artifacts",0
+1,71,"members of a society",0
+1,72,"products",0
+1,73,"act",0
+1,74,"traits",0
+1,75,"association between persons",0
+1,76,"customs",0
+1,77,"community",0
+1,78,"strain",0
+1,79,"social heredity",0
+1,80,"means of adjustment",0
+1,81,"interaction",0
+1,82,"socially",0
+1,83,"habit patterns",0
+1,84,"conditioned",0
+1,85,"relatively constant",0
+1,86,"ideas",0
+1,87,"acquired",0
+1,88,"acting",0
+1,89,"sum",0
+1,90,"material traits",0
+1,91,"non-material traits",0
+1,92,"morals",0
+1,93,"learning",0
+1,94,"instruments",0
+1,95,"accumulated treasury",0
+1,96,"social needs",0
+1,97,"civilization",0
+1,98,"integrated and unintegrated groups",0
+1,99,"summation",0
+1,100,"complex whole",0
+1,101,"systems",0
+1,102,"habits",0
+1,103,"capabilities",0
+1,104,"generations",0
+1,105,"human environment",0
+1,106,"integrated",0
+1,107,"inventions",0
+1,108,"thought",0
+1,109,"cultural tradition",0
+1,110,"sentiments",0
+1,111,"utensils",0
+1,112,"accepted",0
+1,113,"adjust",0
+1,114,"all that man has produced",0
+1,115,"artificial",0
+1,116,"artistic ideals",0
+1,117,"basic needs",0
+1,118,"created",0
+1,119,"cultivated",0
+1,120,"doing",0
+1,121,"etiquette",0
+1,122,"goods",0
+1,123,"historically",0
+1,124,"intellectual ideals",0
+1,125,"interrelated patterns",0
+1,126,"language",0
+1,127,"mass",0
+1,128,"members of a group",0
+1,129,"modes of behavior",0
+1,130,"modes of thought",0
+1,131,"needs",0
+1,132,"norms",0
+1,133,"participant",0
+1,134,"passed down (or on)",0
+1,135,"past",0
+1,136,"practical arts",0
+1,137,"present",0
+1,138,"process",0
+1,139,"relationships",0
+1,140,"responses",0
+1,141,"satisfaction",0
+1,142,"satisfied needs of individuals",0
+1,143,"skills",0
+1,144,"social group",0
+1,145,"social ideals",0
+1,146,"social organization",0
+1,147,"social procedures",0
+1,148,"socially inherited",0
+1,149,"socially transmitted",0
+1,150,"standardized",0
+1,151,"standards",0
+1,152,"symbols",0
+1,153,"technical processes",0
+1,154,"tools",0
+1,155,"traditional",0
+1,156,"usages",0
+2,1,"ideas",0.1228
+2,2,"generations",0.0695
+2,3,"attitudes",0.0676
+2,4,"passed down (or on)",0.0587
+2,5,"common",0.0501
+2,6,"symbols",0.0478
+2,7,"habits",0.0453
+2,8,"tools",0.0385
+2,9,"institutions",0.0321
+2,10,"learning",0.031
+2,11,"all that man has produced",0.0238
+2,12,"activities",0.0215
+2,13,"values",0.0203
+2,14,"objects",0.0194
+2,15,"actions",0.018
+2,16,"tradition",0.0169
+2,17,"beliefs",0.0157
+2,18,"transmission",0.0156
+2,19,"sentiments",0.0146
+2,20,"group",0.0145
+2,21,"modes of thought",0.014
+2,22,"artificial",0.0135
+2,23,"customs",0.0129
+2,24,"persons",0.0123
+2,25,"material objects",0.0122
+2,26,"techniques",0.0116
+2,27,"utensils",0.0115
+2,28,"process",0.0108
+2,29,"behavior",0.0101
+2,30,"mind",0.0101
+2,31,"thought",0.009
+2,32,"mass",0.0083
+2,33,"needs",0.0078
+2,34,"language",0.0078
+2,35,"organized",0.0066
+2,36,"forms",0.0064
+2,37,"habitual",0.0058
+2,38,"standards",0.0057
+2,39,"skills",0.0055
+2,40,"usages",0.0055
+2,41,"behavior patterns",0.0055
+2,42,"cultural tradition",0.0054
+2,43,"social group",0.0053
+2,44,"instruments",0.0045
+2,45,"relationships",0.0041
+2,46,"human environment",0.004
+2,47,"accepted",0.0038
+2,48,"goods",0.0037
+2,49,"technical processes",0.0037
+2,50,"integrated and unintegrated groups",0.0036
+2,51,"adjust",0.0035
+2,52,"civilization",0.0034
+2,53,"community",0.0033
+2,54,"interaction",0.003
+2,55,"standardized",0.0028
+2,56,"learned patterns",0.0023
+2,57,"created",0.0022
+2,58,"reactions",0.0021
+2,59,"communicated",0.0012
+2,60,"doing",5e-04
+2,61,"past",4e-04
+2,62,"organization",3e-04
+2,63,"members of a society",3e-04
+2,64,"learned behavior",1e-04
+2,65,"knowledge",0
+2,66,"shared",0
+2,67,"association between persons",0
+2,68,"social",0
+2,69,"thinking",0
+2,70,"patterns",0
+2,71,"a people",0
+2,72,"society",0
+2,73,"conditioned",0
+2,74,"act",0
+2,75,"material traits",0
+2,76,"non-material traits",0
+2,77,"sum",0
+2,78,"artifacts",0
+2,79,"imitation",0
+2,80,"acting",0
+2,81,"social organization",0
+2,82,"inherits",0
+2,83,"socially",0
+2,84,"totality",0
+2,85,"time",0
+2,86,"total",0
+2,87,"traits",0
+2,88,"common ends",0
+2,89,"product",0
+2,90,"historically",0
+2,91,"products",0
+2,92,"interrelated patterns",0
+2,93,"practical arts",0
+2,94,"feeling",0
+2,95,"social heritage",0
+2,96,"ways",0
+2,97,"way of life",0
+2,98,"systems",0
+2,99,"accumulated treasury",0
+2,100,"acquired",0
+2,101,"human creation",0
+2,102,"adjustments",0
+2,103,"aggregate",0
+2,104,"area",0
+2,105,"art",0
+2,106,"artistic ideals",0
+2,107,"basic needs",0
+2,108,"behave",0
+2,109,"body",0
+2,110,"capabilities",0
+2,111,"communication",0
+2,112,"complex whole",0
+2,113,"conditioning",0
+2,114,"configuration",0
+2,115,"cultivated",0
+2,116,"designs for living",0
+2,117,"elements",0
+2,118,"environment",0
+2,119,"etiquette",0
+2,120,"expressing",0
+2,121,"goals",0
+2,122,"habit patterns",0
+2,123,"individuals",0
+2,124,"industries",0
+2,125,"integrated",0
+2,126,"intellectual ideals",0
+2,127,"inventions",0
+2,128,"man-made",0
+2,129,"mean",0
+2,130,"means of adjustment",0
+2,131,"members of a group",0
+2,132,"modes of behavior",0
+2,133,"morals",0
+2,134,"norms",0
+2,135,"participant",0
+2,136,"patterned ways of behavior",0
+2,137,"period of time",0
+2,138,"present",0
+2,139,"relatively constant",0
+2,140,"responses",0
+2,141,"satisfaction",0
+2,142,"satisfied needs of individuals",0
+2,143,"selection",0
+2,144,"social heredity",0
+2,145,"social ideals",0
+2,146,"social legacy",0
+2,147,"social needs",0
+2,148,"social procedures",0
+2,149,"socially inherited",0
+2,150,"socially transmitted",0
+2,151,"societal problems",0
+2,152,"solutions",0
+2,153,"strain",0
+2,154,"summation",0
+2,155,"superorganic order",0
+2,156,"traditional",0
+3,1,"behavior",0.0999
+3,2,"society",0.0919
+3,3,"individuals",0.0911
+3,4,"group",0.05
+3,5,"thought",0.0281
+3,6,"acquired",0.028
+3,7,"systems",0.0236
+3,8,"forms",0.023
+3,9,"patterns",0.0223
+3,10,"learning",0.0223
+3,11,"ways",0.0204
+3,12,"feeling",0.0203
+3,13,"material traits",0.0197
+3,14,"non-material traits",0.0197
+3,15,"traits",0.0194
+3,16,"cultivated",0.0187
+3,17,"social ideals",0.0187
+3,18,"artistic ideals",0.0187
+3,19,"intellectual ideals",0.0187
+3,20,"learned behavior",0.0183
+3,21,"historically",0.0161
+3,22,"traditional",0.0137
+3,23,"socially transmitted",0.0133
+3,24,"shared",0.0128
+3,25,"common",0.0116
+3,26,"totality",0.0113
+3,27,"relatively constant",0.0099
+3,28,"community",0.0099
+3,29,"process",0.0097
+3,30,"adjustments",0.0096
+3,31,"societal problems",0.0093
+3,32,"accepted",0.0092
+3,33,"interaction",0.009
+3,34,"patterned ways of behavior",0.0086
+3,35,"thinking",0.0086
+3,36,"acting",0.0085
+3,37,"habit patterns",0.0083
+3,38,"socially",0.008
+3,39,"basic needs",0.0075
+3,40,"mass",0.0074
+3,41,"product",0.0072
+3,42,"common ends",0.0071
+3,43,"learned patterns",0.007
+3,44,"created",0.0067
+3,45,"modes of behavior",0.0066
+3,46,"association between persons",0.0063
+3,47,"persons",0.0058
+3,48,"act",0.0057
+3,49,"relationships",0.0056
+3,50,"past",0.0051
+3,51,"institutions",0.0049
+3,52,"period of time",0.0047
+3,53,"attitudes",0.0044
+3,54,"habitual",0.0044
+3,55,"body",0.0039
+3,56,"configuration",0.0038
+3,57,"area",0.0035
+3,58,"reactions",0.0031
+3,59,"solutions",0.003
+3,60,"members of a society",0.0029
+3,61,"satisfaction",0.0026
+3,62,"integrated",0.0023
+3,63,"inventions",0.0023
+3,64,"responses",0.0019
+3,65,"techniques",0.0019
+3,66,"passed down (or on)",0.0018
+3,67,"elements",0.0014
+3,68,"standards",0.0014
+3,69,"means of adjustment",0.0012
+3,70,"organized",0.001
+3,71,"adjust",8e-04
+3,72,"expressing",8e-04
+3,73,"selection",7e-04
+3,74,"modes of thought",6e-04
+3,75,"participant",6e-04
+3,76,"satisfied needs of individuals",6e-04
+3,77,"social heritage",6e-04
+3,78,"norms",4e-04
+3,79,"communication",3e-04
+3,80,"social legacy",2e-04
+3,81,"social organization",1e-04
+3,82,"sum",0
+3,83,"products",0
+3,84,"conditioning",0
+3,85,"total",0
+3,86,"behavior patterns",0
+3,87,"integrated and unintegrated groups",0
+3,88,"organization",0
+3,89,"summation",0
+3,90,"social",0
+3,91,"generations",0
+3,92,"actions",0
+3,93,"way of life",0
+3,94,"human creation",0
+3,95,"members of a group",0
+3,96,"knowledge",0
+3,97,"environment",0
+3,98,"time",0
+3,99,"tradition",0
+3,100,"ideas",0
+3,101,"designs for living",0
+3,102,"artifacts",0
+3,103,"etiquette",0
+3,104,"accumulated treasury",0
+3,105,"symbols",0
+3,106,"standardized",0
+3,107,"customs",0
+3,108,"superorganic order",0
+3,109,"objects",0
+3,110,"beliefs",0
+3,111,"a people",0
+3,112,"activities",0
+3,113,"transmission",0
+3,114,"goals",0
+3,115,"conditioned",0
+3,116,"language",0
+3,117,"morals",0
+3,118,"interrelated patterns",0
+3,119,"habits",0
+3,120,"values",0
+3,121,"tools",0
+3,122,"art",0
+3,123,"aggregate",0
+3,124,"all that man has produced",0
+3,125,"artificial",0
+3,126,"behave",0
+3,127,"capabilities",0
+3,128,"civilization",0
+3,129,"communicated",0
+3,130,"complex whole",0
+3,131,"cultural tradition",0
+3,132,"doing",0
+3,133,"goods",0
+3,134,"human environment",0
+3,135,"imitation",0
+3,136,"industries",0
+3,137,"inherits",0
+3,138,"instruments",0
+3,139,"man-made",0
+3,140,"material objects",0
+3,141,"mean",0
+3,142,"mind",0
+3,143,"needs",0
+3,144,"practical arts",0
+3,145,"present",0
+3,146,"sentiments",0
+3,147,"skills",0
+3,148,"social group",0
+3,149,"social heredity",0
+3,150,"social needs",0
+3,151,"social procedures",0
+3,152,"socially inherited",0
+3,153,"strain",0
+3,154,"technical processes",0
+3,155,"usages",0
+3,156,"utensils",0
+4,1,"beliefs",0.0834
+4,2,"customs",0.0563
+4,3,"knowledge",0.054
+4,4,"ways",0.0429
+4,5,"language",0.0363
+4,6,"art",0.0362
+4,7,"thinking",0.035
+4,8,"acting",0.0331
+4,9,"morals",0.0305
+4,10,"complex whole",0.0289
+4,11,"artifacts",0.027
+4,12,"etiquette",0.0265
+4,13,"systems",0.0259
+4,14,"accumulated treasury",0.0248
+4,15,"products",0.024
+4,16,"historically",0.0229
+4,17,"members of a group",0.0217
+4,18,"ideas",0.0213
+4,19,"group",0.0209
+4,20,"standardized",0.0207
+4,21,"summation",0.0196
+4,22,"designs for living",0.0195
+4,23,"social group",0.0194
+4,24,"human creation",0.0193
+4,25,"feeling",0.0189
+4,26,"participant",0.0187
+4,27,"association between persons",0.0186
+4,28,"shared",0.0171
+4,29,"persons",0.0145
+4,30,"cultural tradition",0.0078
+4,31,"social procedures",0.0078
+4,32,"act",0.0076
+4,33,"doing",0.0075
+4,34,"skills",0.0074
+4,35,"usages",0.0074
+4,36,"tradition",0.0073
+4,37,"past",0.0061
+4,38,"practical arts",0.0056
+4,39,"a people",0.0055
+4,40,"communicated",0.0054
+4,41,"present",0.0052
+4,42,"utensils",0.0051
+4,43,"relationships",0.0051
+4,44,"communication",0.0049
+4,45,"expressing",0.0049
+4,46,"civilization",0.0046
+4,47,"organization",0.0037
+4,48,"industries",0.0036
+4,49,"process",0.0035
+4,50,"social heritage",0.0034
+4,51,"socially",0.0033
+4,52,"norms",0.0033
+4,53,"created",0.0031
+4,54,"learning",0.0029
+4,55,"thought",0.0028
+4,56,"patterned ways of behavior",0.0028
+4,57,"activities",0.0027
+4,58,"sentiments",0.0027
+4,59,"inherits",0.002
+4,60,"community",0.0019
+4,61,"traits",0.0017
+4,62,"integrated and unintegrated groups",0.0016
+4,63,"actions",0.0015
+4,64,"social legacy",0.0013
+4,65,"responses",0.0013
+4,66,"mean",0.0012
+4,67,"interrelated patterns",0.001
+4,68,"instruments",8e-04
+4,69,"superorganic order",8e-04
+4,70,"socially inherited",7e-04
+4,71,"man-made",6e-04
+4,72,"learned behavior",5e-04
+4,73,"product",5e-04
+4,74,"accepted",5e-04
+4,75,"time",4e-04
+4,76,"tools",3e-04
+4,77,"needs",3e-04
+4,78,"solutions",1e-04
+4,79,"satisfaction",0
+4,80,"behavior",0
+4,81,"goals",0
+4,82,"techniques",0
+4,83,"habits",0
+4,84,"society",0
+4,85,"societal problems",0
+4,86,"acquired",0
+4,87,"members of a society",0
+4,88,"attitudes",0
+4,89,"generations",0
+4,90,"totality",0
+4,91,"social",0
+4,92,"aggregate",0
+4,93,"symbols",0
+4,94,"patterns",0
+4,95,"way of life",0
+4,96,"learned patterns",0
+4,97,"material objects",0
+4,98,"individuals",0
+4,99,"institutions",0
+4,100,"satisfied needs of individuals",0
+4,101,"reactions",0
+4,102,"total",0
+4,103,"sum",0
+4,104,"capabilities",0
+4,105,"habitual",0
+4,106,"behave",0
+4,107,"interaction",0
+4,108,"conditioning",0
+4,109,"values",0
+4,110,"body",0
+4,111,"adjust",0
+4,112,"behavior patterns",0
+4,113,"environment",0
+4,114,"adjustments",0
+4,115,"all that man has produced",0
+4,116,"area",0
+4,117,"artificial",0
+4,118,"artistic ideals",0
+4,119,"basic needs",0
+4,120,"common",0
+4,121,"common ends",0
+4,122,"conditioned",0
+4,123,"configuration",0
+4,124,"cultivated",0
+4,125,"elements",0
+4,126,"forms",0
+4,127,"goods",0
+4,128,"habit patterns",0
+4,129,"human environment",0
+4,130,"imitation",0
+4,131,"integrated",0
+4,132,"intellectual ideals",0
+4,133,"inventions",0
+4,134,"mass",0
+4,135,"material traits",0
+4,136,"means of adjustment",0
+4,137,"mind",0
+4,138,"modes of behavior",0
+4,139,"modes of thought",0
+4,140,"non-material traits",0
+4,141,"objects",0
+4,142,"organized",0
+4,143,"passed down (or on)",0
+4,144,"period of time",0
+4,145,"relatively constant",0
+4,146,"selection",0
+4,147,"social heredity",0
+4,148,"social ideals",0
+4,149,"social needs",0
+4,150,"social organization",0
+4,151,"socially transmitted",0
+4,152,"standards",0
+4,153,"strain",0
+4,154,"technical processes",0
+4,155,"traditional",0
+4,156,"transmission",0
+5,1,"sum",0.1822
+5,2,"total",0.1803
+5,3,"beliefs",0.0544
+5,4,"activities",0.0391
+5,5,"tools",0.0374
+5,6,"civilization",0.0335
+5,7,"artificial",0.0236
+5,8,"created",0.0234
+5,9,"present",0.0176
+5,10,"symbols",0.0172
+5,11,"members of a society",0.0158
+5,12,"individuals",0.0156
+5,13,"past",0.0156
+5,14,"social organization",0.0151
+5,15,"adjustments",0.0145
+5,16,"human creation",0.0139
+5,17,"time",0.0128
+5,18,"generations",0.0124
+5,19,"a people",0.0115
+5,20,"attitudes",0.0115
+5,21,"practical arts",0.0111
+5,22,"social procedures",0.0109
+5,23,"conditioning",0.0104
+5,24,"act",0.0101
+5,25,"selection",0.01
+5,26,"passed down (or on)",0.0099
+5,27,"goods",0.0099
+5,28,"technical processes",0.0099
+5,29,"customs",0.0094
+5,30,"communicated",0.0093
+5,31,"all that man has produced",0.0088
+5,32,"modes of behavior",0.0088
+5,33,"social legacy",0.0086
+5,34,"behavior patterns",0.008
+5,35,"learned patterns",0.0079
+5,36,"products",0.0079
+5,37,"learned behavior",0.007
+5,38,"organization",0.0064
+5,39,"habit patterns",0.0061
+5,40,"doing",0.0059
+5,41,"relatively constant",0.0058
+5,42,"norms",0.0056
+5,43,"imitation",0.0056
+5,44,"environment",0.0055
+5,45,"human environment",0.0046
+5,46,"adjust",0.0044
+5,47,"industries",0.0043
+5,48,"conditioned",0.0042
+5,49,"aggregate",0.004
+5,50,"means of adjustment",0.004
+5,51,"social heredity",0.0038
+5,52,"strain",0.0038
+5,53,"mean",0.0037
+5,54,"organized",0.0037
+5,55,"satisfied needs of individuals",0.0034
+5,56,"period of time",0.0028
+5,57,"social heritage",0.0021
+5,58,"community",0.0019
+5,59,"society",0.0017
+5,60,"totality",0.0011
+5,61,"ways",0
+5,62,"social group",0
+5,63,"social",0
+5,64,"behavior",0
+5,65,"patterned ways of behavior",0
+5,66,"shared",0
+5,67,"traits",0
+5,68,"material traits",0
+5,69,"non-material traits",0
+5,70,"institutions",0
+5,71,"common ends",0
+5,72,"learning",0
+5,73,"techniques",0
+5,74,"standardized",0
+5,75,"group",0
+5,76,"utensils",0
+5,77,"tradition",0
+5,78,"common",0
+5,79,"habitual",0
+5,80,"elements",0
+5,81,"social needs",0
+5,82,"thinking",0
+5,83,"configuration",0
+5,84,"transmission",0
+5,85,"artifacts",0
+5,86,"habits",0
+5,87,"acquired",0
+5,88,"art",0
+5,89,"way of life",0
+5,90,"ideas",0
+5,91,"material objects",0
+5,92,"man-made",0
+5,93,"behave",0
+5,94,"complex whole",0
+5,95,"goals",0
+5,96,"instruments",0
+5,97,"association between persons",0
+5,98,"integrated and unintegrated groups",0
+5,99,"accepted",0
+5,100,"accumulated treasury",0
+5,101,"acting",0
+5,102,"actions",0
+5,103,"area",0
+5,104,"artistic ideals",0
+5,105,"basic needs",0
+5,106,"body",0
+5,107,"capabilities",0
+5,108,"communication",0
+5,109,"cultivated",0
+5,110,"cultural tradition",0
+5,111,"designs for living",0
+5,112,"etiquette",0
+5,113,"expressing",0
+5,114,"feeling",0
+5,115,"forms",0
+5,116,"historically",0
+5,117,"inherits",0
+5,118,"integrated",0
+5,119,"intellectual ideals",0
+5,120,"interaction",0
+5,121,"interrelated patterns",0
+5,122,"inventions",0
+5,123,"knowledge",0
+5,124,"language",0
+5,125,"mass",0
+5,126,"members of a group",0
+5,127,"mind",0
+5,128,"modes of thought",0
+5,129,"morals",0
+5,130,"needs",0
+5,131,"objects",0
+5,132,"participant",0
+5,133,"patterns",0
+5,134,"persons",0
+5,135,"process",0
+5,136,"product",0
+5,137,"reactions",0
+5,138,"relationships",0
+5,139,"responses",0
+5,140,"satisfaction",0
+5,141,"sentiments",0
+5,142,"skills",0
+5,143,"social ideals",0
+5,144,"socially",0
+5,145,"socially inherited",0
+5,146,"socially transmitted",0
+5,147,"societal problems",0
+5,148,"solutions",0
+5,149,"standards",0
+5,150,"summation",0
+5,151,"superorganic order",0
+5,152,"systems",0
+5,153,"thought",0
+5,154,"traditional",0
+5,155,"usages",0
+5,156,"values",0
+6,1,"social",0.2602
+6,2,"social heritage",0.0515
+6,3,"customs",0.0394
+6,4,"institutions",0.036
+6,5,"patterns",0.0336
+6,6,"behavior patterns",0.0287
+6,7,"tradition",0.0259
+6,8,"organized",0.0257
+6,9,"patterned ways of behavior",0.0241
+6,10,"social group",0.0204
+6,11,"group",0.0203
+6,12,"integrated",0.0192
+6,13,"inventions",0.0192
+6,14,"common",0.0184
+6,15,"inherits",0.0173
+6,16,"social needs",0.0165
+6,17,"communication",0.0156
+6,18,"organization",0.0148
+6,19,"traits",0.0146
+6,20,"material traits",0.0139
+6,21,"non-material traits",0.0139
+6,22,"goods",0.0129
+6,23,"technical processes",0.0129
+6,24,"satisfied needs of individuals",0.0128
+6,25,"totality",0.0124
+6,26,"social heredity",0.0121
+6,27,"strain",0.0121
+6,28,"practical arts",0.0118
+6,29,"satisfaction",0.011
+6,30,"superorganic order",0.0094
+6,31,"interrelated patterns",0.0091
+6,32,"basic needs",0.0084
+6,33,"socially inherited",0.0081
+6,34,"ideas",0.0077
+6,35,"persons",0.0068
+6,36,"actions",0.0065
+6,37,"means of adjustment",0.0061
+6,38,"man-made",0.0056
+6,39,"standardized",0.0054
+6,40,"habit patterns",0.0052
+6,41,"behave",0.0051
+6,42,"learning",0.0051
+6,43,"needs",0.0051
+6,44,"product",0.005
+6,45,"expressing",0.0047
+6,46,"reactions",0.0045
+6,47,"elements",0.0045
+6,48,"relatively constant",0.0045
+6,49,"social organization",0.0043
+6,50,"techniques",0.0041
+6,51,"common ends",0.0041
+6,52,"area",0.004
+6,53,"selection",0.0034
+6,54,"imitation",0.0032
+6,55,"aggregate",0.0032
+6,56,"habitual",0.0031
+6,57,"communicated",0.003
+6,58,"beliefs",0.0026
+6,59,"traditional",0.0023
+6,60,"summation",0.0022
+6,61,"thought",0.0021
+6,62,"time",0.0021
+6,63,"adjustments",0.0019
+6,64,"social procedures",0.0018
+6,65,"accumulated treasury",0.0018
+6,66,"conditioned",0.0018
+6,67,"socially",0.0017
+6,68,"body",0.0013
+6,69,"shared",8e-04
+6,70,"members of a society",5e-04
+6,71,"values",4e-04
+6,72,"association between persons",1e-04
+6,73,"attitudes",0
+6,74,"knowledge",0
+6,75,"community",0
+6,76,"sum",0
+6,77,"process",0
+6,78,"society",0
+6,79,"total",0
+6,80,"ways",0
+6,81,"transmission",0
+6,82,"activities",0
+6,83,"environment",0
+6,84,"behavior",0
+6,85,"generations",0
+6,86,"individuals",0
+6,87,"created",0
+6,88,"material objects",0
+6,89,"artifacts",0
+6,90,"artificial",0
+6,91,"habits",0
+6,92,"learned behavior",0
+6,93,"capabilities",0
+6,94,"acquired",0
+6,95,"systems",0
+6,96,"acting",0
+6,97,"human creation",0
+6,98,"a people",0
+6,99,"morals",0
+6,100,"products",0
+6,101,"way of life",0
+6,102,"symbols",0
+6,103,"art",0
+6,104,"feeling",0
+6,105,"civilization",0
+6,106,"passed down (or on)",0
+6,107,"complex whole",0
+6,108,"tools",0
+6,109,"doing",0
+6,110,"accepted",0
+6,111,"act",0
+6,112,"adjust",0
+6,113,"all that man has produced",0
+6,114,"artistic ideals",0
+6,115,"conditioning",0
+6,116,"configuration",0
+6,117,"cultivated",0
+6,118,"cultural tradition",0
+6,119,"designs for living",0
+6,120,"etiquette",0
+6,121,"forms",0
+6,122,"goals",0
+6,123,"historically",0
+6,124,"human environment",0
+6,125,"industries",0
+6,126,"instruments",0
+6,127,"integrated and unintegrated groups",0
+6,128,"intellectual ideals",0
+6,129,"interaction",0
+6,130,"language",0
+6,131,"learned patterns",0
+6,132,"mass",0
+6,133,"mean",0
+6,134,"members of a group",0
+6,135,"mind",0
+6,136,"modes of behavior",0
+6,137,"modes of thought",0
+6,138,"norms",0
+6,139,"objects",0
+6,140,"participant",0
+6,141,"past",0
+6,142,"period of time",0
+6,143,"present",0
+6,144,"relationships",0
+6,145,"responses",0
+6,146,"sentiments",0
+6,147,"skills",0
+6,148,"social ideals",0
+6,149,"social legacy",0
+6,150,"socially transmitted",0
+6,151,"societal problems",0
+6,152,"solutions",0
+6,153,"standards",0
+6,154,"thinking",0
+6,155,"usages",0
+6,156,"utensils",0
+7,1,"members of a society",0.1292
+7,2,"acquired",0.1191
+7,3,"society",0.1147
+7,4,"habits",0.1107
+7,5,"complex whole",0.0421
+7,6,"capabilities",0.0401
+7,7,"products",0.033
+7,8,"transmission",0.0292
+7,9,"conditioned",0.0265
+7,10,"shared",0.0259
+7,11,"art",0.0247
+7,12,"ideas",0.0219
+7,13,"socially",0.0195
+7,14,"artifacts",0.0179
+7,15,"learning",0.0171
+7,16,"way of life",0.0161
+7,17,"imitation",0.0156
+7,18,"satisfied needs of individuals",0.014
+7,19,"values",0.0136
+7,20,"morals",0.0124
+7,21,"behavior patterns",0.0123
+7,22,"behavior",0.0114
+7,23,"social heredity",0.0111
+7,24,"strain",0.0111
+7,25,"mass",0.011
+7,26,"sum",0.0102
+7,27,"techniques",0.01
+7,28,"totality",0.0095
+7,29,"civilization",0.0075
+7,30,"tradition",0.007
+7,31,"habitual",0.007
+7,32,"activities",0.0056
+7,33,"participant",0.0051
+7,34,"elements",0.0037
+7,35,"learned behavior",0.0037
+7,36,"social",0.0035
+7,37,"adjust",0.0032
+7,38,"socially transmitted",0.0028
+7,39,"standardized",0.0026
+7,40,"socially inherited",0.0024
+7,41,"interaction",0.0024
+7,42,"summation",0.0024
+7,43,"instruments",0.0022
+7,44,"designs for living",0.002
+7,45,"modes of behavior",0.0019
+7,46,"configuration",0.0019
+7,47,"members of a group",0.0017
+7,48,"human environment",0.0013
+7,49,"reactions",3e-04
+7,50,"selection",0
+7,51,"feeling",0
+7,52,"accumulated treasury",0
+7,53,"intellectual ideals",0
+7,54,"artistic ideals",0
+7,55,"social ideals",0
+7,56,"cultivated",0
+7,57,"individuals",0
+7,58,"human creation",0
+7,59,"needs",0
+7,60,"knowledge",0
+7,61,"etiquette",0
+7,62,"customs",0
+7,63,"technical processes",0
+7,64,"goods",0
+7,65,"beliefs",0
+7,66,"systems",0
+7,67,"total",0
+7,68,"generations",0
+7,69,"process",0
+7,70,"learned patterns",0
+7,71,"historically",0
+7,72,"thought",0
+7,73,"group",0
+7,74,"solutions",0
+7,75,"thinking",0
+7,76,"norms",0
+7,77,"language",0
+7,78,"acting",0
+7,79,"societal problems",0
+7,80,"body",0
+7,81,"common ends",0
+7,82,"passed down (or on)",0
+7,83,"social legacy",0
+7,84,"product",0
+7,85,"patterns",0
+7,86,"symbols",0
+7,87,"ways",0
+7,88,"actions",0
+7,89,"common",0
+7,90,"act",0
+7,91,"social heritage",0
+7,92,"time",0
+7,93,"organized",0
+7,94,"environment",0
+7,95,"attitudes",0
+7,96,"satisfaction",0
+7,97,"relatively constant",0
+7,98,"modes of thought",0
+7,99,"community",0
+7,100,"goals",0
+7,101,"basic needs",0
+7,102,"period of time",0
+7,103,"traditional",0
+7,104,"tools",0
+7,105,"mean",0
+7,106,"a people",0
+7,107,"accepted",0
+7,108,"adjustments",0
+7,109,"aggregate",0
+7,110,"all that man has produced",0
+7,111,"area",0
+7,112,"artificial",0
+7,113,"association between persons",0
+7,114,"behave",0
+7,115,"communicated",0
+7,116,"communication",0
+7,117,"conditioning",0
+7,118,"created",0
+7,119,"cultural tradition",0
+7,120,"doing",0
+7,121,"expressing",0
+7,122,"forms",0
+7,123,"habit patterns",0
+7,124,"industries",0
+7,125,"inherits",0
+7,126,"institutions",0
+7,127,"integrated",0
+7,128,"integrated and unintegrated groups",0
+7,129,"interrelated patterns",0
+7,130,"inventions",0
+7,131,"man-made",0
+7,132,"material objects",0
+7,133,"material traits",0
+7,134,"means of adjustment",0
+7,135,"mind",0
+7,136,"non-material traits",0
+7,137,"objects",0
+7,138,"organization",0
+7,139,"past",0
+7,140,"patterned ways of behavior",0
+7,141,"persons",0
+7,142,"practical arts",0
+7,143,"present",0
+7,144,"relationships",0
+7,145,"responses",0
+7,146,"sentiments",0
+7,147,"skills",0
+7,148,"social group",0
+7,149,"social needs",0
+7,150,"social organization",0
+7,151,"social procedures",0
+7,152,"standards",0
+7,153,"superorganic order",0
+7,154,"traits",0
+7,155,"usages",0
+7,156,"utensils",0

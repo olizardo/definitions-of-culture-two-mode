@@ -16,13 +16,22 @@ network descriptions and limitations: `README.md`. Do not copy counts into this 
 - `figures/`: PNGs in subfolders by source: `boroch/` (main Boroch network, from `analysis-ca-mst-main.R`),
   `kk-index-b/definitions/` (CA and MST on the definitions network), `kk-index-b/works/` (CA and MST on the
   works network, both the works and concept views), and `kk-index-b/degree-works-definitions.png`. The heading
-  MSTs are `kk-index-b/definitions/mst-heading-comm-tree.png` and `kk-index-b/works/mst-heading.png`.
+  MSTs are `kk-index-b/definitions/mst-heading-comm-tree.png` and `kk-index-b/works/mst-heading.png`; they are
+  generated but not used in the manuscript.
   Filenames carry the network or node type; the folder carries the dataset. Scripts create their folders.
 - `documents/`: source PDFs and an ignored text copy. `*_djvu.txt` is gitignored; do not commit or release it.
   `documents/pdfcoffee.com-*.pdf` is gitignored, but the file is still tracked at HEAD (see TODO).
 - `kk-index-b-two-mode.tex`: the LaTeX draft report on the works and definitions networks. It reads the figures
   and CSVs written by the analysis scripts but does not source them, so rerun the scripts and update the
-  numbers by hand.
+  numbers by hand. Sections (2026-10-25): Data and networks, Overview, Maximum spanning trees, Limitations;
+  the centrality and CA sections were removed (recoverable from git history) and the heading MSTs are not used.
+  Citations are natbib (`\citet`/`\citep`, style `abbrvnat`) with colored hyperref links, and the bibliography is
+  `\bibliography{references,library}`. `references.bib` holds classics added by hand (breiger1974 and
+  kruskal1956 are cited; borgatti1997 and greenacre1984 became uncited when those sections were removed).
+  `library.bib` is a symlink to the user's global `~/My Library.bib`, gitignored because bibtex cannot read a
+  path with a space; the big library supplies keys like freeman1978centrality-724 and everett2013dual-projection-c89.
+  Compile with pdflatex → bibtex → pdflatex ×2; MST betweenness in the tables is Freeman-normalized, computed
+  from the node tables in `data/kk-index-b-mst-*.csv` and pasted in by hand.
 - Scratch files go in `$PA_SCRATCH_DIR`, not the repo.
 - `scripts/kk-group-style.R`: the K&K definition group names (A Descriptive, B Historical, C Normative,
   D Psychological, E Structural, F Genetic, G Incomplete) and their ggstar symbols. Sourced by
@@ -54,13 +63,19 @@ set the Boroch labels on the code vertices. After a change to that file, rerun t
 
 Order: `build-index-b.R` → `build-index-b-crosswalk.R` → `build-index-b-networks.R` →
 `build-index-b-verified.R` → `check-index-b-networks.R` → `check-index-b-blocks.R` →
-`build-work-authors-index-b.R` → `build-work-concept-network-index-b.R` → `attach-work-pub-type-index-b.R` → `analysis-index-b.R` →
+`build-work-concept-network-index-b.R` → `build-work-authors-index-b.R` → `attach-work-pub-type-index-b.R` → `analysis-index-b.R` →
 `analysis-ca-index-b.R` → `analysis-ca-works-index-b.R` → `analysis-centrality-index-b.R` →
 `analysis-mst-definitions-index-b.R` → `analysis-mst-works-index-b.R` → `analysis-mst-headings-index-b.R`. The definitions analyses read
 `data/kk-index-b-verified-network.rds`, not the unfiltered sub-element network. The works build
-(`build-work-concept-network-index-b.R`) reads the verified network and the heading network. Run each in a fresh environment: `e <- new.env(); e$norm <- base::norm; sys.source(file, envir = e)`.
+(`build-work-concept-network-index-b.R`) reads the verified network and the heading network, and
+`build-work-authors-index-b.R` reads the works table `build-work-concept-network-index-b.R` writes, so it
+must run after it (running it first picks up the previous build's stale works table). Run each in a fresh
+environment: `e <- new.env(); e$norm <- base::norm; sys.source(file, envir = e)`.
 A new environment inherits the global session, and a live session may define a `norm` stub that shadows
-`base::norm` (the prestige analysis then fails with `unused argument (type = "F")`).
+`base::norm` (the prestige analysis then fails with `unused argument (type = "F")`). Worse, any variable the
+session happens to hold (from earlier script runs or assistant tool calls) can silently satisfy a bare name
+in the scripts and corrupt the run — a 2026-10-26 chain rerun in a polluted session produced shifted Index A
+entries and unapplied fixes, all plausible-looking. Run the chain only with an empty global environment.
 The crosswalk reads its inputs from files; a stale session object once produced wrong output.
 
 After any change, check that: the build runs without errors; every manual-fix key matches a token;
@@ -112,7 +127,15 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
 
 ## Page images and offsets
 
-- `Kroeber-kluckhohn.pdf` (ABBYY): printed page = PDF page − 3. Index B = PDF pp. 77–81.
+- `Kroeber-kluckhohn.pdf` (ABBYY): printed page = PDF page − 3. Index B = PDF pp. 77–81. The offset drifts
+  through the book (checked 2026-10-26 on the page images: PDF 63 prints 60, PDF 105 prints 103, PDF 125
+  prints 123), so read the printed number from the page image before citing it.
+- The book has two statement sequences. Part II, Definitions (printed 41–81), holds groups A–G with
+  roman-numeral subgroups; its indexes are Index A (printed 73–74; PDF 76 through PDF 77's left column) and
+  Index B (printed 74–78; PDF 77's right column through PDF 81). Part III, Some Statements About Culture
+  (printed 83 onward), has its own groups a–f with plain numbers and its own author index (printed p. 141).
+  Part III group headings: a 84 (PDF 86), b 95 (PDF 97), c 99 (PDF 101), d 102 (statement d-5 is on PDF 105),
+  f 125 (PDF 127).
 - The 229-page copy (`…_compress.pdf`, same file as the tracked pdfcoffee copy): printed = PDF − 6.
 - Each new copy needs its own offset. Cite printed page numbers, not a copy's PDF page.
 - Main-text footnotes cite the SOURCE's page ("Goldenweiser, 1933: 59"), not the page of the K&K text that
@@ -146,12 +169,21 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
 - The Part III author index (printed p. 141) credits some authors with lowercase letter-number codes from Part
   III's own groups. Those are not Part II codes, so each attribution needs its own basis. The user-verified
   attributions are in `data/kk-part-iii-author-codes.csv`; `build-index-b.R` appends them to the author table,
-  not to `index_a`.
+  not to `index_a`. The dataset names Part III codes with uppercase letters (C-5, D-5, F-8). Check every new
+  attribution on the page image, not the text layer: the text layer misread c-5 as e-5, which produced a wrong
+  Goldenweiser 1937 → E-5 mapping (fixed 2026-10-26, PROVENANCE 12; the printed index says c-5 (1937), and
+  Part III group c statement 5, printed p. 99, quotes Goldenweiser, 1937: 45-46). K&K quote Goldenweiser only
+  in Part III (c-5 p. 99, d-5 p. 103, f-8 p. 127), and printed Index A has no Goldenweiser entry at all — the
+  OCR drops the whole name on the Index A pages, so an author missing from the Index A text layer may still be
+  printed there.
 - Authors that K&K cite in the main text but Index A omits: Maquet (C-I-18a), Aberle et al. (D-II-16), Taylor 1950
   (E-17). Sears's `C-I-Addendum` is an addendum linked to a specialty code, not a network code (user decision
   2026-10-25). Codes outside Index A enter the verified network only through `data/kk-index-b-verified-extra-codes.csv`,
   with one basis per code. Taylor's footnote 17 is commentary rather than a definition, so its basis is weaker than
-  footnote 16 (Aberle) or 18a (Maquet).
+  footnote 16 (Aberle) or 18a (Maquet). Since 2026-10-26 the verified extras extend the universe in
+  `build-index-b.R`: a verified extra may have no Index A entry and no Index B element (C-5 is the first such
+  code). The Part III attributions alone do not extend the universe — a Part III code with no Index A or Index B
+  presence (F-8) stays out of the network unless it is also added as an extra.
 
 ## Crosswalk and Boroch's data
 
@@ -161,7 +193,9 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
 - Hand decisions are in `data/kk-boroch-crosswalk-decisions.csv`, each with a basis.
 - Table 2 has 135 definition columns. The appendix has 171 codes; 39 never appear in Table 2 (texts in
   `kkcc-appendix-only-texts.csv`, links in `kkcc-appendix-only-links.csv`). 37 of the 39 are linked to K&K codes,
-  and the network uses those links as Boroch labels. F1-21 and G1 have no Index A row.
+  and the network uses those links as Boroch labels. F1-21 is linked to F-I-20 on the main-text citation
+  (it has no Index A row of its own); G1 is linked to G-1 (2026-10-26: Index A printed p. 74 lists
+  "Sapir, B-2 (1921). B-3 (1924a), G-1 (1921)", image-checked).
 - Crosswalk hand decisions with a non-author basis: D2-7 (Young 1944, year changed in Index A) and D2-16 (K&K
   footnote 16). Each basis is in `data/kk-boroch-crosswalk-decisions.csv`.
 - F4-6 is an off-by-one slip for F4-5 = Kluckhohn & Kelly 1945a: 87 (evidence in PROVENANCE section 5).
@@ -207,7 +241,14 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
   built from the Index A entries under each code. Codes are categories and can hold several works; a
   work can sit under several codes. Do not treat a code as a work.
 - Each entry keeps its own year. A year-less entry is dropped with a warning (e.g. "Kelly" under A-14).
-- Bernard's mimeograph is one committee work of four authors, "Committee on Conceptual Integration (Bernard, Blumenthal, Dodd, Hart) 1941". Its Index A qualifier is (1941) by manual fix. Index B has no single-author Bernard 1941 work, and K&K's 1941a Social Forces article is not coded, so it is not in the data. The `group_year` column in the name decisions has no rows and is unused.
+  Kelly's Index A entry states the year once, "(all in collaboration with Kluckhohn, 1945a)", which the parser
+  does not read, so each of its codes warns; the warnings are noise, because the only Kelly work is the
+  co-authored Kluckhohn & Kelly 1945a, which every Kelly code also gets through Kluckhohn's own entry. The
+  consequential year-less drop is Tozzer's `D-III-1 (n.d.)` — it is why D-III-1 has no work.
+- Goldenweiser 1937 sits under C-5 only (Part III c-5, PROVENANCE 12). C-5 has no sub-elements and no
+  heading, so the work is isolated in both stored works networks and absent from the works LCC and 2-core;
+  the works-level CA, MST and centrality outputs changed when it moved there (TODO item 22).
+- Bernard's mimeograph is one committee work of four authors, "Committee on Conceptual Integration (Bernard, Blumenthal, Dodd, Hart) 1941". Index A keeps the printed qualifier (1941b); the Bernard row in `kk-index-b-name-decisions.csv` has year 1941b and group_year 1941, and that group_year is what moves the entry into the 1941 committee work (amended 2026-10-26, PROVENANCE 9.36; the earlier manual fix that rewrote the qualifier to (1941) was removed). Index B has no single-author Bernard 1941 work, and K&K's 1941a Social Forces article is not coded, so it is not in the data.
 - Co-authored works list every author sharing the year. A co-author written as a prefix of a full name
   in the same year group takes the full name (`canon.names()`), unless `kk-index-b-name-decisions.csv`
   says otherwise. The prefix rule once merged two different Gillins; the decision file now overrides it.
@@ -248,6 +289,22 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
 - Titles name the network ("definitions network", "works network") and the node type, so each figure says
   where it came from. CA labels use `geom_label_repel` with a white fill so they stay readable over the points.
 
+## Definition texts and coverage
+
+- `data/kkcc-definition-texts.csv` holds Boroch's Table 2 quotations by Boroch code; `kkcc-appendix-only-texts.csv`
+  the appendix-only codes' quotations. `data/kk-definition-texts-kk-only.csv` holds the codes Boroch does not
+  quote anywhere: the Part III statement codes C-5, D-5, D-7, E-17 and the Part II D-III-4 page footnote
+  (columns kk_code, author, year, statement, printed_page, text, note; one row per code).
+- `scripts/check-definition-text-coverage.R` is read-only. It checks (a) every verified definition carries a
+  text, (b) each text attaches to a work under its code by surname set and year, and (c) in the other direction
+  every work attaches to at least one text. The documented exceptions are D-II-7 (Young 1947/1944 printing
+  conflict) and F-I-20 (the F1-21 Kluckhohn 1951a main-text link); the script's DOCUMENTED vector lists them.
+  Four codes hold no work: C-I-18a and D-II-16 (Index A omits Maquet and Aberle et al.), D-III-1 (Tozzer's
+  entry is n.d.) and E-17 (Taylor has no Index A entry).
+- The K&K-only rows are keyed by kk_code, never by author: Goldenweiser holds two rows (C-5 1937 and D-5 1933),
+  and an author-based match silently keys both to one code.
+- All three text files are verbatim quotations of Boroch and K&K; see Rights.
+
 ## Regex and text gotchas (R)
 
 - Default regex is POSIX TRE. Inside a bracket class `\s` is a literal backslash and `s`; use
@@ -265,6 +322,8 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
 
 - Base pipe `|>`; ggplot2; `ggsave(bg = "white")` with theme_void or theme_minimal.
 - Put comments above pipeline lines, not after them.
+- Avoid using colons excessively in prose (do not use them every other sentence). Prefer commas, periods, and other punctuation to structure sentences naturally.
+- Use American spelling in prose (color, center, neighbor, behavior), including in figure captions.
 - Analysis that feeds a claim needs its counts and a stated basis; the report should cite the current
   network, not an earlier one.
 - Node labels are unique within a plot. Code nodes are labeled with the K&K code, work nodes with the work label,
@@ -289,7 +348,7 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
 
 ## Release and publication
 
-- The release is the two-mode network data in `release/two-mode-network-data/`, version 0.3.0: three `.rds` files
+- The release is the two-mode network data in `release/two-mode-network-data/`, version 0.4.0: three `.rds` files
   (the four stored Index B networks; the full works file keeps the work table), `kk-index-b-work-citations.csv`,
   `MANIFEST.md` and `CHANGELOG.md`. The 0.3.0 entry is dated 2026-10-25 (confirmed by the user, 2026-10-25), which is earlier than the 0.2.0
   entry (2026-10-26).
@@ -318,8 +377,8 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
 - Manual fallback, if the workflow is unavailable: clone `gh-pages` into a scratch directory, replace its contents with
   the rendered site, copy `data/` and `.nojekyll`, commit, and push as a fast-forward. Never force-push. Do not push
   `main` as part of a site update.
-- Last publication: 2026-10-25, through the workflow: `gh-pages` commit `1e30db9`, built from `site-source` commit `e285d03`.
-  Before that, the manual publishes were `5d8cec2` (version 0.3.0 pages) and `61e4c02` (download table), both approved by the user.
+- Last publication: 2026-10-26, through the workflow: `gh-pages` commit `08a3886`, built from `site-source` commit `7bb8aea` (release 0.4.0; user approved the push).
+  Before it, `79e1651` from `25a25f2` (0.3.1 refresh); before that the manual publishes `5d8cec2` (0.3.0 pages) and `61e4c02` (download table), all approved by the user.
   `gh-pages` also carries `data/kk-index-b-work-citations.csv` (identical to the release copy), which the download page
   links. The workflow copies `data/` from `site-source`, which holds the same file, so keep it there.
 - The repo's `main` has uncommitted work (see TODO) and is not part of the publication.

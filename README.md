@@ -89,10 +89,10 @@ the works network, or the code projection of the definitions network) are derive
 
 | # | network | stored in | nodes | attributes |
 |---|---|---|---|---|
-| 1 | definitions × sub-elements | `kk-index-b-verified-network.rds` (`graph`, `biadjacency`) | 472 sub-elements, 170 codes | sub-element and code attributes |
-| 2 | definitions × headings | `kk-index-b-heading-network.rds` (`graph`, `biadjacency`) | 53 headings, 170 codes | heading and code attributes |
-| 3 | works × sub-elements | `kk-index-b-work-concept-network-full.rds`, `two_mode_graph` | 472 sub-elements, 134 works | sub-element and work attributes |
-| 4 | works × headings | same file, `two_mode_heading_graph` | 53 headings, 134 works | heading and work attributes |
+| 1 | definitions × sub-elements | `kk-index-b-verified-network.rds` (`graph`, `biadjacency`) | 472 sub-elements, 171 codes | sub-element and code attributes |
+| 2 | definitions × headings | `kk-index-b-heading-network.rds` (`graph`, `biadjacency`) | 53 headings, 171 codes | heading and code attributes |
+| 3 | works × sub-elements | `kk-index-b-work-concept-network-full.rds`, `two_mode_graph` | 472 sub-elements, 133 works | sub-element and work attributes |
+| 4 | works × headings | same file, `two_mode_heading_graph` | 53 headings, 133 works | heading and work attributes |
 
 Where attributes overlap, the values agree across the four networks (checked 2026-10-25). The raw
 `kk-index-b-subelement-network.rds` is the build output that the verified network is filtered from.
@@ -216,9 +216,9 @@ Boroch and K&K networks (`analysis-index-b.R`).
 
 **`kk-index-b-subelement-network.rds`**, **`kk-index-b-heading-network.rds`**, **`kk-index-b-verified-network.rds`**:
 lists with `biadjacency` (0/1 matrix) and `graph` (igraph, bipartite). The sub-element and heading
-networks keep all 170 codes. The verified network drops codes not flagged `in_verified` and sub-elements left with no verified code;
-nothing is dropped at present, so it has the same nodes as the sub-element network. The five codes with no
-Index B edge (F-I-5, F-IV-1, F-IV-2, F-IV-4, G-1) are isolates. Vertex `type` is FALSE for element vertices and TRUE for codes.
+networks keep all 171 codes. The verified network drops codes not flagged `in_verified` and sub-elements left with no verified code;
+nothing is dropped at present, so it has the same nodes as the sub-element network. The six codes with no
+Index B edge (C-5, F-I-5, F-IV-1, F-IV-2, F-IV-4, G-1) are isolates. Vertex `type` is FALSE for element vertices and TRUE for codes.
 
 Vertex attributes, by vertex kind:
 
@@ -261,6 +261,14 @@ stored data; projections are derived in the analyses.
 Derived in the analyses (`sub_work_matrix()` and `lcc_2core()` in `scripts/core-index-b.R`): the sub-element ×
 work matrix, the sub-element projection (ties = works both sub-elements cite), and the work projection (ties =
 sub-elements both works cite). The LCC and 2-core are applied there, not in the stored file.
+
+**`kk-definition-texts-kk-only.csv`**: full definition text for the five verified codes that Boroch does not
+quote anywhere in his Table 2 or appendix (C-5, D-5, D-7, D-III-4, E-17). The text is transcribed from K&K's own
+statements (Part III group c statement 5, group d statements 5 and 7, and group e statement 17; the Part II
+group D-III page footnote 14), with
+the printed citation, the printed page, and a per-row basis in `note`. Like the Boroch text files
+(`kkcc-definition-texts.csv`, `kkcc-appendix-only-texts.csv`), it contains verbatim quotations and is not for
+release.
 
 ## Methods
 
@@ -316,6 +324,18 @@ unlinked and are reported as such, not guessed.
 
 ## Known limitations
 
+- **Definition text coverage.** Boroch's appendix supplies a full quoted text for 166 of the
+  171 verified definitions; the five without one carry K&K's own quotations instead
+  (`kk-definition-texts-kk-only.csv`): the Part III statement codes C-5, D-5, D-7 and E-17,
+  and the Part II D-III-4 page footnote. Seven K&K codes carry two
+  Boroch quotations each, and three Table 2 columns inherit a base code's text, so coverage
+  is counted by code, not by quotation. Every definition text also attaches to a work by
+  author and year, with six explained exceptions (`scripts/check-definition-text-coverage.R`):
+  three codes hold no work because Index A omits their authors (C-I-18a Maquet, D-II-16
+  Aberle et al., E-17 Taylor), one because its entry has no year and the work key requires
+  one (D-III-1 Tozzer), and two documented conflicts kept as printed (D-II-7 Young 1947/1944,
+  F-I-20 Kluckhohn 1951a against F. R. Kluckhohn 1950). In the other direction, every work
+  attaches to at least one definition text, except the same two documented conflicts.
 - **OCR noise.** Index B and Index A come from ABBYY OCR of a 1952 scan. Some codes
   remain damaged after normalization. Of the Index A tokens that the rules could not read,
   the page image was used to correct them, and 30 Index A rows that the parser had marked
@@ -351,7 +371,9 @@ unlinked and are reported as such, not guessed.
 The release is intended to ship **derived coded data** (incidence matrices, codes,
 authors, years, element labels). It should not ship verbatim definition text.
 `data/kkcc-definition-texts.csv` contains verbatim quotations from Boroch's appendix,
-and both K&K and Boroch are copyrighted. Keep that file out of the release manifest
+and both K&K and Boroch are copyrighted. The same applies to
+`data/kk-definition-texts-kk-only.csv` (verbatim K&K Part II quotations). Keep both out
+of the release manifest
 until a rights decision is made. The K&K Index B element labels are short index words,
 but they are still K&K's wording; confirm they are acceptable for release before
 publication. The scanned PDFs are not part of the release.

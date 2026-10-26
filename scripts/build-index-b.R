@@ -608,15 +608,18 @@ corrections <- corrections[corrections$raw != corrections$normalized |
                              is.na(corrections$normalized), ]
 corrections <- corrections[order(corrections$source, corrections$raw), ]
 
-universe <- sort(unique(c(index_a_codes, edges$kk_code)), method = "radix")
+# Codes the user has placed in the verified network beyond Index A and Index B
+# (data/kk-index-b-verified-extra-codes.csv, one basis per code). They extend
+# the universe: a verified extra may have no Index A entry and no Index B
+# element (C-5, the Part III statement code, is the first such case).
+verified_extra <- read.csv("data/kk-index-b-verified-extra-codes.csv", stringsAsFactors = FALSE)
+universe <- sort(unique(c(index_a_codes, edges$kk_code, verified_extra$kk_code)),
+                 method = "radix")
 group_of <- function(code) sub("-.*", "", code)
 subgroup_of <- function(code) {
   parts <- strsplit(code, "-")
   vapply(parts, function(p) if (length(p) == 3) p[2] else NA_character_, "")
 }
-# Codes outside Index A and Part III that the user has placed in the verified network
-# (data/kk-index-b-verified-extra-codes.csv, one basis per code).
-verified_extra <- read.csv("data/kk-index-b-verified-extra-codes.csv", stringsAsFactors = FALSE)
 definitions <- data.frame(
   kk_code = universe,
   group = group_of(universe),

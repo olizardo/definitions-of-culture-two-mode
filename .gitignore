@@ -6,3 +6,6 @@ documents/*_djvu.txt
 
 # Scanned copy of the K&K monograph with an unclear source: keep out of git
 documents/pdfcoffee.com-*.pdf
+
+# Symlink to the user's global bib file; do not commit
+library.bib

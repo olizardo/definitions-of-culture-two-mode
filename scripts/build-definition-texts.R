@@ -101,6 +101,20 @@ for (i in which(idx)) {
   if (b %in% out$code) out$text[i] <- out$text[match(b, out$code)]
 }
 
+# Table 2 columns with no appendix entry of their own carry another entry's
+# text; text_note says which. F4-6 is Boroch's off-by-one slip for F4-5
+# (PROVENANCE section 5), so it carries F4-5's text, which lives in the
+# appendix-only set, not under a Table 2 code.
+out$text_note <- ""
+COPIED <- c(A10a = "A10", `C1-5a` = "C1-5", `F4-6` = "F4-5")
+for (cd in names(COPIED)) {
+  out$text_note[out$code == cd] <-
+    sprintf("Text copied from %s: no appendix entry of its own (PROVENANCE sections 2 and 5).", COPIED[[cd]])
+}
+aot <- read.csv("data/kkcc-appendix-only-texts.csv", stringsAsFactors = FALSE)
+out$text[out$code == "F4-6"] <- aot$text[aot$code == "F4-5"]
+stopifnot(!any(is.na(out$text)), all(nzchar(trimws(out$text))))
+
 # hand corrections for entries the rules cannot recover
 CORRECTIONS <- c(
   `A13`  = "It [culture] is the complex whole of the system of concepts and usages, organizations, skills, and instruments by means of which mankind deals with physical, biological, and human nature in satisfaction of its needs.",
@@ -117,5 +131,5 @@ for (cd in names(CORRECTIONS)) out$text[out$code == cd] <- CORRECTIONS[[cd]]
 
 # review print
 cat(sprintf("--- %s ---\n%s\n", out$code, out$text), sep = "")
-write.csv(out, "data/kkcc-definition-texts.csv", row.names = FALSE)
+write.csv(out[c("code", "text", "text_note")], "data/kkcc-definition-texts.csv", row.names = FALSE)
 cat("wrote data/kkcc-definition-texts.csv,", nrow(out), "rows\n")

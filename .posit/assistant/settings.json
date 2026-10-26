@@ -10,7 +10,11 @@
       "/usr/share/positron/resources/app/quarto/bin/quarto *": "allow",
       "grep *": "allow",
       "head *": "allow",
-      "ls *": "allow"
+      "ls *": "allow",
+      "git add *": "allow",
+      "git status *": "allow",
+      "git commit *": "allow",
+      "git log *": "allow"
     }
   }
 }
