@@ -6,7 +6,7 @@ title: "Kroeber & Kluckhohn Two-Mode Network Data"
 
 ## Overview
 
-These are two-mode (bipartite) networks built from the index of Kroeber and Kluckhohn's *Culture: A Critical Review of Concepts and Definitions* (1952). Index B assigns each of the 170 culture definitions (K&K codes) to the headings and sub-elements under which the monograph indexes it. Index A gives the author and year behind each code. The works network links each of the 133 works to the same sub-elements and headings.
+These are two-mode (bipartite) networks built from the index of Kroeber and Kluckhohn's *Culture: A Critical Review of Concepts and Definitions* (1952). Index B assigns each of the 171 culture definitions (K&K codes) to the headings and sub-elements under which the monograph indexes it. Index A gives the author and year behind each code. The works network links each of the 133 works to the same sub-elements and headings.
 
 Boroch's (2016) reanalysis of the same classification supplies the Boroch code labels, which are attached as vertex attributes where his Table 2 or appendix covers the same definition.
 
@@ -14,8 +14,8 @@ Boroch's (2016) reanalysis of the same classification supplies the Boroch code l
 
 | Network | Nodes | File |
 |---|---|---|
-| Definitions × sub-elements | 472 sub-elements, 170 codes | `kk-index-b-verified-network.rds` |
-| Definitions × headings | 53 headings, 170 codes | `kk-index-b-heading-network.rds` |
+| Definitions × sub-elements | 472 sub-elements, 171 codes | `kk-index-b-verified-network.rds` |
+| Definitions × headings | 53 headings, 171 codes | `kk-index-b-heading-network.rds` |
 | Works × sub-elements | 472 sub-elements, 133 works | `kk-index-b-works-sub-element-network.rds` |
 | Works × headings | 53 headings, 133 works | `kk-index-b-works-heading-network.rds` |
 

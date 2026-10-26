@@ -5,6 +5,14 @@ title: "Changelog"
 Versions follow `MAJOR.MINOR.PATCH`. A minor bump adds data or changes network contents; a patch fixes an
 error in existing data without changing its structure.
 
+## 0.4.0 (2026-10-26)
+
+- Added the Part III statement code C-5 to the verified network (Goldenweiser 1937: 45-46, printed p. 99). C-5 has no Index A entry and no Index B element, so it enters the definitions networks as an isolate: the definitions networks go from 170 to 171 codes, with the edges unchanged.
+- The Part III attribution of Goldenweiser 1937 moves from E-5 to C-5. The printed Part III author index (p. 141) reads "c-5 (1937)"; the source OCR misreads it as e-5, which the earlier mapping had followed. K&K quote Goldenweiser's Anthropology (1937) only in Part III, never in Part II.
+- Goldenweiser 1937 therefore holds no sub-element and no heading: it leaves the works largest component and 2-core. E-5 now holds one work (Linton 1945a). The definitions-level networks are unchanged apart from the added isolate.
+- Refreshed the network files and the citations table from the current build.
+- Rights unchanged: the definition and quotation texts stay out of the release. The K&K monograph is treated as publicly available online; online availability does not by itself settle redistribution rights.
+
 ## 0.3.1 (2026-10-26)
 
 - Attribute and content fixes; the network structure is unchanged (vertices, edges and weights are the same as in 0.3.0).
