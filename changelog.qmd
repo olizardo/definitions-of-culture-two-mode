@@ -5,6 +5,13 @@ title: "Changelog"
 Versions follow `MAJOR.MINOR.PATCH`. A minor bump adds data or changes network contents; a patch fixes an
 error in existing data without changing its structure.
 
+## 0.3.1 (2026-10-26)
+
+- Attribute and content fixes; the network structure is unchanged (vertices, edges and weights are the same as in 0.3.0).
+- The G-1 definition (Sapir 1921) now carries the Boroch appendix label G1, and the works table behind the works networks lists "Sapir 1921" under both of its codes (B-2; G-1). Printed Index A p. 74 lists Sapir under G-1 (1921); an earlier transcription note had missed the row.
+- Bernard's Index A year is now shown as printed, (1941b); the committee mimeograph remains one work of four authors under 1941, as in 0.3.0.
+- Refreshed the network files and the citations table from the current build.
+
 ## 0.3.0 (2026-10-25)
 
 - Added `pub_type` to the work vertices of both works networks. Values: `article`, `book`, `chapter`, `other`. Of the 133 works, 27 are articles, 91 books, 8 chapters and 7 other. A chapter is an entry in an edited volume or a reference work; numbered monograph series count as books. Blumenthal 1937 and Steward 1950 are uncertain and coded `other`.

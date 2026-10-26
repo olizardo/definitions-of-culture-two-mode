@@ -41,7 +41,7 @@ The data are derived coded structure: codes, authors, years, sub-element and hea
 
 Please cite the data set, and the sources it is derived from:
 
-- Lizardo, Omar. 2026. *Kroeber & Kluckhohn Culture Definitions: Two-Mode Network Data* (version 0.3.0, preliminary release). Data set. https://olizardo.github.io/definitions-of-culture-two-mode/
+- Lizardo, Omar. 2026. *Kroeber & Kluckhohn Culture Definitions: Two-Mode Network Data* (version 0.3.1, preliminary release). Data set. https://olizardo.github.io/definitions-of-culture-two-mode/
 - Kroeber, A. L., and Clyde Kluckhohn. 1952. *Culture: A Critical Review of Concepts and Definitions.* Papers of the Peabody Museum of American Archaeology and Ethnology 47(1). Cambridge, MA: Harvard University.
 - Boroch, Robert. 2016. "A Formal Concept of Culture in the Classification of Alfred L. Kroeber and Clyde Kluckhohn." *Analecta* XXV(2).
 
