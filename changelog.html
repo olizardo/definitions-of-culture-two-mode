@@ -130,9 +130,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">0.3.0 (2026-10-25)</a></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">0.2.0 (2026-10-26)</a></li>
-  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">0.1.0</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">0.3.1 (2026-10-26)</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">0.3.0 (2026-10-25)</a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">0.2.0 (2026-10-26)</a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">0.1.0</a></li>
   </ul>
 </nav>
     </div>
@@ -160,15 +161,24 @@ ul.task-list li input[type="checkbox"] {
 
 <p>Versions follow <code>MAJOR.MINOR.PATCH</code>. A minor bump adds data or changes network contents; a patch fixes an error in existing data without changing its structure.</p>
 <section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section">0.3.0 (2026-10-25)</h2>
+<h2 class="anchored" data-anchor-id="section">0.3.1 (2026-10-26)</h2>
+<ul>
+<li>Attribute and content fixes; the network structure is unchanged (vertices, edges and weights are the same as in 0.3.0).</li>
+<li>The G-1 definition (Sapir 1921) now carries the Boroch appendix label G1, and the works table behind the works networks lists “Sapir 1921” under both of its codes (B-2; G-1). Printed Index A p.&nbsp;74 lists Sapir under G-1 (1921); an earlier transcription note had missed the row.</li>
+<li>Bernard’s Index A year is now shown as printed, (1941b); the committee mimeograph remains one work of four authors under 1941, as in 0.3.0.</li>
+<li>Refreshed the network files and the citations table from the current build.</li>
+</ul>
+</section>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1">0.3.0 (2026-10-25)</h2>
 <ul>
 <li>Added <code>pub_type</code> to the work vertices of both works networks. Values: <code>article</code>, <code>book</code>, <code>chapter</code>, <code>other</code>. Of the 133 works, 27 are articles, 91 books, 8 chapters and 7 other. A chapter is an entry in an edited volume or a reference work; numbered monograph series count as books. Blumenthal 1937 and Steward 1950 are uncertain and coded <code>other</code>.</li>
 <li>The network structure is unchanged: vertices, edges and edge weights are the same as in 0.2.0.</li>
 <li>Refreshed the network files from the current build. The works networks keep the same 133 works.</li>
 </ul>
 </section>
-<section id="section-1" class="level2">
-<h2 class="anchored" data-anchor-id="section-1">0.2.0 (2026-10-26)</h2>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2">0.2.0 (2026-10-26)</h2>
 <ul>
 <li>Added <code>kk-index-b-work-citations.csv</code>: 133 works with their codes, surnames, year, K&amp;K and Boroch match status, and the Boroch reference.</li>
 <li>Refreshed the three network files from the current build. The works networks now have 133 works (v0.1.0 had 136). The works-level outputs were compared with the previous build: centrality is stable, CA positions are moderately stable, and MST community assignments changed for about a third of the works. Edge-level changes were not compared one by one.</li>
@@ -181,8 +191,8 @@ ul.task-list li input[type="checkbox"] {
 <li>The Committee mimeograph (Bernard, Blumenthal, Dodd, Hart 1941) is one work with five codes.</li>
 </ul>
 </section>
-<section id="section-2" class="level2">
-<h2 class="anchored" data-anchor-id="section-2">0.1.0</h2>
+<section id="section-3" class="level2">
+<h2 class="anchored" data-anchor-id="section-3">0.1.0</h2>
 <ul>
 <li>Preliminary release: the three Index B network files (definitions × sub-elements, definitions × headings, works × sub-elements and works × headings). 136 works.</li>
 </ul>
