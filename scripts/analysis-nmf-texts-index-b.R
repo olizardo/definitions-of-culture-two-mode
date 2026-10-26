@@ -93,6 +93,7 @@ for (i in seq_len(nrow(docs))) {
 }
 idf <- log(nrow(D) / colSums(D > 0))
 V <- sweep(D, 2, idf, `*`)
+saveRDS(V, "data/kk-index-b-nmf-texts-tfidf.rds")
 
 # ---- NMF: stability, then the fixed k = 7 fit ----
 

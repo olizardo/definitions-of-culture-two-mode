@@ -295,6 +295,17 @@ were equal (case, hyphens, and a trailing plural "s" ignored). The linkage is
 conservative. Boroch's notion labels are his own wording, so many rows (31 cells) are
 unlinked and are reported as such, not guessed.
 
+**Non-negative matrix factorization.** Two analyses test whether data-driven factors
+recover K&K's groups A–G, fit at k = 7 (one factor per group, fixed rather than
+selected). The works analysis factorizes the sub-elements × works biadjacency of the
+LCC 2-core; the texts analysis factorizes a TF-IDF matrix of the definition
+quotations, one document per K&K code carrying a text. The text analysis uses a
+hand-set stopword list (58 general English stopwords plus 14 omnipresent domain
+words: culture, cultures, cultural, society, social, man, men, human, total, whole,
+way, ways, learned, acquired) and keeps tokens of three letters or more at 2–50%
+document frequency. The list is defined in `scripts/analysis-nmf-texts-index-b.R`
+and is part of the reproducible pipeline; results depend on it.
+
 ## Verification
 
 - Table 2: the binary matrix has 316 ones. Printed "uses" counts include multiplicity and

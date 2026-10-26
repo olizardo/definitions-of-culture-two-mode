@@ -15,7 +15,8 @@ network descriptions and limitations: `README.md`. Do not copy counts into this 
 - `data/`: CSV and rds outputs. `docs/`: PROVENANCE.md, TODO.md.
 - `figures/`: PNGs in subfolders by source: `boroch/` (main Boroch network, from `analysis-ca-mst-main.R`),
   `kk-index-b/definitions/` (CA and MST on the definitions network), `kk-index-b/works/` (CA and MST on the
-  works network, both the works and concept views), and `kk-index-b/degree-works-definitions.png`. The heading
+  works network, both the works and concept views), `kk-index-b/nmf/` (the two NMF analyses, works and texts),
+  and `kk-index-b/degree-works-definitions.png`. The heading
   MSTs are `kk-index-b/definitions/mst-heading-comm-tree.png` and `kk-index-b/works/mst-heading.png`; they are
   generated but not used in the manuscript.
   Filenames carry the network or node type; the folder carries the dataset. Scripts create their folders.
@@ -23,11 +24,12 @@ network descriptions and limitations: `README.md`. Do not copy counts into this 
   `documents/pdfcoffee.com-*.pdf` is gitignored, but the file is still tracked at HEAD (see TODO).
 - `kk-index-b-two-mode.tex`: the LaTeX draft report on the works and definitions networks. It reads the figures
   and CSVs written by the analysis scripts but does not source them, so rerun the scripts and update the
-  numbers by hand. Sections (2026-10-25): Data and networks, Overview, Maximum spanning trees, Limitations;
-  the centrality and CA sections were removed (recoverable from git history) and the heading MSTs are not used.
+  numbers by hand. Sections (2026-10-26): Data and networks, Overview, Maximum spanning trees, Data-driven
+  types: non-negative matrix factorization, Limitations; the centrality and CA sections were removed
+  (recoverable from git history) and the heading MSTs are not used.
   Citations are natbib (`\citet`/`\citep`, style `abbrvnat`) with colored hyperref links, and the bibliography is
-  `\bibliography{references,library}`. `references.bib` holds classics added by hand (breiger1974 and
-  kruskal1956 are cited; borgatti1997 and greenacre1984 became uncited when those sections were removed).
+  `\bibliography{references,library}`. `references.bib` holds classics added by hand (breiger1974, kruskal1956
+  and lee2001algorithms are cited; borgatti1997 and greenacre1984 became uncited when those sections were removed).
   `library.bib` is a symlink to the user's global `~/My Library.bib`, gitignored because bibtex cannot read a
   path with a space; the big library supplies keys like freeman1978centrality-724 and everett2013dual-projection-c89.
   Compile with pdflatex → bibtex → pdflatex ×2; MST betweenness in the tables is Freeman-normalized, computed
@@ -305,6 +307,37 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
   and an author-based match silently keys both to one code.
 - All three text files are verbatim quotations of Boroch and K&K; see Rights.
 
+## NMF analyses (added 2026-10-26)
+
+- `scripts/nmf-core.R` holds the shared base-R NMF (Euclidean multiplicative updates, seeded and deterministic;
+  W columns normalized to unit sum), an ARI helper (Hubert & Arabie; degenerate partitions return 1) and
+  `hard()`. No NMF package is installed and none should be added: the implementation is deliberate, to keep
+  `renv.lock` untouched. Sourced by both analysis scripts. Run them like any other script, from the project
+  root in a fresh environment.
+- `scripts/analysis-nmf-works-index-b.R` (structural): factorizes the sub-elements x works biadjacency of the
+  works LCC 2-core. `scripts/analysis-nmf-texts-index-b.R` (text-based): TF-IDF matrix of the definition
+  quotations, one document per K&K code carrying a text (Table 2 via the crosswalk, appendix-only via the
+  links, plus the K&K-only rows); the stopword list removes the omnipresent domain words by hand. Both fit
+  k = 7, one factor per K&K group, and test agreement with A-G via dominant factor vs. dominant group,
+  ARI against a permuted-label baseline. Both analyses find chance-level agreement (PROVENANCE 13). k = 7 is
+  fixed to match the taxonomy under test, not selected by the data (no elbow in the objective, stability flat
+  beyond k = 2); an earlier ad hoc k = 4 works solution was removed by the user. Do not reintroduce a k = 4
+  reporting path.
+- The stability loop over k = 2..8 is a diagnostic only; it is written to the `*-stability.csv` files.
+- Factor labels are hand-set vectors `factor.labels` in each analysis script (change labels there only). The
+  works factors: Way of life, Transmitted ideas, Society-individual behavior, Norms and knowledge, Complex
+  whole, Social organization, Learning and acquisition. The text factors: Utensils and implements, Passed down
+  generations, Feelings and adjustment, Material vs. non-material, Mental and holistic, Symbolic systems, Goals
+  and ways of living. Text labels describe top terms, not clean concepts: on this corpus a factor can be driven
+  by one author's phrasing (the literal word "kluckhohn" is a top term of the text factor 3).
+- Factor numbering is stable across outputs: the `*-loads.csv` and `*-agreement.csv` files carry `factor_label`
+  alongside the numeric `dominant`; key on the number, not the label.
+- Outputs: `data/kk-index-b-nmf-works-*.csv` and `data/kk-index-b-nmf-texts-*.csv`; figures in
+  `figures/kk-index-b/nmf/` (`nmf-works.png` is a works x factors loading heatmap, not a scatter). The works
+  heatmap's row labels come from `label.authors()` and must be unique (`stopifnot(!anyDuplicated)`).
+- The definition texts are verbatim quotations (see Rights); the NMF term tables name single words, not
+  quotations, and stay releasable, but do not put extended text into release files.
+
 ## Regex and text gotchas (R)
 
 - Default regex is POSIX TRE. Inside a bracket class `\s` is a literal backslash and `s`; use
@@ -315,6 +348,11 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
 - `grepl()` with a vector of patterns uses only the first pattern.
 - `R` recycles vectors column-wise: `A * colSums(A)` misaligns. Use `t(A) %*% rowSums(A)` or `rep(..., each = nrow(A))`.
 - `dir.create()` takes one path; `dir.create(c(...))` errors with "invalid 'path' argument". Loop with `lapply`.
+- `lapply`/`vapply` over a matrix iterate over its underlying vector (scalars), not its columns. For pairwise
+  work use `combn(n, 2, simplify = FALSE)`, which returns a list of length-2 vectors.
+- `sweep(X, MARGIN, STATS)`: STATS is recycled along MARGIN. For a k x n matrix scaled per row (k-vector),
+  MARGIN is 1, not 2; getting it wrong warns "STATS does not recycle exactly across MARGIN" and silently
+  misaligns.
 - ggplot2 4.0.3 is installed. `facetted_pos_scales()` is gone; for per-panel x ticks, use a breaks function
   on `scale_x_continuous()`. Its limits are the expanded range, not the data range.
 
