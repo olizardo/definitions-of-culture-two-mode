@@ -4,6 +4,8 @@
 # quotations (mapped to K&K codes through the crosswalk), the appendix-only
 # quotations (through the appendix links) and the K&K-only rows (C-5, D-5,
 # D-7, E-17, D-III-4). A code's group is the first letter of the code.
+# Non-English quotations are replaced by translations
+# (data/kk-definition-texts-translations.csv, PROVENANCE 15).
 #
 # The corpus is small (about 170 documents of ~30 words), so: tokens of three
 # letters or more, a hand-set stopword list including the omnipresent domain
@@ -20,7 +22,9 @@
 #   data/kk-index-b-nmf-texts-loads.csv       per-code loadings and group
 #   data/kk-index-b-nmf-texts-agreement.csv   factor x group cross-tab
 #   figures/kk-index-b/nmf/nmf-texts-factors.png     top terms per factor
-#   figures/kk-index-b/nmf/nmf-texts-agreement.png   factor x K&K group heatmap
+#   figures/kk-index-b/nmf/nmf-texts.png             codes x factors heatmap
+#   (the agreement heatmap was removed 2026-10-27 in favor of the Sankey,
+#   scripts/figure-sankey-agreement.R; the agreement CSVs remain)
 
 library(ggplot2)
 
@@ -50,11 +54,18 @@ docs <- rbind(
   data.frame(kk_code = app$kk_code, text = app$text),
   data.frame(kk_code = kko$kk_code, text = kko$text)
 )
+# translations of the non-English quotations (PROVENANCE 15); substitute the
+# translation for the original where one exists
+tr <- read.csv("data/kk-definition-texts-translations.csv")
+hit <- match(docs$kk_code, tr$code)
+docs$text[!is.na(hit)] <- tr$translation[hit[!is.na(hit)]]
+
 # concatenate the texts of a code held by several Boroch rows
 docs <- aggregate(text ~ kk_code, docs, paste, collapse = " ")
 docs$group <- substr(docs$kk_code, 1, 1)
 cat("documents:", nrow(docs), "| groups:",
-    paste(sort(table(docs$group)), names(table(docs$group)), collapse = " "), "\n")
+    paste(sprintf("%s %d", names(table(docs$group)), table(docs$group)),
+          collapse = " "), "\n")
 
 # ---- tokenize and weight ----
 
@@ -117,12 +128,14 @@ K <- 7
 
 # factor labels, set by hand from the profiles in
 # data/kk-index-b-nmf-texts-factors.csv; change them there only. On a corpus
-# this small some factors are partly author phrasing (factor 3's top terms
-# include the literal word "kluckhohn"), so labels stay close to the terms.
+# this small some factors are partly author phrasing (factor 7's top terms
+# include the literal word "kluckhohn", and factor 2 echoes the Maquet
+# translation's phrasing), so labels stay close to the terms. Re-set
+# 2026-10-27 after the translation of the non-English texts changed the fits.
 factor.labels <- c(
-  "Utensils and implements", "Passed down generations",
-  "Feelings and adjustment", "Material vs. non-material",
-  "Mental and holistic", "Symbolic systems", "Goals and ways of living")
+  "Mental and holistic", "Thought and expression", "Species and utensils",
+  "Material vs. non-material", "Passed down generations", "Symbolic systems",
+  "Feelings and adjustment")
 
 fit <- nmf.fit(V, K, seed = 9137)
 cat("fixed k:", K, "obj =", sprintf("%.1f", fit$obj), "\n")
@@ -161,6 +174,28 @@ loads$dominant <- max.col(Wc)
 loads$factor_label <- factor.labels[loads$dominant]
 write.csv(loads, "data/kk-index-b-nmf-texts-loads.csv", row.names = FALSE)
 
+# figure: codes x factors loading heatmap (mirrors the works heatmaps)
+# codes ordered by dominant factor, then by their largest loading
+ord <- order(loads$dominant, -apply(Wc, 1, max))
+hm <- data.frame(
+  code = factor(rep(rownames(V)[ord], times = K),
+                levels = rev(rownames(V)[ord])),
+  factor = factor(rep(seq_len(K), each = length(ord)),
+                  labels = gsub(" ", "\n", factor.labels)),
+  loading = as.vector(t(Wc[ord, ])))
+ggplot(hm, aes(factor, code, fill = loading)) +
+  geom_tile(color = "white") +
+  scale_fill_gradient(low = "grey96", high = "grey25") +
+  scale_x_discrete(guide = guide_axis(n.dodge = 2)) +
+  labs(title = "Codes x text-NMF factors, k = 7",
+       subtitle = paste0("Loadings sum to 1 per code; codes grouped by dominant",
+                         " factor; row labels are K&K codes"),
+       x = NULL, y = NULL, fill = "loading") +
+  theme_minimal(base_size = 9) +
+  theme(axis.text.y = element_text(size = 3.5))
+ggsave("figures/kk-index-b/nmf/nmf-texts.png",
+       width = 6.5, height = 12, bg = "white")
+
 # ---- agreement with K&K groups ----
 
 dom <- loads$dominant
@@ -183,18 +218,3 @@ agree <- data.frame(factor = rep(1:K, times = 7),
                     group = rep(LETTERS[1:7], each = K),
                     n_codes = as.vector(ct))
 write.csv(agree, "data/kk-index-b-nmf-texts-agreement.csv", row.names = FALSE)
-
-ggplot(agree, ggplot2::aes(group, factor(factor, levels = K:1,
-                   labels = rev(factor.labels)), fill = n_codes)) +
-  ggplot2::geom_tile(color = "white") +
-  ggplot2::geom_text(ggplot2::aes(label = ifelse(n_codes > 0, n_codes, "")),
-                     size = 3.2) +
-  ggplot2::scale_fill_gradient(low = "grey92", high = "grey35",
-                               guide = "none") +
-  ggplot2::labs(
-    title = "Text NMF at k = 7 versus K&K's groups",
-    subtitle = "Dominant factor (rows) against K&K group (columns)",
-    x = "K&K group", y = "NMF factor") +
-  ggplot2::theme_minimal()
-ggplot2::ggsave("figures/kk-index-b/nmf/nmf-texts-agreement.png",
-                width = 6.5, height = 4.6, bg = "white")

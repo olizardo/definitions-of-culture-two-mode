@@ -1,6 +1,6 @@
 # Open items: K&K Index A/B dataset
 
-Last updated 2026-10-26. Method and dated decisions: `docs/PROVENANCE.md`. Current counts: `README.md`.
+Last updated 2026-10-27. Method and dated decisions: `docs/PROVENANCE.md`. Current counts: `README.md`.
 Completed items have been removed from this list; PROVENANCE keeps the history.
 
 ## Token and edge verification
@@ -78,4 +78,4 @@ Source: `data/kk-index-b-work-citations.csv` (built by `scripts/build-index-b-wo
 
 ## NMF analyses (2026-10-26)
 
-23. **NMF analyses.** Both NMF analyses (`scripts/analysis-nmf-works-index-b.R`, `scripts/analysis-nmf-texts-index-b.R`) are in the manuscript (PROVENANCE 13.7), both at k = 7 (the user removed the ad hoc k = 4 solution, 2026-10-26). Both fail to recover K&K's groups A-G at better than chance (PROVENANCE 13.3, 13.5). Open: the framing of the null agreement result is a draft and needs the user's review; the sub-element names in `data/kk-index-b-nmf-works-factors.csv` are ambiguous across headings.
+23. **NMF analyses.** Three NMF analyses (`scripts/analysis-nmf-works-index-b.R`, `scripts/analysis-nmf-texts-index-b.R`, `scripts/analysis-nmf-work-texts-index-b.R`) are at k = 7 (the user removed the ad hoc k = 4 solution, 2026-10-26). None recovers K&K's groups A-G at better than chance (structural PROVENANCE 13.3, texts 15.2, works-as-texts 15.4), and the two works-level classifications do not agree with each other (PROVENANCE 15.5). All three analyses, the factor tree and the agreement Sankey (three pairwise panels, 2026-10-27) are in the manuscript with the post-translation numbers (PROVENANCE 15.2, 15.4, 15.6). Open: the null-agreement framing in the manuscript needs the user's review; the three assistant translations in `data/kk-definition-texts-translations.csv`, and the printed page of each of the four source quotations, need verification against the page images; the sub-element names in `data/kk-index-b-nmf-works-factors.csv` are ambiguous across headings.

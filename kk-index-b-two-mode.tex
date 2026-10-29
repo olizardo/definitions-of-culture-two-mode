@@ -4,6 +4,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{graphicx}
 \usepackage{booktabs}
+\usepackage{array}
 \usepackage{multirow}
 \usepackage{amsmath}
 \usepackage{natbib}
@@ -188,7 +189,7 @@ Taken together, the four trees tell a consistent story. Eight of the ten most ce
 
 \section{Data-driven types: non-negative matrix factorization}
 
-The spanning trees and the community colors above classify nodes hard: each work belongs to exactly one community of the tree. Non-negative matrix factorization (NMF) \citep{lee2001algorithms} offers a soft, parts-based alternative. It approximates a non-negative matrix $V$ by a product $W H$ with all entries non-negative, so every node carries a loading on each factor and every factor is an additive mixture of the original features, with no subtractive terms. We run two NMF analyses on the works network, one on the coding structure and one on the wording of the definitions, and ask in each case how far the data-driven types agree with K\&K's own seven categories A--G. Both use the same base-R implementation (Euclidean multiplicative updates, deterministic given a seed, with ten random restarts per value of $k$), and both fix $k$ at seven, one factor per K\&K group. Fixing $k$ this way is a choice, not a result: the reconstruction error falls monotonically in $k$ without an elbow, and restart stability is flat beyond $k = 2$, so neither criterion selects a number of factors on its own.
+The spanning trees and the community colors above classify nodes hard: each work belongs to exactly one community of the tree. Non-negative matrix factorization (NMF) \citep{lee2001algorithms} offers a soft, parts-based alternative. It approximates a non-negative matrix $V$ by a product $W H$ with all entries non-negative, so every node carries a loading on each factor and every factor is an additive mixture of the original features, with no subtractive terms. We run three NMF analyses on the works network: one on the coding structure, one on the wording of the definition statements, and one representing each work by the concatenated wording of the definitions its codes carry, and ask in each case how far the data-driven types agree with K\&K's own seven categories A--G. All use the same base-R implementation (Euclidean multiplicative updates, deterministic given a seed, with ten random restarts per value of $k$), and all fix $k$ at seven, one factor per K\&K group. Fixing $k$ this way is a choice, not a result: the reconstruction error falls monotonically in $k$ without an elbow, and restart stability is flat beyond $k = 2$, so neither criterion selects a number of factors on its own.
 
 \subsection{Types from the coding structure}
 
@@ -198,19 +199,18 @@ The first analysis factorizes the $156 \times 118$ sub-elements $\times$ works m
 \centering
 \caption{Top five sub-elements of each factor, works NMF at $k = 7$ (loadings normalized to unit sum).}
 \label{tab:nmf-works-factors}
-\small
-\begin{tabular}{rlllllll}
+\footnotesize
+\begin{tabular}{ll*{5}{>{\raggedright\arraybackslash}p{0.115\textwidth}}}
 \toprule
- & \multicolumn{7}{c}{Factor} \\
-\cmidrule(lr){2-8}
- & F1 & F2 & F3 & F4 & F5 & F6 & F7 \\
- & Way of life & Transm.\ ideas & Soc.--indiv.\ beh. & Norms, knowl. & Complex whole & Social org. & Learning, acq. \\
+Factor & 1st & 2nd & 3rd & 4th & 5th \\
 \midrule
-1 & a people & ideas & behavior & beliefs & sum & social & members of a society \\
-2 & way of life & generations & society & customs & total & social heritage & acquired \\
-3 & group & attitudes & individuals & knowledge & beliefs & customs & society \\
-4 & behavior patterns & passed down (or on) & group & ways & activities & institutions & habits \\
-5 & transmission & common & thought & language & tools & patterns & complex whole \\
+F1 & Way of life & a people & way of life & group & behavior patterns & transmission \\
+F2 & Transm.\ ideas & ideas & generations & attitudes & passed down (or on) & common \\
+F3 & Soc.--indiv.\ beh. & behavior & society & individuals & group & thought \\
+F4 & Norms, knowl. & beliefs & customs & knowledge & ways & language \\
+F5 & Complex whole & sum & total & beliefs & activities & tools \\
+F6 & Social org. & social & social heritage & customs & institutions & patterns \\
+F7 & Learning, acq. & members of a society & acquired & society & habits & complex whole \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -222,20 +222,26 @@ The first analysis factorizes the $156 \times 118$ sub-elements $\times$ works m
 \label{fig:nmf-works}
 \end{figure}
 
-To compare these types with K\&K's categories, each work inherits the group of its codes (the letter A--G of the codes it is cited under; a work's dominant group is its plurality letter). This label is well defined---the median work sits in a single group---so the comparison is not an artifact of works straddling categories. The agreement between the dominant factor and the dominant group is at the level of chance: adjusted Rand index 0.029 against a permutation baseline whose 95th percentile is 0.023, and no factor maps onto any group (Figure~\ref{fig:nmf-works-agreement}). The largest cell in the whole cross-tabulation is eight works.
+To compare these types with K\&K's categories, each work inherits the group of its codes (the letter A--G of the codes it is cited under; a work's dominant group is its plurality letter). This label is well defined---the median work sits in a single group---so the comparison is not an artifact of works straddling categories. The agreement between the dominant factor and the dominant group is at the level of chance: adjusted Rand index 0.029 against a permutation baseline whose 95th percentile is 0.023, and no factor maps onto any group. The largest cell in the whole cross-tabulation is eight works.
+
+\subsection{A spanning tree of the factor types}
+
+The works factors can be hardened into a network the way the trees above were built. Binarizing the loadings at $0.10$ turns each work into a member of the factors it loads on substantially: 17 of the 118 works belong to a single factor, 47 to two, 46 to three, and 8 to four, and no work drops out. Projecting the resulting works $\times$ factors biadjacency ties two works by the number of factors they share, giving 4,449 ties in a single component, and the maximum spanning tree of that projection (Figure~\ref{fig:nmf-works-mst}) again has $|V| - 1$ edges. The threshold, like $k$, is a choice rather than a result: lower it and the projection densifies; raise it toward $0.3$ and nearly two-thirds of the works fall back to a single factor, and one work drops out entirely.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.8\textwidth]{figures/kk-index-b/nmf/nmf-works-agreement.png}
-\caption{Dominant NMF factor (rows) against dominant K\&K group (columns) for the 118 works of the 2-core, works NMF at $k = 7$.}
-\label{fig:nmf-works-agreement}
+\includegraphics[width=\textwidth]{figures/kk-index-b/nmf/nmf-works-mst.png}
+\caption{Maximum spanning tree of the works $\times$ NMF-factor projection (threshold 0.10), work nodes. Ties count the factors two works share. Color is the leading-eigenvector community on the tree; size is betweenness in the tree.}
+\label{fig:nmf-works-mst}
 \end{figure}
+
+The tree's bridges are not the concept tree's. Kelly \& Kluckhohn 1945a, the dominant center of the concept-based work tree (Table~\ref{tab:mst-works-betweenness}), is a leaf here, tied to a single neighbor, and Winston 1933 and Kroeber 1948a, secondary hubs there, rank last and near-last of the 118 works. In the other direction, Boas 1930, the strongest bridge of the factor tree, is a leaf of the concept-based tree, and Osgood 1942 and Slotkin 1950, also central here, hold no short paths there; only Gillin 1942 and Linton 1945a are central in both. The two community partitions agree only weakly (adjusted Rand index 0.07), sixteen communities covering this tree against nineteen in the concept-based one. Neither tree is wrong: the two tie definitions ask different questions. A work is central in the concept tree when it draws on many distinct sub-elements that other works also draw on; it is central in the factor tree when its pattern of concept use sits between the factor profiles of other works. The inversion is itself evidence for the reading below---the position of a work in the corpus depends on what is counted as a tie, and no tie definition so far recovers K\&K's groups.
 
 \subsection{Types from the wording of the definitions}
 
-The second analysis asks the same question of the definition texts themselves, independently of K\&K's coding. The corpus holds 172 definition codes carrying a quotation: the Table~2 texts mapped to K\&K codes through the crosswalk, the appendix-only texts, and five statements K\&K print themselves. Documents average about thirty words, so the term--document matrix is built restrictively: tokens of three letters or more, a stopword list that removes the words nearly every definition contains (culture, society, social, man, and the general definitional vocabulary total, whole, learned, acquired), and terms kept to a document frequency between two documents and half the corpus, leaving 408 terms weighted by TF--IDF. As with the coding structure, the factorization is run at $k = 7$, one factor per K\&K group.
+The second analysis asks the same question of the definition texts themselves, independently of K\&K's coding. The corpus holds 172 definition codes carrying a quotation: the Table~2 texts mapped to K\&K codes through the crosswalk, the appendix-only texts, and five statements K\&K print themselves. Documents average about thirty words, so the term--document matrix is built restrictively: tokens of three letters or more, a stopword list that removes the words nearly every definition contains (culture, society, social, man, and the general definitional vocabulary total, whole, learned, acquired), and terms kept to a document frequency between two documents and half the corpus, leaving 412 terms weighted by TF--IDF. The four quotations K\&K and Boroch print in French or German enter as English translations (K\&K's own rendering for Maquet, ours for the other three, verified against the printed originals). As with the coding structure, the factorization is run at $k = 7$, one factor per K\&K group.
 
-The factors again find recognizable themes rather than K\&K's categories (Figure~\ref{fig:nmf-texts-factors}), and we label them by their leading terms: \emph{utensils and implements} (events, species, utensils, tools), \emph{passed down generations} (generation, passed down, sum, everything---the Tylorian sum-total in transmission language), \emph{feelings and adjustment} (inevitable, feeling, thinking, situations), \emph{material vs.\ non-material} (material, non, traits, possesses), \emph{mental and holistic} (concept, holistic, mental, meanings), \emph{symbolic systems} (concrete, process, symbolic, systems, cumulative), and \emph{goals and ways of living} (goals, persons, living, held). On a corpus this small a factor can be driven by one author's phrasing---the literal word ``Kluckhohn'' is among the top terms of the feelings-and-adjustment factor---so the labels should be read as descriptive of the top terms, not as clean concepts. Against the A--G groups the agreement is again chance-level (adjusted Rand index 0.018, permutation baseline 95th percentile 0.016), with no factor exceeding 54\% purity in any group.
+The factors again find recognizable themes rather than K\&K's categories (Figure~\ref{fig:nmf-texts-factors}), and we label them by their leading terms: \emph{mental and holistic} (concept, mean, holistic, mental), \emph{thought and expression} (use, thoughts, think, express, words), \emph{species and utensils} (species, events, order, utensils), \emph{material vs.\ non-material} (material, non, traits, possesses), \emph{passed down generations} (generation, sum, products, passed down), \emph{symbolic systems} (process, concrete, symbolic, systems, cumulative), and \emph{feelings and adjustment} (certain, inevitable, feeling, thinking). On a corpus this small a factor can be driven by one author's phrasing---the literal word ``Kluckhohn'' is among the top terms of the feelings-and-adjustment factor---so the labels should be read as descriptive of the top terms, not as clean concepts. Against the A--G groups the agreement is again chance-level (adjusted Rand index 0.026, permutation baseline 95th percentile 0.017), with no factor exceeding 53\% purity in any group.
 
 \begin{figure}[ht]
 \centering
@@ -244,16 +250,22 @@ The factors again find recognizable themes rather than K\&K's categories (Figure
 \label{fig:nmf-texts-factors}
 \end{figure}
 
+\subsection{Pairwise agreement of the three classifications}
+
+A third analysis represents each work not by its coding and not by a single text but by the concatenated wording of all the definition statements its codes carry, factorized at the same $k = 7$ over the same 118 works of the 2-core. Its factors read as \emph{goals and ways of living}, \emph{passed down generations}, \emph{material vs.\ non-material}, \emph{symbolic systems}, \emph{definitional formulas} (quotation boilerplate---\emph{definition}, \emph{said}, \emph{according}---rather than a theme), \emph{mental and holistic}, and \emph{species and utensils}. Against the groups its agreement is chance-level as well (adjusted Rand index 0.010, permutation baseline 95th percentile 0.025), and it agrees hardly more with the coding-structure factors (adjusted Rand index 0.018): which sub-elements a work's definitions are filed under and how those definitions are worded are two cuts of the same works that share almost nothing.
+
+Figure~\ref{fig:nmf-agreement-sankey} compares the three classifications pairwise, one panel per pair. Every group's works scatter over all seven structural factors, and scatter as widely over the works-as-texts factors; the structural factors scatter over the works-as-texts factors in turn. The one visible partial agreement is between the \emph{transmitted ideas} and \emph{passed down generations} factors, which exchange most of their works---the one place the two signals gesture at the same theme. The grey node collects the 15 works whose codes tie across two or three groups---Linton 1936, Sapir 1921, Kroeber 1948a, and the other synthetic treatments K\&K cite for definitions straddling their own categories.
+
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.8\textwidth]{figures/kk-index-b/nmf/nmf-texts-agreement.png}
-\caption{Dominant NMF factor (rows) against K\&K group (columns) for the 172 definition codes, text NMF at $k = 7$.}
-\label{fig:nmf-texts-agreement}
+\includegraphics[width=\textwidth]{figures/kk-index-b/nmf/nmf-agreement-sankey.png}
+\caption{Pairwise agreement of the three classifications of the 118 works of the works 2-core. Top: dominant K\&K group against the dominant structural factor. Middle: dominant K\&K group against the dominant works-as-texts factor. Bottom: dominant structural factor against the dominant works-as-texts factor. Each ribbon is a flow of works and takes the color of its source node; grey marks the works with no unique K\&K group.}
+\label{fig:nmf-agreement-sankey}
 \end{figure}
 
 \subsection{Interpretation}
 
-Neither signal recovers K\&K's taxonomy. The works' pattern of concept use does not reproduce A--G, and neither does the wording of the definitions the works carry. Two readings are possible. One is that K\&K's groups classify the emphases of individual \emph{statements}, and that these emphases are lost when statements are aggregated to the works that contain them; against this stands the fact that works overwhelmingly sit within a single group, so the aggregation mixes little. The other, which we find more plausible, is that the seven groups are editorial categories---useful for organizing a bibliography---rather than dimensions along which the corpus varies. This is consistent with the spanning-tree picture above, where the vocabulary the Genetic group concerns itself with sits on a peripheral chain of the concept trees rather than forming a region of its own, and with the community structure of the trees, which follows concept vocabulary, not authorial schools. The null result should be read against the method's limits as well: the number of factors was fixed to match the taxonomy under test rather than selected by the data, the short corpus makes TF--IDF factors fragile (restart agreement hovers near 0.5 at every $k \geq 3$), and the texts are K\&K's own selections rather than the works' full statements.
+None of the three signals recovers K\&K's taxonomy: not the works' pattern of concept use, not the wording of the definition statements, and not the two combined at the level of the work. Two readings are possible. One is that K\&K's groups classify the emphases of individual \emph{statements}, and that these emphases are lost when statements are aggregated to the works that contain them; against this stands the fact that works overwhelmingly sit within a single group, so the aggregation mixes little. The other, which we find more plausible, is that the seven groups are editorial categories---useful for organizing a bibliography---rather than dimensions along which the corpus varies. This is consistent with the spanning-tree picture above, where the vocabulary the Genetic group concerns itself with sits on a peripheral chain of the concept trees rather than forming a region of its own, and with the community structure of the trees, which follows concept vocabulary, not authorial schools. Hardening the works factors into a tree (Figure~\ref{fig:nmf-works-mst}) does not change the verdict: its bridges are largely a different set of works, its communities do not follow A--G either, and the disagreement between the two tie definitions reinforces the point that no single structural reading of the corpus reproduces the taxonomy. The null result should be read against the method's limits as well: the number of factors was fixed to match the taxonomy under test rather than selected by the data, the short corpus makes TF--IDF factors fragile (restart agreement hovers near 0.5 at every $k \geq 3$), and the texts are K\&K's own selections rather than the works' full statements.
 
 \section{Limitations}
 

@@ -15,7 +15,8 @@
 #   data/kk-index-b-nmf-works-stability.csv  ARI stability by k
 #   data/kk-index-b-nmf-works-agreement.csv  factor x group cross-tab
 #   figures/kk-index-b/nmf/nmf-works.png     works x factors loading heatmap
-#   figures/kk-index-b/nmf/nmf-works-agreement.png  factor x K&K group heatmap
+#   (the agreement heatmaps were removed 2026-10-27 in favor of the Sankey,
+#   scripts/figure-sankey-agreement.R; the agreement CSVs remain)
 
 library(ggrepel)
 
@@ -163,20 +164,3 @@ agree <- data.frame(factor = rep(1:7, times = 7),
                     group = rep(LETTERS[1:7], each = 7),
                     n_works = as.vector(ct))
 write.csv(agree, "data/kk-index-b-nmf-works-agreement.csv", row.names = FALSE)
-
-# cross-tab heatmap, dominant NMF factor x dominant K&K group
-ggplot2::ggplot(agree, ggplot2::aes(group, factor(factor,
-                   levels = 7:1, labels = rev(factor.labels)),
-                   fill = n_works)) +
-  ggplot2::geom_tile(color = "white") +
-  ggplot2::geom_text(ggplot2::aes(label = ifelse(n_works > 0, n_works, "")),
-                     size = 3.2) +
-  ggplot2::scale_fill_gradient(low = "grey92", high = "grey35",
-                               guide = "none") +
-  ggplot2::labs(
-    title = "Works NMF at k = 7 versus K&K's groups",
-    subtitle = "Dominant factor (rows) against dominant K&K group (columns)",
-    x = "K&K group", y = "NMF factor") +
-  ggplot2::theme_minimal()
-ggplot2::ggsave("figures/kk-index-b/nmf/nmf-works-agreement.png",
-                width = 6.5, height = 4.6, bg = "white")

@@ -1,4 +1,4 @@
-\begin{thebibliography}{3}
+\begin{thebibliography}{4}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -22,5 +22,11 @@ J.~B. Kruskal.
   salesman problem.
 \newblock \emph{Proceedings of the American Mathematical Society}, 7\penalty0
   (1):\penalty0 48--50, 1956.
+
+\bibitem[Lee and Seung(2001)]{lee2001algorithms}
+D.~D. Lee and H.~S. Seung.
+\newblock Algorithms for non-negative matrix factorization.
+\newblock \emph{Advances in Neural Information Processing Systems},
+  13:\penalty0 556--562, 2001.
 
 \end{thebibliography}

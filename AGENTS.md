@@ -15,7 +15,8 @@ network descriptions and limitations: `README.md`. Do not copy counts into this 
 - `data/`: CSV and rds outputs. `docs/`: PROVENANCE.md, TODO.md.
 - `figures/`: PNGs in subfolders by source: `boroch/` (main Boroch network, from `analysis-ca-mst-main.R`),
   `kk-index-b/definitions/` (CA and MST on the definitions network), `kk-index-b/works/` (CA and MST on the
-  works network, both the works and concept views), `kk-index-b/nmf/` (the two NMF analyses, works and texts),
+  works network, both the works and concept views), `kk-index-b/nmf/` (the NMF analyses, plus `nmf-works-mst.png`,
+  the MST of the works x factor projection, and `nmf-agreement-sankey.png`, the three pairwise agreement Sankeys),
   and `kk-index-b/degree-works-definitions.png`. The heading
   MSTs are `kk-index-b/definitions/mst-heading-comm-tree.png` and `kk-index-b/works/mst-heading.png`; they are
   generated but not used in the manuscript.
@@ -28,11 +29,11 @@ network descriptions and limitations: `README.md`. Do not copy counts into this 
   types: non-negative matrix factorization, Limitations; the centrality and CA sections were removed
   (recoverable from git history) and the heading MSTs are not used.
   Citations are natbib (`\citet`/`\citep`, style `abbrvnat`) with colored hyperref links, and the bibliography is
-  `\bibliography{references,library}`. `references.bib` holds classics added by hand (breiger1974, kruskal1956
-  and lee2001algorithms are cited; borgatti1997 and greenacre1984 became uncited when those sections were removed).
-  `library.bib` is a symlink to the user's global `~/My Library.bib`, gitignored because bibtex cannot read a
-  path with a space; the big library supplies keys like freeman1978centrality-724 and everett2013dual-projection-c89.
-  Compile with pdflatex → bibtex → pdflatex ×2; MST betweenness in the tables is Freeman-normalized, computed
+  `\bibliography{references,library}`. `references.bib` holds classics added by hand (some entries there, like
+  borgatti1997 and greenacre1984, are uncited since their sections were removed). `library.bib` is a symlink to
+  the user's global `~/My Library.bib`, gitignored because bibtex cannot read a path with a space.
+  Compile with pdflatex → bibtex → pdflatex ×2; the last clean compile is 15 pages with no overfull boxes.
+  MST betweenness in the tables is Freeman-normalized, computed
   from the node tables in `data/kk-index-b-mst-*.csv` and pasted in by hand.
 - Scratch files go in `$PA_SCRATCH_DIR`, not the repo.
 - `scripts/kk-group-style.R`: the K&K definition group names (A Descriptive, B Historical, C Normative,
@@ -72,13 +73,10 @@ Order: `build-index-b.R` → `build-index-b-crosswalk.R` → `build-index-b-netw
 (`build-work-concept-network-index-b.R`) reads the verified network and the heading network, and
 `build-work-authors-index-b.R` reads the works table `build-work-concept-network-index-b.R` writes, so it
 must run after it (running it first picks up the previous build's stale works table). Run each in a fresh
-environment: `e <- new.env(); e$norm <- base::norm; sys.source(file, envir = e)`.
-A new environment inherits the global session, and a live session may define a `norm` stub that shadows
-`base::norm` (the prestige analysis then fails with `unused argument (type = "F")`). Worse, any variable the
-session happens to hold (from earlier script runs or assistant tool calls) can silently satisfy a bare name
-in the scripts and corrupt the run — a 2026-10-26 chain rerun in a polluted session produced shifted Index A
-entries and unapplied fixes, all plausible-looking. Run the chain only with an empty global environment.
-The crosswalk reads its inputs from files; a stale session object once produced wrong output.
+environment: `e <- new.env(); e$norm <- base::norm; sys.source(file, envir = e)`, with an empty global
+environment: a live session's variables can silently satisfy a bare name in the scripts and corrupt the run
+(shifted Index A entries, unapplied fixes, all plausible-looking), and the crosswalk reads its inputs from
+files, so a stale session object produces wrong output.
 
 After any change, check that: the build runs without errors; every manual-fix key matches a token;
 edge and parse-flag counts change only as expected; the validators pass. Then update the counts in
@@ -192,6 +190,11 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
 - Boroch's codes are K&K's groups with subgroups written as digits (C1 = C-I, D2 = D-II, F4 = F-IV).
   Within a group Boroch renumbers, so never match by position: the crosswalk matches by author, year,
   group and subgroup. Positional agreement is a check only.
+- In group A the renumbering runs one ahead of K&K's from A4 on, because Boroch splits Dixon 1928 into
+  A3 (K&K A-3 part a) and A4 (part b, also A-3); Boroch A5 is Benedict 1931 (orig. 1929) = K&K A-4, and
+  K&K A-4 is Benedict, not Dixon. The crosswalk already has this right (`A4` to A-3, `A5` to A-4;
+  checked against the printed Group A page, printed p. 43, PDF 46, 2026-10-27). When reading
+  `data/kk-boroch-crosswalk.csv`, use named columns, never position.
 - Hand decisions are in `data/kk-boroch-crosswalk-decisions.csv`, each with a basis.
 - Table 2 has 135 definition columns. The appendix has 171 codes; 39 never appear in Table 2 (texts in
   `kkcc-appendix-only-texts.csv`, links in `kkcc-appendix-only-links.csv`). 37 of the 39 are linked to K&K codes,
@@ -248,12 +251,11 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
   co-authored Kluckhohn & Kelly 1945a, which every Kelly code also gets through Kluckhohn's own entry. The
   consequential year-less drop is Tozzer's `D-III-1 (n.d.)` — it is why D-III-1 has no work.
 - Goldenweiser 1937 sits under C-5 only (Part III c-5, PROVENANCE 12). C-5 has no sub-elements and no
-  heading, so the work is isolated in both stored works networks and absent from the works LCC and 2-core;
-  the works-level CA, MST and centrality outputs changed when it moved there (TODO item 22).
-- Bernard's mimeograph is one committee work of four authors, "Committee on Conceptual Integration (Bernard, Blumenthal, Dodd, Hart) 1941". Index A keeps the printed qualifier (1941b); the Bernard row in `kk-index-b-name-decisions.csv` has year 1941b and group_year 1941, and that group_year is what moves the entry into the 1941 committee work (amended 2026-10-26, PROVENANCE 9.36; the earlier manual fix that rewrote the qualifier to (1941) was removed). Index B has no single-author Bernard 1941 work, and K&K's 1941a Social Forces article is not coded, so it is not in the data.
+  heading, so the work is isolated in both stored works networks and absent from the works LCC and 2-core.
+- Bernard's mimeograph is one committee work of four authors, "Committee on Conceptual Integration (Bernard, Blumenthal, Dodd, Hart) 1941". Index A keeps the printed qualifier (1941b); the Bernard row in `kk-index-b-name-decisions.csv` has year 1941b and group_year 1941, and that group_year is what moves the entry into the 1941 committee work (PROVENANCE 9.36). Index B has no single-author Bernard 1941 work, and K&K's 1941a Social Forces article is not coded, so it is not in the data.
 - Co-authored works list every author sharing the year. A co-author written as a prefix of a full name
   in the same year group takes the full name (`canon.names()`), unless `kk-index-b-name-decisions.csv`
-  says otherwise. The prefix rule once merged two different Gillins; the decision file now overrides it.
+  says otherwise.
 - Labels: `scripts/label-authors-index-b.R` holds the initials lookup (from the page checks in
   `data/kk-index-b-work-authors-page-checks.csv`) and `label.authors()`. Year-specific keys
   (`"Woodward|1940"`) cover surnames with two initial forms. Authors with no entry stay unlabelled and
@@ -312,7 +314,7 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
 - `scripts/nmf-core.R` holds the shared base-R NMF (Euclidean multiplicative updates, seeded and deterministic;
   W columns normalized to unit sum), an ARI helper (Hubert & Arabie; degenerate partitions return 1) and
   `hard()`. No NMF package is installed and none should be added: the implementation is deliberate, to keep
-  `renv.lock` untouched. Sourced by both analysis scripts. Run them like any other script, from the project
+  `renv.lock` untouched. Sourced by all analysis scripts. Run them like any other script, from the project
   root in a fresh environment.
 - `scripts/analysis-nmf-works-index-b.R` (structural): factorizes the sub-elements x works biadjacency of the
   works LCC 2-core. `scripts/analysis-nmf-texts-index-b.R` (text-based): TF-IDF matrix of the definition
@@ -321,20 +323,75 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
   k = 7, one factor per K&K group, and test agreement with A-G via dominant factor vs. dominant group,
   ARI against a permuted-label baseline. Both analyses find chance-level agreement (PROVENANCE 13). k = 7 is
   fixed to match the taxonomy under test, not selected by the data (no elbow in the objective, stability flat
-  beyond k = 2); an earlier ad hoc k = 4 works solution was removed by the user. Do not reintroduce a k = 4
-  reporting path.
+  beyond k = 2); do not reintroduce the removed k = 4 reporting path.
+- `scripts/analysis-nmf-work-texts-index-b.R` (works-as-texts, added 2026-10-27): each work's document is the
+  concatenation of the definition texts of its codes; works are the 118 of the works LCC 2-core. Same
+  tokenizer, stopwords and TF-IDF as the texts analysis, k = 7 (seed 7013). Outputs
+  `data/kk-index-b-nmf-work-texts-{stability,factors,loads,agreement,bridge}.csv` and figures
+  `nmf-work-texts{,-factors}.png`. It reads `data/kk-index-b-nmf-texts-loads.csv` for the bridge, so it runs
+  after `analysis-nmf-texts-index-b.R`. Chance-level against A-G (ARI 0.010; a unit-L2 length
+  normalization gives 0.066); it agrees strongly with the code-level texts factors (bridged ARI 0.319,
+  expected, because the work document is the concatenation of the code documents) and hardly at all with the
+  structural factors (ARI 0.018, PROVENANCE 15.4–15.5) — the two works-level cuts are unrelated.
+- Translations (added 2026-10-27): `data/kk-definition-texts-translations.csv` (code, language, translation,
+  basis). Both text analyses substitute translations for the four non-English quotations: B-17 (Dietschy,
+  French), C-I-18a (Maquet, French — K&K's own printed English rendering, PDF p. 54), F-I-5 (Menghin) and
+  F-II-3 (Schmidt), German. The three assistant translations still need the user's verification against the
+  page images. The translations changed the texts fit (412 terms of 1018 kept, agreement ARI 0.026) and
+  reshuffled the factor profiles, so the texts `factor.labels` were re-set (see below).
+  Details in PROVENANCE 15.1–15.2.
+- The agreement heatmap figures were removed 2026-10-27 (plot blocks removed from the scripts with the
+  user's approval); the `*-agreement.csv` cross-tabs remain, and no agreement heatmap should be recreated
+  (PROVENANCE 15.3).
+- `scripts/figure-sankey-agreement.R`: three pairwise Sankeys of the 118 works in one figure (group ->
+  structural factor, group -> works-as-texts factor, structural factor -> works-as-texts factor), output
+  `figures/kk-index-b/nmf/nmf-agreement-sankey.png`, stacked with gridExtra (already in `renv.lock`; no new
+  package). Every ribbon takes the color of its SOURCE node (groups Okabe-Ito with grey80 for the tie node;
+  structural factors the default ggplot hues, so factor colors do not read as group colors). Runs after both
+  works-level NMF scripts.
+  ggsankeyfier 0.1.8 is installed and recorded in `renv.lock` with
+  `gridBezier@1.1.1` and `vwline@0.2-4` (uncommitted). Gotchas: ggsankeyfier requires one edge per node pair
+  (per-work duplicate pairs break `position_sankey()`); `pivot_stages_longer()` merges identical pairs, so the
+  long format is built by hand from the transition tables; `position_sankey()` stacks the first level at the
+  bottom (reverse the factor levels to get A and factor 1 on top); pass positioning through one
+  `position_sankey()` object per layer, and node labels ride on `geom_text_repel(stat = "sankeynode")`
+  (`direction = "y"`, segments off; plain `geom_text` collides when adjacent nodes are close) with a nudged
+  position. `write.csv` writes `NA` as the literal "NA", so a merged group column must treat both `""` and
+  `NA` as ties (a stale assumption once silently dropped the tie node from the Sankey).
+- The tex NMF section covers all three analyses and carries Figure `fig:nmf-agreement-sankey` (subsection
+  "Pairwise agreement of the three classifications") and the factor tree, Figure `fig:nmf-works-mst`
+  (subsection "A spanning tree of the factor types", numbers from the node table below); it compiles clean.
 - The stability loop over k = 2..8 is a diagnostic only; it is written to the `*-stability.csv` files.
+- The texts script writes the TF--IDF matrix it factorizes to `data/kk-index-b-nmf-texts-tfidf.rds`
+  (172 documents = K&K codes x 412 terms).
+- `scripts/analysis-mst-nmf-works-index-b.R` (added 2026-10-27): binarizes the works x factor loadings
+  at `THRESH <- 0.10` (a free parameter, not data-selected; at 0.10 no work drops out, 101 of 118
+  works sit in two or more factors), projects so that ties count shared factors, and draws the Kruskal
+  maximum spanning tree of the projection. Outputs `figures/kk-index-b/nmf/nmf-works-mst.png` and
+  `data/kk-index-b-mst-nmf-works-nodes.csv` (community, betweenness, tree degree, pub type, dominant
+  factor). It reads the works loads, so it runs after `analysis-nmf-works-index-b.R`. Two version
+  notes: `igraph::mst()` rejects `algorithm = "kruskal"` in the installed version (the call passes
+  `-weight` only, as in the other MST scripts), and `cluster_leading_eigen` starts from a random
+  vector, so the community partition is only reproducible with the script's `set.seed(8427)` at the
+  top; unseeded reruns gave 13 communities where the seeded pipeline gives 16. Betweenness is
+  deterministic and unaffected.
+- README Methods documents the three NMF analyses, including the stopword list (59 general English
+  stopwords plus 15 domain words, the last being `group`), the translations file and its verification status.
 - Factor labels are hand-set vectors `factor.labels` in each analysis script (change labels there only). The
   works factors: Way of life, Transmitted ideas, Society-individual behavior, Norms and knowledge, Complex
-  whole, Social organization, Learning and acquisition. The text factors: Utensils and implements, Passed down
-  generations, Feelings and adjustment, Material vs. non-material, Mental and holistic, Symbolic systems, Goals
-  and ways of living. Text labels describe top terms, not clean concepts: on this corpus a factor can be driven
-  by one author's phrasing (the literal word "kluckhohn" is a top term of the text factor 3).
+  whole, Social organization, Learning and acquisition. The text factors (re-set 2026-10-27 after the
+  translations changed the fits): Mental and holistic, Thought and expression, Species and utensils, Material
+  vs. non-material, Passed down generations, Symbolic systems, Feelings and adjustment. The works-as-texts
+  factors: Goals and ways of living, Passed down generations, Material vs. non-material, Symbolic systems,
+  Definitional formulas, Mental and holistic, Species and utensils. Text labels describe top terms, not clean
+  concepts: on this corpus a factor can be driven by one author's phrasing (the literal word "kluckhohn" is a
+  top-15 term of the text factor 7; the text factor 2 echoes the Maquet translation's phrasing).
 - Factor numbering is stable across outputs: the `*-loads.csv` and `*-agreement.csv` files carry `factor_label`
   alongside the numeric `dominant`; key on the number, not the label.
-- Outputs: `data/kk-index-b-nmf-works-*.csv` and `data/kk-index-b-nmf-texts-*.csv`; figures in
-  `figures/kk-index-b/nmf/` (`nmf-works.png` is a works x factors loading heatmap, not a scatter). The works
-  heatmap's row labels come from `label.authors()` and must be unique (`stopifnot(!anyDuplicated)`).
+- Outputs: `data/kk-index-b-nmf-works-*.csv`, `data/kk-index-b-nmf-texts-*.csv` and
+  `data/kk-index-b-nmf-work-texts-*.csv`; figures in `figures/kk-index-b/nmf/` (`nmf-works.png`,
+  `nmf-texts.png` and `nmf-work-texts.png` are loading heatmaps, not a scatter). The heatmaps' row labels come
+  from `label.authors()` (works) or are the K&K codes (texts), and must be unique (`stopifnot(!anyDuplicated)`).
 - The definition texts are verbatim quotations (see Rights); the NMF term tables name single words, not
   quotations, and stay releasable, but do not put extended text into release files.
 
@@ -380,9 +437,10 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
 - `ggstar` 1.0.6 is installed and recorded in `renv.lock` with its dependencies (`ggiraph`, `gdtools`, `fontquiver`,
   `fontBitstreamVera`, `fontLiberation`, `htmlwidgets`). `gdtools` builds from source and needs the system cairo
   headers (`libcairo2-dev`, `libfontconfig1-dev`, `libfreetype-dev`). Installed 2026-10-26.
-- `backbone` 3.0.4: as of 2026-10-25 its entry is deleted from `renv.lock` in the working tree but not committed
-  (not done by the assistant). No script uses it since the backbone analysis was removed. Confirm before committing.
-  Remove it with `renv::remove("backbone")` and `renv::snapshot()` once that is confirmed.
+- `backbone` 3.0.4: its `renv.lock` entry is gone from HEAD (the deletion was committed on 2026-10-25/26 among
+  the user's own commits). No script uses it since the backbone analysis was removed. `renv.lock` is still
+  modified in the working tree: the uncommitted diff is the ggstar dependency set and the
+  ggsankeyfier/`gridBezier`/`vwline` records, which still need a deliberate commit.
 
 ## Release and publication
 
@@ -416,10 +474,11 @@ edge and parse-flag counts change only as expected; the validators pass. Then up
   the rendered site, copy `data/` and `.nojekyll`, commit, and push as a fast-forward. Never force-push. Do not push
   `main` as part of a site update.
 - Last publication: 2026-10-26, through the workflow: `gh-pages` commit `08a3886`, built from `site-source` commit `7bb8aea` (release 0.4.0; user approved the push).
-  Before it, `79e1651` from `25a25f2` (0.3.1 refresh); before that the manual publishes `5d8cec2` (0.3.0 pages) and `61e4c02` (download table), all approved by the user.
   `gh-pages` also carries `data/kk-index-b-work-citations.csv` (identical to the release copy), which the download page
   links. The workflow copies `data/` from `site-source`, which holds the same file, so keep it there.
-- The repo's `main` has uncommitted work (see TODO) and is not part of the publication.
+- The repo's `main` has uncommitted work (see TODO) and is not part of the publication. Main's last commits
+  (2026-10-25/26) are the user's own and carry placeholder messages ("kk", "goober", "boof", "pusha",
+  "comito bonito"), so a commit hash, not a message, is the way to refer to them.
 
 ## Rights
 

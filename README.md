@@ -270,6 +270,12 @@ the printed citation, the printed page, and a per-row basis in `note`. Like the 
 (`kkcc-definition-texts.csv`, `kkcc-appendix-only-texts.csv`), it contains verbatim quotations and is not for
 release.
 
+**`kk-definition-texts-translations.csv`**: English renderings of the four non-English definition quotations,
+substituted for the originals by the two text-based NMF analyses (columns `code`, `language`, `translation`,
+`basis`). B-17 (Dietschy) and C-I-18a (Maquet) are French, F-I-5 (Menghin) and F-II-3 (Schmidt) German.
+C-I-18a is K&K's own printed English rendering; the other three are working translations not yet verified
+against the page images. Like the text files above, it quotes Boroch and K&K and is not for release.
+
 ## Methods
 
 **Index A and Index B parsing.** The scanned pages were read at word level (coordinates
@@ -295,16 +301,26 @@ were equal (case, hyphens, and a trailing plural "s" ignored). The linkage is
 conservative. Boroch's notion labels are his own wording, so many rows (31 cells) are
 unlinked and are reported as such, not guessed.
 
-**Non-negative matrix factorization.** Two analyses test whether data-driven factors
+**Non-negative matrix factorization.** Three analyses test whether data-driven factors
 recover K&K's groups A–G, fit at k = 7 (one factor per group, fixed rather than
 selected). The works analysis factorizes the sub-elements × works biadjacency of the
 LCC 2-core; the texts analysis factorizes a TF-IDF matrix of the definition
-quotations, one document per K&K code carrying a text. The text analysis uses a
-hand-set stopword list (58 general English stopwords plus 14 omnipresent domain
-words: culture, cultures, cultural, society, social, man, men, human, total, whole,
-way, ways, learned, acquired) and keeps tokens of three letters or more at 2–50%
-document frequency. The list is defined in `scripts/analysis-nmf-texts-index-b.R`
-and is part of the reproducible pipeline; results depend on it.
+quotations, one document per K&K code carrying a text; the works-as-texts analysis
+represents each work of the LCC 2-core by the concatenated texts of its codes'
+definitions. The text analyses use a hand-set stopword list (59 general English
+stopwords plus 15 omnipresent domain words: culture, cultures, cultural, society,
+social, man, men, human, total, whole, way, ways, learned, acquired, group) and keep
+tokens of three letters or more at 2–50% document frequency. The list is defined in
+`scripts/analysis-nmf-texts-index-b.R` and is part of the reproducible pipeline;
+results depend on it. None of the three recovers the groups at better than chance,
+and the two works-level classifications do not agree with each other. The four
+non-English quotations (B-17 and C-I-18a French, F-I-5 and F-II-3 German) enter as
+English translations from `data/kk-definition-texts-translations.csv`: C-I-18a is
+K&K's own printed English rendering, the other three are working translations not
+yet verified against the page images. Taken as printed, the quotations tokenize
+poorly (the tokenizer splits words at accented letters) and only six foreign terms
+survive the document-frequency filter (der, des, est, geist, ist, kultur), none
+reaching a factor's top 15.
 
 ## Verification
 

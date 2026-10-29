@@ -1,50 +1,50 @@
 "factor","factor_label","group","n_codes"
-1,"Utensils and implements","A",3
-2,"Passed down generations","A",5
-3,"Feelings and adjustment","A",2
-4,"Material vs. non-material","A",5
-5,"Mental and holistic","A",1
+1,"Mental and holistic","A",1
+2,"Thought and expression","A",1
+3,"Species and utensils","A",3
+4,"Material vs. non-material","A",4
+5,"Passed down generations","A",7
 6,"Symbolic systems","A",2
-7,"Goals and ways of living","A",3
-1,"Utensils and implements","B",3
-2,"Passed down generations","B",6
-3,"Feelings and adjustment","B",0
+7,"Feelings and adjustment","A",3
+1,"Mental and holistic","B",2
+2,"Thought and expression","B",4
+3,"Species and utensils","B",3
 4,"Material vs. non-material","B",2
-5,"Mental and holistic","B",2
-6,"Symbolic systems","B",6
-7,"Goals and ways of living","B",4
-1,"Utensils and implements","C",6
-2,"Passed down generations","C",7
-3,"Feelings and adjustment","C",3
+5,"Passed down generations","B",7
+6,"Symbolic systems","B",4
+7,"Feelings and adjustment","B",1
+1,"Mental and holistic","C",5
+2,"Thought and expression","C",7
+3,"Species and utensils","C",4
 4,"Material vs. non-material","C",3
-5,"Mental and holistic","C",5
+5,"Passed down generations","C",7
 6,"Symbolic systems","C",1
-7,"Goals and ways of living","C",4
-1,"Utensils and implements","D",3
-2,"Passed down generations","D",13
-3,"Feelings and adjustment","D",7
-4,"Material vs. non-material","D",4
-5,"Mental and holistic","D",0
-6,"Symbolic systems","D",8
-7,"Goals and ways of living","D",6
-1,"Utensils and implements","E",1
-2,"Passed down generations","E",2
-3,"Feelings and adjustment","E",0
-4,"Material vs. non-material","E",3
-5,"Mental and holistic","E",2
+7,"Feelings and adjustment","C",2
+1,"Mental and holistic","D",1
+2,"Thought and expression","D",3
+3,"Species and utensils","D",3
+4,"Material vs. non-material","D",5
+5,"Passed down generations","D",15
+6,"Symbolic systems","D",6
+7,"Feelings and adjustment","D",8
+1,"Mental and holistic","E",2
+2,"Thought and expression","E",0
+3,"Species and utensils","E",1
+4,"Material vs. non-material","E",4
+5,"Passed down generations","E",2
 6,"Symbolic systems","E",1
-7,"Goals and ways of living","E",1
-1,"Utensils and implements","F",7
-2,"Passed down generations","F",7
-3,"Feelings and adjustment","F",1
-4,"Material vs. non-material","F",1
-5,"Mental and holistic","F",7
-6,"Symbolic systems","F",13
-7,"Goals and ways of living","F",5
-1,"Utensils and implements","G",0
-2,"Passed down generations","G",3
-3,"Feelings and adjustment","G",0
+7,"Feelings and adjustment","E",0
+1,"Mental and holistic","F",9
+2,"Thought and expression","F",2
+3,"Species and utensils","F",8
+4,"Material vs. non-material","F",0
+5,"Passed down generations","F",9
+6,"Symbolic systems","F",12
+7,"Feelings and adjustment","F",1
+1,"Mental and holistic","G",0
+2,"Thought and expression","G",0
+3,"Species and utensils","G",0
 4,"Material vs. non-material","G",4
-5,"Mental and holistic","G",0
+5,"Passed down generations","G",3
 6,"Symbolic systems","G",0
-7,"Goals and ways of living","G",0
+7,"Feelings and adjustment","G",0

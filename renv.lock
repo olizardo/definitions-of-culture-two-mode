@@ -931,6 +931,48 @@
       "Maintainer": "Kamil Slowikowski <kslowikowski@gmail.com>",
       "Repository": "https://packagemanager.posit.co/cran/__linux__/bookworm/latest"
     },
+    "ggsankeyfier": {
+      "Package": "ggsankeyfier",
+      "Version": "0.1.8",
+      "Source": "Repository",
+      "Priority": null,
+      "Depends": [
+        "R (>= 4.1.0)"
+      ],
+      "Imports": [
+        "dplyr",
+        "ggplot2 (>= 3.4.4)",
+        "grid (>= 4.1.0)",
+        "gridBezier",
+        "methods",
+        "rlang",
+        "scales",
+        "stats",
+        "tidyr",
+        "vwline"
+      ],
+      "LinkingTo": [
+        null
+      ],
+      "Suggests": [
+        "knitr",
+        "rmarkdown",
+        "stringr",
+        "svglite",
+        "testthat (>= 3.0.0)",
+        "vdiffr"
+      ],
+      "Enhances": [
+        null
+      ],
+      "License": "GPL (>= 3)",
+      "License_is_FOSS": null,
+      "License_restricts_use": null,
+      "OS_type": null,
+      "NeedsCompilation": "no",
+      "Repository": "CRAN",
+      "Type": "source"
+    },
     "ggstar": {
       "Package": "ggstar",
       "Version": "1.0.6",
@@ -1045,6 +1087,34 @@
       "Author": "David Schoch [aut, cre] (ORCID: <https://orcid.org/0000-0003-2952-4812>)",
       "Maintainer": "David Schoch <david@schochastics.net>",
       "Repository": "CRAN"
+    },
+    "gridBezier": {
+      "Package": "gridBezier",
+      "Version": "1.1.1",
+      "Source": "Repository",
+      "Priority": null,
+      "Depends": [
+        "grid"
+      ],
+      "Imports": [
+        null
+      ],
+      "LinkingTo": [
+        null
+      ],
+      "Suggests": [
+        null
+      ],
+      "Enhances": [
+        null
+      ],
+      "License": "GPL (>= 2)",
+      "License_is_FOSS": null,
+      "License_restricts_use": null,
+      "OS_type": null,
+      "NeedsCompilation": "no",
+      "Repository": "CRAN",
+      "Type": "source"
     },
     "gridExtra": {
       "Package": "gridExtra",
@@ -2270,6 +2340,37 @@
       "NeedsCompilation": "no",
       "Author": "Simon Garnier [aut, cre], Noam Ross [ctb, cph], Bob Rudis [ctb, cph], Marco Sciaini [ctb, cph], Antônio Pedro Camargo [ctb, cph], Cédric Scherer [ctb, cph]",
       "Repository": "CRAN"
+    },
+    "vwline": {
+      "Package": "vwline",
+      "Version": "0.2-4",
+      "Source": "Repository",
+      "Priority": null,
+      "Depends": [
+        "grid"
+      ],
+      "Imports": [
+        "grDevices",
+        "stats",
+        "polyclip",
+        "gridBezier"
+      ],
+      "LinkingTo": [
+        null
+      ],
+      "Suggests": [
+        null
+      ],
+      "Enhances": [
+        null
+      ],
+      "License": "GPL (>= 2)",
+      "License_is_FOSS": null,
+      "License_restricts_use": null,
+      "OS_type": null,
+      "NeedsCompilation": "no",
+      "Repository": "CRAN",
+      "Type": "source"
     },
     "withr": {
       "Package": "withr",
