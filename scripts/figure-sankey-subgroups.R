@@ -10,10 +10,9 @@
 #   plurality subgroup against its dominant structural NMF factor
 #   (analysis-nmf-works-index-b.R). A work whose codes tie across subgroups
 #   goes to the grey node.
-# Panel 2 (codes): the 167 verified definition codes carrying a text, each code's own
+# Panel 2 (codes): the 171 verified definition codes carrying a text, each code's own
 #   subgroup against its dominant text NMF factor
-#   (analysis-nmf-texts-index-b.R). The 168 codes are the 167 verified codes
-#   plus C-I-Addendum, which the texts analysis includes (PROVENANCE 16).
+#   (analysis-nmf-texts-index-b.R). The split codes (PROVENANCE 17) count as separate codes.
 #   No tie node: a code sits in one subgroup.
 #
 # Ribbons take the color of their source node; subgroup nodes are colored by

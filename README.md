@@ -89,8 +89,8 @@ the works network, or the code projection of the definitions network) are derive
 
 | # | network | stored in | nodes | attributes |
 |---|---|---|---|---|
-| 1 | definitions × sub-elements | `kk-index-b-verified-network.rds` (`graph`, `biadjacency`) | 470 sub-elements, 167 codes | sub-element and code attributes |
-| 2 | definitions × headings | `kk-index-b-heading-network.rds` (`graph`, `biadjacency`) | 53 headings, 167 codes | heading and code attributes |
+| 1 | definitions × sub-elements | `kk-index-b-verified-network.rds` (`graph`, `biadjacency`) | 470 sub-elements, 171 codes | sub-element and code attributes |
+| 2 | definitions × headings | `kk-index-b-heading-network.rds` (`graph`, `biadjacency`) | 53 headings, 171 codes | heading and code attributes |
 | 3 | works × sub-elements | `kk-index-b-work-concept-network-full.rds`, `two_mode_graph` | 470 sub-elements, 131 works | sub-element and work attributes |
 | 4 | works × headings | same file, `two_mode_heading_graph` | 53 headings, 131 works | heading and work attributes |
 
@@ -216,7 +216,7 @@ Boroch and K&K networks (`analysis-index-b.R`).
 
 **`kk-index-b-subelement-network.rds`**, **`kk-index-b-heading-network.rds`**, **`kk-index-b-verified-network.rds`**:
 lists with `biadjacency` (0/1 matrix) and `graph` (igraph, bipartite). The sub-element and heading
-networks keep all 167 codes. The Part III statement codes D-5, D-7 and E-17 were removed on 2026-10-30 (PROVENANCE 16), so the sub-element and verified networks have the same nodes (470 sub-elements, 167 codes). The verified network
+networks keep all 171 codes. The Part III statement codes D-5, D-7 and E-17 were removed on 2026-10-30 (PROVENANCE 16), so the sub-element and verified networks have the same nodes (470 sub-elements, 171 codes, after the a/b split in PROVENANCE 17). The verified network
 drops codes not flagged `in_verified` and sub-elements left with no verified code. The five codes
 with no Index B edge (F-I-5, F-IV-1, F-IV-2, F-IV-4, G-1) are isolates. Vertex `type` is FALSE for element vertices and TRUE for codes.
 
@@ -326,12 +326,12 @@ reaching a factor's top 15.
 
 - Table 2: the binary matrix has 316 ones. Printed "uses" counts include multiplicity and
   were checked row by row during transcription (see `AGENTS.md`).
-- Index A: 187 author–code rows (186 from the OCR text, plus 1 restored from the page image).
-  186 are resolved, covering 165 distinct K&K codes. Sears's `C-I-Addendum` is printed that
+- Index A: 191 author–code rows after the a/b split (187 before, PROVENANCE 17; 186 from the OCR text, plus 1 restored from the page image).
+  190 are resolved, covering 170 distinct codes. Sears's `C-I-Addendum` is printed that
   way; it is an addendum linked to a specialty code and not a network code (user decision 2026-10-25). Every row on printed pp. 73–74 was read against the page image;
   30 rows that the parser had marked `ok` were wrong (codes, years, or names) and are corrected
   in `kk-index-a-manual-fixes.csv` (see `docs/PROVENANCE.md`, 3.1).
-- Index B: 1314 edge rows. Flags: ok 978, ocr_corrected 207, manual_fix 127, code_not_in_index_a 2. The manual-fix rows include 32 page-image recoveries of former `j` and fragment tokens, each re-checked at higher resolution (`data/kk-index-b-zoom-check.csv`), the six resolutions of 2026-10-24 (PROVENANCE 3.4), and the 2026-10-24 late corrections: A-1 → A-17 and D-I-13 → D-I-15 (page image), and F-IV-3 and A-15 (user readings, not image-checked in this session; PROVENANCE 3.9). 2 edges (C-I-18a and D-II-16) carry codes that Index A does not list. The Part III statement codes D-5, D-7 and E-17 were removed from the edge list on 2026-10-30 (PROVENANCE 16); on the page image the remaining edges print as listed. Two tokens remain unresolved (`kk-index-b-unresolved.csv`): `D-I` (society) and `F-j` (organized), both excluded as duplicates by decision.
+- Index B: 1326 edge rows after the a/b split and the variant link decisions (1314 before, PROVENANCE 17). Flags: ok 987, ocr_corrected 209, manual_fix 128, code_not_in_index_a 2. The manual-fix rows include 32 page-image recoveries of former `j` and fragment tokens, each re-checked at higher resolution (`data/kk-index-b-zoom-check.csv`), the six resolutions of 2026-10-24 (PROVENANCE 3.4), and the 2026-10-24 late corrections: A-1 → A-17 and D-I-13 → D-I-15 (page image), and F-IV-3 and A-15 (user readings, not image-checked in this session; PROVENANCE 3.9). 2 edges (C-I-18a and D-II-16) carry codes that Index A does not list. The Part III statement codes D-5, D-7 and E-17 were removed from the edge list on 2026-10-30 (PROVENANCE 16); on the page image the remaining edges print as listed. Two tokens remain unresolved (`kk-index-b-unresolved.csv`): `D-I` (society) and `F-j` (organized), both excluded as duplicates by decision.
 - Crosswalk: 127 of 135 Boroch definitions match exactly one K&K code by rule (author,
   year or first-publication year, suffix, group, and subgroup). Eight are set by hand with
   a recorded basis (D3-1, D2-16, A16, A17, A20, C1-11, B5, D2-7), one (F4-6) is a documented
@@ -341,7 +341,7 @@ reaching a factor's top 15.
   page image (PDF pp. 77–81, quadrant crops at 300 dpi). Verdict: 50 OK, 0 errors;
   Clopper–Pearson 95% upper bound on the error rate is 7.1%. Single reader
   (`data/kk-index-b-ok-sample.csv`).
-- Machine block check: `check-index-b-blocks.R` puts 1289 of 1314 edges inside their assigned printed block; 25 are printed in another block. The page-image verdicts in `kk-index-b-block-check-review-current.csv` (2026-10-25) cover 23 of the 25, and the two without a verdict are not yet identified (PROVENANCE 16.5). Of the 23 with verdicts, the 23rd (C-I-7 under "common or shared patterns", from the C-7 remap) was checked against the printed Index B entry, footnote 7 and Index A. All 23 are printed under their assigned heading according to one reader; the PDF text layer does not confirm them (OCR garbles the codes), and F-IV-3 under "means of adjustment" is not legible on the image (the user checked the reading on 2026-10-25). `kk-index-b-block-check-review.csv` holds the earlier 18-row set, keyed to a previous build. This is a machine cross-check plus one reader, not a double-keyed audit.
+- Machine block check: `check-index-b-blocks.R` puts 1301 of 1326 edges inside their assigned printed block; 25 are printed in another block, as before the split (PROVENANCE 17). The page-image verdicts in `kk-index-b-block-check-review-current.csv` (2026-10-25) cover 23 of the 25, and the two without a verdict are not yet identified (PROVENANCE 16.5). Of the 23 with verdicts, the 23rd (C-I-7 under "common or shared patterns", from the C-7 remap) was checked against the printed Index B entry, footnote 7 and Index A. All 23 are printed under their assigned heading according to one reader; the PDF text layer does not confirm them (OCR garbles the codes), and F-IV-3 under "means of adjustment" is not legible on the image (the user checked the reading on 2026-10-25). `kk-index-b-block-check-review.csv` holds the earlier 18-row set, keyed to a previous build. This is a machine cross-check plus one reader, not a double-keyed audit.
 - Spot check: 20 random Index B edges were compared with their OCR lines after the
   normalization fixes. All 20 were correct on inspection. This is a small sample, not a
   full manual audit.

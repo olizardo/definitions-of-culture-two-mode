@@ -13,8 +13,8 @@
 "A19",TRUE,"Kroeber",1948,NA,"a","A-19",1,"A-17","A-17","auto",FALSE,NA,NA
 "A2",TRUE,"Wissler",1920,NA,NA,"A-2",1,"A-2","A-2","auto",TRUE,NA,NA
 "A20",TRUE,"Herskovits",1948,NA,NA,"A-20",2,"A-18","A-18;A-19","manual_decision",FALSE,"match","Printed Part II p. 44 (PDF p. 47), item 18: 'Herskovits, 1948: 154'. Quoted text matches Boroch A20. Herskovits 1948 rows are A-18 and A-19; item 18 is A-18 (item 19 is the A21 quotation, p. 625). Checked on a 150 dpi page image."
-"A3",TRUE,"Dixon",1928,NA,NA,"A-3",1,"A-3","A-3","auto",TRUE,NA,NA
-"A4",TRUE,"Dixon",1928,NA,NA,"A-4",1,"A-3","A-3","auto",FALSE,NA,NA
+"A3",TRUE,"Dixon",1928,NA,NA,"A-3",2,"A-3(a)","A-3(a);A-3(b)","manual_decision",FALSE,"match","Split of K&K A-3 into variants (user decision 2026-10-30, PROVENANCE 17): Boroch A3 (a), Dixon 1928: 3."
+"A4",TRUE,"Dixon",1928,NA,NA,"A-4",2,"A-3(b)","A-3(a);A-3(b)","manual_decision",FALSE,"match","Split of K&K A-3 into variants (user decision 2026-10-30, PROVENANCE 17): Boroch A4 (b), Dixon 1928: 3."
 "A5",TRUE,"Benedict",1931,1929,NA,"A-5",1,"A-4","A-4","auto",FALSE,NA,NA
 "A6",TRUE,"Burkitt",1929,NA,NA,"A-6",1,"A-5","A-5","auto",FALSE,NA,NA
 "A7",TRUE,"Bose",1929,NA,NA,"A-7",1,"A-6","A-6","auto",FALSE,NA,NA
@@ -98,7 +98,7 @@
 "E10",TRUE,"Turney-High",1949,NA,NA,"E-10",1,"E-9","E-9","auto",FALSE,NA,NA
 "E2",TRUE,"Dollard",1939,NA,NA,"E-2",1,"E-2","E-2","auto",TRUE,NA,NA
 "E3",TRUE,"Ogburn and Nimkoff",1940,NA,NA,"E-3",1,"E-3","E-3","auto",TRUE,NA,NA
-"E6",TRUE,"Linton",1945,NA,"a","E-6",1,"E-5","E-5","auto",FALSE,NA,NA
+"E6",TRUE,"Linton",1945,NA,"a","E-6",2,"E-5(b)","E-5(a);E-5(b)","manual_decision",FALSE,"match","Split of K&K E-5 into variants (user decision 2026-10-30, PROVENANCE 17): Boroch E6 (b), Linton 1945a: 32."
 "E7",TRUE,"Kluckhohn and Kelly",1945,NA,"a","E-7",1,"E-6","E-6","auto",FALSE,NA,NA
 "E8",TRUE,"Gillin",1948,NA,NA,"E-8",1,"E-7","E-7","auto",FALSE,NA,NA
 "E9",TRUE,"Coutu",1949,NA,NA,"E-9",1,"E-8","E-8","auto",FALSE,NA,NA
@@ -118,11 +118,11 @@
 "F2-1",TRUE,"Ward",1903,NA,NA,"F-II-1",1,"F-II-1","F-II-1","auto",TRUE,NA,NA
 "F2-10",TRUE,"Taylor",1948,NA,NA,"F-II-10",1,"F-II-8","F-II-8","auto",FALSE,NA,NA
 "F2-11",TRUE,"Ford",1949,NA,NA,"F-II-11",1,"F-II-9","F-II-9","auto",FALSE,NA,NA
-"F2-4",TRUE,"Blumenthal",1937,NA,NA,"F-II-4",1,"F-II-4","F-II-4","auto",TRUE,NA,NA
-"F2-5",TRUE,"Blumenthal",1937,NA,NA,"F-II-5",1,"F-II-4","F-II-4","auto",FALSE,NA,NA
+"F2-4",TRUE,"Blumenthal",1937,NA,NA,"F-II-4",2,"F-II-4(a)","F-II-4(a);F-II-4(b)","manual_decision",FALSE,"match","Split of K&K F-II-4 into variants (user decision 2026-10-30, PROVENANCE 17): Boroch F2-4 (a), Blumenthal 1937: 3."
+"F2-5",TRUE,"Blumenthal",1937,NA,NA,"F-II-5",2,"F-II-4(b)","F-II-4(a);F-II-4(b)","manual_decision",FALSE,"match","Split of K&K F-II-4 into variants (user decision 2026-10-30, PROVENANCE 17): Boroch F2-5 (b), Blumenthal 1937: 12."
 "F2-7",TRUE,"Kluckhohn and Kelly",1945,NA,"a","F-II-7",1,"F-II-6","F-II-6","auto",FALSE,NA,NA
-"F2-8",TRUE,"Feibleman",1946,NA,NA,"F-II-8",1,"F-II-7","F-II-7","auto",FALSE,NA,NA
-"F2-9",TRUE,"Feibleman",1946,NA,NA,"F-II-9",1,"F-II-7","F-II-7","auto",FALSE,NA,NA
+"F2-8",TRUE,"Feibleman",1946,NA,NA,"F-II-8",2,"F-II-7(a)","F-II-7(a);F-II-7(b)","manual_decision",FALSE,"match","Split of K&K F-II-7 into variants (user decision 2026-10-30, PROVENANCE 17): Boroch F2-8 (tentative), Feibleman 1946: 75."
+"F2-9",TRUE,"Feibleman",1946,NA,NA,"F-II-9",2,"F-II-7(b)","F-II-7(a);F-II-7(b)","manual_decision",FALSE,"match","Split of K&K F-II-7 into variants (user decision 2026-10-30, PROVENANCE 17): Boroch F2-9 (final), Feibleman 1946: 76."
 "F3-1",TRUE,"Bain",1942,NA,NA,"F-III-1",1,"F-III-1","F-III-1","auto",TRUE,NA,NA
 "F3-2",TRUE,"White",1943,NA,NA,"F-III-2",1,"F-III-2","F-III-2","auto",TRUE,NA,NA
 "F3-3",TRUE,"White",1949,NA,"b","F-III-3",1,"F-III-3","F-III-3","auto",TRUE,NA,NA

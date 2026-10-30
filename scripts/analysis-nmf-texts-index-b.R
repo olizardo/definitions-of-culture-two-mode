@@ -134,10 +134,12 @@ K <- 7
 # this small some factors are partly author phrasing (factor 7's top terms
 # include the literal word "kluckhohn", and factor 2 echoes the Maquet
 # translation's phrasing), so labels stay close to the terms. Re-set
-# 2026-10-27 after the translation of the non-English texts changed the fits.
+# 2026-10-27 after the translation of the non-English texts changed the fits,
+# and again 2026-10-31 from the top terms after the a/b split changed the
+# factor order (PROVENANCE 17.9).
 factor.labels <- c(
-  "Symbolic systems", "Material vs. non-material", "Species and utensils",
-  "Goals and persons", "Feelings and adjustment", "Passed down generations",
+  "Order and operation", "Feeling, thinking and acting", "Material vs. non-material",
+  "Goals and persons", "Symbolic interaction", "Species-specific ability",
   "Mental and holistic")
 
 fit <- nmf.fit(V, K, seed = 9137)
@@ -164,7 +166,7 @@ ggplot(top.terms, ggplot2::aes(loading, stats::reorder(term, loading))) +
   ggplot2::facet_wrap(~ factor, scales = "free") +
   ggplot2::labs(
     title = "Top terms of each text-NMF factor",
-    subtitle = "k = 7; TF-IDF document x term matrix of 167 definition codes",
+    subtitle = "k = 7; TF-IDF document x term matrix of 171 definition codes",
     x = "term loading", y = NULL) +
   ggplot2::theme_minimal()
 ggplot2::ggsave("figures/kk-index-b/nmf/nmf-texts-factors.png",

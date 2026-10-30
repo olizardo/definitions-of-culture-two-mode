@@ -3,6 +3,20 @@
 Versions follow `MAJOR.MINOR.PATCH`. A minor bump adds data or changes network contents; a patch fixes an
 error in existing data without changing its structure.
 
+## 0.6.0 (2026-10-30)
+
+- Split the four K&K codes whose Boroch quotations are lettered a and b into variants: A-3, E-5, F-II-4 and F-II-7 become A-3(a), A-3(b), E-5(a), E-5(b), F-II-4(a), F-II-4(b), F-II-7(a) and F-II-7(b). The definitions networks go from 167 to 171 codes. K&K prints one Index B entry per code, so each variant starts with a copy of its parent's sub-element links. Twenty-nine variant-specific links were then removed where the quotation text indicates the variant does not carry the sub-element (PROVENANCE 17.8). The verified network goes from 1189 to 1201 edges and the heading network from 1080 to 1095. The sub-element and heading counts are unchanged (470 and 53).
+- Works are unchanged at 131. Dixon 1928, Blumenthal 1937 and Feibleman 1946 now sit under two codes each, so works under several codes go from 19 to 22. The citations table changes in four rows' `codes` column.
+- Code vertices of the verified network carry `source_author`, `source_year`, `source_page` and `quote_opening` (see MANIFEST.md).
+- Rights: the six-word quote openings are released by decision. The definition and quotation texts stay out of the release.
+
+## 0.5.0 (2026-10-30)
+
+- Removed the Part III statement codes C-5, D-5, D-7 and E-17 from the networks. They are K&K's Part III statements and sit outside the Part II typology. The definitions networks go from 171 to 167 codes, the sub-element network from 472 to 470 sub-elements, and the edges from 1193 to 1189. The raw sub-element and heading networks now have the same codes as the verified network.
+- The works networks go from 133 to 131 works. Goldenweiser 1933 and 1937 were attached only to Part III codes and leave with them; Roheim 1934 stays, under D-IV-1 only. Work vertices now have 27 articles, 89 books, 8 chapters and 7 other.
+- Refreshed the three network files and the citations table from the current build. The citations table has 131 works (127 both agree, 1 both disagree, 3 K&K only).
+- Rights unchanged: the definition and quotation texts stay out of the release.
+
 ## 0.4.0 (2026-10-26)
 
 - Added the Part III statement code C-5 to the verified network (Goldenweiser 1937: 45-46, printed p. 99). C-5 has no Index A entry and no Index B element, so it enters the definitions networks as an isolate: the definitions networks go from 170 to 171 codes, with the edges unchanged.

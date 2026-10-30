@@ -127,6 +127,8 @@ code_regex <- function(code) {
 
 code_in_region <- function(code, region) {
   if (is.null(region) || is.na(region)) return(NA)
+  # Split variants such as A-3(a) print as their K&K code (PROVENANCE 17).
+  code <- sub("\\([ab]\\)$", "", code)
   grepl(code_regex(code), region, perl = TRUE)
 }
 

@@ -13,7 +13,6 @@
 "Bidney","C-II-5","C-II-y","( 1947)",TRUE
 "Bidney","F-I-16","F-I-16","(1947)",TRUE
 "Blumenthal","D-I-9","D-I-9","(1941)",TRUE
-"Blumenthal","F-II-4","F-II-4","(1937)",TRUE
 "Blumenthal","F-IV-3","F-IV-3","(1941)",TRUE
 "Boas","A-7","A-7","(1930)",TRUE
 "Bogardus","C-I-2","C-I-2","(1930)",TRUE
@@ -30,12 +29,10 @@
 "Davis Kingsley","F-III-5","F-III-5","(1949)",TRUE
 "Dawson","D-I-3","D-I-3","(1928)",TRUE
 "Dietschy","B-17","B-17","(1947)",TRUE
-"Dixon","A-3","A-3","(1928)",TRUE
 "Dodd","F-I-10","F-I-io","(1941)",TRUE
 "Dollard","B-12","B-12","(with Davis, 1940)",TRUE
 "Dollard","D-II-3","D-II-3","(with Miller, 1941)",TRUE
 "Dollard","E-2","E-i","(1939)",TRUE
-"Feibleman","F-II-7","F-II-7","(1946)",TRUE
 "Firth","C-I-5","C-I-5","(1939)",TRUE
 "Folsom","F-I-2","F-I-2","(1928)",TRUE
 "Folsom","F-I-3","F-I-3","(1931)",TRUE
@@ -100,7 +97,6 @@
 "Linton","B-9","B-9","(1936)",TRUE
 "Linton","C-I-8","C-l-8","(1945b)",TRUE
 "Linton","C-I-9","C-I-9","(1945a)",TRUE
-"Linton","E-5","E-5","(1945a)",TRUE
 "Lowie","A-10a","A-ioa","(1937)",TRUE
 "Lowie","B-8","B-8","(1934)",TRUE
 "Lundberg","D-I-6","D-I-6","(1939)",TRUE
@@ -186,3 +182,11 @@
 "Young","D-III-2","D-III-2","(1934)",TRUE
 "Young","F-I-13","F-I-13","(1942)",TRUE
 "Angyal","B-14","B-14","(1941)",TRUE
+"Dixon","A-3(a)","A-3","(1928)",TRUE
+"Dixon","A-3(b)","A-3","(1928)",TRUE
+"Linton","E-5(a)","E-5","(1945a)",TRUE
+"Linton","E-5(b)","E-5","(1945a)",TRUE
+"Blumenthal","F-II-4(a)","F-II-4","(1937)",TRUE
+"Blumenthal","F-II-4(b)","F-II-4","(1937)",TRUE
+"Feibleman","F-II-7(a)","F-II-7","(1946)",TRUE
+"Feibleman","F-II-7(b)","F-II-7","(1946)",TRUE

@@ -558,6 +558,27 @@ index_b$edges <- add_index_b_missing(index_b$edges,
 index_b$edges <- apply_heading_corrections(index_b$edges)
 index_b$edges <- apply_junk_decisions(index_b$edges,
                                        read.csv("data/kk-index-b-junk-decisions.csv", stringsAsFactors = FALSE))
+# Split K&K codes with a and b quotations into variants (data/kk-index-b-code-splits.csv,
+# PROVENANCE 17). Index A rows and Index B links are copied to every variant.
+code_splits <- read.csv("data/kk-index-b-code-splits.csv", stringsAsFactors = FALSE)
+split_codes <- function(df) {
+  hit <- df$kk_code %in% code_splits$kk_code
+  copies <- lapply(seq_len(nrow(code_splits)), function(i) {
+    x <- df[which(df$kk_code == code_splits$kk_code[i]), , drop = FALSE]
+    x$kk_code <- code_splits$variant[i]
+    x
+  })
+  rbind(df[!hit, , drop = FALSE], do.call(rbind, copies))
+}
+index_a <- split_codes(index_a)
+index_b$edges <- split_codes(index_b$edges)
+# Links that one variant loses on its quotation text (data/kk-index-b-variant-link-decisions.csv,
+# PROVENANCE 17.8). Each row drops one (variant, sub-element) pair from the copied links.
+var_drop <- read.csv("data/kk-index-b-variant-link-decisions.csv", stringsAsFactors = FALSE)
+drop_key <- paste(var_drop$kk_code, var_drop$sub_element, sep = " @@ ")
+edge_key <- paste(index_b$edges$kk_code, index_b$edges$sub_element, sep = " @@ ")
+stopifnot(all(drop_key %in% edge_key))
+index_b$edges <- index_b$edges[!edge_key %in% drop_key, ]
 excluded <- parse_index_b(lines_x)
 
 # ---- 9. Outputs ---------------------------------------------------------------
