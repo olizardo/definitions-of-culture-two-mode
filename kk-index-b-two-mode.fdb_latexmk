@@ -1,16 +1,16 @@
 # Fdb version 4
-["bibtex kk-index-b-two-mode"] 1793367661 "kk-index-b-two-mode.aux" "kk-index-b-two-mode.bbl" "kk-index-b-two-mode" 1793367662 0
+["bibtex kk-index-b-two-mode"] 1793368513 "kk-index-b-two-mode.aux" "kk-index-b-two-mode.bbl" "kk-index-b-two-mode" 1793368559 0
   "./library.bib" 1791993961 4587555 ed59bb7a35071e840f3f507e71885911 ""
   "./references.bib" 1793044999 1230 755fa32877e208ab400392d3e3271435 ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/natbib/abbrvnat.bst" 1233624470 26532 66bed5cc59495faaa3f9ae9af9fa5e42 ""
-  "kk-index-b-two-mode.aux" 1793367662 9905 923d82b7d45933766a7067ff818b8eaa "pdflatex"
+  "kk-index-b-two-mode.aux" 1793368559 9905 af17415d3302400d156ab4a6206f2076 "pdflatex"
   (generated)
   "kk-index-b-two-mode.bbl"
   "kk-index-b-two-mode.blg"
   (rewritten before read)
-["pdflatex"] 1793367661 "/home/omarlizardo/projects/CULTURE/definitions-of-culture-two-mode/kk-index-b-two-mode.tex" "kk-index-b-two-mode.pdf" "kk-index-b-two-mode" 1793367662 0
+["pdflatex"] 1793368559 "/home/omarlizardo/projects/CULTURE/definitions-of-culture-two-mode/kk-index-b-two-mode.tex" "kk-index-b-two-mode.pdf" "kk-index-b-two-mode" 1793368559 0
   "/etc/texmf/web2c/texmf.cnf" 1788206240 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/omarlizardo/projects/CULTURE/definitions-of-culture-two-mode/kk-index-b-two-mode.tex" 1793324278 33021 43c92d9b3048f9c122767b782055f303 ""
+  "/home/omarlizardo/projects/CULTURE/definitions-of-culture-two-mode/kk-index-b-two-mode.tex" 1793368558 33224 55cf9c4366ea8ede0daf56ba76a195f2 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -118,10 +118,10 @@
   "figures/kk-index-b/nmf/sankey-works-subgroups.png" 1793323309 679969 bd4f79672b2ba34a56df37509770aa9d ""
   "figures/kk-index-b/works/mst-subelement.png" 1793032352 344759 bb2437028de930fb0c279a92339cde18 ""
   "figures/kk-index-b/works/mst-work.png" 1793032354 377644 715cd82990454fcc2083e9c9591d6a26 ""
-  "kk-index-b-two-mode.aux" 1793367662 9905 923d82b7d45933766a7067ff818b8eaa "pdflatex"
-  "kk-index-b-two-mode.bbl" 1793367661 1204 437ecb4a58a956376b6ebdab9669c2f7 "bibtex kk-index-b-two-mode"
-  "kk-index-b-two-mode.out" 1793367662 2077 4d9c300bdae0ad6373b97b710c8237f6 "pdflatex"
-  "kk-index-b-two-mode.tex" 1793324278 33021 43c92d9b3048f9c122767b782055f303 ""
+  "kk-index-b-two-mode.aux" 1793368559 9905 af17415d3302400d156ab4a6206f2076 "pdflatex"
+  "kk-index-b-two-mode.bbl" 1793368513 1204 437ecb4a58a956376b6ebdab9669c2f7 "bibtex kk-index-b-two-mode"
+  "kk-index-b-two-mode.out" 1793368559 2077 4d9c300bdae0ad6373b97b710c8237f6 "pdflatex"
+  "kk-index-b-two-mode.tex" 1793368558 33224 55cf9c4366ea8ede0daf56ba76a195f2 ""
   (generated)
   "kk-index-b-two-mode.aux"
   "kk-index-b-two-mode.log"
