@@ -249,7 +249,7 @@ the printed citation, the printed page, and a per-row basis in `note`. Like the 
 release.
 
 **`kk-definition-texts-translations.csv`**: English renderings of the four non-English definition quotations,
-substituted for the originals by the two text-based NMF analyses (columns `code`, `language`, `translation`,
+substituted for the originals by the text-based NMF analysis (columns `code`, `language`, `translation`,
 `basis`). B-17 (Dietschy) and C-I-18a (Maquet) are French, F-I-5 (Menghin) and F-II-3 (Schmidt) German.
 C-I-18a is K&K's own printed English rendering; the other three are working translations not yet verified
 against the page images. Like the text files above, it quotes Boroch and K&K and is not for release.
@@ -279,16 +279,20 @@ were equal (case, hyphens, and a trailing plural "s" ignored). The linkage is
 conservative. Boroch's notion labels are his own wording, so many rows (31 cells) are
 unlinked and are reported as such, not guessed.
 
-**Non-negative matrix factorization.** One analysis tests whether data-driven factors
-recover K&K's groups A–G, fit at k = 7 (one factor per group, fixed rather than
-selected). It factorizes a TF-IDF matrix of the definition quotations, one document per
-K&K code carrying a text. The analysis uses a
+**Non-negative matrix factorization.** Two analyses test whether data-driven factors
+recover K&K's groups A–G, both fit at k = 7 (one factor per group, fixed rather than
+selected) with the shared base-R machinery in `scripts/nmf-core.R`. The structural
+analysis (`scripts/analysis-nmf-structural-index-b.R`) factorizes the codes × concepts
+biadjacency of the verified network's largest-component 2-core (149 codes × 160
+concepts, binary); the texts analysis (`scripts/analysis-nmf-texts-index-b.R`)
+factorizes a TF-IDF matrix of the definition quotations, one document per
+K&K code carrying a text. The texts analysis uses a
 hand-set stopword list (59 general English stopwords plus 15 omnipresent domain
 words: culture, cultures, cultural, society, social, man, men, human, total, whole,
 way, ways, learned, acquired, group) and keep
 tokens of three letters or more at 2–50% document frequency. The list is defined in
 `scripts/analysis-nmf-texts-index-b.R` and is part of the reproducible pipeline;
-results depend on it. Neither recovers the groups at better than chance. The four
+results depend on it. Neither analysis recovers the groups at better than chance. The four
 non-English quotations (B-17 and C-I-18a French, F-I-5 and F-II-3 German) enter as
 English translations from `data/kk-definition-texts-translations.csv`: C-I-18a is
 K&K's own printed English rendering, the other three are working translations not

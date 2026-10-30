@@ -1,0 +1,50 @@
+"factor","factor_label","group","n_codes"
+1,"Social organization","A",2
+2,"Group and way of life","A",1
+3,"Norms and knowledge","A",9
+4,"Society and acquired behavior","A",4
+5,"Transmitted ideas","A",2
+6,"Complex whole","A",3
+7,"Systems and skills","A",1
+1,"Social organization","B",7
+2,"Group and way of life","B",4
+3,"Norms and knowledge","B",2
+4,"Society and acquired behavior","B",3
+5,"Transmitted ideas","B",3
+6,"Complex whole","B",2
+7,"Systems and skills","B",1
+1,"Social organization","C",1
+2,"Group and way of life","C",6
+3,"Norms and knowledge","C",5
+4,"Society and acquired behavior","C",4
+5,"Transmitted ideas","C",3
+6,"Complex whole","C",2
+7,"Systems and skills","C",1
+1,"Social organization","D",6
+2,"Group and way of life","D",6
+3,"Norms and knowledge","D",4
+4,"Society and acquired behavior","D",7
+5,"Transmitted ideas","D",5
+6,"Complex whole","D",5
+7,"Systems and skills","D",1
+1,"Social organization","E",2
+2,"Group and way of life","E",3
+3,"Norms and knowledge","E",1
+4,"Society and acquired behavior","E",2
+5,"Transmitted ideas","E",0
+6,"Complex whole","E",0
+7,"Systems and skills","E",2
+1,"Social organization","F",5
+2,"Group and way of life","F",4
+3,"Norms and knowledge","F",5
+4,"Society and acquired behavior","F",3
+5,"Transmitted ideas","F",5
+6,"Complex whole","F",8
+7,"Systems and skills","F",4
+1,"Social organization","G",1
+2,"Group and way of life","G",2
+3,"Norms and knowledge","G",0
+4,"Society and acquired behavior","G",0
+5,"Transmitted ideas","G",2
+6,"Complex whole","G",0
+7,"Systems and skills","G",0

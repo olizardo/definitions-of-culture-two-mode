@@ -1,8 +1,12 @@
 # Maximum spanning tree of the definitions (code) projection of the K&K Index B
 # sub-element network, on the largest component's 2-core (same Ac as
 # scripts/analysis-ca-index-b.R). Ties between two codes = shared sub-elements
-# (edge weight). Nodes labeled with their K&K code; colored by
-# leading-eigenvector community computed on the tree; sized by tree betweenness.
+# (edge weight). Nodes are labeled with the author and year of the code's
+# quotation, merged from the verified network's code-vertex attributes; the
+# star shape encodes the K&K definition group (A-G); color is the
+# leading-eigenvector community computed on the tree; size is tree betweenness.
+# This replaces the code-labeled tree and the publication-type variant
+# (PROVENANCE 22).
 
 library(igraph)
 library(ggraph)
@@ -40,12 +44,17 @@ cat("tree edges:", ecount(st.def), "of", vcount(st.def) - 1, "possible\n")
 
 if (!is_connected(st.def)) stop("tree is not connected")
 
-# Nodes are labeled with their code
-V(st.def)$label <- V(st.def)$name
+# labels: author and year of each code's quotation, from the verified network's
+# vertex attributes (the same attributes as the node table below)
+v.attr <- igraph::vertex_attr(g)
+lab <- setNames(paste(v.attr$source_author, v.attr$source_year), v.attr$name)
+V(st.def)$label <- lab[V(st.def)$name]
+stopifnot(!anyNA(V(st.def)$label))
+
 # shape encodes the K&K definition group (first letter of the code, A-G)
-V(st.def)$family <- substr(V(st.def)$name, 1, 1)
+V(st.def)$family <- V(g)$kk_group[match(V(st.def)$name, V(g)$name)]
 fams <- sort(unique(V(st.def)$family))
-stopifnot(length(fams) <= 7)
+stopifnot(length(fams) <= 7, !anyNA(V(st.def)$family))
 source("scripts/kk-group-style.R")
 group.star <- kk.group.star[fams]
 group.labels <- setNames(paste0(fams, ": ", kk.group.names[fams]), fams)
@@ -81,15 +90,14 @@ p <- ggraph(lay) +
         legend.position = "bottom",
         legend.title = element_text(size = 8), legend.text = element_text(size = 7)) +
   labs(title = "Maximum spanning tree, definitions network (code nodes), K&K Index B LCC 2-core",
-       subtitle = "ties = shared sub-elements; labels = K&K code; shape = definition type; node size = betweenness in the tree")
-ggsave("figures/kk-index-b/definitions/mst-code-comm-tree.png", p,
+       subtitle = "ties = shared sub-elements; labels = author and year of the quotation; shape = definition type; node size = betweenness in the tree")
+ggsave("figures/kk-index-b/definitions/mst-code-author-year-tree.png", p,
        width = 14, height = 10, dpi = 150, bg = "white")
 
 # Author, year and printed pinpoint of each code's quotation, from the verified network
 # (PROVENANCE 17.5 and the citation key)
-g.attr <- igraph::vertex_attr(g)
-cite <- data.frame(kk_code = g.attr$name, source_author = g.attr$source_author,
-                   source_year = g.attr$source_year, source_page = g.attr$source_page,
+cite <- data.frame(kk_code = v.attr$name, source_author = v.attr$source_author,
+                   source_year = v.attr$source_year, source_page = v.attr$source_page,
                    stringsAsFactors = FALSE)
 cite <- cite[match(V(st.def)$name, cite$kk_code), ]
 stopifnot(!anyNA(cite$source_author))

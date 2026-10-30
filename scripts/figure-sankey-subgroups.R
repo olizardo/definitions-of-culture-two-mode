@@ -1,4 +1,4 @@
-# Supplementary Sankeys of the two NMF classifications against K&K's
+# Supplementary Sankeys of the NMF classifications against K&K's
 # disaggregated typology (groups with their roman-numeral subgroups), drawn
 # with ggsankeyfier. The manuscript body compares the classifications against
 # the seven group letters A-G; here the left side is the subgroup level:
@@ -6,21 +6,28 @@
 # Part III statement code, outside the Part II typology; the verified codes
 # have none (PROVENANCE 16), so the Part III node stays empty.
 #
-# The 171 verified definition codes carrying a text, each code's own subgroup
-#   against its dominant text NMF factor (analysis-nmf-texts-index-b.R). The split
-#   codes (PROVENANCE 17) count as separate codes. No tie node: a code sits in one
-#   subgroup.
+# Two panels:
+# - text NMF: the 171 verified definition codes carrying a text, each code's own
+#   subgroup against its dominant text NMF factor
+#   (analysis-nmf-texts-index-b.R). The split codes (PROVENANCE 17) count as
+#   separate codes. No tie node: a code sits in one subgroup.
+# - structural NMF: the 149 codes of the LCC 2-core, each code's subgroup
+#   against its dominant structural factor
+#   (analysis-nmf-structural-index-b.R, PROVENANCE 23).
 #
 # Ribbons take the color of their source node; subgroup nodes are colored by
 # their group letter (the Okabe-Ito palette defined below), the
 # factor nodes the default ggplot hues, so factor colors do not read as group
 # colors.
 #
-# Reads data/kk-index-b-nmf-texts-loads.csv (carries factor_label).
+# Reads data/kk-index-b-nmf-texts-loads.csv and
+# data/kk-index-b-nmf-structural-loads.csv (each carries factor_label).
 #
 # Outputs:
 #   figures/kk-index-b/nmf/sankey-codes-subgroups.png
+#   figures/kk-index-b/nmf/sankey-structural-subgroups.png
 #   data/kk-index-b-nmf-subgroup-texts-crosstab.csv
+#   data/kk-index-b-nmf-subgroup-structural-crosstab.csv
 
 library(ggplot2)
 library(ggsankeyfier)
@@ -146,4 +153,24 @@ p.codes <- sankey.plot(tab.c,
   c(sg = "K&K subgroup", fac = "text NMF\n(definition quotations)"),
   "K&K group", fac.labs.c)
 ggsave("figures/kk-index-b/nmf/sankey-codes-subgroups.png", p.codes,
+       width = 7, height = 6, bg = "white")
+
+# ---- codes: subgroup -> dominant structural factor ----
+sl <- read.csv("data/kk-index-b-nmf-structural-loads.csv")
+fl.s <- unique(sl[, c("dominant", "factor_label")])
+stopifnot(nrow(fl.s) == 7L)
+fac.labs.s <- setNames(as.character(fl.s$factor_label), as.character(fl.s$dominant))
+sg.s <- subgrp(trimws(sl$kk_code))
+sg.s.used <- sg.levels[sg.levels %in% unique(sg.s)]
+tab.s <- table(subgroup = factor(sg.s, levels = sg.s.used),
+               factor = factor(sl$dominant, levels = 1:7))
+cat("structural panel: ", nrow(sl), " codes; subgroups ",
+    length(sg.s.used), "\n", sep = "")
+write.csv(data.frame(subgroup = rownames(tab.s), as.data.frame.matrix(tab.s),
+                     check.names = FALSE),
+          "data/kk-index-b-nmf-subgroup-structural-crosstab.csv", row.names = FALSE)
+p.struct <- sankey.plot(tab.s,
+  c(sg = "K&K subgroup", fac = "structural NMF\n(concept profiles)"),
+  "K&K group", fac.labs.s)
+ggsave("figures/kk-index-b/nmf/sankey-structural-subgroups.png", p.struct,
        width = 7, height = 6, bg = "white")

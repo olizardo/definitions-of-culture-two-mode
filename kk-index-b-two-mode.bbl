@@ -1,9 +1,31 @@
-\begin{thebibliography}{8}
+\begin{thebibliography}{26}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Bidney(1942)]{bidney1942}
+D.~Bidney.
+\newblock On the philosophy of culture in the social sciences.
+\newblock \emph{Journal of Philosophy}, 39:\penalty0 449--457, 1942.
+
+\bibitem[Bidney(1946)]{bidney1946}
+D.~Bidney.
+\newblock The concept of cultural crisis.
+\newblock \emph{American Anthropologist}, 48\penalty0 (4):\penalty0 534--552,
+  1946.
+
+\bibitem[Bidney(1947)]{bidney1947}
+D.~Bidney.
+\newblock Human nature and the cultural process.
+\newblock \emph{American Anthropologist}, 49\penalty0 (3):\penalty0 375--399,
+  1947.
+
+\bibitem[Blumenthal(1937)]{blumenthal1937}
+A.~Blumenthal.
+\newblock \emph{The Best Definition of Culture}.
+\newblock Marietta, Ohio, 1937.
 
 \bibitem[Boroch(2016)]{boroch2016}
 R.~Boroch.
@@ -16,11 +38,47 @@ R.~L. Breiger.
 \newblock The duality of persons and groups.
 \newblock \emph{Social Forces}, 53\penalty0 (2):\penalty0 181--190, 1974.
 
+\bibitem[Burkitt(1929)]{burkitt1929}
+M.~C. Burkitt.
+\newblock Archaeology.
+\newblock In \emph{Encyclopaedia Britannica}. New York, 14th edition, 1929.
+
+\bibitem[Dixon(1928)]{dixon1928}
+R.~B. Dixon.
+\newblock \emph{The Building of Cultures}.
+\newblock New York, 1928.
+
 \bibitem[Everett and Borgatti(2013)]{everett2013dual-projection-c89}
 M.~G. Everett and S.~P. Borgatti.
 \newblock The dual-projection approach for two-mode networks.
 \newblock \emph{Social networks}, 35\penalty0 (2):\penalty0 204--210, 2013.
 \newblock ISSN 0378-8733.
+
+\bibitem[Feibleman(1946)]{feibleman1946}
+J.~K. Feibleman.
+\newblock \emph{The Theory of Human Culture}.
+\newblock New York, 1946.
+
+\bibitem[Gillin and Gillin(1942)]{gillin1942}
+J.~L. Gillin and J.~P. Gillin.
+\newblock \emph{An Introduction to Sociology}.
+\newblock New York, 1942.
+
+\bibitem[Herskovits(1948)]{herskovits1948}
+M.~J. Herskovits.
+\newblock \emph{Man and his Works}.
+\newblock New York, 1948.
+
+\bibitem[Kluckhohn and Kelly(1945)]{kluckhohnkelly1945a}
+C.~Kluckhohn and W.~H. Kelly.
+\newblock The concept of culture.
+\newblock In R.~Linton, editor, \emph{The Science of Man in the World Crisis},
+  pages 78--105. New York, 1945.
+
+\bibitem[Kroeber(1948)]{kroeber1948a}
+A.~L. Kroeber.
+\newblock \emph{Anthropology}.
+\newblock New York, 1948.
 
 \bibitem[Kroeber and Kluckhohn(1952)]{kroeberkluckhohn1952}
 A.~L. Kroeber and C.~Kluckhohn.
@@ -41,6 +99,37 @@ D.~D. Lee and H.~S. Seung.
 \newblock \emph{Advances in Neural Information Processing Systems},
   13:\penalty0 556--562, 2001.
 
+\bibitem[Linton(1936)]{linton1936}
+R.~Linton.
+\newblock \emph{The Study of Man}.
+\newblock New York, 1936.
+
+\bibitem[Linton(1945{\natexlab{a}})]{linton1945a}
+R.~Linton.
+\newblock \emph{The Cultural Background of Personality}.
+\newblock New York, 1945{\natexlab{a}}.
+
+\bibitem[Linton(1945{\natexlab{b}})]{linton1945b}
+R.~Linton.
+\newblock Present world conditions in cultural perspective.
+\newblock In R.~Linton, editor, \emph{The Science of Man in the World Crisis},
+  pages 201--221. New York, 1945{\natexlab{b}}.
+
+\bibitem[Lowie(1937)]{lowie1937}
+R.~H. Lowie.
+\newblock \emph{The History of Ethnological Theory}.
+\newblock New York, 1937.
+
+\bibitem[Murdock(1949)]{murdock1949a}
+G.~P. Murdock.
+\newblock The science of human learning, society, culture, and personality.
+\newblock \emph{Scientific Monthly}, 69:\penalty0 377--382, 1949.
+
+\bibitem[Murray(1943)]{murray1943}
+R.~W. Murray.
+\newblock \emph{Man's Unknown Ancestors}.
+\newblock Milwaukee, 1943.
+
 \bibitem[Neal(2014)]{neal2014backbone-b29}
 Z.~Neal.
 \newblock The backbone of bipartite projections: Inferring relationships from
@@ -55,5 +144,10 @@ M.~E.~J. Newman.
 \newblock Finding community structure in networks using the eigenvectors of
   matrices.
 \newblock \emph{Physical Review E}, 74\penalty0 (3):\penalty0 036104, 2006.
+
+\bibitem[Tylor(1871)]{tylor1871}
+E.~B. Tylor.
+\newblock \emph{Primitive Culture}.
+\newblock Boston, 1871.
 
 \end{thebibliography}

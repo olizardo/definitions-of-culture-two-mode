@@ -4,44 +4,59 @@ The top-level auxiliary file: kk-index-b-two-mode.aux
 The style file: abbrvnat.bst
 Database file #1: references.bib
 Database file #2: library.bib
-You've used 8 entries,
+Warning--empty publisher in blumenthal1937
+Warning--empty publisher in burkitt1929
+Warning--empty publisher in dixon1928
+Warning--empty publisher in feibleman1946
+Warning--empty publisher in gillin1942
+Warning--empty publisher in herskovits1948
+Warning--empty publisher in kluckhohnkelly1945a
+Warning--empty publisher in kroeber1948a
+Warning--empty publisher in linton1936
+Warning--empty publisher in linton1945a
+Warning--empty publisher in linton1945b
+Warning--empty publisher in lowie1937
+Warning--empty publisher in murray1943
+Warning--empty publisher in tylor1871
+You've used 26 entries,
             2773 wiz_defined-function locations,
-            651 strings with 5876 characters,
-and the built_in function-call counts, 3211 in all, are:
-= -- 306
-> -- 113
-< -- 8
-+ -- 41
-- -- 33
-* -- 239
-:= -- 501
-add.period$ -- 28
-call.type$ -- 8
-change.case$ -- 35
-chr.to.int$ -- 8
-cite$ -- 16
-duplicate$ -- 159
-empty$ -- 301
-format.name$ -- 47
-if$ -- 669
-int.to.chr$ -- 1
+            732 strings with 7151 characters,
+and the built_in function-call counts, 9595 in all, are:
+= -- 851
+> -- 323
+< -- 28
++ -- 122
+- -- 95
+* -- 656
+:= -- 1487
+add.period$ -- 85
+call.type$ -- 26
+change.case$ -- 99
+chr.to.int$ -- 25
+cite$ -- 66
+duplicate$ -- 547
+empty$ -- 957
+format.name$ -- 131
+if$ -- 2019
+int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 8
-newline$ -- 52
-num.names$ -- 32
-pop$ -- 55
+missing$ -- 37
+newline$ -- 142
+num.names$ -- 108
+pop$ -- 253
 preamble$ -- 1
-purify$ -- 27
+purify$ -- 83
 quote$ -- 0
-skip$ -- 114
+skip$ -- 357
 stack$ -- 0
-substring$ -- 156
-swap$ -- 9
-text.length$ -- 0
+substring$ -- 351
+swap$ -- 45
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 88
-warning$ -- 0
-while$ -- 36
+type$ -- 231
+warning$ -- 14
+while$ -- 106
 width$ -- 0
-write$ -- 119
+write$ -- 345
+(There were 14 warnings)

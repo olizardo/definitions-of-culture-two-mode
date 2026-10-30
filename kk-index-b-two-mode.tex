@@ -19,7 +19,7 @@
 \maketitle
 
 \begin{abstract}
-Kroeber and Kluckhohn's classic 1952 monograph \emph{Culture: A Critical Review of Concepts and Definitions} \citep{kroeberkluckhohn1952} brought together over a hundred scholarly definitions of culture and indexed the key concepts they discuss. We build one network from that index to explore how concepts and definitions are connected. In the \emph{definitions network}, concepts like ``society'' and ``beliefs'' are linked to 171 definition codes, grouped into seven categories and credited to the author or authors that K\&K index under each. Each code is one quotation, identified by its author, year, page numbers and opening words. We present basic statistics about the network, visualize the data using correspondence analysis and spanning trees, and highlight the key concepts and definitions that anchor it. Data-driven types found in the wording of the definitions do not recover K\&K's categories at better than chance.
+Kroeber and Kluckhohn's classic 1952 monograph \emph{Culture: A Critical Review of Concepts and Definitions} \citep{kroeberkluckhohn1952} brought together over a hundred scholarly definitions of culture and indexed the key concepts they discuss. We build one network from that index to explore how concepts and definitions are connected. In the \emph{definitions network}, concepts like ``society'' and ``beliefs'' are linked to 171 definition codes, grouped into seven categories and credited to the author or authors that K\&K index under each. Each code is one quotation, identified by its author, year, page numbers and opening words. We present basic statistics about the network, visualize the data using correspondence analysis and spanning trees, and highlight the key concepts and definitions that anchor it. Data-driven types found in the concept profiles and in the wording of the definitions do not recover K\&K's categories at better than chance.
 \end{abstract}
 
 \section{Data and networks}
@@ -69,7 +69,7 @@ Figure~\ref{fig:degree} shows the degree distributions for the concept nodes (le
 \end{figure}
 
 
-\section{Maximum spanning trees}
+\section{Maximum Spanning Trees}
 
 By construction, the two-mode definitions network has no ties between two concepts or between two definitions, so we analyze the implied concept-to-concept ties and the defintions-to-definitions connections via multiple one-mode projections \citep{everett2013dual-projection-c89}. Following Breiger \citeyearpar{breiger1974}, two concepts are tied if they share at least one definition, with weight equal to the number they share. Likewise, two definitions are tied through the concepts they share. In matrix form, the projections are:
 \[
@@ -90,60 +90,58 @@ The definitions network has two main projections. The concept-level tree (Figure
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\textwidth]{figures/kk-index-b/definitions/mst-code-comm-tree.png}
-\caption{Maximum spanning tree of the definitions network, code (definition) nodes. Color is the leading-eigenvector community on the tree; size is betweenness in the tree.}
+\includegraphics[width=\textwidth]{figures/kk-index-b/definitions/mst-code-author-year-tree.png}
+\caption{Maximum spanning tree of the definitions network, code (definition) nodes labeled by the author and year of their quotation. Shape is the K\&K definition group (A--G); color is the leading-eigenvector community on the tree; size is betweenness in the tree.}
 \label{fig:mst-def-code}
-\end{figure}
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=\textwidth]{figures/kk-index-b/definitions/mst-code-author-pubtype-tree.png}
-\caption{Maximum spanning tree of the definitions network, code (definition) nodes labeled by the author and year of their quotation. Shape is the publication type of the work K\&K index under the code; color is the leading-eigenvector community on the tree; size is betweenness in the tree.}
-\label{fig:mst-def-code-authors}
 \end{figure}
 
 In the concept tree (Figure~\ref{fig:mst-def-sub}), the six largest nodes---group, customs, social, behavior, society, and beliefs---are the top six of Table~\ref{tab:mst-def-betweenness}. Group sits at the center of a pink region of communication and organization vocabulary (communication, organization, folkways, systems, designs for living). Social heads a green region of social-organizational vocabulary (social heritage, institutions, social needs, patterns, goods), and customs heads an olive region of tradition and adjustment (social group, accumulated treasury, adjust, association between persons). Behavior and society head the blue and magenta regions on the left, which hold the historical and learned-behavior vocabulary (historically, standards, learned behavior, socially transmitted). Beliefs heads the teal region of norms, knowledge and artifacts on the right, with norms, practical arts, act and civilization. A peripheral branch below beliefs runs through activities and learning to products and adjustments. This chain collects the acquisition and transmission vocabulary of the Genetic definitions and hangs off the core through a single path, so these ideas connect to the rest of the network only transitively. At the top left, ideas, habits, values and generations form a second branch that joins society through habits.
 
-The definition tree (Figure~\ref{fig:mst-def-code}) puts its three largest nodes, C-I-6, F-I-19, and A-16, at the center of the tree, with C-I-6 the largest of all. C-I-6 heads the largest community (24 definitions, drawn from all seven groups), and A-16 sits in the same community. F-I-19 and A-17 share a second community at the left of the center. This is consistent with the table, where five of the top ten definitions carry a C or F code and the others are Descriptive, Historical or Psychological. Degree and betweenness dissociate in this ranking: C-I-6 has both the highest betweenness and the highest tree degree (17), acting as the main hub of its community, while F-I-19 has the second-highest betweenness with only eight ties, sitting on the paths that join its cluster to the rest of the tree. One author supplies a striking share of the bridges, as Bidney holds three of the ten most central definitions (A-16, C-II-4, and C-II-3). Away from the center, the Descriptive definitions A-3(a), A-3(b), A-5, A-10a, and A-12 form a separate olive branch in the upper right, and the Descriptive and Historical definitions A-1 and A-14 run along the right side, showing that the earliest and simplest definitions connect to the core through fewer, longer paths. Figure~\ref{fig:mst-def-code-authors} repeats the definition tree with each code labeled by the author and year of its quotation and shaped by the publication type of the work K\&K index under it; repeated labels are different quotations by the same author in one year.
+The definition tree (Figure~\ref{fig:mst-def-code}) puts its three largest nodes at the center of the tree---the Gillin and Gillin 1942 quotation (C-I-6), the Murdock 1949a quotation (F-I-19), and the Bidney 1947 quotation (A-16)---with Gillin and Gillin the largest of all. Gillin and Gillin heads the largest community (24 definitions, drawn from all seven groups), and Bidney 1947 sits in the same community. Murdock 1949a and the Kroeber 1948a quotation A-17 share a second community at the left of the center. This is consistent with the table, where five of the top ten definitions carry a C or F code and the others are Descriptive, Historical or Psychological. Degree and betweenness dissociate in this ranking: C-I-6 has both the highest betweenness and the highest tree degree (17), acting as the main hub of its community, while F-I-19 has the second-highest betweenness with only eight ties, sitting on the paths that join its cluster to the rest of the tree. One author supplies a striking share of the bridges, as Bidney holds three of the ten most central definitions (A-16, C-II-4, and C-II-3); Kroeber 1948a is the only other work with two codes in the top ten (A-17 and B-18), and Linton holds two more (the 1945b chapter C-I-8 and the 1936 book A-10). Away from the center, the Descriptive definitions---the two Dixon 1928 quotations (A-3(a) and A-3(b)), Burkitt 1929 (A-5), Lowie 1937 (A-10a), and Murray 1943 (A-12)---form a separate olive branch in the upper right, and the Descriptive definitions Tylor 1871 (A-1) and the Kluckhohn and Kelly 1945a chapter (A-14) run along the right side, showing that the earliest and simplest definitions connect to the core through fewer, longer paths.
 
-The author--year view puts names to the central codes. The hub C-I-6 is the quotation from Gillin and Gillin's 1942 book, the second-most central node is Murdock's 1949a article (F-I-19), and Bidney holds the next three---the articles of 1947, 1946 and 1942 behind A-16, C-II-4 and C-II-3. Kroeber 1948a is the only other work with two codes in the top ten (A-17 and B-18), and Linton holds two (the 1945b chapter C-I-8 and the 1936 book A-10). The works themselves barely cluster. The 149 codes of the tree carry 120 distinct author--year labels, and the 19 labels that appear two or more times almost never stay together: 15 of them spread over two or more communities. Kluckhohn and Kelly's 1945a chapter, the most quoted work in the corpus with seven of its eight codes in the tree, reaches four communities scattered across the tree, and Herskovits 1948 likewise spans four. The three a/b quotation pairs do sit together, one pair per community (Dixon 1928, Blumenthal 1937, Feibleman 1946), as those variants share most of their concept links; Linton 1945a is the partial exception, with its two E-5 variants together and its third code (C-I-9) in another community. Publication type cuts across this structure. Books dominate the tree (97 of the 149 nodes), but no community consists of a single publication type, so the regions of the tree organize concept vocabulary, not the kind of work the definitions were drawn from.
+The works themselves barely cluster. The 149 codes of the tree carry 120 distinct author--year labels---a repeated label is a second quotation from the same work---and the 19 labels that appear two or more times almost never stay together: 15 of them spread over two or more communities. Kluckhohn and Kelly's 1945a chapter, the most quoted work in the corpus with seven of its eight codes in the tree, reaches four communities scattered across the tree, and Herskovits 1948 likewise spans four. The three a/b quotation pairs do sit together, one pair per community (Dixon 1928, Blumenthal 1937, Feibleman 1946), as those variants share most of their concept links; Linton 1945a is the partial exception, with its two E-5 variants together and its third code (C-I-9) in another community. The regions of the tree organize concept vocabulary, not the works the definitions were drawn from.
+% The works named in this section enter the bibliography without inline citations,
+% since the author-year mentions above already carry the citation form.
+\nocite{gillin1942, murdock1949a, bidney1947, bidney1946, bidney1942, kroeber1948a,
+  linton1945b, linton1936, kluckhohnkelly1945a, herskovits1948, dixon1928,
+  blumenthal1937, feibleman1946, linton1945a, tylor1871, burkitt1929, lowie1937, murray1943}
 
 \begin{table}[ht]
 \centering
 \caption{Top 10 nodes by Freeman-normalized betweenness in the definitions network MST.}
 \label{tab:mst-def-betweenness}
 \small
-\begin{tabular}{llrr}
+\begin{tabular}{lllrr}
 \toprule
-Node type & Node & Norm. Betw. (\%) & Degree \\
+Node type & Node & Author-year & Norm. Betw. (\%) & Degree \\
 \midrule
-\multirow{10}{*}{Concepts} & group & 59.39 & 12 \\
- & customs & 58.04 & 7 \\
- & social & 57.38 & 10 \\
- & behavior & 50.83 & 10 \\
- & society & 50.66 & 14 \\
- & beliefs & 48.40 & 13 \\
- & acquired & 17.81 & 9 \\
- & a people & 15.72 & 13 \\
- & activities & 14.04 & 2 \\
- & learning & 13.22 & 5 \\
+\multirow{10}{*}{Concepts} & group & & 59.39 & 12 \\
+ & customs & & 58.04 & 7 \\
+ & social & & 57.38 & 10 \\
+ & behavior & & 50.83 & 10 \\
+ & society & & 50.66 & 14 \\
+ & beliefs & & 48.40 & 13 \\
+ & acquired & & 17.81 & 9 \\
+ & a people & & 15.72 & 13 \\
+ & activities & & 14.04 & 2 \\
+ & learning & & 13.22 & 5 \\
 \midrule
-\multirow{10}{*}{Definitions} & C-I-6 & 71.45 & 17 \\
- & F-I-19 & 55.57 & 8 \\
- & A-16 & 53.42 & 4 \\
- & C-II-4 & 50.94 & 4 \\
- & C-II-3 & 50.88 & 3 \\
- & A-17 & 43.88 & 4 \\
- & C-I-8 & 32.15 & 6 \\
- & A-10 & 27.01 & 5 \\
- & B-18 & 22.97 & 3 \\
- & D-II-5 & 19.42 & 2 \\
+\multirow{10}{*}{Definitions} & C-I-6 & Gillin and Gillin 1942 & 71.45 & 17 \\
+ & F-I-19 & Murdock 1949a & 55.57 & 8 \\
+ & A-16 & Bidney 1947 & 53.42 & 4 \\
+ & C-II-4 & Bidney 1946 & 50.94 & 4 \\
+ & C-II-3 & Bidney 1942 & 50.88 & 3 \\
+ & A-17 & Kroeber 1948a & 43.88 & 4 \\
+ & C-I-8 & Linton 1945b & 32.15 & 6 \\
+ & A-10 & Linton 1936 & 27.01 & 5 \\
+ & B-18 & Kroeber 1948a & 22.97 & 3 \\
+ & D-II-5 & LaPiere 1946 & 19.42 & 2 \\
 \bottomrule
 \end{tabular}
 \par\smallskip
 \begin{minipage}{0.95\linewidth}
 \small
-\emph{Note:} Definition codes use the format X-Y-Z, where X is a letter (A--G) for K\&K's seven definition categories (Descriptive, Historical, Normative, Psychological, Structural, Genetic, Incomplete), Y is a roman numeral for the subcategory, and Z is the number of the definition within it. Variants such as A-3(a) and A-3(b) are the two quotations of one K\&K code, and they are counted as separate codes (see the data section).
+\emph{Note:} Definition codes use the format X-Y-Z, where X is a letter (A--G) for K\&K's seven definition categories (Descriptive, Historical, Normative, Psychological, Structural, Genetic, Incomplete), Y is a roman numeral for the subcategory, and Z is the number of the definition within it. Variants such as A-3(a) and A-3(b) are the two quotations of one K\&K code, and they are counted as separate codes (see the data section). The author--year column names the source of each definition's quotation, as Boroch attributes it; the same author and year label the node in Figure~\ref{fig:mst-def-code}.
 \end{minipage}
 \end{table}
 
@@ -151,11 +149,26 @@ The six most central concepts, group, customs, social, behavior, society and bel
 
 \section{Data-driven types: non-negative matrix factorization}
 
-The spanning trees and the community colors above classify nodes hard: each code belongs to exactly one community of the tree. Non-negative matrix factorization (NMF) \citep{lee2001algorithms} offers a soft, parts-based alternative. It approximates a non-negative matrix $V$ by a product $W H$ with all entries non-negative, so every code carries a loading on each factor and every factor is an additive mixture of the original features, with no subtractive terms. We ask how far data-driven types of the definition wording agree with K\&K's own seven categories A--G. The factorization uses the same base-R implementation throughout (Euclidean multiplicative updates, deterministic given a seed, with ten random restarts per value of $k$), and it fixes $k$ at seven, one factor per K\&K group. Fixing $k$ this way is a choice, not a result: the reconstruction error falls monotonically in $k$ without an elbow, and restart agreement is irregular (mean adjusted Rand index 0.48 to 0.70 over $k = 3$ to $8$), so neither criterion selects a number of factors on its own.
+The spanning trees and the community colors above classify nodes hard: each code belongs to exactly one community of the tree. Non-negative matrix factorization (NMF) \citep{lee2001algorithms} offers a soft, parts-based alternative. It approximates a non-negative matrix $V$ by a product $W H$ with all entries non-negative, so every code carries a loading on each factor and every factor is an additive mixture of the original features, with no subtractive terms. We ask how far data-driven types agree with K\&K's own seven categories A--G, first from the concept profiles of the definitions---which concepts each definition uses---and then from the wording of the definitions. Both factorizations use the same base-R implementation throughout (Euclidean multiplicative updates, deterministic given a seed, with ten random restarts per value of $k$), and both fix $k$ at seven, one factor per K\&K group. Fixing $k$ this way is a choice, not a result: the reconstruction error falls monotonically in $k$ without an elbow, and restart agreement is irregular (mean adjusted Rand index 0.51 to 0.67 over $k = 3$ to $8$ for the concept profiles, 0.48 to 0.70 for the wording), so neither criterion selects a number of factors on its own.
+
+\subsection{Types from the concept profiles of the definitions}
+
+The first factorization asks the question of the network itself. Its matrix is the definitions network's own biadjacency on the largest component's 2-core: 149 definition codes, each described by the 160 concepts it uses, coded 1 when the definition contains the concept and 0 otherwise. The factorization is run at $k = 7$, one factor per K\&K group.
+
+The factors read as recognizable concept profiles rather than K\&K's categories (Figure~\ref{fig:nmf-structural-factors}), and we label them by their leading concepts: \emph{social organization} (social, social heritage, institutions, patterns), \emph{group and way of life} (group, behavior, common, a people), \emph{norms and knowledge} (beliefs, customs, ways, knowledge), \emph{society and acquired behavior} (society, acquired, members of a society, individuals), \emph{transmitted ideas} (ideas, habits, generations, attitudes), \emph{complex whole} (total, sum, tools, activities), and \emph{systems and skills} (systems, organization, satisfaction, skills). The last factor is diffuse: its leading loadings are an order of magnitude smaller than the others', so its label is the least secure. Against the A--G groups the agreement is indistinguishable from chance (adjusted Rand index 0.002, against a permutation 95th percentile of 0.016), and no factor puts more than 40\% of its codes in one group. The subgroup-level view is in the appendix (Figure~\ref{fig:sup-sankey-structural}).
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{figures/kk-index-b/nmf/nmf-structural-factors.png}
+\caption{Top concepts of each structural-NMF factor at $k = 7$, from the codes $\times$ concepts biadjacency of the definitions network's largest-component 2-core (149 codes).}
+\label{fig:nmf-structural-factors}
+\end{figure}
 
 \subsection{Types from the wording of the definitions}
 
-The analysis asks the question of the definition texts themselves, independently of K\&K's coding. The corpus holds 171 definition codes carrying a quotation: the Table~2 texts mapped to K\&K codes through the crosswalk, the appendix-only texts, and one statement K\&K prints itself (a Part II page footnote). Three Table~2 columns that repeat another column's quotation word for word are not counted again. Documents average about thirty-four words (median 28), so the term--document matrix is built restrictively: tokens of three letters or more, a stopword list that removes the words nearly every definition contains (culture, society, social, man, and the general definitional vocabulary total, whole, learned, acquired), and terms kept to a document frequency between two documents and half the corpus, leaving 403 terms weighted by TF--IDF. The four quotations K\&K and Boroch print in French or German enter as English translations (K\&K's own rendering for Maquet, ours for the other three, not yet checked against the printed pages). The factorization is run at $k = 7$, one factor per K\&K group.
+The second factorization asks the question of the definition texts themselves, independently of both K\&K's coding and the concepts the definitions use.
+
+The second factorization asks the question of the definition texts themselves, independently of both K\&K's coding and the concepts the definitions use. The corpus holds 171 definition codes carrying a quotation: the Table~2 texts mapped to K\&K codes through the crosswalk, the appendix-only texts, and one statement K\&K prints itself (a Part II page footnote). Three Table~2 columns that repeat another column's quotation word for word are not counted again. Documents average about thirty-four words (median 28), so the term--document matrix is built restrictively: tokens of three letters or more, a stopword list that removes the words nearly every definition contains (culture, society, social, man, and the general definitional vocabulary total, whole, learned, acquired), and terms kept to a document frequency between two documents and half the corpus, leaving 403 terms weighted by TF--IDF. The four quotations K\&K and Boroch print in French or German enter as English translations (K\&K's own rendering for Maquet, ours for the other three, not yet checked against the printed pages). The factorization is run at $k = 7$, one factor per K\&K group.
 
 The factors again find recognizable themes rather than K\&K's categories (Figure~\ref{fig:nmf-texts-factors}), and we label them by their leading terms: \emph{species-specific ability} (events, species, use, dependent, ability), \emph{order and operation} (order, operation, self, superorganic, complex), \emph{mental and holistic} (concept, mean, holistic, traits, mental), \emph{goals and persons} (certain, rather, others, persons, goals), \emph{symbolic process and adjustment} (concrete, process, symbolic, experience, adjust), \emph{material and transmitted behavior} (material, non, transmitted, socially, institutions), and \emph{passed down generations} (generation, passed, down, everything, common). On a corpus this small a factor can be driven by one author's phrasing, so the labels should be read as descriptive of the top terms, not as clean concepts. The labels for mental and holistic and goals and persons are the least clear, since their leading terms include generic words (rather, certain, some, mean). Against the A--G groups the agreement is close to chance (adjusted Rand index 0.012, against a permutation 95th percentile of 0.016), and no factor has more than 54\% of its codes in one group.
 
@@ -168,17 +181,19 @@ The factors again find recognizable themes rather than K\&K's categories (Figure
 
 \subsection{Interpretation}
 
-The wording of the definitions does not recover K\&K's taxonomy. Two readings are possible. One is that K\&K's groups classify the emphases of individual \emph{statements}, and that these emphases cannot be recovered from quotations of about thirty words each. The other, which we find more plausible, is that the seven groups are editorial categories---useful for organizing a bibliography---rather than dimensions along which the corpus varies. This is consistent with the spanning-tree picture above, where the vocabulary the Genetic group concerns itself with sits on a peripheral chain of the concept tree rather than forming a region of its own, and with the community structure of the trees, which follows concept vocabulary, not authorial schools. The null result should be read against the method's limits as well: the number of factors was fixed to match the taxonomy under test rather than selected by the data, the short corpus makes TF--IDF factors fragile (restart agreement ranges from 0.48 to 0.70 for $k$ from 3 to 8), and the quotations are the passages Boroch selected, not the authors' full works.
+Neither the concept profiles nor the wording of the definitions recovers K\&K's taxonomy. The two factorizations fail on different matrices---the binary concept codings of the network and the texts of the quotations---so the null result does not hinge on one representation. Two readings are possible. One is that K\&K's groups classify the emphases of individual \emph{statements}, and that these emphases cannot be recovered from a binary concept coding, or from quotations of about thirty words each. The other, which we find more plausible, is that the seven groups are editorial categories---useful for organizing a bibliography---rather than dimensions along which the corpus varies. This is consistent with the spanning-tree picture above, where the vocabulary the Genetic group concerns itself with sits on a peripheral chain of the concept tree rather than forming a region of its own, and with the community structure of the trees, which follows concept vocabulary, not authorial schools. The null result should be read against the method's limits as well: the number of factors was fixed to match the taxonomy under test rather than selected by the data, the short corpus makes TF--IDF factors fragile (restart agreement ranges from 0.48 to 0.70 for $k$ from 3 to 8), and the quotations are the passages Boroch selected, not the authors' full works.
 
 \section{Limitations}
 
 The networks depend on the K\&K Index B transcription and on the verified-code filter. Element names are not unique across headings, so same-named elements are merged, which can join unrelated entries. Several readings depend on OCR corrections recorded in the repository's manual-fix files; the validators check structure and round-trips, not the content of each edge. Two codes that are not in Index A are included: C-I-18a and D-II-16, from the main text. K\&K's Part III statements (C-5, D-5, D-7, E-17) are excluded. The basis for each is documented in the repository. The four split codes and the 29 link decisions that separate their variants (see the data section) are judgments: the variants share one K\&K index entry, and the text-based assignment of concept links is a reading that a reader can check against the quotations, not a printed fact. The definition-level trees and the text factors depend on these decisions.
 
+\clearpage
 \appendix
 
 \section{Constructing the code-level data}\label{app:construction}
 
-The analyses use one object: a table with a row for each of the 171 K\&K definition codes. Each row gives the code's group and subgroup, its sub-elements, and the citation that identifies its quotation. This section records how that table was built, the choices made along the way, and the basis for each. Two sources are joined. K\&K's Index A and Index B, read from a scan of the 1952 monograph, give each code its author, year and sub-elements. Boroch's article \citet{boroch2016} gives each code a quotation with page numbers. Every join follows a stated rule, and each judgment is recorded with its basis in the project's provenance log.
+The analyses use one object: a table with a row for each of the 171 K\&K definition codes. Each row gives the code's group and subgroup, its sub-elements, and the citation that identifies its quotation. This section records how that table was built, the choices made along the way, and the basis for each. Two sources are joined. K\&K's Index A and Index B, read from a scan of the 1952 monograph, give each code its author, year and sub-elements. Boroch's  \citet{boroch2016}  gives each code a quotation with page numbers. Every join follows a stated rule, and each judgment is recorded with its basis in the project's provenance log.
+The analyses use one object: a table with a row for each of the 171 K\&K definition codes. Each row gives the code's group and subgroup, its sub-elements, and the citation that identifies its quotation. This section records how that table was built, the choices made along the way, and the basis for each. Two sources are joined. K\&K's Index A and Index B, read from a scan of the 1952 monograph, give each code its author, year and sub-elements. Boroch's \citeyearpar{boroch2016} article gives each code a quotation with page numbers. Every join follows a stated rule, and each judgment is recorded with its basis in the project's provenance log.
 
 \subsection{Sources and the unit}
 
@@ -232,7 +247,16 @@ The build's validators check the network's structure, its round trips and its at
 
 \section{Supplementary sankey diagrams at the subgroup level}\label{app:subgroup-sankey}
 
-The NMF comparison in the body classifies the definition wording against K\&K's seven group letters. The figure here repeats it at the finer grain of K\&K's own typology, the roman-numeral subgroups the classification prints within groups C, D, and F; groups A, B, E, and G number their codes plainly and have no subgroup level. Each ribbon takes the color of its origin node's group, and node size is the number of codes.
+The NMF comparisons in the body classify the definitions against K\&K's seven group letters, first by concept profile and then by wording. The figures here repeat both at the finer grain of K\&K's own typology, the roman-numeral subgroups the classification prints within groups C, D, and F; groups A, B, E, and G number their codes plainly and have no subgroup level. Each ribbon takes the color of its origin node's group, and node size is the number of codes. The structural panel covers the 149 codes of the largest component's 2-core; the text panel, all 171 codes carrying a quotation.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{figures/kk-index-b/nmf/sankey-structural-subgroups.png}
+\caption{The 149 definition codes of the largest component's 2-core, by their own K\&K subgroup (left) and dominant structural-NMF factor (right). Ribbons take the color of their origin node's group.}
+\label{fig:sup-sankey-structural}
+\end{figure}
+
+On the left, A, B, D-I and F-I reach all seven structural factors, and C-I and D-II reach six. On the right, \emph{group and way of life} and \emph{norms and knowledge} are the largest factors at 26 codes each, and \emph{systems and skills} the smallest at 10. The largest cells are A on \emph{norms and knowledge} (9 of 22 codes), B on \emph{social organization} (7 of 22), and F-I on \emph{complex whole} (6 of 17). No subgroup's codes sit on a single factor; the smallest subgroups in the 2-core, C-II, D-III, D-IV and F-IV (two to four codes each), reach between two and three factors.
 
 \begin{figure}[ht]
 \centering
