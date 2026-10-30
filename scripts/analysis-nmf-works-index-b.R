@@ -130,7 +130,9 @@ ggplot2::ggsave("figures/kk-index-b/nmf/nmf-works.png",
 dom7 <- loads$dominant
 
 group.of <- function(codes) {
-  gs <- substr(trimws(strsplit(codes, ";")[[1]]), 1, 1)
+  # Count K&K codes, not split variants: A-3(a) and A-3(b) are one K&K code (PROVENANCE 17).
+  cs <- unique(sub("\\([ab]\\)$", "", trimws(strsplit(codes, ";")[[1]])))
+  gs <- substr(cs, 1, 1)
   tab <- table(gs)
   if (sum(tab == max(tab)) > 1) NA_character_ else names(tab)[which.max(tab)]
 }

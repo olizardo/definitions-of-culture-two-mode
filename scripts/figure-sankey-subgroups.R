@@ -143,7 +143,9 @@ wl <- read.csv("data/kk-index-b-nmf-works-loads.csv")   # the 118 works of the 2
 idx <- match(wl$work, wt$work)
 stopifnot(!anyNA(idx))
 plur <- sapply(strsplit(wt$codes[idx], ";"), function(cs) {
-  t <- table(subgrp(trimws(cs)))
+  # Count K&K codes, not split variants (PROVENANCE 17).
+  cs <- unique(sub("\\([ab]\\)$", "", trimws(cs)))
+  t <- table(subgrp(cs))
   m <- max(t)
   if (sum(t == m) == 1) names(t)[t == m] else "tie"
 })

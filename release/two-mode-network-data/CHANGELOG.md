@@ -6,7 +6,7 @@ error in existing data without changing its structure.
 ## 0.6.0 (2026-10-30)
 
 - Split the four K&K codes whose Boroch quotations are lettered a and b into variants: A-3, E-5, F-II-4 and F-II-7 become A-3(a), A-3(b), E-5(a), E-5(b), F-II-4(a), F-II-4(b), F-II-7(a) and F-II-7(b). The definitions networks go from 167 to 171 codes. K&K prints one Index B entry per code, so each variant starts with a copy of its parent's sub-element links. Twenty-nine variant-specific links were then removed where the quotation text indicates the variant does not carry the sub-element (PROVENANCE 17.8). The verified network goes from 1189 to 1201 edges and the heading network from 1080 to 1095. The sub-element and heading counts are unchanged (470 and 53).
-- Works are unchanged at 131. Dixon 1928, Blumenthal 1937 and Feibleman 1946 now sit under two codes each, so works under several codes go from 19 to 22. The citations table changes in four rows' `codes` column.
+- Works are unchanged at 131. Dixon 1928, Blumenthal 1937 and Feibleman 1946 now list two variant codes each. Counted by K&K code, works under two or more codes stay at 19. The citations table changes in four rows' `codes` column.
 - Code vertices of the verified network carry `source_author`, `source_year`, `source_page` and `quote_opening` (see MANIFEST.md).
 - Rights: the six-word quote openings are released by decision. The definition and quotation texts stay out of the release.
 
