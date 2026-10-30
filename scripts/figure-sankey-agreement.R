@@ -108,21 +108,19 @@ panel.plot <- function(panel, x.labs, fill.values, fill.labels, fill.name,
   pos.r <- position_sankey(v_space = "auto", order = "as_is", align = "justify",
                            width = 0.05, split_nodes = FALSE, nudge_x = 0.04)
   stages <- as.character(sort(unique(d$stage)))
+  # labels by side; the stat must see the full panel, because on a subset
+  # ggsankeyfier re-stacks the nodes and the labels drift off their rectangles
+  d$lab.left <- ifelse(d$stage == stages[1], d$lab, "")
+  d$lab.right <- ifelse(d$stage == stages[2], d$lab, "")
   p <- ggplot(d, aes(x = stage, y = n, group = node,
                      connector = connector, edge_id = edge_id)) +
     geom_sankeyedge(aes(fill = src), alpha = 0.6,
                     color = "white", linewidth = 0.15, position = pos) +
     geom_sankeynode(fill = "grey25", color = "white", position = pos) +
-    # ggrepel keeps multi-line node labels from colliding; segments off, the
-    # nudge in the position object already sits the label beside its node
-    geom_text_repel(aes(label = lab), stat = "sankeynode",
-                    position = pos.l, hjust = 1, size = 2.3, lineheight = 0.85,
-                    direction = "y", segment.colour = NA, min.segment.length = 0,
-                    seed = 61, data = subset(d, stage == stages[1])) +
-    geom_text_repel(aes(label = lab), stat = "sankeynode",
-                    position = pos.r, hjust = 0, size = 2.3, lineheight = 0.85,
-                    direction = "y", segment.colour = NA, min.segment.length = 0,
-                    seed = 61, data = subset(d, stage == stages[2])) +
+    geom_text(aes(label = lab.left), stat = "sankeynode",
+              position = pos.l, hjust = 1, size = 2.3, lineheight = 0.85) +
+    geom_text(aes(label = lab.right), stat = "sankeynode",
+              position = pos.r, hjust = 0, size = 2.3, lineheight = 0.85) +
     scale_x_discrete(expand = expansion(add = c(0.5, 0.5)), labels = x.labs) +
     scale_fill_manual(values = fill.values, breaks = names(fill.values),
                       labels = fill.labels, name = fill.name) +
