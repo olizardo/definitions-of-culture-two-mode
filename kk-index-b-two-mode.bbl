@@ -1,4 +1,4 @@
-\begin{thebibliography}{5}
+\begin{thebibliography}{8}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -22,6 +22,12 @@ M.~G. Everett and S.~P. Borgatti.
 \newblock \emph{Social networks}, 35\penalty0 (2):\penalty0 204--210, 2013.
 \newblock ISSN 0378-8733.
 
+\bibitem[Kroeber and Kluckhohn(1952)]{kroeberkluckhohn1952}
+A.~L. Kroeber and C.~Kluckhohn.
+\newblock Culture: A critical review of concepts and definitions.
+\newblock \emph{Papers of the Peabody Museum of Archaeology \& Ethnology,
+  Harvard University}, 47\penalty0 (1):\penalty0 223, 1952.
+
 \bibitem[Kruskal(1956)]{kruskal1956}
 J.~B. Kruskal.
 \newblock On the shortest spanning subtree of a graph and the traveling
@@ -34,5 +40,20 @@ D.~D. Lee and H.~S. Seung.
 \newblock Algorithms for non-negative matrix factorization.
 \newblock \emph{Advances in Neural Information Processing Systems},
   13:\penalty0 556--562, 2001.
+
+\bibitem[Neal(2014)]{neal2014backbone-b29}
+Z.~Neal.
+\newblock The backbone of bipartite projections: Inferring relationships from
+  co-authorship, co-sponsorship, co-attendance and other co-behaviors.
+\newblock \emph{Social networks}, 39:\penalty0 84--97, 10 2014.
+\newblock ISSN 0378-8733.
+\newblock \doi{10.1016/j.socnet.2014.06.001}.
+\newblock URL \url{http://dx.doi.org/10.1016/j.socnet.2014.06.001}.
+
+\bibitem[Newman(2006)]{newman2006}
+M.~E.~J. Newman.
+\newblock Finding community structure in networks using the eigenvectors of
+  matrices.
+\newblock \emph{Physical Review E}, 74\penalty0 (3):\penalty0 036104, 2006.
 
 \end{thebibliography}

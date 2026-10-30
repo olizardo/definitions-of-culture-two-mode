@@ -1,13 +1,18 @@
-# Attach per-code source citation attributes to the verified definitions network.
+# Attach per-code source citation attributes and publication type to the
+# definitions networks.
 #
 # Input:  data/kkcc-definition-source-pages.csv (one row per Boroch code: K&K code,
 #         Boroch author, year and printed pinpoint, quote opening)
-#         data/kk-index-b-verified-network.rds
-# Output: the same .rds, with code vertices carrying source_author, source_year,
-#         source_page and quote_opening. A code with more than one Boroch row
-#         has its values joined with "; ". Sub-element vertices get NA.
+#         data/kk-index-b-verified-network.rds, data/kk-index-b-heading-network.rds
+#         data/kk-index-b-works.csv, data/kk-index-b-work-pub-type.csv
+# Output: the same .rds files. Code vertices of the verified network carry
+#         source_author, source_year, source_page and quote_opening (joined with
+#         "; " when a code has more than one Boroch row). Code vertices of both
+#         networks carry pub_type, the publication type of the work K&K index
+#         under the code (PROVENANCE 21); NA on the other mode and on the codes
+#         with no work.
 #
-# Run after build-index-b-verified.R, which rewrites the network.
+# Run after build-index-b-verified.R, which rewrites the verified network.
 
 library(igraph)
 
@@ -37,7 +42,37 @@ V(g)$source_year <- agg$source_year[m]
 V(g)$source_page <- agg$source_page[m]
 V(g)$quote_opening <- agg$quote_opening[m]
 
+# publication type of the work K&K index under each code (PROVENANCE 21)
+works <- read.csv("data/kk-index-b-works.csv", stringsAsFactors = FALSE)
+wl <- do.call(rbind, lapply(seq_len(nrow(works)), function(i)
+  data.frame(work = works$work[i],
+             kk_code = trimws(strsplit(works$codes[i], ";")[[1]]),
+             stringsAsFactors = FALSE)))
+pub <- read.csv("data/kk-index-b-work-pub-type.csv", stringsAsFactors = FALSE)
+pm <- merge(wl, pub[, c("work", "pub_type")], by = "work", all.x = TRUE)
+stopifnot(!anyDuplicated(pm$kk_code), !anyNA(pm$pub_type))
+pub.map <- setNames(pm$pub_type, pm$kk_code)
+
+attach_pub <- function(g) {
+  V(g)$pub_type <- pub.map[V(g)$name]
+  g
+}
+g <- attach_pub(g)
+
 stopifnot(identical(bi0, as_biadjacency_matrix(g, sparse = FALSE)))
 vn$graph <- g
 saveRDS(vn, path)
 cat("code vertices with source attributes:", sum(!is.na(V(g)$source_page)), "\n")
+cat("verified codes with a publication type:", sum(V(g)$type & !is.na(V(g)$pub_type)),
+    "without:", paste(V(g)$name[V(g)$type & is.na(V(g)$pub_type)], collapse = ", "), "\n")
+
+# the same attribute on the heading network's code vertices
+hpath <- "data/kk-index-b-heading-network.rds"
+hn <- readRDS(hpath)
+hg <- hn$graph
+hbi0 <- as_biadjacency_matrix(hg, sparse = FALSE)
+hg <- attach_pub(hg)
+stopifnot(identical(hbi0, as_biadjacency_matrix(hg, sparse = FALSE)))
+hn$graph <- hg
+saveRDS(hn, hpath)
+cat("heading codes with a publication type:", sum(V(hg)$type & !is.na(V(hg)$pub_type)), "\n")

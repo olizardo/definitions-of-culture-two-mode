@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2026.9.29)  30 OCT 2026 12:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2026.9.29)  30 OCT 2026 14:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -383,51 +383,56 @@ Package caption Info: End \AtBeginDocument code.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-<figures/kk-index-b/degree-definitions.png, id=78, 578.16pt x 433.62pt>
+<figures/kk-index-b/degree-definitions.png, id=91, 578.16pt x 433.62pt>
 File: figures/kk-index-b/degree-definitions.png Graphic file (type png)
 <use figures/kk-index-b/degree-definitions.png>
-Package pdftex.def Info: figures/kk-index-b/degree-definitions.png  used on input line 62.
+Package pdftex.def Info: figures/kk-index-b/degree-definitions.png  used on input line 66.
 (pdftex.def)             Requested size: 469.75502pt x 352.31538pt.
  [2]
-<figures/kk-index-b/definitions/mst-subelement-comm-tree.png, id=102, 1084.05pt x 650.43pt>
+<figures/kk-index-b/definitions/mst-subelement-comm-tree.png, id=115, 1084.05pt x 650.43pt>
 File: figures/kk-index-b/definitions/mst-subelement-comm-tree.png Graphic file (type png)
 <use figures/kk-index-b/definitions/mst-subelement-comm-tree.png>
-Package pdftex.def Info: figures/kk-index-b/definitions/mst-subelement-comm-tree.png  used on input line 82.
+Package pdftex.def Info: figures/kk-index-b/definitions/mst-subelement-comm-tree.png  used on input line 86.
 (pdftex.def)             Requested size: 469.75502pt x 281.85297pt.
-<figures/kk-index-b/definitions/mst-code-comm-tree.png, id=103, 1011.78pt x 722.7pt>
+<figures/kk-index-b/definitions/mst-code-comm-tree.png, id=116, 1011.78pt x 722.7pt>
 File: figures/kk-index-b/definitions/mst-code-comm-tree.png Graphic file (type png)
 <use figures/kk-index-b/definitions/mst-code-comm-tree.png>
-Package pdftex.def Info: figures/kk-index-b/definitions/mst-code-comm-tree.png  used on input line 89.
+Package pdftex.def Info: figures/kk-index-b/definitions/mst-code-comm-tree.png  used on input line 93.
 (pdftex.def)             Requested size: 469.75502pt x 335.54475pt.
- [3 <./figures/kk-index-b/degree-definitions.png>] [4 <./figures/kk-index-b/definitions/mst-subelement-comm-tree.png (PNG copy)>] [5 <./figures/kk-index-b/definitions/mst-code-comm-tree.png (PNG copy)>] [6]
-<figures/kk-index-b/nmf/nmf-texts-factors.png, id=135, 650.43pt x 433.62pt>
+<figures/kk-index-b/definitions/mst-code-author-pubtype-tree.png, id=117, 1011.78pt x 722.7pt>
+File: figures/kk-index-b/definitions/mst-code-author-pubtype-tree.png Graphic file (type png)
+<use figures/kk-index-b/definitions/mst-code-author-pubtype-tree.png>
+Package pdftex.def Info: figures/kk-index-b/definitions/mst-code-author-pubtype-tree.png  used on input line 100.
+(pdftex.def)             Requested size: 469.75502pt x 335.54475pt.
+ [3 <./figures/kk-index-b/degree-definitions.png>] [4 <./figures/kk-index-b/definitions/mst-subelement-comm-tree.png (PNG copy)>] [5 <./figures/kk-index-b/definitions/mst-code-comm-tree.png (PNG copy)>] [6 <./figures/kk-index-b/definitions/mst-code-author-pubtype-tree.png (PNG copy)>] [7]
+<figures/kk-index-b/nmf/nmf-texts-factors.png, id=158, 650.43pt x 433.62pt>
 File: figures/kk-index-b/nmf/nmf-texts-factors.png Graphic file (type png)
 <use figures/kk-index-b/nmf/nmf-texts-factors.png>
-Package pdftex.def Info: figures/kk-index-b/nmf/nmf-texts-factors.png  used on input line 148.
+Package pdftex.def Info: figures/kk-index-b/nmf/nmf-texts-factors.png  used on input line 164.
 (pdftex.def)             Requested size: 469.75502pt x 313.17879pt.
- [7 <./figures/kk-index-b/nmf/nmf-texts-factors.png>] [8] [9]
-<figures/kk-index-b/nmf/sankey-codes-subgroups.png, id=156, 505.89pt x 433.62pt>
+ [8 <./figures/kk-index-b/nmf/nmf-texts-factors.png>] [9] [10]
+<figures/kk-index-b/nmf/sankey-codes-subgroups.png, id=177, 505.89pt x 433.62pt>
 File: figures/kk-index-b/nmf/sankey-codes-subgroups.png Graphic file (type png)
 <use figures/kk-index-b/nmf/sankey-codes-subgroups.png>
-Package pdftex.def Info: figures/kk-index-b/nmf/sankey-codes-subgroups.png  used on input line 223.
+Package pdftex.def Info: figures/kk-index-b/nmf/sankey-codes-subgroups.png  used on input line 239.
 (pdftex.def)             Requested size: 469.75502pt x 402.65372pt.
- (./kk-index-b-two-mode.bbl [10]) [11 <./figures/kk-index-b/nmf/sankey-codes-subgroups.png (PNG copy)>] (./kk-index-b-two-mode.aux)
+ (./kk-index-b-two-mode.bbl [11] [12 <./figures/kk-index-b/nmf/sankey-codes-subgroups.png (PNG copy)>]) [13] (./kk-index-b-two-mode.aux)
 Package rerunfilecheck Info: File `kk-index-b-two-mode.out' has not changed.
 (rerunfilecheck)             Checksum: 8E778CD6A813E9B66CBA81A376282CF2;2993.
  ) 
 Here is how much of TeX's memory you used:
- 11338 strings out of 477975
- 183981 string characters out of 5839281
- 1864330 words of memory out of 5000000
- 31299 multiletter control sequences out of 15000+600000
- 519502 words of font info for 57 fonts, out of 8000000 for 9000
+ 11375 strings out of 477975
+ 184906 string characters out of 5839281
+ 1866330 words of memory out of 5000000
+ 31323 multiletter control sequences out of 15000+600000
+ 520807 words of font info for 62 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 75i,10n,76p,1794b,557s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on kk-index-b-two-mode.pdf (11 pages, 1725259 bytes).
+ 75i,10n,76p,2165b,565s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on kk-index-b-two-mode.pdf (13 pages, 2167072 bytes).
 PDF statistics:
- 230 PDF objects out of 1000 (max. 8388607)
- 184 compressed objects within 2 object streams
- 41 named destinations out of 1000 (max. 500000)
- 146 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 273 PDF objects out of 1000 (max. 8388607)
+ 217 compressed objects within 3 object streams
+ 48 named destinations out of 1000 (max. 500000)
+ 151 words of extra memory for PDF output out of 10000 (max. 10000000)
 

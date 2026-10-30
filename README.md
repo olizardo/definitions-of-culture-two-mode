@@ -229,6 +229,8 @@ Vertex attributes, by vertex kind:
 | `n_index_b_elements` | NA | yes | Index B elements under the code |
 | `index_a_authors` | NA | yes | Index A authors listed under the code |
 | `boroch_code`, `boroch_source` | NA | yes | Boroch's code for the same definition (NA if none); `table2` or `appendix-only` |
+| `source_author`, `source_year`, `source_page`, `quote_opening` | NA | verified network only | Boroch's author, year and printed page for the code's quotation and its first six words (PROVENANCE 17.5) |
+| `pub_type` | NA | yes, both networks | publication type of the work K\&K index under the code (PROVENANCE 21); NA for the codes with no work |
 
 Edge attributes (all three): `n_source_rows` is the number of Index B rows behind the tie, and
 `parse_flags` lists the parse flags of those rows, `; `-separated. Graph attributes record the build date,

@@ -709,3 +709,15 @@ Scope: the works outputs (`kk-index-b-ca-works-lcc2core-works.csv`, `kk-index-b-
 20.6 Manuscript. The abstract, the Data and networks section, the overview (Table 1, one column, values recomputed from the verified network and unchanged), the degree figure and text, the works MST subsection and its table, the "Taken together" paragraph, the structural NMF subsection and its table and tree, the NMF interpretation and the works Sankey appendix paragraphs are rewritten or removed. The NMF section now reports the texts analysis only. The largest definitions component is 626 nodes, not 622: the earlier figure predates the a/b split (section 17). The manuscript compiles cleanly in a scratch copy.
 
 20.7 Not done. `AGENTS.md` (the project memory) still describes the works network, and the user memory should be updated with `/savememory`. The release and the site are unchanged (decision C).
+
+## 21. Publication type as a code attribute and the author-year tree (2026-10-31)
+
+21.1 Decision. On the user's request, the manuscript gains a variant of the definitions code tree labeled by author-year with publication-type node shapes, and the networks carry `pub_type` as a code-vertex attribute for future use.
+
+21.2 Restored. `data/kk-index-b-work-pub-type.csv` is restored unchanged from git history (it was removed with the works network, section 20.2). It stays keyed by work, with its `basis` column; like section 20, the basis column is not for release.
+
+21.3 Changed. `attach-code-attributes-index-b.R` now also attaches `pub_type` to the code vertices of both stored networks, joined code -> work through `kk-index-b-works.csv` -> `pub_type` in the restored table. Sub-element and heading vertices get NA, as do the three codes with no work (C-I-18a, D-II-16, D-III-1); 168 of 171 codes carry a type. The biadjacency matrices are unchanged, and `check-index-b-networks.R` passes. The README attribute table gains `pub_type` and, for the first time, rows for the `source_*` attributes it had not recorded (17.5).
+
+21.4 New. `scripts/figure-mst-definitions-authors-index-b.R` draws `figures/kk-index-b/definitions/mst-code-author-pubtype-tree.png`: the code-level definitions MST of the LCC 2-core, built exactly as in `analysis-mst-definitions-index-b.R` (the two constructions must stay in step), with labels `source_author source_year` from the vertex attributes, shape = `pub_type`, color = tree community, size = tree betweenness. No tree code lacks a publication type.
+
+21.5 Manuscript. The figure is added after the code tree as Figure 4 (`fig:mst-def-code-authors`), with a pointer sentence at the end of the definition-tree paragraph.
