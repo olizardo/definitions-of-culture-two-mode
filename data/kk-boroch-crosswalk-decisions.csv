@@ -14,3 +14,6 @@
 "F2-5","match","F-II-4(b)","Split of K&K F-II-4 into variants (user decision 2026-10-30, PROVENANCE 17): Boroch F2-5 (b), Blumenthal 1937: 12."
 "F2-8","match","F-II-7(a)","Split of K&K F-II-7 into variants (user decision 2026-10-30, PROVENANCE 17): Boroch F2-8 (tentative), Feibleman 1946: 75."
 "F2-9","match","F-II-7(b)","Split of K&K F-II-7 into variants (user decision 2026-10-30, PROVENANCE 17): Boroch F2-9 (final), Feibleman 1946: 76."
+"A10a","exclude","","Verbatim copy of Table 2 column A10 (Winston 1933); identical text, no appendix entry of its own. Adds no quotation, so it is not assigned to a code (PROVENANCE 18)."
+"C1-5a","exclude","","Verbatim copy of Table 2 column C1-5 (Firth 1939); identical text, no appendix entry of its own. Adds no quotation, so it is not assigned to a code (PROVENANCE 18)."
+"F4-6","exclude","","Verbatim copy of F4-5 (Kluckhohn and Kelly 1945a, printed p. 87), the entry Boroch's numbering misprints as F4-6; identical text. Adds no quotation, so it is not assigned to a code (PROVENANCE 5 and 18)."

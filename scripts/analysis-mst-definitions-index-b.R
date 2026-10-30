@@ -9,7 +9,7 @@ library(ggraph)
 library(ggstar)
 
 set.seed(8427)
-invisible(lapply(c("figures/boroch", "figures/kk-index-b/definitions", "figures/kk-index-b/works"), dir.create, recursive = TRUE, showWarnings = FALSE))
+invisible(lapply(c("figures/boroch", "figures/kk-index-b/definitions"), dir.create, recursive = TRUE, showWarnings = FALSE))
 
 g <- readRDS("data/kk-index-b-verified-network.rds")$graph
 comp <- components(g)
@@ -37,46 +37,10 @@ cat("projection edges:", ecount(G.def), "\n")
 # maximum spanning tree = minimum spanning tree on negated weights
 st.def <- mst(G.def, weights = -E(G.def)$weight)
 cat("tree edges:", ecount(st.def), "of", vcount(st.def) - 1, "possible\n")
+
 if (!is_connected(st.def)) stop("tree is not connected")
 
-# "Author Year" labels from the Index A entry; the first author-year pair is
-# used, with "+" appended when the entry names more than one author-year pair
-defs <- read.csv("data/kk-index-b-definitions.csv", stringsAsFactors = FALSE)
-ia <- setNames(defs$index_a_authors, defs$kk_code)
-# Label = the authors of the first work (every entry sharing its year string,
-# joined with " & ") and that year, with any printed letter. Co-authored works
-# list both authors. "+" marks an entry with two or more distinct works, i.e.
-# two distinct year strings.
-make.label <- function(s) {
-  if (is.na(s) || s == "") return(NA_character_)
-  entry.year <- regmatches(s, regexpr("[0-9]{3,4}[a-z]?", s))
-  parts <- trimws(strsplit(s, ";")[[1]])
-  surname <- trimws(sub("\\s*\\(.*$", "", parts))
-  year <- vapply(parts, function(p) {
-    m <- regmatches(p, regexpr("[0-9]{3,4}[a-z]?", p))
-    if (length(m)) m else entry.year
-  }, character(1), USE.NAMES = FALSE)
-  first.year <- year[1]
-  authors <- unique(surname[year == first.year])
-  label <- paste(paste(authors, collapse = " & "), first.year)
-  paste0(label, if (length(unique(year)) > 1) " +" else "")
-}
-# Labels come from the works each code holds (data/kk-index-b-works.csv, built by
-# scripts/build-work-concept-network-index-b.R), with initials from
-# scripts/label-authors-index-b.R. A code with several works lists them joined by " / ".
-source("scripts/label-authors-index-b.R")
-works.tab <- read.csv("data/kk-index-b-works.csv", stringsAsFactors = FALSE)
-code.works.map <- list()
-for (i in seq_len(nrow(works.tab))) {
-  for (k in strsplit(works.tab$codes[i], "; ")[[1]])
-    code.works.map[[k]] <- c(code.works.map[[k]], works.tab$work[i])
-}
-works.lab <- vapply(V(st.def)$name, function(k) {
-  ws <- code.works.map[[k]]
-  if (is.null(ws)) return("")
-  paste(vapply(ws, label.authors, character(1)), collapse = " / ")
-}, character(1))
-# Nodes are labeled with their code; the works each code holds go to the node table
+# Nodes are labeled with their code
 V(st.def)$label <- V(st.def)$name
 # shape encodes the K&K definition group (first letter of the code, A-G)
 V(st.def)$family <- substr(V(st.def)$name, 1, 1)
@@ -121,7 +85,19 @@ p <- ggraph(lay) +
 ggsave("figures/kk-index-b/definitions/mst-code-comm-tree.png", p,
        width = 14, height = 10, dpi = 150, bg = "white")
 
-tree.out <- data.frame(kk_code = V(st.def)$name, works = works.lab,
+# Author, year and printed pinpoint of each code's quotation, from the verified network
+# (PROVENANCE 17.5 and the citation key)
+g.attr <- igraph::vertex_attr(g)
+cite <- data.frame(kk_code = g.attr$name, source_author = g.attr$source_author,
+                   source_year = g.attr$source_year, source_page = g.attr$source_page,
+                   stringsAsFactors = FALSE)
+cite <- cite[match(V(st.def)$name, cite$kk_code), ]
+stopifnot(!anyNA(cite$source_author))
+
+tree.out <- data.frame(kk_code = V(st.def)$name,
+                       source_author = cite$source_author,
+                       source_year = cite$source_year,
+                       source_page = cite$source_page,
                        community = as.integer(V(st.def)$comm),
                        betweenness = btw, degree_tree = degree(st.def))
 write.csv(tree.out[order(-tree.out$betweenness), ],

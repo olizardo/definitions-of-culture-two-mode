@@ -8,7 +8,7 @@ library(ggplot2)
 library(ggrepel)
 
 set.seed(8427)
-invisible(lapply(c("figures/boroch", "figures/kk-index-b/definitions", "figures/kk-index-b/works"), dir.create, recursive = TRUE, showWarnings = FALSE))
+invisible(lapply(c("figures/boroch", "figures/kk-index-b/definitions"), dir.create, recursive = TRUE, showWarnings = FALSE))
 
 d  <- readRDS("data/kkcc_two_mode_main.rds")
 A  <- d$biadjacency

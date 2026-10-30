@@ -54,16 +54,9 @@ stats <- rbind(
 write.csv(stats, file.path(data_dir, "kk-index-b-network-stats.csv"), row.names = FALSE)
 stats
 
-# Works network (sub-elements x works) and definitions network (sub-elements x
-# verified codes), each seen from its two node sets.
-source("scripts/core-index-b.R")
-works <- sub_work_matrix(readRDS(file.path(data_dir, "kk-index-b-work-concept-network-full.rds"))$two_mode_graph)
-works <- works[rowSums(works) > 0, , drop = FALSE]
-
+# Degree distributions of the definitions network, from its two node sets.
 degree_df <- rbind(
-  data.frame(panel = "Works network: sub-element nodes", degree = rowSums(works)),
   data.frame(panel = "Definitions network: sub-element nodes", degree = rowSums(kk_sub_v)),
-  data.frame(panel = "Works network: work nodes", degree = colSums(works)),
   # codes with no sub-elements (isolates) are left out of this degree panel
   data.frame(panel = "Definitions network: definition (code) nodes",
              degree = colSums(kk_sub_v)[colSums(kk_sub_v) > 0])
@@ -87,6 +80,6 @@ ggplot(degree_df, aes(x = degree)) +
   scale_x_continuous(breaks = degree.breaks, expand = expansion(add = 0.6)) +
   theme_minimal() +
   labs(x = "Degree (number of linked nodes)", y = "Count",
-       title = "Degree distributions: works network vs definitions network, K&K Index B")
-ggsave(file.path("figures", "kk-index-b", "degree-works-definitions.png"), bg = "white",
+       title = "Degree distributions: K&K Index B definitions network")
+ggsave(file.path("figures", "kk-index-b", "degree-definitions.png"), bg = "white",
        width = 8, height = 6, dpi = 150)

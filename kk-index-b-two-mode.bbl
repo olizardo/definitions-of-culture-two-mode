@@ -1,9 +1,15 @@
-\begin{thebibliography}{4}
+\begin{thebibliography}{5}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Boroch(2016)]{boroch2016}
+R.~Boroch.
+\newblock A formal concept of culture in the classification of alfred l.
+  kroeber and clyde kluckhohn.
+\newblock \emph{Analecta}, 25\penalty0 (2), 2016.
 
 \bibitem[Breiger(1974)]{breiger1974}
 R.~L. Breiger.

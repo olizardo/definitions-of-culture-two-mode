@@ -6,28 +6,20 @@
 # Part III statement code, outside the Part II typology; the verified codes
 # have none (PROVENANCE 16), so the Part III node stays empty.
 #
-# Panel 1 (works): the 118 works of the works LCC 2-core, each work's
-#   plurality subgroup against its dominant structural NMF factor
-#   (analysis-nmf-works-index-b.R). A work whose codes tie across subgroups
-#   goes to the grey node.
-# Panel 2 (codes): the 171 verified definition codes carrying a text, each code's own
-#   subgroup against its dominant text NMF factor
-#   (analysis-nmf-texts-index-b.R). The split codes (PROVENANCE 17) count as separate codes.
-#   No tie node: a code sits in one subgroup.
+# The 171 verified definition codes carrying a text, each code's own subgroup
+#   against its dominant text NMF factor (analysis-nmf-texts-index-b.R). The split
+#   codes (PROVENANCE 17) count as separate codes. No tie node: a code sits in one
+#   subgroup.
 #
 # Ribbons take the color of their source node; subgroup nodes are colored by
 # their group letter (the Okabe-Ito palette defined below), the
 # factor nodes the default ggplot hues, so factor colors do not read as group
 # colors.
 #
-# Reads data/kk-index-b-nmf-works-loads.csv and
-# data/kk-index-b-nmf-texts-loads.csv (both carry factor_label), plus the
-# works table of the full works file for the works' codes.
+# Reads data/kk-index-b-nmf-texts-loads.csv (carries factor_label).
 #
 # Outputs:
-#   figures/kk-index-b/nmf/sankey-works-subgroups.png
 #   figures/kk-index-b/nmf/sankey-codes-subgroups.png
-#   data/kk-index-b-nmf-subgroup-works-crosstab.csv
 #   data/kk-index-b-nmf-subgroup-texts-crosstab.csv
 
 library(ggplot2)
@@ -136,38 +128,7 @@ sankey.plot <- function(tab, x.labs, node.title, fac.labs) {
           legend.key.size = unit(0.28, "lines"))
 }
 
-# ---- panel 1: works, plurality subgroup -> dominant structural factor ----
-net <- readRDS("data/kk-index-b-work-concept-network-full.rds")
-wt <- net$works
-wl <- read.csv("data/kk-index-b-nmf-works-loads.csv")   # the 118 works of the 2-core
-idx <- match(wl$work, wt$work)
-stopifnot(!anyNA(idx))
-plur <- sapply(strsplit(wt$codes[idx], ";"), function(cs) {
-  # Count K&K codes, not split variants (PROVENANCE 17).
-  cs <- unique(sub("\\([ab]\\)$", "", trimws(cs)))
-  t <- table(subgrp(cs))
-  m <- max(t)
-  if (sum(t == m) == 1) names(t)[t == m] else "tie"
-})
-sg.used <- sg.levels[sg.levels %in% unique(plur)]
-tab.w <- table(subgroup = factor(plur, levels = sg.used),
-               factor = factor(wl$dominant, levels = 1:7))
-cat("works panel: ", nrow(wl), " works; plurality subgroups ",
-    sum(plur != "tie"), ", tie ", sum(plur == "tie"), "\n", sep = "")
-write.csv(data.frame(subgroup = rownames(tab.w), as.data.frame.matrix(tab.w),
-                     check.names = FALSE),
-          "data/kk-index-b-nmf-subgroup-works-crosstab.csv", row.names = FALSE)
-# factor number -> hand-set label, from the loads tables
-fl <- unique(wl[, c("dominant", "factor_label")])
-stopifnot(nrow(fl) == 7L)
-fac.labs.w <- setNames(as.character(fl$factor_label), as.character(fl$dominant))
-p.works <- sankey.plot(tab.w,
-  c(sg = "K&K subgroup", fac = "structural NMF\n(works x sub-elements)"),
-  "K&K group", fac.labs.w)
-ggsave("figures/kk-index-b/nmf/sankey-works-subgroups.png", p.works,
-       width = 7, height = 6, bg = "white")
-
-# ---- panel 2: codes, subgroup -> dominant text factor ----
+# ---- codes: subgroup -> dominant text factor ----
 tl <- read.csv("data/kk-index-b-nmf-texts-loads.csv")
 fl.c <- unique(tl[, c("dominant", "factor_label")])
 stopifnot(nrow(fl.c) == 7L)

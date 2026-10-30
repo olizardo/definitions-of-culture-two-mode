@@ -1,7 +1,7 @@
 "boroch_code","in_table2","boroch_author","boroch_year","boroch_year_orig","boroch_suffix","positional_kk","n_candidates","kk_code","candidates","match_status","positional_agrees","decision","decision_note"
 "A1",TRUE,"Tylor",1871,NA,NA,"A-1",1,"A-1","A-1","auto",TRUE,NA,NA
 "A10",TRUE,"Winston",1933,NA,NA,"A-10",1,"A-9","A-9","auto",FALSE,NA,NA
-"A10a",TRUE,"Winston",1933,NA,NA,"A-10a",1,"A-9","A-9","auto",FALSE,NA,NA
+"A10a",TRUE,"Winston",1933,NA,NA,"A-10a",1,NA,"A-9","excluded_verbatim_copy",FALSE,"exclude","Verbatim copy of Table 2 column A10 (Winston 1933); identical text, no appendix entry of its own. Adds no quotation, so it is not assigned to a code (PROVENANCE 18)."
 "A11",TRUE,"Linton",1936,NA,NA,"A-11",1,"A-10","A-10","auto",FALSE,NA,NA
 "A12",TRUE,"Lowie",1937,NA,NA,"A-12",1,"A-10a","A-10a","auto",FALSE,NA,NA
 "A13",TRUE,"Panunzio",1939,NA,NA,"A-13",1,"A-11","A-11","auto",FALSE,NA,NA
@@ -50,7 +50,7 @@
 "C1-3",TRUE,"Young",1934,NA,NA,"C-I-3",1,"C-I-3","C-I-3","auto",TRUE,NA,NA
 "C1-4",TRUE,"Klineberg",1935,NA,NA,"C-I-4",1,"C-I-4","C-I-4","auto",TRUE,NA,NA
 "C1-5",TRUE,"Firth",1939,NA,NA,"C-I-5",1,"C-I-5","C-I-5","auto",TRUE,NA,NA
-"C1-5a",TRUE,"Firth",1939,NA,NA,"C-I-5a",1,"C-I-5","C-I-5","auto",FALSE,NA,NA
+"C1-5a",TRUE,"Firth",1939,NA,NA,"C-I-5a",1,NA,"C-I-5","excluded_verbatim_copy",FALSE,"exclude","Verbatim copy of Table 2 column C1-5 (Firth 1939); identical text, no appendix entry of its own. Adds no quotation, so it is not assigned to a code (PROVENANCE 18)."
 "C1-6",TRUE,"Lynd",1940,NA,NA,"C-I-6",1,"C-I-5a","C-I-5a","auto",FALSE,NA,NA
 "C1-8",TRUE,"Simmons",1942,NA,NA,"C-I-8",1,"C-I-7","C-I-7","auto",FALSE,NA,NA
 "C2-2",TRUE,"Thomas",1937,NA,NA,"C-II-2",1,"C-II-2","C-II-2","auto",TRUE,NA,NA
@@ -129,7 +129,7 @@
 "F3-4",TRUE,"White",1949,NA,"a","F-III-4",1,"F-III-4","F-III-4","auto",TRUE,NA,NA
 "F3-5",TRUE,"K. Davis",1949,NA,NA,"F-III-5",1,"F-III-5","F-III-5","auto",TRUE,NA,NA
 "F4-3",TRUE,"Blumenthal",1941,NA,NA,"F-IV-3",1,"F-IV-3","F-IV-3","auto",TRUE,NA,NA
-"F4-6",TRUE,"Kluckhohn and Kelly",1945,NA,NA,"F-IV-6",1,"F-IV-5","F-IV-5","manual_F4-6_slip",FALSE,NA,NA
+"F4-6",TRUE,"Kluckhohn and Kelly",1945,NA,NA,"F-IV-6",1,NA,"F-IV-5","excluded_verbatim_copy",FALSE,"exclude","Verbatim copy of F4-5 (Kluckhohn and Kelly 1945a, printed p. 87), the entry Boroch's numbering misprints as F4-6; identical text. Adds no quotation, so it is not assigned to a code (PROVENANCE 5 and 18)."
 "G2",TRUE,"Marett",1928,NA,NA,"G-2",1,"G-2","G-2","auto",TRUE,NA,NA
 "G4",TRUE,"Rouse",1939,NA,NA,"G-4",1,"G-4","G-4","auto",TRUE,NA,NA
 "G5",TRUE,"Osgood",1942,NA,NA,"G-5",1,"G-5","G-5","auto",TRUE,NA,NA

@@ -38,7 +38,9 @@ source("scripts/nmf-core.R")
 cross <- read.csv("data/kk-boroch-crosswalk.csv")
 t2 <- read.csv("data/kkcc-definition-texts.csv")
 t2$kk_code <- cross$kk_code[match(t2$code, cross$boroch_code)]
-stopifnot(!anyNA(t2$kk_code))
+# Table 2 columns that copy another quotation verbatim are not documents of their own
+stopifnot(setequal(t2$code[is.na(t2$kk_code)], c("A10a", "C1-5a", "F4-6")))
+t2 <- t2[!is.na(t2$kk_code), ]
 
 links <- read.csv("data/kkcc-appendix-only-links.csv")
 app <- read.csv("data/kkcc-appendix-only-texts.csv")
@@ -128,18 +130,17 @@ write.csv(stability, "data/kk-index-b-nmf-texts-stability.csv", row.names = FALS
 
 K <- 7
 
-# factor labels, set by hand from the profiles in
-# data/kk-index-b-nmf-texts-factors.csv; change them there only. On a corpus
-# this small some factors are partly author phrasing (factor 7's top terms
-# include the literal word "kluckhohn", and factor 2 echoes the Maquet
-# translation's phrasing), so labels stay close to the terms. Re-set
-# 2026-10-27 after the translation of the non-English texts changed the fits,
-# and again 2026-10-31 from the top terms after the a/b split changed the
-# factor order (PROVENANCE 17.9).
+# factor labels, set by hand from the top terms in
+# data/kk-index-b-nmf-texts-factors.csv; change them there only. Labels stay
+# close to the terms, since a factor on a corpus this small can reflect one
+# author's phrasing. Re-set 2026-10-27 after the translation of the non-English
+# texts, again 2026-10-31 after the a/b split changed the factor order
+# (PROVENANCE 17.9), and 2026-10-30 after the verbatim copies were excluded
+# (PROVENANCE 18).
 factor.labels <- c(
-  "Order and operation", "Feeling, thinking and acting", "Material vs. non-material",
-  "Goals and persons", "Symbolic interaction", "Species-specific ability",
-  "Mental and holistic")
+  "Species-specific ability", "Order and operation", "Mental and holistic",
+  "Goals and persons", "Symbolic process and adjustment",
+  "Material and transmitted behavior", "Passed down generations")
 
 fit <- nmf.fit(V, K, seed = 9137)
 cat("fixed k:", K, "obj =", sprintf("%.1f", fit$obj), "\n")

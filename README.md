@@ -34,7 +34,7 @@ the two.
 |---|---|---|
 | `build-index-b.R` | `documents/Kroeber-kluckhohn.pdf` | Index A, Index B, excluded words, definition registry, OCR correction log, biadjacency matrices |
 | `build-index-b-crosswalk.R` | Index B outputs, `kkcc_two_mode.rds`, `kkcc-definition-years.csv`, `kkcc-definition-texts.csv` | Boroch ↔ K&K crosswalk, Table 2 audit |
-| `analysis-index-b.R` | verified network, works file (`two_mode_graph`), `kkcc_two_mode.rds` | network statistics, works vs definitions degree figure |
+| `analysis-index-b.R` | verified network, `kkcc_two_mode.rds` | network statistics, definitions degree figure |
 | `build-concept-categories.R` | `kkcc_two_mode.rds` (concept labels), Boroch section 3.2.2 (encoded in the script) | `kkcc-concept-categories.csv` |
 | `build-two-mode-networks.R` | `kkcc-concept-categories.csv`, `kkcc-definition-years.csv`, `kkcc-definition-biblio.csv`, fine biadjacency | `kkcc_two_mode.rds`, `kkcc_two_mode_main.rds`, `kkcc_biadjacency_main.csv` |
 | `check-two-mode-networks.R` | both networks, definition CSVs | nothing (stops on a mismatch) |
@@ -46,15 +46,12 @@ the two.
 | `build-definition-years.R` | Boroch appendix (`documents/ROBAFC-5.1.pdf`) | `kkcc-definition-years.csv` |
 | `build-supplement-bibliography.R` | Boroch Supplement Bibliography | `kkcc-supplement-bibliography.csv`, `kkcc-definition-biblio.csv` |
 | `build-definition-texts.R` | Boroch appendix | `kkcc-definition-texts.csv` (verbatim; not for release) |
-| `build-work-concept-network-index-b.R` | verified network, heading network, `kk-index-b-definitions.csv`, `kk-index-b-name-decisions.csv`, `label-authors-index-b.R` | `kk-index-b-work-concept-network-full.rds` (`two_mode_graph`, `two_mode_heading_graph`, `works`), `kk-index-b-works.csv` |
+| `build-work-concept-network-index-b.R` | verified network, `kk-index-b-definitions.csv`, `kk-index-b-name-decisions.csv` | `kk-index-b-works.csv` (work table: `work`, `n_codes`, `codes`) |
 | `analysis-ca-index-b.R` | verified network | CA of the largest-component 2-core (`lcc_2core()`), MST figures, CA score CSVs |
-| `analysis-ca-works-index-b.R` | works file (`two_mode_graph`) | CA of the sub-element × work 2-core (`lcc_2core()`), CA figures, CA score CSVs |
-| `analysis-mst-works-index-b.R` | works file (`two_mode_graph`) | Kruskal MSTs of the sub-element and work projections (2-core) |
 | `analysis-mst-definitions-index-b.R` | verified network | Kruskal MST of the code projection (2-core) |
-| `analysis-centrality-index-b.R` | verified network; works file (`two_mode_graph`) | Two-mode closeness and betweenness on each network's largest component, centrality CSVs |
+| `analysis-centrality-index-b.R` | verified network | Two-mode closeness and betweenness on the definitions network's largest component, centrality CSV |
 | `build-index-b-work-citations.R` | `kk-index-b-works.csv`, `kkcc-supplement-bibliography.csv`, `kk-index-b-work-citations-page-checks.csv`, K&K bibliography (`documents/Kroeber-kluckhohn.pdf`) | `kk-index-b-work-citations.csv` (one row per work: K&K and Boroch matches, page-image checks, status) |
-| `attach-work-pub-type-index-b.R` | `kk-index-b-work-pub-type.csv`, `kk-index-b-work-concept-network-full.rds` | `kk-index-b-work-concept-network-full.rds` (adds `pub_type` to `works` and to the work vertices of both graphs) |
-| `core-index-b.R` (helper) | any two-mode matrix | `lcc_2core()` (largest component, then 2-core) and `sub_work_matrix()` |
+| `core-index-b.R` (helper) | any two-mode matrix | `lcc_2core()` (largest component, then 2-core) |
 | `analysis-ca-mst-main.R` | main two-mode network | CA and Kruskal maximum spanning trees (main network) |
 | `analysis-centrality-prestige-main.R` | main network | centrality, prestige and PageRank-family scores |
 
@@ -70,12 +67,10 @@ Scripts live in `scripts/`; `documents/` holds the source PDFs and the Archive t
 8. `scripts/build-index-b-verified.R` (verified sub-element x code network; codes not in Index A are excluded here)
 9. `scripts/check-index-b-networks.R` (validation of the Index B igraph objects; stops on any mismatch)
 10. `scripts/check-index-b-blocks.R` (machine cross-check of Index B heading assignments against the printed text)
-11. `scripts/build-work-authors-index-b.R`, then `scripts/build-work-concept-network-index-b.R` (works file: `two_mode_graph` and `two_mode_heading_graph`)
+11. `scripts/build-work-concept-network-index-b.R`, then `scripts/build-work-authors-index-b.R` (work table: `data/kk-index-b-works.csv`)
 12. `scripts/analysis-index-b.R`
 13. `scripts/analysis-ca-index-b.R` (CA and MST figures for the definitions network), then `analysis-mst-definitions-index-b.R` and `analysis-centrality-index-b.R`
-14. `scripts/analysis-ca-works-index-b.R` and `scripts/analysis-mst-works-index-b.R` (works network)
-15. `scripts/build-index-b-work-citations.R` (citation table for the works: K&K bibliography and Boroch supplement, with page-image checks; writes `data/kk-index-b-work-citations.csv`)
-16. `scripts/attach-work-pub-type-index-b.R` (adds `pub_type` to the works table and both work-vertex sets in the full works file; types are decided per work in `data/kk-index-b-work-pub-type.csv`, with a basis for each row)
+14. `scripts/build-index-b-work-citations.R` (citation table for the works: K&K bibliography and Boroch supplement, with page-image checks; writes `data/kk-index-b-work-citations.csv`)
 
 The analysis scripts and the report read definition attributes through `scripts/kkcc-definition-attrs.R`.
 
@@ -84,17 +79,15 @@ in `renv.lock` (R 4.5.3). Requires `pdftotext` (poppler) on the PATH.
 
 ## Main networks
 
-Four two-mode networks are the stored Index B data. Projections (for example, the sub-element projection of
-the works network, or the code projection of the definitions network) are derived in the analyses, not stored.
+Two two-mode networks are the stored Index B data. Projections (for example, the code projection of the definitions
+network) are derived in the analyses, not stored.
 
 | # | network | stored in | nodes | attributes |
 |---|---|---|---|---|
 | 1 | definitions × sub-elements | `kk-index-b-verified-network.rds` (`graph`, `biadjacency`) | 470 sub-elements, 171 codes | sub-element and code attributes |
 | 2 | definitions × headings | `kk-index-b-heading-network.rds` (`graph`, `biadjacency`) | 53 headings, 171 codes | heading and code attributes |
-| 3 | works × sub-elements | `kk-index-b-work-concept-network-full.rds`, `two_mode_graph` | 470 sub-elements, 131 works | sub-element and work attributes |
-| 4 | works × headings | same file, `two_mode_heading_graph` | 53 headings, 131 works | heading and work attributes |
 
-Where attributes overlap, the values agree across the four networks (checked 2026-10-25). The raw
+Where attributes overlap, the values agree across the two networks (checked 2026-10-25). The raw
 `kk-index-b-subelement-network.rds` is the build output that the verified network is filtered from.
 
 ## Data dictionary
@@ -237,30 +230,13 @@ Vertex attributes, by vertex kind:
 | `index_a_authors` | NA | yes | Index A authors listed under the code |
 | `boroch_code`, `boroch_source` | NA | yes | Boroch's code for the same definition (NA if none); `table2` or `appendix-only` |
 
-The works file's two-mode graphs use the same sub-element and heading attributes; work vertices use the work
-attributes described under the works file below.
-
 Edge attributes (all three): `n_source_rows` is the number of Index B rows behind the tie, and
 `parse_flags` lists the parse flags of those rows, `; `-separated. Graph attributes record the build date,
 source files, and a caveat that Index B has not been fully verified.
 
-**`kk-index-b-work-concept-network-full.rds`**: a list with three elements. The two-mode networks are the
-stored data; projections are derived in the analyses.
-
-- `two_mode_graph`: sub-element × work bipartite (all 470 sub-elements, all 131 works, no LCC or 2-core
-  selection). Sub-element vertices carry the sub-element attributes copied from the verified network
-  (`type` FALSE, `node_type` `sub_element`, `headings`, `n_headings`, `n_codes`, `has_junk_name`,
-  `has_manual_fix`, `has_ocr_correction`). Work vertices (`type` TRUE, `node_type` `work`) carry `n_codes`,
-  `codes`, `n_concepts`, `year` (as printed, letter suffix kept), `decade` (integer), `label` and `pub_type`
-  (`article`, `book`, `chapter` or `other`; see `scripts/attach-work-pub-type-index-b.R`).
-- `two_mode_heading_graph`: heading × work bipartite. Heading vertices carry `n_subelements` and `n_codes`
-  from the heading network; work vertices carry the work attributes. A work is under a heading if one of its
-  codes is.
-- `works`: the work table (`work`, `n_codes`, `codes`, `n_concepts`, `pub_type`).
-
-Derived in the analyses (`sub_work_matrix()` and `lcc_2core()` in `scripts/core-index-b.R`): the sub-element ×
-work matrix, the sub-element projection (ties = works both sub-elements cite), and the work projection (ties =
-sub-elements both works cite). The LCC and 2-core are applied there, not in the stored file.
+**`kk-index-b-works.csv`**: the work table, one row per work (`work`, `n_codes`, `codes`), built by
+`scripts/build-work-concept-network-index-b.R`. It feeds the citation list and the author labels; no network or
+analysis is built from it.
 
 **`kk-definition-texts-kk-only.csv`**: full definition text for the one verified code that Boroch does not
 quote anywhere in his Table 2 or appendix (D-III-4, the Part II group D-III page footnote 14). The Part III statement
@@ -301,11 +277,10 @@ were equal (case, hyphens, and a trailing plural "s" ignored). The linkage is
 conservative. Boroch's notion labels are his own wording, so many rows (31 cells) are
 unlinked and are reported as such, not guessed.
 
-**Non-negative matrix factorization.** Two analyses test whether data-driven factors
+**Non-negative matrix factorization.** One analysis tests whether data-driven factors
 recover K&K's groups A–G, fit at k = 7 (one factor per group, fixed rather than
-selected). The works analysis factorizes the sub-elements × works biadjacency of the
-LCC 2-core; the texts analysis factorizes a TF-IDF matrix of the definition
-quotations, one document per K&K code carrying a text. The texts analysis uses a
+selected). It factorizes a TF-IDF matrix of the definition quotations, one document per
+K&K code carrying a text. The analysis uses a
 hand-set stopword list (59 general English stopwords plus 15 omnipresent domain
 words: culture, cultures, cultural, society, social, man, men, human, total, whole,
 way, ways, learned, acquired, group) and keep
@@ -343,17 +318,18 @@ reaching a factor's top 15.
 - Spot check: 20 random Index B edges were compared with their OCR lines after the
   normalization fixes. All 20 were correct on inspection. This is a small sample, not a
   full manual audit.
-- Main networks: the sub-element, heading and work attributes agree across the four networks (0 mismatches),
+- Main networks: the sub-element and heading attributes agree across the two stored networks (0 mismatches),
   and the derived counts (`n_codes`, `n_subelements`) match each network's own edges (checked 2026-10-25).
 - Moore (1980) cross-check and the F4-6 resolution: see `docs/PROVENANCE.md`.
 
 ## Known limitations
 
-- **Definition text coverage.** Boroch's appendix supplies a full quoted text for 166 of the
-  167 verified definitions; the one without one, D-III-4, carries K&K's own quotation instead
-  (`kk-definition-texts-kk-only.csv`, a Part II page footnote). Seven K&K codes carry two
-  Boroch quotations each, and three Table 2 columns inherit a base code's text, so coverage
-  is counted by code, not by quotation. Every definition text also attaches to a work by
+- **Definition text coverage.** Boroch's appendix supplies a full quoted text for 170 of the
+  171 verified definitions; the one without one, D-III-4, carries K&K's own quotation instead
+  (`kk-definition-texts-kk-only.csv`, a Part II page footnote). The four split codes (A-3,
+  E-5, F-II-4, F-II-7) each have two variants, one Boroch quotation apiece. Three Table 2
+  columns that repeat another column's text word for word (A10a, C1-5a, F4-6) are excluded,
+  so each code carries exactly one quotation. Every definition text also attaches to a work by
   author and year, with five explained exceptions (`scripts/check-definition-text-coverage.R`):
   two codes hold no work because Index A omits their authors (C-I-18a Maquet, D-II-16
   Aberle et al.), one because its entry has no year and the work key requires

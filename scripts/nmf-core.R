@@ -1,10 +1,9 @@
 # Shared NMF machinery, base R only.
 #
-# Euclidean multiplicative-update NMF, deterministic given the seed. Used by
-# the structural analysis (scripts/analysis-nmf-works-index-b.R) and the
+# Euclidean multiplicative-update NMF, deterministic given the seed. Used by the
 # text-based analysis (scripts/analysis-nmf-texts-index-b.R).
 #
-# nmf.fit(V, k, seed): V >= 0, rows are documents (or works), columns are
+# nmf.fit(V, k, seed): V >= 0, rows are documents (or codes), columns are
 # features. Returns W (rows x k, columns normalized to unit sum) and
 # H (k x cols, rescaled so W %*% H still approximates V).
 # ari(a, b): adjusted Rand index (Hubert & Arabie 1985), base R.

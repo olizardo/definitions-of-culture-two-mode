@@ -99,7 +99,7 @@ if (!all(as.integer(cv$n_index_b_elements) == as.integer(n_rows)))
 ok(sprintf("code attributes match the definition registry for all %d codes", length(cv)))
 
 # Boroch code on the code vertices: each crosswalk kk_code must appear in the
-# vertex's boroch_code string (F-IV-5 legitimately carries two codes). The
+# vertex's boroch_code string (a code can carry two codes). The
 # attribute is a "; "-joined string.
 xw <- xwalk[!is.na(xwalk$kk_code) & xwalk$kk_code != "", ]
 bc <- setNames(strsplit(as.character(cv$boroch_code), "; ", fixed = TRUE),

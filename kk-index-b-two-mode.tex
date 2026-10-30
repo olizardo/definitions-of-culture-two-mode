@@ -19,59 +19,59 @@
 \maketitle
 
 \begin{abstract}
-Kroeber and Kluckhohn's classic 1952 monograph \emph{Culture: A Critical Review of Concepts and Definitions} brought together over a hundred scholarly definitions of culture and indexed the key concepts they discuss. We build two networks from that index to explore how concepts and works are connected. In the \emph{definitions network}, concepts like ``society'' and ``beliefs'' are linked to 171 definition codes, grouped into seven categories and credited to the author or authors that K\&K index under each. In the \emph{works network}, the same concepts are linked to the books and papers cited in those definitions. By comparing both networks, we can see which concepts span many scholars' work and which are concentrated in particular sources. We present basic statistics about the networks, visualize the data using correspondence analysis and spanning trees, and highlight the key concepts and works that anchor each network.
+Kroeber and Kluckhohn's classic 1952 monograph \emph{Culture: A Critical Review of Concepts and Definitions} brought together over a hundred scholarly definitions of culture and indexed the key concepts they discuss. We build one network from that index to explore how concepts and definitions are connected. In the \emph{definitions network}, concepts like ``society'' and ``beliefs'' are linked to 171 definition codes, grouped into seven categories and credited to the author or authors that K\&K index under each. Each code is one quotation, identified by its author, year, printed pinpoint and opening words. We present basic statistics about the network, visualize the data using correspondence analysis and spanning trees, and highlight the key concepts and definitions that anchor it. Data-driven types found in the wording of the definitions do not recover K\&K's categories at better than chance.
 \end{abstract}
 
 \section{Data and networks}
 
-We build two networks from K\&K's Index B. The \emph{definitions network} links 470 concepts---concrete ideas like ``society,'' ``customs,'' and ``beliefs''---to 171 definitions of culture, which K\&K number as codes. Each code is credited to the author or authors K\&K index under it, and falls into one of seven categories, which K\&K label with the capital letters A through G: A Descriptive, B Historical, C Normative, D Psychological, E Structural, F Genetic, and G Incomplete. The \emph{works network} links the same 470 concepts to 131 authored works (books, chapters, articles, and other publications), so we can see which ideas appear in which scholarly sources. Both networks use the same set of concepts, which lets us compare how the definitions and works overlap in what they discuss. Of the 171 codes, 169 appear in K\&K's own author index. The other two, C-I-18a and D-II-16, are attributions cited in the main text of the book that the index does not list. Boroch quotes two parts of four K\&K codes separately, lettered (a) and (b): A-3, E-5, F-II-4 and F-II-7. We keep each of these as two codes, A-3(a) and A-3(b) and so on, which is why the eight variant codes replace four. K\&K print one index entry per code, so each variant starts with its parent's concept links. For 29 of the 41 concept links copied in this way, we kept the link only on the variant whose quotation contains the concept's name; the other 12 remain on both variants. That assignment is our reading of the quotation text, not a printed fact. We leave out K\&K's Part III statement codes (C-5, D-5, D-7, E-17), which sit outside the Part II typology. Concepts have consistent names across the networks; where a concept appears under different headings in K\&K's source text, we treat it as a single concept. Works are named by their author(s) and year, and a single work can be cited under multiple definitions.
+We build one network from K\&K's Index B. The \emph{definitions network} links 470 concepts---concrete ideas like ``society,'' ``customs,'' and ``beliefs''---to 171 definitions of culture, which K\&K number as codes. Each code is credited to the author or authors K\&K index under it, and falls into one of seven categories, which K\&K label with the capital letters A through G: A Descriptive, B Historical, C Normative, D Psychological, E Structural, F Genetic, and G Incomplete. Of the 171 codes, 169 appear in K\&K's own author index. The other two, C-I-18a and D-II-16, are attributions cited in the main text of the book that the index does not list. Boroch quotes two parts of four K\&K codes separately, lettered (a) and (b): A-3, E-5, F-II-4 and F-II-7. We keep each of these as two codes, A-3(a) and A-3(b) and so on, which is why the eight variant codes replace four. K\&K print one index entry per code, so each variant starts with its parent's concept links. For 29 of the 41 concept links copied in this way, we kept the link only on the variant whose quotation contains the concept's name; the other 12 remain on both variants. That assignment is our reading of the quotation text, not a printed fact. We leave out K\&K's Part III statement codes (C-5, D-5, D-7, E-17), which sit outside the Part II typology. Concepts have consistent names; where a concept appears under different headings in K\&K's source text, we treat it as a single concept. Each code is one quotation, identified by its author, year, printed pinpoint and opening words. Section~\ref{app:construction} describes how each code was matched to its quotation and how the a and b variants were built.
 
-The definitions network naturally breaks into 10 separate components, with the largest containing 622 nodes. The works network has 10 components, with the largest containing 589 nodes. Our analysis focuses on these largest components, which contain virtually all the meaningful connections. We use maximum spanning trees across multiple projections to identify the strongest connections in different views of the network. 
+The definitions network naturally breaks into 10 separate components, with the largest containing 626 nodes. Our analysis focuses on this largest component, which contains virtually all the meaningful connections. We use maximum spanning trees across multiple projections to identify the strongest connections in different views of the network. 
 
-\section{Overview of the networks}
+\section{Overview of the network}
 
-Table~\ref{tab:summary} gives summary statistics for both networks. The first three rows show node and edge counts. The ``degree'' rows counts connections of each node type; a concept's degree is how many definitions (or works) mention it, while a definition's or work's degree is how many concepts it contains. In both networks, concepts and definitions differ substantially in their average degree.
+Table~\ref{tab:summary} gives summary statistics for the definitions network. The first three rows show node and edge counts. The ``degree'' rows count connections of each node type; a concept's degree is how many definitions mention it, while a definition's degree is how many concepts it contains. Concepts and definitions differ substantially in their average degree.
 
 \begin{table}[ht]
 \centering
-\caption{Summary statistics for the two networks. Average nearest-neighbor degree ($k_{nn}$) is the average degree of a node's neighbors; degree correlation shows how a node's degree relates to the degree of its neighbors.}
+\caption{Summary statistics for the definitions network. Average nearest-neighbor degree ($k_{nn}$) is the average degree of a node's neighbors; degree correlation shows how a node's degree relates to the degree of its neighbors.}
 \label{tab:summary}
-\begin{tabular}{lrr}
+\begin{tabular}{lr}
 \toprule
- & Definitions network & Works network \\
+ & Definitions network \\
 \midrule
-Concept nodes & 470 & 470 \\
-Definitions / works & 171 codes (5 isolated) & 131 works (4 isolated) \\
-Edges & 1201 & 1147 \\
-Density & 0.015 & 0.019 \\
-Mean degree, concepts & 2.56 (range 1--36) & 2.44 (range 0--33) \\
-Mean degree, definitions/works & 7.02 (range 0--25) & 8.76 (range 0--51) \\
-Mean $k_{nn}$, concepts & 10.18 & 14.46 \\
-Mean $k_{nn}$, definitions/works & 9.22 & 8.63 \\
-Degree correlation $r$ & $-0.076$ & $-0.163$ \\
+Concept nodes & 470 \\
+Definitions & 171 codes (5 isolated) \\
+Edges & 1201 \\
+Density & 0.015 \\
+Mean degree, concepts & 2.56 (range 1--36) \\
+Mean degree, definitions & 7.02 (range 0--25) \\
+Mean $k_{nn}$, concepts & 10.18 \\
+Mean $k_{nn}$, definitions & 9.22 \\
+Degree correlation $r$ & $-0.076$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-We see a notable pattern in the lower rows of the table documenting the degree correlation in each network; concepts with many connections tend to link to definitions or works with few, and vice versa. The nearest-neighbor rows show the other side of this pattern. A concept's neighbors average 10.2 (definitions network) or 14.5 (works network) uses, while a definition's or work's neighbors average only about 9 concepts, so concepts attach preferentially to heavily used nodes. The works network is also slightly denser (0.019 against 0.015) despite a similar edge count (1,147 against 1,201), because it has fewer second-mode nodes. Finally, the maximum work degree of 51 belongs to Kelly \& Kluckhohn 1945a, a fact that returns in the spanning-tree analysis below.
+The degree correlation is $-0.076$: concepts with many connections tend to link to definitions with few, and vice versa, though the association is weak. The nearest-neighbor rows show the other side of this pattern. A concept's neighboring definitions contain 10.2 concepts on average, and a definition's neighboring concepts appear in 9.2 definitions on average, so concepts attach preferentially to heavily used definitions and definitions attach to widely shared concepts.
 
-Figure~\ref{fig:degree} shows the degree distribution plots for each set of nodes in each network. Most concepts are lightly connected: about 79\% appear in two or fewer definitions, and about 80\% are cited by two or fewer works. In contrast, definitions and works are more heavily connected, with the average definition covering 7 concepts (median 6) and the average work covering 9 concepts (median 8), and some definitions and works discussing many more. This asymmetry means that a few concepts are discussed widely, while most concepts appear in just one or two places. The two second-mode distributions differ in their tails: works reach degree 51 while definitions top out at 25, so a single work can cover far more concepts than any single definition. The concept distributions, by contrast, are nearly identical across the two networks, as expected given that both share the same 470 concepts. 
+Figure~\ref{fig:degree} shows the degree distributions for the concept nodes (left) and the definition nodes (right). Most concepts are lightly connected: 79\% appear in two or fewer definitions. Definitions are more heavily connected, with the average definition covering 7 concepts (median 6) and a few covering many more, up to 25. This asymmetry means that a few concepts are discussed widely, while most concepts appear in just one or two definitions.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\textwidth]{figures/kk-index-b/degree-works-definitions.png}
-\caption{Degree distributions. Top row: sub-elements in the works network (left) and the definitions network (right). Bottom row: works (left) and definition codes (right).}
+\includegraphics[width=\textwidth]{figures/kk-index-b/degree-definitions.png}
+\caption{Degree distributions of the definitions network. Left: sub-element (concept) nodes. Right: definition (code) nodes.}
 \label{fig:degree}
 \end{figure}
 
 
 \section{Maximum spanning trees}
 
-A maximum spanning tree (MST) keeps the strongest ties in a network while still connecting every node, using as few links as possible. A two-mode network has no ties between two concepts or between two definitions, so we analyze it through multiple one-mode projections \citep{everett2013dual-projection-c89}. Following Breiger \citeyearpar{breiger1974}, two concepts are tied if they share at least one definition or work, with weight equal to the number they share. Likewise, two definitions (or works) are tied through the concepts they share. In matrix form, the projections are:
+A maximum spanning tree (MST) keeps the strongest ties in a network while still connecting every node, using as few links as possible. A two-mode network has no ties between two concepts or between two definitions, so we analyze it through multiple one-mode projections \citep{everett2013dual-projection-c89}. Following Breiger \citeyearpar{breiger1974}, two concepts are tied if they share at least one definition, with weight equal to the number they share. Likewise, two definitions are tied through the concepts they share. In matrix form, the projections are:
 \[
 W_{\mathrm{concept}} = A A^{\top}, \qquad W_{\mathrm{def}} = A^{\top} A,
 \]
-where $(W_{\mathrm{concept}})_{ij} = \sum_k a_{ik} a_{jk}$ counts the definitions that include both concepts $i$ and $j$. Each projection is a weighted graph whose edges are the off-diagonal pairs with positive weight. We build projections from the 2-core of each network's largest component.
+where $(W_{\mathrm{concept}})_{ij} = \sum_k a_{ik} a_{jk}$ counts the definitions that include both concepts $i$ and $j$. Each projection is a weighted graph whose edges are the off-diagonal pairs with positive weight. We build projections from the 2-core of the network's largest component.
 
 The maximum spanning tree of each projection is found by computing the minimum spanning tree on negated weights, $-w$. \citet{kruskal1956} sorts edges from largest weight to smallest and adds each unless it would close a cycle, producing a tree that maximizes $\sum_{e \in T} w_e$. Because the 2-core is connected, each tree has exactly $|V| - 1$ edges. In the visualizations, node size shows betweenness within the tree and node color shows the community structure detected using Newman's leading-eigenvector method applied to the tree.
 
@@ -94,26 +94,6 @@ The definitions network has two main projections. The concept-level tree (Figure
 In the concept tree (Figure~\ref{fig:mst-def-sub}), the six largest nodes---group, customs, social, behavior, society, and beliefs---are the top six of Table~\ref{tab:mst-def-betweenness}. Group sits at the center of a pink region of communication and organization vocabulary (communication, organization, folkways, systems, designs for living). Social heads a green region of social-organizational vocabulary (social heritage, institutions, social needs, patterns, goods), and customs heads an olive region of tradition and adjustment (social group, accumulated treasury, adjust, association between persons). Behavior and society head the blue and magenta regions on the left, which hold the historical and learned-behavior vocabulary (historically, standards, learned behavior, socially transmitted). Beliefs heads the teal region of norms, knowledge and artifacts on the right, with norms, practical arts, act and civilization. A peripheral branch below beliefs runs through activities and learning to products and adjustments. This chain collects the acquisition and transmission vocabulary of the Genetic definitions and hangs off the core through a single path, so these ideas connect to the rest of the network only transitively. At the top left, ideas, habits, values and generations form a second branch that joins society through habits.
 
 The definition tree (Figure~\ref{fig:mst-def-code}) puts its three largest nodes, C-I-6, F-I-19, and A-16, at the center of the tree, with C-I-6 the largest of all. C-I-6 heads the largest community (24 definitions, drawn from all seven groups), and A-16 sits in the same community. F-I-19 and A-17 share a second community at the left of the center. This is consistent with the table, where five of the top ten definitions carry a C or F code and the others are Descriptive, Historical or Psychological. Degree and betweenness dissociate in this ranking: C-I-6 has both the highest betweenness and the highest tree degree (17), acting as the main hub of its community, while F-I-19 has the second-highest betweenness with only eight ties, sitting on the paths that join its cluster to the rest of the tree. One author supplies a striking share of the bridges, as Bidney holds three of the ten most central definitions (A-16, C-II-4, and C-II-3). Away from the center, the Descriptive definitions A-3(a), A-3(b), A-5, A-10a, and A-12 form a separate olive branch in the upper right, and the Descriptive and Historical definitions A-1 and A-14 run along the right side, showing that the earliest and simplest definitions connect to the core through fewer, longer paths.
-
-The works network also has two main projections. The concept-level tree (Figure~\ref{fig:mst-works-sub}) shows how 156 concepts cluster within the works network. The work-level tree (Figure~\ref{fig:mst-works-work}) shows how 118 works connect through shared concepts. Table~\ref{tab:mst-works-betweenness} lists the top 10 concepts and works by betweenness centrality.
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=\textwidth]{figures/kk-index-b/works/mst-subelement.png}
-\caption{Maximum spanning tree of the works network, sub-element (concept) nodes. Ties count the works that cite both sub-elements.}
-\label{fig:mst-works-sub}
-\end{figure}
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=\textwidth]{figures/kk-index-b/works/mst-work.png}
-\caption{Maximum spanning tree of the works network, work nodes. Color is the leading-eigenvector community on the tree; size is betweenness in the tree.}
-\label{fig:mst-works-work}
-\end{figure}
-
-The works-network concept tree (Figure~\ref{fig:mst-works-sub}) resembles its definitions-network counterpart but with a sharper hierarchy. Group is the largest node, at the center of a large green region of community, body, and ways vocabulary. Social, a pink region of social organization (patterns, institutions, beliefs, customs), sits just beside it and has the second-highest betweenness; its tree degree (18) is second only to society (21), which heads an orange region at the upper left together with way of life, a people, and members of a society. Ideas heads a lime region at the right, with learning, habits, generations, and passed down, and total sits at the bottom with sum and civilization. The acquisition vocabulary of the Genetic definitions does not form a separate chain here: it appears as a short branch at the upper left (acquired, learned patterns, process).
-
-The work tree (Figure~\ref{fig:mst-works-work}) has a single dominant center. Kelly \& Kluckhohn 1945a, the largest node and top entry of Table~\ref{tab:mst-works-betweenness}, sits at the middle of the plot with eighteen spokes reaching into most color regions, so many paths between works on opposite sides of the tree pass through it; it is at once the largest hub and the strongest bridge. Gillin 1942, Young 1934, Winston 1933, and Folsom 1931, the next four works in the table, appear as secondary hubs, each heading a community of its own, and Linton 1936 is the only Linton in the top ten. Most works, by contrast, are small peripheral leaves attached by a single edge, visible as the many small nodes at the plot's edges; Willey 1929, for example, despite its central position in the drawing, is one such leaf, a reminder that the spring layout places nodes by topology rather than importance.
 
 \begin{table}[ht]
 \centering
@@ -151,97 +131,17 @@ Node type & Node & Norm. Betw. (\%) & Degree \\
 
 \noindent\emph{Note to Table~\ref{tab:mst-def-betweenness}:} Definition codes use the format X-Y-Z, where X is a letter (A--G) for K\&K's seven definition categories (Descriptive, Historical, Normative, Psychological, Structural, Genetic, Incomplete), Y is a roman numeral for the subcategory, and Z is the number of the definition within it. Variants such as A-3(a) and A-3(b) are the two quotations of one K\&K code, and they are counted as separate codes (see the data section).
 
-\begin{table}[ht]
-\centering
-\caption{Top 10 nodes by Freeman-normalized betweenness in the works network MST.}
-\label{tab:mst-works-betweenness}
-\small
-\begin{tabular}{llrr}
-\toprule
-Node type & Node & Norm. Betw. (\%) & Degree \\
-\midrule
-\multirow{10}{*}{Concepts} & group & 71.30 & 17 \\
- & social & 63.71 & 18 \\
- & behavior & 47.37 & 7 \\
- & society & 38.94 & 21 \\
- & ideas & 22.82 & 8 \\
- & beliefs & 15.89 & 5 \\
- & art & 13.27 & 2 \\
- & morals & 12.15 & 2 \\
- & complex whole & 11.13 & 3 \\
- & total & 10.05 & 6 \\
-\midrule
-\multirow{10}{*}{Works} & Kelly \& Kluckhohn 1945a & 75.39 & 18 \\
- & Gillin 1942 & 60.55 & 9 \\
- & Young 1934 & 39.51 & 6 \\
- & Winston 1933 & 34.00 & 8 \\
- & Folsom 1931 & 31.76 & 7 \\
- & Herskovits 1948 & 22.40 & 8 \\
- & Linton 1936 & 19.23 & 5 \\
- & Dixon 1928 & 17.67 & 5 \\
- & Kroeber 1948a & 13.16 & 5 \\
- & Hiller 1933 & 9.98 & 4 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-Taken together, the four trees tell a consistent story. Five of the ten most central concepts are the same in both networks---group, social, behavior, society, and beliefs---and each of the leading concepts anchors one of the color regions of the concept trees, so the conceptual core of the culture concept is stable whether it is measured on definitions or on the works that cite them (customs, acquired, a people, activities, and learning enter the definitions ranking; ideas, art, morals, complex whole, and total enter the works ranking). The two networks differ in how concentrated their second mode is. Among works, centrality concentrates at a single point, Kelly \& Kluckhohn 1945a at 75\% of the maximum possible, with the runner-up at 61\%; the works literature is star-shaped around one synthetic review. Among definitions, the top code, C-I-6 at 71\%, is nearly as central, so the gap between the two networks is smaller than the earlier tree suggested; the definitions hub is a single Normative code rather than a review. In both concept trees the acquisition and transmission vocabulary sits on peripheral branches rather than at the core, suggesting that Genetic concerns, however common in the definitions themselves, connect to the rest of the conceptual structure only through a narrow path.
+The six most central concepts, group, customs, social, behavior, society and beliefs, are the top of Table~\ref{tab:mst-def-betweenness}, and each anchors one of the color regions of the concept tree. The most central definition is C-I-6, at 71\% of the maximum possible, a single Normative code. In the concept tree the acquisition and transmission vocabulary sits on peripheral branches rather than at the core, suggesting that Genetic concerns, however common in the definitions themselves, connect to the rest of the conceptual structure only through a narrow path.
 
 \section{Data-driven types: non-negative matrix factorization}
 
-The spanning trees and the community colors above classify nodes hard: each work belongs to exactly one community of the tree. Non-negative matrix factorization (NMF) \citep{lee2001algorithms} offers a soft, parts-based alternative. It approximates a non-negative matrix $V$ by a product $W H$ with all entries non-negative, so every node carries a loading on each factor and every factor is an additive mixture of the original features, with no subtractive terms. We run two NMF analyses on the works network, one on the coding structure and one on the wording of the definition statements, and ask in each case how far the data-driven types agree with K\&K's own seven categories A--G. All use the same base-R implementation (Euclidean multiplicative updates, deterministic given a seed, with ten random restarts per value of $k$), and all fix $k$ at seven, one factor per K\&K group. Fixing $k$ this way is a choice, not a result: the reconstruction error falls monotonically in $k$ without an elbow, and restart agreement does not settle the choice either. For the works factorization it falls steadily with $k$ (mean adjusted Rand index 0.96 at $k = 3$, 0.55 at $k = 8$), and for the texts it is irregular (0.48 to 0.88 over $k = 3$ to $8$). Neither criterion selects a number of factors on its own.
-
-\subsection{Types from the coding structure}
-
-The first analysis factorizes the $156 \times 118$ sub-elements $\times$ works matrix of the works 2-core, the same matrix the work tree of Figure~\ref{fig:mst-works-work} was built from. Table~\ref{tab:nmf-works-factors} gives the top sub-elements of each of the seven factors, which we label as follows: a \emph{group behavior} factor (group, behavior, ways, common, material traits), a \emph{norms and knowledge} factor (beliefs, knowledge, customs, art, complex whole, language), a \emph{way of life} factor (a people, way of life, environment, total, goals), a \emph{society--individual behavior} factor (society, acquired, behavior, individuals, members of a society), a \emph{learning and acquisition} factor (ideas, habits, learning, transmission, generations), an enumerative \emph{complex whole} factor (sum, total, beliefs, tools, activities), and a \emph{social organization} factor (social, customs, institutions, social heritage, patterns). Figure~\ref{fig:nmf-works} shows each work's loadings, rescaled to sum to one per work, with works grouped by their dominant factor. The dominant-factor split of the 118 works is 17, 20, 10, 21, 21, 14, and 15. Most works draw on more than one factor: at the 0.10 threshold used below, only 16 of the 118 works fall in a single factor.
-
-\begin{table}[ht]
-\centering
-\caption{Top five sub-elements of each factor, works NMF at $k = 7$ (loadings normalized to unit sum).}
-\label{tab:nmf-works-factors}
-\footnotesize
-\begin{tabular}{>{\raggedright\arraybackslash}p{0.17\textwidth}*{5}{>{\raggedright\arraybackslash}p{0.13\textwidth}}}
-\toprule
-Factor & 1st & 2nd & 3rd & 4th & 5th \\
-\midrule
-Group behavior & group & behavior & ways & common & material traits \\
-Norms and knowledge & beliefs & knowledge & customs & art & complex whole \\
-Way of life & a people & way of life & environment & total & goals \\
-Society--individual & society & acquired & behavior & individuals & members of a society \\
-Learning and acquisition & ideas & habits & learning & transmission & generations \\
-Complex whole & sum & total & beliefs & tools & activities \\
-Social organization & social & customs & institutions & social heritage & patterns \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=0.75\textwidth]{figures/kk-index-b/nmf/nmf-works.png}
-\caption{Works $\times$ NMF factors at $k = 7$. Each work's loadings sum to one; works are grouped by their dominant factor, ordered within each group by that loading. Factors are labeled by their leading sub-elements (Table~\ref{tab:nmf-works-factors}).}
-\label{fig:nmf-works}
-\end{figure}
-
-To compare these types with K\&K's categories, each work inherits the group of its codes (the letter A--G of the codes it is cited under; a work's dominant group is its plurality letter). This label is well defined: 112 of the 131 works are cited only under codes from one group, so the comparison is not an artifact of works straddling categories. The agreement between the dominant factor and the dominant group is at the level of chance: adjusted Rand index 0.016 against a permutation baseline whose 95th percentile is 0.026, and no factor maps onto any group. The largest cell in the whole cross-tabulation is six works.
-
-\subsection{A spanning tree of the factor types}
-
-The works factors can be hardened into a network the way the trees above were built. Binarizing the loadings at $0.10$ turns each work into a member of the factors it loads on substantially: 16 of the 118 works belong to a single factor, 51 to two, 41 to three, 9 to four, and one to five, and no work drops out. Projecting the resulting works $\times$ factors biadjacency ties two works by the number of factors they share, giving 4,383 ties in a single component, and the maximum spanning tree of that projection (Figure~\ref{fig:nmf-works-mst}) again has $|V| - 1$ edges. The threshold, like $k$, is a choice rather than a result: lower it and the projection densifies; raise it to $0.3$ and 71 of the 118 works fall back to a single factor, while one drops out entirely.
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=\textwidth]{figures/kk-index-b/nmf/nmf-works-mst.png}
-\caption{Maximum spanning tree of the works $\times$ NMF-factor projection (threshold 0.10), work nodes. Ties count the factors two works share. Color is the leading-eigenvector community on the tree; size is betweenness in the tree.}
-\label{fig:nmf-works-mst}
-\end{figure}
-
-The tree's bridges are largely not the concept tree's. Kelly \& Kluckhohn 1945a, the dominant center of the concept-based work tree (Table~\ref{tab:mst-works-betweenness}), is a leaf here, tied to a single neighbor. In the other direction, Parsons 1949, the strongest bridge of the factor tree, is a leaf of the concept-based tree, and Osgood 1942 and Slotkin 1950, also central here, are leaves there. Winston 1933 and Linton 1936 are central in both trees, the only works in both top-ten lists. The two community partitions agree only weakly (adjusted Rand index 0.06), seventeen communities covering this tree against six in the concept-based one. Neither tree is wrong: the two tie definitions ask different questions. A work is central in the concept tree when it draws on many distinct sub-elements that other works also draw on; it is central in the factor tree when its pattern of concept use sits between the factor profiles of other works. The inversion is itself evidence for the reading below---the position of a work in the corpus depends on what is counted as a tie, and no tie definition so far recovers K\&K's groups.
+The spanning trees and the community colors above classify nodes hard: each code belongs to exactly one community of the tree. Non-negative matrix factorization (NMF) \citep{lee2001algorithms} offers a soft, parts-based alternative. It approximates a non-negative matrix $V$ by a product $W H$ with all entries non-negative, so every code carries a loading on each factor and every factor is an additive mixture of the original features, with no subtractive terms. We ask how far data-driven types of the definition wording agree with K\&K's own seven categories A--G. The factorization uses the same base-R implementation throughout (Euclidean multiplicative updates, deterministic given a seed, with ten random restarts per value of $k$), and it fixes $k$ at seven, one factor per K\&K group. Fixing $k$ this way is a choice, not a result: the reconstruction error falls monotonically in $k$ without an elbow, and restart agreement is irregular (mean adjusted Rand index 0.48 to 0.70 over $k = 3$ to $8$), so neither criterion selects a number of factors on its own.
 
 \subsection{Types from the wording of the definitions}
 
-The second analysis asks the same question of the definition texts themselves, independently of K\&K's coding. The corpus holds 171 definition codes carrying a quotation: the Table~2 texts mapped to K\&K codes through the crosswalk, the appendix-only texts, and one statement K\&K prints itself (a Part II page footnote). Documents average about thirty words, so the term--document matrix is built restrictively: tokens of three letters or more, a stopword list that removes the words nearly every definition contains (culture, society, social, man, and the general definitional vocabulary total, whole, learned, acquired), and terms kept to a document frequency between two documents and half the corpus, leaving 403 terms weighted by TF--IDF. The four quotations K\&K and Boroch print in French or German enter as English translations (K\&K's own rendering for Maquet, ours for the other three, verified against the printed originals). As with the coding structure, the factorization is run at $k = 7$, one factor per K\&K group.
+The analysis asks the question of the definition texts themselves, independently of K\&K's coding. The corpus holds 171 definition codes carrying a quotation: the Table~2 texts mapped to K\&K codes through the crosswalk, the appendix-only texts, and one statement K\&K prints itself (a Part II page footnote). Three Table~2 columns that repeat another column's quotation word for word are not counted again. Documents average about thirty-four words (median 28), so the term--document matrix is built restrictively: tokens of three letters or more, a stopword list that removes the words nearly every definition contains (culture, society, social, man, and the general definitional vocabulary total, whole, learned, acquired), and terms kept to a document frequency between two documents and half the corpus, leaving 403 terms weighted by TF--IDF. The four quotations K\&K and Boroch print in French or German enter as English translations (K\&K's own rendering for Maquet, ours for the other three, not yet checked against the printed pages). The factorization is run at $k = 7$, one factor per K\&K group.
 
-The factors again find recognizable themes rather than K\&K's categories (Figure~\ref{fig:nmf-texts-factors}), and we label them by their leading terms: \emph{order and operation} (order, operation, self, superorganic, complex), \emph{feeling, thinking and acting} (inevitable, thinking, feeling, equipment, Kluckhohn), \emph{material vs.\ non-material} (material, non, traits, associated, uses), \emph{goals and persons} (certain, rather, others, persons, goals), \emph{symbolic interaction} (concrete, symbolic, process, through, interaction), \emph{species-specific ability} (events, species, use, dependent, ability), and \emph{mental and holistic} (concept, mean, holistic, traits, mental). On a corpus this small a factor can be driven by one author's phrasing---the literal word ``Kluckhohn'' is among the top terms of the feeling, thinking and acting factor---so the labels should be read as descriptive of the top terms, not as clean concepts. The labels for order and operation, feeling thinking and acting, symbolic interaction and species-specific ability are the least clear. Against the A--G groups the agreement is close to chance (adjusted Rand index 0.025, against a permutation 95th percentile of 0.016), with no factor exceeding 43\% purity in any group.
+The factors again find recognizable themes rather than K\&K's categories (Figure~\ref{fig:nmf-texts-factors}), and we label them by their leading terms: \emph{species-specific ability} (events, species, use, dependent, ability), \emph{order and operation} (order, operation, self, superorganic, complex), \emph{mental and holistic} (concept, mean, holistic, traits, mental), \emph{goals and persons} (certain, rather, others, persons, goals), \emph{symbolic process and adjustment} (concrete, process, symbolic, experience, adjust), \emph{material and transmitted behavior} (material, non, transmitted, socially, institutions), and \emph{passed down generations} (generation, passed, down, everything, common). On a corpus this small a factor can be driven by one author's phrasing, so the labels should be read as descriptive of the top terms, not as clean concepts. The labels for mental and holistic and goals and persons are the least clear, since their leading terms include generic words (rather, certain, some, mean). Against the A--G groups the agreement is close to chance (adjusted Rand index 0.012, against a permutation 95th percentile of 0.016), and no factor has more than 54\% of its codes in one group.
 
 \begin{figure}[ht]
 \centering
@@ -252,28 +152,71 @@ The factors again find recognizable themes rather than K\&K's categories (Figure
 
 \subsection{Interpretation}
 
-Neither signal recovers K\&K's taxonomy: not the works' pattern of concept use, not the wording of the definition statements. Two readings are possible. One is that K\&K's groups classify the emphases of individual \emph{statements}, and that these emphases are lost when statements are aggregated to the works that contain them; against this stands the fact that works overwhelmingly sit within a single group, so the aggregation mixes little. The other, which we find more plausible, is that the seven groups are editorial categories---useful for organizing a bibliography---rather than dimensions along which the corpus varies. This is consistent with the spanning-tree picture above, where the vocabulary the Genetic group concerns itself with sits on a peripheral chain of the concept trees rather than forming a region of its own, and with the community structure of the trees, which follows concept vocabulary, not authorial schools. Hardening the works factors into a tree (Figure~\ref{fig:nmf-works-mst}) does not change the verdict: its bridges are largely a different set of works, its communities do not follow A--G either, and the disagreement between the two tie definitions reinforces the point that no single structural reading of the corpus reproduces the taxonomy. The null result should be read against the method's limits as well: the number of factors was fixed to match the taxonomy under test rather than selected by the data, the short corpus makes TF--IDF factors fragile (restart agreement ranges from 0.48 to 0.88 for $k$ from 3 to 8), and the texts are K\&K's own selections rather than the works' full statements.
+The wording of the definitions does not recover K\&K's taxonomy. Two readings are possible. One is that K\&K's groups classify the emphases of individual \emph{statements}, and that these emphases cannot be recovered from quotations of about thirty words each. The other, which we find more plausible, is that the seven groups are editorial categories---useful for organizing a bibliography---rather than dimensions along which the corpus varies. This is consistent with the spanning-tree picture above, where the vocabulary the Genetic group concerns itself with sits on a peripheral chain of the concept tree rather than forming a region of its own, and with the community structure of the trees, which follows concept vocabulary, not authorial schools. The null result should be read against the method's limits as well: the number of factors was fixed to match the taxonomy under test rather than selected by the data, the short corpus makes TF--IDF factors fragile (restart agreement ranges from 0.48 to 0.70 for $k$ from 3 to 8), and the quotations are the passages Boroch selected, not the authors' full works.
 
 \section{Limitations}
 
-The networks depend on the K\&K Index B transcription and on the verified-code filter. Element names are not unique across headings, so same-named elements are merged, which can join unrelated entries. Works are keyed by author and year, so a work with several year forms may appear twice. Several readings depend on OCR corrections recorded in the repository's manual-fix files; the validators check structure and round-trips, not the content of each edge. Two codes that are not in Index A are included: C-I-18a and D-II-16, from the main text. K\&K's Part III statements (C-5, D-5, D-7, E-17) are excluded. The basis for each is documented in the repository. The four split codes and the 29 link decisions that separate their variants (see the data section) are judgments: the variants share one K\&K index entry, and the text-based assignment of concept links is a reading that a reader can check against the quotations, not a printed fact. The definition-level trees and the text factors depend on these decisions.
+The networks depend on the K\&K Index B transcription and on the verified-code filter. Element names are not unique across headings, so same-named elements are merged, which can join unrelated entries. Several readings depend on OCR corrections recorded in the repository's manual-fix files; the validators check structure and round-trips, not the content of each edge. Two codes that are not in Index A are included: C-I-18a and D-II-16, from the main text. K\&K's Part III statements (C-5, D-5, D-7, E-17) are excluded. The basis for each is documented in the repository. The four split codes and the 29 link decisions that separate their variants (see the data section) are judgments: the variants share one K\&K index entry, and the text-based assignment of concept links is a reading that a reader can check against the quotations, not a printed fact. The definition-level trees and the text factors depend on these decisions.
 
 \appendix
 
+\section{Constructing the code-level data}\label{app:construction}
+
+The analyses use one object: a table with a row for each of the 171 K\&K definition codes. Each row gives the code's group and subgroup, its sub-elements, and the citation that identifies its quotation. This section records how that table was built, the choices made along the way, and the basis for each. Two sources are joined. K\&K's Index A and Index B, read from a scan of the 1952 monograph, give each code its author, year and sub-elements. Boroch's article \citet{boroch2016} gives each code a quotation with a printed pinpoint. Every join follows a stated rule, and each judgment is recorded with its basis in the project's provenance log.
+
+\subsection{Sources and the unit}
+
+The unit is the code: one printed index entry in K\&K, and one quotation in Boroch. Boroch's appendix has 171 codes. His Table 2 has 135 columns, 132 of which match an appendix code. The two sources number codes differently. Boroch renumbers within each group, so his A10 (Winston 1933) is K\&K's A-9. Codes are therefore matched by author, year, group and subgroup. Positional agreement is kept only as a check: of 100 matches made by name and year, 48 agree with the position.
+
+\subsection{Index A and Index B}
+
+Index A (authors) and Index B (sub-elements) were read from the OCR text layer and corrected by explicit rules. The corrections are recorded in a manual-fix table of 142 rows, each with its printed-page evidence. A further 10 rows recover codes that the OCR glued into element names, and 14 rows record name decisions. The project avoids general character rules, because a rule such as reading a y as a 5 silently produced codes from unrelated tokens. Each manual fix is keyed to a parsed token, and the checks confirm that every key matches one.
+
+The universe is 171 codes. Of these, 169 appear in K\&K's author index. The other two, C-I-18a (Maquet 1949) and D-II-16 (Aberle et al. 1950), are cited in main-text footnotes but not listed in the index; their Index B entries are read from the sub-element entries that carry them. Four Part III statement codes (C-5, D-5, D-7 and E-17) are excluded, since they are K\&K's statements rather than Part II definitions.
+
+\subsection{Matching Boroch's codes to K\&K's}
+
+The crosswalk matches each Table 2 column to a K\&K code. Of the 135 columns, 119 match automatically when exactly one code fits. The remaining 16 are settled by 15 hand decisions, each with a basis, and one recorded slip correction. Three Table 2 columns have no appendix entry of their own: A10a, C1-5a and F4-6. Each is a verbatim copy of another quotation. A10a repeats A10 (Winston 1933), C1-5a repeats C1-5 (Firth 1939), and F4-6 repeats F4-5, which is the entry Boroch's numbering misprints as F4-6. None of the three adds a quotation, so the object does not use them. The F4-5 quotation is Kluckhohn and Kelly 1945a (printed p. 87), and it gives K\&K's F-IV-5. K\&K's printed codes A-10a (Lowie 1937) and C-I-5a (Lynd 1940) take their quotations from the appendix entries A12 and C1-6.
+
+\subsection{Quotations and citation keys}
+
+Each code has one quotation. Boroch supplies 170 of them: the 132 Table 2 codes and the 39 appendix-only codes, less the Sears addendum (C1-22), which is linked to a specialty code rather than to a network code. D-III-4 has no Boroch entry, and its quotation is K\&K's printed footnote 14 (Roberts 1951, pp. 3 and 6, printed p. 60). Four quotations are not in English and are rendered from a translation table: B-17 and C-I-18a from French, and F-I-5 and F-II-3 from German. C-I-18a uses K\&K's own printed English. The other three are working translations that have not been checked on the page images.
+
+Each code is identified by a citation key: Boroch's author, year and printed pinpoint, together with the first six words of the quotation. The key is unique for all 171 codes, with no missing values. The pinpoints are Boroch's as printed and have not been checked against the source works. The key therefore identifies a quotation as Boroch reports it, and the pinpoint is the first thing to check against a source.
+
+\subsection{Splitting the a and b quotations}
+
+Boroch quotes parts of four K\&K codes separately, labeled (a) and (b). K\&K prints one index entry for each of these codes, so the object had one code where Boroch has two quotations. On 2026-10-30 the project split each of the four codes into two variants (Table~\ref{tab:splits}). The split follows Boroch's quotations and is not a distinction K\&K prints. Each variant takes its own quotation and its own citation key.
+
+\begin{table}[ht]
+\centering
+\caption{The four split codes and their variants.}
+\label{tab:splits}
+\begin{tabular}{llll}
+\toprule
+K\&K code & Variant & Boroch code and source & Printed pinpoint \\
+\midrule
+A-3 & A-3(a) & A3, Dixon 1928 & 3 \\
+A-3 & A-3(b) & A4, Dixon 1928 & 3 \\
+E-5 & E-5(a) & E5, Linton 1945a (footnote 5) & 5 \\
+E-5 & E-5(b) & E6, Linton 1945a & 32 \\
+F-II-4 & F-II-4(a) & F2-4, Blumenthal 1937 (footnote 4) & 3 \\
+F-II-4 & F-II-4(b) & F2-5, Blumenthal 1937 & 12 \\
+F-II-7 & F-II-7(a) & F2-8, Feibleman 1946 (tentative; footnote 7) & 75 \\
+F-II-7 & F-II-7(b) & F2-9, Feibleman 1946 (final) & 76 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Because K\&K gives one index entry per code, each variant starts with a copy of its parent's sub-element links, 41 in all. A lexical screen then assigns 29 of the 41 to one variant. A link stays on the variant whose quotation contains the sub-element's name and not on the other. The 12 links where both or neither quotation contains the name remain on both variants. The screen is a word match, so a name used in a generic sense, such as ``total'' or ``past,'' can be assigned wrongly. Each assignment is a reading of the quotation text and should be treated as a judgment. Removing a link also removes the heading edge that carries it, which accounts for 34 edge rows. Together the split takes the verified network from 167 to 171 codes and from 1189 to 1201 edges.
+
+\subsection{Checks and open items}
+
+The build's validators check the network's structure, its round trips and its attributes, but not the content of each edge. The block check places 1301 of the 1326 Index B edge rows (before the 34-row removal) in their printed block, and 25 in another block. The page-image review covers 23 of those 25. Several items remain open. The year of K\&K's footnote 5, which Boroch gives as Linton 1945a, was read from the page image at 150 dpi, and a higher-resolution check is still needed. The three duplicate columns need recorded decisions in the crosswalk, and the text analysis must be brought into line with them. The three non-English translations need checking against the page images. The Boroch pinpoints need checking against the source works. The 29 link assignments are judgments on the text, as described above.
+
 \section{Supplementary sankey diagrams at the subgroup level}\label{app:subgroup-sankey}
 
-The NMF comparisons in the body classify against K\&K's seven group letters. The two figures here repeat the comparison at the finer grain of K\&K's own typology, the roman-numeral subgroups the classification prints within groups C, D, and F; groups A, B, E, and G number their codes plainly and have no subgroup level. A work's subgroup is the plurality of the subgroups of the codes it is cited under, and a work whose codes tie across subgroups is collected in the grey node---16 of the 118 works of the 2-core. Each ribbon takes the color of its origin node's group, and node size is the number of works or codes.
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=\textwidth]{figures/kk-index-b/nmf/sankey-works-subgroups.png}
-\caption{Works of the works 2-core by plurality K\&K subgroup (left) and dominant structural NMF factor (right). Ribbons take the color of their origin node's group; grey marks the 16 works whose codes tie across subgroups. The small subgroups D-III (one work) and D-IV (two works) sit wherever their works sit.}
-\label{fig:sup-sankey-works}
-\end{figure}
-
-On the left, B reaches all seven factors, and A, C-I, D-I, D-II, and F-II each reach six; the grey node also reaches six, though it is a catch-all by construction. On the right, \emph{group behavior} draws most on the grey node (4 of its 17 works), with C-I, D-I and D-II contributing 2 each. \emph{Norms and knowledge} is supplied mainly by A and C-I, with 5 works each. \emph{Way of life} draws 3 works from the grey node and 2 each from B and D-I. \emph{Learning and acquisition} draws 4 works each from B and D-II. \emph{Society-individual behavior}, with 21 works, draws 3 each from C-I and the grey node and 2 from B, with no subgroup supplying more than three. \emph{Complex whole} draws mostly on F-I (5 of its 14 works) and A (3), and \emph{social organization} on B and E, with 3 works each. Cells of one to three works are too small to support more than a tendency.
-
-At the subgroup grain the scatter does not tighten: the largest cells hold five works (A and C-I on \emph{norms and knowledge}, and F-I on \emph{complex whole}), against six at the group level. The larger subgroups reach five to seven of the seven factors, while E, F-III, and G, with five or six works each, reach three or four, and the small subgroups C-II, D-III, and D-IV reach one to three.
+The NMF comparison in the body classifies the definition wording against K\&K's seven group letters. The figure here repeats it at the finer grain of K\&K's own typology, the roman-numeral subgroups the classification prints within groups C, D, and F; groups A, B, E, and G number their codes plainly and have no subgroup level. Each ribbon takes the color of its origin node's group, and node size is the number of codes.
 
 \begin{figure}[ht]
 \centering
@@ -282,9 +225,9 @@ At the subgroup grain the scatter does not tighten: the largest cells hold five 
 \label{fig:sup-sankey-codes}
 \end{figure}
 
-On the left, A and B place codes on all seven factors, and D-II and F-I each reach six. On the right, \emph{symbolic interaction} is the largest factor at 40 codes and draws mostly on F-I (10 of its 21 codes), with B (8) and D-II (5). \emph{Species-specific ability} (27 codes) draws on A and C-I (5 each) and B (4), and \emph{order and operation} (24 codes) on D-I (5), A (4) and F-I (4). \emph{Feeling, thinking and acting} (21 codes) draws most on D-I (6 codes, 29\% of the factor) and C-I (5). \emph{Goals and persons} draws on D-II (5 codes), B (4) and C-I (3), and \emph{material vs.\ non-material} on G (5 codes), A (3) and E (3). \emph{Mental and holistic} (19 codes) draws on F-II (4), C-I (3) and E (3).
+On the left, A, C-I and D-II reach all seven factors, and B, D-I, F-I and F-II each reach six. On the right, \emph{material and transmitted behavior} is the largest factor at 43 codes and draws on D (10), B (7) and F (7). \emph{Passed down generations} (34 codes) draws most on D (11) and A (8), and \emph{symbolic process and adjustment} (26 codes) on F (12 codes, 46\% of the factor), B (5) and D (4). \emph{Order and operation} (21 codes) draws on F (7), D (4), and A, B and C (3 each). \emph{Species-specific ability} and \emph{mental and holistic} (17 codes each) both draw on F (6) and C (5). \emph{Goals and persons} (13 codes) is mostly D (7 codes, 54\% of the factor).
 
-For the definition codes no aggregation is needed, since each code carries its own subgroup. The finer grain shows somewhat more concentration than the works panel: the largest cell holds ten codes (F-I on \emph{symbolic interaction}, 10 of 21), and B places eight codes on the same factor. No subgroup's codes sit on a single factor, and the largest factor, \emph{symbolic interaction}, draws from every group letter.
+For the definition codes no aggregation is needed, since each code carries its own subgroup. The largest cell holds eight codes (A on \emph{passed down generations}, 8 of 22 codes), and two cells hold seven (F-I on \emph{symbolic process and adjustment}, 7 of 21; B on \emph{material and transmitted behavior}, 7 of 23). No subgroup's codes sit on a single factor. The smallest subgroups, C-II (6 codes), D-III (4) and D-IV (2), reach between two and four factors.
 
 \bibliographystyle{abbrvnat}
 \bibliography{references,library}

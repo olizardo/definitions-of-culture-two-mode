@@ -16,6 +16,3 @@ lcc_2core <- function(M) {
   }
   Ac
 }
-
-# First-mode (sub-element) x second-mode (work) 0/1 matrix from a two-mode graph
-sub_work_matrix <- function(g) igraph::as_biadjacency_matrix(g, sparse = FALSE)

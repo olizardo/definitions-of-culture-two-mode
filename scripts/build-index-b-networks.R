@@ -23,8 +23,8 @@ stopifnot(
 join_sorted <- function(x) paste(sort(unique(x)), collapse = "; ")
 
 # Boroch correspondence: Table 2 crosswalk plus linked appendix-only codes.
-# A K&K code can carry two Boroch codes (F-IV-5 is Table 2 F4-6 and appendix-only
-# F4-5, the off-by-one slip recorded in PROVENANCE), so the values are joined.
+# A K&K code can carry two Boroch codes; the values are joined. Verbatim copies
+# excluded in the crosswalk (A10a, C1-5a, F4-6) carry no code here.
 t2 <- data.frame(kk_code = cw$kk_code, boroch_code = cw$boroch_code,
                  boroch_source = "table2", stringsAsFactors = FALSE)
 t2 <- t2[!is.na(t2$kk_code) & nzchar(t2$kk_code), ]

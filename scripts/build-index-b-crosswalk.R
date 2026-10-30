@@ -102,7 +102,8 @@ crosswalk$positional_agrees <- !is.na(crosswalk$kk_code) & crosswalk$kk_code == 
 crosswalk$match_status[crosswalk$boroch_code == "F4-6"] <- "manual_F4-6_slip"
 
 # Hand decisions for codes the rule cannot settle (data/kk-boroch-crosswalk-decisions.csv).
-# "match" sets the K&K code; "open" keeps the candidates and records why.
+# "match" sets the K&K code; "exclude" clears it for a Table 2 column that is a
+# verbatim copy of another quotation; "open" keeps the candidates and records why.
 decisions <- read.csv(file.path(data_dir, "kk-boroch-crosswalk-decisions.csv"),
                       stringsAsFactors = FALSE)
 crosswalk$decision <- NA_character_
@@ -115,6 +116,9 @@ for (i in seq_len(nrow(decisions))) {
   if (decisions$decision[i] == "match") {
     crosswalk$kk_code[j] <- decisions$kk_code[i]
     crosswalk$match_status[j] <- "manual_decision"
+  } else if (decisions$decision[i] == "exclude") {
+    crosswalk$kk_code[j] <- NA_character_
+    crosswalk$match_status[j] <- "excluded_verbatim_copy"
   }
 }
 crosswalk$positional_agrees <- !is.na(crosswalk$kk_code) & crosswalk$kk_code == crosswalk$positional_kk

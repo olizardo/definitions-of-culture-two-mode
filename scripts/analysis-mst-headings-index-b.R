@@ -1,8 +1,7 @@
-# Maximum spanning trees of the heading projections of the K&K Index B networks:
-#   (1) definitions: headings x codes; ties = number of codes both headings hold;
-#   (2) works: headings x works; ties = number of works both headings hold.
-# Both use the largest component's 2-core of the heading-by-second-mode matrix
-# (scripts/core-index-b.R). Kruskal maximum spanning trees (minimum spanning tree
+# Maximum spanning tree of the heading projection of the K&K Index B definitions
+# network: headings x verified codes; ties = number of codes both headings hold.
+# Uses the largest component's 2-core of the heading-by-code matrix
+# (scripts/core-index-b.R). Kruskal maximum spanning tree (minimum spanning tree
 # on -weight). Node size = betweenness in the tree; color = leading-eigenvector
 # community on the tree; labels = heading.
 
@@ -10,7 +9,7 @@ library(igraph)
 library(ggraph)
 
 set.seed(8427)
-invisible(lapply(c("figures/kk-index-b/definitions", "figures/kk-index-b/works"), dir.create, recursive = TRUE, showWarnings = FALSE))
+invisible(lapply(c("figures/kk-index-b/definitions"), dir.create, recursive = TRUE, showWarnings = FALSE))
 
 source("scripts/core-index-b.R")
 
@@ -18,10 +17,8 @@ source("scripts/core-index-b.R")
 ver.codes <- colnames(readRDS("data/kk-index-b-verified-network.rds")$biadjacency)
 def.h <- readRDS("data/kk-index-b-heading-network.rds")$biadjacency[, ver.codes, drop = FALSE]
 def.h <- def.h[rowSums(def.h) > 0, , drop = FALSE]
-works.h <- igraph::as_biadjacency_matrix(
-  readRDS("data/kk-index-b-work-concept-network-full.rds")$two_mode_heading_graph, sparse = FALSE)
 
-# heading projection: ties = shared second-mode nodes (codes or works)
+# heading projection: ties = shared codes
 heading.proj <- function(M) {
   P <- M %*% t(M); diag(P) <- 0
   graph_from_adjacency_matrix(P, mode = "undirected", weighted = TRUE, diag = FALSE)
@@ -39,11 +36,8 @@ tree.of <- function(gr, label) {
 }
 
 M.def <- lcc_2core(def.h)
-M.works <- lcc_2core(works.h)
-cat("headings dropped by the 2-core: definitions", nrow(def.h) - nrow(M.def),
-    "| works", nrow(works.h) - nrow(M.works), "\n")
+cat("headings dropped by the 2-core: definitions", nrow(def.h) - nrow(M.def), "\n")
 st.def <- tree.of(heading.proj(M.def), "definitions")
-st.works <- tree.of(heading.proj(M.works), "works")
 
 pal.for <- function(st) {
   n <- nlevels(V(st)$comm)
@@ -73,19 +67,13 @@ tree.plot(st.def,
           "Maximum spanning tree, definitions network (heading nodes), K&K Index B LCC 2-core",
           "ties = number of codes both headings hold; node size = betweenness in the tree; color = leading-eigenvector community on the tree",
           "figures/kk-index-b/definitions/mst-heading-comm-tree.png")
-tree.plot(st.works,
-          "Maximum spanning tree, works network (heading nodes), K&K Index B LCC 2-core",
-          "ties = number of works both headings hold; node size = betweenness in the tree; color = leading-eigenvector community on the tree",
-          "figures/kk-index-b/works/mst-heading.png")
 
-tab <- function(st, network) {
-  data.frame(network = network, heading = V(st)$name, community = as.integer(V(st)$comm),
-             betweenness = V(st)$btw, degree_tree = degree(st), stringsAsFactors = FALSE)
-}
-out <- rbind(tab(st.def, "definitions"), tab(st.works, "works"))
-write.csv(out[order(out$network, -out$betweenness), ],
+out <- data.frame(network = "definitions", heading = V(st.def)$name,
+                  community = as.integer(V(st.def)$comm),
+                  betweenness = V(st.def)$btw, degree_tree = degree(st.def),
+                  stringsAsFactors = FALSE)
+write.csv(out[order(-out$betweenness), ],
           "data/kk-index-b-mst-headings-nodes.csv", row.names = FALSE)
 
-cat("definitions tree communities:", nlevels(V(st.def)$comm),
-    "| works tree communities:", nlevels(V(st.works)$comm), "\n")
-cat("figures and node table written\n")
+cat("definitions tree communities:", nlevels(V(st.def)$comm), "\n")
+cat("figure and node table written\n")

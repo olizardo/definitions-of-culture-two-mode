@@ -15,7 +15,7 @@ library(ggstar)
 source("scripts/kk-group-style.R")
 
 set.seed(8427)
-invisible(lapply(c("figures/boroch", "figures/kk-index-b/definitions", "figures/kk-index-b/works"), dir.create, recursive = TRUE, showWarnings = FALSE))
+invisible(lapply(c("figures/boroch", "figures/kk-index-b/definitions"), dir.create, recursive = TRUE, showWarnings = FALSE))
 
 dir.create("figures", showWarnings = FALSE)
 

@@ -1,150 +1,150 @@
-"kk_code","works","community","betweenness","degree_tree"
-"C-I-6","Gillin J. L. & Gillin J. P. 1942",22,7772,17
-"F-I-19","Murdock G. P. 1949a",3,6045,8
-"A-16","Bidney D. 1947",22,5811,4
-"C-II-4","Bidney D. 1946",19,5541,4
-"C-II-3","Bidney D. 1942",19,5535,3
-"A-17","Kroeber A. L. 1948a",3,4773,4
-"C-I-8","Linton R. 1945b",11,3497,6
-"A-10","Linton R. 1936",2,2938,5
-"B-18","Kroeber A. L. 1948a",1,2499,3
-"D-II-5","LaPiere R. T. 1946",20,2112,2
-"A-8","Hiller E. T. 1933",20,2073,5
-"A-14","Kelly W. H. & Kluckhohn C. 1945a",1,2022,4
-"F-I-14","Huntington E. 1945",11,1909,3
-"A-1","Tylor E. B. 1871",1,1667,4
-"F-II-8","Taylor W. W. 1948",3,1417,6
-"D-II-7","Young K. 1944",6,1403,4
-"D-II-8","Opler M. E. 1947",5,1389,3
-"F-I-3","Folsom J. 1931",21,1279,5
-"B-7","Winston S. 1933",5,1137,4
-"C-I-4","Klineberg O. 1935",1,993,3
-"B-6","Malinowski B. 1931",6,860,3
-"C-I-2","Bogardus E. S. 1930",8,719,3
-"F-I-4","Winston S. 1933",1,715,2
-"B-1","Burgess E. W. & Park R. E. 1921",5,579,3
-"E-5(b)","Linton R. 1945a",11,579,3
-"A-3(b)","Dixon R. B. 1928",4,576,2
-"B-14","Angyal A. 1941",22,576,2
-"F-I-16","Bidney D. 1947",1,576,2
-"A-19","Herskovits M. J. 1948",22,437,3
-"A-3(a)","Dixon R. B. 1928",4,437,3
-"C-I-16","Bennett J. W. & Tumin M. M. 1949",22,437,3
-"E-3","Nimkoff M. F. & Ogburn W. F. 1940",7,437,3
-"F-I-8","Reuter E. B. 1939",21,437,3
-"B-12","Davis Allison A. & Dollard J. 1940",6,435,2
-"B-22","Radcliffe-Brown, A. R. 1949",3,435,2
-"C-I-3","Young K. 1934",8,435,2
-"D-III-3","Murdock G. P. 1941",1,435,2
-"B-13","Groves E. R. & Moore H. E. 1940",22,293,3
-"C-I-5","Firth R. 1939",19,293,3
-"D-I-13","Morris C. W. 1946",14,293,3
-"F-III-3","White L. A. 1949b",9,293,3
-"A-15","Kelly W. H. & Kluckhohn C. 1945a",1,292,2
-"A-6","Bose N. K. 1929",11,292,2
-"C-I-14","Herskovits M. J. 1948",6,292,2
-"D-I-6","Lundberg G. 1939",11,292,2
-"D-I-9","Committee on Conceptual Integration (Bernard, Blumenthal, Dodd, Hart) 1941",1,292,2
-"D-II-15","Slotkin J. S. 1950",11,292,2
-"D-II-4","Kluckhohn C. 1942",11,292,2
-"F-I-6","Warden C. J. 1936",5,292,2
-"F-IV-5","Kelly W. H. & Kluckhohn C. 1945a",8,292,2
-"A-13","Malinowski B. 1944",6,147,2
-"A-18","Herskovits M. J. 1948",11,147,2
-"A-5","Burkitt M. C. 1929",4,147,2
-"B-2","Sapir E. 1921",15,147,2
-"B-20","Kluckhohn C. 1949a",12,147,2
-"B-9","Linton R. 1936",5,147,2
-"C-I-17","Frank L. K. 1948",13,147,2
-"C-I-18","Titiev M. 1949",22,147,2
-"C-I-5a","Lynd R. S. 1940",11,147,2
-"D-I-11","Young K. 1942",6,147,2
-"D-I-12","Kluckhohn C. & Leighton D. 1946",8,147,2
-"D-I-14","Morris C. W. 1948",3,147,2
-"D-I-16","Gorer G. 1949",7,147,2
-"D-I-2","Keller A. G. & Sumner W. G. 1927",21,147,2
-"D-I-3","Dawson C. 1928",22,147,2
-"D-I-5","Young K. 1934",22,147,2
-"D-I-7","Panunzio C. 1939",5,147,2
-"D-II-12","Kolb W. L. & Wilson L. 1949",1,147,2
-"D-II-14","Steward J. H. 1950",11,147,2
-"E-6","Kelly W. H. & Kluckhohn C. 1945a",3,147,2
-"E-8","Coutu W. 1949",6,147,2
-"F-I-15","Carr L. J. 1945",3,147,2
-"F-I-18","Kluckhohn C. 1949a",21,147,2
-"F-I-9","Committee on Conceptual Integration (Bernard, Blumenthal, Dodd, Hart) 1941",1,147,2
-"F-II-4(a)","Blumenthal A. 1937",21,147,2
-"F-II-6","Kelly W. H. & Kluckhohn C. 1945a",3,147,2
-"G-2","Marett R. R. 1928",11,147,2
-"A-10a","Lowie R. H. 1937",4,0,1
-"A-11","Panunzio C. 1939",5,0,1
-"A-12","Murray R. W. 1943",4,0,1
-"A-2","Wissler C. 1920",1,0,1
-"A-20","Thurnwald R. 1950",8,0,1
-"A-4","Benedict R. 1929",1,0,1
-"A-7","Boas F. 1930",3,0,1
-"A-9","Winston S. 1933",7,0,1
-"B-10","Mead M. 1937",19,0,1
-"B-11","Sutherland R. L. & Woodward J. L. 1940",1,0,1
-"B-15","Kluckhohn C. 1942",10,0,1
-"B-16","Jacobs M. & Stern B.J. 1947",16,0,1
-"B-17","Dietschy H. 1947",21,0,1
-"B-19","Parsons T. 1949",22,0,1
-"B-21","Henry J. 1949",3,0,1
-"B-3","Sapir E. 1924a",15,0,1
-"B-4","Tozzer A. 1925",22,0,1
-"B-5","Bose N. K. 1929",22,0,1
-"B-8","Lowie R. H. 1934",1,0,1
-"C-I-1","Wissler C. 1929",21,0,1
-"C-I-10","Kelly W. H. & Kluckhohn C. 1945a",3,0,1
-"C-I-11","Kelly W. H. & Kluckhohn C. 1945a",19,0,1
-"C-I-13","Kluckhohn C. & Leighton D. 1946",6,0,1
-"C-I-15","Lasswell H. D. 1948",13,0,1
-"C-I-19","Kluckhohn C. 1951a",12,0,1
-"C-I-9","Linton R. 1945a",22,0,1
-"C-II-2","Thomas W. I. 1937",22,0,1
-"C-II-6","Sorokin P. A. 1947",11,0,1
-"D-I-1","Small A. W. 1905",22,0,1
-"D-I-10","Ford C. S. 1942",14,0,1
-"D-I-15","Turney-High H. H. 1949",11,0,1
-"D-I-17","Piddington R. 1950",7,0,1
-"D-I-8","Ford C. S. 1939",8,0,1
-"D-II-1","Wissler C. 1916",5,0,1
-"D-II-10","Hoebel E. A. 1949",2,0,1
-"D-II-11","Haring D. G. 1949",3,0,1
-"D-II-13","Hockett C. F. 1950",11,0,1
-"D-II-2","Hart H. & Pantzer A. 1925",2,0,1
-"D-II-6","Benedict R. 1947",22,0,1
-"D-II-9","Davis Allison A. 1948",3,0,1
-"D-III-2","Young K. 1934",22,0,1
-"D-IV-1","Roheim G. 1934",14,0,1
-"D-IV-2","Katz D. & Schanck R. L. 1938",19,0,1
-"E-1","Willey M. 1929",3,0,1
-"E-2","Dollard J. 1939",22,0,1
-"E-4","Redfield R. 1940",1,0,1
-"E-5(a)","Linton R. 1945a",11,0,1
-"E-7","Gillin J. P. 1948",22,0,1
-"E-9","Turney-High H. H. 1949",5,0,1
-"F-I-10","Committee on Conceptual Integration (Bernard, Blumenthal, Dodd, Hart) 1941",1,0,1
-"F-I-11","Committee on Conceptual Integration (Bernard, Blumenthal, Dodd, Hart) 1941",3,0,1
-"F-I-12","Bernard L. L. 1942",11,0,1
-"F-I-17","Herskovits M. J. 1948",18,0,1
-"F-I-2","Folsom J. 1928",21,0,1
-"F-I-20","F. R. Kluckhohn 1950",5,0,1
-"F-I-7","Sorokin P. A. 1937",19,0,1
-"F-II-1","Ward L. F. 1903",6,0,1
-"F-II-10","Becker H. 1950",11,0,1
-"F-II-4(b)","Blumenthal A. 1937",21,0,1
-"F-II-5","Osgood C. 1940",3,0,1
-"F-II-7(a)","Feibleman J. 1946",22,0,1
-"F-II-7(b)","Feibleman J. 1946",22,0,1
-"F-II-9","Ford J. A. 1949",2,0,1
-"F-III-1","Bain R. 1942",22,0,1
-"F-III-2","White L. A. 1943",9,0,1
-"F-III-4","White L. A. 1949a",9,0,1
-"F-III-5","Davis Kingsley K. 1949",22,0,1
-"F-IV-3","Committee on Conceptual Integration (Bernard, Blumenthal, Dodd, Hart) 1941",16,0,1
-"G-3","Benedict R. 1934",6,0,1
-"G-4","Rouse I. 1939",22,0,1
-"G-5","Osgood C. 1942",17,0,1
-"G-7","Bryson L. 1947",6,0,1
+"kk_code","source_author","source_year","source_page","community","betweenness","degree_tree"
+"C-I-6","Gillin and Gillin","1942","20",22,7772,17
+"F-I-19","Murdock","1949a","378",3,6045,8
+"A-16","Bidney","1947","376",22,5811,4
+"C-II-4","Bidney","1946","535",19,5541,4
+"C-II-3","Bidney","1942","452",19,5535,3
+"A-17","Kroeber","1948a","8-9",3,4773,4
+"C-I-8","Linton","1945b","203",11,3497,6
+"A-10","Linton","1936","288",2,2938,5
+"B-18","Kroeber","1948a","253",1,2499,3
+"D-II-5","LaPiere","1946","68",20,2112,2
+"A-8","Hiller","1933","3",20,2073,5
+"A-14","Kluckhohn and Kelly","1945a","82",1,2022,4
+"F-I-14","Huntington","1945","7-8",11,1909,3
+"A-1","Tylor","1871","1",1,1667,4
+"F-II-8","Taylor","1948","109-110",3,1417,6
+"D-II-7","Young","1947","7",6,1403,4
+"D-II-8","Opler","1947","8",5,1389,3
+"F-I-3","Folsom","1931","476-477",21,1279,5
+"B-7","Winston","1933","4",5,1137,4
+"C-I-4","Klineberg","1935","255",1,993,3
+"B-6","Malinowski","1931","621",6,860,3
+"C-I-2","Bogardus","1930","336",8,719,3
+"F-I-4","Winston","1933","209",1,715,2
+"B-1","Park and Burgess","1921","72",5,579,3
+"E-5(b)","Linton","1945a","32",11,579,3
+"A-3(b)","Dixon","1928","3",4,576,2
+"B-14","Angyal","1941","187",22,576,2
+"F-I-16","Bidney","1947","387",1,576,2
+"A-19","Herskovits","1948","625",22,437,3
+"A-3(a)","Dixon","1928","3",4,437,3
+"C-I-16","Bennett and Tumin","1949","209",22,437,3
+"E-3","Ogburn and Nimkoff","1940","63",7,437,3
+"F-I-8","Reuter","1939","191",21,437,3
+"B-12","Davis and Dollard","1940","4",6,435,2
+"B-22","Radcliffe-Brown","1949","510-511",3,435,2
+"C-I-3","Young","1934","xiii",8,435,2
+"D-III-3","Murdock","1941","141",1,435,2
+"B-13","Groves and Moore","1940","14",22,293,3
+"C-I-5","Firth","1939","18",19,293,3
+"D-I-13","Morris","1946","205",14,293,3
+"F-III-3","White","1949b","15",9,293,3
+"A-15","Kluckhohn and Kelly","1945a","96",1,292,2
+"A-6","Bose","1929","23",11,292,2
+"C-I-14","Herskovits","1948","29",6,292,2
+"D-I-6","Lundberg","1939","179",11,292,2
+"D-I-9","Blumenthal","1941","9",1,292,2
+"D-II-15","Slotkin","1950","76",11,292,2
+"D-II-4","Kluckhohn","1942","2",11,292,2
+"F-I-6","Warden","1936","22-23",5,292,2
+"F-IV-5","Kluckhohn and Kelly","1945a","87",8,292,2
+"A-13","Malinowski","1944","36",6,147,2
+"A-18","Herskovits","1948","154",11,147,2
+"A-5","Burkitt","1929","237",4,147,2
+"B-2","Sapir","1921","221",15,147,2
+"B-20","Kluckhohn","1949a","17",12,147,2
+"B-9","Linton","1936","78",5,147,2
+"C-I-17","Frank","1948","171",13,147,2
+"C-I-18","Titiev","1949","45",22,147,2
+"C-I-5a","Lynd","1940","19",11,147,2
+"D-I-11","Young","1942","35",6,147,2
+"D-I-12","Kluckhohn and Leighton","1946","xviii-xix",8,147,2
+"D-I-14","Morris","1948","43",3,147,2
+"D-I-16","Gorer","1949","2",7,147,2
+"D-I-2","Sumner and Keller","1927","46-47",21,147,2
+"D-I-3","Dawson","1928","xiii-xiv",22,147,2
+"D-I-5","Young","1934","18-19",22,147,2
+"D-I-7","Panunzio","1939","106",5,147,2
+"D-II-12","Wilson and Kolb","1949","57",1,147,2
+"D-II-14","Steward","1950","98",11,147,2
+"E-6","Kluckhohn and Kelly","1945a","98",3,147,2
+"E-8","Coutu","1949","358",6,147,2
+"F-I-15","Carr","1945","137",3,147,2
+"F-I-18","Kluckhohn","1949a","17",21,147,2
+"F-I-9","Bernard","1941","8",1,147,2
+"F-II-4(a)","Blumenthal","1937","3",21,147,2
+"F-II-6","Kluckhohn and Kelly","1945a","97",3,147,2
+"G-2","Marett","1928","54",11,147,2
+"A-10a","Lowie","1937","3",4,0,1
+"A-11","Panunzio","1939","106",5,0,1
+"A-12","Murray","1943","346",4,0,1
+"A-2","Wissler","1920","3",1,0,1
+"A-20","Thurnwald","1950","104",8,0,1
+"A-4","Benedict","1931","806",1,0,1
+"A-7","Boas","1930","79",3,0,1
+"A-9","Winston","1933","25",7,0,1
+"B-10","Mead","1937","17",19,0,1
+"B-11","Sutherland and Woodward","1940","19",1,0,1
+"B-15","Kluckhohn","1942","2",10,0,1
+"B-16","Jacobs and Stern","1947","2",16,0,1
+"B-17","Dietschy","1947","121",21,0,1
+"B-19","Parsons","1949","8",22,0,1
+"B-21","Henry","1949","218",3,0,1
+"B-3","Sapir","1924a","402",15,0,1
+"B-4","Tozzer","1925","6",22,0,1
+"B-5","Bose","1929","14",22,0,1
+"B-8","Lowie","1934","3",1,0,1
+"C-I-1","Wissler","1929","15, 341",21,0,1
+"C-I-10","Kluckhohn and Kelly","1945a","84",3,0,1
+"C-I-11","Kluckhohn and Kelly","1945a","97",19,0,1
+"C-I-13","Kluckhohn and Leighton","1946","xviii",6,0,1
+"C-I-15","Lasswell","1948","203",13,0,1
+"C-I-19","Kluckhohn","1951a","86",12,0,1
+"C-I-9","Linton","1945a","30",22,0,1
+"C-II-2","Thomas","1937","8",22,0,1
+"C-II-6","Sorokin","1947","313",11,0,1
+"D-I-1","Small","1905","344-345",22,0,1
+"D-I-10","Ford","1942","555, 557",14,0,1
+"D-I-15","Turney-High","1949","5",11,0,1
+"D-I-17","Piddington","1950","3-4",7,0,1
+"D-I-8","Ford","1939","137",8,0,1
+"D-II-1","Wissler","1916","195",5,0,1
+"D-II-10","Hoebel","1949","3, 4",2,0,1
+"D-II-11","Haring","1949","29",3,0,1
+"D-II-13","Hockett","1950","113",11,0,1
+"D-II-2","Hart and Pantzer","1925","703, 705",2,0,1
+"D-II-6","Benedict","1947","13",22,0,1
+"D-II-9","A. Davis","1948","59",3,0,1
+"D-III-2","Young","1934","592",22,0,1
+"D-IV-1","Roheim","1934","216",14,0,1
+"D-IV-2","Katz and Schanck","1938","551",19,0,1
+"E-1","Willey","1929","207",3,0,1
+"E-2","Dollard","1939","50",22,0,1
+"E-4","Redfield","1940","25",1,0,1
+"E-5(a)","Linton","1945a","5",11,0,1
+"E-7","Gillin","1948","191",22,0,1
+"E-9","Turney-High","1949","5",5,0,1
+"F-I-10","Dodd","1941","8",1,0,1
+"F-I-11","Hart","1941","6",3,0,1
+"F-I-12","Bernard","1942","699",11,0,1
+"F-I-17","Herskovits","1948","17",18,0,1
+"F-I-2","Folsom","1928","15",21,0,1
+"F-I-20","Kluckhohn","1951a","86",5,0,1
+"F-I-7","Sorokin","1937","I: 3",19,0,1
+"F-II-1","Ward","1903","235",6,0,1
+"F-II-10","Becker","1950","251",11,0,1
+"F-II-4(b)","Blumenthal","1937","12",21,0,1
+"F-II-5","Osgood","1940","25",3,0,1
+"F-II-7(a)","Feibleman","1946","75",22,0,1
+"F-II-7(b)","Feibleman","1946","76",22,0,1
+"F-II-9","Ford","1949","38",2,0,1
+"F-III-1","Bain","1942","87",22,0,1
+"F-III-2","White","1943","335",9,0,1
+"F-III-4","White","1949a","363",9,0,1
+"F-III-5","K. Davis","1949","3-4",22,0,1
+"F-IV-3","Blumenthal","1941","9",16,0,1
+"G-3","Benedict","1934","16",6,0,1
+"G-4","Rouse","1939","17",22,0,1
+"G-5","Osgood","1942","22",17,0,1
+"G-7","Bryson","1947","74",6,0,1

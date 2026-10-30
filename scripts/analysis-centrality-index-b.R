@@ -1,18 +1,17 @@
-# Two-mode closeness and betweenness for the K&K Index B definitions and works
-# networks, on each network's largest connected component (LCC).
+# Two-mode closeness and betweenness for the K&K Index B definitions network, on
+# its largest connected component (LCC).
 #
 # Normalizations follow Borgatti & Everett (1997) as given at
 # https://olizardo.github.io/SOCIOL208/cent-tm.html, with L = size of the larger
-# node set and S = size of the smaller set (sub-elements are the larger set in both
-# networks here; the code checks this):
+# node set and S = size of the smaller set (sub-elements are the larger set here;
+# the code checks this):
 #   closeness, node in set X:        n_Y + 2(n_X - 1)
 #   betweenness, larger set:         2(S - 1)(L - 1)
 #   betweenness, smaller set:        S(S - 1)/2 + (L - 1)(L - 2)/2 + (L - 1)(S - 1)
 #
-# Definitions network: sub-elements x verified definition codes, taken from the full
-# sub-element graph (which also contains unverified codes that can link components),
-# with unverified codes removed after the LCC is found.
-# Works network: sub-elements x works (already connected).
+# Sub-elements x verified definition codes, taken from the full sub-element graph
+# (which also contains unverified codes that can link components), with unverified
+# codes removed after the LCC is found.
 
 library(igraph)
 
@@ -22,15 +21,8 @@ g.def.lcc <- induced_subgraph(g.def, cs$membership == which.max(cs$csize))
 cat("definitions network: components", cs$no, "| LCC", vcount(g.def.lcc),
     "nodes,", ecount(g.def.lcc), "edges\n")
 
-net <- readRDS("data/kk-index-b-work-concept-network-full.rds")
-g.wk <- net$two_mode_graph
-cs.wk <- components(g.wk)
-g.wk.lcc <- induced_subgraph(g.wk, cs.wk$membership == which.max(cs.wk$csize))
-cat("works network: components", cs.wk$no, "| LCC", vcount(g.wk.lcc),
-    "nodes,", ecount(g.wk.lcc), "edges\n")
-
 # closeness and betweenness for a connected bipartite graph; `is.second` marks the
-# second mode (works or definition codes), the first mode is sub-elements
+# second mode (definition codes), the first mode is sub-elements
 tm.centrality <- function(gr, is.second) {
   n.first <- sum(!is.second); n.second <- sum(is.second)
   first.larger <- n.first >= n.second
@@ -55,18 +47,13 @@ tm.centrality <- function(gr, is.second) {
              stringsAsFactors = FALSE)
 }
 
-# first mode is sub-elements (FALSE), second mode is codes or works (TRUE)
+# first mode is sub-elements (FALSE), second mode is definition codes (TRUE)
 is.second.def <- V(g.def.lcc)$type
 cen.def <- tm.centrality(g.def.lcc, is.second.def)
-cen.wk <- tm.centrality(g.wk.lcc, V(g.wk.lcc)$type)
 
 write.csv(cen.def[order(-cen.def$closeness), ],
           "data/kk-index-b-centrality-definitions.csv", row.names = FALSE)
-write.csv(cen.wk[order(-cen.wk$closeness), ],
-          "data/kk-index-b-centrality-works.csv", row.names = FALSE)
 
 cat("definitions: top 10 by closeness\n")
 print(head(cen.def[order(-cen.def$closeness), ], 10), row.names = FALSE)
-cat("works: top 10 by closeness\n")
-print(head(cen.wk[order(-cen.wk$closeness), ], 10), row.names = FALSE)
-cat("centrality tables written\n")
+cat("centrality table written\n")
