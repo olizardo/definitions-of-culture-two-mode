@@ -15,8 +15,7 @@
 #   data/kk-index-b-nmf-works-stability.csv  ARI stability by k
 #   data/kk-index-b-nmf-works-agreement.csv  factor x group cross-tab
 #   figures/kk-index-b/nmf/nmf-works.png     works x factors loading heatmap
-#   (the agreement heatmaps were removed 2026-10-27 in favor of the Sankey,
-#   scripts/figure-sankey-agreement.R; the agreement CSVs remain)
+#   (the agreement heatmaps were removed 2026-10-27; the agreement CSVs remain)
 
 library(ggrepel)
 

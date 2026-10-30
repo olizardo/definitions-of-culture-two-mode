@@ -23,8 +23,7 @@
 #   data/kk-index-b-nmf-texts-agreement.csv   factor x group cross-tab
 #   figures/kk-index-b/nmf/nmf-texts-factors.png     top terms per factor
 #   figures/kk-index-b/nmf/nmf-texts.png             codes x factors heatmap
-#   (the agreement heatmap was removed 2026-10-27 in favor of the Sankey,
-#   scripts/figure-sankey-agreement.R; the agreement CSVs remain)
+#   (the agreement heatmap was removed 2026-10-27; the agreement CSVs remain)
 
 library(ggplot2)
 

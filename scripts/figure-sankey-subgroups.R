@@ -16,7 +16,7 @@
 #   No tie node: a code sits in one subgroup.
 #
 # Ribbons take the color of their source node; subgroup nodes are colored by
-# their group letter (the Okabe-Ito palette of figure-sankey-agreement.R), the
+# their group letter (the Okabe-Ito palette defined below), the
 # factor nodes the default ggplot hues, so factor colors do not read as group
 # colors.
 #

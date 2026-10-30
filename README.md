@@ -301,19 +301,17 @@ were equal (case, hyphens, and a trailing plural "s" ignored). The linkage is
 conservative. Boroch's notion labels are his own wording, so many rows (31 cells) are
 unlinked and are reported as such, not guessed.
 
-**Non-negative matrix factorization.** Three analyses test whether data-driven factors
+**Non-negative matrix factorization.** Two analyses test whether data-driven factors
 recover K&K's groups A–G, fit at k = 7 (one factor per group, fixed rather than
 selected). The works analysis factorizes the sub-elements × works biadjacency of the
 LCC 2-core; the texts analysis factorizes a TF-IDF matrix of the definition
-quotations, one document per K&K code carrying a text; the works-as-texts analysis
-represents each work of the LCC 2-core by the concatenated texts of its codes'
-definitions. The text analyses use a hand-set stopword list (59 general English
-stopwords plus 15 omnipresent domain words: culture, cultures, cultural, society,
-social, man, men, human, total, whole, way, ways, learned, acquired, group) and keep
+quotations, one document per K&K code carrying a text. The texts analysis uses a
+hand-set stopword list (59 general English stopwords plus 15 omnipresent domain
+words: culture, cultures, cultural, society, social, man, men, human, total, whole,
+way, ways, learned, acquired, group) and keep
 tokens of three letters or more at 2–50% document frequency. The list is defined in
 `scripts/analysis-nmf-texts-index-b.R` and is part of the reproducible pipeline;
-results depend on it. None of the three recovers the groups at better than chance,
-and the two works-level classifications do not agree with each other. The four
+results depend on it. Neither recovers the groups at better than chance. The four
 non-English quotations (B-17 and C-I-18a French, F-I-5 and F-II-3 German) enter as
 English translations from `data/kk-definition-texts-translations.csv`: C-I-18a is
 K&K's own printed English rendering, the other three are working translations not
