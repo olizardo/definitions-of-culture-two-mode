@@ -2,17 +2,19 @@
 # disaggregated typology (groups with their roman-numeral subgroups), drawn
 # with ggsankeyfier. The manuscript body compares the classifications against
 # the seven group letters A-G; here the left side is the subgroup level:
-# A, B, C-I, C-II, D-I..D-IV, E, F-I..F-IV, G. Codes without a roman numeral
-# under C or D are the Part III statement codes (C-5, D-5, D-7), which sit
-# outside the Part II typology; they form one small node.
+# A, B, C-I, C-II, D-I..D-IV, E, F-I..F-IV, G. A bare C or D code would be a
+# Part III statement code, outside the Part II typology; the verified codes
+# have none (PROVENANCE 16), so the Part III node stays empty.
 #
 # Panel 1 (works): the 118 works of the works LCC 2-core, each work's
 #   plurality subgroup against its dominant structural NMF factor
 #   (analysis-nmf-works-index-b.R). A work whose codes tie across subgroups
 #   goes to the grey node.
-# Panel 2 (codes): the 172 definition codes carrying a text, each code's own
+# Panel 2 (codes): the 167 verified definition codes carrying a text, each code's own
 #   subgroup against its dominant text NMF factor
-#   (analysis-nmf-texts-index-b.R). No tie node: a code sits in one subgroup.
+#   (analysis-nmf-texts-index-b.R). The 168 codes are the 167 verified codes
+#   plus C-I-Addendum, which the texts analysis includes (PROVENANCE 16).
+#   No tie node: a code sits in one subgroup.
 #
 # Ribbons take the color of their source node; subgroup nodes are colored by
 # their group letter (the Okabe-Ito palette of figure-sankey-agreement.R), the

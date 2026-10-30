@@ -54,6 +54,9 @@ docs <- rbind(
   data.frame(kk_code = app$kk_code, text = app$text),
   data.frame(kk_code = kko$kk_code, text = kko$text)
 )
+# Verified codes only. C-I-Addendum (an appendix link to a Sears addendum) is not a network code (PROVENANCE 16).
+ver <- read.csv("data/kk-index-b-definitions.csv", stringsAsFactors = FALSE)
+docs <- docs[docs$kk_code %in% ver$kk_code[ver$in_verified], ]
 # translations of the non-English quotations (PROVENANCE 15); substitute the
 # translation for the original where one exists
 tr <- read.csv("data/kk-definition-texts-translations.csv")
@@ -133,9 +136,9 @@ K <- 7
 # translation's phrasing), so labels stay close to the terms. Re-set
 # 2026-10-27 after the translation of the non-English texts changed the fits.
 factor.labels <- c(
-  "Mental and holistic", "Thought and expression", "Species and utensils",
-  "Material vs. non-material", "Passed down generations", "Symbolic systems",
-  "Feelings and adjustment")
+  "Symbolic systems", "Material vs. non-material", "Species and utensils",
+  "Goals and persons", "Feelings and adjustment", "Passed down generations",
+  "Mental and holistic")
 
 fit <- nmf.fit(V, K, seed = 9137)
 cat("fixed k:", K, "obj =", sprintf("%.1f", fit$obj), "\n")
@@ -161,7 +164,7 @@ ggplot(top.terms, ggplot2::aes(loading, stats::reorder(term, loading))) +
   ggplot2::facet_wrap(~ factor, scales = "free") +
   ggplot2::labs(
     title = "Top terms of each text-NMF factor",
-    subtitle = "k = 7; TF-IDF document x term matrix of 172 definition codes",
+    subtitle = "k = 7; TF-IDF document x term matrix of 167 definition codes",
     x = "term loading", y = NULL) +
   ggplot2::theme_minimal()
 ggplot2::ggsave("figures/kk-index-b/nmf/nmf-texts-factors.png",

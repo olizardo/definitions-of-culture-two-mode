@@ -580,6 +580,9 @@ unresolved <- unique(edges[is.na(edges$kk_code), c("heading", "sub_element", "oc
 edges <- edges[!is.na(edges$kk_code), ]
 edges <- edges[!duplicated(paste(edges$kk_code, edges$heading, edges$sub_element)),
                c("kk_code", "heading", "sub_element", "ocr_raw", "parse_flag")]
+# Part III statement codes are out of the analysis (data/kk-index-b-part-iii-codes.csv, PROVENANCE 16).
+part_iii_codes <- read.csv("data/kk-index-b-part-iii-codes.csv", stringsAsFactors = FALSE)$kk_code
+edges <- edges[!edges$kk_code %in% part_iii_codes, ]
 write.csv(unresolved, file.path(data_dir, "kk-index-b-unresolved.csv"), row.names = FALSE)
 
 excl <- excluded$edges
@@ -611,7 +614,7 @@ corrections <- corrections[order(corrections$source, corrections$raw), ]
 # Codes the user has placed in the verified network beyond Index A and Index B
 # (data/kk-index-b-verified-extra-codes.csv, one basis per code). They extend
 # the universe: a verified extra may have no Index A entry and no Index B
-# element (C-5, the Part III statement code, is the first such case).
+# element (for example C-I-18a, a Part II footnote code).
 verified_extra <- read.csv("data/kk-index-b-verified-extra-codes.csv", stringsAsFactors = FALSE)
 universe <- sort(unique(c(index_a_codes, edges$kk_code, verified_extra$kk_code)),
                  method = "radix")
@@ -625,7 +628,7 @@ definitions <- data.frame(
   group = group_of(universe),
   subgroup = subgroup_of(universe),
   in_index_a = universe %in% index_a_codes,
-  in_part_iii = universe %in% part3$kk_code,
+  in_part_iii = universe %in% setdiff(part3$kk_code, index_a_codes),
   in_verified = universe %in% c(index_a_codes, part3$kk_code, verified_extra$kk_code),
   in_index_b = universe %in% edges$kk_code,
   n_index_b_elements = as.integer(table(factor(edges$kk_code, levels = universe))),

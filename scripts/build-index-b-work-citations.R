@@ -267,6 +267,10 @@ res <- do.call(rbind, lapply(seq_len(nrow(works)), function(r) {
 
 # Page-image checks override the text-layer match for the works they list.
 checks <- read.csv("data/kk-index-b-work-citations-page-checks.csv", stringsAsFactors = FALSE)
+# Checks for works no longer in the network stay in the file as a record and are skipped here.
+skipped <- setdiff(checks$work, res$work)
+if (length(skipped)) message("page checks skipped (work not in network): ", paste(skipped, collapse = "; "))
+checks <- checks[checks$work %in% res$work, ]
 hit <- match(checks$work, res$work)
 stopifnot(!anyNA(hit))
 res$kk_status[hit] <- ifelse(checks$image_status %in% c("year_conflict", "quoted_in"), checks$image_status, "page_checked")

@@ -4,6 +4,7 @@
 # Read-only: prints the tally, writes nothing. Run from the project root.
 
 defs <- read.csv("data/kk-index-b-definitions.csv", stringsAsFactors = FALSE)
+defs <- defs[defs$in_verified, ]
 cw <- read.csv("data/kk-boroch-crosswalk.csv", stringsAsFactors = FALSE)
 links <- read.csv("data/kkcc-appendix-only-links.csv", stringsAsFactors = FALSE)
 t2 <- read.csv("data/kkcc-definition-texts.csv", stringsAsFactors = FALSE)

@@ -45,9 +45,9 @@ K <- 7
 # factor labels, set by hand from the profiles in
 # data/kk-index-b-nmf-works-factors.csv; change them there only
 factor.labels <- c(
-  "Way of life", "Transmitted ideas", "Society-individual behavior",
-  "Norms and knowledge", "Complex whole", "Social organization",
-  "Learning and acquisition")
+  "Group behavior", "Norms and knowledge", "Way of life",
+  "Society-individual behavior", "Learning and acquisition", "Complex whole",
+  "Social organization")
 
 n.restart <- 10
 k.range <- 2:8

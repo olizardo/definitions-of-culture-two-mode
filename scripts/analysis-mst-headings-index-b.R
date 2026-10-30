@@ -14,7 +14,10 @@ invisible(lapply(c("figures/kk-index-b/definitions", "figures/kk-index-b/works")
 
 source("scripts/core-index-b.R")
 
-def.h <- readRDS("data/kk-index-b-heading-network.rds")$biadjacency
+# The stored heading network holds every Index B code; keep the verified codes only.
+ver.codes <- colnames(readRDS("data/kk-index-b-verified-network.rds")$biadjacency)
+def.h <- readRDS("data/kk-index-b-heading-network.rds")$biadjacency[, ver.codes, drop = FALSE]
+def.h <- def.h[rowSums(def.h) > 0, , drop = FALSE]
 works.h <- igraph::as_biadjacency_matrix(
   readRDS("data/kk-index-b-work-concept-network-full.rds")$two_mode_heading_graph, sparse = FALSE)
 

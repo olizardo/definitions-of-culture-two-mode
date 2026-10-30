@@ -89,10 +89,10 @@ the works network, or the code projection of the definitions network) are derive
 
 | # | network | stored in | nodes | attributes |
 |---|---|---|---|---|
-| 1 | definitions × sub-elements | `kk-index-b-verified-network.rds` (`graph`, `biadjacency`) | 472 sub-elements, 171 codes | sub-element and code attributes |
-| 2 | definitions × headings | `kk-index-b-heading-network.rds` (`graph`, `biadjacency`) | 53 headings, 171 codes | heading and code attributes |
-| 3 | works × sub-elements | `kk-index-b-work-concept-network-full.rds`, `two_mode_graph` | 472 sub-elements, 133 works | sub-element and work attributes |
-| 4 | works × headings | same file, `two_mode_heading_graph` | 53 headings, 133 works | heading and work attributes |
+| 1 | definitions × sub-elements | `kk-index-b-verified-network.rds` (`graph`, `biadjacency`) | 470 sub-elements, 167 codes | sub-element and code attributes |
+| 2 | definitions × headings | `kk-index-b-heading-network.rds` (`graph`, `biadjacency`) | 53 headings, 167 codes | heading and code attributes |
+| 3 | works × sub-elements | `kk-index-b-work-concept-network-full.rds`, `two_mode_graph` | 470 sub-elements, 131 works | sub-element and work attributes |
+| 4 | works × headings | same file, `two_mode_heading_graph` | 53 headings, 131 works | heading and work attributes |
 
 Where attributes overlap, the values agree across the four networks (checked 2026-10-25). The raw
 `kk-index-b-subelement-network.rds` is the build output that the verified network is filtered from.
@@ -216,9 +216,9 @@ Boroch and K&K networks (`analysis-index-b.R`).
 
 **`kk-index-b-subelement-network.rds`**, **`kk-index-b-heading-network.rds`**, **`kk-index-b-verified-network.rds`**:
 lists with `biadjacency` (0/1 matrix) and `graph` (igraph, bipartite). The sub-element and heading
-networks keep all 171 codes. The verified network drops codes not flagged `in_verified` and sub-elements left with no verified code;
-nothing is dropped at present, so it has the same nodes as the sub-element network. The six codes with no
-Index B edge (C-5, F-I-5, F-IV-1, F-IV-2, F-IV-4, G-1) are isolates. Vertex `type` is FALSE for element vertices and TRUE for codes.
+networks keep all 167 codes. The Part III statement codes D-5, D-7 and E-17 were removed on 2026-10-30 (PROVENANCE 16), so the sub-element and verified networks have the same nodes (470 sub-elements, 167 codes). The verified network
+drops codes not flagged `in_verified` and sub-elements left with no verified code. The five codes
+with no Index B edge (F-I-5, F-IV-1, F-IV-2, F-IV-4, G-1) are isolates. Vertex `type` is FALSE for element vertices and TRUE for codes.
 
 Vertex attributes, by vertex kind:
 
@@ -247,7 +247,7 @@ source files, and a caveat that Index B has not been fully verified.
 **`kk-index-b-work-concept-network-full.rds`**: a list with three elements. The two-mode networks are the
 stored data; projections are derived in the analyses.
 
-- `two_mode_graph`: sub-element × work bipartite (all 472 sub-elements, all 134 works, no LCC or 2-core
+- `two_mode_graph`: sub-element × work bipartite (all 470 sub-elements, all 131 works, no LCC or 2-core
   selection). Sub-element vertices carry the sub-element attributes copied from the verified network
   (`type` FALSE, `node_type` `sub_element`, `headings`, `n_headings`, `n_codes`, `has_junk_name`,
   `has_manual_fix`, `has_ocr_correction`). Work vertices (`type` TRUE, `node_type` `work`) carry `n_codes`,
@@ -262,10 +262,10 @@ Derived in the analyses (`sub_work_matrix()` and `lcc_2core()` in `scripts/core-
 work matrix, the sub-element projection (ties = works both sub-elements cite), and the work projection (ties =
 sub-elements both works cite). The LCC and 2-core are applied there, not in the stored file.
 
-**`kk-definition-texts-kk-only.csv`**: full definition text for the five verified codes that Boroch does not
-quote anywhere in his Table 2 or appendix (C-5, D-5, D-7, D-III-4, E-17). The text is transcribed from K&K's own
-statements (Part III group c statement 5, group d statements 5 and 7, and group e statement 17; the Part II
-group D-III page footnote 14), with
+**`kk-definition-texts-kk-only.csv`**: full definition text for the one verified code that Boroch does not
+quote anywhere in his Table 2 or appendix (D-III-4, the Part II group D-III page footnote 14). The Part III statement
+texts (C-5, D-5, D-7, E-17) were removed on 2026-10-30 (PROVENANCE 16). The text is transcribed from K&K's own
+statement, with
 the printed citation, the printed page, and a per-row basis in `note`. Like the Boroch text files
 (`kkcc-definition-texts.csv`, `kkcc-appendix-only-texts.csv`), it contains verbatim quotations and is not for
 release.
@@ -331,7 +331,7 @@ reaching a factor's top 15.
   way; it is an addendum linked to a specialty code and not a network code (user decision 2026-10-25). Every row on printed pp. 73–74 was read against the page image;
   30 rows that the parser had marked `ok` were wrong (codes, years, or names) and are corrected
   in `kk-index-a-manual-fixes.csv` (see `docs/PROVENANCE.md`, 3.1).
-- Index B: 1318 edge rows. Flags: ok 978, ocr_corrected 207, manual_fix 125, code_not_in_index_a 8. The manual-fix rows include 32 page-image recoveries of former `j` and fragment tokens, each re-checked at higher resolution (`data/kk-index-b-zoom-check.csv`), the six resolutions of 2026-10-24 (PROVENANCE 3.4), and the 2026-10-24 late corrections: A-1 → A-17 and D-I-13 → D-I-15 (page image), and F-IV-3 and A-15 (user readings, not image-checked in this session; PROVENANCE 3.9). 8 edges (6 codes) carry codes that Index A does not list (D-5 and D-7 are Part III codes and are in the verified network); on the page image they print as listed. Two tokens remain unresolved (`kk-index-b-unresolved.csv`): `D-I` (society) and `F-j` (organized), both excluded as duplicates by decision.
+- Index B: 1314 edge rows. Flags: ok 978, ocr_corrected 207, manual_fix 127, code_not_in_index_a 2. The manual-fix rows include 32 page-image recoveries of former `j` and fragment tokens, each re-checked at higher resolution (`data/kk-index-b-zoom-check.csv`), the six resolutions of 2026-10-24 (PROVENANCE 3.4), and the 2026-10-24 late corrections: A-1 → A-17 and D-I-13 → D-I-15 (page image), and F-IV-3 and A-15 (user readings, not image-checked in this session; PROVENANCE 3.9). 2 edges (C-I-18a and D-II-16) carry codes that Index A does not list. The Part III statement codes D-5, D-7 and E-17 were removed from the edge list on 2026-10-30 (PROVENANCE 16); on the page image the remaining edges print as listed. Two tokens remain unresolved (`kk-index-b-unresolved.csv`): `D-I` (society) and `F-j` (organized), both excluded as duplicates by decision.
 - Crosswalk: 127 of 135 Boroch definitions match exactly one K&K code by rule (author,
   year or first-publication year, suffix, group, and subgroup). Eight are set by hand with
   a recorded basis (D3-1, D2-16, A16, A17, A20, C1-11, B5, D2-7), one (F4-6) is a documented
@@ -341,7 +341,7 @@ reaching a factor's top 15.
   page image (PDF pp. 77–81, quadrant crops at 300 dpi). Verdict: 50 OK, 0 errors;
   Clopper–Pearson 95% upper bound on the error rate is 7.1%. Single reader
   (`data/kk-index-b-ok-sample.csv`).
-- Machine block check: `check-index-b-blocks.R` puts 1295 of 1318 edges inside their assigned printed block; 23 are printed in another block. All 23 have page-image verdicts in `kk-index-b-block-check-review-current.csv` (2026-10-25); the 23rd (C-I-7 under "common or shared patterns", from the C-7 remap) was checked against the printed Index B entry, footnote 7 and Index A. All 23 are printed under their assigned heading according to one reader; the PDF text layer does not confirm them (OCR garbles the codes), and F-IV-3 under "means of adjustment" is not legible on the image (the user checked the reading on 2026-10-25). `kk-index-b-block-check-review.csv` holds the earlier 18-row set, keyed to a previous build. This is a machine cross-check plus one reader, not a double-keyed audit.
+- Machine block check: `check-index-b-blocks.R` puts 1289 of 1314 edges inside their assigned printed block; 25 are printed in another block. The page-image verdicts in `kk-index-b-block-check-review-current.csv` (2026-10-25) cover 23 of the 25, and the two without a verdict are not yet identified (PROVENANCE 16.5). Of the 23 with verdicts, the 23rd (C-I-7 under "common or shared patterns", from the C-7 remap) was checked against the printed Index B entry, footnote 7 and Index A. All 23 are printed under their assigned heading according to one reader; the PDF text layer does not confirm them (OCR garbles the codes), and F-IV-3 under "means of adjustment" is not legible on the image (the user checked the reading on 2026-10-25). `kk-index-b-block-check-review.csv` holds the earlier 18-row set, keyed to a previous build. This is a machine cross-check plus one reader, not a double-keyed audit.
 - Spot check: 20 random Index B edges were compared with their OCR lines after the
   normalization fixes. All 20 were correct on inspection. This is a small sample, not a
   full manual audit.
@@ -352,14 +352,13 @@ reaching a factor's top 15.
 ## Known limitations
 
 - **Definition text coverage.** Boroch's appendix supplies a full quoted text for 166 of the
-  171 verified definitions; the five without one carry K&K's own quotations instead
-  (`kk-definition-texts-kk-only.csv`): the Part III statement codes C-5, D-5, D-7 and E-17,
-  and the Part II D-III-4 page footnote. Seven K&K codes carry two
+  167 verified definitions; the one without one, D-III-4, carries K&K's own quotation instead
+  (`kk-definition-texts-kk-only.csv`, a Part II page footnote). Seven K&K codes carry two
   Boroch quotations each, and three Table 2 columns inherit a base code's text, so coverage
   is counted by code, not by quotation. Every definition text also attaches to a work by
-  author and year, with six explained exceptions (`scripts/check-definition-text-coverage.R`):
-  three codes hold no work because Index A omits their authors (C-I-18a Maquet, D-II-16
-  Aberle et al., E-17 Taylor), one because its entry has no year and the work key requires
+  author and year, with five explained exceptions (`scripts/check-definition-text-coverage.R`):
+  two codes hold no work because Index A omits their authors (C-I-18a Maquet, D-II-16
+  Aberle et al.), one because its entry has no year and the work key requires
   one (D-III-1 Tozzer), and two documented conflicts kept as printed (D-II-7 Young 1947/1944,
   F-I-20 Kluckhohn 1951a against F. R. Kluckhohn 1950). In the other direction, every work
   attaches to at least one definition text, except the same two documented conflicts.
