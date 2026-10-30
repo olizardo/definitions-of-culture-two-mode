@@ -1,153 +1,253 @@
-\begin{thebibliography}{26}
-\providecommand{\natexlab}[1]{#1}
-\providecommand{\url}[1]{\texttt{#1}}
-\expandafter\ifx\csname urlstyle\endcsname\relax
-  \providecommand{\doi}[1]{doi: #1}\else
-  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+\begin{thebibliography}{}
 
-\bibitem[Bidney(1942)]{bidney1942}
-D.~Bidney.
+\bibitem[Bain, 1942]{bain1942}
+Bain, R. (1942).
+\newblock A definition of culture.
+\newblock {\em Sociology and Social Research}, 27:87--94.
+
+\bibitem[Bidney, 1942]{bidney1942}
+Bidney, D. (1942).
 \newblock On the philosophy of culture in the social sciences.
-\newblock \emph{Journal of Philosophy}, 39:\penalty0 449--457, 1942.
+\newblock {\em Journal of Philosophy}, 39:449--457.
 
-\bibitem[Bidney(1946)]{bidney1946}
-D.~Bidney.
+\bibitem[Bidney, 1946]{bidney1946}
+Bidney, D. (1946).
 \newblock The concept of cultural crisis.
-\newblock \emph{American Anthropologist}, 48\penalty0 (4):\penalty0 534--552,
-  1946.
+\newblock {\em American Anthropologist}, 48(4):534--552.
 
-\bibitem[Bidney(1947)]{bidney1947}
-D.~Bidney.
+\bibitem[Bidney, 1947]{bidney1947}
+Bidney, D. (1947).
 \newblock Human nature and the cultural process.
-\newblock \emph{American Anthropologist}, 49\penalty0 (3):\penalty0 375--399,
-  1947.
+\newblock {\em American Anthropologist}, 49(3):375--399.
 
-\bibitem[Blumenthal(1937)]{blumenthal1937}
-A.~Blumenthal.
-\newblock \emph{The Best Definition of Culture}.
-\newblock Marietta, Ohio, 1937.
+\bibitem[Blumenthal, 1937]{blumenthal1937}
+Blumenthal, A. (1937).
+\newblock {\em The Best Definition of Culture}.
+\newblock Marietta, Ohio.
 
-\bibitem[Boroch(2016)]{boroch2016}
-R.~Boroch.
+\bibitem[Boroch, 2016]{boroch2016}
+Boroch, R. (2016).
 \newblock A formal concept of culture in the classification of alfred l.
   kroeber and clyde kluckhohn.
-\newblock \emph{Analecta}, 25\penalty0 (2), 2016.
+\newblock {\em Analecta}, 25(2).
 
-\bibitem[Breiger(1974)]{breiger1974}
-R.~L. Breiger.
+\bibitem[Breiger, 1974]{breiger1974}
+Breiger, R.~L. (1974).
 \newblock The duality of persons and groups.
-\newblock \emph{Social Forces}, 53\penalty0 (2):\penalty0 181--190, 1974.
+\newblock {\em Social Forces}, 53(2):181--190.
 
-\bibitem[Burkitt(1929)]{burkitt1929}
-M.~C. Burkitt.
+\bibitem[Burkitt, 1929]{burkitt1929}
+Burkitt, M.~C. (1929).
 \newblock Archaeology.
-\newblock In \emph{Encyclopaedia Britannica}. New York, 14th edition, 1929.
+\newblock In {\em Encyclopaedia Britannica}. New York, 14th edition.
 
-\bibitem[Dixon(1928)]{dixon1928}
-R.~B. Dixon.
-\newblock \emph{The Building of Cultures}.
-\newblock New York, 1928.
+\bibitem[Carr, 1945]{carr1945}
+Carr, L.~J. (1945).
+\newblock Situational psychology.
+\newblock {\em American Journal of Sociology}, 51:136--141.
 
-\bibitem[Everett and Borgatti(2013)]{everett2013dual-projection-c89}
-M.~G. Everett and S.~P. Borgatti.
+\bibitem[Dixon, 1928]{dixon1928}
+Dixon, R.~B. (1928).
+\newblock {\em The Building of Cultures}.
+\newblock New York.
+
+\bibitem[Everett and Borgatti, 2013]{everett2013dual-projection-c89}
+Everett, M.~G. and Borgatti, S.~P. (2013).
 \newblock The dual-projection approach for two-mode networks.
-\newblock \emph{Social networks}, 35\penalty0 (2):\penalty0 204--210, 2013.
-\newblock ISSN 0378-8733.
+\newblock {\em Social networks}, 35(2):204--210.
 
-\bibitem[Feibleman(1946)]{feibleman1946}
-J.~K. Feibleman.
-\newblock \emph{The Theory of Human Culture}.
-\newblock New York, 1946.
+\bibitem[Feibleman, 1946]{feibleman1946}
+Feibleman, J.~K. (1946).
+\newblock {\em The Theory of Human Culture}.
+\newblock New York.
 
-\bibitem[Gillin and Gillin(1942)]{gillin1942}
-J.~L. Gillin and J.~P. Gillin.
-\newblock \emph{An Introduction to Sociology}.
-\newblock New York, 1942.
+\bibitem[Firth, 1939]{firth1939}
+Firth, R. (1939).
+\newblock {\em Primitive Polynesian Economy}.
+\newblock London.
 
-\bibitem[Herskovits(1948)]{herskovits1948}
-M.~J. Herskovits.
-\newblock \emph{Man and his Works}.
-\newblock New York, 1948.
+\bibitem[Folsom, 1931]{folsom1931}
+Folsom, J. (1931).
+\newblock {\em Social Psychology}.
+\newblock New York.
 
-\bibitem[Kluckhohn and Kelly(1945)]{kluckhohnkelly1945a}
-C.~Kluckhohn and W.~H. Kelly.
+\bibitem[Frank, 1948]{frank1948}
+Frank, L.~K. (1948).
+\newblock {\em Society as the Patient}.
+\newblock New Brunswick.
+
+\bibitem[Gillin and Gillin, 1942]{gillin1942}
+Gillin, J.~L. and Gillin, J.~P. (1942).
+\newblock {\em An Introduction to Sociology}.
+\newblock New York.
+
+\bibitem[Gillin, 1948]{gillin1948}
+Gillin, J.~P. (1948).
+\newblock {\em The Ways of Men}.
+\newblock New York.
+
+\bibitem[Groves and Moore, 1940]{grovesmoore1940}
+Groves, E.~R. and Moore, H.~E. (1940).
+\newblock {\em Introduction to Sociology}.
+\newblock New York.
+
+\bibitem[Herskovits, 1948]{herskovits1948}
+Herskovits, M.~J. (1948).
+\newblock {\em Man and his Works}.
+\newblock New York.
+
+\bibitem[Hiller, 1933]{hiller1933}
+Hiller, E.~T. (1933).
+\newblock {\em Principles of Sociology}.
+\newblock New York.
+
+\bibitem[Kluckhohn, 1942]{kluckhohn1942}
+Kluckhohn, C. (1942).
+\newblock Report to the sub-sub-committee on definitions of culture.
+\newblock Committee on Conceptual Integration. Mimeographed.
+
+\bibitem[Kluckhohn and Kelly, 1945]{kluckhohnkelly1945a}
+Kluckhohn, C. and Kelly, W.~H. (1945).
 \newblock The concept of culture.
-\newblock In R.~Linton, editor, \emph{The Science of Man in the World Crisis},
-  pages 78--105. New York, 1945.
+\newblock In Linton, R., editor, {\em The Science of Man in the World Crisis},
+  pages 78--105. New York.
 
-\bibitem[Kroeber(1948)]{kroeber1948a}
-A.~L. Kroeber.
-\newblock \emph{Anthropology}.
-\newblock New York, 1948.
+\bibitem[Kroeber, 1948]{kroeber1948a}
+Kroeber, A.~L. (1948).
+\newblock {\em Anthropology}.
+\newblock New York.
 
-\bibitem[Kroeber and Kluckhohn(1952)]{kroeberkluckhohn1952}
-A.~L. Kroeber and C.~Kluckhohn.
+\bibitem[Kroeber and Kluckhohn, 1952]{kroeberkluckhohn1952}
+Kroeber, A.~L. and Kluckhohn, C. (1952).
 \newblock Culture: A critical review of concepts and definitions.
-\newblock \emph{Papers of the Peabody Museum of Archaeology \& Ethnology,
-  Harvard University}, 47\penalty0 (1):\penalty0 223, 1952.
+\newblock {\em Papers of the Peabody Museum of Archaeology \& Ethnology,
+  Harvard University}, 47(1):223.
 
-\bibitem[Kruskal(1956)]{kruskal1956}
-J.~B. Kruskal.
+\bibitem[Kruskal, 1956]{kruskal1956}
+Kruskal, J.~B. (1956).
 \newblock On the shortest spanning subtree of a graph and the traveling
   salesman problem.
-\newblock \emph{Proceedings of the American Mathematical Society}, 7\penalty0
-  (1):\penalty0 48--50, 1956.
+\newblock {\em Proceedings of the American Mathematical Society}, 7(1):48--50.
 
-\bibitem[Lee and Seung(2001)]{lee2001algorithms}
-D.~D. Lee and H.~S. Seung.
+\bibitem[LaPiere, 1946]{lapiere1946}
+LaPiere, R.~T. (1946).
+\newblock {\em Sociology}.
+\newblock New York.
+
+\bibitem[Lee and Seung, 2001]{lee2001algorithms}
+Lee, D.~D. and Seung, H.~S. (2001).
 \newblock Algorithms for non-negative matrix factorization.
-\newblock \emph{Advances in Neural Information Processing Systems},
-  13:\penalty0 556--562, 2001.
+\newblock {\em Advances in Neural Information Processing Systems}, 13:556--562.
 
-\bibitem[Linton(1936)]{linton1936}
-R.~Linton.
-\newblock \emph{The Study of Man}.
-\newblock New York, 1936.
+\bibitem[Linton, 1936]{linton1936}
+Linton, R. (1936).
+\newblock {\em The Study of Man}.
+\newblock New York.
 
-\bibitem[Linton(1945{\natexlab{a}})]{linton1945a}
-R.~Linton.
-\newblock \emph{The Cultural Background of Personality}.
-\newblock New York, 1945{\natexlab{a}}.
+\bibitem[Linton, 1945a]{linton1945a}
+Linton, R. (1945a).
+\newblock {\em The Cultural Background of Personality}.
+\newblock New York.
 
-\bibitem[Linton(1945{\natexlab{b}})]{linton1945b}
-R.~Linton.
+\bibitem[Linton, 1945b]{linton1945b}
+Linton, R. (1945b).
 \newblock Present world conditions in cultural perspective.
-\newblock In R.~Linton, editor, \emph{The Science of Man in the World Crisis},
-  pages 201--221. New York, 1945{\natexlab{b}}.
+\newblock In Linton, R., editor, {\em The Science of Man in the World Crisis},
+  pages 201--221. New York.
 
-\bibitem[Lowie(1937)]{lowie1937}
-R.~H. Lowie.
-\newblock \emph{The History of Ethnological Theory}.
-\newblock New York, 1937.
+\bibitem[Lowie, 1937]{lowie1937}
+Lowie, R.~H. (1937).
+\newblock {\em The History of Ethnological Theory}.
+\newblock New York.
 
-\bibitem[Murdock(1949)]{murdock1949a}
-G.~P. Murdock.
+\bibitem[Lundberg, 1939]{lundberg1939}
+Lundberg, G. (1939).
+\newblock {\em Foundations of Sociology}.
+\newblock New York.
+
+\bibitem[Lynd, 1940]{lynd1940}
+Lynd, R.~S. (1940).
+\newblock {\em Knowledge for What?}
+\newblock Princeton.
+
+\bibitem[Murdock, 1949]{murdock1949a}
+Murdock, G.~P. (1949).
 \newblock The science of human learning, society, culture, and personality.
-\newblock \emph{Scientific Monthly}, 69:\penalty0 377--382, 1949.
+\newblock {\em Scientific Monthly}, 69:377--382.
 
-\bibitem[Murray(1943)]{murray1943}
-R.~W. Murray.
-\newblock \emph{Man's Unknown Ancestors}.
-\newblock Milwaukee, 1943.
+\bibitem[Murray, 1943]{murray1943}
+Murray, R.~W. (1943).
+\newblock {\em Man's Unknown Ancestors}.
+\newblock Milwaukee.
 
-\bibitem[Neal(2014)]{neal2014backbone-b29}
-Z.~Neal.
+\bibitem[Neal, 2014]{neal2014backbone-b29}
+Neal, Z. (2014).
 \newblock The backbone of bipartite projections: Inferring relationships from
   co-authorship, co-sponsorship, co-attendance and other co-behaviors.
-\newblock \emph{Social networks}, 39:\penalty0 84--97, 10 2014.
-\newblock ISSN 0378-8733.
-\newblock \doi{10.1016/j.socnet.2014.06.001}.
-\newblock URL \url{http://dx.doi.org/10.1016/j.socnet.2014.06.001}.
+\newblock {\em Social networks}, 39:84--97.
 
-\bibitem[Newman(2006)]{newman2006}
-M.~E.~J. Newman.
+\bibitem[Newman, 2006]{newman2006}
+Newman, M. E.~J. (2006).
 \newblock Finding community structure in networks using the eigenvectors of
   matrices.
-\newblock \emph{Physical Review E}, 74\penalty0 (3):\penalty0 036104, 2006.
+\newblock {\em Physical Review E}, 74(3):036104.
 
-\bibitem[Tylor(1871)]{tylor1871}
-E.~B. Tylor.
-\newblock \emph{Primitive Culture}.
-\newblock Boston, 1871.
+\bibitem[Ogburn and Nimkoff, 1940]{ogburnnimkoff1940}
+Ogburn, W.~F. and Nimkoff, M.~F. (1940).
+\newblock {\em Sociology}.
+\newblock Houghton Mifflin, Boston.
+
+\bibitem[Panunzio, 1939]{panunzio1939}
+Panunzio, C. (1939).
+\newblock {\em Major Social Institutions: An Introduction}.
+\newblock New York.
+
+\bibitem[Reuter, 1939]{reuter1939}
+Reuter, E.~B. (1939).
+\newblock Race and culture.
+\newblock In Park, R.~E., editor, {\em An Outline of the Principles of
+  Sociology}. New York.
+
+\bibitem[Taylor, 1948]{taylor1948}
+Taylor, W.~W. (1948).
+\newblock {\em A Study of Archaeology}.
+\newblock Number~69 in Memoir. American Anthropological Association.
+
+\bibitem[Thomas, 1937]{thomas1937}
+Thomas, W.~I. (1937).
+\newblock {\em Primitive Behavior}.
+\newblock New York.
+
+\bibitem[Tylor, 1871]{tylor1871}
+Tylor, E.~B. (1871).
+\newblock {\em Primitive Culture}.
+\newblock Boston.
+
+\bibitem[White, 1949]{white1949a}
+White, L.~A. (1949).
+\newblock Ethnological theory.
+\newblock In Sellars, R.~W., McFill, V.~J., and Farber, M., editors, {\em
+  Philosophy for the Future}, pages 357--384. New York.
+
+\bibitem[Wilson and Kolb, 1949]{wilsonkolb1949}
+Wilson, L. and Kolb, W.~L. (1949).
+\newblock {\em Sociological Analysis}.
+\newblock New York.
+
+\bibitem[Winston, 1933]{winston1933}
+Winston, S. (1933).
+\newblock {\em Culture and Human Behavior}.
+\newblock New York.
+
+\bibitem[Wissler, 1920]{wissler1920}
+Wissler, C. (1920).
+\newblock Opportunities for coordination in anthropological and psychological
+  research.
+\newblock {\em American Anthropologist, New Series}, 22:1--12.
+
+\bibitem[Young, 1934]{young1934}
+Young, K. (1934).
+\newblock {\em Introductory Sociology}.
+\newblock New York.
 
 \end{thebibliography}

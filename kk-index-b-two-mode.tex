@@ -19,12 +19,12 @@
 \maketitle
 
 \begin{abstract}
-Kroeber and Kluckhohn's classic 1952 monograph \emph{Culture: A Critical Review of Concepts and Definitions} \citep{kroeberkluckhohn1952} brought together over a hundred scholarly definitions of culture and indexed the key concepts they discuss. We build one network from that index to explore how concepts and definitions are connected. In the \emph{definitions network}, concepts like ``society'' and ``beliefs'' are linked to 171 definition codes, grouped into seven categories and credited to the author or authors that K\&K index under each. Each code is one quotation, identified by its author, year, page numbers and opening words. We present basic statistics about the network, visualize the data using correspondence analysis and spanning trees, and highlight the key concepts and definitions that anchor it. Data-driven types found in the concept profiles and in the wording of the definitions do not recover K\&K's categories at better than chance.
+Kroeber and Kluckhohn's classic 1952 monograph \emph{Culture: A Critical Review of Concepts and Definitions} \citep{kroeberkluckhohn1952} brought together over a hundred scholarly definitions of culture and indexed the key concepts they discuss. We build one network from that index to explore how concepts and definitions are connected. In the \emph{definitions network}, concepts like \textsc{society} and \textsc{beliefs} are linked to 171 definition codes, grouped into seven categories and credited to the author or authors that K\&K index under each. Each code is one quotation, identified by its author, year, page numbers and opening words. We present basic statistics about the network, visualize the data using correspondence analysis and spanning trees, and highlight the key concepts and definitions that anchor it. Data-driven types found in the concept profiles and in the wording of the definitions do not recover K\&K's categories at better than chance.
 \end{abstract}
 
 \section{Data and networks}
 
-We build one network from the Index B of Kroeber and Kluckhohn \citeyearpar{kroeberkluckhohn1952}, hereafter K\&K. The \emph{definitions network} links 470 concepts---concrete ideas like ``society,'' ``customs,'' and ``beliefs''---to 171 definitions of culture, which K\&K number as codes. Each code is credited to the author or authors K\&K index under it, and falls into one of seven categories, which K\&K label with the capital letters A through G: A Descriptive, B Historical, C Normative, D Psychological, E Structural, F Genetic, and G Incomplete.\footnote{K\&K further divide three of the seven categories into numbered subcategories: Normative (C) into C-I and C-II, Psychological (D) into D-I through D-IV, and Genetic (F) into F-I through F-IV. The other four categories have no subcategories. Codes that sit in a subcategory carry its numeral, as in C-I-18a or F-II-4 below.} Of the 171 codes, 169 appear in K\&K's own author index. The other two, C-I-18a and D-II-16, are attributions cited in the main text of the book that the index does not list. \citet{boroch2016} quotes two parts of four K\&K codes separately, lettered (a) and (b): A-3, E-5, F-II-4 and F-II-7. We keep each of these as two codes, A-3(a) and A-3(b) and so on, which is why the eight variant codes replace four. K\&K print one index entry per code, so each variant starts with its parent's concept links. For 29 of the 41 concept links copied in this way, we kept the link only on the variant whose quotation contains the concept's name; the other 12 remain on both variants. That assignment is our reading of the quotation text, not taken from anything directly printed in the K\&K index. Concepts have consistent names; where a concept appears under different headings in K\&K's source text, we treat it as a single concept. Each code is one quotation, identified by its author, year, page numbers and opening words. Section~\ref{app:construction} of the appendix describes how each code was matched to its quotation and how the a and b variants were built.
+We build one network from the Index B of Kroeber and Kluckhohn \citeyearpar{kroeberkluckhohn1952}, hereafter K\&K. The \emph{definitions network} links 470 concepts---concrete ideas like \textsc{society}, \textsc{customs}, and \textsc{beliefs}---to 171 definitions of culture, which K\&K number as codes. Each code is credited to the author or authors K\&K index under it, and falls into one of seven categories, which K\&K label with the capital letters A through G: A Descriptive, B Historical, C Normative, D Psychological, E Structural, F Genetic, and G Incomplete.\footnote{K\&K further divide three of the seven categories into numbered subcategories: Normative (C) into C-I and C-II, Psychological (D) into D-I through D-IV, and Genetic (F) into F-I through F-IV. The other four categories have no subcategories. Codes that sit in a subcategory carry its numeral, as in C-I-18a or F-II-4 below.} Of the 171 codes, 169 appear in K\&K's own author index. The other two, C-I-18a and D-II-16, are attributions cited in the main text of the book that the index does not list. \citet{boroch2016} quotes two parts of four K\&K codes separately, lettered (a) and (b): A-3, E-5, F-II-4 and F-II-7. We keep each of these as two codes, A-3(a) and A-3(b) and so on, which is why the eight variant codes replace four. K\&K print one index entry per code, so each variant starts with its parent's concept links. For 29 of the 41 concept links copied in this way, we kept the link only on the variant whose quotation contains the concept's name; the other 12 remain on both variants. That assignment is our reading of the quotation text, not taken from anything directly printed in the K\&K index. Concepts have consistent names; where a concept appears under different headings in K\&K's source text, we treat it as a single concept. Each code is one quotation, identified by its author, year, page numbers and opening words. Section~\ref{app:construction} of the appendix describes how each code was matched to its quotation and how the a and b variants were built.
 
 The 171 $\times$ 470 definitions network naturally breaks into 10 separate components, with the largest containing 626 nodes. Our analysis focuses on this largest component, which contains virtually all the meaningful connections. We use maximum spanning trees across multiple projections to identify the strongest connections in different views of the network. 
 
@@ -41,7 +41,7 @@ Table~\ref{tab:summary} gives summary statistics for the definitions network. Th
  & Definitions network \\
 \midrule
 Concept nodes & 470 \\
-Definitions & 171 codes (5 isolated) \\
+Definition nodes & 171 codes (5 isolated) \\
 Edges & 1201 \\
 Density & 0.015 \\
 Mean degree, concepts & 2.56 \\
@@ -57,10 +57,6 @@ Degree correlation $r$ & $-0.076$ \\
 \end{tabular}
 \end{table}
 
-The degree correlation is $-0.076$: concepts with many connections tend to link to definitions with few, and vice versa, though the association is weak. The nearest-neighbor rows show the other side of this pattern. A concept's neighboring definitions contain 10.2 concepts on average, and a definition's neighboring concepts appear in 9.2 definitions on average, so concepts attach preferentially to heavily used definitions and definitions attach to widely shared concepts.
-
-Figure~\ref{fig:degree} shows the degree distributions for the concept nodes (left) and the definition nodes (right). Most concepts are lightly connected: 79\% appear in two or fewer definitions. Definitions are more heavily connected, with the average definition covering 7 concepts (median 6) and a few covering many more, up to 25. This asymmetry means that a few concepts are discussed widely, while most concepts appear in just one or two definitions.
-
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\textwidth]{figures/kk-index-b/degree-definitions.png}
@@ -69,17 +65,55 @@ Figure~\ref{fig:degree} shows the degree distributions for the concept nodes (le
 \end{figure}
 
 
+\begin{table}[ht]
+\centering
+\caption{Highest-degree nodes of the definitions network. Concept degree counts the definitions that contain the concept; definition degree counts the concepts the definition contains. The last two columns rank definitions by degree per 10 words of quotation, using the English translation where one exists. Per-word rankings favor short quotations: across the 171 codes the per-word value correlates $-0.33$ with word count. Degrees come from the full verified network. Ties at the cutoff are included.}
+\label{tab:top-degree}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrlrlr}
+\toprule
+\multicolumn{2}{c}{Concepts, by degree} & \multicolumn{2}{c}{Definitions, by degree} & \multicolumn{2}{c}{Definitions, by degree per 10 words} \\
+\cmidrule(lr){1-2}\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+Concept & Degree & Definition (code) & Degree & Definition (code) & Per 10 words \\
+\midrule
+\textsc{social} & 36 & F-I-8 \citep{reuter1939} & 25 & F-I-15 \citep{carr1945} & 5.56 \\
+\textsc{society} & 31 & C-I-6 \citep{gillin1942} & 19 & A-3(a) \citep{dixon1928} & 5.00 \\
+\textsc{group} & 27 & D-I-6 \citep{lundberg1939} & 19 & D-III-2 \citep{young1934} & 4.29 \\
+\textsc{behavior} & 24 & F-II-8 \citep{taylor1948} & 19 & D-II-4 \citep{kluckhohn1942} & 4.29 \\
+\textsc{ideas} & 23 & A-8 \citep{hiller1933} & 17 & F-III-1 \citep{bain1942} & 4.29 \\
+\textsc{total} & 22 & C-I-17 \citep{frank1948} & 17 & D-II-12 \citep{wilsonkolb1949} & 4.23 \\
+\textsc{sum} & 20 & D-I-7 \citep{panunzio1939} & 17 & E-7 \citep{gillin1948} & 4.21 \\
+\textsc{beliefs} & 19 & F-I-3 \citep{folsom1931} & 16 & A-3(b) \citep{dixon1928} & 4.17 \\
+\textsc{individuals} & 19 & A-15 \citep{kluckhohnkelly1945a} & 15 & B-13 \citep{grovesmoore1940} & 4.17 \\
+\textsc{customs} & 16 & E-3 \citep{ogburnnimkoff1940} & 15 & A-1 \citep{tylor1871} & 4.14 \\
+\textsc{habits} & 16 & F-I-19 \citep{murdock1949a} & 15 & A-2 \citep{wissler1920} & 4.12 \\
+\textsc{learning} & 16 & F-III-4 \citep{white1949a} & 15 & C-II-2 \citep{thomas1937} & 4.09 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The degree correlation is $-0.076$: concepts with many connections tend to link to definitions with few, and vice versa, though the association is weak. The nearest-neighbor rows show the other side of this pattern. A concept's neighboring definitions contain 10.2 concepts on average, and a definition's neighboring concepts appear in 9.2 definitions on average, so concepts attach preferentially to heavily used definitions and definitions attach to widely shared concepts.
+
+Figure~\ref{fig:degree} shows the degree distributions for the concept nodes (left) and the definition nodes (right). Most concepts are lightly connected: 79\% appear in two or fewer definitions, while a small minority of concepts, such as \textsc{social}, \textsc{society}, \textsc{group}, \textsc{behavior} or \textsc{ideas}, appear in many definitions (see Table~\ref{tab:top-degree}). This leads to the classic ``long tailed'' degree distribution for definitions observed in the left-hand side of Figure~\ref{fig:degree}.
+
+Definitions are more evenly connected, with the average definition covering 7 concepts (median 7) and a few covering many more, up to 25.\footnote{Across the 171 codes, the number of words in each quotation correlates with the number of concepts the code links to: Pearson $r = 0.66$, Spearman $\rho = 0.64$. Excluding the five codes with no concept links gives $r = 0.66$ and $\rho = 0.63$ on 166 codes. Word counts use the English translation for the four non-English quotations and exclude Boroch's ellipsis markers. The correlation is descriptive; it does not show that longer quotations produce more links.} The degree distribution differs from that of the definitions accordingly, coming closer to a bell-shape with a well-behaved (representative) mean. Thus, few definitions are ``lean'' (relying on a few concepts) and even fewer are conceptually profligate, with most definitions relying on a moderate number of concepts. This means that while most definitions help themselves to a small set of ubiquitous concepts, they also draw from a wider set of concepts not necessarily shared across definitions. 
+
+
 \section{Maximum Spanning Trees}
 
-By construction, the two-mode definitions network has no ties between two concepts or between two definitions, so we analyze the implied concept-to-concept ties and the defintions-to-definitions connections via multiple one-mode projections \citep{everett2013dual-projection-c89}. Following Breiger \citeyearpar{breiger1974}, two concepts are tied if they share at least one definition, with weight equal to the number they share. Likewise, two definitions are tied through the concepts they share. In matrix form, the projections are:
-\[
+By construction, the two-mode definitions network has no ties between two concepts or between two definitions, so we analyze the implied concept-to-concept ties and the definitions-to-definitions connections via multiple one-mode projections \citep{everett2013dual-projection-c89}. Following Breiger \citeyearpar{breiger1974}, two concepts are tied if they share at least one definition, with weight equal to the number they share. Likewise, two definitions are tied through the concepts they share. In matrix form, the projections are:
+
+\begin{equation}
 W_{\mathrm{concept}} = A A^{\top}, \qquad W_{\mathrm{def}} = A^{\top} A,
-\]
-where $(W_{\mathrm{concept}})_{ij} = \sum_k a_{ik} a_{jk}$ counts the definitions that include both concepts $i$ and $j$. Each projection is a weighted graph whose edges are the off-diagonal pairs with positive weight. We build projections from the 2-core of the network's largest component.
+\label{eq:projections}
+\end{equation}
 
-Projected graphs are typically dense and fully connected making it hard to detect their underlyinng structure. To do so, we extract the ``backbone'' \citep{neal2014backbone-b29} of each projection by extracting the maximum spanning tree of each projection. The maximum spanning tree of each projection is found by computing the minimum spanning tree on negated weights, $-w$. \citet{kruskal1956} sorts edges from largest weight to smallest and adds each unless it would close a cycle, producing a tree that maximizes $\sum_{e \in T} w_e$. Because the 2-core is connected, each tree has exactly $|V| - 1$ edges. In the visualizations, node size shows betweenness within the tree and node color shows the community structure detected using Newman's leading-eigenvector method \citep{newman2006} applied to the tree.
+Where $(W_{\mathrm{concept}})_{ij} = \sum_k a_{ik} a_{jk}$ counts the definitions that include both concepts $i$ and $j$. Each projection is a weighted graph whose edges are the off-diagonal pairs with positive weight. We build projections from the 2-core of the network's largest component.
 
-The definitions network has two main projections. The concept-level tree (Figure~\ref{fig:mst-def-sub}) shows how 160 concepts cluster. The definition-level tree (Figure~\ref{fig:mst-def-code}) shows how 149 definitions cluster. Table~\ref{tab:mst-def-betweenness} lists the top 10 concepts and definitions by betweenness in their maximum spanning trees.
+Projected graphs are typically dense and fully connected making it hard to detect their underlyinng structure. To do so, we extract the ``backbone'' \citep{neal2014backbone-b29} of each projection by extracting the maximum spanning tree of each projection. The maximum spanning tree of each projection is found by computing the minimum spanning tree on negated weights, $-w$. Kruskal's \citeyearpar{kruskal1956} method sorts edges from largest weight to smallest and adds each unless it would close a cycle, producing a tree that maximizes $\sum_{e \in T} w_e$. Because the 2-core is connected, each tree has exactly $|V| - 1$ edges. In the visualizations, node size shows betweenness within the tree and node color shows the community structure detected using Newman's leading-eigenvector method \citep{newman2006} applied to the tree.
+
+The concept-level tree (Figure~\ref{fig:mst-def-sub}) shows how 160 concepts cluster in the concept projection and the definition-level tree (Figure~\ref{fig:mst-def-code}) shows how 149 definitions cluster in the definitions projection. Table~\ref{tab:mst-def-betweenness} lists the top 10 concepts and definitions by betweenness in their maximum spanning trees.
 
 \begin{figure}[ht]
 \centering
@@ -91,20 +125,17 @@ The definitions network has two main projections. The concept-level tree (Figure
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\textwidth]{figures/kk-index-b/definitions/mst-code-author-year-tree.png}
-\caption{Maximum spanning tree of the definitions network, code (definition) nodes labeled by the author and year of their quotation. Shape is the K\&K definition group (A--G); color is the leading-eigenvector community on the tree; size is betweenness in the tree.}
+\caption{Maximum spanning tree of the definitions network, code (definition) nodes labeled by the author and year of their quotation. Shape is the K\&K definition group (A--G, Descriptive to Incomplete); color is the leading-eigenvector community on the tree; size is betweenness in the tree.}
 \label{fig:mst-def-code}
 \end{figure}
 
-In the concept tree (Figure~\ref{fig:mst-def-sub}), the six largest nodes---group, customs, social, behavior, society, and beliefs---are the top six of Table~\ref{tab:mst-def-betweenness}. Group sits at the center of a pink region of communication and organization vocabulary (communication, organization, folkways, systems, designs for living). Social heads a green region of social-organizational vocabulary (social heritage, institutions, social needs, patterns, goods), and customs heads an olive region of tradition and adjustment (social group, accumulated treasury, adjust, association between persons). Behavior and society head the blue and magenta regions on the left, which hold the historical and learned-behavior vocabulary (historically, standards, learned behavior, socially transmitted). Beliefs heads the teal region of norms, knowledge and artifacts on the right, with norms, practical arts, act and civilization. A peripheral branch below beliefs runs through activities and learning to products and adjustments. This chain collects the acquisition and transmission vocabulary of the Genetic definitions and hangs off the core through a single path, so these ideas connect to the rest of the network only transitively. At the top left, ideas, habits, values and generations form a second branch that joins society through habits.
+In the concept tree (Figure~\ref{fig:mst-def-sub}), the six largest nodes---\textsc{group}, \textsc{customs}, \textsc{social}, \textsc{behavior}, \textsc{society}, and \textsc{beliefs}---are the top six of Table~\ref{tab:mst-def-betweenness}. \textsc{group} sits at the center of a pink region of \textsc{communication} and \textsc{organization} vocabulary (\textsc{communication}, \textsc{organization}, \textsc{folkways}, \textsc{systems}, \textsc{designs for living}). \textsc{social} heads a green region of social-organizational vocabulary (\textsc{social heritage}, \textsc{institutions}, \textsc{social needs}, \textsc{patterns}, \textsc{goods}), and \textsc{customs} heads an olive region of tradition and adjustment (\textsc{social group}, \textsc{accumulated treasury}, \textsc{adjust}, \textsc{association between persons}). \textsc{behavior} and \textsc{society} head the blue and magenta regions on the left, which hold the historical and learned-behavior vocabulary (\textsc{historically}, \textsc{standards}, \textsc{learned behavior}, \textsc{socially transmitted}). \textsc{beliefs} heads the teal region of \textsc{norms}, \textsc{knowledge} and \textsc{artifacts} on the right, with \textsc{norms}, \textsc{practical arts}, \textsc{act} and \textsc{civilization}. A peripheral branch below \textsc{beliefs} runs through \textsc{activities} and \textsc{learning} to \textsc{products} and \textsc{adjustments}. This chain collects the acquisition and \textsc{transmission} vocabulary of K\&K's ``Genetic'' definitions and hangs off the core through a single path, so these \textsc{ideas} connect to the rest of the network only transitively. At the top left, \textsc{ideas}, \textsc{habits}, \textsc{values} and \textsc{generations} form a second branch that joins \textsc{society} through \textsc{habits}.
 
-The definition tree (Figure~\ref{fig:mst-def-code}) puts its three largest nodes at the center of the tree---the Gillin and Gillin 1942 quotation (C-I-6), the Murdock 1949a quotation (F-I-19), and the Bidney 1947 quotation (A-16)---with Gillin and Gillin the largest of all. Gillin and Gillin heads the largest community (24 definitions, drawn from all seven groups), and Bidney 1947 sits in the same community. Murdock 1949a and the Kroeber 1948a quotation A-17 share a second community at the left of the center. This is consistent with the table, where five of the top ten definitions carry a C or F code and the others are Descriptive, Historical or Psychological. Degree and betweenness dissociate in this ranking: C-I-6 has both the highest betweenness and the highest tree degree (17), acting as the main hub of its community, while F-I-19 has the second-highest betweenness with only eight ties, sitting on the paths that join its cluster to the rest of the tree. One author supplies a striking share of the bridges, as Bidney holds three of the ten most central definitions (A-16, C-II-4, and C-II-3); Kroeber 1948a is the only other work with two codes in the top ten (A-17 and B-18), and Linton holds two more (the 1945b chapter C-I-8 and the 1936 book A-10). Away from the center, the Descriptive definitions---the two Dixon 1928 quotations (A-3(a) and A-3(b)), Burkitt 1929 (A-5), Lowie 1937 (A-10a), and Murray 1943 (A-12)---form a separate olive branch in the upper right, and the Descriptive definitions Tylor 1871 (A-1) and the Kluckhohn and Kelly 1945a chapter (A-14) run along the right side, showing that the earliest and simplest definitions connect to the core through fewer, longer paths.
+Two nodes at the edges of this picture need separate mention. \textsc{a people}---an alternative reference to a group or collective---is the link between the olive \textsc{customs} region and a branch on the right that includes \textsc{way of life} and \textsc{period of time}. Removing it disconnects that branch from \textsc{customs}. Its strongest ties are to \textsc{way of life} (six shared definitions) and \textsc{customs} (five), and its fifteen definitions come from all seven groups, so it is a broadly shared concept rather than one tied to a single group. This speaks to the penchant to define culture as the customs or way of life common to ``a people.'' \textsc{complex whole}, the classic locution due to the ``original'' definition by \citet{tylor1871}, heads an orange cluster on the far left. Its tree neighbors are \textsc{concepts}, \textsc{instruments}, \textsc{man-made}, \textsc{needs}, \textsc{physical biological and human nature} and \textsc{skills}, together with \textsc{acquired}, which it shares with three definitions. The cluster reaches \textsc{society} only through \textsc{acquired}, and its six definitions come from Groups A (Descriptive), B (Historical) and D (Psychological).
 
-The works themselves barely cluster. The 149 codes of the tree carry 120 distinct author--year labels---a repeated label is a second quotation from the same work---and the 19 labels that appear two or more times almost never stay together: 15 of them spread over two or more communities. Kluckhohn and Kelly's 1945a chapter, the most quoted work in the corpus with seven of its eight codes in the tree, reaches four communities scattered across the tree, and Herskovits 1948 likewise spans four. The three a/b quotation pairs do sit together, one pair per community (Dixon 1928, Blumenthal 1937, Feibleman 1946), as those variants share most of their concept links; Linton 1945a is the partial exception, with its two E-5 variants together and its third code (C-I-9) in another community. The regions of the tree organize concept vocabulary, not the works the definitions were drawn from.
-% The works named in this section enter the bibliography without inline citations,
-% since the author-year mentions above already carry the citation form.
-\nocite{gillin1942, murdock1949a, bidney1947, bidney1946, bidney1942, kroeber1948a,
-  linton1945b, linton1936, kluckhohnkelly1945a, herskovits1948, dixon1928,
-  blumenthal1937, feibleman1946, linton1945a, tylor1871, burkitt1929, lowie1937, murray1943}
+The definition tree (Figure~\ref{fig:mst-def-code}) puts its three largest nodes at the center of the tree---the \citet{gillin1942} quotation (C-I-6), the \citet{murdock1949a} quotation (F-I-19), and the \citet{bidney1947} quotation (A-16)---with Gillin and Gillin the largest of all. \citet{gillin1942} heads the largest community (24 definitions, drawn from all seven groups), and \citet{bidney1947} sits in the same community. \citet{murdock1949a} and the \citet{kroeber1948a} quotation A-17 share a second community at the left of the center. This is consistent with the table, where five of the top ten definitions carry a C (Normative) or F (Genetic) code and the others are Descriptive, Historical or Psychological. Degree and betweenness dissociate in this ranking: C-I-6 has both the highest betweenness and the highest tree degree (17), acting as the main hub of its community, while F-I-19 has the second-highest betweenness with only eight ties, sitting on the paths that join its cluster to the rest of the tree. One author supplies a striking share of the bridges, as Bidney holds three of the ten most central definitions (A-16, C-II-4, and C-II-3); \citet{kroeber1948a} is the only other work with two codes in the top ten (A-17 and B-18), and Linton holds two more, C-I-8 (\citealt{linton1945b}, a chapter) and A-10 (\citealt{linton1936}, a book). Away from the center, the Descriptive definitions---the two \citealt{dixon1928} quotations (A-3(a) and A-3(b)), \citealt{burkitt1929} (A-5), \citealt{lowie1937} (A-10a), and \citealt{murray1943} (A-12)---form a separate olive branch in the upper right, and the Descriptive definitions \citealt{tylor1871} (A-1) and the \citealt{kluckhohnkelly1945a} chapter (A-14) run along the right side, showing that the earliest and simplest definitions connect to the core through fewer, longer paths.
+
+The works themselves barely cluster. The 149 codes of the tree carry 120 distinct author--year labels---a repeated label is a second quotation from the same work---and the 19 labels that appear two or more times almost never stay together: 15 of them spread over two or more communities. \citet{kluckhohnkelly1945a}'s chapter, the most quoted work in the corpus with seven of its eight codes in the tree, reaches four communities scattered across the tree, and \citet{herskovits1948} likewise spans four. The three a/b quotation pairs do sit together, one pair per community \citep{dixon1928,blumenthal1937,feibleman1946}, as those variants share most of their concept links; \citet{linton1945a} is the partial exception, with its two E-5 variants together and its third code (C-I-9) in another community. The regions of the tree organize concept vocabulary, not the works the definitions were drawn from.
 
 \begin{table}[ht]
 \centering
@@ -115,27 +146,27 @@ The works themselves barely cluster. The 149 codes of the tree carry 120 distinc
 \toprule
 Node type & Node & Author-year & Norm. Betw. (\%) & Degree \\
 \midrule
-\multirow{10}{*}{Concepts} & group & & 59.39 & 12 \\
- & customs & & 58.04 & 7 \\
- & social & & 57.38 & 10 \\
- & behavior & & 50.83 & 10 \\
- & society & & 50.66 & 14 \\
- & beliefs & & 48.40 & 13 \\
- & acquired & & 17.81 & 9 \\
- & a people & & 15.72 & 13 \\
- & activities & & 14.04 & 2 \\
- & learning & & 13.22 & 5 \\
+\multirow{10}{*}{Concepts} & \textsc{group} & & 59.39 & 12 \\
+ & \textsc{customs} & & 58.04 & 7 \\
+ & \textsc{social} & & 57.38 & 10 \\
+ & \textsc{behavior} & & 50.83 & 10 \\
+ & \textsc{society} & & 50.66 & 14 \\
+ & \textsc{beliefs} & & 48.40 & 13 \\
+ & \textsc{acquired} & & 17.81 & 9 \\
+ & \textsc{a people} & & 15.72 & 13 \\
+ & \textsc{activities} & & 14.04 & 2 \\
+ & \textsc{learning} & & 13.22 & 5 \\
 \midrule
-\multirow{10}{*}{Definitions} & C-I-6 & Gillin and Gillin 1942 & 71.45 & 17 \\
- & F-I-19 & Murdock 1949a & 55.57 & 8 \\
- & A-16 & Bidney 1947 & 53.42 & 4 \\
- & C-II-4 & Bidney 1946 & 50.94 & 4 \\
- & C-II-3 & Bidney 1942 & 50.88 & 3 \\
- & A-17 & Kroeber 1948a & 43.88 & 4 \\
- & C-I-8 & Linton 1945b & 32.15 & 6 \\
- & A-10 & Linton 1936 & 27.01 & 5 \\
- & B-18 & Kroeber 1948a & 22.97 & 3 \\
- & D-II-5 & LaPiere 1946 & 19.42 & 2 \\
+\multirow{10}{*}{Definitions} & C-I-6 & \citealt{gillin1942} & 71.45 & 17 \\
+ & F-I-19 & \citealt{murdock1949a} & 55.57 & 8 \\
+ & A-16 & \citealt{bidney1947} & 53.42 & 4 \\
+ & C-II-4 & \citealt{bidney1946} & 50.94 & 4 \\
+ & C-II-3 & \citealt{bidney1942} & 50.88 & 3 \\
+ & A-17 & \citealt{kroeber1948a} & 43.88 & 4 \\
+ & C-I-8 & \citealt{linton1945b} & 32.15 & 6 \\
+ & A-10 & \citealt{linton1936} & 27.01 & 5 \\
+ & B-18 & \citealt{kroeber1948a} & 22.97 & 3 \\
+ & D-II-5 & \citealt{lapiere1946} & 19.42 & 2 \\
 \bottomrule
 \end{tabular}
 \par\smallskip
@@ -145,17 +176,17 @@ Node type & Node & Author-year & Norm. Betw. (\%) & Degree \\
 \end{minipage}
 \end{table}
 
-The six most central concepts, group, customs, social, behavior, society and beliefs, are the top of Table~\ref{tab:mst-def-betweenness}, and each anchors one of the color regions of the concept tree. The most central definition is C-I-6, at 71\% of the maximum possible, a single Normative code. In the concept tree the acquisition and transmission vocabulary sits on peripheral branches rather than at the core, suggesting that Genetic concerns, however common in the definitions themselves, connect to the rest of the conceptual structure only through a narrow path.
+The six most central concepts, \textsc{group}, \textsc{customs}, \textsc{social}, \textsc{behavior}, \textsc{society} and \textsc{beliefs}, are the top of Table~\ref{tab:mst-def-betweenness}, and each anchors one of the color regions of the concept tree. The most central definition is C-I-6, at 71\% of the maximum possible, a single Normative code. In the concept tree the acquisition and \textsc{transmission} vocabulary sits on peripheral branches rather than at the core, suggesting that Genetic concerns, however common in the definitions themselves, connect to the rest of the conceptual structure only through a narrow path.
 
 \section{Data-driven types: non-negative matrix factorization}
 
-The spanning trees and the community colors above classify nodes hard: each code belongs to exactly one community of the tree. Non-negative matrix factorization (NMF) \citep{lee2001algorithms} offers a soft, parts-based alternative. It approximates a non-negative matrix $V$ by a product $W H$ with all entries non-negative, so every code carries a loading on each factor and every factor is an additive mixture of the original features, with no subtractive terms. We ask how far data-driven types agree with K\&K's own seven categories A--G, first from the concept profiles of the definitions---which concepts each definition uses---and then from the wording of the definitions. Both factorizations use the same base-R implementation throughout (Euclidean multiplicative updates, deterministic given a seed, with ten random restarts per value of $k$), and both fix $k$ at seven, one factor per K\&K group. Fixing $k$ this way is a choice, not a result: the reconstruction error falls monotonically in $k$ without an elbow, and restart agreement is irregular (mean adjusted Rand index 0.51 to 0.67 over $k = 3$ to $8$ for the concept profiles, 0.48 to 0.70 for the wording), so neither criterion selects a number of factors on its own.
+The spanning trees and the community colors above classify nodes hard: each code belongs to exactly one community of the tree. Non-negative matrix factorization (NMF) \citep{lee2001algorithms} offers a soft, parts-based alternative. It approximates a non-negative matrix $V$ by a product $W H$ with all entries non-negative, so every code carries a loading on each factor and every factor is an additive mixture of the original features, with no subtractive terms. We ask how far data-driven types agree with K\&K's own seven categories A--G (Descriptive to Incomplete), first from the concept profiles of the definitions---which concepts each definition uses---and then from the wording of the definitions. Both factorizations use the same base-R implementation throughout (Euclidean multiplicative updates, deterministic given a seed, with ten random restarts per value of $k$), and both fix $k$ at seven, one factor per K\&K group. Fixing $k$ this way is a choice, not a result: the reconstruction error falls monotonically in $k$ without an elbow, and restart agreement is irregular (mean adjusted Rand index 0.51 to 0.67 over $k = 3$ to $8$ for the concept profiles, 0.48 to 0.70 for the wording), so neither criterion selects a number of factors on its own.
 
 \subsection{Types from the concept profiles of the definitions}
 
 The first factorization asks the question of the network itself. Its matrix is the definitions network's own biadjacency on the largest component's 2-core: 149 definition codes, each described by the 160 concepts it uses, coded 1 when the definition contains the concept and 0 otherwise. The factorization is run at $k = 7$, one factor per K\&K group.
 
-The factors read as recognizable concept profiles rather than K\&K's categories (Figure~\ref{fig:nmf-structural-factors}), and we label them by their leading concepts: \emph{social organization} (social, social heritage, institutions, patterns), \emph{group and way of life} (group, behavior, common, a people), \emph{norms and knowledge} (beliefs, customs, ways, knowledge), \emph{society and acquired behavior} (society, acquired, members of a society, individuals), \emph{transmitted ideas} (ideas, habits, generations, attitudes), \emph{complex whole} (total, sum, tools, activities), and \emph{systems and skills} (systems, organization, satisfaction, skills). The last factor is diffuse: its leading loadings are an order of magnitude smaller than the others', so its label is the least secure. Against the A--G groups the agreement is indistinguishable from chance (adjusted Rand index 0.002, against a permutation 95th percentile of 0.016), and no factor puts more than 40\% of its codes in one group. The subgroup-level view is in the appendix (Figure~\ref{fig:sup-sankey-structural}).
+The factors read as recognizable concept profiles rather than K\&K's categories (Figure~\ref{fig:nmf-structural-factors}), and we label them by their leading concepts: \emph{social organization} (\textsc{social}, \textsc{social heritage}, \textsc{institutions}, \textsc{patterns}), \emph{group and way of life} (\textsc{group}, \textsc{behavior}, \textsc{common}, \textsc{a people}), \emph{norms and knowledge} (\textsc{beliefs}, \textsc{customs}, \textsc{ways}, \textsc{knowledge}), \emph{society and acquired behavior} (\textsc{society}, \textsc{acquired}, \textsc{members of a society}, \textsc{individuals}), \emph{transmitted ideas} (\textsc{ideas}, \textsc{habits}, \textsc{generations}, \textsc{attitudes}), \emph{complex whole} (\textsc{total}, \textsc{sum}, \textsc{tools}, \textsc{activities}), and \emph{systems and skills} (\textsc{systems}, \textsc{organization}, \textsc{satisfaction}, \textsc{skills}). The last factor is diffuse: its leading loadings are an order of magnitude smaller than the others', so its label is the least secure. Against the A--G groups (Descriptive to Incomplete) the agreement is indistinguishable from chance (adjusted Rand index 0.002, against a permutation 95th percentile of 0.016), and no factor puts more than 40\% of its codes in one group. The subgroup-level view is in the appendix (Figure~\ref{fig:sup-sankey-structural}).
 
 \begin{figure}[ht]
 \centering
@@ -168,9 +199,9 @@ The factors read as recognizable concept profiles rather than K\&K's categories 
 
 The second factorization asks the question of the definition texts themselves, independently of both K\&K's coding and the concepts the definitions use.
 
-The second factorization asks the question of the definition texts themselves, independently of both K\&K's coding and the concepts the definitions use. The corpus holds 171 definition codes carrying a quotation: the Table~2 texts mapped to K\&K codes through the crosswalk, the appendix-only texts, and one statement K\&K prints itself (a Part II page footnote). Three Table~2 columns that repeat another column's quotation word for word are not counted again. Documents average about thirty-four words (median 28), so the term--document matrix is built restrictively: tokens of three letters or more, a stopword list that removes the words nearly every definition contains (culture, society, social, man, and the general definitional vocabulary total, whole, learned, acquired), and terms kept to a document frequency between two documents and half the corpus, leaving 403 terms weighted by TF--IDF. The four quotations K\&K and Boroch print in French or German enter as English translations (K\&K's own rendering for Maquet, ours for the other three, not yet checked against the printed pages). The factorization is run at $k = 7$, one factor per K\&K group.
+The second factorization asks the question of the definition texts themselves, independently of both K\&K's coding and the concepts the definitions use. The corpus holds 171 definition codes carrying a quotation: the texts from Boroch's Table~2 mapped to K\&K codes through the crosswalk, the appendix-only texts, and one statement K\&K prints itself (a Part II page footnote). Three Table~2 columns that repeat another column's quotation word for word are not counted again. Documents average about thirty-four words (median 28), so the term--document matrix is built restrictively: tokens of three letters or more, a stopword list that removes the words nearly every definition contains (culture, society, social, man, and the general definitional vocabulary total, whole, learned, acquired), and terms kept to a document frequency between two documents and half the corpus, leaving 403 terms weighted by TF--IDF. The four quotations K\&K and Boroch print in French or German enter as English translations (K\&K's own rendering for Maquet, ours for the other three, not yet checked against the printed pages). The factorization is run at $k = 7$, one factor per K\&K group.
 
-The factors again find recognizable themes rather than K\&K's categories (Figure~\ref{fig:nmf-texts-factors}), and we label them by their leading terms: \emph{species-specific ability} (events, species, use, dependent, ability), \emph{order and operation} (order, operation, self, superorganic, complex), \emph{mental and holistic} (concept, mean, holistic, traits, mental), \emph{goals and persons} (certain, rather, others, persons, goals), \emph{symbolic process and adjustment} (concrete, process, symbolic, experience, adjust), \emph{material and transmitted behavior} (material, non, transmitted, socially, institutions), and \emph{passed down generations} (generation, passed, down, everything, common). On a corpus this small a factor can be driven by one author's phrasing, so the labels should be read as descriptive of the top terms, not as clean concepts. The labels for mental and holistic and goals and persons are the least clear, since their leading terms include generic words (rather, certain, some, mean). Against the A--G groups the agreement is close to chance (adjusted Rand index 0.012, against a permutation 95th percentile of 0.016), and no factor has more than 54\% of its codes in one group.
+The factors again find recognizable themes rather than K\&K's categories (Figure~\ref{fig:nmf-texts-factors}), and we label them by their leading terms: \emph{species-specific ability} (events, species, use, dependent, ability), \emph{order and operation} (order, operation, self, superorganic, complex), \emph{mental and holistic} (concept, mean, holistic, traits, mental), \emph{goals and persons} (certain, rather, others, persons, goals), \emph{symbolic process and adjustment} (concrete, process, symbolic, experience, adjust), \emph{material and transmitted behavior} (material, non, transmitted, socially, institutions), and \emph{passed down generations} (generation, passed, down, everything, common). On a corpus this small a factor can be driven by one author's phrasing, so the labels should be read as descriptive of the top terms, not as clean concepts. The labels for mental and holistic and goals and persons are the least clear, since their leading terms include generic words (rather, certain, some, mean). Against the A--G groups (Descriptive to Incomplete) the agreement is close to chance (adjusted Rand index 0.012, against a permutation 95th percentile of 0.016), and no factor has more than 54\% of its codes in one group.
 
 \begin{figure}[ht]
 \centering
@@ -197,7 +228,7 @@ The analyses use one object: a table with a row for each of the 171 K\&K definit
 
 \subsection{Sources and the unit}
 
-The unit is the code: one printed index entry in K\&K, and one quotation in Boroch. Boroch's appendix has 171 codes. His Table 2 has 135 columns, 132 of which match an appendix code. The two sources number codes differently. Boroch renumbers within each group, so his A10 (Winston 1933) is K\&K's A-9. Codes are therefore matched by author, year, group and subgroup. Positional agreement is kept only as a check: of 100 matches made by name and year, 48 agree with the position.
+The unit of analysis is the code K\&K attached to each definition, which corresponds to one printed index entry in K\&K, and one quotation in \citet{boroch2016}. Boroch's appendix has 171 codes. Boroch's Table 2 has 135 columns, 132 of which match an appendix code. The two sources number codes differently. Boroch renumbers within each group, so his A10 \citep{winston1933} is K\&K's A-9. Codes are therefore matched by author, year, group and subgroup. Positional agreement is kept only as a check: of 100 matches made by name and year, 48 agree with the position.
 
 \subsection{Index A and Index B}
 
@@ -207,11 +238,11 @@ The universe is 171 codes. Of these, 169 appear in K\&K's author index. The othe
 
 \subsection{Matching Boroch's codes to K\&K's}
 
-The crosswalk matches each Table 2 column to a K\&K code. Of the 135 columns, 119 match automatically when exactly one code fits. The remaining 16 are settled by 15 hand decisions, each with a basis, and one recorded slip correction. Three Table 2 columns have no appendix entry of their own: A10a, C1-5a and F4-6. Each is a verbatim copy of another quotation. A10a repeats A10 (Winston 1933), C1-5a repeats C1-5 (Firth 1939), and F4-6 repeats F4-5, which is the entry Boroch's numbering misprints as F4-6. None of the three adds a quotation, so the object does not use them. The F4-5 quotation is Kluckhohn and Kelly 1945a (printed p. 87), and it gives K\&K's F-IV-5. K\&K's printed codes A-10a (Lowie 1937) and C-I-5a (Lynd 1940) take their quotations from the appendix entries A12 and C1-6.
+The crosswalk matches each column of Boroch's Table 2 to a K\&K code. Of the 135 columns, 117 match automatically when exactly one code fits, and 15 more are settled by hand decisions, each with a basis. Three of Boroch's Table 2 columns have no appendix entry of their own and carry no K\&K code: A10a, C1-5a and F4-6. Each is a verbatim copy of another quotation, which leaves 132 columns with a K\&K code. A10a repeats A10 \citep{winston1933}, C1-5a repeats C1-5 \citep{firth1939}, and F4-6 repeats F4-5, which is the entry Boroch's numbering misprints as F4-6. None of the three adds a quotation, so the object does not use them. The F4-5 quotation is \citealt{kluckhohnkelly1945a} (printed p. 87), and it gives K\&K's F-IV-5. K\&K's printed codes A-10a \citep{lowie1937} and C-I-5a \citep{lynd1940} take their quotations from the appendix entries A12 and C1-6.
 
 \subsection{Quotations and citation keys}
 
-Each code has one quotation. Boroch supplies 170 of them: the 132 Table 2 codes and the 39 appendix-only codes, less the Sears addendum (C1-22), which is linked to a specialty code rather than to a network code. D-III-4 has no Boroch entry, and its quotation is K\&K's printed footnote 14 (Roberts 1951, pp. 3 and 6, printed p. 60). Four quotations are not in English and are rendered from a translation table: B-17 and C-I-18a from French, and F-I-5 and F-II-3 from German. C-I-18a uses K\&K's own printed English. The other three are working translations that have not been checked on the page images.
+Each code has one quotation. Boroch supplies 170 of them: the 132 codes from Boroch's Table 2 and the 39 appendix-only codes, less the Sears addendum (C1-22), which is linked to a specialty code rather than to a network code. D-III-4 has no Boroch entry, and its quotation is K\&K's printed footnote 14 (Roberts 1951, pp. 3 and 6, printed p. 60). Four quotations are not in English and are rendered from a translation table: B-17 and C-I-18a from French, and F-I-5 and F-II-3 from German. C-I-18a uses K\&K's own printed English. The other three are working translations that have not been checked on the page images.
 
 Each code is identified by a citation key: Boroch's author, year and page numbers, together with the first six words of the quotation. The key is unique for all 171 codes, with no missing values. The page numbers are Boroch's as printed and have not been checked against the source works. The key therefore identifies a quotation as Boroch reports it, and the page numbers are the first thing to check against a source.
 
@@ -227,14 +258,14 @@ Boroch quotes parts of four K\&K codes separately, labeled (a) and (b). K\&K pri
 \toprule
 K\&K code & Variant & Boroch code and source & Page numbers \\
 \midrule
-A-3 & A-3(a) & A3, Dixon 1928 & 3 \\
-A-3 & A-3(b) & A4, Dixon 1928 & 3 \\
-E-5 & E-5(a) & E5, Linton 1945a (footnote 5) & 5 \\
-E-5 & E-5(b) & E6, Linton 1945a & 32 \\
-F-II-4 & F-II-4(a) & F2-4, Blumenthal 1937 (footnote 4) & 3 \\
-F-II-4 & F-II-4(b) & F2-5, Blumenthal 1937 & 12 \\
-F-II-7 & F-II-7(a) & F2-8, Feibleman 1946 (tentative; footnote 7) & 75 \\
-F-II-7 & F-II-7(b) & F2-9, Feibleman 1946 (final) & 76 \\
+A-3 & A-3(a) & A3, \citealt{dixon1928} & 3 \\
+A-3 & A-3(b) & A4, \citealt{dixon1928} & 3 \\
+E-5 & E-5(a) & E5, \citealt{linton1945a} (footnote 5) & 5 \\
+E-5 & E-5(b) & E6, \citealt{linton1945a} & 32 \\
+F-II-4 & F-II-4(a) & F2-4, \citealt{blumenthal1937} (footnote 4) & 3 \\
+F-II-4 & F-II-4(b) & F2-5, \citealt{blumenthal1937} & 12 \\
+F-II-7 & F-II-7(a) & F2-8, \citealt{feibleman1946} (tentative; footnote 7) & 75 \\
+F-II-7 & F-II-7(b) & F2-9, \citealt{feibleman1946} (final) & 76 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -247,7 +278,7 @@ The build's validators check the network's structure, its round trips and its at
 
 \section{Supplementary sankey diagrams at the subgroup level}\label{app:subgroup-sankey}
 
-The NMF comparisons in the body classify the definitions against K\&K's seven group letters, first by concept profile and then by wording. The figures here repeat both at the finer grain of K\&K's own typology, the roman-numeral subgroups the classification prints within groups C, D, and F; groups A, B, E, and G number their codes plainly and have no subgroup level. Each ribbon takes the color of its origin node's group, and node size is the number of codes. The structural panel covers the 149 codes of the largest component's 2-core; the text panel, all 171 codes carrying a quotation.
+The NMF comparisons in the body classify the definitions against K\&K's seven group letters, first by concept profile and then by wording. The figures here repeat both at the finer grain of K\&K's own typology, the roman-numeral subgroups the classification prints within groups C (Normative), D (Psychological), and F (Genetic); groups A (Descriptive), B (Historical), E (Structural), and G (Incomplete) number their codes plainly and have no subgroup level. Each ribbon takes the color of its origin node's group, and node size is the number of codes. The structural panel covers the 149 codes of the largest component's 2-core; the text panel, all 171 codes carrying a quotation.
 
 \begin{figure}[ht]
 \centering
@@ -256,7 +287,7 @@ The NMF comparisons in the body classify the definitions against K\&K's seven gr
 \label{fig:sup-sankey-structural}
 \end{figure}
 
-On the left, A, B, D-I and F-I reach all seven structural factors, and C-I and D-II reach six. On the right, \emph{group and way of life} and \emph{norms and knowledge} are the largest factors at 26 codes each, and \emph{systems and skills} the smallest at 10. The largest cells are A on \emph{norms and knowledge} (9 of 22 codes), B on \emph{social organization} (7 of 22), and F-I on \emph{complex whole} (6 of 17). No subgroup's codes sit on a single factor; the smallest subgroups in the 2-core, C-II, D-III, D-IV and F-IV (two to four codes each), reach between two and three factors.
+On the left, A (Descriptive), B (Historical), D-I and F-I reach all seven structural factors, and C-I and D-II reach six. On the right, \emph{group and way of life} and \emph{norms and knowledge} are the largest factors at 26 codes each, and \emph{systems and skills} the smallest at 10. The largest cells are A (Descriptive) on \emph{norms and knowledge} (9 of 22 codes), B (Historical) on \emph{social organization} (7 of 22), and F-I on \emph{complex whole} (6 of 17). No subgroup's codes sit on a single factor; the smallest subgroups in the 2-core, C-II, D-III, D-IV and F-IV (two to four codes each), reach between two and three factors.
 
 \begin{figure}[ht]
 \centering
@@ -265,11 +296,11 @@ On the left, A, B, D-I and F-I reach all seven structural factors, and C-I and D
 \label{fig:sup-sankey-codes}
 \end{figure}
 
-On the left, A, C-I and D-II reach all seven factors, and B, D-I, F-I and F-II each reach six. On the right, \emph{material and transmitted behavior} is the largest factor at 43 codes and draws on D (10), B (7) and F (7). \emph{Passed down generations} (34 codes) draws most on D (11) and A (8), and \emph{symbolic process and adjustment} (26 codes) on F (12 codes, 46\% of the factor), B (5) and D (4). \emph{Order and operation} (21 codes) draws on F (7), D (4), and A, B and C (3 each). \emph{Species-specific ability} and \emph{mental and holistic} (17 codes each) both draw on F (6) and C (5). \emph{Goals and persons} (13 codes) is mostly D (7 codes, 54\% of the factor).
+On the left, A (Descriptive), C-I and D-II reach all seven factors, and B (Historical), D-I, F-I and F-II each reach six. On the right, \emph{material and transmitted behavior} is the largest factor at 43 codes and draws on D (Psychological, 10), B (Historical, 7) and F (Genetic, 7). \emph{Passed down generations} (34 codes) draws most on D (Psychological, 11) and A (Descriptive, 8), and \emph{symbolic process and adjustment} (26 codes) on F (Genetic, 12 codes, 46\% of the factor), B (Historical, 5) and D (Psychological, 4). \emph{Order and operation} (21 codes) draws on F (Genetic, 7), D (Psychological, 4), and A (Descriptive), B (Historical) and C (Normative), 3 each. \emph{Species-specific ability} and \emph{mental and holistic} (17 codes each) both draw on F (Genetic, 6) and C (Normative, 5). \emph{Goals and persons} (13 codes) is mostly D (Psychological, 7 codes, 54\% of the factor).
 
-For the definition codes no aggregation is needed, since each code carries its own subgroup. The largest cell holds eight codes (A on \emph{passed down generations}, 8 of 22 codes), and two cells hold seven (F-I on \emph{symbolic process and adjustment}, 7 of 21; B on \emph{material and transmitted behavior}, 7 of 23). No subgroup's codes sit on a single factor. The smallest subgroups, C-II (6 codes), D-III (4) and D-IV (2), reach between two and four factors.
+For the definition codes no aggregation is needed, since each code carries its own subgroup. The largest cell holds eight codes (A (Descriptive) on \emph{passed down generations}, 8 of 22 codes), and two cells hold seven (F-I on \emph{symbolic process and adjustment}, 7 of 21; B (Historical) on \emph{material and transmitted behavior}, 7 of 23). No subgroup's codes sit on a single factor. The smallest subgroups, C-II (6 codes), D-III (4) and D-IV (2), reach between two and four factors.
 
-\bibliographystyle{abbrvnat}
+\bibliographystyle{apalike}
 \bibliography{references,library}
 
 \end{document}

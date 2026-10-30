@@ -56,9 +56,9 @@ stats
 
 # Degree distributions of the definitions network, from its two node sets.
 degree_df <- rbind(
-  data.frame(panel = "Definitions network: sub-element nodes", degree = rowSums(kk_sub_v)),
+  data.frame(panel = "Concepts", degree = rowSums(kk_sub_v)),
   # codes with no sub-elements (isolates) are left out of this degree panel
-  data.frame(panel = "Definitions network: definition (code) nodes",
+  data.frame(panel = "Definitions",
              degree = colSums(kk_sub_v)[colSums(kk_sub_v) > 0])
 )
 degree_df$panel <- factor(degree_df$panel, levels = unique(degree_df$panel))

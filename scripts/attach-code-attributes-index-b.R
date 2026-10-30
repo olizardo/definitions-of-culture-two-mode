@@ -10,7 +10,9 @@
 #         "; " when a code has more than one Boroch row). Code vertices of both
 #         networks carry pub_type, the publication type of the work K&K index
 #         under the code (PROVENANCE 21); NA on the other mode and on the codes
-#         with no work.
+#         with no work. Code vertices of the verified network also carry n_words,
+#         the number of words in the quotation (the English translation where one
+#         exists; Boroch's ellipsis markers are not counted).
 #
 # Run after build-index-b-verified.R, which rewrites the verified network.
 
@@ -41,6 +43,31 @@ V(g)$source_author <- agg$source_author[m]
 V(g)$source_year <- agg$source_year[m]
 V(g)$source_page <- agg$source_page[m]
 V(g)$quote_opening <- agg$quote_opening[m]
+
+# definition length: words in the quotation, from the English translation where one exists
+tr <- read.csv("data/kk-definition-texts-translations.csv", stringsAsFactors = FALSE)
+kko <- read.csv("data/kk-definition-texts-kk-only.csv", stringsAsFactors = FALSE)
+t2 <- read.csv("data/kkcc-definition-texts.csv", stringsAsFactors = FALSE)
+ap <- read.csv("data/kkcc-appendix-only-texts.csv", stringsAsFactors = FALSE)
+bor_txt <- c(setNames(t2$text, t2$code), setNames(ap$text, ap$code))
+kk2b <- setNames(sp$boroch_code, sp$kk_code)
+quote_text <- function(k) {
+  if (k %in% tr$code) return(tr$translation[match(k, tr$code)])
+  if (k %in% kko$kk_code) return(kko$text[match(k, kko$kk_code)])
+  bc <- kk2b[k]
+  if (!is.na(bc) && bc %in% names(bor_txt)) return(bor_txt[[bc]])
+  NA_character_
+}
+count_words <- function(s) {
+  s <- gsub("\\[…\\]|\\[\\.\\.\\.\\]", " ", s)
+  tk <- strsplit(trimws(s), "\\s+")[[1]]
+  sum(grepl("[[:alnum:]]", tk))
+}
+code_v <- which(V(g)$type)
+nw <- vapply(V(g)$name[code_v], function(k) count_words(quote_text(k)), 1L)
+stopifnot(!anyNA(nw))
+V(g)$n_words <- NA_integer_
+V(g)$n_words[code_v] <- nw
 
 # publication type of the work K&K index under each code (PROVENANCE 21)
 works <- read.csv("data/kk-index-b-works.csv", stringsAsFactors = FALSE)

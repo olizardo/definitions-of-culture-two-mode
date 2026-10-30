@@ -9,3 +9,6 @@ documents/pdfcoffee.com-*.pdf
 
 # Symlink to the user's global bib file; do not commit
 library.bib
+
+# SyncTeX data: regenerated on every build, not one of the tracked compile artifacts
+*.synctex.gz
