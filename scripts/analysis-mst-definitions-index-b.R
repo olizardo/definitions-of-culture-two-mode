@@ -72,6 +72,8 @@ cat("tree communities:", nlevels(V(st.def)$comm), "\n")
 # Freeman normalization for a tree: raw betweenness / ((N - 1)(N - 2) / 2)
 btw <- ens.def$mean[V(st.def)$name]
 V(st.def)$btw <- btw
+# the ten codes with the highest mean betweenness, as in Table 3, plus Tylor 1871 (A-1) for its historical place
+V(st.def)$highlight <- V(st.def)$name %in% c(names(sort(btw, decreasing = TRUE))[1:10], "A-1")
 cat("mean normalized betweenness range:", range(btw), "\n")
 
 n.comm <- nlevels(V(st.def)$comm)
@@ -89,17 +91,19 @@ p <- ggraph(lay) +
   scale_starshape_manual(values = group.star, labels = group.labels, name = "definition type (K&K group)",
                          guide = guide_legend(override.aes = list(size = 4, fill = "black"))) +
   scale_size_continuous(range = c(2.5, 9), name = "mean normalized betweenness (ensemble)") +
-  # label opacity follows betweenness, so the most central codes read first
-  geom_node_text(aes(label = label, alpha = btw), repel = TRUE, size = 2.6,
-                 max.overlaps = Inf, seed = 8427, segment.color = NA,
-                 force = 0.6, max.iter = 20000) +
-  scale_alpha_continuous(range = c(0.35, 1), guide = "none") +
+  # highlighted codes in black and larger; all other labels in grey
+  geom_node_text(aes(label = label), data = function(d) d[!d$highlight, ], repel = TRUE,
+                 colour = "grey60", size = 2.6, max.overlaps = Inf, seed = 8427,
+                 segment.color = NA, force = 0.6, max.iter = 20000) +
+  geom_node_text(aes(label = label), data = function(d) d[d$highlight, ], repel = TRUE,
+                 colour = "black", size = 3.2, fontface = "bold", max.overlaps = Inf, seed = 8427,
+                 segment.color = NA, force = 0.6, max.iter = 20000) +
   theme_void() +
   theme(plot.title = element_text(face = "bold", size = 13),
         legend.position = "bottom",
         legend.title = element_text(size = 8), legend.text = element_text(size = 7)) +
   labs(title = "Maximum spanning tree, definitions network (code nodes), K&K Index B LCC 2-core",
-       subtitle = "ties = shared sub-elements; labels = author and year of the quotation; shape = definition type; node size = mean normalized betweenness over the tree ensemble")
+       subtitle = "ties = shared sub-elements; labels = author and year of the quotation; shape = definition type; node size = mean normalized betweenness over the tree ensemble; black labels = top ten by mean betweenness (Table 3) and Tylor 1871")
 ggsave("figures/kk-index-b/definitions/mst-code-author-year-tree.png", p,
        width = 14, height = 10, dpi = 150, bg = "white")
 

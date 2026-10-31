@@ -1,16 +1,16 @@
 # Fdb version 4
-["bibtex kk-index-b-two-mode"] 1793472504 "kk-index-b-two-mode.aux" "kk-index-b-two-mode.bbl" "kk-index-b-two-mode" 1793472505 0
+["bibtex kk-index-b-two-mode"] 1793473233 "kk-index-b-two-mode.aux" "kk-index-b-two-mode.bbl" "kk-index-b-two-mode" 1793473234 0
   "./library.bib" 1791993961 4587555 ed59bb7a35071e840f3f507e71885911 ""
   "./references.bib" 1793467344 9567 57fc054bae3ce359e14c4d9b1ef57f12 ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/apalike.bst" 1292289607 24635 604dafcc79f521a11ea73e506e1fbd98 ""
-  "kk-index-b-two-mode.aux" 1793472505 14812 5fc57989bacb5f4d325b2007f2ee326d "pdflatex"
+  "kk-index-b-two-mode.aux" 1793473234 14812 4ece85e56843828aff90061507d52d6d "pdflatex"
   (generated)
   "kk-index-b-two-mode.bbl"
   "kk-index-b-two-mode.blg"
   (rewritten before read)
-["pdflatex"] 1793472504 "/home/omarlizardo/projects/CULTURE/definitions-of-culture-two-mode/kk-index-b-two-mode.tex" "kk-index-b-two-mode.pdf" "kk-index-b-two-mode" 1793472505 0
+["pdflatex"] 1793473233 "/home/omarlizardo/projects/CULTURE/definitions-of-culture-two-mode/kk-index-b-two-mode.tex" "kk-index-b-two-mode.pdf" "kk-index-b-two-mode" 1793473234 0
   "/etc/texmf/web2c/texmf.cnf" 1788206240 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/omarlizardo/projects/CULTURE/definitions-of-culture-two-mode/kk-index-b-two-mode.tex" 1793472414 54570 ab1c62bf982b4843f656847a04fd2168 ""
+  "/home/omarlizardo/projects/CULTURE/definitions-of-culture-two-mode/kk-index-b-two-mode.tex" 1793473231 54815 a9ed8df1b512624aedccd02510142613 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -114,17 +114,17 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1681034085 39561 34c98e380bf7c7201ee6a7909aff625a ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1790724169 4515355 a319ad0bcc0d6802e7fde951d7e1b7da ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1790724203 6505180 c274a7775fd9198033af73da2ee372b1 ""
-  "figures/kk-index-b/definitions/mst-code-author-year-tree.png" 1793472255 424392 f68f03d58364183c2c1400649ef12431 ""
-  "figures/kk-index-b/definitions/mst-subelement-comm-tree.png" 1793472503 330617 44fd4b428950dcc35f8789aa5d7d826d ""
+  "figures/kk-index-b/definitions/mst-code-author-year-tree.png" 1793473137 408338 312c7fbf13f4a50918096ee17de3bfb0 ""
+  "figures/kk-index-b/definitions/mst-subelement-comm-tree.png" 1793473053 311110 99375a7ff0562e0c2f50d38eacd32f2f ""
   "figures/kk-index-b/degree-definitions.png" 1793401127 22504 922d316b9a74c0b68d67d6d1430b9e1e ""
   "figures/kk-index-b/nmf/nmf-structural-factors.png" 1793399023 123963 cd8b67c4cdffdea5057cc502abac15b3 ""
   "figures/kk-index-b/nmf/nmf-texts-factors.png" 1793386333 113748 e4d4905f7083518f7e09d84f253824db ""
   "figures/kk-index-b/nmf/sankey-codes-subgroups.png" 1793399054 798650 37ec5252a72c5c92f37228701489cdc8 ""
   "figures/kk-index-b/nmf/sankey-structural-subgroups.png" 1793399056 784156 b3a22ad6900914d21cb3b1d8ce65633f ""
-  "kk-index-b-two-mode.aux" 1793472505 14812 5fc57989bacb5f4d325b2007f2ee326d "pdflatex"
-  "kk-index-b-two-mode.bbl" 1793472504 6674 fbf966acf50d2a2aa20a22db264645f8 "bibtex kk-index-b-two-mode"
-  "kk-index-b-two-mode.out" 1793472505 3584 52168b0c6a317e7e1eada3c275cfd566 "pdflatex"
-  "kk-index-b-two-mode.tex" 1793472414 54570 ab1c62bf982b4843f656847a04fd2168 ""
+  "kk-index-b-two-mode.aux" 1793473234 14812 4ece85e56843828aff90061507d52d6d "pdflatex"
+  "kk-index-b-two-mode.bbl" 1793473233 6674 fbf966acf50d2a2aa20a22db264645f8 "bibtex kk-index-b-two-mode"
+  "kk-index-b-two-mode.out" 1793473234 3584 52168b0c6a317e7e1eada3c275cfd566 "pdflatex"
+  "kk-index-b-two-mode.tex" 1793473231 54815 a9ed8df1b512624aedccd02510142613 ""
   (generated)
   "kk-index-b-two-mode.aux"
   "kk-index-b-two-mode.log"

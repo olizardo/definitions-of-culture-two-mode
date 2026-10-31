@@ -33,6 +33,8 @@ V(st.concept)$commtree <- factor(membership(com.tree))
 
 btw <- ens.con$mean[V(st.concept)$name]
 V(st.concept)$btw <- btw
+# the ten concepts with the highest mean betweenness, as in Table 3
+V(st.concept)$top10 <- V(st.concept)$name %in% names(sort(btw, decreasing = TRUE))[1:10]
 # sqrt scaling keeps hubs from dominating the node sizes
 V(st.concept)$size <- 2.5 + 5 * sqrt(btw / max(btw))
 
@@ -45,16 +47,18 @@ ggraph(st.concept, layout = "kk") +
   geom_edge_link(color = "grey80", linewidth = 0.4) +
   geom_node_point(aes(fill = commtree, size = size), shape = 21,
                   color = "grey25", stroke = 0.5) +
-  # label opacity follows betweenness, so the most central concepts read first
-  geom_node_text(aes(label = name, alpha = btw), repel = TRUE, size = 2.5,
-                 fontface = "bold", max.overlaps = Inf, seed = 8427,
-                 segment.color = NA, force = 0.5, max.iter = 20000) +
-  scale_alpha_continuous(range = c(0.35, 1), guide = "none") +
+  # Table 3 concepts in black and larger; all other labels in grey
+  geom_node_text(aes(label = name), data = function(d) d[!d$top10, ], repel = TRUE,
+                 colour = "grey60", size = 2.5, max.overlaps = Inf,
+                 seed = 8427, segment.color = NA, force = 0.5, max.iter = 20000) +
+  geom_node_text(aes(label = name), data = function(d) d[d$top10, ], repel = TRUE,
+                 colour = "black", size = 3.0, fontface = "bold", max.overlaps = Inf,
+                 seed = 8427, segment.color = NA, force = 0.5, max.iter = 20000) +
   scale_fill_manual(values = pal.tree, guide = "none") +
   scale_size_identity() +
   theme_void() +
   theme(plot.title = element_text(face = "bold", size = 13)) +
   labs(title = "Maximum spanning tree, definitions network (sub-element nodes), K&K Index B LCC 2-core",
-       subtitle = "color = leading-eigenvector community computed on the tree itself; size = mean tree betweenness over the ensemble (sqrt-scaled)")
+       subtitle = "color = leading-eigenvector community computed on the tree itself; size = mean tree betweenness over the ensemble (sqrt-scaled); black labels = top ten by mean betweenness (Table 3)")
 ggsave("figures/kk-index-b/definitions/mst-subelement-comm-tree.png",
        width = 15, height = 9, dpi = 150, bg = "white")
