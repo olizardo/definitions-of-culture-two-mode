@@ -63,9 +63,11 @@ group.labels <- setNames(paste0(fams, ": ", kk.group.names[fams]), fams)
 com.tree <- cluster_leading_eigen(st.def)
 V(st.def)$comm <- factor(membership(com.tree))
 cat("tree communities:", nlevels(V(st.def)$comm), "\n")
-btw <- betweenness(st.def, directed = FALSE, normalized = FALSE)
+# Freeman normalization for a tree: raw betweenness / ((N - 1)(N - 2) / 2)
+btw.raw <- betweenness(st.def, directed = FALSE, normalized = FALSE)
+btw <- btw.raw / ((vcount(st.def) - 1) * (vcount(st.def) - 2) / 2)
 V(st.def)$btw <- btw
-cat("betweenness range:", range(btw), "\n")
+cat("normalized betweenness range:", range(btw), "\n")
 
 n.comm <- nlevels(V(st.def)$comm)
 pal <- setNames(hcl(h = seq(15, 375, length.out = n.comm + 1)[-(n.comm + 1)],
@@ -81,7 +83,7 @@ p <- ggraph(lay) +
   scale_fill_manual(values = pal, guide = "none") +
   scale_starshape_manual(values = group.star, labels = group.labels, name = "definition type (K&K group)",
                          guide = guide_legend(override.aes = list(size = 4, fill = "black"))) +
-  scale_size_continuous(range = c(2.5, 9), name = "betweenness (tree)") +
+  scale_size_continuous(range = c(2.5, 9), name = "normalized betweenness (tree)") +
   geom_node_text(aes(label = label), repel = TRUE, size = 2.6,
                  max.overlaps = Inf, seed = 8427, segment.color = NA,
                  force = 0.6, max.iter = 20000) +
@@ -90,7 +92,7 @@ p <- ggraph(lay) +
         legend.position = "bottom",
         legend.title = element_text(size = 8), legend.text = element_text(size = 7)) +
   labs(title = "Maximum spanning tree, definitions network (code nodes), K&K Index B LCC 2-core",
-       subtitle = "ties = shared sub-elements; labels = author and year of the quotation; shape = definition type; node size = betweenness in the tree")
+       subtitle = "ties = shared sub-elements; labels = author and year of the quotation; shape = definition type; node size = normalized betweenness in the tree")
 ggsave("figures/kk-index-b/definitions/mst-code-author-year-tree.png", p,
        width = 14, height = 10, dpi = 150, bg = "white")
 
