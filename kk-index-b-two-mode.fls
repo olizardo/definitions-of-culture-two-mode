@@ -643,8 +643,6 @@ INPUT figures/kk-index-b/definitions/mst-code-author-year-tree.png
 INPUT ./figures/kk-index-b/definitions/mst-code-author-year-tree.png
 INPUT ./figures/kk-index-b/definitions/mst-code-author-year-tree.png
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
 INPUT ./figures/kk-index-b/nmf/nmf-structural-factors.png
 INPUT ./figures/kk-index-b/nmf/nmf-structural-factors.png
 INPUT figures/kk-index-b/nmf/nmf-structural-factors.png

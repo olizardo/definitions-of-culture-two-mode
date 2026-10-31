@@ -4,13 +4,15 @@
 # (edge weight). Nodes are labeled with the author and year of the code's
 # quotation, merged from the verified network's code-vertex attributes; the
 # star shape encodes the K&K definition group (A-G); color is the
-# leading-eigenvector community computed on the tree; size is tree betweenness.
+# leading-eigenvector community computed on the tree; size is the mean tree betweenness over the ensemble.
 # This replaces the code-labeled tree and the publication-type variant
 # (PROVENANCE 22).
 
 library(igraph)
 library(ggraph)
 library(ggstar)
+
+source("scripts/tree-ensemble-index-b.R")
 
 set.seed(8427)
 invisible(lapply(c("figures/boroch", "figures/kk-index-b/definitions"), dir.create, recursive = TRUE, showWarnings = FALSE))
@@ -39,7 +41,10 @@ G.def <- graph_from_adjacency_matrix(P.def, mode = "undirected",
 cat("projection edges:", ecount(G.def), "\n")
 
 # maximum spanning tree = minimum spanning tree on negated weights
-st.def <- mst(G.def, weights = -E(G.def)$weight)
+# drawn tree: the ensemble member closest to the mean betweenness over the ensemble
+ens.def <- tree.ensemble(G.def)
+st.def <- ens.def$tree
+cat("drawn tree is ensemble member", ens.def$best, "of", tree.reps, "\n")
 cat("tree edges:", ecount(st.def), "of", vcount(st.def) - 1, "possible\n")
 
 if (!is_connected(st.def)) stop("tree is not connected")
@@ -60,14 +65,14 @@ group.star <- kk.group.star[fams]
 group.labels <- setNames(paste0(fams, ": ", kk.group.names[fams]), fams)
 
 # leading-eigenvector community on the tree; tree betweenness
+set.seed(8427)
 com.tree <- cluster_leading_eigen(st.def)
 V(st.def)$comm <- factor(membership(com.tree))
 cat("tree communities:", nlevels(V(st.def)$comm), "\n")
 # Freeman normalization for a tree: raw betweenness / ((N - 1)(N - 2) / 2)
-btw.raw <- betweenness(st.def, directed = FALSE, normalized = FALSE)
-btw <- btw.raw / ((vcount(st.def) - 1) * (vcount(st.def) - 2) / 2)
+btw <- ens.def$mean[V(st.def)$name]
 V(st.def)$btw <- btw
-cat("normalized betweenness range:", range(btw), "\n")
+cat("mean normalized betweenness range:", range(btw), "\n")
 
 n.comm <- nlevels(V(st.def)$comm)
 pal <- setNames(hcl(h = seq(15, 375, length.out = n.comm + 1)[-(n.comm + 1)],
@@ -83,7 +88,7 @@ p <- ggraph(lay) +
   scale_fill_manual(values = pal, guide = "none") +
   scale_starshape_manual(values = group.star, labels = group.labels, name = "definition type (K&K group)",
                          guide = guide_legend(override.aes = list(size = 4, fill = "black"))) +
-  scale_size_continuous(range = c(2.5, 9), name = "normalized betweenness (tree)") +
+  scale_size_continuous(range = c(2.5, 9), name = "mean normalized betweenness (ensemble)") +
   geom_node_text(aes(label = label), repel = TRUE, size = 2.6,
                  max.overlaps = Inf, seed = 8427, segment.color = NA,
                  force = 0.6, max.iter = 20000) +
@@ -92,7 +97,7 @@ p <- ggraph(lay) +
         legend.position = "bottom",
         legend.title = element_text(size = 8), legend.text = element_text(size = 7)) +
   labs(title = "Maximum spanning tree, definitions network (code nodes), K&K Index B LCC 2-core",
-       subtitle = "ties = shared sub-elements; labels = author and year of the quotation; shape = definition type; node size = normalized betweenness in the tree")
+       subtitle = "ties = shared sub-elements; labels = author and year of the quotation; shape = definition type; node size = mean normalized betweenness over the tree ensemble")
 ggsave("figures/kk-index-b/definitions/mst-code-author-year-tree.png", p,
        width = 14, height = 10, dpi = 150, bg = "white")
 
@@ -109,7 +114,8 @@ tree.out <- data.frame(kk_code = V(st.def)$name,
                        source_year = cite$source_year,
                        source_page = cite$source_page,
                        community = as.integer(V(st.def)$comm),
-                       betweenness = btw, degree_tree = degree(st.def))
+                       betweenness = btw, betweenness_drawn = freeman(st.def),
+                       degree_tree = degree(st.def))
 write.csv(tree.out[order(-tree.out$betweenness), ],
           "data/kk-index-b-mst-definitions-tree-nodes.csv", row.names = FALSE)
 cat("figure and node table written\n")

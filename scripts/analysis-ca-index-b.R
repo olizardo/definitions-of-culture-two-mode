@@ -8,6 +8,8 @@
 # scripts/build-index-b-verified.R; codes not in Index A are excluded).
 
 library(igraph)
+
+source("scripts/tree-ensemble-index-b.R")
 library(ggplot2)
 library(ggrepel)
 library(ggstar)
@@ -202,19 +204,9 @@ library(ggraph)
 P.concept <- Ac %*% t(Ac); diag(P.concept) <- 0
 G.concept <- graph_from_adjacency_matrix(P.concept, mode = "undirected",
                                          weighted = TRUE, diag = FALSE)
-make.max.st <- function(gr) {
-  el <- as_edgelist(gr, names = FALSE)
-  idx <- order(E(gr)$weight, decreasing = TRUE)
-  st <- make_empty_graph(n = vcount(gr), directed = FALSE)
-  V(st)$name <- V(gr)$name
-  for (i in idx) {
-    cand <- add_edges(st, el[i, ])
-    if (is_acyclic(cand)) st <- cand
-    if (ecount(st) == vcount(gr) - 1) break
-  }
-  st
-}
-st.concept <- make.max.st(G.concept)
+# drawn tree: the ensemble member closest to the mean betweenness over the ensemble
+ens.con <- tree.ensemble(G.concept)
+st.concept <- ens.con$tree
 cat("concept MST edges:", ecount(st.concept), "of", vcount(st.concept) - 1, "possible\n")
 
 # node attributes: printed Index B heading block, projection community,
@@ -229,7 +221,7 @@ V(st.concept)$comm <- factor(membership(com.proj)[V(st.concept)$name])
 com.tree <- cluster_leading_eigen(st.concept)
 V(st.concept)$commtree <- factor(membership(com.tree))
 
-btw <- betweenness(st.concept, directed = FALSE, normalized = FALSE)
+btw <- ens.con$mean[V(st.concept)$name]
 V(st.concept)$btw <- btw
 V(st.concept)$size <- 2.5 + 5 * sqrt(btw / max(btw))
 
@@ -275,7 +267,7 @@ mst.plot <- function(fill_vals, fill_scale, subtitle, file, size_by_btw = FALSE,
 }
 
 mst.plot(V(st.concept)$commtree, scale_fill_manual(values = pal.tree),
-         "color = leading-eigenvector community computed on the tree itself; size = tree betweenness (sqrt-scaled)",
+         "color = leading-eigenvector community computed on the tree itself; size = mean tree betweenness over the ensemble (sqrt-scaled)",
          "figures/kk-index-b/definitions/mst-subelement-comm-tree.png", size_by_btw = TRUE)
 
 cat("figures and score CSVs written\n")

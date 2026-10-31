@@ -41,11 +41,6 @@ Breiger, R.~L. (1974).
 \newblock The duality of persons and groups.
 \newblock {\em Social Forces}, 53(2):181--190.
 
-\bibitem[Burkitt, 1929]{burkitt1929}
-Burkitt, M.~C. (1929).
-\newblock Archaeology.
-\newblock In {\em Encyclopaedia Britannica}. New York, 14th edition.
-
 \bibitem[Carr, 1945]{carr1945}
 Carr, L.~J. (1945).
 \newblock Situational psychology.
@@ -81,6 +76,11 @@ Frank, L.~K. (1948).
 \newblock {\em Society as the Patient}.
 \newblock New Brunswick.
 
+\bibitem[Freeman, 1978]{freeman1978centrality-724}
+Freeman, L.~C. (1978).
+\newblock Centrality in social networks: Conceptual clarification.
+\newblock {\em Social networks}, 1(3):215--239.
+
 \bibitem[Gillin and Gillin, 1942]{gillin1942}
 Gillin, J.~L. and Gillin, J.~P. (1942).
 \newblock {\em An Introduction to Sociology}.
@@ -106,6 +106,11 @@ Hiller, E.~T. (1933).
 \newblock {\em Principles of Sociology}.
 \newblock New York.
 
+\bibitem[Klineberg, 1935]{klineberg1935}
+Klineberg, O. (1935).
+\newblock {\em Race Differences}.
+\newblock New York.
+
 \bibitem[Kluckhohn, 1942]{kluckhohn1942}
 Kluckhohn, C. (1942).
 \newblock Report to the sub-sub-committee on definitions of culture.
@@ -116,11 +121,6 @@ Kluckhohn, C. and Kelly, W.~H. (1945).
 \newblock The concept of culture.
 \newblock In Linton, R., editor, {\em The Science of Man in the World Crisis},
   pages 78--105. New York.
-
-\bibitem[Kroeber, 1948]{kroeber1948a}
-Kroeber, A.~L. (1948).
-\newblock {\em Anthropology}.
-\newblock New York.
 
 \bibitem[Kroeber and Kluckhohn, 1952]{kroeberkluckhohn1952}
 Kroeber, A.~L. and Kluckhohn, C. (1952).
@@ -134,11 +134,6 @@ Kruskal, J.~B. (1956).
   salesman problem.
 \newblock {\em Proceedings of the American Mathematical Society}, 7(1):48--50.
 
-\bibitem[LaPiere, 1946]{lapiere1946}
-LaPiere, R.~T. (1946).
-\newblock {\em Sociology}.
-\newblock New York.
-
 \bibitem[Lee and Seung, 2001]{lee2001algorithms}
 Lee, D.~D. and Seung, H.~S. (2001).
 \newblock Algorithms for non-negative matrix factorization.
@@ -149,16 +144,10 @@ Linton, R. (1936).
 \newblock {\em The Study of Man}.
 \newblock New York.
 
-\bibitem[Linton, 1945a]{linton1945a}
-Linton, R. (1945a).
+\bibitem[Linton, 1945]{linton1945a}
+Linton, R. (1945).
 \newblock {\em The Cultural Background of Personality}.
 \newblock New York.
-
-\bibitem[Linton, 1945b]{linton1945b}
-Linton, R. (1945b).
-\newblock Present world conditions in cultural perspective.
-\newblock In Linton, R., editor, {\em The Science of Man in the World Crisis},
-  pages 201--221. New York.
 
 \bibitem[Lowie, 1937]{lowie1937}
 Lowie, R.~H. (1937).
@@ -179,11 +168,6 @@ Lynd, R.~S. (1940).
 Murdock, G.~P. (1949).
 \newblock The science of human learning, society, culture, and personality.
 \newblock {\em Scientific Monthly}, 69:377--382.
-
-\bibitem[Murray, 1943]{murray1943}
-Murray, R.~W. (1943).
-\newblock {\em Man's Unknown Ancestors}.
-\newblock Milwaukee.
 
 \bibitem[Neal, 2014]{neal2014backbone-b29}
 Neal, Z. (2014).

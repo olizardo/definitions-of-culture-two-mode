@@ -5,7 +5,6 @@ The style file: apalike.bst
 Database file #1: references.bib
 Database file #2: library.bib
 Warning--empty publisher in blumenthal1937
-Warning--empty publisher in burkitt1929
 Warning--empty publisher in dixon1928
 Warning--empty publisher in feibleman1946
 Warning--empty publisher in firth1939
@@ -16,16 +15,13 @@ Warning--empty publisher in gillin1948
 Warning--empty publisher in grovesmoore1940
 Warning--empty publisher in herskovits1948
 Warning--empty publisher in hiller1933
+Warning--empty publisher in klineberg1935
 Warning--empty publisher in kluckhohnkelly1945a
-Warning--empty publisher in kroeber1948a
-Warning--empty publisher in lapiere1946
 Warning--empty publisher in linton1936
 Warning--empty publisher in linton1945a
-Warning--empty publisher in linton1945b
 Warning--empty publisher in lowie1937
 Warning--empty publisher in lundberg1939
 Warning--empty publisher in lynd1940
-Warning--empty publisher in murray1943
 Warning--empty publisher in panunzio1939
 Warning--empty publisher in reuter1939
 Warning--empty publisher in thomas1937
@@ -34,45 +30,45 @@ Warning--empty publisher in white1949a
 Warning--empty publisher in wilsonkolb1949
 Warning--empty publisher in winston1933
 Warning--empty publisher in young1934
-You've used 49 entries,
+You've used 46 entries,
             1935 wiz_defined-function locations,
-            707 strings with 7824 characters,
-and the built_in function-call counts, 16060 in all, are:
-= -- 1543
-> -- 420
-< -- 53
-+ -- 157
-- -- 122
-* -- 1219
-:= -- 2821
-add.period$ -- 153
-call.type$ -- 49
-change.case$ -- 277
-chr.to.int$ -- 48
-cite$ -- 79
-duplicate$ -- 725
-empty$ -- 1282
-format.name$ -- 189
-if$ -- 3148
-int.to.chr$ -- 2
+            697 strings with 7715 characters,
+and the built_in function-call counts, 15008 in all, are:
+= -- 1443
+> -- 395
+< -- 49
++ -- 149
+- -- 115
+* -- 1150
+:= -- 2645
+add.period$ -- 142
+call.type$ -- 46
+change.case$ -- 260
+chr.to.int$ -- 46
+cite$ -- 72
+duplicate$ -- 666
+empty$ -- 1190
+format.name$ -- 179
+if$ -- 2925
+int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 75
-newline$ -- 248
-num.names$ -- 155
-pop$ -- 313
+missing$ -- 70
+newline$ -- 233
+num.names$ -- 144
+pop$ -- 284
 preamble$ -- 1
-purify$ -- 303
+purify$ -- 285
 quote$ -- 0
-skip$ -- 536
+skip$ -- 497
 stack$ -- 0
-substring$ -- 1038
-swap$ -- 74
-text.length$ -- 4
+substring$ -- 995
+swap$ -- 62
+text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 240
-warning$ -- 30
-while$ -- 139
+type$ -- 226
+warning$ -- 26
+while$ -- 131
 width$ -- 0
-write$ -- 617
-(There were 30 warnings)
+write$ -- 578
+(There were 26 warnings)

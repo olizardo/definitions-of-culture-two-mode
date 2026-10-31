@@ -1,14 +1,16 @@
 # Numbers quoted in the manuscript's tree paragraphs: the duality paragraph, the
 # C-I-6 paragraph, the Bidney codes (A-16, C-II-4, C-II-3), F-I-19 and A-17, and
-# the top-10 counts. Rebuilds the code tree as analysis-mst-definitions-index-b.R
-# and the concept tree as analysis-ca-index-b.R do, on the LCC 2-core, and checks
-# the code tree against the stored node table. "manuscript:" notes give the typed
-# value. Run from the project root.
+# the top-10 counts. Betweenness is the mean over the random tree ensemble
+# (scripts/tree-ensemble-index-b.R); the structural statements (neighbors,
+# communities, components) read the drawn tree, the ensemble member closest to
+# that mean. Degree is the 2-core degree. The stored node table must match the
+# ensemble means. "manuscript:" notes give the typed value. Run from the project root.
 # Outputs: data/kk-index-b-tree-quoted-numbers.csv, data/kk-index-b-tree-quoted-codes.csv
 
 library(igraph)
 
 source("scripts/core-index-b.R")
+source("scripts/tree-ensemble-index-b.R")
 
 set.seed(8427)
 
@@ -24,36 +26,23 @@ codes <- colnames(Ac)
 concepts <- rownames(Ac)
 cat("2-core:", length(concepts), "concepts x", length(codes), "codes\n")
 
-# code tree, as in analysis-mst-definitions-index-b.R
+# code tree: ensemble mean betweenness; drawn tree for structure
 P.def <- crossprod(Ac); diag(P.def) <- 0
 G.def <- graph_from_adjacency_matrix(P.def, mode = "undirected", weighted = TRUE, diag = FALSE)
-st.def <- mst(G.def, weights = -E(G.def)$weight)
+ens.def <- tree.ensemble(G.def)
+st.def <- ens.def$tree
 stopifnot(is_connected(st.def))
-N.def <- vcount(st.def)
-btw.code <- setNames(betweenness(st.def, directed = FALSE, normalized = FALSE) /
-                       ((N.def - 1) * (N.def - 2) / 2), V(st.def)$name)[codes]
+btw.code <- ens.def$mean[codes]
+set.seed(8427)
 com.code <- setNames(membership(cluster_leading_eigen(st.def)), V(st.def)$name)[codes]
 deg.tree <- setNames(degree(st.def), V(st.def)$name)[codes]
 
-# concept tree, as in analysis-ca-index-b.R
+# concept tree: ensemble mean betweenness; drawn tree for structure
 P.con <- Ac %*% t(Ac); diag(P.con) <- 0
 G.con <- graph_from_adjacency_matrix(P.con, mode = "undirected", weighted = TRUE, diag = FALSE)
-make.max.st <- function(gr) {
-  el <- as_edgelist(gr, names = FALSE)
-  idx <- order(E(gr)$weight, decreasing = TRUE)
-  st <- make_empty_graph(n = vcount(gr), directed = FALSE)
-  V(st)$name <- V(gr)$name
-  for (i in idx) {
-    cand <- add_edges(st, el[i, ])
-    if (is_acyclic(cand)) st <- cand
-    if (ecount(st) == vcount(gr) - 1) break
-  }
-  st
-}
-st.con <- make.max.st(G.con)
-N.con <- vcount(st.con)
-btw.conc <- setNames(betweenness(st.con, directed = FALSE, normalized = FALSE) /
-                       ((N.con - 1) * (N.con - 2) / 2), V(st.con)$name)[concepts]
+ens.con <- tree.ensemble(G.con)
+st.con <- ens.con$tree
+btw.conc <- ens.con$mean[concepts]
 
 rank.code <- rank(-btw.code, ties.method = "min")
 rank.conc <- rank(-btw.conc, ties.method = "min")
@@ -86,6 +75,7 @@ qtab <- data.frame(
   words = unname(words[quoted]),
   links_2core = unname(colSums(Ac)[quoted]),
   links_full = unname(degree(g)[quoted]),
+  degree_2core = unname(colSums(Ac)[quoted]),
   btw_code = unname(btw.code[quoted]),
   rank_code = unname(rank.code[quoted]),
   tree_degree = unname(deg.tree[quoted]),
