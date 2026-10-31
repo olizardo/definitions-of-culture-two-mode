@@ -1,6 +1,6 @@
 # Structural NMF of the definitions network: factorizes the codes x concepts
 # biadjacency of the verified network's largest-component 2-core (the same Ac
-# as scripts/analysis-ca-index-b.R and analysis-mst-definitions-index-b.R).
+# as scripts/analysis-mst-concepts-index-b.R and analysis-mst-definitions-index-b.R).
 # A code's profile is the set of concepts it contains (binary, unweighted); the
 # NMF finds additive concept profiles, and the dominant factor per code is
 # compared with the K&K group letter by cross-tabulation, ARI and a

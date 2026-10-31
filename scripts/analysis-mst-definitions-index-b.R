@@ -1,6 +1,6 @@
 # Maximum spanning tree of the definitions (code) projection of the K&K Index B
 # sub-element network, on the largest component's 2-core (same Ac as
-# scripts/analysis-ca-index-b.R). Ties between two codes = shared sub-elements
+# scripts/analysis-mst-concepts-index-b.R). Ties between two codes = shared sub-elements
 # (edge weight). Nodes are labeled with the author and year of the code's
 # quotation, merged from the verified network's code-vertex attributes; the
 # star shape encodes the K&K definition group (A-G); color is the
@@ -89,9 +89,11 @@ p <- ggraph(lay) +
   scale_starshape_manual(values = group.star, labels = group.labels, name = "definition type (K&K group)",
                          guide = guide_legend(override.aes = list(size = 4, fill = "black"))) +
   scale_size_continuous(range = c(2.5, 9), name = "mean normalized betweenness (ensemble)") +
-  geom_node_text(aes(label = label), repel = TRUE, size = 2.6,
+  # label opacity follows betweenness, so the most central codes read first
+  geom_node_text(aes(label = label, alpha = btw), repel = TRUE, size = 2.6,
                  max.overlaps = Inf, seed = 8427, segment.color = NA,
                  force = 0.6, max.iter = 20000) +
+  scale_alpha_continuous(range = c(0.35, 1), guide = "none") +
   theme_void() +
   theme(plot.title = element_text(face = "bold", size = 13),
         legend.position = "bottom",

@@ -10,6 +10,7 @@
 \usepackage{natbib}
 \usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
 \usepackage{caption}
+\captionsetup{font={small,bf}}
 
 \title{Two-mode Network Analysis of Culture Concepts}
 \author{Draft}
@@ -30,9 +31,9 @@ The 171 $\times$ 470 definitions network naturally breaks into 10 separate compo
 
 \section{Overview of the network}
 
-Table~\ref{tab:summary} gives summary statistics for the definitions network. The first three rows show node and edge counts. The ``degree'' rows count connections of each node type; a concept's degree is how many definitions mention it, while a definition's degree is how many concepts it contains. Concepts and definitions differ substantially in their average degree.
+Table~\ref{tab:summary} gives summary statistics for the definitions network. The first three rows show node and edge counts. The ``degree'' rows count connections of each node type; a concept's degree is how many definitions are linked to it in K\&K's index, while a definition's degree is how many concepts it is linked to in the index. Concepts and definitions differ substantially in their average degree.
 
-\begin{table}[ht]
+\begin{table}[t]
 \centering
 \caption{Summary statistics for the definitions network. Statistics describe the full network, before the restriction to the largest component's 2-core used in the analyses. Average nearest-neighbor degree ($k_{nn}$) is the average degree of a node's neighbors; degree correlation shows how a node's degree relates to the degree of its neighbors. Degree variances are sample variances (divisor $n-1$) over all nodes of each type, including isolates.}
 \label{tab:summary}
@@ -71,7 +72,7 @@ Mean $k_{nn}$ & 9.22 \\
 \end{figure}
 
 
-\begin{table}[ht]
+\begin{table}[t]
 \centering
 \caption{Highest-degree nodes of the definitions network on the LCC 2-core. Concept degree counts the 2-core codes that contain the concept; code degree counts the 2-core concepts the code contains. The last two columns rank codes by degree per 10 words of quotation, using the English translation where one exists. Per-word rankings favor short quotations: across the 171 codes the per-word value correlates $-0.23$ with word count. Ties at the cutoff are included.}
 \label{tab:top-degree}
@@ -104,16 +105,16 @@ Concept & Degree & Definition (code) & Degree & Definition (code) & Per 10 words
 \end{minipage}
 \end{table}
 
-The degree correlation is $-0.076$: concepts with many connections tend to link to definitions with few, and vice versa, though the association is weak. The nearest-neighbor rows show the other side of this pattern. A concept's neighboring definitions contain 10.2 concepts on average, and a definition's neighboring concepts appear in 9.2 definitions on average, so concepts attach preferentially to heavily used definitions and definitions attach to widely shared concepts.
+The degree correlation is $-0.076$, implying that concepts with many connections tend to link to definitions with few, and vice versa, though the association is weak.\footnote{Against a degree-preserving null that swaps memberships between random pairs of concepts until the mixing reaches a limit (1000 draws; seed 6128), the null mean is $-0.033$ with SD $0.022$ ($z = -1.94$), and the observed value sits at the 4.1\% point of the two-sided null distribution ($p = 0.041$). The negative association is therefore marginally stronger than degree structure alone would produce.} The nearest-neighbor rows show the other side of this pattern. A concept's neighboring definitions contain 10.2 concepts on average, and a definition's neighboring concepts appear in 9.2 definitions on average, so concepts attach preferentially to heavily used definitions and definitions attach to widely shared concepts \citep{barabási1999emergence-913}
 
-Figure~\ref{fig:degree} shows the full-network degree distributions for the concept nodes (left) and the definition nodes (right). Most concepts are lightly connected: 79\% appear in two or fewer definitions, while a small minority of concepts, such as \textbf{social}, \textbf{society}, \textbf{group}, \textbf{behavior} or \textbf{ideas}, appear in many definitions (see Table~\ref{tab:top-degree}). This leads to the classic ``long tailed'' degree distribution for definitions observed in the left-hand side of Figure~\ref{fig:degree}.\footnote{Over the full range of concept degrees, a discrete power law fits better than a truncated exponential (Vuong $z = 6.1$, $p < 0.001$; $\hat{\alpha} = 2.13$), suggesting a mechanism of ``preferential attachment'' of definitions to already popular concepts \citep{barabási1999emergence-913}. The advantage shrinks for degrees of 2 and up ($z = 1.9$, $p = 0.06$) and vanishes for degrees of 3 and up ($|z| < 1$), so the tail alone does not distinguish the two.}
+Figure~\ref{fig:degree} shows the full-network degree distributions for the concept nodes (left) and the definition nodes (right). Most concepts are poorly connected: 79\% appear in two or fewer definitions, while a small minority of concepts, such as \textbf{social}, \textbf{society}, \textbf{group}, \textbf{behavior} or \textbf{ideas}, are ``super-connectors'' appearing in many definitions (see Table~\ref{tab:top-degree}). This leads to the classic ``long tailed'' degree distribution for definitions observed in the left-hand side of Figure~\ref{fig:degree}.\footnote{Over the full range of concept degrees, a discrete power law fits better than a truncated exponential (Vuong $z = 6.1$, $p < 0.001$; $\hat{\alpha} = 2.13$), suggesting a mechanism of ``preferential attachment'' of definitions to already popular concepts \citep{barabási1999emergence-913}. The advantage shrinks for degrees of 2 and up ($z = 1.9$, $p = 0.06$) and vanishes for degrees of 3 and up ($|z| < 1$), so the tail alone does not distinguish the two.}
 
-On the 2-core, definitions are more evenly connected, with the average code covering 5.9 concepts (median 5) and a few covering many more, up to 15 (Table~\ref{tab:top-degree}).\footnote{Across the 171 codes, the number of words in each quotation correlates with the number of 2-core concepts the code links to: Pearson $r = 0.55$, Spearman $\rho = 0.57$. Excluding the 22 codes outside the 2-core gives $r = 0.60$ and $\rho = 0.61$ on 149 codes. Word counts use the English translation for the four non-English quotations and exclude Boroch's ellipsis markers.} The degree distribution differs from that of the definitions accordingly, coming closer to a bell-shape with a well-behaved (representative) mean. Thus, few definitions are ``lean'' (relying on a few concepts) and even fewer are conceptually profligate, with most definitions relying on a moderate number of concepts. This means that while most definitions help themselves to a small set of ubiquitous concepts, they also draw from a wider set of concepts not necessarily shared across definitions. 
+Definitions are even more evenly connected, with the average definition covering 5.9 concepts (median 5) and a few covering many more, up to 15 (Table~\ref{tab:top-degree}).\footnote{Across the 171 definitions, the number of words in each correlates with the number of 2-core concepts the code links to: Pearson $r = 0.55$, Spearman $\rho = 0.57$. Excluding the 22 codes outside the 2-core gives $r = 0.60$ and $\rho = 0.61$ on 149 codes. Word counts use the English translation for the four non-English quotations and exclude Boroch's ellipsis markers.} The degree distribution differs from that of the definitions accordingly, coming closer to a bell-shape with a well-behaved (representative) mean. Thus, few definitions are ``lean'' (relying on a few concepts) and even fewer are conceptually profligate, with most definitions relying on a moderate number of concepts. This means that while most definitions help themselves to a small set of ubiquitous concepts, they also draw from a wider set of concepts not necessarily shared across definitions. 
 
 
 \section{Maximum Spanning Trees}
 
-By construction, the two-mode definitions network has no ties between two concepts or between two definitions, so we analyze the implied concept-to-concept ties and the definitions-to-definitions connections via multiple one-mode projections \citep{everett2013dual-projection-c89}. Following Breiger \citeyearpar{breiger1974}, two concepts are tied if they share at least one definition, with weight equal to the number they share. Likewise, two definitions are tied through the concepts they share. In matrix form, the projections are:
+By construction, the two-mode definitions network has no ties between two concepts or between two definitions, so we analyze the implied concept-to-concept ties and the definitions-to-definitions connections via dual one-mode projections \citep{everett2013dual-projection-c89}. Following Breiger \citeyearpar{breiger1974}, two concepts are tied if they share at least one definition, with weight equal to the number they share. Likewise, two definitions are tied through the concepts they share. In matrix form, the projections are:
 
 \begin{equation}
 W_{\mathrm{concept}} = A A^{\top}, \qquad W_{\mathrm{def}} = A^{\top} A,
@@ -122,9 +123,51 @@ W_{\mathrm{concept}} = A A^{\top}, \qquad W_{\mathrm{def}} = A^{\top} A,
 
 Where $(W_{\mathrm{concept}})_{ij} = \sum_k a_{ik} a_{jk}$ counts the definitions that include both concepts $i$ and $j$. Each projection is a weighted graph whose edges are the off-diagonal pairs with positive weight. We build projections from the 2-core of the network's largest component.
 
-Projected graphs are typically dense and fully connected making it hard to detect their underlyinng structure. To do so, we extract the ``backbone'' \citep{neal2014backbone-b29} of each projection by extracting the maximum spanning tree (MST). The MST of each projection is found by computing the minimum spanning tree on negated weights, $-w$. Kruskal's \citeyearpar{kruskal1956} method sorts edges from largest weight to smallest and adds each unless it would close a cycle, producing a tree that maximizes $\sum_{e \in T} w_e$. Because the 2-core is connected, each tree has exactly $|V| - 1$ edges. Many projection weights tie, so a maximum spanning tree is not unique. We therefore build each tree by Kruskal's method with tied edges in a random order, repeat this 1000 times for each projection, and report each node's mean Freeman-normalized \citep{freeman1978centrality-724} betweenness over those trees, together with its spread and the share of trees in which it ranks in the top ten. The same procedure applies to the concept and definition projections. The tree drawn in each figure is the ensemble member whose betweenness vector is closest to the mean (smallest squared distance). Node size in the figures shows the ensemble mean, so sizes need not match the drawn tree's own betweenness, and node color shows the community structure detected on the drawn tree using Newman's \citeyearpar{newman2006} leading-eigenvector method.
+Projected graphs are typically dense and fully connected making it hard to detect their underlyinng structure. To do so, we extract the ``backbone'' \citep{neal2014backbone-b29} of each projection by building the maximum spanning tree (MST). The MST of each projection is found by computing the minimum spanning tree on negated weights, $-w$. Kruskal's \citeyearpar{kruskal1956} method sorts edges from largest weight to smallest and adds each unless it would close a cycle, producing a tree that maximizes $\sum_{e \in T} w_e$. Because the 2-core is connected, each tree has exactly $|V| - 1$ edges. 
+
+Many projection weights tie, so a maximum spanning tree is not unique. We therefore build each tree by Kruskal's method with tied edges in a random order, repeat this 1000 times for each projection, and report each node's mean Freeman-normalized \citep{freeman1978centrality-724} betweenness over those trees, together with its spread and the share of trees in which it ranks in the top ten. The same procedure applies to the concept and definition projections. The tree drawn in each figure is the ensemble member whose betweenness vector is closest to the mean (smallest squared distance). Node size in the figures shows the ensemble mean, so sizes need not match the drawn tree's own betweenness, and node color shows the community structure detected on the drawn tree using Newman's \citeyearpar{newman2006} leading-eigenvector method.
 
 The concept-level tree (Figure~\ref{fig:mst-def-sub}) shows how 160 concepts cluster in the concept projection and the definition-level tree (Figure~\ref{fig:mst-def-code}) shows how 149 definitions cluster in the definitions projection. Table~\ref{tab:mst-def-betweenness} lists the top 10 concepts and definitions by mean betweenness over the tree ensembles, with each node's top-ten share and 2-core degree.
+
+\begin{table}[t]
+\centering
+\caption{Top 10 nodes by mean Freeman-normalized betweenness over 1000 random maximum spanning trees of each projection. Degree is the node's degree in the 2-core. Top-10 share is the percentage of trees in which the node ranks in the top ten. Concepts and definitions are ranked separately. Ties are broken at random in each tree, so the ranks below the first place are not robust: A-10 (10th, share 45\%) and A-1 (11th, share 50\%) differ by 1.1 points in mean betweenness.}
+\label{tab:mst-def-betweenness}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lllrrr}
+\toprule
+Node type & Node & Author-year & Mean norm. betw. (\%) & Top-10 share (\%) & Degree \\
+\midrule
+\multirow{10}{*}{Concepts} & \textsc{group} & & 66.0 & 100 & 27 \\
+ & \textsc{social} & & 57.8 & 100 & 35 \\
+ & \textsc{society} & & 54.7 & 100 & 31 \\
+ & \textsc{behavior} & & 51.6 & 100 & 24 \\
+ & \textsc{customs} & & 36.9 & 100 & 16 \\
+ & \textsc{beliefs} & & 25.7 & 97 & 19 \\
+ & \textsc{members of a society} & & 21.5 & 99 & 14 \\
+ & \textsc{habits} & & 19.3 & 92 & 15 \\
+ & \textsc{ideas} & & 15.8 & 60 & 21 \\
+ & \textsc{learning} & & 12.5 & 51 & 16 \\
+\midrule
+\multirow{10}{*}{Definitions} & C-I-6 & \citealt{gillin1942} & 77.2 & 100 & 14 \\
+ & A-16 & \citealt{bidney1947} & 35.3 & 77 & 11 \\
+ & F-I-3 & \citealt{folsom1931} & 33.3 & 86 & 13 \\
+ & C-II-4 & \citealt{bidney1946} & 29.1 & 77 & 13 \\
+ & F-I-19 & \citealt{murdock1949a} & 28.5 & 71 & 13 \\
+ & C-II-3 & \citealt{bidney1942} & 26.9 & 71 & 10 \\
+ & F-II-8 & \citealt{taylor1948} & 25.9 & 52 & 15 \\
+ & A-8 & \citealt{hiller1933} & 24.1 & 77 & 14 \\
+ & C-I-4 & \citealt{klineberg1935} & 21.8 & 70 & 8 \\
+ & A-10 & \citealt{linton1936} & 21.3 & 45 & 11 \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{0.95\linewidth}
+\small
+\emph{Note:} Definition codes use the format X-Y-Z, where X is a letter (A--G) for K\&K's seven definition categories (Descriptive, Historical, Normative, Psychological, Structural, Genetic, Incomplete), Y is a roman numeral for the subcategory, and Z is the number of the definition within it. Variants such as A-3(a) and A-3(b) are the two quotations of one K\&K code, and they are counted as separate codes (see the data section). The author--year column names the source of each definition's quotation, as Boroch attributes it; the same author and year label the node in Figure~\ref{fig:mst-def-code}.
+\end{minipage}
+\end{table}
 
 \begin{figure}[ht]
 \centering
@@ -139,6 +182,8 @@ The concept-level tree (Figure~\ref{fig:mst-def-sub}) shows how 160 concepts clu
 \caption{Maximum spanning tree of the definitions network, code (definition) nodes labeled by the author and year of their quotation. Shape is the K\&K definition group (A--G, Descriptive to Incomplete); color is the leading-eigenvector community on the drawn tree; size is mean betweenness over the tree ensemble.}
 \label{fig:mst-def-code}
 \end{figure}
+
+Table~\ref{tab:mst-def-betweenness} reports two kinds of measure for each node. Mean normalized betweenness is the share of the paths in a tree that run between other pairs of nodes and pass through the node, averaged over the 1000 trees and expressed as a percentage of the largest value a node could take in a tree, which is the center of a star. It indexes how much a node sits between otherwise separate parts of the projection. The top-10 share is the percentage of trees in which the node ranks in the top ten, so it measures how much the node's place depends on the arbitrary tie-breaking; a high mean with a low share is a tree-dependent result. Degree is a different quantity, the count of a node's ties in the 2-core, and the two can diverge. \textbf{customs} has 16 ties and more than twice the betweenness of \textbf{ideas}, which has 21, while \textbf{learning} has 16 ties and only 12.5\%. The same holds among definitions: C-I-6 has 14 ties but lies on 77\% of the maximum, the largest share in the ensemble, which suggests it links regions of the tree that its degree alone would not reveal. The six highest-ranked concepts stay in the top ten in at least 97\% of trees, so their places are robust, whereas A-10, in tenth place with a 45\% share, is at the cutoff and could be replaced by A-1 in other draws. Substantively, the concepts at the top are the vocabulary that most often joins the definitions' regions in the tree, while the definitions with lower shares occupy positions that depend on which equally weighted tree is drawn.
 
 \subsection{Concept Tree}
 
@@ -178,6 +223,8 @@ Finally, we have C-II-3 \citep{bidney1942}, the sixth highest mean definition be
     A culture consists of the \textbf{acquired} or \textbf{cultivated} \textbf{behavior} and \textbf{thought} of \textbf{individuals} within a \textbf{society}, as well as of the intellectual, artistic, and social ideals which the members of the society profess and to which they strive to conform.
 \end{quotation}
 
+\citet{folsom1931} (F-I-3), the third highest in mean definition betweenness (33\%), is a Genetic definition that reaches the top ten in 86\% of trees. Its 75 words put it at about the 95th percentile of length among codes with a quotation, and it links to 13 concepts in the 2-core (16 in the full network). Its strongest link is to \textbf{beliefs}, which is among the six concepts with the highest mean concept betweenness. Its other concepts range from \textbf{tools}, \textbf{attitudes} and \textbf{symbols} to \textbf{generations}, \textbf{common} and \textbf{sum}, several of which have low concept betweenness. Unlike the Gillin community, which draws on six of the seven groups, the drawn definition tree places it in a community of 15 codes, eight of them Genetic, so it sits mostly with its own group. Its high betweenness therefore does not come from bridging groups in the same way; the tree-level evidence points to its link to \textbf{beliefs} and its breadth of concepts, but we have not decomposed its betweenness path by path, and its tree neighbors should be checked on the drawn figure.
+
 \citet{murdock1949a} (F-I-19) has the fifth highest mean definition betweenness (29\%). Its 70 words link to 13 concepts in the 2-core, three of which are among the four concepts with the highest concept betweenness (\textbf{group}, \textbf{behavior}, and \textbf{society}), and it has six tree neighbors, among them \citet{taylor1948} (F-II-8) and E-5(b). Its quotation frames culture as the product of a process, the ``interaction of learning and society'':
 
 \begin{quotation}
@@ -195,46 +242,6 @@ Seven of the top ten codes carry a C (Normative) or F (Genetic) code; the other 
 Authors supply several of the top-ten codes. Bidney holds three (A-16, C-II-4, and C-II-3), and Linton holds one (A-10). No Kroeber code is in the top ten: A-17 ranks 25th.
 
 The works themselves barely cluster. The 149 codes of the tree carry 120 distinct author--year labels---a repeated label is a second quotation from the same work---and the 19 labels that appear two or more times almost never stay together: 15 of them spread over two or more communities. \citet{kluckhohnkelly1945a}'s chapter, the work with the most codes in the tree (seven), reaches five communities, and \citet{herskovits1948} spans four. Of the four codes split into variants, E-5, F-II-4 and F-II-7 each keep both variants in one community (the three communities differ). The two A-3 variants \citep{dixon1928} fall in different communities. \citet{linton1945a}'s third code (C-I-9) is in another community from its two E-5 variants. The regions of the tree organize concept vocabulary, not the works the definitions were drawn from.
-
-\begin{table}[ht!]
-\centering
-\caption{Top 10 nodes by mean Freeman-normalized betweenness over 1000 random maximum spanning trees of each projection. Degree is the node's degree in the 2-core. Top-10 share is the percentage of trees in which the node ranks in the top ten. Concepts and definitions are ranked separately. Ties are broken at random in each tree, so the ranks below the first place are not robust: A-10 (10th, share 45\%) and A-1 (11th, share 50\%) differ by 1.1 points in mean betweenness.}
-\label{tab:mst-def-betweenness}
-\footnotesize
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{lllrrr}
-\toprule
-Node type & Node & Author-year & Mean norm. betw. (\%) & Top-10 share (\%) & Degree \\
-\midrule
-\multirow{10}{*}{Concepts} & \textsc{group} & & 66.0 & 100 & 27 \\
- & \textsc{social} & & 57.8 & 100 & 35 \\
- & \textsc{society} & & 54.7 & 100 & 31 \\
- & \textsc{behavior} & & 51.6 & 100 & 24 \\
- & \textsc{customs} & & 36.9 & 100 & 16 \\
- & \textsc{beliefs} & & 25.7 & 97 & 19 \\
- & \textsc{members of a society} & & 21.5 & 99 & 14 \\
- & \textsc{habits} & & 19.3 & 92 & 15 \\
- & \textsc{ideas} & & 15.8 & 60 & 21 \\
- & \textsc{learning} & & 12.5 & 51 & 16 \\
-\midrule
-\multirow{10}{*}{Definitions} & C-I-6 & \citealt{gillin1942} & 77.2 & 100 & 14 \\
- & A-16 & \citealt{bidney1947} & 35.3 & 77 & 11 \\
- & F-I-3 & \citealt{folsom1931} & 33.3 & 86 & 13 \\
- & C-II-4 & \citealt{bidney1946} & 29.1 & 77 & 13 \\
- & F-I-19 & \citealt{murdock1949a} & 28.5 & 71 & 13 \\
- & C-II-3 & \citealt{bidney1942} & 26.9 & 71 & 10 \\
- & F-II-8 & \citealt{taylor1948} & 25.9 & 52 & 15 \\
- & A-8 & \citealt{hiller1933} & 24.1 & 77 & 14 \\
- & C-I-4 & \citealt{klineberg1935} & 21.8 & 70 & 8 \\
- & A-10 & \citealt{linton1936} & 21.3 & 45 & 11 \\
-\bottomrule
-\end{tabular}
-\par\smallskip
-\begin{minipage}{0.95\linewidth}
-\small
-\emph{Note:} Definition codes use the format X-Y-Z, where X is a letter (A--G) for K\&K's seven definition categories (Descriptive, Historical, Normative, Psychological, Structural, Genetic, Incomplete), Y is a roman numeral for the subcategory, and Z is the number of the definition within it. Variants such as A-3(a) and A-3(b) are the two quotations of one K\&K code, and they are counted as separate codes (see the data section). The author--year column names the source of each definition's quotation, as Boroch attributes it; the same author and year label the node in Figure~\ref{fig:mst-def-code}.
-\end{minipage}
-\end{table}
 
 The six concepts with the highest mean concept betweenness, \textbf{group}, \textbf{social}, \textbf{society}, \textbf{behavior}, \textbf{customs} and \textbf{beliefs}, are the top of Table~\ref{tab:mst-def-betweenness}, and each anchors a region of the concept tree. The definition with the highest mean betweenness is C-I-6, at 77\% of the maximum possible, a single Normative code. In the concept tree the acquisition and \textbf{transmission} vocabulary sits on a peripheral branch rather than at the core, suggesting that Genetic concerns, however common in the definitions themselves, connect to the rest of the conceptual structure only through a narrow path.
 
@@ -311,7 +318,7 @@ Each code is identified by a citation key: Boroch's author, year and page number
 
 Boroch quotes parts of four K\&K codes separately, labeled (a) and (b). K\&K prints one index entry for each of these codes, so the object had one code where Boroch has two quotations. On 2026-10-30 the project split each of the four codes into two variants (Table~\ref{tab:splits}). The split follows Boroch's quotations and is not a distinction K\&K prints. Each variant takes its own quotation and its own citation key.
 
-\begin{table}[ht]
+\begin{table}[t]
 \centering
 \caption{The four split codes and their variants.}
 \label{tab:splits}
@@ -365,3 +372,5 @@ For the definition codes no aggregation is needed, since each code carries its o
 \bibliography{references,library}
 
 \end{document}
+Rscript scripts/analysis-mst-definitions-index-b.R
+Rscript scripts/analysis-mst-concepts-index-b.R

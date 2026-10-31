@@ -1,0 +1,2 @@
+"n_concepts","n_codes","n_edges","observed_r","null_mean","null_sd","z","p_lower","p_two_sided","n_null","burn_in_trades","trades_per_null","seed"
+470,171,1201,-0.0755608207792306,-0.0331070555218675,0.0218551001811052,-1.94251066824514,0.040959040959041,0.040959040959041,1000,2350,470,6128

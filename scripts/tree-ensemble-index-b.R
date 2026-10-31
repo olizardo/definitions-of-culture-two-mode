@@ -5,7 +5,7 @@
 # Freeman-normalized values over the ensemble. The drawn tree is the ensemble
 # member whose betweenness vector is closest (squared distance) to that mean.
 # Sourced by analysis-tie-sensitivity-index-b.R, analysis-mst-definitions-index-b.R
-# and analysis-ca-index-b.R.
+# and analysis-mst-concepts-index-b.R.
 
 library(igraph)
 

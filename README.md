@@ -47,7 +47,7 @@ the two.
 | `build-supplement-bibliography.R` | Boroch Supplement Bibliography | `kkcc-supplement-bibliography.csv`, `kkcc-definition-biblio.csv` |
 | `build-definition-texts.R` | Boroch appendix | `kkcc-definition-texts.csv` (verbatim; not for release) |
 | `build-work-concept-network-index-b.R` | verified network, `kk-index-b-definitions.csv`, `kk-index-b-name-decisions.csv` | `kk-index-b-works.csv` (work table: `work`, `n_codes`, `codes`) |
-| `analysis-ca-index-b.R` | verified network | CA of the largest-component 2-core (`lcc_2core()`), MST figures, CA score CSVs |
+| `analysis-mst-concepts-index-b.R` | verified network | Kruskal MST of the concept projection (2-core), tree ensemble, concept MST figure |
 | `analysis-mst-definitions-index-b.R` | verified network | Kruskal MST of the code projection (2-core) |
 | `analysis-centrality-index-b.R` | verified network | Two-mode closeness and betweenness on the definitions network's largest component, centrality CSV |
 | `build-index-b-work-citations.R` | `kk-index-b-works.csv`, `kkcc-supplement-bibliography.csv`, `kk-index-b-work-citations-page-checks.csv`, K&K bibliography (`documents/Kroeber-kluckhohn.pdf`) | `kk-index-b-work-citations.csv` (one row per work: K&K and Boroch matches, page-image checks, status) |
@@ -69,7 +69,7 @@ Scripts live in `scripts/`; `documents/` holds the source PDFs and the Archive t
 10. `scripts/check-index-b-blocks.R` (machine cross-check of Index B heading assignments against the printed text)
 11. `scripts/build-work-concept-network-index-b.R`, then `scripts/build-work-authors-index-b.R` (work table: `data/kk-index-b-works.csv`)
 12. `scripts/analysis-index-b.R`
-13. `scripts/analysis-ca-index-b.R` (CA and MST figures for the definitions network), then `analysis-mst-definitions-index-b.R` and `analysis-centrality-index-b.R`
+13. `scripts/analysis-mst-concepts-index-b.R` (concept MST figure for the definitions network), then `analysis-mst-definitions-index-b.R` and `analysis-centrality-index-b.R`
 14. `scripts/build-index-b-work-citations.R` (citation table for the works: K&K bibliography and Boroch supplement, with page-image checks; writes `data/kk-index-b-work-citations.csv`)
 
 The analysis scripts and the report read definition attributes through `scripts/kkcc-definition-attrs.R`.
