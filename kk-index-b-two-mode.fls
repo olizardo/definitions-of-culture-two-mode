@@ -632,6 +632,7 @@ INPUT figures/kk-index-b/degree-definitions.png
 INPUT ./figures/kk-index-b/degree-definitions.png
 INPUT ./figures/kk-index-b/degree-definitions.png
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT ./figures/kk-index-b/definitions/mst-subelement-comm-tree.png
 INPUT ./figures/kk-index-b/definitions/mst-subelement-comm-tree.png
 INPUT figures/kk-index-b/definitions/mst-subelement-comm-tree.png

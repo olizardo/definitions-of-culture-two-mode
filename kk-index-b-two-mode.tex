@@ -73,37 +73,42 @@ Mean $k_{nn}$ & 9.22 \\
 
 \begin{table}[ht]
 \centering
-\caption{Highest-degree nodes of the definitions network. Concept degree counts the definitions that contain the concept; definition degree counts the concepts the definition contains. The last two columns rank definitions by degree per 10 words of quotation, using the English translation where one exists. Per-word rankings favor short quotations: across the 171 codes the per-word value correlates $-0.33$ with word count. Degrees come from the full verified network, not the 2-core used in Table~\ref{tab:mst-def-betweenness}. Ties at the cutoff are included.}
+\caption{Highest-degree nodes of the definitions network on the LCC 2-core. Concept degree counts the 2-core codes that contain the concept; code degree counts the 2-core concepts the code contains. The last two columns rank codes by degree per 10 words of quotation, using the English translation where one exists. Per-word rankings favor short quotations: across the 171 codes the per-word value correlates $-0.23$ with word count. Ties at the cutoff are included.}
 \label{tab:top-degree}
 \footnotesize
-\setlength{\tabcolsep}{3pt}
+\setlength{\tabcolsep}{2.5pt}
 \begin{tabular}{lrlrlr}
 \toprule
 \multicolumn{2}{c}{Concepts, by degree} & \multicolumn{2}{c}{Definitions, by degree} & \multicolumn{2}{c}{Definitions, by degree per 10 words} \\
 \cmidrule(lr){1-2}\cmidrule(lr){3-4}\cmidrule(lr){5-6}
 Concept & Degree & Definition (code) & Degree & Definition (code) & Per 10 words \\
 \midrule
-\textsc{social} & 36 & F-I-8 \citep{reuter1939} & 25 & F-I-15 \citep{carr1945} & 5.56 \\
-\textsc{society} & 31 & C-I-6 \citep{gillin1942} & 19 & A-3(a) \citep{dixon1928} & 5.00 \\
-\textsc{group} & 27 & D-I-6 \citep{lundberg1939} & 19 & D-III-2 \citep{young1934} & 4.29 \\
-\textsc{behavior} & 24 & F-II-8 \citep{taylor1948} & 19 & D-II-4 \citep{kluckhohn1942} & 4.29 \\
-\textsc{ideas} & 23 & A-8 \citep{hiller1933} & 17 & F-III-1 \citep{bain1942} & 4.29 \\
-\textsc{total} & 22 & C-I-17 \citep{frank1948} & 17 & D-II-12 \citep{wilsonkolb1949} & 4.23 \\
-\textsc{sum} & 20 & D-I-7 \citep{panunzio1939} & 17 & E-7 \citep{gillin1948} & 4.21 \\
-\textsc{beliefs} & 19 & F-I-3 \citep{folsom1931} & 16 & A-3(b) \citep{dixon1928} & 4.17 \\
-\textsc{individuals} & 19 & A-15 \citep{kluckhohnkelly1945a} & 15 & B-13 \citep{grovesmoore1940} & 4.17 \\
-\textsc{customs} & 16 & E-3 \citep{ogburnnimkoff1940} & 15 & A-1 \citep{tylor1871} & 4.14 \\
-\textsc{habits} & 16 & F-I-19 \citep{murdock1949a} & 15 & A-2 \citep{wissler1920} & 4.12 \\
-\textsc{learning} & 16 & F-III-4 \citep{white1949a} & 15 & C-II-2 \citep{thomas1937} & 4.09 \\
+\textsc{social} & 35 & F-I-8 \citep{reuter1939} & 15 & A-3(a) \citep{dixon1928} & 5.00 \\
+\textsc{society} & 31 & F-II-8 \citep{taylor1948} & 15 & D-II-4 \citep{kluckhohn1942} & 4.29 \\
+\textsc{group} & 27 & A-8 \citep{hiller1933} & 14 & D-III-2 \citep{young1934} & 4.29 \\
+\textsc{behavior} & 24 & C-I-6 \citep{gillin1942} & 14 & F-III-1 \citep{bain1942} & 4.29 \\
+\textsc{total} & 22 & C-II-4 \citep{bidney1946} & 13 & A-1 \citep{tylor1871} & 4.14 \\
+\textsc{ideas} & 21 & D-I-7 \citep{panunzio1939} & 13 & B-13 \citep{grovesmoore1940} & 3.75 \\
+\textsc{beliefs} & 19 & E-3 \citep{ogburnnimkoff1940} & 13 & G-4 \citep{rouse1939} & 3.75 \\
+\textsc{individuals} & 19 & F-I-19 \citep{murdock1949a} & 13 & F-II-6 \citep{kluckhohnkelly1945a} & 3.64 \\
+\textsc{sum} & 19 & F-I-3 \citep{folsom1931} & 13 & B-6 \citep{malinowski1931} & 3.46 \\
+\textsc{customs} & 16 & A-1 \citep{tylor1871} & 12 & A-3(b) \citep{dixon1928} & 3.33 \\
+\textsc{learning} & 16 & C-I-17 \citep{frank1948} & 12 & F-I-10 (Dodd 1941) & 3.33 \\
+ & & & & F-I-15 \citep{carr1945} & 3.33 \\
 \bottomrule
 \end{tabular}
+\par\smallskip
+\begin{minipage}{0.95\linewidth}
+\small
+\emph{Note:} Degrees are computed on the LCC 2-core used in the analyses (149 codes and 160 concepts). Table~\ref{tab:summary} and Figure~\ref{fig:degree} describe the full network instead. The 22 codes outside the 2-core have degree 0 and a per-10-word value of 0. Per-10-word values are code degree $\times$ 10 divided by the word count of the quotation. Ties at the cutoff are included, so the three lists have different lengths. F-I-10 is Dodd 1941 as Boroch attributes it, a 1941 committee mimeograph of four authors.
+\end{minipage}
 \end{table}
 
 The degree correlation is $-0.076$: concepts with many connections tend to link to definitions with few, and vice versa, though the association is weak. The nearest-neighbor rows show the other side of this pattern. A concept's neighboring definitions contain 10.2 concepts on average, and a definition's neighboring concepts appear in 9.2 definitions on average, so concepts attach preferentially to heavily used definitions and definitions attach to widely shared concepts.
 
-Figure~\ref{fig:degree} shows the degree distributions for the concept nodes (left) and the definition nodes (right). Most concepts are lightly connected: 79\% appear in two or fewer definitions, while a small minority of concepts, such as \textbf{social}, \textbf{society}, \textbf{group}, \textbf{behavior} or \textbf{ideas}, appear in many definitions (see Table~\ref{tab:top-degree}). This leads to the classic ``long tailed'' degree distribution for definitions observed in the left-hand side of Figure~\ref{fig:degree}.\footnote{Over the full range of concept degrees, a discrete power law fits better than a truncated exponential (Vuong $z = 6.1$, $p < 0.001$; $\hat{\alpha} = 2.13$), suggesting a mechanism of ``preferential attachment'' of definitions to already popular concepts \citep{barabási1999emergence-913}. The advantage shrinks for degrees of 2 and up ($z = 1.9$, $p = 0.06$) and vanishes for degrees of 3 and up ($|z| < 1$), so the tail alone does not distinguish the two.}
+Figure~\ref{fig:degree} shows the full-network degree distributions for the concept nodes (left) and the definition nodes (right). Most concepts are lightly connected: 79\% appear in two or fewer definitions, while a small minority of concepts, such as \textbf{social}, \textbf{society}, \textbf{group}, \textbf{behavior} or \textbf{ideas}, appear in many definitions (see Table~\ref{tab:top-degree}). This leads to the classic ``long tailed'' degree distribution for definitions observed in the left-hand side of Figure~\ref{fig:degree}.\footnote{Over the full range of concept degrees, a discrete power law fits better than a truncated exponential (Vuong $z = 6.1$, $p < 0.001$; $\hat{\alpha} = 2.13$), suggesting a mechanism of ``preferential attachment'' of definitions to already popular concepts \citep{barabási1999emergence-913}. The advantage shrinks for degrees of 2 and up ($z = 1.9$, $p = 0.06$) and vanishes for degrees of 3 and up ($|z| < 1$), so the tail alone does not distinguish the two.}
 
-Definitions are more evenly connected, with the average definition covering 7 concepts (median 7) and a few covering many more, up to 25.\footnote{Across the 171 codes, the number of words in each quotation correlates with the number of concepts the code links to: Pearson $r = 0.66$, Spearman $\rho = 0.64$. Excluding the five codes with no concept links gives $r = 0.66$ and $\rho = 0.63$ on 166 codes. Word counts use the English translation for the four non-English quotations and exclude Boroch's ellipsis markers.} The degree distribution differs from that of the definitions accordingly, coming closer to a bell-shape with a well-behaved (representative) mean. Thus, few definitions are ``lean'' (relying on a few concepts) and even fewer are conceptually profligate, with most definitions relying on a moderate number of concepts. This means that while most definitions help themselves to a small set of ubiquitous concepts, they also draw from a wider set of concepts not necessarily shared across definitions. 
+On the 2-core, definitions are more evenly connected, with the average code covering 5.9 concepts (median 5) and a few covering many more, up to 15 (Table~\ref{tab:top-degree}).\footnote{Across the 171 codes, the number of words in each quotation correlates with the number of 2-core concepts the code links to: Pearson $r = 0.55$, Spearman $\rho = 0.57$. Excluding the 22 codes outside the 2-core gives $r = 0.60$ and $\rho = 0.61$ on 149 codes. Word counts use the English translation for the four non-English quotations and exclude Boroch's ellipsis markers.} The degree distribution differs from that of the definitions accordingly, coming closer to a bell-shape with a well-behaved (representative) mean. Thus, few definitions are ``lean'' (relying on a few concepts) and even fewer are conceptually profligate, with most definitions relying on a moderate number of concepts. This means that while most definitions help themselves to a small set of ubiquitous concepts, they also draw from a wider set of concepts not necessarily shared across definitions. 
 
 
 \section{Maximum Spanning Trees}
@@ -141,6 +146,8 @@ In the concept tree (Figure~\ref{fig:mst-def-sub}), the six concepts with the hi
 
 The concept tree is mostly a backbone of low-betweenness nodes. Averaged over the 1000 trees, 21 of the 160 concepts are leaves in every tree, and the median concept is a leaf in 76\% of them. Degree is the number of 2-core codes containing a concept. It is positively associated with mean betweenness (Spearman $\rho = 0.71$), but not uniformly. The four highest-degree concepts, \textbf{social} (35), \textbf{society} (31), \textbf{group} (27), and \textbf{behavior} (24), are among the six highest in mean betweenness. Other high-degree concepts bridge little: \textbf{total} (degree 22) has mean betweenness 7.3\%, \textbf{ideas} (21) 15.8\%, \textbf{sum} (19) 2.6\%, and \textbf{transmission} (15) 0.9\%. Element names repeat across headings, and \textbf{sum} and \textbf{total} both appear under the totality heading, so these counts may combine distinct elements.
 
+Two concepts at the edges of this tree need separate mention. \textbf{a people}---an alternative reference to a group or collective---links the salmon \textbf{customs} region to \textbf{way of life}, and removing it separates \textbf{way of life} (with \textbf{behave}) from \textbf{customs}. Its strongest ties are to \textbf{way of life} (six shared definitions) and \textbf{customs} (five), and its fifteen definitions come from all seven groups, so it is a broadly shared concept rather than one tied to a single group. This speaks to the penchant to define culture as the customs or way of life common to ``a people.'' \textbf{complex whole}, the classic locution due to the ``original'' definition by \citet{tylor1871}, heads a small cluster at the upper right of the figure. Its tree neighbors are \textbf{acquired} and \textbf{art}. The cluster reaches \textbf{society} only through \textbf{acquired}, and its six definitions come from Groups A (Descriptive), B (Historical) and D (Psychological).
+
 \subsection{Definitions Tree}
 
 The three codes with the highest mean betweenness are the \citet{gillin1942} quotation (C-I-6, 77\%), the \citet{bidney1947} quotation (A-16, 35\%), and the \citet{folsom1931} quotation (F-I-3, 33\%). The Gillin quotation is the largest node in the figure. \citet{gillin1942} heads the largest community (18 definitions, drawn from six of the seven groups), and \citet{bidney1947} sits in the same community. The Gillin quotation is wordy (64 words) but not among the wordiest (89th percentile of length among codes with a quotation), so its bridging role is not a simple function of its length but of the concepts it uses. Here is the definition in full, with the concepts it uses in bold:
@@ -150,8 +157,6 @@ The three codes with the highest mean betweenness are the \citet{gillin1942} quo
 \end{quotation}
 
 The two trees' betweenness rankings are each their own structural fact rather than echoes of one another. A concept's mean betweenness is only weakly related to the mean betweenness of the codes that contain it (Pearson $r = 0.13$; Spearman $\rho = 0.30$), and the reverse relation is weaker still ($r = 0.08$; $\rho = 0.10$). Concepts gain concept-tree betweenness by bridging concept regions, not by riding on definitions with high definition-tree betweenness: \textbf{group} owes its top concept-tree rank to its position among concepts, not to its definition partners. The converse also appears. A-10 (Linton 1936) ranks tenth in definition betweenness with only \textbf{society} among the six highest in concept betweenness, so a definition can bridge definitions without containing any bridge concept. The apparent association between the top concepts and the top code is largely one hub: five of the six concepts with the highest concept betweenness (\textbf{group}, \textbf{social}, \textbf{society}, \textbf{behavior}, and \textbf{customs}) link to C-I-6, which has the highest mean betweenness among the codes of each of them. The sixth, \textbf{beliefs}, does not link to it; its highest-betweenness code is F-I-3.
-
-Two nodes at the edges of this picture need separate mention. \textbf{a people}---an alternative reference to a group or collective---links the salmon \textbf{customs} region to \textbf{way of life}, and removing it separates \textbf{way of life} (with \textbf{behave}) from \textbf{customs}. Its strongest ties are to \textbf{way of life} (six shared definitions) and \textbf{customs} (five), and its fifteen definitions come from all seven groups, so it is a broadly shared concept rather than one tied to a single group. This speaks to the penchant to define culture as the customs or way of life common to ``a people.'' \textbf{complex whole}, the classic locution due to the ``original'' definition by \citet{tylor1871}, heads a small cluster at the upper right of the figure. Its tree neighbors are \textbf{acquired} and \textbf{art}. The cluster reaches \textbf{society} only through \textbf{acquired}, and its six definitions come from Groups A (Descriptive), B (Historical) and D (Psychological).
 
 C-I-6 has the highest mean betweenness in the definition tree (77\%), and its position is not a simple function of its length. At 64 words it sits at the 89th percentile of quotation length among codes with a quotation, well short of the longest quotation (142 words). It links to 14 concepts, and the mean concept betweenness of those concepts sits at the 89th percentile of codes. Its degree is not the highest: F-I-8 and F-II-8 each link to 15 concepts. But a high-betweenness vocabulary is not sufficient: 93 other codes share at least one of its five highest-betweenness concepts, and their mean betweenness is 4.7\% against C-I-6's 77.2\%. What is distinctive about C-I-6 is where it sits in the definition tree: it bridges definitions, and it does so with a concept repertoire that many other definitions share.
 
