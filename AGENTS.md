@@ -10,7 +10,7 @@ Open items: `docs/TODO.md`. Dated decisions and evidence: `docs/PROVENANCE.md` (
 - `data/`: CSV and rds outputs. `docs/`: PROVENANCE.md, TODO.md.
 - `figures/`: PNGs by source: `boroch/`, `kk-index-b/definitions/`, `kk-index-b/nmf/`, and `kk-index-b/degree-definitions.png`. Filenames carry the network or node type; the folder carries the dataset. Scripts create their folders. The heading MSTs are generated but not used in the manuscript.
 - `documents/`: source PDFs and an ignored text copy. `*_djvu.txt` is gitignored; do not commit or release it. `documents/pdfcoffee.com-*.pdf` is gitignored but still tracked (see TODO).
-- `kk-index-b-two-mode.tex`: the LaTeX draft report. It reads the figures and CSVs but does not source them, so rerun the scripts and update numbers by hand, following "Manuscript numbers" below. Citations are natbib (`abbrvnat`). The bibliography is `\bibliography{references,library}`; `library.bib` is a gitignored symlink to the user's `~/My Library.bib`. Compile with pdflatex, bibtex, pdflatex twice. A clean compile has no overfull boxes and no undefined references.
+- `kk-index-b-two-mode.tex`: the LaTeX draft report. It reads the figures and CSVs but does not source them, so rerun the scripts and update numbers by hand, following "Manuscript numbers" below. Citations are natbib with `apalike` (the user kept it on 2026-10-30). `apalike` takes only the first four characters of the year field, so year letters such as 1945a are lost in the citation text; the bibliography shows a letter only when two cited entries share an author and year. Do not put letters in year fields. The bibliography is `\bibliography{references,library}`; `library.bib` is a gitignored symlink to the user's `~/My Library.bib`. Compile with pdflatex, bibtex, pdflatex twice. A clean compile has no overfull boxes and no undefined references.
 - The compile artifacts (`kk-index-b-two-mode.{aux,log,out,fls,fdb_latexmk,pdf}`) are tracked in git and show as modified after every compile. Do not commit them unless asked.
 - MST betweenness in the tables is Freeman-normalized and pasted in by hand from `data/kk-index-b-mst-*.csv`.
 - Scratch files go in `$PA_SCRATCH_DIR`, not the repo.
@@ -29,7 +29,7 @@ The release folder and the site (`site-source`) still hold the works graph: the 
 
 The network build reads `data/kkcc-appendix-only-links.csv`, and those links set the Boroch labels on the code vertices. After a change to that file, rerun the network chain from `build-index-b-networks.R` on, then the analyses.
 
-Code vertices of the verified network also carry `source_author`, `source_year`, `source_page`, `quote_opening` (NA on sub-element vertices). They come from `data/kkcc-definition-source-pages.csv` through `scripts/attach-code-attributes-index-b.R`, which must run after `build-index-b-verified.R`, because the rebuild rewrites the network.
+Code vertices of the verified network also carry `source_author`, `source_year`, `source_page`, `quote_opening` (NA on sub-element vertices), and `n_words` (words in the quotation, from the English translation where one exists, Boroch's ellipsis markers not counted; added 2026-10-30 in the same script). They come from `data/kkcc-definition-source-pages.csv` through `scripts/attach-code-attributes-index-b.R`, which must run after `build-index-b-verified.R`, because the rebuild rewrites the network.
 
 ## Rebuilding the K&K Index A/B data
 
@@ -171,6 +171,13 @@ The manuscript was refreshed for the a/b split and the variant link decisions on
 - Figure subtitles and `factor.labels` vectors hard-code counts and labels. Update them by hand when a count or factor order changes (the text-NMF subtitle carried a stale count until 2026-10-30).
 - Compile check: copy the tex, `figures/`, `references.bib` and `library.bib` (`cp -L`, to dereference the symlink) to the scratch copy, then run pdflatex, bibtex, pdflatex twice there. The repo's compile artifacts stay as they are unless the user asks to rebuild them.
 - The tex's uncommitted working copy has changes that are not in git. Check `git diff` before assuming a line is committed.
+- Table 2 (`tab:top-degree`, numbered 2 because Table 1 is the network summary) has three paired lists: concepts and definitions by degree, then definitions by degree per 10 words of quotation (degree × 10 / `n_words`). Ties at the cutoff are included, so each list runs to the same number of rows. The per-word values and the caption's correlation with word count (r = −0.33) are typed by hand from `n_words`. The per-word ranking is led by short quotations, which the caption says.
+- The footnote after "up to 25" in the degree section reports the correlation of quotation length with degree (Pearson r = 0.66, Spearman ρ = 0.64, n = 171; ρ = 0.63 without the five isolated codes). Typed by hand.
+- Prose conventions: concept (sub-element) names are set in `\textsc{}`. A standalone group letter carries its K&K type in parentheses (A Descriptive, B Historical, C Normative, D Psychological, E Structural, F Genetic, G Incomplete; names from `kk-group-style.R`). Subgroups (C-I, D-II, F-I and so on) are not labeled. Boroch's table is always written "Boroch's Table 2" in prose, so it is not confused with the manuscript's Table 2.
+- Plain author-year mentions still without a bibliography entry, left open: Maquet 1949 (C-I-18a), Aberle et al. 1950 (D-II-16), and Roberts 1951 (D-III-4; the K&K bibliography prints 1950). Decide each before adding an entry. "Bidney" is a bare surname where it covers three works.
+- Entries added to `references.bib` on 2026-10-30, from the citation table's Boroch-reference or K&K lines (`data/kk-index-b-work-citations.csv`): Winston 1933, Reuter 1939, Lundberg 1939, Hiller 1933, Panunzio 1939, Folsom 1931, Frank 1948, Taylor 1948, Firth 1939, Lynd 1940, Ogburn and Nimkoff 1940, LaPiere 1946, White 1949a, Carr 1945, Young 1934, Kluckhohn 1942 (unpublished mimeograph), Bain 1942, Wilson and Kolb 1949, Gillin 1948, Groves and Moore 1940, Wissler 1920, Thomas 1937. Author names are initials as printed; complete them from the library if a work is added there.
+- The concept-tree paragraph discusses "a people" and "complex whole". Its structural claims were checked on the tree: removing "a people" disconnects its branch from "customs", and removing "acquired" disconnects "complex whole" from "society". Recheck them after any rebuild of the concept tree.
+- Compile cleanly in a scratch copy, running pdflatex four times with bibtex after the first. The label-changed warning clears on the fourth pass.
 
 ## Regex and text gotchas (R)
 
@@ -216,4 +223,5 @@ The manuscript was refreshed for the a/b split and the variant link decisions on
 - The site changelog follows the release CHANGELOG but omits references to PROVENANCE and TODO, which readers cannot open. Keep the two in step when the version changes.
 - The local project `~/projects/ACADEMICS/kkcc-two-mode-data/` is a stale copy with no git remote. Do not edit it for site changes.
 - `main` has uncommitted work (see TODO) and is not part of the publication. Its recent commit messages are placeholders, so refer to commits by hash, not message.
+- The verified network's `n_words` attribute (2026-10-30) is not in the release's `.rds` objects yet. Refreshing them needs a CHANGELOG entry and a MANIFEST update, and the attribute counts only, not the quotations.
 - Publication history lives in the CHANGELOG and PROVENANCE, not here.

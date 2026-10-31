@@ -34,25 +34,31 @@ Table~\ref{tab:summary} gives summary statistics for the definitions network. Th
 
 \begin{table}[ht]
 \centering
-\caption{Summary statistics for the definitions network. Statistics describe the full network, before the restriction to the largest component's 2-core used in the analyses. Average nearest-neighbor degree ($k_{nn}$) is the average degree of a node's neighbors; degree correlation shows how a node's degree relates to the degree of its neighbors.}
+\caption{Summary statistics for the definitions network. Statistics describe the full network, before the restriction to the largest component's 2-core used in the analyses. Average nearest-neighbor degree ($k_{nn}$) is the average degree of a node's neighbors; degree correlation shows how a node's degree relates to the degree of its neighbors. Degree variances are sample variances (divisor $n-1$) over all nodes of each type, including isolates.}
 \label{tab:summary}
 \begin{tabular}{lr}
 \toprule
- & Definitions network \\
+ & Network \\
 \midrule
-Concept nodes & 470 \\
-Definition nodes & 171 codes (5 isolated) \\
 Edges & 1201 \\
 Density & 0.015 \\
-Mean degree, concepts & 2.56 \\
-Minimum degree, concepts & 1 \\
-Maximum degree, concepts & 36 \\
-Mean degree, definitions & 7.02 \\
-Minimum degree, definitions & 0 \\
-Maximum degree, definitions & 25 \\
-Mean $k_{nn}$, concepts & 10.18 \\
-Mean $k_{nn}$, definitions & 9.22 \\
 Degree correlation $r$ & $-0.076$ \\
+\midrule
+\multicolumn{2}{l}{\textit{Concepts} ($N = 470$)} \\
+\addlinespace
+Mean degree & 2.56 \\
+Minimum degree & 1 \\
+Maximum degree & 36 \\
+Degree variance & 16.34 \\
+Mean $k_{nn}$ & 10.18 \\
+\midrule
+\multicolumn{2}{l}{\textit{Definitions} ($N = 171$ codes, 5 isolated)} \\
+\addlinespace
+Mean degree & 7.02 \\
+Minimum degree & 0 \\
+Maximum degree & 25 \\
+Degree variance & 20.52 \\
+Mean $k_{nn}$ & 9.22 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -95,9 +101,9 @@ Concept & Degree & Definition (code) & Degree & Definition (code) & Per 10 words
 
 The degree correlation is $-0.076$: concepts with many connections tend to link to definitions with few, and vice versa, though the association is weak. The nearest-neighbor rows show the other side of this pattern. A concept's neighboring definitions contain 10.2 concepts on average, and a definition's neighboring concepts appear in 9.2 definitions on average, so concepts attach preferentially to heavily used definitions and definitions attach to widely shared concepts.
 
-Figure~\ref{fig:degree} shows the degree distributions for the concept nodes (left) and the definition nodes (right). Most concepts are lightly connected: 79\% appear in two or fewer definitions, while a small minority of concepts, such as \textsc{social}, \textsc{society}, \textsc{group}, \textsc{behavior} or \textsc{ideas}, appear in many definitions (see Table~\ref{tab:top-degree}). This leads to the classic ``long tailed'' degree distribution for definitions observed in the left-hand side of Figure~\ref{fig:degree}.
+Figure~\ref{fig:degree} shows the degree distributions for the concept nodes (left) and the definition nodes (right). Most concepts are lightly connected: 79\% appear in two or fewer definitions, while a small minority of concepts, such as \textsc{social}, \textsc{society}, \textsc{group}, \textsc{behavior} or \textsc{ideas}, appear in many definitions (see Table~\ref{tab:top-degree}). This leads to the classic ``long tailed'' degree distribution for definitions observed in the left-hand side of Figure~\ref{fig:degree}.\footnote{Over the full range of concept degrees, a discrete power law fits better than a truncated exponential (Vuong $z = 6.1$, $p < 0.001$; $\hat{\alpha} = 2.13$), suggesting a mechanism of ``preferential attachment'' of definitions to already popular concepts \citep{barabási1999emergence-913}. The advantage shrinks for degrees of 2 and up ($z = 1.9$, $p = 0.06$) and vanishes for degrees of 3 and up ($|z| < 1$), so the tail alone does not distinguish the two.}
 
-Definitions are more evenly connected, with the average definition covering 7 concepts (median 7) and a few covering many more, up to 25.\footnote{Across the 171 codes, the number of words in each quotation correlates with the number of concepts the code links to: Pearson $r = 0.66$, Spearman $\rho = 0.64$. Excluding the five codes with no concept links gives $r = 0.66$ and $\rho = 0.63$ on 166 codes. Word counts use the English translation for the four non-English quotations and exclude Boroch's ellipsis markers. The correlation is descriptive; it does not show that longer quotations produce more links.} The degree distribution differs from that of the definitions accordingly, coming closer to a bell-shape with a well-behaved (representative) mean. Thus, few definitions are ``lean'' (relying on a few concepts) and even fewer are conceptually profligate, with most definitions relying on a moderate number of concepts. This means that while most definitions help themselves to a small set of ubiquitous concepts, they also draw from a wider set of concepts not necessarily shared across definitions. 
+Definitions are more evenly connected, with the average definition covering 7 concepts (median 7) and a few covering many more, up to 25.\footnote{Across the 171 codes, the number of words in each quotation correlates with the number of concepts the code links to: Pearson $r = 0.66$, Spearman $\rho = 0.64$. Excluding the five codes with no concept links gives $r = 0.66$ and $\rho = 0.63$ on 166 codes. Word counts use the English translation for the four non-English quotations and exclude Boroch's ellipsis markers.} The degree distribution differs from that of the definitions accordingly, coming closer to a bell-shape with a well-behaved (representative) mean. Thus, few definitions are ``lean'' (relying on a few concepts) and even fewer are conceptually profligate, with most definitions relying on a moderate number of concepts. This means that while most definitions help themselves to a small set of ubiquitous concepts, they also draw from a wider set of concepts not necessarily shared across definitions. 
 
 
 \section{Maximum Spanning Trees}
@@ -111,7 +117,7 @@ W_{\mathrm{concept}} = A A^{\top}, \qquad W_{\mathrm{def}} = A^{\top} A,
 
 Where $(W_{\mathrm{concept}})_{ij} = \sum_k a_{ik} a_{jk}$ counts the definitions that include both concepts $i$ and $j$. Each projection is a weighted graph whose edges are the off-diagonal pairs with positive weight. We build projections from the 2-core of the network's largest component.
 
-Projected graphs are typically dense and fully connected making it hard to detect their underlyinng structure. To do so, we extract the ``backbone'' \citep{neal2014backbone-b29} of each projection by extracting the maximum spanning tree of each projection. The maximum spanning tree of each projection is found by computing the minimum spanning tree on negated weights, $-w$. Kruskal's \citeyearpar{kruskal1956} method sorts edges from largest weight to smallest and adds each unless it would close a cycle, producing a tree that maximizes $\sum_{e \in T} w_e$. Because the 2-core is connected, each tree has exactly $|V| - 1$ edges. In the visualizations, node size shows betweenness within the tree and node color shows the community structure detected using Newman's leading-eigenvector method \citep{newman2006} applied to the tree.
+Projected graphs are typically dense and fully connected making it hard to detect their underlyinng structure. To do so, we extract the ``backbone'' \citep{neal2014backbone-b29} of each projection by extracting the maximum spanning tree (MST). The MST of each projection is found by computing the minimum spanning tree on negated weights, $-w$. Kruskal's \citeyearpar{kruskal1956} method sorts edges from largest weight to smallest and adds each unless it would close a cycle, producing a tree that maximizes $\sum_{e \in T} w_e$. Because the 2-core is connected, each tree has exactly $|V| - 1$ edges. In the visualizations, node size shows betweenness within the tree and node color shows the community structure detected using Newman's \citeyearpar{newman2006} leading-eigenvector method applied to the tree.
 
 The concept-level tree (Figure~\ref{fig:mst-def-sub}) shows how 160 concepts cluster in the concept projection and the definition-level tree (Figure~\ref{fig:mst-def-code}) shows how 149 definitions cluster in the definitions projection. Table~\ref{tab:mst-def-betweenness} lists the top 10 concepts and definitions by betweenness in their maximum spanning trees.
 
@@ -133,7 +139,13 @@ In the concept tree (Figure~\ref{fig:mst-def-sub}), the six largest nodes---\tex
 
 Two nodes at the edges of this picture need separate mention. \textsc{a people}---an alternative reference to a group or collective---is the link between the olive \textsc{customs} region and a branch on the right that includes \textsc{way of life} and \textsc{period of time}. Removing it disconnects that branch from \textsc{customs}. Its strongest ties are to \textsc{way of life} (six shared definitions) and \textsc{customs} (five), and its fifteen definitions come from all seven groups, so it is a broadly shared concept rather than one tied to a single group. This speaks to the penchant to define culture as the customs or way of life common to ``a people.'' \textsc{complex whole}, the classic locution due to the ``original'' definition by \citet{tylor1871}, heads an orange cluster on the far left. Its tree neighbors are \textsc{concepts}, \textsc{instruments}, \textsc{man-made}, \textsc{needs}, \textsc{physical biological and human nature} and \textsc{skills}, together with \textsc{acquired}, which it shares with three definitions. The cluster reaches \textsc{society} only through \textsc{acquired}, and its six definitions come from Groups A (Descriptive), B (Historical) and D (Psychological).
 
-The definition tree (Figure~\ref{fig:mst-def-code}) puts its three largest nodes at the center of the tree---the \citet{gillin1942} quotation (C-I-6), the \citet{murdock1949a} quotation (F-I-19), and the \citet{bidney1947} quotation (A-16)---with Gillin and Gillin the largest of all. \citet{gillin1942} heads the largest community (24 definitions, drawn from all seven groups), and \citet{bidney1947} sits in the same community. \citet{murdock1949a} and the \citet{kroeber1948a} quotation A-17 share a second community at the left of the center. This is consistent with the table, where five of the top ten definitions carry a C (Normative) or F (Genetic) code and the others are Descriptive, Historical or Psychological. Degree and betweenness dissociate in this ranking: C-I-6 has both the highest betweenness and the highest tree degree (17), acting as the main hub of its community, while F-I-19 has the second-highest betweenness with only eight ties, sitting on the paths that join its cluster to the rest of the tree. One author supplies a striking share of the bridges, as Bidney holds three of the ten most central definitions (A-16, C-II-4, and C-II-3); \citet{kroeber1948a} is the only other work with two codes in the top ten (A-17 and B-18), and Linton holds two more, C-I-8 (\citealt{linton1945b}, a chapter) and A-10 (\citealt{linton1936}, a book). Away from the center, the Descriptive definitions---the two \citealt{dixon1928} quotations (A-3(a) and A-3(b)), \citealt{burkitt1929} (A-5), \citealt{lowie1937} (A-10a), and \citealt{murray1943} (A-12)---form a separate olive branch in the upper right, and the Descriptive definitions \citealt{tylor1871} (A-1) and the \citealt{kluckhohnkelly1945a} chapter (A-14) run along the right side, showing that the earliest and simplest definitions connect to the core through fewer, longer paths.
+The definition tree (Figure~\ref{fig:mst-def-code}) puts its three largest nodes at the center of the tree---the \citet{gillin1942} quotation (C-I-6), the \citet{murdock1949a} quotation (F-I-19), and the \citet{bidney1947} quotation (A-16)---with Gillin and Gillin the largest of all. \citet{gillin1942} heads the largest community (24 definitions, drawn from all seven groups), and \citet{bidney1947} sits in the same community. We have already seen that \citet{gillin1942} is one of the most central definitions by degree (using lots of concepts). It is also wordy (about 100 words), but not the wordiest (it sits at the 90th percentily of wordiness). So its bridging role is not a simple function of its length, but of the concepts it uses, as there are way wordier definitions that are not as central. Here's the definition in full, with the concepts it uses in bold:
+
+\begin{quotation}
+    The \textbf{customs}, \textbf{traditions}, \textbf{attitudes}, \textbf{ideas}, and \textbf{symbols} which \textbf{govern} \textbf{social behavior} show a wide variety. Each \textbf{group}, each \textbf{society} has a set of \textbf{behavior patterns} (overt and covert) which are more or less \textbf{common} to the members, which are passed down from \textbf{generation} to \textbf{generation}, and \textbf{taught} to the \textbf{children}, and which are constantly liable to \textbf{change}. These \textbf{common} patterns we call the culture\ldots
+\end{quotation}
+
+\citet{murdock1949a} and the \citet{kroeber1948a} quotation A-17 share a second community at the left of the center. This is consistent with the table, where five of the top ten definitions carry a C (Normative) or F (Genetic) code and the others are Descriptive, Historical or Psychological. Degree and betweenness dissociate in this ranking: C-I-6 has both the highest betweenness and the highest tree degree (17), acting as the main hub of its community, while F-I-19 has the second-highest betweenness with only eight ties, sitting on the paths that join its cluster to the rest of the tree. One author supplies a striking share of the bridges, as Bidney holds three of the ten most central definitions (A-16, C-II-4, and C-II-3); \citet{kroeber1948a} is the only other work with two codes in the top ten (A-17 and B-18), and Linton holds two more, C-I-8 (\citealt{linton1945b}, a chapter) and A-10 (\citealt{linton1936}, a book). Away from the center, the Descriptive definitions---the two \citealt{dixon1928} quotations (A-3(a) and A-3(b)), \citealt{burkitt1929} (A-5), \citealt{lowie1937} (A-10a), and \citealt{murray1943} (A-12)---form a separate olive branch in the upper right, and the Descriptive definitions \citealt{tylor1871} (A-1) and the \citealt{kluckhohnkelly1945a} chapter (A-14) run along the right side, showing that the earliest and simplest definitions connect to the core through fewer, longer paths.
 
 The works themselves barely cluster. The 149 codes of the tree carry 120 distinct author--year labels---a repeated label is a second quotation from the same work---and the 19 labels that appear two or more times almost never stay together: 15 of them spread over two or more communities. \citet{kluckhohnkelly1945a}'s chapter, the most quoted work in the corpus with seven of its eight codes in the tree, reaches four communities scattered across the tree, and \citet{herskovits1948} likewise spans four. The three a/b quotation pairs do sit together, one pair per community \citep{dixon1928,blumenthal1937,feibleman1946}, as those variants share most of their concept links; \citet{linton1945a} is the partial exception, with its two E-5 variants together and its third code (C-I-9) in another community. The regions of the tree organize concept vocabulary, not the works the definitions were drawn from.
 
