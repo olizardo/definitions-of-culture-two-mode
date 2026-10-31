@@ -1,33 +1,25 @@
-# Supplementary Sankeys of the NMF classifications against K&K's
+# Supplementary Sankey of the LDA classification against K&K's
 # disaggregated typology (groups with their roman-numeral subgroups), drawn
-# with ggsankeyfier. The manuscript body compares the classifications against
+# with ggsankeyfier. The manuscript body compares the classification against
 # the seven group letters A-G; here the left side is the subgroup level:
 # A, B, C-I, C-II, D-I..D-IV, E, F-I..F-IV, G. A bare C or D code would be a
 # Part III statement code, outside the Part II typology; the verified codes
 # have none (PROVENANCE 16), so the Part III node stays empty.
 #
-# Two panels:
-# - text NMF: the 171 verified definition codes carrying a text, each code's own
-#   subgroup against its dominant text NMF factor
-#   (analysis-nmf-texts-index-b.R). The split codes (PROVENANCE 17) count as
-#   separate codes. No tie node: a code sits in one subgroup.
-# - structural NMF: the 149 codes of the LCC 2-core, each code's subgroup
-#   against its dominant structural factor
-#   (analysis-nmf-structural-index-b.R, PROVENANCE 23).
+# Panel: the 171 verified definition codes, each code's own subgroup against
+# its dominant LDA topic (analysis-lda-texts-index-b.R). The split codes
+# (PROVENANCE 17) count as separate codes. No tie node: a code sits in one
+# subgroup.
 #
 # Ribbons take the color of their source node; subgroup nodes are colored by
-# their group letter (the Okabe-Ito palette defined below), the
-# factor nodes the default ggplot hues, so factor colors do not read as group
-# colors.
+# their group letter (the Okabe-Ito palette defined below), the topic nodes the
+# default ggplot hues, so topic colors do not read as group colors.
 #
-# Reads data/kk-index-b-nmf-texts-loads.csv and
-# data/kk-index-b-nmf-structural-loads.csv (each carries factor_label).
+# Reads data/kk-index-b-lda-code-theta.csv (dominant column).
 #
 # Outputs:
-#   figures/kk-index-b/nmf/sankey-codes-subgroups.png
-#   figures/kk-index-b/nmf/sankey-structural-subgroups.png
-#   data/kk-index-b-nmf-subgroup-texts-crosstab.csv
-#   data/kk-index-b-nmf-subgroup-structural-crosstab.csv
+#   figures/kk-index-b/lda/sankey-codes-subgroups.png
+#   data/kk-index-b-lda-subgroup-crosstab.csv
 
 library(ggplot2)
 library(ggsankeyfier)
@@ -35,7 +27,24 @@ library(ggrepel)
 
 source("scripts/kk-group-style.R")
 
-dir.create("figures/kk-index-b/nmf", recursive = TRUE, showWarnings = FALSE)
+dir.create("figures/kk-index-b/lda", recursive = TRUE, showWarnings = FALSE)
+
+K_TOPICS <- 12
+# topic labels hand-set from the ensemble top terms
+# (data/kk-index-b-lda-topic-terms.csv); recheck after any rebuild
+factor.labels <- c(
+  "1 transmission and learning",
+  "2 material objects and ideas",
+  "3 individual acquired behavior",
+  "4 ways of thinking and acting",
+  "5 customs, beliefs, art, knowledge",
+  "6 historically created concepts",
+  "7 sum total",
+  "8 biological means and needs",
+  "9 shared habits across generations",
+  "10 human products of mind",
+  "11 way of life",
+  "12 cultural order of phenomena")
 
 # subgroup of a K&K code: letter + roman numeral when the code has one; the
 # plain-numbered groups (A, B, E, G) have no subgroup level; a bare C or D
@@ -93,9 +102,9 @@ sankey.plot <- function(tab, x.labs, node.title, fac.labs) {
   long <- make_long(tab, "sg", "fac")
   long$stage <- factor(long$stage, levels = c("sg", "fac"))
   # position_sankey stacks the first level at the bottom, so reverse the
-  # levels to get subgroup A and factor 1 at the top
+  # levels to get subgroup A and topic 1 at the top
   long$node <- factor(long$node,
-                      levels = c(rev(sg.levels), rev(as.character(1:7))))
+                      levels = c(rev(sg.levels), rev(as.character(seq_len(K_TOPICS)))))
   stopifnot(sum(tab) == sum(long$n[long$stage == "sg"]))
   lab.map <- c(setNames(sg.names[sg.levels], paste0("sg.", sg.levels)),
                setNames(fac.labs, paste0("fac.", names(fac.labs))))
@@ -135,42 +144,20 @@ sankey.plot <- function(tab, x.labs, node.title, fac.labs) {
           legend.key.size = unit(0.28, "lines"))
 }
 
-# ---- codes: subgroup -> dominant text factor ----
-tl <- read.csv("data/kk-index-b-nmf-texts-loads.csv")
-fl.c <- unique(tl[, c("dominant", "factor_label")])
-stopifnot(nrow(fl.c) == 7L)
-fac.labs.c <- setNames(as.character(fl.c$factor_label), as.character(fl.c$dominant))
+# ---- codes: subgroup -> dominant LDA topic ----
+tl <- read.csv("data/kk-index-b-lda-code-theta.csv")
+fac.labs.c <- setNames(factor.labels, as.character(seq_len(K_TOPICS)))
 sg.c <- subgrp(trimws(tl$kk_code))
 sg.c.used <- sg.levels[sg.levels %in% unique(sg.c)]
 tab.c <- table(subgroup = factor(sg.c, levels = sg.c.used),
-               factor = factor(tl$dominant, levels = 1:7))
+               factor = factor(tl$dominant, levels = seq_len(K_TOPICS)))
 cat("codes panel: ", nrow(tl), " codes; subgroups ",
     length(sg.c.used), "\n", sep = "")
 write.csv(data.frame(subgroup = rownames(tab.c), as.data.frame.matrix(tab.c),
                      check.names = FALSE),
-          "data/kk-index-b-nmf-subgroup-texts-crosstab.csv", row.names = FALSE)
+          "data/kk-index-b-lda-subgroup-crosstab.csv", row.names = FALSE)
 p.codes <- sankey.plot(tab.c,
-  c(sg = "K&K subgroup", fac = "text NMF\n(definition quotations)"),
+  c(sg = "K&K subgroup", fac = "LDA topic\n(definition clauses)"),
   "K&K group", fac.labs.c)
-ggsave("figures/kk-index-b/nmf/sankey-codes-subgroups.png", p.codes,
-       width = 7, height = 6, bg = "white")
-
-# ---- codes: subgroup -> dominant structural factor ----
-sl <- read.csv("data/kk-index-b-nmf-structural-loads.csv")
-fl.s <- unique(sl[, c("dominant", "factor_label")])
-stopifnot(nrow(fl.s) == 7L)
-fac.labs.s <- setNames(as.character(fl.s$factor_label), as.character(fl.s$dominant))
-sg.s <- subgrp(trimws(sl$kk_code))
-sg.s.used <- sg.levels[sg.levels %in% unique(sg.s)]
-tab.s <- table(subgroup = factor(sg.s, levels = sg.s.used),
-               factor = factor(sl$dominant, levels = 1:7))
-cat("structural panel: ", nrow(sl), " codes; subgroups ",
-    length(sg.s.used), "\n", sep = "")
-write.csv(data.frame(subgroup = rownames(tab.s), as.data.frame.matrix(tab.s),
-                     check.names = FALSE),
-          "data/kk-index-b-nmf-subgroup-structural-crosstab.csv", row.names = FALSE)
-p.struct <- sankey.plot(tab.s,
-  c(sg = "K&K subgroup", fac = "structural NMF\n(concept profiles)"),
-  "K&K group", fac.labs.s)
-ggsave("figures/kk-index-b/nmf/sankey-structural-subgroups.png", p.struct,
-       width = 7, height = 6, bg = "white")
+ggsave("figures/kk-index-b/lda/sankey-codes-subgroups.png", p.codes,
+       width = 7, height = 7, bg = "white")

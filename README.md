@@ -42,7 +42,6 @@ the two.
 | `build-index-b-verified.R` | `kk-index-b-subelement-network.rds`, `kk-index-b-definitions.csv` | `kk-index-b-verified-network.rds` (the one definitions network every analysis reads), `kk-index-b-excluded-codes.csv` (codes not in Index A, with their sub-elements) |
 | `check-index-b-blocks.R` | `documents/Kroeber-kluckhohn.pdf`, `kk-index-b-edges.csv`, `kk-index-b-block-map.csv` | `kk-index-b-block-check.csv`, `kk-index-b-block-check-summary.csv`, `kk-index-b-block-check-review.csv` (earlier 18-row set, previous build), `kk-index-b-block-check-review-current.csv` (page-image verdicts for the current 22 flagged edges, one reader) (machine cross-check of heading assignments; not a human reader) |
 | `check-index-b-networks.R` | `kk-index-b-*-network.rds`, `kk-index-b-edges.csv`, `kk-index-b-definitions.csv`, `kk-boroch-crosswalk.csv` | nothing (stops on a mismatch) |
-| `kkcc-definition-attrs.R` (helper) | `kkcc_two_mode.rds` | returns the definition table used by the analyses |
 | `build-definition-years.R` | Boroch appendix (`documents/ROBAFC-5.1.pdf`) | `kkcc-definition-years.csv` |
 | `build-supplement-bibliography.R` | Boroch Supplement Bibliography | `kkcc-supplement-bibliography.csv`, `kkcc-definition-biblio.csv` |
 | `build-definition-texts.R` | Boroch appendix | `kkcc-definition-texts.csv` (verbatim; not for release) |
@@ -52,8 +51,7 @@ the two.
 | `analysis-centrality-index-b.R` | verified network | Two-mode closeness and betweenness on the definitions network's largest component, centrality CSV |
 | `build-index-b-work-citations.R` | `kk-index-b-works.csv`, `kkcc-supplement-bibliography.csv`, `kk-index-b-work-citations-page-checks.csv`, K&K bibliography (`documents/Kroeber-kluckhohn.pdf`) | `kk-index-b-work-citations.csv` (one row per work: K&K and Boroch matches, page-image checks, status) |
 | `core-index-b.R` (helper) | any two-mode matrix | `lcc_2core()` (largest component, then 2-core) |
-| `analysis-ca-mst-main.R` | main two-mode network | CA and Kruskal maximum spanning trees (main network) |
-| `analysis-centrality-prestige-main.R` | main network | centrality, prestige and PageRank-family scores |
+| `analysis-lda-texts-index-b.R` | definition text files, crosswalk, verified set | `kk-index-b-lda-code-theta.csv`, `kk-index-b-lda-topic-terms.csv`, `kk-index-b-lda-group-ari.csv` |
 
 Scripts live in `scripts/`; `documents/` holds the source PDFs and the Archive text. Run order (from the project root):
 
@@ -71,8 +69,7 @@ Scripts live in `scripts/`; `documents/` holds the source PDFs and the Archive t
 12. `scripts/analysis-index-b.R`
 13. `scripts/analysis-mst-concepts-index-b.R` (concept MST figure for the definitions network), then `analysis-mst-definitions-index-b.R` and `analysis-centrality-index-b.R`
 14. `scripts/build-index-b-work-citations.R` (citation table for the works: K&K bibliography and Boroch supplement, with page-image checks; writes `data/kk-index-b-work-citations.csv`)
-
-The analysis scripts and the report read definition attributes through `scripts/kkcc-definition-attrs.R`.
+15. `scripts/analysis-lda-texts-index-b.R` (LDA over the definition clauses), then `scripts/figure-sankey-subgroups.R` (subgroup Sankey, reads the LDA theta)
 
 The Index B build and crosswalk scripts write session-info files to `data/` (`build-index-b-sessioninfo.txt`, `build-index-b-crosswalk-sessioninfo.txt`). The R environment is pinned
 in `renv.lock` (R 4.5.3). Requires `pdftotext` (poppler) on the PATH.
@@ -250,7 +247,7 @@ the printed citation, the printed page, and a per-row basis in `note`. Like the 
 release.
 
 **`kk-definition-texts-translations.csv`**: English renderings of the four non-English definition quotations,
-substituted for the originals by the text-based NMF analysis (columns `code`, `language`, `translation`,
+substituted for the originals by the text-based LDA analysis (columns `code`, `language`, `translation`,
 `basis`). B-17 (Dietschy) and C-I-18a (Maquet) are French, F-I-5 (Menghin) and F-II-3 (Schmidt) German.
 C-I-18a is K&K's own printed English rendering; the other three are working translations not yet verified
 against the page images. Like the text files above, it quotes Boroch and K&K and is not for release.
@@ -280,27 +277,36 @@ were equal (case, hyphens, and a trailing plural "s" ignored). The linkage is
 conservative. Boroch's notion labels are his own wording, so many rows (31 cells) are
 unlinked and are reported as such, not guessed.
 
-**Non-negative matrix factorization.** Two analyses test whether data-driven factors
-recover K&K's groups A–G, both fit at k = 7 (one factor per group, fixed rather than
-selected) with the shared base-R machinery in `scripts/nmf-core.R`. The structural
-analysis (`scripts/analysis-nmf-structural-index-b.R`) factorizes the codes × concepts
-biadjacency of the verified network's largest-component 2-core (149 codes × 160
-concepts, binary); the texts analysis (`scripts/analysis-nmf-texts-index-b.R`)
-factorizes a TF-IDF matrix of the definition quotations, one document per
-K&K code carrying a text. The texts analysis uses a
-hand-set stopword list (59 general English stopwords plus 15 omnipresent domain
-words: culture, cultures, cultural, society, social, man, men, human, total, whole,
-way, ways, learned, acquired, group) and keep
-tokens of three letters or more at 2–50% document frequency. The list is defined in
-`scripts/analysis-nmf-texts-index-b.R` and is part of the reproducible pipeline;
-results depend on it. Neither analysis recovers the groups at better than chance. The four
-non-English quotations (B-17 and C-I-18a French, F-I-5 and F-II-3 German) enter as
-English translations from `data/kk-definition-texts-translations.csv`: C-I-18a is
-K&K's own printed English rendering, the other three are working translations not
-yet verified against the page images. Taken as printed, the quotations tokenize
-poorly (the tokenizer splits words at accented letters) and only six foreign terms
-survive the document-frequency filter (der, des, est, geist, ist, kultur), none
-reaching a factor's top 15.
+**Latent Dirichlet allocation over the definition texts.** The texts analysis
+(`scripts/analysis-lda-texts-index-b.R`) replaces the two NMF analyses (removed
+2026-10-31, PROVENANCE 24). Its documents are clauses: each definition quotation is
+split into sentences and semicolon-separated clauses, so a definition that lists
+several elements is not forced into a single topic blend. The model is Gibbs LDA at
+k = 12, fixed to be compared against K&K's typology rather than selected by the data
+(held-out perplexity is flat from k = 8 to 30), fit over 10 seeds with each seed's
+topics aligned to the first seed by Hungarian matching on the topic-term profiles.
+The stored code-level memberships (`data/kk-index-b-lda-code-theta.csv`) are the
+seed mean of the clause-level topic posterior, weighted by clause word count; one
+code (C-I-7) has no clause surviving the term filter and carries a uniform
+membership, flagged by `n_clauses = 0`. The corpus is small (265 clauses of about 21
+words), so seeds differ: per-seed agreement with the group letters A–G is ARI 0.02
+to 0.06, the aligned ensemble 0.04 (permutation p = 0.001). Membership is diffuse by
+design: analyses threshold the stored theta themselves. The stopword list is the
+SMART list minus protected substantive words (way, whole, made, common, passed,
+group, life, people, human, behavior, ideas, custom(s), sum, total, transmitted,
+learned, thing(s), self, needs, use/used, given, mean, name, different, various),
+plus the frame words (culture, society, social, man), grammatical words settled by
+hand (one, another, may, also, non, consists, term(s), definition), and a plural
+collapse that merges a plural into its singular only when both occur and the
+singular is not protected. The list is defined in
+`scripts/analysis-lda-texts-index-b.R` and is part of the reproducible pipeline;
+results depend on it. The four non-English quotations (B-17 and C-I-18a French,
+F-I-5 and F-II-3 German) enter as English translations from
+`data/kk-definition-texts-translations.csv`: C-I-18a is K&K's own printed English
+rendering, the other three are working translations not yet verified against the
+page images. D-III-4's text is the Roberts passage K&K quote in their page footnote
+14 (printed p. 60, checked on the image at 600 dpi); the replaced NMF script had
+modeled this code on the footnote's citation string instead of the quotation.
 
 ## Verification
 

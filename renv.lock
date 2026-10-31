@@ -9,6 +9,34 @@
     ]
   },
   "Packages": {
+    "ISOcodes": {
+      "Package": "ISOcodes",
+      "Version": "2026.03.28",
+      "Source": "Repository",
+      "Priority": null,
+      "Depends": [
+        "R (>= 3.5.0)"
+      ],
+      "Imports": [
+        null
+      ],
+      "LinkingTo": [
+        null
+      ],
+      "Suggests": [
+        null
+      ],
+      "Enhances": [
+        null
+      ],
+      "License": "GPL-2",
+      "License_is_FOSS": null,
+      "License_restricts_use": null,
+      "OS_type": null,
+      "NeedsCompilation": "no",
+      "Repository": "CRAN",
+      "Type": "source"
+    },
     "MASS": {
       "Package": "MASS",
       "Version": "7.3-66",
@@ -338,6 +366,49 @@
       "Author": "Gábor Csárdi [aut, cre], Hadley Wickham [ctb], Kirill Müller [ctb], Salim Brüggemann [ctb] (ORCID: <https://orcid.org/0000-0002-5329-5987>), Posit Software, PBC [cph, fnd] (ROR: <https://ror.org/03wc8by49>)",
       "Maintainer": "Gábor Csárdi <gabor@posit.co>",
       "Repository": "CRAN"
+    },
+    "clue": {
+      "Package": "clue",
+      "Version": "0.3-68",
+      "Source": "Repository",
+      "Priority": null,
+      "Depends": [
+        "R (>= 3.2.0)"
+      ],
+      "Imports": [
+        "stats",
+        "cluster",
+        "graphics",
+        "methods"
+      ],
+      "LinkingTo": [
+        null
+      ],
+      "Suggests": [
+        "e1071",
+        "lpSolve (>= 5.5.7)",
+        "quadprog (>= 1.4-8)",
+        "relations"
+      ],
+      "Enhances": [
+        "RWeka",
+        "ape",
+        "cba",
+        "cclust",
+        "flexclust",
+        "flexmix",
+        "kernlab",
+        "mclust",
+        "movMF",
+        "modeltools"
+      ],
+      "License": "GPL-2",
+      "License_is_FOSS": null,
+      "License_restricts_use": null,
+      "OS_type": null,
+      "NeedsCompilation": "yes",
+      "Repository": "CRAN",
+      "Type": "source"
     },
     "cpp11": {
       "Package": "cpp11",
@@ -1820,6 +1891,37 @@
       "Maintainer": "Thomas Lin Pedersen <thomas.pedersen@posit.co>",
       "Repository": "CRAN"
     },
+    "stopwords": {
+      "Package": "stopwords",
+      "Version": "2.3",
+      "Source": "Repository",
+      "Priority": null,
+      "Depends": [
+        "R (>= 2.10)"
+      ],
+      "Imports": [
+        "ISOcodes"
+      ],
+      "LinkingTo": [
+        null
+      ],
+      "Suggests": [
+        "covr",
+        "quanteda",
+        "spelling",
+        "testthat"
+      ],
+      "Enhances": [
+        null
+      ],
+      "License": "MIT + file LICENSE",
+      "License_is_FOSS": null,
+      "License_restricts_use": null,
+      "OS_type": null,
+      "NeedsCompilation": "no",
+      "Repository": "CRAN",
+      "Type": "source"
+    },
     "stringi": {
       "Package": "stringi",
       "Version": "1.8.9",
@@ -2151,6 +2253,87 @@
       "Author": "Lionel Henry [aut, cre], Hadley Wickham [aut], Posit Software, PBC [cph, fnd]",
       "Maintainer": "Lionel Henry <lionel@posit.co>",
       "Repository": "CRAN"
+    },
+    "tm": {
+      "Package": "tm",
+      "Version": "0.7-20",
+      "Source": "Repository",
+      "Priority": null,
+      "Depends": [
+        "R (>= 3.4.0)"
+      ],
+      "Imports": [
+        "NLP",
+        "Rcpp",
+        "parallel",
+        "slam (>= 0.1-37)",
+        "stats",
+        "tools",
+        "utils",
+        "graphics",
+        "xml2"
+      ],
+      "LinkingTo": [
+        "BH",
+        "Rcpp"
+      ],
+      "Suggests": [
+        "antiword",
+        "filehash",
+        "methods",
+        "pdftools",
+        "Rcampdf",
+        "Rgraphviz",
+        "Rpoppler",
+        "SnowballC",
+        "testthat",
+        "tm.lexicon.GeneralInquirer"
+      ],
+      "Enhances": [
+        null
+      ],
+      "License": "GPL-3",
+      "License_is_FOSS": null,
+      "License_restricts_use": null,
+      "OS_type": null,
+      "NeedsCompilation": "yes",
+      "Repository": "CRAN",
+      "Type": "source"
+    },
+    "topicmodels": {
+      "Package": "topicmodels",
+      "Version": "0.2-17",
+      "Source": "Repository",
+      "Priority": null,
+      "Depends": [
+        "R (>= 3.5.0)"
+      ],
+      "Imports": [
+        "stats4",
+        "methods",
+        "modeltools",
+        "slam",
+        "tm (>= 0.6)"
+      ],
+      "LinkingTo": [
+        null
+      ],
+      "Suggests": [
+        "lattice",
+        "lda",
+        "OAIHarvester",
+        "SnowballC"
+      ],
+      "Enhances": [
+        null
+      ],
+      "License": "GPL-2",
+      "License_is_FOSS": null,
+      "License_restricts_use": null,
+      "OS_type": null,
+      "NeedsCompilation": "yes",
+      "Repository": "CRAN",
+      "Type": "source"
     },
     "tweenr": {
       "Package": "tweenr",
