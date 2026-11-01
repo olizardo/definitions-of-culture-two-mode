@@ -90,7 +90,8 @@ p <- ggraph(lay) +
   scale_fill_manual(values = pal, guide = "none") +
   scale_starshape_manual(values = group.star, labels = group.labels, name = "definition type (K&K group)",
                          guide = guide_legend(override.aes = list(size = 4, fill = "black"))) +
-  scale_size_continuous(range = c(2.5, 9), name = "mean normalized betweenness (ensemble)") +
+  scale_size_continuous(range = c(2.5, 9), name = "mean normalized betweenness (ensemble)",
+                        guide = guide_legend(override.aes = list(starshape = 15, fill = "grey80"))) +
   # highlighted codes in black and larger; all other labels in grey
   geom_node_text(aes(label = label), data = function(d) d[!d$highlight, ], repel = TRUE,
                  colour = "grey60", size = 2.6, max.overlaps = Inf, seed = 8427,

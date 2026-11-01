@@ -31,20 +31,21 @@ dir.create("figures/kk-index-b/lda", recursive = TRUE, showWarnings = FALSE)
 
 K_TOPICS <- 12
 # topic labels hand-set from the ensemble top terms
-# (data/kk-index-b-lda-topic-terms.csv); recheck after any rebuild
+# (data/kk-index-b-lda-topic-terms.csv), as in Table 4 of the manuscript;
+# recheck after any rebuild
 factor.labels <- c(
-  "1 transmission and learning",
-  "2 material objects and ideas",
-  "3 individual acquired behavior",
-  "4 ways of thinking and acting",
-  "5 customs, beliefs, art, knowledge",
-  "6 historically created concepts",
-  "7 sum total",
-  "8 biological means and needs",
-  "9 shared habits across generations",
-  "10 human products of mind",
-  "11 way of life",
-  "12 cultural order of phenomena")
+  "1 individual acquired behavior",
+  "2 human products and results",
+  "3 transmitted group behavior",
+  "4 shared group living",
+  "5 biological needs and nature",
+  "6 acquired habits as complex wholes",
+  "7 cultural order of phenomena",
+  "8 sum total of group life",
+  "9 material tools and ideas",
+  "10 customs, beliefs and knowledge",
+  "11 way of life of a people",
+  "12 man-made environment")
 
 # subgroup of a K&K code: letter + roman numeral when the code has one; the
 # plain-numbered groups (A, B, E, G) have no subgroup level; a bare C or D

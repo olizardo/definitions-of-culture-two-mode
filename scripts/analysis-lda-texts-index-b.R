@@ -41,6 +41,7 @@ PROTECTED <- c("way", "whole", "made", "common", "passed", "group", "life", "peo
                "human", "behavior", "ideas", "custom", "customs", "sum", "total",
                "transmitted", "learned", "things", "thing", "self", "needs", "use",
                "uses", "used", "given", "mean", "name", "different", "various")
+# verb forms and lives (life), which are not plurals of the noun
 NO_MERGE <- c("refers", "constitutes", "inherits", "conforms", "adjusts",
               "meets", "describes", "prefers", "lives")
 STOP <- setdiff(union(tm::stopwords("en"),
@@ -97,14 +98,14 @@ corp <- tm_map(corp, removeNumbers)
 corp <- tm_map(corp, removeWords, c(STOP, FRAME, GRAMMATICAL))
 corp <- tm_map(corp, stripWhitespace)
 
-# plural collapse: plural -> singular when both occur and the singular is not
-# protected (so "means" is not merged with "mean")
+# plural collapse: plural -> singular when both occur (protected words collapse
+# too, so "ways" joins "way"; "means" stays apart from "mean" via NO_MERGE)
 raw_vocab <- unique(unlist(strsplit(unlist(lapply(corp, as.character)), "\\s+")))
 pairs <- data.frame()
 for (w in raw_vocab) {
   if (grepl("s$", w) && !grepl("ss$", w) && nchar(w) > 3) {
     sing <- sub("s$", "", w)
-    if (sing %in% raw_vocab && !sing %in% PROTECTED && !w %in% NO_MERGE) {
+    if (sing %in% raw_vocab && !w %in% NO_MERGE) {
       pairs <- rbind(pairs, data.frame(plural = w, singular = sing))
     }
   }
@@ -200,8 +201,12 @@ cat("ensemble dominant-topic ARI vs group letters:", round(obs, 3), "p =", pval,
 # with no surviving clause, e.g. C-I-7) yields no edges at any multiplier,
 # so such codes drop out of binary-network analyses on their own. Only the
 # soft theta is stored; analyses derive the binary network with this rule.
+# Exact ties at m times the row mean (19 cells, e.g. 0.125 = 1.5 x 1/12 rows)
+# are not edges. The stored theta is rounded to 15 significant digits, so the
+# comparison uses a tolerance; without it the rounded file gives 390 edges and
+# the in-memory matrix 383.
 edge_rule <- function(M, m) {
-  E <- sweep(M, 1, rowMeans(M), function(x, r) x > m * r)
+  E <- sweep(M, 1, rowMeans(M), function(x, r) x - m * r > 1e-9)
   c(sum(E), sum(colSums(E) > 0), sum(rowSums(E) > 0))
 }
 mk <- function(rule, param, v) {

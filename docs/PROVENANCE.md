@@ -760,6 +760,10 @@ Scope: the works outputs (`kk-index-b-ca-works-lcc2core-works.csv`, `kk-index-b-
 
 24.8 Manuscript. The two NMF subsections and their figures are replaced by an LDA subsection; the appendix Sankey section carries the single LDA panel. Numbers rechecked against the outputs of 24.3.
 
+24.9 Changed (2026-10-31). Plural collapse now applies to the protected substantive words too, so way/ways, group/groups, thing/things, use/uses, custom/customs, mean/means and the other protected pairs merge. The earlier rule skipped any singular in the PROTECTED list, which left these pairs split as a side effect of protecting the words from stopword removal, not as a decision about them. Only the verb forms and "lives" stay apart (NO_MERGE). The re-run gives 79 merges, 340 terms, 265 clauses, mean matched cosine 0.72, ensemble ARI 0.045 (permutation p = 0.001; per-seed 0.02 to 0.05), and 383 edges at m = 1.5 covering 170 codes (144 with two or more topics). The topics changed: topic 4 (problem-solving ways of acting) no longer exists, and the labels in Table 4, the topic figure and the Sankey were reset to the new top terms. The user approved these labels on 2026-10-31. Edge-rule ties (2026-10-31): 19 membership cells equal 1.5 times their row mean exactly (for example 0.125 in rows with mean 1/12). The rule now requires the excess to exceed 1e-9, so ties are not edges. Without the tolerance the 15-digit stored theta gave 390 edges at m = 1.5, against 383 in memory. Current counts: m = 1.25 gives 467, m = 1.5 gives 383, m = 2 gives 262 (was 263); fixed thresholds 0.05, 0.1 and 0.2 give 890, 470 and 200. Table 5 (`tab:lda-network`) gives the network's summary statistics, computed as Table 1 on the binary network.
+
+24.10 Changed (2026-10-31). The agreement between dominant topics and K&K categories is reported as a chi-square test of independence on the 7 by 12 table (group letters by dominant topic, 171 codes): chi-square 114.5, simulated p = 0.0006 (10,000 replicates, `chisq.test(simulate.p.value = TRUE)`, seed 8153). The adjusted Rand index (0.045, permutation p = 0.001) is no longer reported in the manuscript. 78 of 84 expected counts are below 5, so no strength measure is reported; Cramér's V on the same table is 0.33 and Goodman-Kruskal tau is 0.07 (group to topic) and 0.28 (topic to group), recorded here for reference only.
+
 ## 25. Boroch-network analyses removed (2026-10-31)
 
 25.1 Decision. On the user's decision, the analyses of Boroch's own two-mode network leave the pipeline: the main analysis is K&K Index B directly. The Boroch network build itself stays, because kept pipeline scripts read it: `build-index-b-crosswalk.R`, `build-definition-texts.R`, `build-definition-years.R` and `analysis-index-b.R` read `data/kkcc_two_mode.rds`, and `build-two-mode-networks.R` (which also produces `kkcc_two_mode_main.rds` and `kkcc_biadjacency_main.csv`) and its category and years inputs stay with it. `check-two-mode-networks.R` stays as the validation of that build.
@@ -769,3 +773,15 @@ Scope: the works outputs (`kk-index-b-ca-works-lcc2core-works.csv`, `kk-index-b-
 ## 26. Heading-tree figure removed (2026-10-31)
 
 26.1 Decision. On the user's decision, `figures/kk-index-b/definitions/mst-heading-comm-tree.png` is removed; the heading tree is not used in the manuscript. `scripts/analysis-mst-headings-index-b.R` keeps its computation and still writes the node table `data/kk-index-b-mst-headings-nodes.csv`, but no longer draws a figure (the ggraph plotting block is gone).
+
+## 27. F-IV-5 quotation lead-in is a misprint (2026-10-31)
+
+27.1 Finding. Boroch's appendix prints the F4-5 quotation (Kluckhohn and Kelly, 1945a: 87) as "Kluckhohn […] culture includes all those ways of feeling, thinking, and acting …". The word "Kluckhohn" and the bracketed omission before "culture" are not part of K&K's wording.
+
+27.2 Basis. The user read the top left of K&K's printed page 71, the footnote that cites Kluckhohn and Kelly, 1945a: 87, and found it begins with ". . . culture includes all those ways …". The ABBYY text layer of `documents/Kroeber-kluckhohn.pdf` shows the same footnote text (checked with `pdftotext`, not on the page image). The page image was not checked by the assistant.
+
+27.3 Manuscript. The F-IV-5 quotation in the topic code-tree subsection begins "[\ldots] culture includes …". The user made this edit on 2026-10-31. Boroch's article is not edited.
+
+27.4 Data left as printed. `data/kkcc-appendix-only-texts.csv` (row F4-5) and the other quotation files still hold Boroch's text with the lead-in. They are verbatim copies of Boroch, and the misprint is recorded here, not corrected in the data.
+
+27.5 Page reference. The "87" in Boroch's pinpoint is the page of Kluckhohn and Kelly, 1945a, the source work. K&K's footnote that quotes it is on printed page 71. The manuscript cites the source page, as the other footnote quotations do.

@@ -25,6 +25,11 @@ Bidney, D. (1947).
 \newblock Human nature and the cultural process.
 \newblock {\em American Anthropologist}, 49(3):375--399.
 
+\bibitem[Blei et~al., 2003]{blei2003latent}
+Blei, D.~M., Ng, A.~Y., and Jordan, M.~I. (2003).
+\newblock Latent {Dirichlet} allocation.
+\newblock {\em Journal of Machine Learning Research}, 3:993--1022.
+
 \bibitem[Blumenthal, 1937]{blumenthal1937}
 Blumenthal, A. (1937).
 \newblock {\em The Best Definition of Culture}.
@@ -91,10 +96,21 @@ Gillin, J.~P. (1948).
 \newblock {\em The Ways of Men}.
 \newblock New York.
 
+\bibitem[Griffiths and Steyvers, 2004]{griffiths2004finding}
+Griffiths, T.~L. and Steyvers, M. (2004).
+\newblock Finding scientific topics.
+\newblock {\em Proceedings of the National Academy of Sciences}, 101(suppl
+  1):5228--5235.
+
 \bibitem[Groves and Moore, 1940]{grovesmoore1940}
 Groves, E.~R. and Moore, H.~E. (1940).
 \newblock {\em Introduction to Sociology}.
 \newblock New York.
+
+\bibitem[Gr{\"u}n and Hornik, 2011]{grun2011topicmodels}
+Gr{\"u}n, B. and Hornik, K. (2011).
+\newblock {topicmodels}: An {R} package for fitting topic models.
+\newblock {\em Journal of Statistical Software}, 40(13):1--30.
 
 \bibitem[Hiller, 1933]{hiller1933}
 Hiller, E.~T. (1933).
@@ -133,11 +149,6 @@ Kruskal, J.~B. (1956).
 LaPiere, R.~T. (1946).
 \newblock {\em Sociology}.
 \newblock New York.
-
-\bibitem[Lee and Seung, 2001]{lee2001algorithms}
-Lee, D.~D. and Seung, H.~S. (2001).
-\newblock Algorithms for non-negative matrix factorization.
-\newblock {\em Advances in Neural Information Processing Systems}, 13:556--562.
 
 \bibitem[Linton, 1936]{linton1936}
 Linton, R. (1936).
@@ -200,6 +211,11 @@ Reuter, E.~B. (1939).
 \bibitem[Rouse, 1939]{rouse1939}
 Rouse, I. (1939).
 \newblock Prehistory in haiti.
+
+\bibitem[Simmons, 1942]{simmons1942}
+Simmons, L.~W., editor (1942).
+\newblock {\em Sun Chief: The Autobiography of a {Hopi} Indian}.
+\newblock Yale University Press, New Haven.
 
 \bibitem[Taylor, 1948]{taylor1948}
 Taylor, W.~W. (1948).

@@ -52,6 +52,7 @@ the two.
 | `build-index-b-work-citations.R` | `kk-index-b-works.csv`, `kkcc-supplement-bibliography.csv`, `kk-index-b-work-citations-page-checks.csv`, K&K bibliography (`documents/Kroeber-kluckhohn.pdf`) | `kk-index-b-work-citations.csv` (one row per work: K&K and Boroch matches, page-image checks, status) |
 | `core-index-b.R` (helper) | any two-mode matrix | `lcc_2core()` (largest component, then 2-core) |
 | `analysis-lda-texts-index-b.R` | definition text files, crosswalk, verified set | `kk-index-b-lda-code-theta.csv`, `kk-index-b-lda-topic-terms.csv`, `kk-index-b-lda-group-ari.csv` |
+| `analysis-lda-network-index-b.R` | `kk-index-b-lda-code-theta.csv`, `kk-index-b-lda-edge-rules.csv` | `kk-index-b-lda-chisq.csv` (group by dominant topic), `kk-index-b-lda-network-stats.csv` (Table 5) |
 
 Scripts live in `scripts/`; `documents/` holds the source PDFs and the Archive text. Run order (from the project root):
 
@@ -69,7 +70,7 @@ Scripts live in `scripts/`; `documents/` holds the source PDFs and the Archive t
 12. `scripts/analysis-index-b.R`
 13. `scripts/analysis-mst-concepts-index-b.R` (concept MST figure for the definitions network), then `analysis-mst-definitions-index-b.R` and `analysis-centrality-index-b.R`
 14. `scripts/build-index-b-work-citations.R` (citation table for the works: K&K bibliography and Boroch supplement, with page-image checks; writes `data/kk-index-b-work-citations.csv`)
-15. `scripts/analysis-lda-texts-index-b.R` (LDA over the definition clauses), then `scripts/figure-sankey-subgroups.R` (subgroup Sankey, reads the LDA theta)
+15. `scripts/analysis-lda-texts-index-b.R` (LDA over the definition clauses), then `scripts/analysis-lda-network-index-b.R` (chi-square and Table 5 statistics), then `scripts/figure-sankey-subgroups.R` (subgroup Sankey, reads the LDA theta)
 
 The Index B build and crosswalk scripts write session-info files to `data/` (`build-index-b-sessioninfo.txt`, `build-index-b-crosswalk-sessioninfo.txt`). The R environment is pinned
 in `renv.lock` (R 4.5.3). Requires `pdftotext` (poppler) on the PATH.
