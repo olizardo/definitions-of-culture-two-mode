@@ -785,3 +785,21 @@ Scope: the works outputs (`kk-index-b-ca-works-lcc2core-works.csv`, `kk-index-b-
 27.4 Data left as printed. `data/kkcc-appendix-only-texts.csv` (row F4-5) and the other quotation files still hold Boroch's text with the lead-in. They are verbatim copies of Boroch, and the misprint is recorded here, not corrected in the data.
 
 27.5 Page reference. The "87" in Boroch's pinpoint is the page of Kluckhohn and Kelly, 1945a, the source work. K&K's footnote that quotes it is on printed page 71. The manuscript cites the source page, as the other footnote quotations do.
+
+## 28. Bidney A-16 quotation corrected (2026-10-31)
+
+28.1 Finding. The definitions-tree discussion of A-16 (Bidney 1947) quoted "Culture is that complex whole which includes artifacts, beliefs, art, all the other habits acquired by man …". That is Boroch's A16 text, which the project maps to K&K's A-14 (Kluckhohn and Kelly 1945a, p. 82). The A-14 quotation is already in the topic-tree discussion, attributed correctly.
+
+28.2 Basis. Boroch's A18 entry, mapped to A-16 (Bidney 1947, p. 376), reads "[…] functionally and secondarily, culture refers to the acquired forms of technique, behavior, feeling and thought of individuals within society and to the social institutions in which they cooperate for the attainment of common ends." The stored data agree with this mapping (`data/kkcc-definition-texts.csv`, `data/kkcc-definition-source-pages.csv`). The 34-word count stated in the manuscript matches this text; the A16 text has 33 words. The user confirmed the A18 text. The page images of printed p. 376 and p. 82 were not checked by the assistant.
+
+28.3 Manuscript. The A-16 quotation is replaced with the A18 text, bolded for the concepts it uses. The concept-link sentence is rewritten: eleven of the twelve concepts linked to A-16 appear verbatim in the text (acquired, behavior, common, common ends, cooperate, feeling, individuals, institutions, social, society, thought), and "techniques" appears as "technique". The earlier claim that behavior does not appear in the quotation was wrong for the A18 text.
+
+28.4 Open. Check printed p. 376 on the page image before publication.
+
+## 29. Bibliography keys for the topic-network authors (2026-10-31)
+
+29.1 Added. `references.bib` gains `malinowski1944` (A-13), `sapir1921` (G-1), `ward1903` (F-II-1), `hoebel1949` (D-II-10) and `folsom1928` (F-I-2). Table 6 and the topic-tree prose now cite them.
+
+29.2 Basis. Titles and places are from the page-checked K&K bibliography lines in `data/kk-index-b-work-citations.csv` (printed pages 199, 201, 203, 196 and 195 respectively). Each has a matching Boroch reference in the same file. Authors are initials as printed.
+
+29.3 Not recorded. Publishers and editions are not in the project data, so the entries omit them. bibtex warns about empty publishers for these five entries, as it already does for several older ones. Complete them from the library when convenient.

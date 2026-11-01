@@ -209,10 +209,10 @@ The two trees' betweenness rankings are each their own structural fact rather th
 
 C-I-6 has the highest mean betweenness in the definition tree (77\%), and its position is not a simple function of its length. At 64 words it sits at the 89th percentile of quotation length among the 171 definitions, well short of the longest quotation (142 words). It links to 14 concepts, and the mean concept betweenness of those concepts sits at the 89th percentile of definitions. Its degree is not the highest. F-I-8 and F-II-8 each link to 15 concepts. But a high-betweenness vocabulary is not sufficient; 93 other definitions share at least one of its five highest-betweenness concepts, and their mean betweenness is 4.7\% against C-I-6's 77.2\%. What is distinctive about C-I-6 is where it sits in the definition tree: it bridges definitions, and it does so with a concept repertoire that many other definitions share.
 
-Bidney's \citeyearpar{bidney1947} is in many ways more impressive. It ranks second in mean definition betweenness (35\%), but it is short (only 34 words). Its links are a mix. Of its 11 concepts in the 2-core, three are among the six highest in concept betweenness (\textbf{social}, \textbf{behavior}, and \textbf{society}), and the mean concept betweenness of its linked concepts sits at the 68th percentile. It has one further link outside the 2-core. Its position in the tree in Figure~\ref{fig:mst-def-code} is what gives it high betweenness, since removing it leaves components of 116 definitions, 31 definitions, and one definition. Here is the definition in full. Of its linked concepts, only \emph{acquired} and \emph{society} appear verbatim in the text; \textbf{behavior} is linked but does not appear in the quotation:
+Bidney's \citeyearpar{bidney1947} is in many ways more impressive. The Bidney definition (A-16) ranks second in mean definition betweenness (35\%), but it is short (only 34 words). The links of A-16 are a mix. Of its 11 concepts in the 2-core, three are among the six highest in concept betweenness (\textbf{social}, \textbf{behavior}, and \textbf{society}), and the mean concept betweenness of its linked concepts sits at the 68th percentile. A-16 has one further link outside the 2-core. Its position in the tree in Figure~\ref{fig:mst-def-code} is what gives A-16 high betweenness, since removing it leaves components of 116 definitions, 31 definitions, and one definition. Here is the definition in full, with its linked concepts in bold. Eleven of the twelve concepts linked to A-16 appear verbatim in the text, among them \textbf{acquired}, \textbf{behavior}, \textbf{society} and \textbf{social}. The twelfth, \textbf{techniques}, appears in the singular as \emph{technique}:
 
 \begin{quotation}
-    Culture is that complex whole which includes artifacts, beliefs, art, all the other habits \textbf{acquired} by man as a member of \textbf{society} and all products of human activity as determined by these habits.
+    [\ldots] functionally and secondarily, culture refers to the \textbf{acquired} forms of technique, \textbf{behavior}, \textbf{feeling} and \textbf{thought} of \textbf{individuals} within \textbf{society} and to the \textbf{social} \textbf{institutions} in which they \textbf{cooperate} for the attainment of \textbf{common ends}.
 \end{quotation}
 
 Two other Bidney definitions, C-II-4 and C-II-3, share a community that contains neither C-I-6 nor A-16. First, we have C-II-4 \citep{bidney1946}, the fourth highest mean definition betweenness (29\%). It is a ``Normative'' definition according to K\&K, and it shares its community with C-II-3 \citep{bidney1942} but not with C-I-6 \citep{gillin1942} or A-16 \citep{bidney1947}. Its quotation is 40 words long, and it links to 13 concepts, among them \textbf{behavior} (fourth highest concept betweenness) and \textbf{society} (third):
@@ -400,15 +400,15 @@ Node type & Node & Author-year & Mean norm. betw. (\%) & Top-10 share (\%) & Deg
  & 9 material tools and ideas & & 18.2 & 100 & 32 \\
  & 10 customs, beliefs & & 9.0 & 50 & 32 \\
 \midrule
-\multirow{10}{*}{Definitions} & A-13 & Malinowski 1944 & 43.2 & 68 & 4 \\
+\multirow{10}{*}{Definitions} & A-13 & \citealt{malinowski1944} & 43.2 & 68 & 4 \\
  & A-14 & \citealt{kluckhohnkelly1945a} & 41.5 & 73 & 4 \\
  & F-IV-5 & \citealt{kluckhohnkelly1945a} & 39.0 & 65 & 4 \\
- & G-1 & Sapir 1921 & 35.5 & 52 & 4 \\
- & F-II-1 & Ward 1903 & 28.7 & 42 & 4 \\
+ & G-1 & \citealt{sapir1921} & 35.5 & 52 & 4 \\
+ & F-II-1 & \citealt{ward1903} & 28.7 & 42 & 4 \\
  & D-II-5 & \citealt{lapiere1946} & 26.8 & 34 & 4 \\
- & F-I-2 & Folsom 1928 & 25.3 & 36 & 4 \\
+ & F-I-2 & \citealt{folsom1928} & 25.3 & 36 & 4 \\
  & F-I-15 & \citealt{carr1945} & 22.2 & 28 & 3 \\
- & D-II-10 & Hoebel 1949 & 21.9 & 28 & 3 \\
+ & D-II-10 & \citealt{hoebel1949} & 21.9 & 28 & 3 \\
  & B-7 & \citealt{winston1933} & 19.3 & 21 & 4 \\
  & F-I-3 & \citealt{folsom1931} & 17.7 & 24 & 3 \\
 \bottomrule
@@ -444,7 +444,7 @@ Overall, the ten definitions with the highest mean betweenness come from seven d
 
 The top ten definitions in this tree are not unusually long. Their median quotation length is 28.5 words, against 28 for all 143 definitions in the 2-core and 49 for the top ten of the KK tree. Word count tracks betweenness in the KK tree (Spearman $\rho = 0.46$ across 149 definitions) but not here ($\rho = 0.03$ across 143), and it is barely related to the number of topics a definition links to ($\rho = 0.14$ across the 171 definitions). The difference from the KK tree therefore lies in which definitions the two trees place centrally, not in quotation length.
 
-The Malinowski 1944 quotation (A-13) has the highest mean betweenness, 43.2\%, and it is in the top ten in 68\% of trees. Its 2-core degree is 4, but in the drawn tree it has seven neighbors, the most of any top-ten definition. A-14, A-16, B-11, C-I-18a, D-II-7, F-I-14 and F-II-9. Removing it leaves seven components, the largest of 73 definitions. Its quotation is 29 words, about the 53rd percentile of length. Its largest topic weight is on customs, beliefs and knowledge (0.235), with acquired habits second (0.167). Here is the definition in full:
+The \citet{malinowski1944} quotation (A-13) has the highest mean betweenness, 43.2\%, and it is in the top ten in 68\% of trees. Its 2-core degree is 4, but in the drawn tree it has seven neighbors, the most of any top-ten definition. A-14, A-16, B-11, C-I-18a, D-II-7, F-I-14 and F-II-9. Removing it leaves seven components, the largest of 73 definitions. Its quotation is 29 words, about the 53rd percentile of length. Its largest topic weight is on customs, beliefs and knowledge (0.235), with acquired habits second (0.167). Here is the definition in full:
 
 \begin{quotation}
     It [culture] obviously is the integral \textbf{whole} consisting of implements and consumers' goods, of constitutional charters for the various social groupings, of \textbf{human} \textbf{ideas} and crafts, \textbf{beliefs} and \textbf{customs}.
@@ -462,13 +462,13 @@ The second \citet{kluckhohnkelly1945a} quotation, F-IV-5 (Boroch's page referenc
      [\ldots] culture \textbf{includes} all those \textbf{ways} of feeling, \textbf{thinking}, and acting which are not inevitable as a \textbf{result} of \textbf{human} \textbf{biological} equipment and \textbf{process} and (or) objective external situations.
 \end{quotation}
 
-The Sapir 1921 quotation (G-1) is fourth at 35.5\%, in the top ten in 52\% of trees. It is one of the shortest quotations, at the 9th percentile of length, with 11 words. It has six neighbors, and removing it leaves a component of 119 definitions with five branches of 11, 8, 2, 1 and 1 definitions. Its topic weights on topics 2, 5 and 8 are tied at 0.136, so no topic dominates it. Here is the definition in full:
+The \citet{sapir1921} quotation (G-1) is fourth at 35.5\%, in the top ten in 52\% of trees. It is one of the shortest quotations, at the 9th percentile of length, with 11 words. It has six neighbors, and removing it leaves a component of 119 definitions with five branches of 11, 8, 2, 1 and 1 definitions. Its topic weights on topics 2, 5 and 8 are tied at 0.136, so no topic dominates it. Here is the definition in full:
 
 \begin{quotation}
     Culture may be defined as what a society does and thinks.
 \end{quotation}
 
-The Ward 1903 quotation (F-II-1) is fifth at 28.7\%, in the top ten in 42\% of trees. It has five neighbors (A-18, F-I-15, F-I-3, F-I-7 and G-1) and sits in community 7 with F-I-15 and D-II-10. Removing it leaves a component of 115 definitions and four smaller pieces of 24, 1, 1 and 1 definitions. Its topic weights tie at 0.167 for transmitted group behavior and man-made environment. Its quotation is 18 words, about the 23rd percentile. Here is the definition in full:
+The \citet{ward1903} quotation (F-II-1) is fifth at 28.7\%, in the top ten in 42\% of trees. It has five neighbors (A-18, F-I-15, F-I-3, F-I-7 and G-1) and sits in community 7 with F-I-15 and D-II-10. Removing it leaves a component of 115 definitions and four smaller pieces of 24, 1, 1 and 1 definitions. Its topic weights tie at 0.167 for transmitted group behavior and man-made environment. Its quotation is 18 words, about the 23rd percentile. Here is the definition in full:
 
 \begin{quotation}
     A culture is a social structure, a social organism, if any one prefers, and \textbf{ideas} are its germs.
@@ -480,7 +480,7 @@ The \citet{lapiere1946} quotation (D-II-5) is sixth at 26.8\%, in the top ten in
     A culture is the embodiment in \textbf{customs}, \textbf{traditions}, \textbf{institutions}, etc., of the learning of a social \textbf{group} over the \textbf{generations}. It is the \textbf{sum} of what the \textbf{group} has \textbf{learned} about \textbf{living} together under the particular circumstances, \textbf{physical} and \textbf{biological}, in which it has found itself.
 \end{quotation}
 
-The Folsom 1928 quotation (F-I-2) is seventh at 25.3\%, in the top ten in 36\% of trees. It has three tree neighbors (A-10, B-5 and D-I-2), and removing it leaves components of 130, 10 and 2 definitions. It sits in community 2, which has 15 definitions. Its quotation is 35 words, about the 65th percentile, and its largest topic is sum total of group life (0.197). Here is the definition in full:
+The \citet{folsom1928} quotation (F-I-2) is seventh at 25.3\%, in the top ten in 36\% of trees. It has three tree neighbors (A-10, B-5 and D-I-2), and removing it leaves components of 130, 10 and 2 definitions. It sits in community 2, which has 15 definitions. Its quotation is 35 words, about the 65th percentile, and its largest topic is sum total of group life (0.197). Here is the definition in full:
 
 \begin{quotation}
     Culture is the \textbf{sum} \textbf{total} of all that is artificial. It is the complete outfit of \textbf{tools}, and \textbf{habits} of \textbf{living}, which are invented by man and then \textbf{passed} on from one \textbf{generation} to another.
@@ -492,13 +492,13 @@ The \citet{carr1945} quotation (F-I-15) is eighth at 22.2\%, in the top ten in 2
     The accumulated transmissible \textbf{results} of \textbf{past} \textbf{behavior} in association.
 \end{quotation}
 
-The Hoebel 1949 quotation (D-II-10) is ninth at 21.9\%, in the top ten in 28\% of trees. It has four tree neighbors (A-17, B-18, F-I-15 and F-I-5) and sits in community 7 with F-I-15 and F-II-1. Its 28 words put it at the 51st percentile, and its largest topic is transmitted group behavior (0.375). Here is the definition in full:
+The \citet{hoebel1949} quotation (D-II-10) is ninth at 21.9\%, in the top ten in 28\% of trees. It has four tree neighbors (A-17, B-18, F-I-15 and F-I-5) and sits in community 7 with F-I-15 and F-II-1. Its 28 words put it at the 51st percentile, and its largest topic is transmitted group behavior (0.375). Here is the definition in full:
 
 \begin{quotation}
     Culture is the \textbf{sum} \textbf{total} of \textbf{learned} \textbf{behavior} \textbf{patterns} which are characteristic of the \textbf{members} of a society and which are, therefore, not the \textbf{result} of \textbf{biological} inheritance.
 \end{quotation}
 
-The \citet{winston1933} quotation (B-7) is tenth at 19.3\%, in the top ten in 21\% of trees. It is the cutoff case. F-I-3 is eleventh at 17.7\% with a 24\% share, so the two can swap places. B-7 has four tree neighbors (A-5, C-I-17, C-I-2 and E-2), and its largest topic is sum total of group life (0.314). Its quotation is 28 words, about the 51st percentile. Here is the definition in full:
+The \citet{winston1933} quotation (B-7) is tenth at 19.3\%, in the top ten in 21\% of trees. B-7 and F-I-3 differ by 1.6 points in mean betweenness, and F-I-3 is in the top ten in more trees (24\% against 21\%), so their order at the cutoff depends on tie-breaking. B-7 has four tree neighbors (A-5, C-I-17, C-I-2 and E-2), and its largest topic is sum total of group life (0.314). Its quotation is 28 words, about the 51st percentile. Here is the definition in full:
 
 \begin{quotation}
     [\ldots] we may regard culture as the \textbf{sum} \textbf{total} of the possessions and the patterned \textbf{ways} of \textbf{behavior} which have become \textbf{part} of the heritage of a \textbf{group}.
