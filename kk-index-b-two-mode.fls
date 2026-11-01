@@ -655,17 +655,6 @@ INPUT ./figures/kk-index-b/lda/sankey-codes-subgroups.png
 INPUT figures/kk-index-b/lda/sankey-codes-subgroups.png
 INPUT ./figures/kk-index-b/lda/sankey-codes-subgroups.png
 INPUT ./figures/kk-index-b/lda/sankey-codes-subgroups.png
-INPUT ./figures/kk-index-b/lda/mst-topic-nodes-tree.png
-INPUT ./figures/kk-index-b/lda/mst-topic-nodes-tree.png
-INPUT figures/kk-index-b/lda/mst-topic-nodes-tree.png
-INPUT ./figures/kk-index-b/lda/mst-topic-nodes-tree.png
-INPUT ./figures/kk-index-b/lda/mst-topic-nodes-tree.png
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti9.tfm
-INPUT ./figures/kk-index-b/lda/mst-code-author-year-tree-topic-network.png
-INPUT ./figures/kk-index-b/lda/mst-code-author-year-tree-topic-network.png
-INPUT figures/kk-index-b/lda/mst-code-author-year-tree-topic-network.png
-INPUT ./figures/kk-index-b/lda/mst-code-author-year-tree-topic-network.png
-INPUT ./figures/kk-index-b/lda/mst-code-author-year-tree-topic-network.png
 INPUT ./kk-index-b-two-mode.bbl
 INPUT kk-index-b-two-mode.bbl
 INPUT ./kk-index-b-two-mode.bbl
@@ -691,5 +680,4 @@ INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
-INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb

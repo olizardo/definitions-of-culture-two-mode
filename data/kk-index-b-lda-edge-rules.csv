@@ -1,7 +1,0 @@
-"rule","param","edges","concepts_used","codes_covered"
-"row-mean multiple",1.25,467,12,170
-"row-mean multiple",1.5,383,12,170
-"row-mean multiple",2,262,12,167
-"fixed threshold",0.05,890,12,171
-"fixed threshold",0.1,470,12,170
-"fixed threshold",0.2,200,12,158

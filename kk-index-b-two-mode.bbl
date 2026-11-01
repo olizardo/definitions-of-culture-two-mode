@@ -1,5 +1,16 @@
 \begin{thebibliography}{}
 
+\bibitem[Aberle et~al., 1950]{aberle1950}
+Aberle, D.~F., Cohen, A.~K., Davis, A.~K., Levy, Jr., M.~J., and Sutton, F.~X.
+  (1950).
+\newblock The functional prerequisites of a society.
+\newblock {\em Ethics}, 60(2):100--111.
+
+\bibitem[Angyal, 1941]{angyal1941}
+Angyal, A. (1941).
+\newblock {\em Foundations for a Science of Personality}.
+\newblock New York.
+
 \bibitem[Bain, 1942]{bain1942}
 Bain, R. (1942).
 \newblock A definition of culture.
@@ -9,6 +20,18 @@ Bain, R. (1942).
 Barabási, A.-L. and Albert, R. (1999).
 \newblock Emergence of scaling in random networks.
 \newblock {\em Science}, 286(5439):509--512.
+
+\bibitem[Benedict, 1929]{benedict1929}
+Benedict, R. (1929).
+\newblock The science of custom.
+\newblock {\em Century Magazine}.
+\newblock Reprinted in V. F. Calverton, ed., The Making of Man, New York, 1931,
+  pp. 805--817.
+
+\bibitem[Benedict, 1947]{benedict1947}
+Benedict, R. (1947).
+\newblock {\em Race, Science and Politics}.
+\newblock New York, revised edition.
 
 \bibitem[Bidney, 1942]{bidney1942}
 Bidney, D. (1942).
@@ -41,15 +64,36 @@ Boroch, R. (2016).
   kroeber and clyde kluckhohn.
 \newblock {\em Analecta}, 25(2).
 
+\bibitem[Bose, 1929]{bose1929}
+Bose, N.~K. (1929).
+\newblock {\em Cultural Anthropology}.
+\newblock Calcutta.
+
 \bibitem[Breiger, 1974]{breiger1974}
 Breiger, R.~L. (1974).
 \newblock The duality of persons and groups.
 \newblock {\em Social Forces}, 53(2):181--190.
 
+\bibitem[Burkitt, 1929]{burkitt1929}
+Burkitt, M.~C. (1929).
+\newblock Archaeology.
+\newblock In {\em Encyclopaedia Britannica}. New York, 14th edition.
+
 \bibitem[Carr, 1945]{carr1945}
 Carr, L.~J. (1945).
 \newblock Situational psychology.
 \newblock {\em American Journal of Sociology}, 51:136--141.
+
+\bibitem[Carver, 1935]{carver1935}
+Carver, T.~N. (1935).
+\newblock {\em The Essential Factors of Social Evolution}.
+\newblock Cambridge.
+
+\bibitem[{Committee on Conceptual Integration}, 1941]{committee1941}
+{Committee on Conceptual Integration} (1941).
+\newblock Views on definition of culture.
+\newblock Mimeographed. Members as listed in the citation table: Bernard,
+  Blumenthal, Dodd, Hart.
 
 \bibitem[Dixon, 1928]{dixon1928}
 Dixon, R.~B. (1928).
@@ -96,11 +140,21 @@ Gillin, J.~P. (1948).
 \newblock {\em The Ways of Men}.
 \newblock New York.
 
+\bibitem[Gorer, 1949]{gorer1949}
+Gorer, G. (1949).
+\newblock {\em The People of Great Russia}.
+\newblock London.
+
 \bibitem[Griffiths and Steyvers, 2004]{griffiths2004finding}
 Griffiths, T.~L. and Steyvers, M. (2004).
 \newblock Finding scientific topics.
 \newblock {\em Proceedings of the National Academy of Sciences}, 101(suppl
   1):5228--5235.
+
+\bibitem[Groves, 1928]{groves1928}
+Groves, E.~R. (1928).
+\newblock {\em An Introduction to Sociology}.
+\newblock New York.
 
 \bibitem[Groves and Moore, 1940]{grovesmoore1940}
 Groves, E.~R. and Moore, H.~E. (1940).
@@ -112,10 +166,31 @@ Gr{\"u}n, B. and Hornik, K. (2011).
 \newblock {topicmodels}: An {R} package for fitting topic models.
 \newblock {\em Journal of Statistical Software}, 40(13):1--30.
 
+\bibitem[Haring, 1949]{haring1949}
+Haring, D.~G. (1949).
+\newblock Is culture definable?
+\newblock {\em American Sociological Review}, 14:26--32.
+
+\bibitem[Henry, 1949]{henry1949}
+Henry, J. (1949).
+\newblock Anthropology and psychosomatics.
+\newblock {\em Psychosomatic Medicine}, 11:216--223.
+
+\bibitem[Herskovits, 1948]{herskovits1948}
+Herskovits, M.~J. (1948).
+\newblock {\em Man and his Works}.
+\newblock New York.
+
 \bibitem[Hiller, 1933]{hiller1933}
 Hiller, E.~T. (1933).
 \newblock {\em Principles of Sociology}.
 \newblock New York.
+
+\bibitem[Hockett, 1950]{hockett1950}
+Hockett, C.~F. (1950).
+\newblock Language ``and'' culture: A protest.
+\newblock {\em American Anthropologist. New Series}, 52(1).
+\newblock Pinpoint p. 113 as given by Boroch.
 
 \bibitem[Klineberg, 1935]{klineberg1935}
 Klineberg, O. (1935).
@@ -127,11 +202,27 @@ Kluckhohn, C. (1942).
 \newblock Report to the sub-sub-committee on definitions of culture.
 \newblock Committee on Conceptual Integration. Mimeographed.
 
+\bibitem[Kluckhohn, 1949]{kluckhohn1949a}
+Kluckhohn, C. (1949).
+\newblock {\em Mirror for Man}.
+\newblock New York.
+
+\bibitem[Kluckhohn, 1951]{kluckhohn1951a}
+Kluckhohn, C. (1951).
+\newblock The concept of culture.
+\newblock In Lerner, D. and Lasswell, H.~D., editors, {\em The Policy
+  Sciences}, pages 86--101. Stanford, California.
+
 \bibitem[Kluckhohn and Kelly, 1945]{kluckhohnkelly1945a}
 Kluckhohn, C. and Kelly, W.~H. (1945).
 \newblock The concept of culture.
 \newblock In Linton, R., editor, {\em The Science of Man in the World Crisis},
   pages 78--105. New York.
+
+\bibitem[Kluckhohn and Leighton, 1946]{kluckhohnleighton1946}
+Kluckhohn, C. and Leighton, D. (1946).
+\newblock {\em The Navaho}.
+\newblock Cambridge.
 
 \bibitem[Kroeber and Kluckhohn, 1952]{kroeberkluckhohn1952}
 Kroeber, A.~L. and Kluckhohn, C. (1952).
@@ -160,6 +251,11 @@ Linton, R. (1945).
 \newblock {\em The Cultural Background of Personality}.
 \newblock New York.
 
+\bibitem[Lowie, 1934]{lowie1934}
+Lowie, R.~H. (1934).
+\newblock {\em An Introduction to Cultural Anthropology}.
+\newblock New York.
+
 \bibitem[Lowie, 1937]{lowie1937}
 Lowie, R.~H. (1937).
 \newblock {\em The History of Ethnological Theory}.
@@ -175,10 +271,20 @@ Malinowski, B. (1931).
 \newblock Culture.
 \newblock Encyclopaedia of the Social Sciences.
 
+\bibitem[Maquet, 1949]{maquet1949}
+Maquet, J. (1949).
+\newblock {\em Sociologie de la Connaissance}.
+\newblock Louvain.
+
 \bibitem[Murdock, 1949]{murdock1949a}
 Murdock, G.~P. (1949).
 \newblock The science of human learning, society, culture, and personality.
 \newblock {\em Scientific Monthly}, 69:377--382.
+
+\bibitem[Murray, 1943]{murray1943}
+Murray, R.~W. (1943).
+\newblock {\em Man's Unknown Ancestors}.
+\newblock Milwaukee.
 
 \bibitem[Neal, 2014]{neal2014backbone-b29}
 Neal, Z. (2014).
@@ -197,16 +303,34 @@ Ogburn, W.~F. and Nimkoff, M.~F. (1940).
 \newblock {\em Sociology}.
 \newblock Houghton Mifflin, Boston.
 
+\bibitem[Ostwald, 1915]{ostwald1915}
+Ostwald, W. (1915).
+\newblock Principles of the theory of education.
+\newblock {\em Rice Institute Pamphlet}, 2:191--221.
+
 \bibitem[Panunzio, 1939]{panunzio1939}
 Panunzio, C. (1939).
 \newblock {\em Major Social Institutions: An Introduction}.
 \newblock New York.
+
+\bibitem[Park and Burgess, 1921]{park1921}
+Park, R.~E. and Burgess, E.~W. (1921).
+\newblock {\em Introduction to the Science of Sociology}.
+\newblock Chicago.
 
 \bibitem[Reuter, 1939]{reuter1939}
 Reuter, E.~B. (1939).
 \newblock Race and culture.
 \newblock In Park, R.~E., editor, {\em An Outline of the Principles of
   Sociology}. New York.
+
+\bibitem[Roberts, 1951]{roberts1951}
+Roberts, J.~M. (1951).
+\newblock {\em Three Navaho Households: A Comparative Study in Small Group
+  Culture}, volume~40 of {\em Papers of the Peabody Museum of American
+  Archaeology and Ethnology}.
+\newblock Peabody Museum of Harvard University.
+\newblock No. 3.
 
 \bibitem[Rouse, 1939]{rouse1939}
 Rouse, I. (1939).
@@ -217,24 +341,100 @@ Simmons, L.~W., editor (1942).
 \newblock {\em Sun Chief: The Autobiography of a {Hopi} Indian}.
 \newblock Yale University Press, New Haven.
 
+\bibitem[Small, 1905]{small1905}
+Small, A.~W. (1905).
+\newblock {\em General Sociology}.
+\newblock Chicago.
+
+\bibitem[Sorokin, 1937]{sorokin1937}
+Sorokin, P.~A. (1937).
+\newblock {\em Social and Cultural Dynamics}.
+\newblock American Book Company, New York.
+\newblock Volume 1 of four.
+
+\bibitem[Sorokin, 1947]{sorokin1947}
+Sorokin, P.~A. (1947).
+\newblock {\em Society, Culture, and Personality: Their Structure and
+  Dynamics}.
+\newblock New York.
+
+\bibitem[Steward, 1950]{steward1950}
+Steward, J.~H. (1950).
+\newblock {\em Area Research: Theory and Practice}.
+\newblock Number~63 in Social Science Research Council Bulletin. Social Science
+  Research Council.
+
 \bibitem[Taylor, 1948]{taylor1948}
 Taylor, W.~W. (1948).
 \newblock {\em A Study of Archaeology}.
 \newblock Number~69 in Memoir. American Anthropological Association.
+
+\bibitem[Thomas, 1937]{thomas1937}
+Thomas, W.~I. (1937).
+\newblock {\em Primitive Behavior}.
+\newblock New York.
+
+\bibitem[Titiev, 1949]{titiev1949}
+Titiev, M. (1949).
+\newblock Social values and personality development.
+\newblock {\em Journal of Social Issues}, 5:44--47.
+
+\bibitem[Tozzer, 1925]{tozzer1925}
+Tozzer, A. (1925).
+\newblock {\em Social Origins and Social Continuities}.
+\newblock New York.
+
+\bibitem[Turney-High, 1949]{turneyhigh1949}
+Turney-High, H.~H. (1949).
+\newblock {\em General Anthropology}.
+\newblock New York.
 
 \bibitem[Tylor, 1871]{tylor1871}
 Tylor, E.~B. (1871).
 \newblock {\em Primitive Culture}.
 \newblock Boston.
 
+\bibitem[White, 1943]{white1943}
+White, L.~A. (1943).
+\newblock Energy and the evolution of culture.
+\newblock {\em American Anthropologist}, 45(3):335--356.
+\newblock Part 1.
+
+\bibitem[White, 1949]{white1949a}
+White, L.~A. (1949).
+\newblock Ethnological theory.
+\newblock In Sellars, R.~W., McFill, V.~J., and Farber, M., editors, {\em
+  Philosophy for the Future}, pages 357--384. New York.
+
+\bibitem[Willey, 1927]{willey1927b}
+Willey, M. (1927).
+\newblock Psychology and culture.
+\newblock {\em Psychological Bulletin}, 24:253--283.
+
+\bibitem[Willey, 1929]{willey1929}
+Willey, M. (1929).
+\newblock The validity of the culture concept.
+\newblock {\em American Journal of Sociology}, 35:204--219.
+
 \bibitem[Winston, 1933]{winston1933}
 Winston, S. (1933).
 \newblock {\em Culture and Human Behavior}.
 \newblock New York.
 
+\bibitem[Wissler, 1920]{wissler1920}
+Wissler, C. (1920).
+\newblock Opportunities for coordination in anthropological and psychological
+  research.
+\newblock {\em American Anthropologist, New Series}, 22:1--12.
+
 \bibitem[Young, 1934]{young1934}
 Young, K. (1934).
 \newblock {\em Introductory Sociology}.
+\newblock New York.
+
+\bibitem[Young, 1942]{young1942}
+Young, K. (1942).
+\newblock {\em Sociology: A Study of Society and Culture}.
 \newblock New York.
 
 \end{thebibliography}

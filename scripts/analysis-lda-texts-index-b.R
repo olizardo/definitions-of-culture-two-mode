@@ -193,39 +193,6 @@ perm <- replicate(999, ari(as.character(dom), sample(grp)))
 pval <- (sum(perm >= obs) + 1) / 1000
 cat("ensemble dominant-topic ARI vs group letters:", round(obs, 3), "p =", pval, "\n")
 
-# ---- edge rule (row-mean multiple) ----
-# A binary definitions x topics network links code i to topic j when
-# theta[i, j] exceeds m times code i's own mean membership, m = 1.5 by
-# default. The rule normalizes away quotation length and overall diffuseness,
-# and every code keeps at least its strongest topic. A uniform row (a code
-# with no surviving clause, e.g. C-I-7) yields no edges at any multiplier,
-# so such codes drop out of binary-network analyses on their own. Only the
-# soft theta is stored; analyses derive the binary network with this rule.
-# Exact ties at m times the row mean (19 cells, e.g. 0.125 = 1.5 x 1/12 rows)
-# are not edges. The stored theta is rounded to 15 significant digits, so the
-# comparison uses a tolerance; without it the rounded file gives 390 edges and
-# the in-memory matrix 383.
-edge_rule <- function(M, m) {
-  E <- sweep(M, 1, rowMeans(M), function(x, r) x - m * r > 1e-9)
-  c(sum(E), sum(colSums(E) > 0), sum(rowSums(E) > 0))
-}
-mk <- function(rule, param, v) {
-  data.frame(rule = rule, param = param, edges = v[1], concepts_used = v[2],
-             codes_covered = v[3])
-}
-rules <- rbind(
-  do.call(rbind, lapply(c(1.25, 1.5, 2), function(m)
-    mk("row-mean multiple", m, edge_rule(ens_full, m)))),
-  do.call(rbind, lapply(c(0.05, 0.1, 0.2), function(t)
-    mk("fixed threshold", t,
-       c(sum(ens_full >= t), sum(colSums(ens_full >= t) > 0),
-         sum(rowSums(ens_full >= t) > 0)))))
-)
-write.csv(rules, "data/kk-index-b-lda-edge-rules.csv", row.names = FALSE)
-cat("edge rule m = 1.5:", rules$edges[rules$rule == "row-mean multiple" & rules$param == 1.5],
-    "edges,", rules$codes_covered[rules$rule == "row-mean multiple" & rules$param == 1.5],
-    "codes covered\n")
-
 # ---- outputs ----
 theta_out <- data.frame(kk_code = rownames(ens_full), ens_full, check.names = FALSE)
 theta_out$dominant <- dom

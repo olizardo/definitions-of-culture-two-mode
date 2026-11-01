@@ -803,3 +803,60 @@ Scope: the works outputs (`kk-index-b-ca-works-lcc2core-works.csv`, `kk-index-b-
 29.2 Basis. Titles and places are from the page-checked K&K bibliography lines in `data/kk-index-b-work-citations.csv` (printed pages 199, 201, 203, 196 and 195 respectively). Each has a matching Boroch reference in the same file. Authors are initials as printed.
 
 29.3 Not recorded. Publishers and editions are not in the project data, so the entries omit them. bibtex warns about empty publishers for these five entries, as it already does for several older ones. Complete them from the library when convenient.
+
+## 30. Keys for the three remaining author-year citations, and page checks (2026-10-31)
+
+30.1 Added. `references.bib` gains `maquet1949` (C-I-18a), `aberle1950` (D-II-16) and `roberts1951` (D-III-4). Their manuscript mentions now use `\citealt`.
+
+30.2 Maquet. Title and place from Boroch's supplement, entry B145 ("Sociologie de la Connaissance, Louvain"). Not checked against the title page; the entry has no publisher.
+
+30.3 Maquet pinpoint conflict. K&K's footnote 18a reads "Maquet, 1949: 524" (ABBYY text layer). Boroch's C1-20 gives 324. Not resolved. The manuscript cites the work without a page.
+
+30.4 Aberle. Title, journal, volume, issue and pages from Boroch's entry B155. Boroch gives the authors only as "Aberle D.F. i in.", so the entry reads "Aberle, D. F. and others" until the full list is taken from the article's title page. The library has no entry for it.
+
+30.5 Roberts. Title and series from the citation table's entry for D-III-4. K&K's bibliography prints 1950; the entry keeps 1951, as the user confirmed on 2026-10-26. The number of the series is a note.
+
+30.6 Page-image check (PROVENANCE 28.4). Boroch's printed A16 ("Kluckhohn and Kelly, 1945a: 82") and A18 ("Bidney, 1947: 376") were checked on his page image (`documents/ROBAFC-5.1.pdf`, PDF p. 19, printed p. 79). The printed text matches the stored text and the manuscript quotation. The cited works themselves (Bidney's p. 376, Kluckhohn and Kelly's p. 82) are not in the repository and remain unchecked.
+
+## 31. Aberle et al. 1950: full author list (2026-10-31)
+
+31.1 Correction to 30.4. The author list is now complete: D. F. Aberle, A. K. Cohen, A. K. Davis, M. J. Levy Jr. and F. X. Sutton (`aberle1950`).
+
+31.2 Basis. The JSTOR record for the article (jstor.org/stable/2378844) gives the same byline, with Ethics vol. 60, no. 2 (January 1950), pp. 100–111. Two independent reference lists agree on the authors. The publisher's page (doi 10.1086/290705) returned HTTP 403 and was not read. The byline was not checked against the title page.
+
+## 32. Maquet pinpoint resolved: 324, not 524 (2026-10-31)
+
+32.1 Finding. K&K's footnote 18a, printed p. 51 (PDF p. 54 of `documents/Kroeber-kluckhohn.pdf`), reads "Maquet, 1949: 324" and quotes "La culture, c'est la manière de vivre du groupe." The "524" in the ABBYY text layer is an OCR error.
+
+32.2 Basis. Checked on the page image at 220 dpi. Boroch's C1-20 pinpoint (324) agrees. This resolves the conflict in 30.3.
+
+32.3 Not changed. The manuscript cites Maquet 1949 without a page, so no text needs correcting. `data/kkcc-definition-source-pages.csv` already has 324.
+
+## 33. Binary topic network replaced by weighted projections (2026-11-01)
+
+- Decision (user, 2026-11-01): the binary definitions-by-topics network and its m = 1.5 edge rule are removed, and the LDA topic trees are rebuilt from the weighted projections of the stored theta matrix. Section 24's edge rule is superseded. The Index B networks and trees are unchanged.
+- Projections: the definitions projection is Theta Theta' and the topic projection is Theta' Theta, both from `data/kk-index-b-lda-code-theta.csv` (`scripts/topic-weighted-trees-index-b.R`). Maximum spanning trees come from igraph's `mst()` on the negated weights.
+- C-I-7 is excluded. Its clause count is zero and its weights are uniform, so it would tie with every definition. The code tree therefore has 170 nodes and 169 edges.
+- No 2-core or LCC filter is applied, because the weighted projections are complete graphs. The tree is unique: no tree edge shares its weight with another pair (checked by `tie.check()`), so the tree ensemble is not used for the topic trees.
+- Betweenness is Freeman-normalized on the single tree. On a tree every path is unique, so the value does not depend on the weight convention.
+- Removed: `analysis-lda-network-index-b.R` (renamed `analysis-lda-chisq-index-b.R`, chi-square only), `analysis-tie-sensitivity-topic-index-b.R`, `analysis-topic-tree-numbers-index-b.R`, and the outputs `kk-index-b-lda-edge-rules.csv`, `kk-index-b-lda-network-stats.csv`, `kk-index-b-tie-sensitivity-topics.csv` and `kk-index-b-tie-sensitivity-topic-definitions.csv`. The edge-rule block is removed from `analysis-lda-texts-index-b.R`. All were tracked, so the previous versions are in git history.
+- Manuscript: the topic-network subsection now describes the weighted projections. Table 6 gives the topic and top-ten definition betweenness of the new trees. The network-statistics table is removed. The topic and definition tree subsections and the two tree figure captions are rewritten. The per-definition quotations from the binary tree discussion are removed, not replaced.
+- Results to recheck if the theta file changes: code tree top ten C-I-13, F-III-2, A-10a, F-IV-2, C-I-5a, C-II-2, B-20, F-III-4, A-3(a) and C-I-2 (A-3(a) and C-I-2 differ by 0.01 points); topic tree hub topic 11 with 65.5 percent, leaves topics 2, 4, 5, 7 and 12; code tree Spearman betweenness-degree 0.99, 136 leaves, betweenness-words -0.03.
+- Open: the dot-product projection favors definitions with large weights on widely shared topics (C-I-13, F-IV-2). A cosine-normalized projection is the obvious alternative and has not been tried.
+- Bogardus 1930 (C-I-2) was added to `references.bib` from Boroch B031 and the citation table (page-checked).
+
+## 34. Cosine-normalized projections replace the dot product (2026-11-01)
+
+- Decision (user, 2026-11-01): the topic trees use cosine similarity. The definitions projection is the cosine between definitions' topic profiles (rows of theta scaled to unit length); the topic projection is the cosine between topics (columns scaled to unit length). The dot-product version of section 33 is superseded.
+- Reason: the dot product gave the top ten a strong bias toward peaked definitions on widely shared topics. The two versions share none of their top ten definitions, and their trees share 32 of 169 edges (checked before the switch, in memory).
+- Results, cosine version: definition top ten D-I-14 (64.3%), D-II-14, C-I-16, C-I-8, B-10, D-I-1, D-II-9, F-II-10, C-I-5 and E-8 (43.1%). Topic hub shared group living (topic 4, 78.2%) with five neighbors. 59 of 170 definitions are leaves; Spearman betweenness-degree 0.85; betweenness-words 0.12; top-ten median 37 words against 28 for all definitions. Transmitted group behavior is the dominant topic of five of the top ten, which has not been tested for an artifact.
+- Ties: no tree edge shares its weight with another pair (both trees, checked by `tie.check()`).
+- Bibliography: six entries added for the new top ten (Morris 1948, Bennett and Tumin 1949, Mead 1937, Davis 1948, Becker 1950, Coutu 1949) from the citation table's Boroch references; publishers are not recorded.
+- Recheck after any change to the theta file: the cosine definition top ten above, the topic hub 4, and the leaves.
+
+## 35. Projection trees removed; representative definitions kept (2026-11-01)
+
+- Decision (user, 2026-11-01): the LDA projection trees are removed, both the topic tree and the definition tree, with their helper, figures, node and community tables, and the Table 6 betweenness table. The reason given is that the trees were not informative about the LDA topics. Sections 33 and 34 are superseded for the manuscript; the cosine comparison in section 34 is no longer reported.
+- Kept: the ranking of definitions within each topic by their stored weight (Table 5 in the manuscript). It is reproduced by `scripts/analysis-lda-topic-ranking-index-b.R`, which writes `data/kk-index-b-lda-topic-ranking.csv`. The ranking uses the weights as stored, so it does not depend on any projection.
+- Removed files: `scripts/topic-weighted-trees-index-b.R`, `scripts/analysis-mst-topic-network-index-b.R`, `scripts/figure-mst-topic-nodes-index-b.R`, the three `data/kk-index-b-topic-tree-*.csv` outputs, and the two tree PNGs. The files were tracked at the binary-era commit, so those versions are in git history. The cosine versions in the working tree were never committed and are lost.
+- Manuscript: the topic-network subsection, Table 6 and the two tree figures are removed. The LDA introduction and the cautions paragraph no longer refer to trees, edges or the binary network.

@@ -280,7 +280,7 @@ Last but certainly not least, \citet{tylor1871} (A-1) ranks eleventh in mean def
 
 \section{Data-driven topics: latent Dirichlet allocation}
 
-The spanning trees and the community colors above classify each definition into exactly one region or community. Latent Dirichlet allocation (LDA) \citep{blei2003latent} gives a softer, text-based alternative. The LDA model treats each document as a mixture of topics and each topic as a distribution over words, so every definition carries a weight on every topic. We ask whether topics estimated from the wording of the definitions, without K\&K's coding and without the concept links, recover K\&K's seven categories A--G (Descriptive to Incomplete).
+Latent Dirichlet allocation (LDA) \citep{blei2003latent} classifies definitions by their wording, with a soft weight on each topic. The LDA model treats each document as a mixture of topics and each topic as a distribution over words, so every definition carries a weight on every topic. We ask whether topics estimated from the wording of the definitions, without K\&K's coding and without the concept links, recover K\&K's seven categories A--G (Descriptive to Incomplete).
 
 The unit of analysis is the clause. Each quotation is split into sentences and then at semicolons, and clauses of fewer than three words are dropped, so that a definition listing several elements is not forced into one blend. Stopwords are removed, along with the frame words culture, society, social and man and a short list of grammatical words, and plural forms are merged into their singulars where both occur. A term is kept if it appears in at least two clauses. The model is fitted to 265 clauses from the 171 definitions, over a vocabulary of 340 terms. One definition, C-I-7 (\citealt{simmons1942}), keeps no clause after the term filter as the only substantive word it contains (``mores'') is too rare in the corpus. It carries a uniform membership and drops out of every binary analysis.
 
@@ -319,6 +319,34 @@ Topic & Label & Top terms & Definitions \\
 
 Table~\ref{tab:lda-topics} lists the twelve topics with the labels we give them from their leading terms, and Figure~\ref{fig:lda-topic-terms} shows the ten highest-weight terms of each topic, with bars drawn from the seed-mean topic-term probabilities. The labels are our reading of the top words and are heuristic. In a corpus this small, a topic can reflect one author's phrasing, so the labels describe the top terms and do not name concepts. The topics differ in size. Dominant-topic counts run from 8 definitions (\emph{acquired habits as complex wholes}) to 23 (\emph{transmitted group behavior}), and the four largest topics together hold 86 of the 171 definitions. The heads of the largest topics are general words. \emph{transmitted group behavior} is led by behavior, group and generation, and \emph{way of life of a people} by way, life and group. Several smaller topics have more particular heads, such as \emph{man-made environment} (environment, part, material, made) and \emph{cultural order of phenomena} (human, cultural, phenomena, order).
 
+Table~\ref{tab:lda-top-definitions} ranks the definitions within each topic by their weight on it and lists the five highest. The weight is the share of a definition's clauses assigned to the topic, so the ranking shows how strongly the wording of each definition leans toward the topic, not whether the definition belongs to it. C-I-7 has no clause in the model and is left out. Several top entries are short quotations. F-I-1 has five words, and the weights of F-I-9 and D-I-9 rest on twelve words each, so these ranks should be read with the length of the quotation in view.
+
+\begin{table}[t]
+\centering
+\caption{The five definitions with the largest weight on each LDA topic. Each cell gives the definition's identifier with its weight in parentheses, and below it the work its quotation comes from. Boroch's appendix prints the reprint year 1931 for A-4, and the work is cited here as 1929. The four 1941 definitions (F-I-9, D-I-9, F-I-10 and F-I-11) are all one mimeographed work of the Committee on Conceptual Integration. Topic labels are those of Table~\ref{tab:lda-topics}.}
+\label{tab:lda-top-definitions}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{c>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}p{2.2cm}>{\raggedright\arraybackslash}p{2.2cm}>{\raggedright\arraybackslash}p{2.2cm}>{\raggedright\arraybackslash}p{2.2cm}>{\raggedright\arraybackslash}p{2.2cm}}
+\toprule
+Topic & Label & Rank 1 & Rank 2 & Rank 3 & Rank 4 & Rank 5 \\
+\midrule
+1 & individual acquired behavior & C-II-4 (0.55) \newline \citealt{bidney1946} & C-II-3 (0.53) \newline \citealt{bidney1942} & E-1 (0.39) \newline \citealt{willey1929} & B-21 (0.37) \newline \citealt{henry1949} & A-10 (0.34) \newline \citealt{linton1936} \\
+2 & human products and results & F-I-9 (0.73) \newline \citealt{committee1941} & D-I-9 (0.72) \newline \citealt{committee1941} & F-I-10 (0.60) \newline \citealt{committee1941} & F-I-1 (0.52) \newline \citealt{groves1928} & D-II-13 (0.42) \newline \citealt{hockett1950} \\
+3 & transmitted group behavior & D-II-6 (0.63) \newline \citealt{benedict1947} & D-II-11 (0.56) \newline \citealt{haring1949} & D-I-5 (0.55) \newline \citealt{young1934} & D-II-14 (0.54) \newline \citealt{steward1950} & B-14 (0.54) \newline \citealt{angyal1941} \\
+4 & shared group living & B-5 (0.41) \newline \citealt{bose1929} & E-6 (0.36) \newline \citealt{kluckhohnkelly1945a} & F-II-7(a) (0.32) \newline \citealt{feibleman1946} & C-II-6 (0.30) \newline \citealt{sorokin1947} & D-III-4 (0.29) \newline \citealt{roberts1951} \\
+5 & biological needs and nature & A-11 (0.91) \newline \citealt{panunzio1939} & D-I-7 (0.56) \newline \citealt{panunzio1939} & B-9 (0.50) \newline \citealt{linton1936} & D-I-16 (0.42) \newline \citealt{gorer1949} & B-15 (0.33) \newline \citealt{kluckhohn1942} \\
+6 & acquired habits as complex wholes & A-4 (0.56) \newline \citealt{benedict1929} & B-8 (0.51) \newline \citealt{lowie1934} & A-14 (0.44) \newline \citealt{kluckhohnkelly1945a} & A-1 (0.43) \newline \citealt{tylor1871} & C-I-4 (0.38) \newline \citealt{klineberg1935} \\
+7 & cultural order of phenomena & F-IV-2 (0.74) \newline \citealt{ostwald1915} & C-II-1 (0.54) \newline \citealt{carver1935} & F-III-4 (0.50) \newline \citealt{white1949a} & F-I-11 (0.45) \newline \citealt{committee1941} & B-4 (0.41) \newline \citealt{tozzer1925} \\
+8 & sum total of group life & A-10a (0.58) \newline \citealt{lowie1937} & F-I-7 (0.50) \newline \citealt{sorokin1937} & D-I-1 (0.45) \newline \citealt{small1905} & B-1 (0.43) \newline \citealt{park1921} & B-20 (0.43) \newline \citealt{kluckhohn1949a} \\
+9 & material tools and ideas & F-III-2 (0.59) \newline \citealt{white1943} & C-I-18 (0.56) \newline \citealt{titiev1949} & A-18 (0.48) \newline \citealt{herskovits1948} & A-16 (0.46) \newline \citealt{bidney1947} & C-II-2 (0.45) \newline \citealt{thomas1937} \\
+10 & customs, beliefs and knowledge & A-2 (0.54) \newline \citealt{wissler1920} & A-3(a) (0.53) \newline \citealt{dixon1928} & A-3(b) (0.48) \newline \citealt{dixon1928} & A-12 (0.48) \newline \citealt{murray1943} & A-5 (0.44) \newline \citealt{burkitt1929} \\
+11 & way of life of a people & C-I-13 (0.72) \newline \citealt{kluckhohnleighton1946} & C-I-14 (0.49) \newline \citealt{herskovits1948} & C-I-19 (0.48) \newline \citealt{kluckhohn1951a} & F-I-13 (0.45) \newline \citealt{young1942} & C-I-5a (0.45) \newline \citealt{lynd1940} \\
+12 & man-made environment & F-I-1a (0.62) \newline \citealt{willey1927b} & F-I-17 (0.58) \newline \citealt{herskovits1948} & F-I-18 (0.54) \newline \citealt{kluckhohn1949a} & F-II-7(b) (0.49) \newline \citealt{feibleman1946} & D-I-15 (0.47) \newline \citealt{turneyhigh1949} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \subsection{LDA versus K\&K's categories}
 
 The dominant topic of each definition, cross-tabulated against its K\&K category, is non-zero but imperfect. A chi-square test of independence on the 7 by 12 table gives $\chi^2 = 114.5$, with a simulated $p = 0.0006$ (10,000 replicates, seed 8153). Expected counts are below 5 in 78 of the 84 cells, so the chi-square distribution does not apply, and the p-value comes from the simulation of the null hypothesis of independence. We report the statistic without a strength measure, since measures of strength are unreliable on a table this sparse. Nevertheless, some topics do line up with the K\&K categories. For instance, seven of the 22 Descriptive (A) definitions have \emph{customs, beliefs and knowledge} as their dominant topic, and six of the ten definitions dominated by \emph{cultural order of phenomena} are Genetic (F). Other topics mix categories. \emph{Transmitted group behavior}, the largest, is led by Psychological (D) definitions at 9 of 23, and \emph{way of life of a people} is led by Normative (C) definitions at 12 of 22. Cells this small should not be read as group-topic correspondences on their own.
@@ -338,172 +366,9 @@ The subgroups spread across the topics to different degrees. A (Descriptive), B 
 
 The subgroup-level flows in Figure~\ref{fig:sup-sankey-codes} add three patterns. C-I is the most concentrated subgroup, with 12 of its 21 definitions fall in \emph{way of life of a people}. Topic 10, \emph{customs, beliefs and knowledge}, draws on only three subgroups, with A contributing 7 of its 13 definitions, B 4 and D-II 2. The Genetic subgroups spread more widely. F-I reaches nine of the twelve topics, with no topic holding more than 19\% of its definitions, and F-I and F-II both contribute to \emph{man-made environment} and \emph{material tools and ideas}. \emph{Transmitted group behavior} is the broadest topic, drawing on ten subgroups, and D-II supplies 8 of its 16 definitions to it. Subgroups with fewer than ten definitions (C-II, D-III, D-IV, F-III, F-IV and G) are too small for their shares to support comparisons.
 
-Two cautions qualify these patterns. First, several words head more than one topic: group, habit, human, idea and way each appear among the ten highest-weight terms of four topics, and behavior of three. The topics therefore differ more in their secondary terms than in their headline words, and the labels summarize weight profiles rather than separate concepts. Second, most definitions are mixtures. The median definition puts 0.34 of its weight on its largest topic (a uniform membership would be 0.08), and 144 of the 170 definitions with an edge link to two or more topics. This diffuseness is consistent with K\&K's categories being spread across topics rather than matched to them, and it is why the binary network below uses a relative threshold rather than the largest topic alone.
+Two cautions qualify these patterns. First, several words head more than one topic: group, habit, human, idea and way each appear among the ten highest-weight terms of four topics, and behavior of three. The topics therefore differ more in their secondary terms than in their headline words, and the labels summarize weight profiles rather than separate concepts. Second, most definitions are mixtures. The median definition puts 0.34 of its weight on its largest topic (a uniform membership would be 0.08), so the largest topic describes each definition only in part. This diffuseness is consistent with K\&K's categories being spread across topics rather than matched to them.
 
 The topics recover themes in the wording of the definitions, but not K\&K's taxonomy. One reading is that K\&K's categories classify the emphasis of individual statements, and that a quotation of about thirty words cannot carry that emphasis. The other reading, which we find more plausible, is that the seven categories are editorial categories for organizing a bibliography rather than dimensions along which the wording varies. The analysis cannot separate these readings. The method's limits point the same way. The number of topics was fixed rather than selected, the quotations are the passages Boroch selected rather than the authors' full works, and four of them are rendered from translations that have not been checked against the page images.
-
-\subsection{The topic network}
-
-To compare the topics with the trees, we derive a binary definitions-by-topics network. A definition is linked to a topic when its weight on that topic exceeds 1.5 times the definition's own mean weight across the twelve topics. A fixed global cutoff was rejected because the definition-level weights are diffuse, so a fixed cut links either nearly every definition to nearly every topic or almost none. The rule gives 383 edges, covering 170 of the 171 definitions; 144 of those 170 definitions link to two or more topics. Changing the multiplier to 1.25 or 2 gives 467 or 262 edges, and fixed cutoffs of 0.05, 0.1 and 0.2 give 890, 470 and 200 edges. The sensitivity table is in the project's data folder.
-
-Table~\ref{tab:lda-network} gives summary statistics for this binary network, computed as in Table~\ref{tab:summary}. The network's density is 0.187 of the 2052 possible definition-topic pairs. The average definition is linked to 2.24 topics, and the one isolated definition is C-I-7. Topics are far better connected; each is linked to between 22 and 44 definitions, and the average topic has 31.92 links. The degree correlation of $-0.918$ is strongly negative, but this follows from the bipartite structure: every edge joins a definition of low degree to a topic of high degree, so the statistic says little about which definitions share topics.
-
-\begin{table}[t]
-\centering
-\caption{Summary statistics for the definitions-by-topics network. A definition is linked to a topic when its weight on that topic exceeds 1.5 times its mean weight across the twelve topics. Statistics describe the full network, as in Table~\ref{tab:summary}; the definitions of $k_{nn}$, degree correlation and degree variance follow that table.}
-\label{tab:lda-network}
-\begin{tabular}{lr}
-\toprule
- & Network \\
-\midrule
-Edges & 383 \\
-Density & 0.187 \\
-Degree correlation $r$ & $-0.918$ \\
-\midrule
-\multicolumn{2}{l}{\textit{Topics} ($N = 12$)} \\
-\addlinespace
-Mean degree & 31.92 \\
-Minimum degree & 22 \\
-Maximum degree & 44 \\
-Degree variance & 45.36 \\
-Mean $k_{nn}$ & 2.54 \\
-\midrule
-\multicolumn{2}{l}{\textit{Definitions} ($N = 171$ definitions, 1 isolated)} \\
-\addlinespace
-Mean degree & 2.24 \\
-Minimum degree & 0 \\
-Maximum degree & 4 \\
-Degree variance & 0.68 \\
-Mean $k_{nn}$ & 33.26 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-
-Table~\ref{tab:lda-mst-betweenness} gives the top nodes of the two projections of the topic network, as Table~\ref{tab:mst-def-betweenness} does for the definitions network. The topic projection has only twelve nodes, and seven of them have positive betweenness in some trees; the other five are leaves in every tree and are not listed.
-
-\begin{table}[t]
-\centering
-\caption{Top nodes by mean Freeman-normalized betweenness over 1000 random maximum spanning trees of each projection of the definitions-by-topics network (2-core). For topics, the seven topics with positive betweenness in some tree. For definitions, the top ten definitions and F-I-3, which ranks eleventh. Top-10 share is the percentage of trees in which the node ranks in the top ten among nodes with positive betweenness. Degree is the node's degree in the 2-core. Topic labels are shortened from Table~\ref{tab:lda-topics} to fit the column.}
-\label{tab:lda-mst-betweenness}
-\footnotesize
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{p{1.9cm}p{4.2cm}p{3.8cm}>{\raggedleft\arraybackslash}p{1.9cm}>{\raggedleft\arraybackslash}p{1.9cm}>{\raggedleft\arraybackslash}p{1.2cm}}
-\toprule
-Node type & Node & Author-year & Mean norm. betw. (\%) & Top-10 share (\%) & Degree \\
-\midrule
-\multirow{7}{*}{Topics} & 3 transmitted group behavior & & 70.9 & 100 & 39 \\
- & 8 sum total of group life & & 56.4 & 100 & 39 \\
- & 1 indiv. acquired behavior & & 43.6 & 100 & 35 \\
- & 6 acquired habits & & 33.6 & 100 & 32 \\
- & 12 man-made environment & & 32.7 & 100 & 23 \\
- & 9 material tools and ideas & & 18.2 & 100 & 32 \\
- & 10 customs, beliefs & & 9.0 & 50 & 32 \\
-\midrule
-\multirow{10}{*}{Definitions} & A-13 & \citealt{malinowski1944} & 43.2 & 68 & 4 \\
- & A-14 & \citealt{kluckhohnkelly1945a} & 41.5 & 73 & 4 \\
- & F-IV-5 & \citealt{kluckhohnkelly1945a} & 39.0 & 65 & 4 \\
- & G-1 & \citealt{sapir1921} & 35.5 & 52 & 4 \\
- & F-II-1 & \citealt{ward1903} & 28.7 & 42 & 4 \\
- & D-II-5 & \citealt{lapiere1946} & 26.8 & 34 & 4 \\
- & F-I-2 & \citealt{folsom1928} & 25.3 & 36 & 4 \\
- & F-I-15 & \citealt{carr1945} & 22.2 & 28 & 3 \\
- & D-II-10 & \citealt{hoebel1949} & 21.9 & 28 & 3 \\
- & B-7 & \citealt{winston1933} & 19.3 & 21 & 4 \\
- & F-I-3 & \citealt{folsom1931} & 17.7 & 24 & 3 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-Figure~\ref{fig:lda-mst-code} draws the definition tree of this topic projection, in the format of Figure~\ref{fig:mst-def-code}. The tree covers the 143 definitions of the 171 that remain in the 2-core, so the 28 definitions outside it are not drawn.
-
-\begin{figure}[ht!]
-\centering
-\includegraphics[width=0.9\textwidth]{figures/kk-index-b/lda/mst-topic-nodes-tree.png}
-\caption{Maximum spanning tree of the definitions-by-topics network, topic nodes labeled as in Table~\ref{tab:lda-topics}. Edge width is the number of definitions the two topics share; size is mean betweenness over the tree ensemble; color is the leading-eigenvector community on the tree shown.}
-\label{fig:lda-mst-topic}
-\end{figure}
-
-\subsubsection{Topic tree}
-
-Figure~\ref{fig:lda-mst-topic} shows the MST on the twelve topics, with an edge for each pair of topics that share definitions. The topic tree's structure is simple. In a check of 50 random trees, only two distinct edge sets appeared. Transmitted group behavior (topic 3) has four neighbors and the highest mean betweenness (71\%), and acquired habits as complex wholes (topic 6) has three. Individual acquired behavior (topic 1) links to both, so it is the bridge between the two hubs, and its strongest tie, 17 shared definitions, is to topic 6. This tie is heavy because the two topics overlap, since 17 of the 36 definitions linked to topic 1 also link to topic 6, and five of the ten top terms of each topic are shared (acquired, habit, member, way, idea).\footnote{Because the weights count shared definitions, a topic's size may contribute to its position.}
-
-\subsubsection{Topic definition tree}
-
-The 143 definitions of Figure~\ref{fig:lda-mst-code} fall into 17 communities, and the largest holds 20 definitions. In the largest community, \emph{individual acquired behavior} and \emph{acquired habits as complex wholes}, the most strongly connected pair of topics in the topic tree, meet, and seven of the 20 definitions have the first as their dominant topic and six have the second. The largest community contains the second- and third-highest betweenness definitions, A-14 and F-IV-5, both \citet{kluckhohnkelly1945a}.  The KK categories in the largest community are skewed as well. Five of its 20 definitions are Descriptive (A) and six Psychological (D), while only two are Genetic (F), against about a quarter of the definitions in the whole tree. Definitions in the largest community average about 10\% mean betweenness, against about 6\% across the tree. 
-
-Overall, the ten definitions with the highest mean betweenness come from seven different communities. Four are Genetic (F), two Descriptive (A), two Psychological (D), and one each Historical (B) and Incomplete (G). Interestingly, none belong to K\&K's ``Normative'' (C) category. Only the top four stay in the top ten in more than half of the trees (52 to 73 percent), so the places of the lower-ranked definitions depend on the tie-breaking. Length percentiles below are among the 170 definitions with a word count in the stored LDA file; C-I-7 has none. Topic labels are those of Table~\ref{tab:lda-topics}.\footnote{In the quotations of this subsection, a word is set in bold when it is one of the ten highest-weight terms of any LDA topic in the ensemble, as listed in the project's data folder. A plural is bolded when its singular is such a term. Words the model removed as stopwords or frame words (for example \emph{culture}) are never bolded, and words outside the top-ten lists are not bolded even if they carry weight in a topic. The rule checks the word, not its context, so a bolded word may be a term of a different topic from the one the definition is assigned to. Concept names are not bolded in these quotations.}
-
-
-\begin{figure}[ht!]
-\centering
-\includegraphics[width=\textwidth]{figures/kk-index-b/lda/mst-code-author-year-tree-topic-network.png}
-\caption{Maximum spanning tree of the definitions-by-topics network (edge rule $m = 1.5$), definition nodes labeled by the author and year of their quotation. Ties are shared topics; shape is the K\&K definition group (A--G); color is the leading-eigenvector community on the tree shown; size is mean betweenness over the tree ensemble.}
-\label{fig:lda-mst-code}
-\end{figure}
-
-The top ten definitions in this tree are not unusually long. Their median quotation length is 28.5 words, against 28 for all 143 definitions in the 2-core and 49 for the top ten of the KK tree. Word count tracks betweenness in the KK tree (Spearman $\rho = 0.46$ across 149 definitions) but not here ($\rho = 0.03$ across 143), and it is barely related to the number of topics a definition links to ($\rho = 0.14$ across the 171 definitions). The difference from the KK tree therefore lies in which definitions the two trees place centrally, not in quotation length.
-
-The \citet{malinowski1944} quotation (A-13) has the highest mean betweenness, 43.2\%, and it is in the top ten in 68\% of trees. Its 2-core degree is 4, but in the drawn tree it has seven neighbors, the most of any top-ten definition. A-14, A-16, B-11, C-I-18a, D-II-7, F-I-14 and F-II-9. Removing it leaves seven components, the largest of 73 definitions. Its quotation is 29 words, about the 53rd percentile of length. Its largest topic weight is on customs, beliefs and knowledge (0.235), with acquired habits second (0.167). Here is the definition in full:
-
-\begin{quotation}
-    It [culture] obviously is the integral \textbf{whole} consisting of implements and consumers' goods, of constitutional charters for the various social groupings, of \textbf{human} \textbf{ideas} and crafts, \textbf{beliefs} and \textbf{customs}.
-\end{quotation}
-
-The \citet{kluckhohnkelly1945a} quotation (A-14, printed p. 82 in Boroch's appendix) ranks second at 41.5\%, and it is in the top ten in 73\% of trees, the highest share in the table. It has three neighbors in the drawn tree (A-1, A-13 and F-IV-5). Removing it splits the rest of the tree into two parts of 70 definitions each, plus two definitions. Its largest topic is acquired habits as complex wholes, with weight 0.44, the most concentrated of the top ten. Here is the definition in full:
-
-\begin{quotation}
-    Culture is that \textbf{complex} \textbf{whole} which \textbf{includes} artifacts, \textbf{beliefs}, \textbf{art}, all the other \textbf{habits} \textbf{acquired} by man as a \textbf{member} of society and all \textbf{products} of \textbf{human} \textbf{activity} as determined by these \textbf{habits}.
-\end{quotation}
-
-The second \citet{kluckhohnkelly1945a} quotation, F-IV-5 (Boroch's page reference p. 87), is third at 39.0\%, in the top ten in 65\% of trees. It has six neighbors (A-14, A-7, B-3, C-I-4, D-I-13 and E-5(a)) and shares A-14's community. Removing it leaves a component of 73 definitions and five smaller ones, of 37, 18, 7, 5 and 2 definitions. Its quotation is 30 words, about the 56th percentile, and its largest topic is way of life of a people (0.216). Here is the definition in full:
-
-\begin{quotation}
-     [\ldots] culture \textbf{includes} all those \textbf{ways} of feeling, \textbf{thinking}, and acting which are not inevitable as a \textbf{result} of \textbf{human} \textbf{biological} equipment and \textbf{process} and (or) objective external situations.
-\end{quotation}
-
-The \citet{sapir1921} quotation (G-1) is fourth at 35.5\%, in the top ten in 52\% of trees. It is one of the shortest quotations, at the 9th percentile of length, with 11 words. It has six neighbors, and removing it leaves a component of 119 definitions with five branches of 11, 8, 2, 1 and 1 definitions. Its topic weights on topics 2, 5 and 8 are tied at 0.136, so no topic dominates it. Here is the definition in full:
-
-\begin{quotation}
-    Culture may be defined as what a society does and thinks.
-\end{quotation}
-
-The \citet{ward1903} quotation (F-II-1) is fifth at 28.7\%, in the top ten in 42\% of trees. It has five neighbors (A-18, F-I-15, F-I-3, F-I-7 and G-1) and sits in community 7 with F-I-15 and D-II-10. Removing it leaves a component of 115 definitions and four smaller pieces of 24, 1, 1 and 1 definitions. Its topic weights tie at 0.167 for transmitted group behavior and man-made environment. Its quotation is 18 words, about the 23rd percentile. Here is the definition in full:
-
-\begin{quotation}
-    A culture is a social structure, a social organism, if any one prefers, and \textbf{ideas} are its germs.
-\end{quotation}
-
-The \citet{lapiere1946} quotation (D-II-5) is sixth at 26.8\%, in the top ten in 34\% of trees. It is the wordiest of the ten, with 46 words at the 79th percentile of length. It has six tree neighbors (A-10a, B-22, B-9, D-II-15, D-II-9 and F-II-10). Removing it leaves a component of 133 definitions and five small pieces. Its largest topic is sum total of group life (0.177), narrowly ahead of transmitted group behavior (0.166). Here is the definition in full:
-
-\begin{quotation}
-    A culture is the embodiment in \textbf{customs}, \textbf{traditions}, \textbf{institutions}, etc., of the learning of a social \textbf{group} over the \textbf{generations}. It is the \textbf{sum} of what the \textbf{group} has \textbf{learned} about \textbf{living} together under the particular circumstances, \textbf{physical} and \textbf{biological}, in which it has found itself.
-\end{quotation}
-
-The \citet{folsom1928} quotation (F-I-2) is seventh at 25.3\%, in the top ten in 36\% of trees. It has three tree neighbors (A-10, B-5 and D-I-2), and removing it leaves components of 130, 10 and 2 definitions. It sits in community 2, which has 15 definitions. Its quotation is 35 words, about the 65th percentile, and its largest topic is sum total of group life (0.197). Here is the definition in full:
-
-\begin{quotation}
-    Culture is the \textbf{sum} \textbf{total} of all that is artificial. It is the complete outfit of \textbf{tools}, and \textbf{habits} of \textbf{living}, which are invented by man and then \textbf{passed} on from one \textbf{generation} to another.
-\end{quotation}
-
-The \citet{carr1945} quotation (F-I-15) is eighth at 22.2\%, in the top ten in 28\% of trees. It is the shortest of the ten, with nine words, at the 7th percentile of length. Its four tree neighbors are B-3, D-II-10, E-5(b) and F-II-1. Its largest topic is human products and results (0.242). Here is the definition in full:
-
-\begin{quotation}
-    The accumulated transmissible \textbf{results} of \textbf{past} \textbf{behavior} in association.
-\end{quotation}
-
-The \citet{hoebel1949} quotation (D-II-10) is ninth at 21.9\%, in the top ten in 28\% of trees. It has four tree neighbors (A-17, B-18, F-I-15 and F-I-5) and sits in community 7 with F-I-15 and F-II-1. Its 28 words put it at the 51st percentile, and its largest topic is transmitted group behavior (0.375). Here is the definition in full:
-
-\begin{quotation}
-    Culture is the \textbf{sum} \textbf{total} of \textbf{learned} \textbf{behavior} \textbf{patterns} which are characteristic of the \textbf{members} of a society and which are, therefore, not the \textbf{result} of \textbf{biological} inheritance.
-\end{quotation}
-
-The \citet{winston1933} quotation (B-7) is tenth at 19.3\%, in the top ten in 21\% of trees. B-7 and F-I-3 differ by 1.6 points in mean betweenness, and F-I-3 is in the top ten in more trees (24\% against 21\%), so their order at the cutoff depends on tie-breaking. B-7 has four tree neighbors (A-5, C-I-17, C-I-2 and E-2), and its largest topic is sum total of group life (0.314). Its quotation is 28 words, about the 51st percentile. Here is the definition in full:
-
-\begin{quotation}
-    [\ldots] we may regard culture as the \textbf{sum} \textbf{total} of the possessions and the patterned \textbf{ways} of \textbf{behavior} which have become \textbf{part} of the heritage of a \textbf{group}.
-\end{quotation}
-
 
 \section{Discussion}
 
@@ -526,7 +391,7 @@ The unit of analysis is the definition K\&K attached to each definition, which c
 
 Index A (authors) and Index B (sub-elements) were read from the OCR text layer and corrected by explicit rules. The corrections are recorded in a manual-fix table of 142 rows, each with its printed-page evidence. A further 10 rows recover definitions that the OCR glued into element names, and 14 rows record name decisions. The project avoids general character rules, because a rule such as reading a y as a 5 silently produced definitions from unrelated tokens. Each manual fix is keyed to a parsed token, and the checks confirm that every key matches one.
 
-The universe is 171 definitions. Of these, 169 appear in K\&K's author index. The other two, C-I-18a (Maquet 1949) and D-II-16 (Aberle et al. 1950), are cited in main-text footnotes but not listed in the index; their Index B entries are read from the sub-element entries that carry them. Four Part III statement definitions (C-5, D-5, D-7 and E-17) are excluded, since they are K\&K's statements rather than Part II definitions.
+The universe is 171 definitions. Of these, 169 appear in K\&K's author index. The other two, C-I-18a (\citealt{maquet1949}) and D-II-16 (\citealt{aberle1950}), are cited in main-text footnotes but not listed in the index; their Index B entries are read from the sub-element entries that carry them. Four Part III statement definitions (C-5, D-5, D-7 and E-17) are excluded, since they are K\&K's statements rather than Part II definitions.
 
 \subsection{Matching Boroch's definitions to K\&K's}
 
@@ -534,7 +399,7 @@ The crosswalk matches each column of Boroch's Table 2 to a K\&K definition. Of t
 
 \subsection{Quotations and citation keys}
 
-Each definition has one quotation. Boroch supplies 170 of them; the 132 definitions from Boroch's Table 2 and the 39 appendix-only definitions, less the Sears addendum (C1-22), which is linked to a specialty definition rather than to a network definition. D-III-4 has no Boroch entry, and its quotation is K\&K's printed footnote 14 (Roberts 1951, pp. 3 and 6, printed p. 60). Four quotations are not in English and are rendered from a translation table. B-17 and C-I-18a from French, and F-I-5 and F-II-3 from German. C-I-18a uses K\&K's own printed English. The other three are working translations that have not been checked on the page images.
+Each definition has one quotation. Boroch supplies 170 of them; the 132 definitions from Boroch's Table 2 and the 39 appendix-only definitions, less the Sears addendum (C1-22), which is linked to a specialty definition rather than to a network definition. D-III-4 has no Boroch entry, and its quotation is K\&K's printed footnote 14 (\citealt{roberts1951}, pp. 3 and 6, printed p. 60). Four quotations are not in English and are rendered from a translation table. B-17 and C-I-18a from French, and F-I-5 and F-II-3 from German. C-I-18a uses K\&K's own printed English. The other three are working translations that have not been checked on the page images.
 
 Each definition is identified by a citation key. Boroch's author, year and page numbers, together with the first six words of the quotation. The key is unique for all 171 definitions, with no missing values. The page numbers are Boroch's as printed and have not been checked against the source works. The key therefore identifies a quotation as Boroch reports it, and the page numbers are the first thing to check against a source.
 
