@@ -35,7 +35,7 @@ p <- ggplot(tt, aes(x = weight, y = y)) +
   scale_x_continuous(expand = expansion(mult = c(0, 0.05))) +
   labs(x = NULL, y = NULL,
        subtitle = paste("Top terms of each LDA topic at k = 12; weights are the",
-                        "seed-mean topic-term probabilities over 10 aligned fits")) +
+                        "seed-mean topic-term probabilities over 50 aligned fits")) +
   theme_minimal() +
   theme(strip.text = element_text(face = "bold", size = 9),
         axis.text.y = element_text(size = 9, face = "bold"),

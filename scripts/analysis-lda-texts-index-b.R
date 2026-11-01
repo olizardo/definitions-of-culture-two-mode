@@ -8,7 +8,7 @@
 # the translations substituted for the non-English quotations.
 #
 # Model: Gibbs LDA at k = 12, fixed to be compared against K&K's typology, over
-# 10 seeds; the stored code-level memberships are the seed-mean of the
+# 50 seeds; the stored code-level memberships are the seed-mean of the
 # clause-level theta, weighted by clause word count. Codes with no surviving
 # clause (C-I-7, whose only content word is too rare; D-III-4, whose text is a
 # page footnote, not a definition) get a uniform theta and are flagged.
@@ -32,7 +32,7 @@ suppressPackageStartupMessages({
 
 set.seed(2466)  # permutation test seed
 K <- 12
-SEEDS <- 1:10
+SEEDS <- 1:50
 ALPHA <- 0.1
 FRAME <- c("culture", "society", "social", "man")
 GRAMMATICAL <- c("one", "another", "may", "also", "non", "consists", "term", "terms",

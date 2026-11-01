@@ -6,11 +6,6 @@ Aberle, D.~F., Cohen, A.~K., Davis, A.~K., Levy, Jr., M.~J., and Sutton, F.~X.
 \newblock The functional prerequisites of a society.
 \newblock {\em Ethics}, 60(2):100--111.
 
-\bibitem[Angyal, 1941]{angyal1941}
-Angyal, A. (1941).
-\newblock {\em Foundations for a Science of Personality}.
-\newblock New York.
-
 \bibitem[Bain, 1942]{bain1942}
 Bain, R. (1942).
 \newblock A definition of culture.
@@ -27,6 +22,11 @@ Benedict, R. (1929).
 \newblock {\em Century Magazine}.
 \newblock Reprinted in V. F. Calverton, ed., The Making of Man, New York, 1931,
   pp. 805--817.
+
+\bibitem[Benedict, 1934]{benedict1934}
+Benedict, R. (1934).
+\newblock {\em Patterns of Culture}.
+\newblock Boston.
 
 \bibitem[Benedict, 1947]{benedict1947}
 Benedict, R. (1947).
@@ -74,20 +74,10 @@ Breiger, R.~L. (1974).
 \newblock The duality of persons and groups.
 \newblock {\em Social Forces}, 53(2):181--190.
 
-\bibitem[Burkitt, 1929]{burkitt1929}
-Burkitt, M.~C. (1929).
-\newblock Archaeology.
-\newblock In {\em Encyclopaedia Britannica}. New York, 14th edition.
-
 \bibitem[Carr, 1945]{carr1945}
 Carr, L.~J. (1945).
 \newblock Situational psychology.
 \newblock {\em American Journal of Sociology}, 51:136--141.
-
-\bibitem[Carver, 1935]{carver1935}
-Carver, T.~N. (1935).
-\newblock {\em The Essential Factors of Social Evolution}.
-\newblock Cambridge.
 
 \bibitem[{Committee on Conceptual Integration}, 1941]{committee1941}
 {Committee on Conceptual Integration} (1941).
@@ -166,11 +156,6 @@ Gr{\"u}n, B. and Hornik, K. (2011).
 \newblock {topicmodels}: An {R} package for fitting topic models.
 \newblock {\em Journal of Statistical Software}, 40(13):1--30.
 
-\bibitem[Haring, 1949]{haring1949}
-Haring, D.~G. (1949).
-\newblock Is culture definable?
-\newblock {\em American Sociological Review}, 14:26--32.
-
 \bibitem[Henry, 1949]{henry1949}
 Henry, J. (1949).
 \newblock Anthropology and psychosomatics.
@@ -240,6 +225,11 @@ Kruskal, J.~B. (1956).
 LaPiere, R.~T. (1946).
 \newblock {\em Sociology}.
 \newblock New York.
+
+\bibitem[Lasswell, 1948]{lasswell1948}
+Lasswell, H.~D. (1948).
+\newblock {\em The Analysis of Political Behavior}.
+\newblock London.
 
 \bibitem[Linton, 1936]{linton1936}
 Linton, R. (1936).
@@ -313,11 +303,6 @@ Panunzio, C. (1939).
 \newblock {\em Major Social Institutions: An Introduction}.
 \newblock New York.
 
-\bibitem[Park and Burgess, 1921]{park1921}
-Park, R.~E. and Burgess, E.~W. (1921).
-\newblock {\em Introduction to the Science of Sociology}.
-\newblock Chicago.
-
 \bibitem[Reuter, 1939]{reuter1939}
 Reuter, E.~B. (1939).
 \newblock Race and culture.
@@ -379,11 +364,6 @@ Titiev, M. (1949).
 \newblock Social values and personality development.
 \newblock {\em Journal of Social Issues}, 5:44--47.
 
-\bibitem[Tozzer, 1925]{tozzer1925}
-Tozzer, A. (1925).
-\newblock {\em Social Origins and Social Continuities}.
-\newblock New York.
-
 \bibitem[Turney-High, 1949]{turneyhigh1949}
 Turney-High, H.~H. (1949).
 \newblock {\em General Anthropology}.
@@ -393,6 +373,11 @@ Turney-High, H.~H. (1949).
 Tylor, E.~B. (1871).
 \newblock {\em Primitive Culture}.
 \newblock Boston.
+
+\bibitem[Warden, 1936]{warden1936}
+Warden, C.~J. (1936).
+\newblock {\em The Emergence of Human Culture}.
+\newblock New York.
 
 \bibitem[White, 1943]{white1943}
 White, L.~A. (1943).
@@ -421,6 +406,11 @@ Winston, S. (1933).
 \newblock {\em Culture and Human Behavior}.
 \newblock New York.
 
+\bibitem[Wissler, 1916]{wissler1916}
+Wissler, C. (1916).
+\newblock Psychological and historical interpretations of culture.
+\newblock {\em Science}, 43:193--201.
+
 \bibitem[Wissler, 1920]{wissler1920}
 Wissler, C. (1920).
 \newblock Opportunities for coordination in anthropological and psychological
@@ -430,11 +420,6 @@ Wissler, C. (1920).
 \bibitem[Young, 1934]{young1934}
 Young, K. (1934).
 \newblock {\em Introductory Sociology}.
-\newblock New York.
-
-\bibitem[Young, 1942]{young1942}
-Young, K. (1942).
-\newblock {\em Sociology: A Study of Society and Culture}.
 \newblock New York.
 
 \end{thebibliography}

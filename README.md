@@ -285,14 +285,14 @@ unlinked and are reported as such, not guessed.
 split into sentences and semicolon-separated clauses, so a definition that lists
 several elements is not forced into a single topic blend. The model is Gibbs LDA at
 k = 12, fixed to be compared against K&K's typology rather than selected by the data
-(held-out perplexity is flat from k = 8 to 30), fit over 10 seeds with each seed's
+(held-out perplexity is flat from k = 8 to 30), fit over 50 seeds with each seed's
 topics aligned to the first seed by Hungarian matching on the topic-term profiles.
 The stored code-level memberships (`data/kk-index-b-lda-code-theta.csv`) are the
 seed mean of the clause-level topic posterior, weighted by clause word count; one
 code (C-I-7) has no clause surviving the term filter and carries a uniform
 membership, flagged by `n_clauses = 0`. The corpus is small (265 clauses of about 21
 words), so seeds differ: per-seed agreement with the group letters A–G is ARI 0.02
-to 0.06, the aligned ensemble 0.04 (permutation p = 0.001). Membership is diffuse by
+to 0.07, the aligned ensemble 0.04 (permutation p = 0.001). Membership is diffuse by
 design: analyses threshold the stored theta themselves. The stopword list is the
 SMART list minus protected substantive words (way, whole, made, common, passed,
 group, life, people, human, behavior, ideas, custom(s), sum, total, transmitted,

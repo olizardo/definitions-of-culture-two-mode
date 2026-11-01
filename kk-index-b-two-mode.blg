@@ -4,12 +4,10 @@ The top-level auxiliary file: kk-index-b-two-mode.aux
 The style file: apalike.bst
 Database file #1: references.bib
 Database file #2: library.bib
-Warning--empty publisher in angyal1941
+Warning--empty publisher in benedict1934
 Warning--empty publisher in benedict1947
 Warning--empty publisher in blumenthal1937
 Warning--empty publisher in bose1929
-Warning--empty publisher in burkitt1929
-Warning--empty publisher in carver1935
 Warning--empty publisher in dixon1928
 Warning--empty publisher in feibleman1946
 Warning--empty publisher in firth1939
@@ -28,6 +26,7 @@ Warning--empty publisher in kluckhohn1951a
 Warning--empty publisher in kluckhohnkelly1945a
 Warning--empty publisher in kluckhohnleighton1946
 Warning--empty publisher in lapiere1946
+Warning--empty publisher in lasswell1948
 Warning--empty publisher in linton1936
 Warning--empty publisher in linton1945a
 Warning--empty publisher in lowie1934
@@ -36,57 +35,55 @@ Warning--empty publisher in lynd1940
 Warning--empty publisher in maquet1949
 Warning--empty publisher in murray1943
 Warning--empty publisher in panunzio1939
-Warning--empty publisher in park1921
 Warning--empty publisher in reuter1939
 Warning--empty publisher in small1905
 Warning--empty publisher in sorokin1947
 Warning--empty publisher in thomas1937
-Warning--empty publisher in tozzer1925
 Warning--empty publisher in turneyhigh1949
 Warning--empty publisher in tylor1871
+Warning--empty publisher in warden1936
 Warning--empty publisher in white1949a
 Warning--empty publisher in winston1933
 Warning--empty publisher in young1934
-Warning--empty publisher in young1942
-You've used 83 entries,
+You've used 80 entries,
             1935 wiz_defined-function locations,
-            870 strings with 10822 characters,
-and the built_in function-call counts, 26692 in all, are:
-= -- 2574
-> -- 707
-< -- 87
-+ -- 259
-- -- 207
-* -- 2027
-:= -- 4736
-add.period$ -- 260
-call.type$ -- 83
-change.case$ -- 472
-chr.to.int$ -- 83
-cite$ -- 127
-duplicate$ -- 1187
-empty$ -- 2104
-format.name$ -- 312
-if$ -- 5193
+            856 strings with 10582 characters,
+and the built_in function-call counts, 25783 in all, are:
+= -- 2489
+> -- 680
+< -- 84
++ -- 253
+- -- 199
+* -- 1959
+:= -- 4573
+add.period$ -- 250
+call.type$ -- 80
+change.case$ -- 454
+chr.to.int$ -- 80
+cite$ -- 121
+duplicate$ -- 1141
+empty$ -- 2029
+format.name$ -- 299
+if$ -- 5012
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 123
-newline$ -- 422
-num.names$ -- 258
-pop$ -- 506
+missing$ -- 118
+newline$ -- 407
+num.names$ -- 249
+pop$ -- 481
 preamble$ -- 1
-purify$ -- 515
+purify$ -- 496
 quote$ -- 0
-skip$ -- 883
+skip$ -- 854
 stack$ -- 0
-substring$ -- 1722
-swap$ -- 106
+substring$ -- 1694
+swap$ -- 103
 text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 408
-warning$ -- 44
-while$ -- 229
+type$ -- 394
+warning$ -- 41
+while$ -- 223
 width$ -- 0
-write$ -- 1050
-(There were 44 warnings)
+write$ -- 1012
+(There were 41 warnings)
