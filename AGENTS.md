@@ -209,6 +209,15 @@ The manuscript was refreshed for the a/b split and the variant link decisions on
 - OPEN: the Bidney 1947 (A-16) passage in the definitions-tree discussion quotes the text that Boroch's appendix gives for K&K's A-14 (Kluckhohn and Kelly 1945a, p. 82). Boroch's A18, which is Bidney 1947 (p. 376), begins "functionally and secondarily, culture refers to". Unresolved. Check the page image before changing the quotation. The topic-tree section already attributes the text to Kluckhohn and Kelly.
 - OPEN: no bibliography key exists for Malinowski 1944 (A-13), Sapir 1921 (G-1), Ward 1903 (F-II-1), Hoebel 1949 (D-II-10) or Folsom 1928 (F-I-2). They are plain author-year text in Table 6 and the topic-tree prose.
 
+## Manuscript writing conventions (2026-10-31)
+
+- Terminology: in prose, say "definitions" for the K&K codes, not "codes" (for example "the definition tree", "171 definitions"). Keep "code" only in labels, filenames and figure paths (for example `fig:mst-def-code` and `mst-code-author-year-tree.png`) and in the identifier format X-Y-Z. Table headers and captions use "definition".
+- Avoid sentence-opening pronouns and demonstratives ("It", "Its", "This", "They", "These") whose referent is not the immediately preceding noun. Name the definition, measure, model or network. Verbatim quotations are left alone, including any pronouns inside them.
+- Avoid colons in prose: use a period, semicolon or comma. Keep colons in titles (for example "Culture: A Critical Review"), in the "Note:" label, and in label, path and bibliography lines.
+- Name topics by their Table 4 labels, in italics (\emph), not by number ("topics 1 and 6"). Table 6 is the exception, with abbreviated labels for three topics.
+- The LDA quotation bolding rule is stated in a footnote in the topic-tree subsection, and the same rule is in the Topic-network section above. Keep them in step.
+- Table 6's definitions panel lists F-I-3 as the eleventh definition, instead of a cutoff note. The topic-tree prose still calls B-7 "the cutoff case", so check that sentence if F-I-3 stays in the table.
+
 ## Regex and text gotchas (R)
 
 - A logical index with NA returns NA rows: `df[df$kk_code == x, ]` yields NA rows wherever `kk_code` is NA (for example unresolved edges). Use `df[which(df$kk_code == x), ]`.
@@ -274,3 +283,5 @@ The manuscript was refreshed for the a/b split and the variant link decisions on
 - Manuscript conventions added: refer to a tree as "the tree shown in Figure~\ref{...}", not "the drawn tree". "Drawn" stays only in "drawn from" (group or works) senses. Use "among the 171 codes" for percentile statements in the KK sections (all verified codes carry a text); the topic-tree section uses the codes with a word count in the LDA file. Definition quotations are inline Boroch quotations placed in the discussion of the code, with the concept names bolded as above; they are verbatim and stay out of any release (see Definition texts and rights).
 - The editor and the shell can both write `kk-index-b-two-mode.tex`. After any shell edit, reload the editor tab before editing again; an unsaved editor buffer can overwrite shell changes, and a save conflict once left a duplicate quotation in the file.
 - Compile check: the scratch copy recipe above (pdflatex, bibtex, pdflatex twice) has been clean after every edit this session.
+- 2026-10-31 (later session): the topic code tree and the topic-node tree are in the manuscript (subsections "Topic code tree" and "Topic tree", with the figures and Table 6). The code-tree size legends were changed to circles in both KK and topic scripts. The largest topic-tree community, the length finding and the bolding footnote are in the text. PROVENANCE 27 records the F-IV-5 misprint, and the manuscript quote was corrected by the user.
+- Open after this session: the Bidney A-16 quotation (see the topic-network section above), the five author-year citations without bibliography keys, and the B-7 "cutoff case" sentence in the topic-tree subsection.
