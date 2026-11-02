@@ -77,14 +77,16 @@
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Highest-degree nodes of the definitions network on the LCC 2-core. Concept degree counts the 2-core definitions that contain the concept; definition degree counts the 2-core concepts the definition contains. The last two columns rank definitions by degree per 10 words of quotation, using the English translation where one exists. Per-word rankings favor short quotations; across the 171 definitions the per-word value correlates $-0.23$ with word count. Ties at the cutoff are included.\relax }}{5}{table.caption.3}\protected@file@percent }
 \newlabel{tab:top-degree}{{2}{5}{Highest-degree nodes of the definitions network on the LCC 2-core. Concept degree counts the 2-core definitions that contain the concept; definition degree counts the 2-core concepts the definition contains. The last two columns rank definitions by degree per 10 words of quotation, using the English translation where one exists. Per-word rankings favor short quotations; across the 171 definitions the per-word value correlates $-0.23$ with word count. Ties at the cutoff are included.\relax }{table.caption.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}The Semantic Geography of the Concept Tree}{5}{subsection.3.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Top 10 nodes by mean Freeman-normalized betweenness over 1000 random maximum spanning trees of each projection. Degree is the node's degree in the 2-core. Top-10 share is the percentage of trees in which the node ranks in the top ten. Concepts and definitions are ranked separately. Ties are broken at random in each tree, so the ranks below the first place are not robust. A-10 (10th, share 45\%) and A-1 (11th, share 50\%) differ by 1.1 points in mean betweenness.\relax }}{6}{table.caption.4}\protected@file@percent }
-\newlabel{tab:mst-def-betweenness}{{3}{6}{Top 10 nodes by mean Freeman-normalized betweenness over 1000 random maximum spanning trees of each projection. Degree is the node's degree in the 2-core. Top-10 share is the percentage of trees in which the node ranks in the top ten. Concepts and definitions are ranked separately. Ties are broken at random in each tree, so the ranks below the first place are not robust. A-10 (10th, share 45\%) and A-1 (11th, share 50\%) differ by 1.1 points in mean betweenness.\relax }{table.caption.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Top 10 nodes by mean Freeman-normalized betweenness over 1000 random maximum spanning trees of each projection. Degree is the node's degree in the 2-core. Top-10 share is the percentage of trees in which the node ranks in the top ten. Concepts and definitions are ranked separately. Ties are broken at random in each tree, so the ranks below the first place are sensitive to tie-breaking. A-10 (10th, share 45\%) and A-1 (11th, share 50\%) differ by 1.1 points in mean betweenness.\relax }}{6}{table.caption.4}\protected@file@percent }
+\newlabel{tab:mst-def-betweenness}{{3}{6}{Top 10 nodes by mean Freeman-normalized betweenness over 1000 random maximum spanning trees of each projection. Degree is the node's degree in the 2-core. Top-10 share is the percentage of trees in which the node ranks in the top ten. Concepts and definitions are ranked separately. Ties are broken at random in each tree, so the ranks below the first place are sensitive to tie-breaking. A-10 (10th, share 45\%) and A-1 (11th, share 50\%) differ by 1.1 points in mean betweenness.\relax }{table.caption.4}{}}
+\citation{lizardo2017improving-c29}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Maximum spanning tree of the definitions network, sub-element (concept) nodes. Color is the leading-eigenvector community on the tree shown; size is mean betweenness over the tree ensemble.\relax }}{7}{figure.caption.5}\protected@file@percent }
 \newlabel{fig:mst-def-sub}{{2}{7}{Maximum spanning tree of the definitions network, sub-element (concept) nodes. Color is the leading-eigenvector community on the tree shown; size is mean betweenness over the tree ensemble.\relax }{figure.caption.5}{}}
 \citation{gillin1942}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Maximum spanning tree of the definitions network, definition nodes labeled by the author and year of their quotation. Shape is the K\&K definition group (A--G, Descriptive to Incomplete); color is the leading-eigenvector community on the tree shown; size is mean betweenness over the tree ensemble.\relax }}{8}{figure.caption.6}\protected@file@percent }
 \newlabel{fig:mst-def-code}{{3}{8}{Maximum spanning tree of the definitions network, definition nodes labeled by the author and year of their quotation. Shape is the K\&K definition group (A--G, Descriptive to Incomplete); color is the leading-eigenvector community on the tree shown; size is mean betweenness over the tree ensemble.\relax }{figure.caption.6}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Bridging Definitions: Synthetic Theorizing vs. Historical Origin}{8}{subsection.3.2}\protected@file@percent }
+\citation{bidney1968theoretical-29d}
 \citation{bidney1947}
 \citation{bidney1947}
 \citation{bidney1946}
@@ -95,7 +97,6 @@
 \citation{tylor1871}
 \citation{blei2003latent}
 \citation{simmons1942}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Latent Semantic Structure: Latent Dirichlet Allocation}{10}{section.4}\protected@file@percent }
 \citation{griffiths2004finding}
 \citation{bidney1942}
 \citation{bidney1946}
@@ -158,17 +159,18 @@
 \citation{kluckhohn1949a}
 \citation{turneyhigh1949}
 \citation{bidney1942}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Data Driven Classification of Definitions}{11}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Representative Definitions of the Latent Topics}{11}{subsection.4.1}\protected@file@percent }
 \citation{committee1941}
 \citation{benedict1947}
 \citation{bose1929}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Representative Definitions of the Latent Topics}{11}{subsection.4.1}\protected@file@percent }
 \citation{panunzio1939}
 \citation{benedict1929}
 \citation{ostwald1915}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces The twelve LDA topics, showing the assigned label for each, its five highest-weight ensemble terms, and the number of definitions whose dominant topic it is (the topic with the largest weight).\relax }}{12}{table.caption.7}\protected@file@percent }
+\newlabel{tab:lda-topics}{{4}{12}{The twelve LDA topics, showing the assigned label for each, its five highest-weight ensemble terms, and the number of definitions whose dominant topic it is (the topic with the largest weight).\relax }{table.caption.7}{}}
 \citation{lowie1937}
 \citation{titiev1949}
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces The twelve LDA topics. The label we give each, its five highest-weight ensemble terms, and the number of definitions whose dominant topic it is (the topic with the largest weight).\relax }}{12}{table.caption.7}\protected@file@percent }
-\newlabel{tab:lda-topics}{{4}{12}{The twelve LDA topics. The label we give each, its five highest-weight ensemble terms, and the number of definitions whose dominant topic it is (the topic with the largest weight).\relax }{table.caption.7}{}}
 \citation{dixon1928}
 \citation{kluckhohnleighton1946}
 \citation{willey1927b}
@@ -191,12 +193,12 @@
 \citation{kluckhohnkelly1945a}
 \citation{lowie1937}
 \citation{lynd1940}
-\citation{roberts1951}
 \@writefile{toc}{\contentsline {section}{\numberline {Appendix A}Constructing the definition-level data}{18}{appendix.A}\protected@file@percent }
 \newlabel{app:construction}{{Appendix A}{18}{Constructing the definition-level data}{appendix.A}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {A.1}Sources and the unit}{18}{subsection.A.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {A.2}Index A and Index B}{18}{subsection.A.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {A.3}Matching Boroch's definitions to K\&K's}{18}{subsection.A.3}\protected@file@percent }
+\citation{roberts1951}
 \citation{dixon1928}
 \citation{dixon1928}
 \citation{linton1945a}
@@ -208,9 +210,7 @@
 \@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces The four split definitions and their variants.\relax }}{19}{table.caption.11}\protected@file@percent }
 \newlabel{tab:splits}{{6}{19}{The four split definitions and their variants.\relax }{table.caption.11}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {A.4}Quotations and citation keys}{19}{subsection.A.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.5}Splitting the a and b quotations}{19}{subsection.A.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.6}Checks, limitations and open items}{19}{subsection.A.6}\protected@file@percent }
-\newlabel{app:checks}{{A.6}{19}{Checks, limitations and open items}{subsection.A.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.5}Splitting the composite quotations}{19}{subsection.A.5}\protected@file@percent }
 \bibstyle{apalike}
 \bibdata{references,library}
 \bibcite{aberle1950}{{1}{1950}{{Aberle et~al.}}{{}}}
@@ -222,73 +222,77 @@
 \bibcite{bidney1942}{{7}{1942}{{Bidney}}{{}}}
 \bibcite{bidney1946}{{8}{1946}{{Bidney}}{{}}}
 \bibcite{bidney1947}{{9}{1947}{{Bidney}}{{}}}
-\bibcite{blei2003latent}{{10}{2003}{{Blei et~al.}}{{}}}
-\bibcite{blumenthal1937}{{11}{1937}{{Blumenthal}}{{}}}
-\bibcite{boroch2016}{{12}{2016}{{Boroch}}{{}}}
-\bibcite{bose1929}{{13}{1929}{{Bose}}{{}}}
-\bibcite{breiger1974}{{14}{1974}{{Breiger}}{{}}}
-\bibcite{carr1945}{{15}{1945}{{Carr}}{{}}}
-\bibcite{committee1941}{{16}{1941}{{Committee on Conceptual Integration}}{{}}}
-\bibcite{dixon1928}{{17}{1928}{{Dixon}}{{}}}
-\bibcite{everett2013dual-projection-c89}{{18}{2013}{{Everett and Borgatti}}{{}}}
-\bibcite{feibleman1946}{{19}{1946}{{Feibleman}}{{}}}
-\bibcite{firth1939}{{20}{1939}{{Firth}}{{}}}
-\bibcite{folsom1931}{{21}{1931}{{Folsom}}{{}}}
-\bibcite{frank1948}{{22}{1948}{{Frank}}{{}}}
-\bibcite{freeman1978centrality-724}{{23}{1978}{{Freeman}}{{}}}
-\bibcite{gillin1942}{{24}{1942}{{Gillin and Gillin}}{{}}}
-\bibcite{gorer1949}{{25}{1949}{{Gorer}}{{}}}
-\bibcite{griffiths2004finding}{{26}{2004}{{Griffiths and Steyvers}}{{}}}
-\bibcite{groves1928}{{27}{1928}{{Groves}}{{}}}
-\bibcite{grovesmoore1940}{{28}{1940}{{Groves and Moore}}{{}}}
-\bibcite{henry1949}{{29}{1949}{{Henry}}{{}}}
-\bibcite{herskovits1948}{{30}{1948}{{Herskovits}}{{}}}
-\bibcite{hiller1933}{{31}{1933}{{Hiller}}{{}}}
-\bibcite{hockett1950}{{32}{1950}{{Hockett}}{{}}}
-\bibcite{klineberg1935}{{33}{1935}{{Klineberg}}{{}}}
-\bibcite{kluckhohn1942}{{34}{1942}{{Kluckhohn}}{{}}}
-\bibcite{kluckhohn1949a}{{35}{1949}{{Kluckhohn}}{{}}}
-\bibcite{kluckhohn1951a}{{36}{1951}{{Kluckhohn}}{{}}}
-\bibcite{kluckhohnkelly1945a}{{37}{1945}{{Kluckhohn and Kelly}}{{}}}
-\bibcite{kluckhohnleighton1946}{{38}{1946}{{Kluckhohn and Leighton}}{{}}}
-\bibcite{kroeber1948a}{{39}{1948}{{Kroeber}}{{}}}
-\bibcite{kroeberkluckhohn1952}{{40}{1952}{{Kroeber and Kluckhohn}}{{}}}
-\bibcite{kruskal1956}{{41}{1956}{{Kruskal}}{{}}}
-\bibcite{lasswell1948}{{42}{1948}{{Lasswell}}{{}}}
-\bibcite{linton1936}{{43}{1936}{{Linton}}{{}}}
-\bibcite{linton1945a}{{44}{1945}{{Linton}}{{}}}
-\bibcite{lowie1934}{{45}{1934}{{Lowie}}{{}}}
-\bibcite{lowie1937}{{46}{1937}{{Lowie}}{{}}}
-\bibcite{lynd1940}{{47}{1940}{{Lynd}}{{}}}
-\bibcite{malinowski1931}{{48}{1931}{{Malinowski}}{{}}}
-\bibcite{maquet1949}{{49}{1949}{{Maquet}}{{}}}
-\bibcite{murdock1949a}{{50}{1949}{{Murdock}}{{}}}
-\bibcite{murray1943}{{51}{1943}{{Murray}}{{}}}
-\bibcite{neal2014backbone-b29}{{52}{2014}{{Neal}}{{}}}
-\bibcite{newman2006}{{53}{2006}{{Newman}}{{}}}
-\bibcite{ogburnnimkoff1940}{{54}{1940}{{Ogburn and Nimkoff}}{{}}}
-\bibcite{ostwald1915}{{55}{1915}{{Ostwald}}{{}}}
-\bibcite{panunzio1939}{{56}{1939}{{Panunzio}}{{}}}
-\bibcite{reuter1939}{{57}{1939}{{Reuter}}{{}}}
-\bibcite{roberts1951}{{58}{1951}{{Roberts}}{{}}}
-\bibcite{rouse1939}{{59}{1939}{{Rouse}}{{}}}
-\bibcite{simmons1942}{{60}{1942}{{Simmons}}{{}}}
-\bibcite{small1905}{{61}{1905}{{Small}}{{}}}
-\bibcite{sorokin1937}{{62}{1937}{{Sorokin}}{{}}}
-\bibcite{sorokin1947}{{63}{1947}{{Sorokin}}{{}}}
-\bibcite{steward1950}{{64}{1950}{{Steward}}{{}}}
-\bibcite{taylor1948}{{65}{1948}{{Taylor}}{{}}}
-\bibcite{thomas1937}{{66}{1937}{{Thomas}}{{}}}
-\bibcite{titiev1949}{{67}{1949}{{Titiev}}{{}}}
-\bibcite{turneyhigh1949}{{68}{1949}{{Turney-High}}{{}}}
-\bibcite{tylor1871}{{69}{1871}{{Tylor}}{{}}}
-\bibcite{warden1936}{{70}{1936}{{Warden}}{{}}}
-\bibcite{white1943}{{71}{1943}{{White}}{{}}}
-\bibcite{white1949a}{{72}{1949}{{White}}{{}}}
-\bibcite{willey1927b}{{73}{1927}{{Willey}}{{}}}
-\bibcite{willey1929}{{74}{1929}{{Willey}}{{}}}
-\bibcite{winston1933}{{75}{1933}{{Winston}}{{}}}
-\bibcite{wissler1916}{{76}{1916}{{Wissler}}{{}}}
-\bibcite{wissler1920}{{77}{1920}{{Wissler}}{{}}}
-\bibcite{young1934}{{78}{1934}{{Young}}{{}}}
+\bibcite{bidney1968theoretical-29d}{{10}{1968}{{Bidney}}{{}}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.6}Checks, limitations, and open items}{20}{subsection.A.6}\protected@file@percent }
+\newlabel{app:checks}{{A.6}{20}{Checks, limitations, and open items}{subsection.A.6}{}}
+\bibcite{blei2003latent}{{11}{2003}{{Blei et~al.}}{{}}}
+\bibcite{blumenthal1937}{{12}{1937}{{Blumenthal}}{{}}}
+\bibcite{boroch2016}{{13}{2016}{{Boroch}}{{}}}
+\bibcite{bose1929}{{14}{1929}{{Bose}}{{}}}
+\bibcite{breiger1974}{{15}{1974}{{Breiger}}{{}}}
+\bibcite{carr1945}{{16}{1945}{{Carr}}{{}}}
+\bibcite{committee1941}{{17}{1941}{{Committee on Conceptual Integration}}{{}}}
+\bibcite{dixon1928}{{18}{1928}{{Dixon}}{{}}}
+\bibcite{everett2013dual-projection-c89}{{19}{2013}{{Everett and Borgatti}}{{}}}
+\bibcite{feibleman1946}{{20}{1946}{{Feibleman}}{{}}}
+\bibcite{firth1939}{{21}{1939}{{Firth}}{{}}}
+\bibcite{folsom1931}{{22}{1931}{{Folsom}}{{}}}
+\bibcite{frank1948}{{23}{1948}{{Frank}}{{}}}
+\bibcite{freeman1978centrality-724}{{24}{1978}{{Freeman}}{{}}}
+\bibcite{gillin1942}{{25}{1942}{{Gillin and Gillin}}{{}}}
+\bibcite{gorer1949}{{26}{1949}{{Gorer}}{{}}}
+\bibcite{griffiths2004finding}{{27}{2004}{{Griffiths and Steyvers}}{{}}}
+\bibcite{groves1928}{{28}{1928}{{Groves}}{{}}}
+\bibcite{grovesmoore1940}{{29}{1940}{{Groves and Moore}}{{}}}
+\bibcite{henry1949}{{30}{1949}{{Henry}}{{}}}
+\bibcite{herskovits1948}{{31}{1948}{{Herskovits}}{{}}}
+\bibcite{hiller1933}{{32}{1933}{{Hiller}}{{}}}
+\bibcite{hockett1950}{{33}{1950}{{Hockett}}{{}}}
+\bibcite{klineberg1935}{{34}{1935}{{Klineberg}}{{}}}
+\bibcite{kluckhohn1942}{{35}{1942}{{Kluckhohn}}{{}}}
+\bibcite{kluckhohn1949a}{{36}{1949}{{Kluckhohn}}{{}}}
+\bibcite{kluckhohn1951a}{{37}{1951}{{Kluckhohn}}{{}}}
+\bibcite{kluckhohnkelly1945a}{{38}{1945}{{Kluckhohn and Kelly}}{{}}}
+\bibcite{kluckhohnleighton1946}{{39}{1946}{{Kluckhohn and Leighton}}{{}}}
+\bibcite{kroeber1948a}{{40}{1948}{{Kroeber}}{{}}}
+\bibcite{kroeberkluckhohn1952}{{41}{1952}{{Kroeber and Kluckhohn}}{{}}}
+\bibcite{kruskal1956}{{42}{1956}{{Kruskal}}{{}}}
+\bibcite{lasswell1948}{{43}{1948}{{Lasswell}}{{}}}
+\bibcite{linton1936}{{44}{1936}{{Linton}}{{}}}
+\bibcite{linton1945a}{{45}{1945}{{Linton}}{{}}}
+\bibcite{lizardo2017improving-c29}{{46}{2017}{{Lizardo}}{{}}}
+\bibcite{lowie1934}{{47}{1934}{{Lowie}}{{}}}
+\bibcite{lowie1937}{{48}{1937}{{Lowie}}{{}}}
+\bibcite{lynd1940}{{49}{1940}{{Lynd}}{{}}}
+\bibcite{malinowski1931}{{50}{1931}{{Malinowski}}{{}}}
+\bibcite{maquet1949}{{51}{1949}{{Maquet}}{{}}}
+\bibcite{murdock1949a}{{52}{1949}{{Murdock}}{{}}}
+\bibcite{murray1943}{{53}{1943}{{Murray}}{{}}}
+\bibcite{neal2014backbone-b29}{{54}{2014}{{Neal}}{{}}}
+\bibcite{newman2006}{{55}{2006}{{Newman}}{{}}}
+\bibcite{ogburnnimkoff1940}{{56}{1940}{{Ogburn and Nimkoff}}{{}}}
+\bibcite{ostwald1915}{{57}{1915}{{Ostwald}}{{}}}
+\bibcite{panunzio1939}{{58}{1939}{{Panunzio}}{{}}}
+\bibcite{reuter1939}{{59}{1939}{{Reuter}}{{}}}
+\bibcite{roberts1951}{{60}{1951}{{Roberts}}{{}}}
+\bibcite{rouse1939}{{61}{1939}{{Rouse}}{{}}}
+\bibcite{simmons1942}{{62}{1942}{{Simmons}}{{}}}
+\bibcite{small1905}{{63}{1905}{{Small}}{{}}}
+\bibcite{sorokin1937}{{64}{1937}{{Sorokin}}{{}}}
+\bibcite{sorokin1947}{{65}{1947}{{Sorokin}}{{}}}
+\bibcite{steward1950}{{66}{1950}{{Steward}}{{}}}
+\bibcite{taylor1948}{{67}{1948}{{Taylor}}{{}}}
+\bibcite{thomas1937}{{68}{1937}{{Thomas}}{{}}}
+\bibcite{titiev1949}{{69}{1949}{{Titiev}}{{}}}
+\bibcite{turneyhigh1949}{{70}{1949}{{Turney-High}}{{}}}
+\bibcite{tylor1871}{{71}{1871}{{Tylor}}{{}}}
+\bibcite{warden1936}{{72}{1936}{{Warden}}{{}}}
+\bibcite{white1943}{{73}{1943}{{White}}{{}}}
+\bibcite{white1949a}{{74}{1949}{{White}}{{}}}
+\bibcite{willey1927b}{{75}{1927}{{Willey}}{{}}}
+\bibcite{willey1929}{{76}{1929}{{Willey}}{{}}}
+\bibcite{winston1933}{{77}{1933}{{Winston}}{{}}}
+\bibcite{wissler1916}{{78}{1916}{{Wissler}}{{}}}
+\bibcite{wissler1920}{{79}{1920}{{Wissler}}{{}}}
+\bibcite{young1934}{{80}{1934}{{Young}}{{}}}
 \gdef \@abspage@last{23}
