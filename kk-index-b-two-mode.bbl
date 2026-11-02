@@ -125,11 +125,6 @@ Gillin, J.~L. and Gillin, J.~P. (1942).
 \newblock {\em An Introduction to Sociology}.
 \newblock New York.
 
-\bibitem[Gillin, 1948]{gillin1948}
-Gillin, J.~P. (1948).
-\newblock {\em The Ways of Men}.
-\newblock New York.
-
 \bibitem[Gorer, 1949]{gorer1949}
 Gorer, G. (1949).
 \newblock {\em The People of Great Russia}.
@@ -150,11 +145,6 @@ Groves, E.~R. (1928).
 Groves, E.~R. and Moore, H.~E. (1940).
 \newblock {\em Introduction to Sociology}.
 \newblock New York.
-
-\bibitem[Gr{\"u}n and Hornik, 2011]{grun2011topicmodels}
-Gr{\"u}n, B. and Hornik, K. (2011).
-\newblock {topicmodels}: An {R} package for fitting topic models.
-\newblock {\em Journal of Statistical Software}, 40(13):1--30.
 
 \bibitem[Henry, 1949]{henry1949}
 Henry, J. (1949).
@@ -209,6 +199,11 @@ Kluckhohn, C. and Leighton, D. (1946).
 \newblock {\em The Navaho}.
 \newblock Cambridge.
 
+\bibitem[Kroeber, 1948]{kroeber1948a}
+Kroeber, A.~L. (1948).
+\newblock {\em Anthropology}.
+\newblock New York.
+
 \bibitem[Kroeber and Kluckhohn, 1952]{kroeberkluckhohn1952}
 Kroeber, A.~L. and Kluckhohn, C. (1952).
 \newblock Culture: A critical review of concepts and definitions.
@@ -220,11 +215,6 @@ Kruskal, J.~B. (1956).
 \newblock On the shortest spanning subtree of a graph and the traveling
   salesman problem.
 \newblock {\em Proceedings of the American Mathematical Society}, 7(1):48--50.
-
-\bibitem[LaPiere, 1946]{lapiere1946}
-LaPiere, R.~T. (1946).
-\newblock {\em Sociology}.
-\newblock New York.
 
 \bibitem[Lasswell, 1948]{lasswell1948}
 Lasswell, H.~D. (1948).

@@ -217,6 +217,16 @@ The manuscript was refreshed for the a/b split and the variant link decisions on
 - Avoid colons in prose: use a period, semicolon or comma. Keep colons in titles (for example "Culture: A Critical Review"), in the "Note:" label, and in label, path and bibliography lines.
 - Name topics by their Table 4 labels, in italics (\emph), not by number ("topics 1 and 6").
 
+## Authorial voice and style (Omar Lizardo) (2026-11-02)
+
+- Voice and framing: first-person singular authorial voice ("In this paper, I investigate...", "I argue that...", "Here I examine..."). Confident, engaging, intellectually ambitious, and analytically clear. Ground empirical analyses in broader sociological theory and the cognitive history of social scientific concepts (e.g., Breigerian duality, structural backbones, disciplinary boundary-work, cognitive-historical concept formation).
+- Avoid stilted, mechanical data-accounting: eliminate formulaic table-recitation ("Table 1 gives summary statistics. The first three rows show...", "The degree rows count...", "The nearest-neighbor rows show the other side...") and mechanical sequence markers ("First, we have...", "Finally, we have...", "Last but certainly not least...").
+- Focus on big-picture findings and substantive interpretation:
+  - Macro-topology: contrast the heavy-tailed, power-law-like concept distribution (a shared "ur-vocabulary" of foundational concepts: social, society, group, behavior) with the unimodal, bell-shaped definition distribution (the norm of conceptual economy).
+  - Structural backbones: interpret maximum spanning trees as revealing primary pathways of conceptual traffic under duality. Emphasize that high tree betweenness belongs to *synthetic theorizing* across divergent conceptual registers (Gillin 1942; Bidney 1942, 1946, 1947), whereas historical origin figures like Tylor (1871) occupy a specialized, peripheral niche.
+  - Bottom-up text reality vs. deductive taxonomy: highlight that unsupervised LDA reveals definitions as pervasive thematic mixtures; K&K's seven deductive categories fail to form coherent latent clusters and operated as an editorial/bibliographic classification scheme rather than an organic structure of culture theorizing.
+- Discussion section: synthesize the findings into four big-picture themes: (1) relational duality for the history of concepts, (2) the core-periphery architecture of disciplinary consensus, (3) synthetic theorizing versus administrative taxonomies, and (4) broader implications for computational concept analysis and cognitive sociology.
+
 ## Regex and text gotchas (R)
 
 - A logical index with NA returns NA rows: `df[df$kk_code == x, ]` yields NA rows wherever `kk_code` is NA (for example unresolved edges). Use `df[which(df$kk_code == x), ]`.
