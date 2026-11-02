@@ -9,6 +9,36 @@
     ]
   },
   "Packages": {
+    "BTM": {
+      "Package": "BTM",
+      "Version": "0.3.8",
+      "Source": "Repository",
+      "Priority": null,
+      "Depends": [
+        null
+      ],
+      "Imports": [
+        "Rcpp",
+        "utils"
+      ],
+      "LinkingTo": [
+        "Rcpp"
+      ],
+      "Suggests": [
+        "udpipe",
+        "data.table"
+      ],
+      "Enhances": [
+        null
+      ],
+      "License": "Apache License 2.0",
+      "License_is_FOSS": null,
+      "License_restricts_use": null,
+      "OS_type": null,
+      "NeedsCompilation": "yes",
+      "Repository": "CRAN",
+      "Type": "source"
+    },
     "ISOcodes": {
       "Package": "ISOcodes",
       "Version": "2026.03.28",

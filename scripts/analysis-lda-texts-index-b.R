@@ -129,6 +129,18 @@ dtm <- dtm[keep_rows, ]
 cl <- cl[keep_rows, ]
 cat("clauses modeled:", nrow(dtm), "| terms:", ncol(dtm), "\n")
 
+# store the modeled clause corpus; the BTM sensitivity script reads it
+# (PROVENANCE 37), so the two models always see the same documents
+dm_all <- as.matrix(dtm)
+clause_rows <- data.frame(
+  kk_code = cl$kk_code,
+  clause = cl$clause,
+  n_words = cl$n_words,
+  tokens = apply(dm_all, 1, function(row) paste(rep(colnames(dm_all), times = row), collapse = " ")),
+  stringsAsFactors = FALSE
+)
+write.csv(clause_rows, "data/kk-index-b-lda-clauses.csv", row.names = FALSE)
+
 # ---- LDA ensemble ----
 ari <- function(a, b) {
   tab <- table(a, b)
