@@ -649,6 +649,8 @@ INPUT ./figures/kk-index-b/lda/lda-topic-terms.png
 INPUT figures/kk-index-b/lda/lda-topic-terms.png
 INPUT ./figures/kk-index-b/lda/lda-topic-terms.png
 INPUT ./figures/kk-index-b/lda/lda-topic-terms.png
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx9.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmtt9.tfm
 INPUT ./figures/kk-index-b/lda/sankey-codes-subgroups.png
 INPUT ./figures/kk-index-b/lda/sankey-codes-subgroups.png
 INPUT figures/kk-index-b/lda/sankey-codes-subgroups.png
@@ -663,6 +665,7 @@ INPUT ./kk-index-b-two-mode.out
 INPUT ./kk-index-b-two-mode.out
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
@@ -679,3 +682,4 @@ INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb

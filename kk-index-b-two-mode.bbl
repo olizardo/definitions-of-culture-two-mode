@@ -16,17 +16,17 @@ Barabási, A.-L. and Albert, R. (1999).
 \newblock Emergence of scaling in random networks.
 \newblock {\em Science}, 286(5439):509--512.
 
+\bibitem[Becker, 1950]{becker1950}
+Becker, H. (1950).
+\newblock {\em Through Values to Social Interpretation}.
+\newblock Durham.
+
 \bibitem[Benedict, 1929]{benedict1929}
 Benedict, R. (1929).
 \newblock The science of custom.
 \newblock {\em Century Magazine}.
 \newblock Reprinted in V. F. Calverton, ed., The Making of Man, New York, 1931,
   pp. 805--817.
-
-\bibitem[Benedict, 1934]{benedict1934}
-Benedict, R. (1934).
-\newblock {\em Patterns of Culture}.
-\newblock Boston.
 
 \bibitem[Benedict, 1947]{benedict1947}
 Benedict, R. (1947).
@@ -79,6 +79,11 @@ Breiger, R.~L. (1974).
 \newblock The duality of persons and groups.
 \newblock {\em Social Forces}, 53(2):181--190.
 
+\bibitem[Burkitt, 1929]{burkitt1929}
+Burkitt, M.~C. (1929).
+\newblock Archaeology.
+\newblock In {\em Encyclopaedia Britannica}. New York, 14th edition.
+
 \bibitem[Carr, 1945]{carr1945}
 Carr, L.~J. (1945).
 \newblock Situational psychology.
@@ -114,6 +119,12 @@ Firth, R. (1939).
 Folsom, J. (1931).
 \newblock {\em Social Psychology}.
 \newblock New York.
+
+\bibitem[Ford, 1949]{ford1949}
+Ford, J.~A. (1949).
+\newblock Cultural dating of prehistoric sites in {Viru Valley}, {Peru}.
+\newblock {\em Anthropological Papers of the American Museum of Natural
+  History}, 43(1).
 
 \bibitem[Frank, 1948]{frank1948}
 Frank, L.~K. (1948).
@@ -151,10 +162,10 @@ Groves, E.~R. and Moore, H.~E. (1940).
 \newblock {\em Introduction to Sociology}.
 \newblock New York.
 
-\bibitem[Henry, 1949]{henry1949}
-Henry, J. (1949).
-\newblock Anthropology and psychosomatics.
-\newblock {\em Psychosomatic Medicine}, 11:216--223.
+\bibitem[Hart and Pantzer, 1925]{hartpantzer1925}
+Hart, H. and Pantzer, A. (1925).
+\newblock Have subhuman animals culture?
+\newblock {\em American Journal of Sociology}, 30(6):703--709.
 
 \bibitem[Herskovits, 1948]{herskovits1948}
 Herskovits, M.~J. (1948).
@@ -182,11 +193,6 @@ Kluckhohn, C. (1942).
 \newblock Report to the sub-sub-committee on definitions of culture.
 \newblock Committee on Conceptual Integration. Mimeographed.
 
-\bibitem[Kluckhohn, 1949]{kluckhohn1949a}
-Kluckhohn, C. (1949).
-\newblock {\em Mirror for Man}.
-\newblock New York.
-
 \bibitem[Kluckhohn, 1951]{kluckhohn1951a}
 Kluckhohn, C. (1951).
 \newblock The concept of culture.
@@ -203,6 +209,12 @@ Kluckhohn, C. and Kelly, W.~H. (1945).
 Kluckhohn, C. and Leighton, D. (1946).
 \newblock {\em The Navaho}.
 \newblock Cambridge.
+
+\bibitem[Kluckhohn, 1950]{kluckhohnf1950}
+Kluckhohn, F.~R. (1950).
+\newblock Dominant and substitute profiles of cultural orientations: Their
+  significance for the analysis of social stratification.
+\newblock {\em Social Forces}, 28(4):376--393.
 
 \bibitem[Kroeber, 1948]{kroeber1948a}
 Kroeber, A.~L. (1948).
@@ -318,19 +330,30 @@ Roberts, J.~M. (1951).
 \newblock Peabody Museum of Harvard University.
 \newblock No. 3.
 
+\bibitem[R{\'o}heim, 1934]{roheim1934}
+R{\'o}heim, G. (1934).
+\newblock {\em The Riddle of the Sphinx}.
+\newblock London.
+\newblock Translated by A. Money-Kyrle.
+
+\bibitem[R{\'o}heim, 1943]{roheim1943}
+R{\'o}heim, G. (1943).
+\newblock {\em The Origin and Function of Culture}.
+\newblock New York.
+
 \bibitem[Rouse, 1939]{rouse1939}
 Rouse, I. (1939).
 \newblock Prehistory in haiti.
+
+\bibitem[Sapir, 1921]{sapir1921}
+Sapir, E. (1921).
+\newblock {\em Language}.
+\newblock New York.
 
 \bibitem[Simmons, 1942]{simmons1942}
 Simmons, L.~W., editor (1942).
 \newblock {\em Sun Chief: The Autobiography of a {Hopi} Indian}.
 \newblock Yale University Press, New Haven.
-
-\bibitem[Small, 1905]{small1905}
-Small, A.~W. (1905).
-\newblock {\em General Sociology}.
-\newblock Chicago.
 
 \bibitem[Sorokin, 1937]{sorokin1937}
 Sorokin, P.~A. (1937).
@@ -364,11 +387,6 @@ Thomas, W.~I. (1937).
 Titiev, M. (1949).
 \newblock Social values and personality development.
 \newblock {\em Journal of Social Issues}, 5:44--47.
-
-\bibitem[Turney-High, 1949]{turneyhigh1949}
-Turney-High, H.~H. (1949).
-\newblock {\em General Anthropology}.
-\newblock New York.
 
 \bibitem[Tylor, 1871]{tylor1871}
 Tylor, E.~B. (1871).
@@ -428,5 +446,10 @@ Yan, X., Guo, J., Lan, Y., and Cheng, X. (2013).
 Young, K. (1934).
 \newblock {\em Introductory Sociology}.
 \newblock New York.
+
+\bibitem[Young, 1944]{young1944}
+Young, K. (1944).
+\newblock {\em Social Psychology}.
+\newblock New York, 2nd edition.
 
 \end{thebibliography}

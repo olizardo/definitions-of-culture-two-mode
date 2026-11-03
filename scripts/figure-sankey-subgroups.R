@@ -34,18 +34,18 @@ K_TOPICS <- 12
 # (data/kk-index-b-lda-topic-terms.csv), as in Table 4 of the manuscript;
 # recheck after any rebuild
 factor.labels <- c(
-  "1 individual acquired behavior",
-  "2 human products and results",
-  "3 transmitted group behavior",
-  "4 shared group living",
-  "5 biological needs and nature",
-  "6 acquired habits as complex wholes",
-  "7 cultural order of phenomena",
-  "8 sum total of group life",
-  "9 material tools and ideas",
-  "10 customs, beliefs and knowledge",
-  "11 way of life of a people",
-  "12 man-made environment")
+  "1 customs, beliefs and knowledge",
+  "2 transmitted group behavior",
+  "3 shared designs for living",
+  "4 way of life of a people",
+  "5 distinct order of human phenomena",
+  "6 mental constructs of individuals",
+  "7 problem-solving ways of thinking",
+  "8 material tools and ideas",
+  "9 man-made environment",
+  "10 biological needs and nature",
+  "11 acquired habits of individuals",
+  "12 human products and results")
 
 # subgroup of a K&K code: letter + roman numeral when the code has one; the
 # plain-numbered groups (A, B, E, G) have no subgroup level; a bare C or D
@@ -138,15 +138,15 @@ sankey.plot <- function(tab, x.labs, node.title, fac.labs) {
                       name = node.title) +
     labs(x = NULL, y = NULL) +
     theme_void() +
+    # the node labels name each group, so the fill legend is redundant
     theme(axis.text.x = element_text(size = 7.5, face = "bold"),
-          legend.text = element_text(size = 6.5),
-          legend.title = element_text(size = 7, face = "bold"),
-          legend.position = "bottom",
-          legend.key.size = unit(0.28, "lines"))
+          legend.position = "none")
 }
 
 # ---- codes: subgroup -> dominant LDA topic ----
 tl <- read.csv("data/kk-index-b-lda-code-theta.csv")
+# codes with no surviving clause are dropped (PROVENANCE 38)
+tl <- tl[tl$n_clauses > 0, ]
 fac.labs.c <- setNames(factor.labels, as.character(seq_len(K_TOPICS)))
 sg.c <- subgrp(trimws(tl$kk_code))
 sg.c.used <- sg.levels[sg.levels %in% unique(sg.c)]

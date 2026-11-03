@@ -15,12 +15,12 @@ tt$y <- factor(paste(tt$topic, tt$term, sep = "|"),
                levels = rev(paste(tt$topic, tt$term, sep = "|")))
 # strip labels as in Table 4 of the manuscript; recheck after any rebuild
 topic.labels <- c(
-  "individual acquired behavior", "human products and results",
-  "transmitted group behavior", "shared group living",
-  "biological needs and nature", "acquired habits as complex wholes",
-  "cultural order of phenomena", "sum total of group life",
-  "material tools and ideas", "customs, beliefs and knowledge",
-  "way of life of a people", "man-made environment")
+  "customs, beliefs and knowledge", "transmitted group behavior",
+  "shared designs for living", "way of life of a people",
+  "distinct order of human phenomena", "mental constructs of individuals",
+  "problem-solving ways of thinking", "material tools and ideas",
+  "man-made environment", "biological needs and nature",
+  "acquired habits of individuals", "human products and results")
 # long labels wrap onto two lines so they fit the strips
 strip.lab <- vapply(sprintf("%d %s", 1:12, topic.labels),
                     function(s) paste(strwrap(s, 24), collapse = "\n"), character(1))

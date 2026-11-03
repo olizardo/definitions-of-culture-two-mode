@@ -7,6 +7,9 @@ CHISQ_B <- 10000
 
 th <- read.csv("data/kk-index-b-lda-code-theta.csv", check.names = FALSE,
                stringsAsFactors = FALSE)
+# codes with no surviving clause (n_clauses = 0, uniform theta) are dropped;
+# currently C-I-7 and G-1 (PROVENANCE 38)
+th <- th[th$n_clauses > 0, ]
 
 # Expected counts are mostly below 5, so the p-value is simulated.
 tb <- table(th$group, factor(th$dominant, levels = 1:12))

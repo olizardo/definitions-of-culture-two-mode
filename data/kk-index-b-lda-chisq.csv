@@ -1,2 +1,2 @@
 "statistic","df","simulated_p","replicates","seed","n_codes","table_rows","table_cols","cells_expected_lt5","cells_total"
-108.011796790274,NA,0.0007999200079992,10000,8153,171,7,12,81,84
+121.14198653595,NA,9.99900009999e-05,10000,8153,169,7,12,80,84

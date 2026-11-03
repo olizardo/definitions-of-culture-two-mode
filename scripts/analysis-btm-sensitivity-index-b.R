@@ -136,12 +136,19 @@ write.csv(data.frame(lda_topic = seq_len(K),
           "data/kk-index-b-btm-lda-matches.csv", row.names = FALSE)
 
 n_sig <- sum(out$p_sim < 0.05, na.rm = TRUE)
+# LDA comparison values are read from the stored LDA outputs
+lda_chisq <- read.csv("data/kk-index-b-lda-chisq.csv")$statistic
+lda_th <- read.csv("data/kk-index-b-lda-code-theta.csv", check.names = FALSE)
+lda_th <- lda_th[lda_th$n_clauses > 0, ]
+lda_med <- median(apply(as.matrix(lda_th[, as.character(seq_len(K))]), 1, max))
+lda_ari <- read.csv("data/kk-index-b-lda-group-ari.csv")
+lda_ari_rng <- range(lda_ari$ari[lda_ari$kind == "single_seed"])
 cat("\nseeds with p < 0.05:", n_sig, "of", length(SEEDS), "\n")
 cat("chi-square range:", round(ens$chisq_min, 1), "to", round(ens$chisq_max, 1),
-    "(LDA ensemble 108.0)\n")
+    "(LDA ensemble", round(lda_chisq, 1), ")\n")
 cat("ARI vs K&K groups: mean", round(ens$ari_vs_kkgroup, 3),
-    "(LDA per-seed range 0.02 to 0.07)\n")
+    "(LDA per-seed range", round(lda_ari_rng[1], 2), "to", round(lda_ari_rng[2], 2), ")\n")
 cat("ARI vs LDA dominant partition: mean", round(ens$ari_vs_lda_dominant, 3), "\n")
-cat("median dominant weight: mean", round(ens$median_dominant_w, 2), "(LDA 0.33)\n")
+cat("median dominant weight: mean", round(ens$median_dominant_w, 2), "(LDA", round(lda_med, 2), ")\n")
 cat("best single-topic cosine per LDA topic: ",
     round(min(colMeans(best_cos)), 2), "to", round(max(colMeans(best_cos)), 2), "\n")

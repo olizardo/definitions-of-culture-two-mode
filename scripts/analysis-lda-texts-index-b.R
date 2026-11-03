@@ -14,7 +14,7 @@
 # page footnote, not a definition) get a uniform theta and are flagged.
 #
 # Stopwords: SMART minus protected substantive words, plus the frame words
-# (culture, society, social, man), grammatical words settled by hand while
+# (culture, society, social, man, men), grammatical words settled by hand while
 # developing the analysis, and a plural collapse (nouns only; verb forms and
 # lives/live excluded).
 #
@@ -34,9 +34,13 @@ set.seed(2466)  # permutation test seed
 K <- 12
 SEEDS <- 1:50
 ALPHA <- 0.1
-FRAME <- c("culture", "society", "social", "man")
+FRAME <- c("culture", "society", "social", "man", "men")
 GRAMMATICAL <- c("one", "another", "may", "also", "non", "consists", "term", "terms",
-                 "definition")
+                 "definition", "definitions",
+                 "define", "defines", "defined", "defining",
+                 "include", "includes", "included", "including",
+                 "concept", "concepts",
+                 "designate", "designates", "designated", "designating")
 PROTECTED <- c("way", "whole", "made", "common", "passed", "group", "life", "people",
                "human", "behavior", "ideas", "custom", "customs", "sum", "total",
                "transmitted", "learned", "things", "thing", "self", "needs", "use",
@@ -94,6 +98,11 @@ corp <- VCorpus(VectorSource(cl$text))
 corp <- tm_map(corp, content_transformer(normalize))
 corp <- tm_map(corp, content_transformer(tolower))
 corp <- tm_map(corp, removePunctuation)
+# multiword terms, joined only when the two words are adjacent in the clause
+corp <- tm_map(corp, content_transformer(function(x) {
+  x <- gsub("\\bsum total\\b", "sum_total", x)
+  gsub("\\bcomplex whole\\b", "complex_whole", x)
+}))
 corp <- tm_map(corp, removeNumbers)
 corp <- tm_map(corp, removeWords, c(STOP, FRAME, GRAMMATICAL))
 corp <- tm_map(corp, stripWhitespace)

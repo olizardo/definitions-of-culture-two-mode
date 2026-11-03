@@ -4,10 +4,11 @@ The top-level auxiliary file: kk-index-b-two-mode.aux
 The style file: apalike.bst
 Database file #1: references.bib
 Database file #2: library.bib
-Warning--empty publisher in benedict1934
+Warning--empty publisher in becker1950
 Warning--empty publisher in benedict1947
 Warning--empty publisher in blumenthal1937
 Warning--empty publisher in bose1929
+Warning--empty publisher in burkitt1929
 Warning--empty publisher in dixon1928
 Warning--empty publisher in feibleman1946
 Warning--empty publisher in firth1939
@@ -20,7 +21,6 @@ Warning--empty publisher in grovesmoore1940
 Warning--empty publisher in herskovits1948
 Warning--empty publisher in hiller1933
 Warning--empty publisher in klineberg1935
-Warning--empty publisher in kluckhohn1949a
 Warning--empty publisher in kluckhohn1951a
 Warning--empty publisher in kluckhohnkelly1945a
 Warning--empty publisher in kluckhohnleighton1946
@@ -35,54 +35,56 @@ Warning--empty publisher in maquet1949
 Warning--empty publisher in murray1943
 Warning--empty publisher in panunzio1939
 Warning--empty publisher in reuter1939
-Warning--empty publisher in small1905
+Warning--empty publisher in roheim1934
+Warning--empty publisher in roheim1943
+Warning--empty publisher in sapir1921
 Warning--empty publisher in sorokin1947
 Warning--empty publisher in thomas1937
-Warning--empty publisher in turneyhigh1949
 Warning--empty publisher in tylor1871
 Warning--empty publisher in warden1936
 Warning--empty publisher in white1949a
 Warning--empty publisher in winston1933
 Warning--empty publisher in young1934
-You've used 81 entries,
+Warning--empty publisher in young1944
+You've used 85 entries,
             1935 wiz_defined-function locations,
-            863 strings with 10835 characters,
-and the built_in function-call counts, 26371 in all, are:
-= -- 2551
-> -- 697
-< -- 85
-+ -- 259
-- -- 205
-* -- 1997
-:= -- 4659
-add.period$ -- 253
-call.type$ -- 81
-change.case$ -- 462
-chr.to.int$ -- 81
-cite$ -- 121
-duplicate$ -- 1170
-empty$ -- 2076
-format.name$ -- 304
-if$ -- 5143
+            883 strings with 11282 characters,
+and the built_in function-call counts, 27694 in all, are:
+= -- 2682
+> -- 731
+< -- 89
++ -- 273
+- -- 215
+* -- 2104
+:= -- 4891
+add.period$ -- 267
+call.type$ -- 85
+change.case$ -- 488
+chr.to.int$ -- 85
+cite$ -- 127
+duplicate$ -- 1229
+empty$ -- 2182
+format.name$ -- 320
+if$ -- 5403
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 119
-newline$ -- 412
-num.names$ -- 252
-pop$ -- 493
+missing$ -- 124
+newline$ -- 433
+num.names$ -- 264
+pop$ -- 514
 preamble$ -- 1
-purify$ -- 504
+purify$ -- 529
 quote$ -- 0
-skip$ -- 878
+skip$ -- 920
 stack$ -- 0
-substring$ -- 1752
-swap$ -- 115
+substring$ -- 1829
+swap$ -- 119
 text.length$ -- 7
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 400
-warning$ -- 40
-while$ -- 228
+type$ -- 422
+warning$ -- 42
+while$ -- 238
 width$ -- 0
-write$ -- 1025
-(There were 40 warnings)
+write$ -- 1080
+(There were 42 warnings)

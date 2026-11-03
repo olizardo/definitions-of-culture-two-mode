@@ -14,7 +14,11 @@
       "git add *": "allow",
       "git status *": "allow",
       "git commit *": "allow",
-      "git log *": "allow"
+      "git log *": "allow",
+      "Rscript *": "allow"
+    },
+    "edit": {
+      "*.bib": "allow"
     }
   }
 }

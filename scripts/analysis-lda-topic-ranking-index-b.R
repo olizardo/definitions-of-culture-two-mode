@@ -6,13 +6,15 @@
 
 th <- read.csv("data/kk-index-b-lda-code-theta.csv", check.names = FALSE,
                stringsAsFactors = FALSE)
+# codes with no surviving clause (uniform theta) are dropped (PROVENANCE 38)
+th <- th[th$n_clauses > 0, ]
 
 # Table 4 labels
-topic.labels <- c("individual acquired behavior", "human products and results",
-  "transmitted group behavior", "shared group living", "biological needs and nature",
-  "acquired habits as complex wholes", "cultural order of phenomena", "sum total of group life",
-  "material tools and ideas", "customs, beliefs and knowledge", "way of life of a people",
-  "man-made environment")
+topic.labels <- c("customs, beliefs and knowledge", "transmitted group behavior",
+  "shared designs for living", "way of life of a people", "distinct order of human phenomena",
+  "mental constructs of individuals", "problem-solving ways of thinking", "material tools and ideas",
+  "man-made environment", "biological needs and nature", "acquired habits of individuals",
+  "human products and results")
 
 ranking <- do.call(rbind, lapply(1:12, function(k) {
   w <- th[[as.character(k)]]

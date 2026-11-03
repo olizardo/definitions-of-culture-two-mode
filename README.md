@@ -290,17 +290,18 @@ topics aligned to the first seed by Hungarian matching on the topic-term profile
 The stored code-level memberships (`data/kk-index-b-lda-code-theta.csv`) are the
 seed mean of the clause-level topic posterior, weighted by clause word count; one
 code (C-I-7) has no clause surviving the term filter and carries a uniform
-membership, flagged by `n_clauses = 0`. The corpus is small (265 clauses of about 21
+membership, flagged by `n_clauses = 0`. The corpus is small (264 clauses, mean 22
 words), so seeds differ: per-seed agreement with the group letters A–G is ARI 0.02
-to 0.07, the aligned ensemble 0.04 (permutation p = 0.001). Membership is diffuse by
+to 0.06, the aligned ensemble 0.05 (permutation p = 0.001). Membership is diffuse by
 design: analyses threshold the stored theta themselves. The stopword list is the
 SMART list minus protected substantive words (way, whole, made, common, passed,
 group, life, people, human, behavior, ideas, custom(s), sum, total, transmitted,
 learned, thing(s), self, needs, use/used, given, mean, name, different, various),
-plus the frame words (culture, society, social, man), grammatical words settled by
-hand (one, another, may, also, non, consists, term(s), definition), and a plural
-collapse that merges a plural into its singular only when both occur and the
-singular is not protected. The list is defined in
+plus the frame words (culture, society, social, man, men), grammatical words settled
+by hand (one, another, may, also, non, consists, term(s), definition(s), the define,
+include and designate families, concept(s)), and two joined multiword terms
+(sum total, complex whole, when adjacent in a clause). A plural collapse merges a
+plural into its singular only when both occur and the singular is not protected. The list is defined in
 `scripts/analysis-lda-texts-index-b.R` and is part of the reproducible pipeline;
 results depend on it. The four non-English quotations (B-17 and C-I-18a French,
 F-I-5 and F-II-3 German) enter as English translations from
